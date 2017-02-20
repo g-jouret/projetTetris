@@ -101,7 +101,7 @@ public:
     /*!
      * \brief Méthode vérifiant si une(des) ligne(s) a(ont) été remplie(s).
      *
-     * \return le numéro (l'ordonnée) de la(les) ligne(s) remplie(s)
+     * \return les numéros (les ordonnées) des lignes remplies
      */
     std::vector<unsigned> checkLine();
 
@@ -144,6 +144,7 @@ unsigned Board::getHeight(){
     return height_;
 }
 
+// TODO : renvoyer référence : copie défensive
 std::vector<Position> Board::getGrid(){
     return grid_;
 }
