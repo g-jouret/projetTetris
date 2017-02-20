@@ -29,8 +29,8 @@ class Position
     unsigned y_;
     /*!< L'ordonnée de la position. */
 
-    /* NOTE : option intéressante : état de la position en argument, mouvement de la brique fait changer l'état
-    bool filled_;*/
+    bool empty_;
+    /*!< L'état de la position. */
 
 public:
 
@@ -67,20 +67,17 @@ public:
     inline unsigned getY();
 
     /*!
+     * \brief Accesseur en lecture de l'état d'une position sur la grille.
+     */
+    inline bool isEmpty();
+
+    /*!
      * \brief Méthode permettant de changer la position en indiquant de combien on veut incrémenter chacun des attributs.
      *
      * \param x valeur à ajouter à \ref x_
      * \param y valeur à ajouter à \ref y_
      */
     void move(unsigned x, unsigned y);
-
-    /*!
-     * \brief Méthode permettant de vérifier si une case de la grille est vide.
-     *
-     * \param x l'abscisse de la case
-     * \param y l'ordonnée de la case
-     */
-    bool isEmpty(unsigned x, unsigned y);
 
 private:
 
@@ -107,8 +104,13 @@ private:
 unsigned Position::getX(){
     return x_;
 }
+
 unsigned Position::getY(){
     return y_;
+}
+
+bool Position::isEmpty(){
+    return empty_;
 }
 
 }
