@@ -2,6 +2,7 @@
 #define BRIC_H
 
 #include <vector>
+#include <array>
 #include "position.h"
 
 /*! \mainpage Une classe pour représenter une brique
@@ -31,15 +32,12 @@ class Bric{
     // NOTE : pour plus tard : couleur
 public:
 
-    /*!
-     * \brief Constructeur sans argument de \ref Bric.
-     */
-    Bric();
+    Bric(std::vector<Position> shape);
 
     /*!
      * \brief Destructeur de \ref Bric.
      */
-    ~Bric();
+    // TODO : ~Bric();
 
     /*!
      * \brief Accesseur en lecture de la forme de la brique.

@@ -4,29 +4,14 @@
 
 namespace g40853{
 
-/*std::ostream & operator<< (std::ostream &out, Stone in){
-    out << to_string(in);
-    return out;
+/* WARNING DB : piste pour implémentation de DEFAULT_BRICS
+ Bric::Bric(std::vector<Position> shape):
+    shape_ {
+        std::vector<Position> {Position(shape.at(0),shape.at(1)), Position(shape.at(2),shape.at(3)), Position(shape.at(4),shape.at(5)), Position(shape.at(6),shape.at(7))}
 }
-std::string to_string(Stone stone){
-    std::string result;
-    switch(stone){
-    case Stone::I :
-        result+="unknown" : result+="u";
-        break;
-    case Stone::FEMALE :
-        (longform)? result+="female" : result+="f";
-        break;
-    case Stone::MALE :
-        (longform)? result+="male" : result+="m";
-        break;
-    case Stone::VOID :
-        (longform)? result+="void" : result+="v";
-        break;
-    case Stone::OTHER :
-        (longform)? result+="other" : result+="o";
-        break;
-    }
-    return result;
-}*/
+{}*/
+
+Bric::Bric(std::vector<Position> shape): shape_ {shape}
+{}
+
 }

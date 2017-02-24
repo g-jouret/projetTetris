@@ -22,6 +22,8 @@ namespace g40853{
  * \brief Classe représentant le sac de briques générée pour jouer.
  */
 class BricsBag{
+
+    // NOTE : peut-être mieux une map ou un set : brique retrouvables par clé?
     std::vector<Bric> brics_;
     /*!< Les briques contenue dans le sac.
      *
@@ -30,15 +32,12 @@ class BricsBag{
 
 public:
 
-    /*!
-     * \brief Constructeur sans argument de \ref BricsBag.
-     */
-    BricsBag();
+    BricsBag(std::vector<Bric> brics);
 
     /*!
      * \brief Destructeur de \ref BricsBag.
      */
-    ~BricsBag();
+    // TODO : ~BricsBag();
 
     /*!
      * \brief Accesseur en lecture du sac de briques.

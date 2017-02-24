@@ -2,6 +2,8 @@
 #define PLAYER_H
 
 #include <string>
+#include "board.h"
+#include "bricsBag.h"
 
 /*! \mainpage Une classe pour représenter un joueur
  *
@@ -29,6 +31,10 @@ class Player{
      * Augmente au fur et à mesure que le joueur rempli des lignes de la grille.
      */
 
+    Board board_;
+
+    BricsBag bag_;
+
 public:
 
     /*!
@@ -44,12 +50,14 @@ public:
      *
      * \param name le nom du joueur.
      */
-    Player(std::string name);
+    Player(std::string name, unsigned width, unsigned height, std::vector<Bric> brics);
+    // WARNING DB : lié à l'initialisation par DEFAULT_BRICS
+    //Player(std::string name, unsigned width, unsigned height, std::vector<unsigned> brics);
 
     /*!
      * \brief Destructeur de \ref Player.
      */
-    ~Player();
+    // TODO : ~Player();
 
     /*!
      * \brief Accesseur en lecture du nom du joueur.
@@ -64,6 +72,8 @@ public:
      * \return le score du joueur
      */
     inline unsigned getScore();
+
+    void checkLines();
 };
 
 //implémentations inline

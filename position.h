@@ -1,8 +1,6 @@
 #ifndef POSITION_H
 #define POSITION_H
 
-// WARNING : Position ne peut pas #include "board.h" car Board inclut déjà Position
-
 /*! \mainpage Une classe pour représenter une position sur le plateau.
  *
  * Un bon point d'entrée est celui de la documentation de
@@ -29,7 +27,7 @@ class Position
     unsigned y_;
     /*!< L'ordonnée de la position. */
 
-    bool empty_;
+    bool filled_;
     /*!< L'état de la position. */
 
 public:
@@ -50,7 +48,7 @@ public:
      * \param y l'ordonnée de la position.
      */
     Position(unsigned x, unsigned y);
-    // WARNING : ~Position();  /!\ bug
+    // TODO : ~Position();
 
     /*!
      * \brief Accesseur en lecture de l'abscisse.
@@ -69,7 +67,7 @@ public:
     /*!
      * \brief Accesseur en lecture de l'état d'une position sur la grille.
      */
-    inline bool isEmpty();
+    inline bool isFilled();
 
     /*!
      * \brief Méthode permettant de changer la position en indiquant de combien on veut incrémenter chacun des attributs.
@@ -109,8 +107,8 @@ unsigned Position::getY(){
     return y_;
 }
 
-bool Position::isEmpty(){
-    return empty_;
+bool Position::isFilled(){
+    return filled_;
 }
 
 }

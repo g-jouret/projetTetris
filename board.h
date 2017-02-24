@@ -57,11 +57,6 @@ class Board{
 public:
 
     /*!
-     * \brief Constructeur sans argument de \ref Board.
-     */
-    Board();
-
-    /*!
      * \brief Constructeur de \ref Board.
      *
      * Pour ce qui concerne la validation :
@@ -75,7 +70,7 @@ public:
     /*!
      * \brief Destructeur de \ref Board.
      */
-    ~Board();
+    // TODO : ~Board();
 
     /*!
      * \brief Accesseur en lecture de \ref width_.
@@ -103,7 +98,7 @@ public:
      *
      * \return les numéros (les ordonnées) des lignes remplies
      */
-    std::vector<unsigned> checkLine();
+    std::vector<unsigned> checkLines();
 
     /*!
      * \brief Méthode gérant les lignes remplies.
@@ -112,7 +107,7 @@ public:
      *
      * \param lineNum le numéro de la ligne à traiter
      */
-    void Line(unsigned lineNum);
+    void line(unsigned lineNum);
 
 private:
 

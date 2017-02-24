@@ -2,8 +2,10 @@
 #define GAME_H
 
 #include <vector>
-#include "board.h"
+#include <array>
 #include "player.h"
+#include "bricsBag.h"
+#include "bric.h"
 
 /*! \mainpage Une classe pour représenter les paramètres du jeu
  *
@@ -26,9 +28,24 @@ class Game
 public:
     constexpr static unsigned MINIMUM_TIMER {100};
     /*!< Valeur minimale acceptée pour le timer. */
+
     constexpr static unsigned MAXIMUM_TIMER {500};
     /*!< Valeur maximale acceptée pour le timer. */
 
+    constexpr static unsigned DEFAULT_WIDTH {10};
+    constexpr static unsigned DEFAULT_HEIGHT {20};
+    // NOTE : indice du board : 0 en haut, MAX en bas : plus facile pour la génération de brique sur le board
+    /* WARNING DB : faut trouver un moyen d'initialiser les briques par défaut !
+    constexpr static std::vector<unsigned> DEFAULT_BRICS {
+        {0,0 , 0,1 , 0,2 , 0,3,    //I
+        0,0 , 1,0 , 0,1 , 1,1,    //O
+        1,0 , 0,1 , 1,1 , 2,1,    //T
+        1,0 , 1,1 , 0,2 , 1,2,    //J
+        0,0 , 0,1 , 0,2 , 1,2,    //L
+        0,0 , 1,0 , 1,1 , 2,1,    //Z
+        1,0 , 2,0 , 0,1 , 1,1}     //S
+    };
+*/
 private:
     unsigned level_;
     /*!< Le niveau de difficulté.
@@ -44,12 +61,9 @@ private:
      * Sa valeur est en milliseconde et peut aller de \ref MINIMUM_TIMER à \ref MAXIMUM_MONTH.
      */
 
-    Board board_;
-    /*!< La grille de jeu. */
-
     std::vector<Player> players_;
-    /*!< Les joueurs. */
-
+    /*!< Les joueurs, leur grille et leur sac de pièces. */
+    // NOTE : peut-être mieux d'utiliser un pai, vu que 2 joueurs max?
     // TODO : mode de jeu, condition de victoire
 
     /* NOTE : option possible
