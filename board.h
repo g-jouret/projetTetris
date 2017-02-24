@@ -28,8 +28,6 @@ namespace g40853{
  */
 class Board{
 
-    // NOTE : la hauteur et la largeur devraient peut-être être dans Game au lieu de Board car ce sont des paramètres de la parties servant à valider les Positions
-
     const unsigned width_;
     /*!< La largeur.
      *
@@ -109,19 +107,7 @@ public:
      */
     void line(unsigned lineNum);
 
-private:
 
-    /*!
-     * \brief Méthode privée de validation de la largeur et de la hauteur.
-     *
-     * Cette méthode vérifie que la valeur de l'attribut n'est pas égale à zéro.
-     *
-     * \param value la valeur à valider
-     * \param def la valeur par défaut si l'argument est égal à 0
-     *
-     * \return la valeur validée
-     */
-    unsigned validate(unsigned value, unsigned def);
 };
 
 //prototypes
@@ -131,7 +117,7 @@ private:
 //fonctions inline
 
 //méthodes inline
-unsigned Board::getWidth(){
+unsigned  Board::getWidth(){
     return width_;
 }
 

@@ -4,14 +4,10 @@
 namespace g40853{
 
 Board::Board(unsigned width, unsigned height):
-width_{width}, height_{height} {
-    validate(width, 10);
-    validate(height, 20);
-}
+width_{width}, height_{height}
+{}
 
-unsigned Board::validate(unsigned value, unsigned def){
-    return (value == 0)? def : value;
-}
+
 
 std::vector<unsigned> Board::checkLines(){
     std::vector<unsigned> filledLines;
