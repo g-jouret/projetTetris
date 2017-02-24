@@ -48,6 +48,10 @@ public:
      * \param y l'ordonnée de la position.
      */
     Position(unsigned x, unsigned y);
+
+    /*!
+     * \brief Destructeur de \ref Position.
+     */
     // TODO : ~Position();
 
     /*!
@@ -66,6 +70,8 @@ public:
 
     /*!
      * \brief Accesseur en lecture de l'état d'une position sur la grille.
+     *
+     * \return si la case à cette position est pleine ou non
      */
     inline bool isFilled();
 

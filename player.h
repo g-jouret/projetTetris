@@ -26,29 +26,26 @@ class Player{
     /*!< Le nom du joueur. */
 
     unsigned score_;
-    /*!< le score du joueur.
+    /*!< Le score du joueur.
      *
      * Augmente au fur et à mesure que le joueur rempli des lignes de la grille.
      */
 
     Board board_;
+    /*!< La grille de jeu du joueur. */
 
     BricsBag bag_;
+    /*!< Le sac de briques du joueur. */
 
 public:
 
     /*!
-     * \brief Constructeur sans argument de \ref Player.
-     *
-     * Le nom du joueur est remplacé par un numéro.
-     */
-    // NOTE : sans doute inutile : valeur par défaut peut-être initialisée lors de la construction, plus efficace puisque numéro
-    //Player();
-
-    /*!
      * \brief Constructeur de \ref Player.
      *
-     * \param name le nom du joueur.
+     * \param name le nom du joueur
+     * \param width la largeur de la grille
+     * \param height la hauteur de la grille
+     * \param brics les briques à mettre dans le sac
      */
     Player(std::string name, unsigned width, unsigned height, std::vector<Bric> brics);
     // WARNING DB : lié à l'initialisation par DEFAULT_BRICS
@@ -73,6 +70,11 @@ public:
      */
     inline unsigned getScore();
 
+    /*!
+     * \brief Méthode vérifiant que des lignes ont été remplies.
+     *
+     * Augmente le score du joueur si c'est le cas.
+     */
     void checkLines();
 };
 

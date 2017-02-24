@@ -32,6 +32,10 @@ class Bric{
     // NOTE : pour plus tard : couleur
 public:
 
+    /*!
+     * \brief Bric
+     * \param shape
+     */
     Bric(std::vector<Position> shape);
 
     /*!

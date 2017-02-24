@@ -25,6 +25,8 @@ namespace g40853{
 class Game
 {
     // TODO : game contient les options du timer (approche itérative), les vérifications de victoire, les étapes du jeu et autres paramétrages
+
+    // NOTE : discuter de l'utilité des getters
 public:
     constexpr static unsigned MINIMUM_TIMER {100};
     /*!< Valeur minimale acceptée pour le timer. */
@@ -33,7 +35,11 @@ public:
     /*!< Valeur maximale acceptée pour le timer. */
 
     constexpr static unsigned DEFAULT_WIDTH {10};
+    /*!< Valeur par défaut de la largeur de la grille. */
+
     constexpr static unsigned DEFAULT_HEIGHT {20};
+    /*!< Valeur par défaut de la hauteur de la grille. */
+
     // NOTE : indice du board : 0 en haut, MAX en bas : plus facile pour la génération de brique sur le board
     /* WARNING DB : faut trouver un moyen d'initialiser les briques par défaut !
     constexpr static std::vector<unsigned> DEFAULT_BRICS {
@@ -63,6 +69,7 @@ private:
 
     std::vector<Player> players_;
     /*!< Les joueurs, leur grille et leur sac de pièces. */
+
     // NOTE : peut-être mieux d'utiliser un pai, vu que 2 joueurs max?
     // TODO : mode de jeu, condition de victoire
 
@@ -94,7 +101,18 @@ public:
      * => plus facile pour implémentation : suffit de refaire appel au constructeur de Player
      * => Player = classe immutable
     */
-    void setPlayer(std::string name1, std::string name2, unsigned width, unsigned height);
+
+    /*!
+     * \brief Méthode permettant de changer les paramètres de jeux :
+     *
+     * les noms des joueurs, la taille de la grille // et bientôt les pièces personnalisées
+     *
+     * \param name1 le nom du joueur 1
+     * \param name2 le nom du joueur 2
+     * \param width la largeur de la grille
+     * \param height la hauteur de la grille
+     */
+    //void setPlayer(std::string name1, std::string name2, unsigned width, unsigned height);
 
 private:
 
@@ -110,7 +128,16 @@ private:
      */
     unsigned validate(unsigned value, unsigned def);
 
-    unsigned validateTimer(unsigned);
+    /*!
+     * \brief Méthode privée de validation du timer.
+     *
+     * Le timer doit être compris entre MAXIMUM_TIMER et MINIMUM_TIMER.
+     *
+     * \param time la valeur du timer à vérifier
+     *
+     * \return la valeur validée
+     */
+    unsigned validateTimer(unsigned time);
 
 };
 
