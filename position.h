@@ -76,6 +76,11 @@ public:
     inline bool isFilled();
 
     /*!
+     * \brief Méthode changeant la valeur du booléen.
+     */
+    void swapFilled();
+
+    /*!
      * \brief Méthode permettant de changer la position en indiquant de combien on veut incrémenter chacun des attributs.
      *
      * \param x valeur à ajouter à \ref x_

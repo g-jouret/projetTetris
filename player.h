@@ -2,6 +2,8 @@
 #define PLAYER_H
 
 #include <string>
+#include <ostream>
+#include <iomanip>
 #include "board.h"
 #include "bricsBag.h"
 
@@ -76,8 +78,13 @@ public:
      * Augmente le score du joueur si c'est le cas.
      */
     void checkLines();
-};
 
+    std::string to_string() const;
+
+    friend std::ostream & operator<<(std::ostream & out, const Player & in);
+};
+//prototypes
+std::ostream & operator<<(std::ostream & out, const Player & in);
 //implémentations inline
 
 //fonctions inline

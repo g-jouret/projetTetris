@@ -1,6 +1,8 @@
 #ifndef BOARD_H
 #define BOARD_H
 
+#include <ostream>
+#include <iomanip>
 #include <vector>
 #include "position.h"
 #include "bric.h"
@@ -44,7 +46,7 @@ class Board{
      * Elle est entière et positive.
      */
 
-    const std::vector<Position> grid_;
+    std::vector<Position> grid_;
     /*!< La grille de case.
      *
      * Cet attribut est constant.
@@ -107,11 +109,15 @@ public:
      */
     void line(unsigned lineNum);
 
+    std::string to_string() const;
+
+    friend std::ostream & operator<<(std::ostream & out, const Board & in);
+
 
 };
 
 //prototypes
-
+std::ostream & operator<<(std::ostream & out, const Board & in);
 //implémentations inline
 
 //fonctions inline

@@ -1,11 +1,8 @@
+#include "game.h"
 #include <iostream>
-
-// WARNING : namespace g40853{            /!\ bug
 
 int main(int argc, char *argv[])
 {
-    std::cout << "Hello World!" << std::endl;
+    std::cout << g40853::Game() << std::endl;
     return 0;
 }
-
-//}

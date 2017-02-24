@@ -11,7 +11,11 @@ Position::Position(unsigned x, unsigned y): x_{x}, y_{y}, filled_{0}
 //unsigned Position::validate(unsigned value, unsigned limit){}
 
 void Position::move(unsigned x, unsigned y){
+// TODO : implémentation
+}
 
+void Position::swapFilled(){
+    filled_ = (filled_)? 0 : 1;
 }
 
 }

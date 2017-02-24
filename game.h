@@ -3,6 +3,9 @@
 
 #include <vector>
 #include <array>
+#include <ostream>
+#include <iomanip>
+#include <chrono>
 #include "player.h"
 #include "bricsBag.h"
 #include "bric.h"
@@ -67,14 +70,15 @@ private:
      * Sa valeur est en milliseconde et peut aller de \ref MINIMUM_TIMER à \ref MAXIMUM_MONTH.
      */
 
-    std::vector<Player> players_;
+    //std::vector<Player> players_;     pour plus tard
+    Player player_;
     /*!< Les joueurs, leur grille et leur sac de pièces. */
 
     // NOTE : peut-être mieux d'utiliser un pai, vu que 2 joueurs max?
     // TODO : mode de jeu, condition de victoire
 
     /* NOTE : option possible
-    unsigned step_;
+    unsigned step_;*/
     /*!< L'étape en cours.
      *
      * Il y a 3 étapes dans le déroulement d'une itération :
@@ -114,6 +118,13 @@ public:
      */
     //void setPlayer(std::string name1, std::string name2, unsigned width, unsigned height);
 
+    //inline std::vector<Player> getPlayers();  pour plus tard
+    inline Player getPlayer();
+
+    std::string to_string() const;
+
+    friend std::ostream & operator<<(std::ostream & out, const Game & in);
+
 private:
 
     /*!
@@ -141,11 +152,17 @@ private:
 
 };
 
+//prototypes
+std::ostream & operator<<(std::ostream & out, const Game & in);
 //implémentations inline
 
 //fonctions inline
 
 //méthodes inline
+
+Player Game::getPlayer(){
+        return player_;
+    }
 
 }
 

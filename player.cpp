@@ -1,5 +1,7 @@
 #include "player.h"
 #include <vector>
+#include <ostream>
+#include <iomanip>
 
 namespace g40853{
 
@@ -54,7 +56,21 @@ Player::Player(std::string name, unsigned width, unsigned height, std::vector<Br
 
 void Player::checkLines(){
     std::vector<unsigned> lines {board_.checkLines()};
-    score_ += lines.size();
+    if(! lines.empty()){
+        for(unsigned l : lines){
+            board_.line(l);
+        }
+        score_ += lines.size();
+    }
+}
+
+std::string Player::to_string() const{
+    return board_.to_string();
+}
+
+std::ostream & operator<<(std::ostream & out, const Player & in){
+    out << in.to_string();
+    return out;
 }
 
 }
