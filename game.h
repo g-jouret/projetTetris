@@ -119,8 +119,14 @@ public:
     //inline std::vector<Player> getPlayers();  pour plus tard
     inline Player getPlayer();
 
-    /*! TODO
-     * \brief
+    /*!
+     * \brief Méthode vérifiant qu'aucune condition de fin de partie n'a été remplie.
+     *
+     * Si un des joueurs perds ou gagne, elle arrête la partie et affiche le résultat.
+     *  - Un joueur perd si la brique suivante ne peut être mise en jeu par manque de place ;
+     *  - Un joueur gagne s'il atteint un score suffisant ;
+     *  - Un joueur gagne s'il réussi à remplir suffisamment de lignes ;
+     *  - la partie s'arrête après un certain temps, le joueur ayant alors le plus haut score l'emporte.
      */
     void endGame();
 
@@ -156,7 +162,9 @@ private:
 };
 
 //prototypes
+
 std::ostream & operator<<(std::ostream & out, const Game & in);
+
 //implémentations inline
 
 //fonctions inline
@@ -172,10 +180,10 @@ Player Game::getPlayer(){
 #endif // GAME_H
 
 /* TODO Principal :
+ * les destructeurs & constructeurs + copies défensives /!\ debug requis!
  * génération de la brique courrante
- * vérification de défaite (le endgame gère tout)
+ * vérification de fin de partie (le endgame gère tout)
  * rearrange du bricsbag
  * Gestion du niveau de difficulté & itératif
- * les destructeurs & constructeurs + copies défensives
  * couleur des briques
  */

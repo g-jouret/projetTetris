@@ -41,10 +41,13 @@ class Player{
     /*!< Le sac de briques du joueur. */
 
     Bric currentBric_;
-    /*!< TODO */
+    /*!< La brique courante.
+     *
+     * Celle que contrôle le joueur.
+     */
 
     unsigned nbLine_;
-    /*!< TODO */
+    /*!< Le nombre de ligne réalisée par le joueur */
 
 public:
 
@@ -56,7 +59,7 @@ public:
      * \param height la hauteur de la grille
      * \param brics les briques à mettre dans le sac
      */
-    Player(std::string name, unsigned width, unsigned height, std::vector<Bric> brics);
+    Player(std::string name, unsigned width, unsigned height, std::vector<Position> brics);
     // WARNING DB : lié à l'initialisation par DEFAULT_BRICS
     //Player(std::string name, unsigned width, unsigned height, std::vector<unsigned> brics);
 
@@ -68,6 +71,8 @@ public:
     /*!
      * \brief Accesseur en lecture du nom du joueur.
      *
+     * Cette méthode fait partie de la façade de la classe.
+     *
      * \return le nom du joueur
      */
     inline std::string getName();
@@ -75,24 +80,34 @@ public:
     /*!
      * \brief Accesseur en lecture du score du joueur.
      *
+     * Cette méthode fait partie de la façade de la classe.
+     *
      * \return le score du joueur
      */
     inline unsigned getScore();
 
-    /*! TODO
-     * \brief
-     * \return
+    /*!
+     * \brief Accesseur en lecture de la brique courante.
+     *
+     * \return la brique courante
      */
     inline Bric getCurrentBric();
 
-    /*! TODO
-     * \brief
-     * \return
+    /*!
+     * \brief Accesseur en lecture de la grille de jeu.
+     *
+     * Cette méthode fait partie de la façade de la classe.
+     *
+     * \return la grille de jeu
      */
     inline Board getBoard();
 
-    /*! TODO
-     * \brief getNbLine
+    /*!
+     * \brief Accesseur en lecture du nombre de ligne remplies par le joueur.
+     *
+     * Cette méthode fait partie de la façade de la classe.
+     *
+     * \return le nombre de lignes remplies par le joueur
      */
     inline unsigned getNbLine();
 
@@ -103,23 +118,31 @@ public:
      */
     void checkLines();
 
-    /*! TODO
-     * \brief rotateBric
+    /*!
+     * \brief Méthode permettant de tourner la brique courante de 45°.
+     *
+     * Cette méthode vérifie que le mouvement peut se faire avant de l'exécuter.
      */
     void rotateBric();
 
     // NOTE : sert aussi à générer la nouvelle brique?
-    /*! TODO
-     * \brief
+    /*!
+     * \brief Méthode permettant une translation de la brique courante dans une direction donnée.
+     *
+     * Cette méthode vérifie que le mouvement peut se faire avant de l'exécuter.
+     *
+     * \param direction la direction vers laquelle la pièce est bougée
      */
-    void moveBric();
+    void moveBric(unsigned direction);
 
     std::string to_string() const;
 
     friend std::ostream & operator<<(std::ostream & out, const Player & in);
 };
 //prototypes
+
 std::ostream & operator<<(std::ostream & out, const Player & in);
+
 //implémentations inline
 
 //fonctions inline

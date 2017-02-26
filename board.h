@@ -31,25 +31,23 @@ namespace g40853{
 class Board{
 
     const unsigned width_;
-    /*!< La largeur.
+    /*!< La largeur de la grille.
+     *
+     * Cet attribut sert à construire la grille.
      *
      * Cet attribut est constant.
-     *
-     * Elle est entière et positive.
      */
 
     const unsigned height_;
-    /*!< La hauteur.
+    /*!< La hauteur de la grille.
+     *
+     * Cet attribut sert à construire la grille.
      *
      * Cet attribut est constant.
-     *
-     * Elle est entière et positive.
      */
 
     std::vector<Position> grid_;
     /*!< La grille de case.
-     *
-     * Cet attribut est constant.
      *
      * Elle est composée de cases représentées par leur position.
      */
@@ -58,9 +56,6 @@ public:
 
     /*!
      * \brief Constructeur de \ref Board.
-     *
-     * Pour ce qui concerne la validation :
-     * un zéro est considéré comme la valeur par défaut de l'attribut.
      *
      * \param height la hauteur de la grille en nombre de cases.
      * \param width la largeur de la grille en nombre de cases.
@@ -75,12 +70,18 @@ public:
     /*!
      * \brief Accesseur en lecture de \ref grid_.
      *
+     * Cette méthode fait partie de la façade de cette classe.
+     *
      * \return la grille de cases
      */
     inline std::vector<Position> getGrid();
 
     /*!
      * \brief Méthode vérifiant si une(des) ligne(s) a(ont) été remplie(s).
+     *
+     * Cette méthode est appelée lorsque la brique courante ne peut plus se déplacer
+     * (sauf dans le cas de la défaite du joueur) et renvoie les numéro des lignes
+     * remplies
      *
      * \return les numéros (les ordonnées) des lignes remplies
      */
@@ -89,16 +90,19 @@ public:
     /*!
      * \brief Méthode gérant les lignes remplies.
      *
-     * Une ligne remplie est effacée et augmente le score du joueur l'ayant complétée.
+     * Une ligne remplie est effacée.
      *
      * \param lineNum le numéro de la ligne à traiter
      */
     void line(unsigned lineNum);
 
-    /*! TODO
-     * \brief
+    /*!
+     * \brief Méthode vérifiant que la brique courante peut se déplacer.
      *
-     * \return
+     * Si cette méthode renvoie faux, les vérifications de fin de partie
+     * et de lignes remplies sont lancées.
+     *
+     * \return si la brique courante peut effectuer son mouvement ou non
      */
     bool checkPath(std::vector<Position>);
 
@@ -110,7 +114,9 @@ public:
 };
 
 //prototypes
+
 std::ostream & operator<<(std::ostream & out, const Board & in);
+
 //implémentations inline
 
 //fonctions inline

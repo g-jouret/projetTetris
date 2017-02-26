@@ -43,7 +43,7 @@ void Board::line(unsigned lineNum){
     }
 }
 
-std::string Board::to_string() const{
+/*std::string Board::to_string() const{
     std::string s;
     for(Position p : grid_){
         s += "|";
@@ -58,6 +58,6 @@ std::string Board::to_string() const{
 std::ostream & operator<<(std::ostream & out, const Board & in){
     out << in.to_string();
     return out;
-}
+}*/
 
 }

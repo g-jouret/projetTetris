@@ -71,6 +71,8 @@ public:
     /*!
      * \brief Accesseur en lecture de l'état d'une position sur la grille.
      *
+     * Cette méthode est nécessaire à la vérification
+     *
      * \return si la case à cette position est pleine ou non
      */
     inline bool isFilled();

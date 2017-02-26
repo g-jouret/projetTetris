@@ -2,7 +2,6 @@
 #define BRIC_H
 
 #include <vector>
-#include <array>
 #include "position.h"
 
 /*! \mainpage Une classe pour représenter une brique
@@ -23,10 +22,11 @@ namespace g40853{
  * Son attribut est la forme d'une brique.
  */
 class Bric{
+
     std::vector<Position> shape_;
     /*!< La forme de la brique.
      *
-     * Représente l'ensemble des cases que remplissent la brique.
+     * Représente l'ensemble des cases qui sont remplie par la brique.
      */
 
     // NOTE : pour plus tard : couleur
@@ -34,8 +34,12 @@ class Bric{
 public:
 
     /*!
-     * \brief Bric
-     * \param shape
+     * \brief Constructeur de \ref Bric.
+     *
+     * Construit une brique à partir des positions couverte par la briques
+     * dans un repère quadrillé.
+     *
+     * \param shape les \ref Position remplies
      */
     Bric(std::vector<Position> shape);
 
@@ -47,12 +51,18 @@ public:
     /*!
      * \brief Accesseur en lecture de la forme de la brique.
      *
+     * Cette méthode est nécessaire à la génération des briques
+     * sur la grille.
+     *
      * \return la forme de la brique
      */
     inline std::vector<Position> getShape();
 
     /*!
      * \brief Méthode qui tourne la brique.
+     *
+     * Si l'on imagine la brique comme étant dans un carré de case :
+     * tourne les positions des cases de ce carrée de 45°.
      */
     // NOTE : réarrange le vecteur de positions dans l'ordre voulu
     void turn();
