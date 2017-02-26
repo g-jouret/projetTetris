@@ -73,20 +73,6 @@ public:
     // TODO : ~Board();
 
     /*!
-     * \brief Accesseur en lecture de \ref width_.
-     *
-     * \return la largeur
-     */
-    inline unsigned getWidth();
-
-    /*!
-     * \brief Accesseur en lecture de \ref height_.
-     *
-     * \return la hauteur
-     */
-    inline unsigned getHeight();
-
-    /*!
      * \brief Accesseur en lecture de \ref grid_.
      *
      * \return la grille de cases
@@ -109,6 +95,13 @@ public:
      */
     void line(unsigned lineNum);
 
+    /*! TODO
+     * \brief
+     *
+     * \return
+     */
+    bool checkPath(std::vector<Position>);
+
     std::string to_string() const;
 
     friend std::ostream & operator<<(std::ostream & out, const Board & in);
@@ -123,13 +116,6 @@ std::ostream & operator<<(std::ostream & out, const Board & in);
 //fonctions inline
 
 //méthodes inline
-unsigned  Board::getWidth(){
-    return width_;
-}
-
-unsigned Board::getHeight(){
-    return height_;
-}
 
 // TODO : renvoyer référence : copie défensive
 std::vector<Position> Board::getGrid(){

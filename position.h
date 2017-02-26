@@ -80,13 +80,13 @@ public:
      */
     void swapFilled();
 
-    /*!
+    /*! NOTE : inutile : c'est la brique qui bouge, pas la position
      * \brief Méthode permettant de changer la position en indiquant de combien on veut incrémenter chacun des attributs.
      *
      * \param x valeur à ajouter à \ref x_
      * \param y valeur à ajouter à \ref y_
      */
-    void move(unsigned x, unsigned y);
+    //void move(unsigned x, unsigned y);
 
 //private:
 // NOTE : semble inutile car vérification en amont

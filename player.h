@@ -5,6 +5,7 @@
 #include <ostream>
 #include <iomanip>
 #include "board.h"
+#include "bric.h"
 #include "bricsBag.h"
 
 /*! \mainpage Une classe pour représenter un joueur
@@ -39,6 +40,12 @@ class Player{
     BricsBag bag_;
     /*!< Le sac de briques du joueur. */
 
+    Bric currentBric_;
+    /*!< TODO */
+
+    unsigned nbLine_;
+    /*!< TODO */
+
 public:
 
     /*!
@@ -72,12 +79,40 @@ public:
      */
     inline unsigned getScore();
 
+    /*! TODO
+     * \brief
+     * \return
+     */
+    inline Bric getCurrentBric();
+
+    /*! TODO
+     * \brief
+     * \return
+     */
+    inline Board getBoard();
+
+    /*! TODO
+     * \brief getNbLine
+     */
+    inline unsigned getNbLine();
+
     /*!
      * \brief Méthode vérifiant que des lignes ont été remplies.
      *
      * Augmente le score du joueur si c'est le cas.
      */
     void checkLines();
+
+    /*! TODO
+     * \brief rotateBric
+     */
+    void rotateBric();
+
+    // NOTE : sert aussi à générer la nouvelle brique?
+    /*! TODO
+     * \brief
+     */
+    void moveBric();
 
     std::string to_string() const;
 

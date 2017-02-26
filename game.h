@@ -27,8 +27,6 @@ namespace g40853{
  */
 class Game
 {
-    // TODO : game contient les options du timer (approche itérative), les vérifications de victoire, les étapes du jeu et autres paramétrages
-
     // NOTE : discuter de l'utilité des getters
 public:
     constexpr static unsigned MINIMUM_TIMER {100};
@@ -74,7 +72,7 @@ private:
     Player player_;
     /*!< Les joueurs, leur grille et leur sac de pièces. */
 
-    // NOTE : peut-être mieux d'utiliser un pai, vu que 2 joueurs max?
+    // NOTE : peut-être mieux d'utiliser un pair, vu que 2 joueurs max?
     // TODO : mode de jeu, condition de victoire
 
     /* NOTE : option possible
@@ -120,6 +118,11 @@ public:
 
     //inline std::vector<Player> getPlayers();  pour plus tard
     inline Player getPlayer();
+
+    /*! TODO
+     * \brief
+     */
+    void endGame();
 
     std::string to_string() const;
 
@@ -167,3 +170,12 @@ Player Game::getPlayer(){
 }
 
 #endif // GAME_H
+
+/* TODO Principal :
+ * génération de la brique courrante
+ * vérification de défaite (le endgame gère tout)
+ * rearrange du bricsbag
+ * Gestion du niveau de difficulté & itératif
+ * les destructeurs & constructeurs + copies défensives
+ * couleur des briques
+ */

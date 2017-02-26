@@ -16,8 +16,6 @@
  */
 namespace g40853{
 
-// TODO : forme : I, O, T, L, J, S, Z
-
 /*!
  * \brief Classe représentant le sac de briques générée pour jouer.
  */
@@ -53,6 +51,11 @@ public:
      */
     inline Bric getNextBric();
 
+    /* NOTE : quelle méthode choisir?
+     * aléatoire à chaque pioche en ignorant la dernière brique
+     * compteur et réagencement du sac quand à utilisé toute les briques
+     * destruction du sac => attribut de save du "sac originel"
+     */
     /*!
      * \brief Méthode mélangeant les briques dans le sac.
      */

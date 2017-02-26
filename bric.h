@@ -30,6 +30,7 @@ class Bric{
      */
 
     // NOTE : pour plus tard : couleur
+
 public:
 
     /*!
