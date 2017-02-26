@@ -8,17 +8,10 @@
 #include "bric.h"
 #include "bricsBag.h"
 
-/*! \mainpage Une classe pour représenter un joueur
- *
- * Un bon point d'entrée est celui de la documentation de
- * l'espace de nom \ref g40853.
- *
- */
-
 /*!
- * \brief Espace de nom de Guillaume Jouret.
+ * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
  */
-namespace g40853{
+namespace GJ_GW{
 
 /*!
  * \brief Classe représentant un joueur.

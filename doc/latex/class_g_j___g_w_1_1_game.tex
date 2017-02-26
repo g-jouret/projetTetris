@@ -1,0 +1,140 @@
+\hypertarget{class_g_j___g_w_1_1_game}{}\section{G\+J\+\_\+\+GW\+:\+:Game Class Reference}
+\label{class_g_j___g_w_1_1_game}\index{G\+J\+\_\+\+G\+W\+::\+Game@{G\+J\+\_\+\+G\+W\+::\+Game}}
+
+
+Classe déterminant le fonctionnement d\textquotesingle{}une partie de Tetris.  
+
+
+
+
+{\ttfamily \#include $<$game.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_g_j___g_w_1_1_game_acabf662fb6929976e25cf29006f665c0}{Game} ()
+\begin{DoxyCompactList}\small\item\em Constructeur sans argument de \hyperlink{class_g_j___g_w_1_1_game}{Game}. \end{DoxyCompactList}\item 
+\hyperlink{class_g_j___g_w_1_1_player}{Player} \hyperlink{class_g_j___g_w_1_1_game_addf52c888f8deed2651bda020ecde811}{get\+Player} ()
+\begin{DoxyCompactList}\small\item\em Destructeur de \hyperlink{class_g_j___g_w_1_1_game}{Game}. \end{DoxyCompactList}\item 
+void \hyperlink{class_g_j___g_w_1_1_game_ad09c3f7d5281b6bbc1a7166cb8077af1}{end\+Game} ()
+\begin{DoxyCompactList}\small\item\em Méthode vérifiant qu\textquotesingle{}aucune condition de fin de partie n\textquotesingle{}a été remplie. \end{DoxyCompactList}\item 
+\hypertarget{class_g_j___g_w_1_1_game_a7fe0bd7b7363f1c81944662c887d8693}{}\label{class_g_j___g_w_1_1_game_a7fe0bd7b7363f1c81944662c887d8693} 
+std\+::string {\bfseries to\+\_\+string} () const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr unsigned \hyperlink{class_g_j___g_w_1_1_game_a4f6cc808814a6884659f89dae6a7b150}{M\+I\+N\+I\+M\+U\+M\+\_\+\+T\+I\+M\+ER} \{100\}
+\item 
+static constexpr unsigned \hyperlink{class_g_j___g_w_1_1_game_a32cb03f34e9e7a56ff3d99e075d71de7}{M\+A\+X\+I\+M\+U\+M\+\_\+\+T\+I\+M\+ER} \{500\}
+\item 
+static constexpr unsigned \hyperlink{class_g_j___g_w_1_1_game_aad3519451b28b2fc51529176a66a43c8}{D\+E\+F\+A\+U\+L\+T\+\_\+\+W\+I\+D\+TH} \{10\}
+\item 
+static constexpr unsigned \hyperlink{class_g_j___g_w_1_1_game_a40391b842c9a4238cf1f5ed93e8046c2}{D\+E\+F\+A\+U\+L\+T\+\_\+\+H\+E\+I\+G\+HT} \{20\}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_g_j___g_w_1_1_game_abacede938294fd797bbefe49cb3f6978}{}\label{class_g_j___g_w_1_1_game_abacede938294fd797bbefe49cb3f6978} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&out, const \hyperlink{class_g_j___g_w_1_1_game}{Game} \&in)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe déterminant le fonctionnement d\textquotesingle{}une partie de Tetris. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_g_j___g_w_1_1_game_acabf662fb6929976e25cf29006f665c0}{}\label{class_g_j___g_w_1_1_game_acabf662fb6929976e25cf29006f665c0} 
+\index{G\+J\+\_\+\+G\+W\+::\+Game@{G\+J\+\_\+\+G\+W\+::\+Game}!Game@{Game}}
+\index{Game@{Game}!G\+J\+\_\+\+G\+W\+::\+Game@{G\+J\+\_\+\+G\+W\+::\+Game}}
+\subsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily G\+J\+\_\+\+G\+W\+::\+Game\+::\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructeur sans argument de \hyperlink{class_g_j___g_w_1_1_game}{Game}. 
+
+$<$ L\textquotesingle{}étape en cours.
+
+Il y a 3 étapes dans le déroulement d\textquotesingle{}une itération \+:
+\begin{DoxyItemize}
+\item le tirage d\textquotesingle{}une nouvelle brique courante ;
+\item la chute de la brique courante ;
+\item l\textquotesingle{}arrêt de la brique courante et la résolution du nouvel état de la grille. 
+\end{DoxyItemize}
+
+\subsection{Member Function Documentation}
+\hypertarget{class_g_j___g_w_1_1_game_ad09c3f7d5281b6bbc1a7166cb8077af1}{}\label{class_g_j___g_w_1_1_game_ad09c3f7d5281b6bbc1a7166cb8077af1} 
+\index{G\+J\+\_\+\+G\+W\+::\+Game@{G\+J\+\_\+\+G\+W\+::\+Game}!end\+Game@{end\+Game}}
+\index{end\+Game@{end\+Game}!G\+J\+\_\+\+G\+W\+::\+Game@{G\+J\+\_\+\+G\+W\+::\+Game}}
+\subsubsection{\texorpdfstring{end\+Game()}{endGame()}}
+{\footnotesize\ttfamily void G\+J\+\_\+\+G\+W\+::\+Game\+::end\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Méthode vérifiant qu\textquotesingle{}aucune condition de fin de partie n\textquotesingle{}a été remplie. 
+
+Si un des joueurs perds ou gagne, elle arrête la partie et affiche le résultat.
+\begin{DoxyItemize}
+\item Un joueur perd si la brique suivante ne peut être mise en jeu par manque de place ;
+\item Un joueur gagne s\textquotesingle{}il atteint un score suffisant ;
+\item Un joueur gagne s\textquotesingle{}il réussi à remplir suffisamment de lignes ;
+\item la partie s\textquotesingle{}arrête après un certain temps, le joueur ayant alors le plus haut score l\textquotesingle{}emporte. 
+\end{DoxyItemize}\hypertarget{class_g_j___g_w_1_1_game_addf52c888f8deed2651bda020ecde811}{}\label{class_g_j___g_w_1_1_game_addf52c888f8deed2651bda020ecde811} 
+\index{G\+J\+\_\+\+G\+W\+::\+Game@{G\+J\+\_\+\+G\+W\+::\+Game}!get\+Player@{get\+Player}}
+\index{get\+Player@{get\+Player}!G\+J\+\_\+\+G\+W\+::\+Game@{G\+J\+\_\+\+G\+W\+::\+Game}}
+\subsubsection{\texorpdfstring{get\+Player()}{getPlayer()}}
+{\footnotesize\ttfamily \hyperlink{class_g_j___g_w_1_1_player}{Player} G\+J\+\_\+\+G\+W\+::\+Game\+::get\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructeur de \hyperlink{class_g_j___g_w_1_1_game}{Game}. 
+
+Méthode permettant de changer les paramètres de jeux \+:
+
+les noms des joueurs, la taille de la grille // et bientôt les pièces personnalisées
+
+
+\begin{DoxyParams}{Parameters}
+{\em name1} & le nom du joueur 1 \\
+\hline
+{\em name2} & le nom du joueur 2 \\
+\hline
+{\em width} & la largeur de la grille \\
+\hline
+{\em height} & la hauteur de la grille \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_g_j___g_w_1_1_game_a40391b842c9a4238cf1f5ed93e8046c2}{}\label{class_g_j___g_w_1_1_game_a40391b842c9a4238cf1f5ed93e8046c2} 
+\index{G\+J\+\_\+\+G\+W\+::\+Game@{G\+J\+\_\+\+G\+W\+::\+Game}!D\+E\+F\+A\+U\+L\+T\+\_\+\+H\+E\+I\+G\+HT@{D\+E\+F\+A\+U\+L\+T\+\_\+\+H\+E\+I\+G\+HT}}
+\index{D\+E\+F\+A\+U\+L\+T\+\_\+\+H\+E\+I\+G\+HT@{D\+E\+F\+A\+U\+L\+T\+\_\+\+H\+E\+I\+G\+HT}!G\+J\+\_\+\+G\+W\+::\+Game@{G\+J\+\_\+\+G\+W\+::\+Game}}
+\subsubsection{\texorpdfstring{D\+E\+F\+A\+U\+L\+T\+\_\+\+H\+E\+I\+G\+HT}{DEFAULT\_HEIGHT}}
+{\footnotesize\ttfamily constexpr unsigned G\+J\+\_\+\+G\+W\+::\+Game\+::\+D\+E\+F\+A\+U\+L\+T\+\_\+\+H\+E\+I\+G\+HT \{20\}\hspace{0.3cm}{\ttfamily [static]}}
+
+Valeur par défaut de la hauteur de la grille. \hypertarget{class_g_j___g_w_1_1_game_aad3519451b28b2fc51529176a66a43c8}{}\label{class_g_j___g_w_1_1_game_aad3519451b28b2fc51529176a66a43c8} 
+\index{G\+J\+\_\+\+G\+W\+::\+Game@{G\+J\+\_\+\+G\+W\+::\+Game}!D\+E\+F\+A\+U\+L\+T\+\_\+\+W\+I\+D\+TH@{D\+E\+F\+A\+U\+L\+T\+\_\+\+W\+I\+D\+TH}}
+\index{D\+E\+F\+A\+U\+L\+T\+\_\+\+W\+I\+D\+TH@{D\+E\+F\+A\+U\+L\+T\+\_\+\+W\+I\+D\+TH}!G\+J\+\_\+\+G\+W\+::\+Game@{G\+J\+\_\+\+G\+W\+::\+Game}}
+\subsubsection{\texorpdfstring{D\+E\+F\+A\+U\+L\+T\+\_\+\+W\+I\+D\+TH}{DEFAULT\_WIDTH}}
+{\footnotesize\ttfamily constexpr unsigned G\+J\+\_\+\+G\+W\+::\+Game\+::\+D\+E\+F\+A\+U\+L\+T\+\_\+\+W\+I\+D\+TH \{10\}\hspace{0.3cm}{\ttfamily [static]}}
+
+Valeur par défaut de la largeur de la grille. \hypertarget{class_g_j___g_w_1_1_game_a32cb03f34e9e7a56ff3d99e075d71de7}{}\label{class_g_j___g_w_1_1_game_a32cb03f34e9e7a56ff3d99e075d71de7} 
+\index{G\+J\+\_\+\+G\+W\+::\+Game@{G\+J\+\_\+\+G\+W\+::\+Game}!M\+A\+X\+I\+M\+U\+M\+\_\+\+T\+I\+M\+ER@{M\+A\+X\+I\+M\+U\+M\+\_\+\+T\+I\+M\+ER}}
+\index{M\+A\+X\+I\+M\+U\+M\+\_\+\+T\+I\+M\+ER@{M\+A\+X\+I\+M\+U\+M\+\_\+\+T\+I\+M\+ER}!G\+J\+\_\+\+G\+W\+::\+Game@{G\+J\+\_\+\+G\+W\+::\+Game}}
+\subsubsection{\texorpdfstring{M\+A\+X\+I\+M\+U\+M\+\_\+\+T\+I\+M\+ER}{MAXIMUM\_TIMER}}
+{\footnotesize\ttfamily constexpr unsigned G\+J\+\_\+\+G\+W\+::\+Game\+::\+M\+A\+X\+I\+M\+U\+M\+\_\+\+T\+I\+M\+ER \{500\}\hspace{0.3cm}{\ttfamily [static]}}
+
+Valeur maximale acceptée pour le timer. \hypertarget{class_g_j___g_w_1_1_game_a4f6cc808814a6884659f89dae6a7b150}{}\label{class_g_j___g_w_1_1_game_a4f6cc808814a6884659f89dae6a7b150} 
+\index{G\+J\+\_\+\+G\+W\+::\+Game@{G\+J\+\_\+\+G\+W\+::\+Game}!M\+I\+N\+I\+M\+U\+M\+\_\+\+T\+I\+M\+ER@{M\+I\+N\+I\+M\+U\+M\+\_\+\+T\+I\+M\+ER}}
+\index{M\+I\+N\+I\+M\+U\+M\+\_\+\+T\+I\+M\+ER@{M\+I\+N\+I\+M\+U\+M\+\_\+\+T\+I\+M\+ER}!G\+J\+\_\+\+G\+W\+::\+Game@{G\+J\+\_\+\+G\+W\+::\+Game}}
+\subsubsection{\texorpdfstring{M\+I\+N\+I\+M\+U\+M\+\_\+\+T\+I\+M\+ER}{MINIMUM\_TIMER}}
+{\footnotesize\ttfamily constexpr unsigned G\+J\+\_\+\+G\+W\+::\+Game\+::\+M\+I\+N\+I\+M\+U\+M\+\_\+\+T\+I\+M\+ER \{100\}\hspace{0.3cm}{\ttfamily [static]}}
+
+Valeur minimale acceptée pour le timer. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+game.\+h\item 
+game.\+cpp\end{DoxyCompactItemize}

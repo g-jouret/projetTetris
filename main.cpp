@@ -3,6 +3,6 @@
 
 int main()
 {
-    std::cout << g40853::Game() << std::endl;
+    std::cout << GJ_GW::Game() << std::endl;
     return 0;
 }

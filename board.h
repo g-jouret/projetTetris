@@ -7,17 +7,10 @@
 #include "position.h"
 #include "bric.h"
 
-/*! \mainpage Une classe pour représenter la grille de jeu.
- *
- * Un bon point d'entrée est celui de la documentation de
- * l'espace de nom \ref g40853.
- *
- */
-
 /*!
- * \brief Espace de nom de Guillaume Jouret.
+ * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
  */
-namespace g40853{
+namespace GJ_GW{
 
 /*!
  * \brief Classe représentant la grille de jeu.

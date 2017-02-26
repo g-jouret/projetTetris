@@ -1,7 +1,7 @@
 #include "bricsBag.h"
 #include <vector>
 
-namespace g40853{
+namespace GJ_GW{
 
 BricsBag::BricsBag(std::vector<Bric> brics): brics_ {brics}
 {}

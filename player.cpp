@@ -3,7 +3,7 @@
 #include <ostream>
 #include <iomanip>
 
-namespace g40853{
+namespace GJ_GW{
 
 Player::Player(std::string name, unsigned width, unsigned height, std::vector<Position> brics):
     name_ {name}, board_{Board(width, height)},
@@ -29,11 +29,11 @@ void Player::checkLines(){
     }
 }
 
-void rotateBric(){
+void Player::rotateBric(){
 
 }
 
-void moveBric(){
+void Player::moveBric(unsigned direction){
 
 }
 

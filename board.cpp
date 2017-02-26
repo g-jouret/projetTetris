@@ -3,7 +3,7 @@
 #include <ostream>
 #include <iomanip>
 
-namespace g40853{
+namespace GJ_GW{
 
 Board::Board(unsigned width, unsigned height):
 width_{width}, height_{height}

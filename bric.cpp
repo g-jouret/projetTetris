@@ -2,7 +2,7 @@
 
 #include <ostream>
 
-namespace g40853{
+namespace GJ_GW{
 
 Bric::Bric(std::vector<Position> shape): shape_ {shape}
 {}

@@ -10,17 +10,17 @@
 #include "bricsBag.h"
 #include "bric.h"
 
-/*! \mainpage Une classe pour représenter les paramètres du jeu
+/*! \mainpage Le jeu de Tetris multijoueur, projet de c++ 2016-2017
  *
  * Un bon point d'entrée est celui de la documentation de
- * l'espace de nom \ref g40853.
+ * l'espace de nom \ref GJ_GW.
  *
  */
 
 /*!
- * \brief Espace de nom de Guillaume Jouret.
+ * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
  */
-namespace g40853{
+namespace GJ_GW{
 
 /*!
  * \brief Classe déterminant le fonctionnement d'une partie de Tetris.

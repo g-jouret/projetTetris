@@ -1,0 +1,111 @@
+\hypertarget{classg40853_1_1_position}{}\section{g40853\+:\+:Position Class Reference}
+\label{classg40853_1_1_position}\index{g40853\+::\+Position@{g40853\+::\+Position}}
+
+
+Classe représentant la position d\textquotesingle{}une case de la grille de jeu.  
+
+
+
+
+{\ttfamily \#include $<$position.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classg40853_1_1_position_aec6d7dfcf1d960f213e53f4404c6a1a4}{}\label{classg40853_1_1_position_aec6d7dfcf1d960f213e53f4404c6a1a4} 
+\hyperlink{classg40853_1_1_position_aec6d7dfcf1d960f213e53f4404c6a1a4}{Position} ()
+\begin{DoxyCompactList}\small\item\em Constructeur sans argument de \hyperlink{classg40853_1_1_position}{Position}. \end{DoxyCompactList}\item 
+\hyperlink{classg40853_1_1_position_a1e68bc9f15d9a52a4151537df34858b8}{Position} (unsigned x, unsigned y)
+\begin{DoxyCompactList}\small\item\em Constructeur de \hyperlink{classg40853_1_1_position}{Position}. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classg40853_1_1_position_a1e7bd91fa0db9bee5674d454cd6a6b69}{getX} ()
+\begin{DoxyCompactList}\small\item\em Destructeur de \hyperlink{classg40853_1_1_position}{Position}. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classg40853_1_1_position_a7bba87fac1407b339f6d9a917f8b19ab}{getY} ()
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture de l\textquotesingle{}ordonnée. \end{DoxyCompactList}\item 
+bool \hyperlink{classg40853_1_1_position_a7f72d7ae6ea209e2a65856b1065990fa}{is\+Filled} ()
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture de l\textquotesingle{}état d\textquotesingle{}une position sur la grille. \end{DoxyCompactList}\item 
+\hypertarget{classg40853_1_1_position_ac5bca566d8c48eae5f184ab59677ded1}{}\label{classg40853_1_1_position_ac5bca566d8c48eae5f184ab59677ded1} 
+void \hyperlink{classg40853_1_1_position_ac5bca566d8c48eae5f184ab59677ded1}{swap\+Filled} ()
+\begin{DoxyCompactList}\small\item\em Méthode changeant la valeur du booléen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe représentant la position d\textquotesingle{}une case de la grille de jeu. 
+
+Une position est atteignable par son abscisse et son ordonnée, elle peut être vide ou pleine si une brique est dessus. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classg40853_1_1_position_a1e68bc9f15d9a52a4151537df34858b8}{}\label{classg40853_1_1_position_a1e68bc9f15d9a52a4151537df34858b8} 
+\index{g40853\+::\+Position@{g40853\+::\+Position}!Position@{Position}}
+\index{Position@{Position}!g40853\+::\+Position@{g40853\+::\+Position}}
+\subsubsection{\texorpdfstring{Position()}{Position()}}
+{\footnotesize\ttfamily g40853\+::\+Position\+::\+Position (\begin{DoxyParamCaption}\item[{unsigned}]{x,  }\item[{unsigned}]{y }\end{DoxyParamCaption})}
+
+
+
+Constructeur de \hyperlink{classg40853_1_1_position}{Position}. 
+
+Pour ce qui concerne la validation \+:
+\begin{DoxyItemize}
+\item x doit être compris entre 0 et la largeur-\/1 de la grille ;
+\item y doit être compris entre 0 et la hauteur-\/1 de la grille.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & l\textquotesingle{}abscisse de la position. \\
+\hline
+{\em y} & l\textquotesingle{}ordonnée de la position. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classg40853_1_1_position_a1e7bd91fa0db9bee5674d454cd6a6b69}{}\label{classg40853_1_1_position_a1e7bd91fa0db9bee5674d454cd6a6b69} 
+\index{g40853\+::\+Position@{g40853\+::\+Position}!getX@{getX}}
+\index{getX@{getX}!g40853\+::\+Position@{g40853\+::\+Position}}
+\subsubsection{\texorpdfstring{get\+X()}{getX()}}
+{\footnotesize\ttfamily unsigned g40853\+::\+Position\+::getX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructeur de \hyperlink{classg40853_1_1_position}{Position}. 
+
+Accesseur en lecture de l\textquotesingle{}abscisse.
+
+\begin{DoxyReturn}{Returns}
+l\textquotesingle{}abscisse 
+\end{DoxyReturn}
+\hypertarget{classg40853_1_1_position_a7bba87fac1407b339f6d9a917f8b19ab}{}\label{classg40853_1_1_position_a7bba87fac1407b339f6d9a917f8b19ab} 
+\index{g40853\+::\+Position@{g40853\+::\+Position}!getY@{getY}}
+\index{getY@{getY}!g40853\+::\+Position@{g40853\+::\+Position}}
+\subsubsection{\texorpdfstring{get\+Y()}{getY()}}
+{\footnotesize\ttfamily unsigned g40853\+::\+Position\+::getY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Accesseur en lecture de l\textquotesingle{}ordonnée. 
+
+\begin{DoxyReturn}{Returns}
+l\textquotesingle{}ordonnée 
+\end{DoxyReturn}
+\hypertarget{classg40853_1_1_position_a7f72d7ae6ea209e2a65856b1065990fa}{}\label{classg40853_1_1_position_a7f72d7ae6ea209e2a65856b1065990fa} 
+\index{g40853\+::\+Position@{g40853\+::\+Position}!is\+Filled@{is\+Filled}}
+\index{is\+Filled@{is\+Filled}!g40853\+::\+Position@{g40853\+::\+Position}}
+\subsubsection{\texorpdfstring{is\+Filled()}{isFilled()}}
+{\footnotesize\ttfamily bool g40853\+::\+Position\+::is\+Filled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Accesseur en lecture de l\textquotesingle{}état d\textquotesingle{}une position sur la grille. 
+
+Cette méthode est nécessaire à la vérification
+
+\begin{DoxyReturn}{Returns}
+si la case à cette position est pleine ou non 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+position.\+h\item 
+position.\+cpp\end{DoxyCompactItemize}

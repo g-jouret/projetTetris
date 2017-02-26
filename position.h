@@ -1,17 +1,10 @@
 #ifndef POSITION_H
 #define POSITION_H
 
-/*! \mainpage Une classe pour représenter une position sur le plateau.
- *
- * Un bon point d'entrée est celui de la documentation de
- * l'espace de nom \ref g40853.
- *
- */
-
 /*!
- * \brief Espace de nom de Guillaume Jouret.
+ * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
  */
-namespace g40853{
+namespace GJ_GW{
 
 /*!
  * \brief Classe représentant la position d'une case de la grille de jeu.

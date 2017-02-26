@@ -3,7 +3,7 @@
 #include <ostream>
 #include <iomanip>
 
-namespace g40853 {
+namespace GJ_GW {
 
 Game::Game():
     level_ {0}, timer_ {MAXIMUM_TIMER},
