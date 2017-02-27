@@ -57,7 +57,7 @@ public:
      * Si l'on imagine la brique comme étant dans un carré de case :
      * tourne les positions des cases de ce carrée de 45°.
      */
-    // NOTE : réarrange le vecteur de positions dans l'ordre voulu
+    // NOTE : la brique est dans un repère carrée, c'est le repère qui tourne, pas seulement la brique
     void turn();
 
     /*!

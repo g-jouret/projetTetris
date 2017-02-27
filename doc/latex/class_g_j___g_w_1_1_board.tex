@@ -22,14 +22,16 @@ void \hyperlink{class_g_j___g_w_1_1_board_a54c122c1ebdd27a5f9375a673f436dab}{lin
 \begin{DoxyCompactList}\small\item\em Méthode gérant les lignes remplies. \end{DoxyCompactList}\item 
 bool \hyperlink{class_g_j___g_w_1_1_board_ab8cf3ac1607e01c772e0637b7fa34da7}{check\+Path} (std\+::vector$<$ \hyperlink{class_g_j___g_w_1_1_position}{Position} $>$)
 \begin{DoxyCompactList}\small\item\em Méthode vérifiant que la brique courante peut se déplacer. \end{DoxyCompactList}\item 
-\hypertarget{class_g_j___g_w_1_1_board_a64b185f47e828c590621289c6ac5a407}{}\label{class_g_j___g_w_1_1_board_a64b185f47e828c590621289c6ac5a407} 
-std\+::string {\bfseries to\+\_\+string} () const
+void \hyperlink{class_g_j___g_w_1_1_board_adbde00b1988b78b70ab903c9a7049ca3}{grid\+Actualisation} (unsigned line\+Num)
+\begin{DoxyCompactList}\small\item\em Méthode qui actualise la grille de jeu après l\textquotesingle{}effacement d\textquotesingle{}une ligne remplies. \end{DoxyCompactList}\item 
+std\+::string {\bfseries to\+\_\+string} () const \hypertarget{class_g_j___g_w_1_1_board_aa0e6f82d217b36eb1c1c47c1923914da}{}\label{class_g_j___g_w_1_1_board_aa0e6f82d217b36eb1c1c47c1923914da}
+
 \end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_g_j___g_w_1_1_board_a43ea56eff2b5462c9ce89356c1a2a7c3}{}\label{class_g_j___g_w_1_1_board_a43ea56eff2b5462c9ce89356c1a2a7c3} 
-std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&out, const \hyperlink{class_g_j___g_w_1_1_board}{Board} \&in)
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&out, const \hyperlink{class_g_j___g_w_1_1_board}{Board} \&in)\hypertarget{class_g_j___g_w_1_1_board_a43ea56eff2b5462c9ce89356c1a2a7c3}{}\label{class_g_j___g_w_1_1_board_a43ea56eff2b5462c9ce89356c1a2a7c3}
+
 \end{DoxyCompactItemize}
 
 
@@ -46,12 +48,14 @@ Ses attributs sont \+:
 \end{DoxyItemize}
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{class_g_j___g_w_1_1_board_a8029a10441779488fdace01047b27dcd}{}\label{class_g_j___g_w_1_1_board_a8029a10441779488fdace01047b27dcd} 
 \index{G\+J\+\_\+\+G\+W\+::\+Board@{G\+J\+\_\+\+G\+W\+::\+Board}!Board@{Board}}
 \index{Board@{Board}!G\+J\+\_\+\+G\+W\+::\+Board@{G\+J\+\_\+\+G\+W\+::\+Board}}
-\subsubsection{\texorpdfstring{Board()}{Board()}}
-{\footnotesize\ttfamily G\+J\+\_\+\+G\+W\+::\+Board\+::\+Board (\begin{DoxyParamCaption}\item[{unsigned}]{width,  }\item[{unsigned}]{height }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{Board(unsigned width, unsigned height)}{Board(unsigned width, unsigned height)}}]{\setlength{\rightskip}{0pt plus 5cm}G\+J\+\_\+\+G\+W\+::\+Board\+::\+Board (
+\begin{DoxyParamCaption}
+\item[{unsigned}]{width, }
+\item[{unsigned}]{height}
+\end{DoxyParamCaption}
+)}\hypertarget{class_g_j___g_w_1_1_board_a8029a10441779488fdace01047b27dcd}{}\label{class_g_j___g_w_1_1_board_a8029a10441779488fdace01047b27dcd}
 
 
 Constructeur de \hyperlink{class_g_j___g_w_1_1_board}{Board}. 
@@ -66,12 +70,13 @@ Constructeur de \hyperlink{class_g_j___g_w_1_1_board}{Board}.
 
 
 \subsection{Member Function Documentation}
-\hypertarget{class_g_j___g_w_1_1_board_aa613553d159cdf49805a7f083381f038}{}\label{class_g_j___g_w_1_1_board_aa613553d159cdf49805a7f083381f038} 
 \index{G\+J\+\_\+\+G\+W\+::\+Board@{G\+J\+\_\+\+G\+W\+::\+Board}!check\+Lines@{check\+Lines}}
 \index{check\+Lines@{check\+Lines}!G\+J\+\_\+\+G\+W\+::\+Board@{G\+J\+\_\+\+G\+W\+::\+Board}}
-\subsubsection{\texorpdfstring{check\+Lines()}{checkLines()}}
-{\footnotesize\ttfamily std\+::vector$<$ unsigned $>$ G\+J\+\_\+\+G\+W\+::\+Board\+::check\+Lines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{check\+Lines()}{checkLines()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ unsigned $>$ G\+J\+\_\+\+G\+W\+::\+Board\+::check\+Lines (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_g_j___g_w_1_1_board_aa613553d159cdf49805a7f083381f038}{}\label{class_g_j___g_w_1_1_board_aa613553d159cdf49805a7f083381f038}
 
 
 Méthode vérifiant si une(des) ligne(s) a(ont) été remplie(s). 
@@ -81,12 +86,13 @@ Cette méthode est appelée lorsque la brique courante ne peut plus se déplacer
 \begin{DoxyReturn}{Returns}
 les numéros (les ordonnées) des lignes remplies 
 \end{DoxyReturn}
-\hypertarget{class_g_j___g_w_1_1_board_ab8cf3ac1607e01c772e0637b7fa34da7}{}\label{class_g_j___g_w_1_1_board_ab8cf3ac1607e01c772e0637b7fa34da7} 
 \index{G\+J\+\_\+\+G\+W\+::\+Board@{G\+J\+\_\+\+G\+W\+::\+Board}!check\+Path@{check\+Path}}
 \index{check\+Path@{check\+Path}!G\+J\+\_\+\+G\+W\+::\+Board@{G\+J\+\_\+\+G\+W\+::\+Board}}
-\subsubsection{\texorpdfstring{check\+Path()}{checkPath()}}
-{\footnotesize\ttfamily bool G\+J\+\_\+\+G\+W\+::\+Board\+::check\+Path (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \hyperlink{class_g_j___g_w_1_1_position}{Position} $>$}]{ }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{check\+Path(std\+::vector$<$ Position $>$)}{checkPath(std::vector< Position >)}}]{\setlength{\rightskip}{0pt plus 5cm}bool G\+J\+\_\+\+G\+W\+::\+Board\+::check\+Path (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Position} $>$}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_g_j___g_w_1_1_board_ab8cf3ac1607e01c772e0637b7fa34da7}{}\label{class_g_j___g_w_1_1_board_ab8cf3ac1607e01c772e0637b7fa34da7}
 
 
 Méthode vérifiant que la brique courante peut se déplacer. 
@@ -96,12 +102,13 @@ Si cette méthode renvoie faux, les vérifications de fin de partie et de lignes
 \begin{DoxyReturn}{Returns}
 si la brique courante peut effectuer son mouvement ou non 
 \end{DoxyReturn}
-\hypertarget{class_g_j___g_w_1_1_board_a3360e1825ba9b116fbbca29db0b1464c}{}\label{class_g_j___g_w_1_1_board_a3360e1825ba9b116fbbca29db0b1464c} 
 \index{G\+J\+\_\+\+G\+W\+::\+Board@{G\+J\+\_\+\+G\+W\+::\+Board}!get\+Grid@{get\+Grid}}
 \index{get\+Grid@{get\+Grid}!G\+J\+\_\+\+G\+W\+::\+Board@{G\+J\+\_\+\+G\+W\+::\+Board}}
-\subsubsection{\texorpdfstring{get\+Grid()}{getGrid()}}
-{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{class_g_j___g_w_1_1_position}{Position} $>$ G\+J\+\_\+\+G\+W\+::\+Board\+::get\+Grid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
+\subsubsection[{\texorpdfstring{get\+Grid()}{getGrid()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf Position} $>$ G\+J\+\_\+\+G\+W\+::\+Board\+::get\+Grid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_g_j___g_w_1_1_board_a3360e1825ba9b116fbbca29db0b1464c}{}\label{class_g_j___g_w_1_1_board_a3360e1825ba9b116fbbca29db0b1464c}
 
 
 Destructeur de \hyperlink{class_g_j___g_w_1_1_board}{Board}. 
@@ -113,12 +120,29 @@ Cette méthode fait partie de la façade de cette classe.
 \begin{DoxyReturn}{Returns}
 la grille de cases 
 \end{DoxyReturn}
-\hypertarget{class_g_j___g_w_1_1_board_a54c122c1ebdd27a5f9375a673f436dab}{}\label{class_g_j___g_w_1_1_board_a54c122c1ebdd27a5f9375a673f436dab} 
+\index{G\+J\+\_\+\+G\+W\+::\+Board@{G\+J\+\_\+\+G\+W\+::\+Board}!grid\+Actualisation@{grid\+Actualisation}}
+\index{grid\+Actualisation@{grid\+Actualisation}!G\+J\+\_\+\+G\+W\+::\+Board@{G\+J\+\_\+\+G\+W\+::\+Board}}
+\subsubsection[{\texorpdfstring{grid\+Actualisation(unsigned line\+Num)}{gridActualisation(unsigned lineNum)}}]{\setlength{\rightskip}{0pt plus 5cm}void G\+J\+\_\+\+G\+W\+::\+Board\+::grid\+Actualisation (
+\begin{DoxyParamCaption}
+\item[{unsigned}]{line\+Num}
+\end{DoxyParamCaption}
+)}\hypertarget{class_g_j___g_w_1_1_board_adbde00b1988b78b70ab903c9a7049ca3}{}\label{class_g_j___g_w_1_1_board_adbde00b1988b78b70ab903c9a7049ca3}
+
+
+Méthode qui actualise la grille de jeu après l\textquotesingle{}effacement d\textquotesingle{}une ligne remplies. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line\+Num} & le numéro de la ligne \\
+\hline
+\end{DoxyParams}
 \index{G\+J\+\_\+\+G\+W\+::\+Board@{G\+J\+\_\+\+G\+W\+::\+Board}!line@{line}}
 \index{line@{line}!G\+J\+\_\+\+G\+W\+::\+Board@{G\+J\+\_\+\+G\+W\+::\+Board}}
-\subsubsection{\texorpdfstring{line()}{line()}}
-{\footnotesize\ttfamily void G\+J\+\_\+\+G\+W\+::\+Board\+::line (\begin{DoxyParamCaption}\item[{unsigned}]{line\+Num }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{line(unsigned line\+Num)}{line(unsigned lineNum)}}]{\setlength{\rightskip}{0pt plus 5cm}void G\+J\+\_\+\+G\+W\+::\+Board\+::line (
+\begin{DoxyParamCaption}
+\item[{unsigned}]{line\+Num}
+\end{DoxyParamCaption}
+)}\hypertarget{class_g_j___g_w_1_1_board_a54c122c1ebdd27a5f9375a673f436dab}{}\label{class_g_j___g_w_1_1_board_a54c122c1ebdd27a5f9375a673f436dab}
 
 
 Méthode gérant les lignes remplies. 

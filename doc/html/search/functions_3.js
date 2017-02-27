@@ -12,5 +12,6 @@ var searchData=
   ['getscore',['getScore',['../class_g_j___g_w_1_1_player.html#ae3f20da9bd95ea3da68fe0948e76bf09',1,'GJ_GW::Player']]],
   ['getshape',['getShape',['../class_g_j___g_w_1_1_bric.html#a910b13826a68894212c8735613625a80',1,'GJ_GW::Bric']]],
   ['getx',['getX',['../class_g_j___g_w_1_1_position.html#a0b6d52cb999972584a19bbd5f72052d2',1,'GJ_GW::Position']]],
-  ['gety',['getY',['../class_g_j___g_w_1_1_position.html#adc9a6735a8f67edda3a1d347aa9c8211',1,'GJ_GW::Position']]]
+  ['gety',['getY',['../class_g_j___g_w_1_1_position.html#adc9a6735a8f67edda3a1d347aa9c8211',1,'GJ_GW::Position']]],
+  ['gridactualisation',['gridActualisation',['../class_g_j___g_w_1_1_board.html#adbde00b1988b78b70ab903c9a7049ca3',1,'GJ_GW::Board']]]
 ];

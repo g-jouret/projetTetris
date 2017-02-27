@@ -14,7 +14,6 @@ namespace GJ_GW{
  */
 class BricsBag{
 
-    // NOTE : peut-être mieux une map ou un set : brique retrouvables par clé?
     std::vector<Bric> brics_;
     /*!< Les briques contenue dans le sac.
      *
@@ -23,6 +22,11 @@ class BricsBag{
 
 public:
 
+    /*!
+     * \brief Constructeur de \ref BricsBag.
+     *
+     * \param brics les briques du sac
+     */
     BricsBag(std::vector<Bric> brics);
 
     /*!
@@ -45,9 +49,8 @@ public:
     inline Bric getNextBric();
 
     /* NOTE : quelle méthode choisir?
-     * aléatoire à chaque pioche en ignorant la dernière brique
-     * compteur et réagencement du sac quand à utilisé toute les briques
-     * destruction du sac => attribut de save du "sac originel"
+     * aléatoire à chaque pioche en ignorant la dernière brique qui est mise à la fin
+     * on ne réarrange pas la dernière brique.
      */
     /*!
      * \brief Méthode mélangeant les briques dans le sac.

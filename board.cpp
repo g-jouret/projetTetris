@@ -35,6 +35,8 @@ std::vector<unsigned> Board::checkLines(){
     return filledLines;
 }
 
+// TODO : descendre les lignes au dessus de la ligne enlevé
+// le faire à chaque fois, pourrait y avoir des cas spéciaux
 void Board::line(unsigned lineNum){
     for(Position p : grid_){
         if(p.getY() == lineNum){

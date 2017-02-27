@@ -27,7 +27,6 @@ namespace GJ_GW{
  */
 class Game
 {
-    // NOTE : discuter de l'utilité des getters
 public:
     constexpr static unsigned MINIMUM_TIMER {100};
     /*!< Valeur minimale acceptée pour le timer. */
@@ -42,17 +41,10 @@ public:
     /*!< Valeur par défaut de la hauteur de la grille. */
 
     // NOTE : indice du board : 0 en haut, MAX en bas : plus facile pour la génération de brique sur le board
-    /* WARNING DB : faut trouver un moyen d'initialiser les briques par défaut !
-    constexpr static std::vector<unsigned> DEFAULT_BRICS {
-        {0,0 , 0,1 , 0,2 , 0,3,    //I
-        0,0 , 1,0 , 0,1 , 1,1,    //O
-        1,0 , 0,1 , 1,1 , 2,1,    //T
-        1,0 , 1,1 , 0,2 , 1,2,    //J
-        0,0 , 0,1 , 0,2 , 1,2,    //L
-        0,0 , 1,0 , 1,1 , 2,1,    //Z
-        1,0 , 2,0 , 0,1 , 1,1}     //S
-    };
-*/
+    /* WARNING DB : faut trouver un moyen d'initialiser les briques par défaut !*/
+    static std::vector<Position> DEFAULT_BRICS ;
+
+
 private:
     unsigned level_;
     /*!< Le niveau de difficulté.
@@ -73,17 +65,6 @@ private:
     /*!< Les joueurs, leur grille et leur sac de pièces. */
 
     // NOTE : peut-être mieux d'utiliser un pair, vu que 2 joueurs max?
-    // TODO : mode de jeu, condition de victoire
-
-    /* NOTE : option possible
-    unsigned step_;*/
-    /*!< L'étape en cours.
-     *
-     * Il y a 3 étapes dans le déroulement d'une itération :
-     *  - le tirage d'une nouvelle brique courante ;
-     *  - la chute de la brique courante ;
-     *  - l'arrêt de la brique courante et la résolution du nouvel état de la grille.
-     */
 
 public:
 
@@ -158,7 +139,8 @@ private:
      * \return la valeur validée
      */
     unsigned validateTimer(unsigned time);
-
+    //TODO
+    static inline void initializeBric ();
 };
 
 //prototypes
@@ -170,7 +152,21 @@ std::ostream & operator<<(std::ostream & out, const Game & in);
 //fonctions inline
 
 //méthodes inline
-
+void Game::initializeBric (){
+   DEFAULT_BRICS.push_back(Position(0,0));
+   DEFAULT_BRICS.push_back(Position(1,0));
+   DEFAULT_BRICS.push_back(Position(2,0));
+   DEFAULT_BRICS.push_back(Position(3,0));
+                                         }
+/*  {Position(0,0),Position(1,0),Position(2,0),Position(3,0)},  //I
+    {Position(0,0),Position(1,0),Position(0,1),Position(1,1)},  //O
+    {Position(1,0),Position(0,1),Position(1,1),Position(2,1)},  //T
+    {Position(0,0),Position(1,0),Position(2,0),Position(2,1)},  //J
+    {Position(0,0),Position(1,0),Position(2,0),Position(0,1)},  //L
+    {Position(0,0),Position(1,0),Position(1,1),Position(2,1)},  //Z
+    {Position(1,0),Position(2,0),Position(0,1),Position(1,1)}   //S
+}
+*/
 Player Game::getPlayer(){
         return player_;
     }
@@ -180,10 +176,13 @@ Player Game::getPlayer(){
 #endif // GAME_H
 
 /* TODO Principal :
- * les destructeurs & constructeurs + copies défensives /!\ debug requis!
- * génération de la brique courrante
- * vérification de fin de partie (le endgame gère tout)
- * rearrange du bricsbag
- * Gestion du niveau de difficulté & itératif
- * couleur des briques
+ * les destructeurs & constructeurs + copies défensives /!\ debug requis!   DUO
+ * génération de la brique courrante                                        GJ
+ * gestion des lignes après suppression                                     GW
+ * vérification de fin de partie (le endgame gère tout)                     DUO
+ * rearrange du bricsbag                                                    GJ
+ * Gestion du niveau de difficulté & itératif                               GW + DUO
+ * réfléchir à un moins grand couplage (Player association Board | BricsBag | Bric plutot que composition?) DUO VOCAL
+ * réfléchir héritage?                                                      DUO VOCAL
+ * couleur des briques                                                      SI FINI
  */

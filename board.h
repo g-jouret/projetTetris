@@ -99,6 +99,13 @@ public:
      */
     bool checkPath(std::vector<Position>);
 
+    /*!
+     * \brief Méthode qui actualise la grille de jeu après l'effacement d'une ligne remplies.
+     *
+     * \param lineNum le numéro de la ligne
+     */
+    void gridActualisation(unsigned lineNum);
+
     std::string to_string() const;
 
     friend std::ostream & operator<<(std::ostream & out, const Board & in);

@@ -9,15 +9,15 @@ Game::Game():
     level_ {0}, timer_ {MAXIMUM_TIMER},
     //players_ {std::vector<Player> {   pour plus tard
     // WARNING DB : initialisation avec DEFAULT_BRICS
-    player_ {Player("Joueur1", DEFAULT_WIDTH, DEFAULT_HEIGHT,
-                    std::vector<Position>{
+    player_ {Player("Joueur1", DEFAULT_WIDTH, DEFAULT_HEIGHT, brics)}
+                    /*std::vector<Position>{{
                         Position(0,0), Position(1,0), Position(2,0), Position(3,0),    //I
                         Position(0,0), Position(1,0), Position(0,1), Position(1,1),    //O
                         Position(1,0), Position(0,1), Position(1,1), Position(2,1),    //T
                         Position(0,0), Position(1,0), Position(2,0), Position(2,1),    //J
                         Position(0,0), Position(1,0), Position(2,0), Position(0,1),    //L
                         Position(0,0), Position(1,0), Position(1,1), Position(2,1),    //Z
-                        Position(1,0), Position(2,0), Position(0,1), Position(1,1)})}  //S
+                        Position(1,0), Position(2,0), Position(0,1), Position(1,1)}})}  //S*/
 
   /*Player("Joueur2", DEFAULT_WIDTH, DEFAULT_HEIGHT,
                        std::vector<Bric> {
@@ -28,7 +28,25 @@ Game::Game():
                                                Bric(std::vector<Position> {Position(0,0), Position(1,0), Position(2,0), Position(0,1)}),    //L
                                                Bric(std::vector<Position> {Position(0,0), Position(1,0), Position(1,1), Position(2,1)}),    //Z
                                                Bric(std::vector<Position> {Position(1,0), Position(2,0), Position(0,1), Position(1,1)})})}  //S*/
-{}
+{
+
+    /*std::vector<Bric> brics;
+    std::vector<Position> positions;
+    for(int i = 0; i < DEFAULT_BRICS.size();++i){   // WARNING : /!\ problème possible: prend la mauvaise taille du tab 2D DB
+        for(int j = 0; j < DEFAULT_BRICS.at(i).size();j+2){
+            positions.push_back(Position(DEFAULT_BRICS.at(i).at(j),DEFAULT_BRICS.at(i).at(++j)));
+        }
+        brics.push_back(Bric(std::vector{positions.at(0),
+                             positions.at(1),
+                                         positions.at(2),
+                                         positions.at(3)
+                             }));
+            /*Position(DEFAULT_BRICS.at(i).at(2),DEFAULT_BRICS.at(i).at(3)),
+            Position(DEFAULT_BRICS.at(i).at(4),DEFAULT_BRICS.at(i).at(5)),
+            Position(DEFAULT_BRICS.at(i).at(6),DEFAULT_BRICS.at(i).at(7))
+    }};*/
+
+}
 /*
 unsigned Game::validate(unsigned value, unsigned def){
     return (value == 0)? def : value;

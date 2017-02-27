@@ -119,6 +119,7 @@ public:
     void rotateBric();
 
     // NOTE : sert aussi à générer la nouvelle brique?
+    // NOTE : direction vers le bas : différence entre descente auto et drop du player (toute la hauteur)
     /*!
      * \brief Méthode permettant une translation de la brique courante dans une direction donnée.
      *
