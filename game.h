@@ -42,7 +42,7 @@ public:
 
     // NOTE : indice du board : 0 en haut, MAX en bas : plus facile pour la génération de brique sur le board
     /* WARNING DB : faut trouver un moyen d'initialiser les briques par défaut !*/
-    static std::vector<Position> DEFAULT_BRICS ;
+    //static std::vector<Position> DEFAULT_BRICS ;
 
 
 private:
@@ -152,21 +152,6 @@ std::ostream & operator<<(std::ostream & out, const Game & in);
 //fonctions inline
 
 //méthodes inline
-void Game::initializeBric (){
-   DEFAULT_BRICS.push_back(Position(0,0));
-   DEFAULT_BRICS.push_back(Position(1,0));
-   DEFAULT_BRICS.push_back(Position(2,0));
-   DEFAULT_BRICS.push_back(Position(3,0));
-                                         }
-/*  {Position(0,0),Position(1,0),Position(2,0),Position(3,0)},  //I
-    {Position(0,0),Position(1,0),Position(0,1),Position(1,1)},  //O
-    {Position(1,0),Position(0,1),Position(1,1),Position(2,1)},  //T
-    {Position(0,0),Position(1,0),Position(2,0),Position(2,1)},  //J
-    {Position(0,0),Position(1,0),Position(2,0),Position(0,1)},  //L
-    {Position(0,0),Position(1,0),Position(1,1),Position(2,1)},  //Z
-    {Position(1,0),Position(2,0),Position(0,1),Position(1,1)}   //S
-}
-*/
 Player Game::getPlayer(){
         return player_;
     }
@@ -176,7 +161,7 @@ Player Game::getPlayer(){
 #endif // GAME_H
 
 /* TODO Principal :
- * les destructeurs & constructeurs + copies défensives /!\ debug requis!   DUO
+ * les destructeurs & constructeurs + copies défensives                     DUO
  * génération de la brique courrante                                        GJ
  * gestion des lignes après suppression                                     GW
  * vérification de fin de partie (le endgame gère tout)                     DUO

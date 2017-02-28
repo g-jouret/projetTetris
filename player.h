@@ -50,11 +50,8 @@ public:
      * \param name le nom du joueur
      * \param width la largeur de la grille
      * \param height la hauteur de la grille
-     * \param brics les briques à mettre dans le sac
      */
-    Player(std::string name, unsigned width, unsigned height, std::vector<Position> brics);
-    // WARNING DB : lié à l'initialisation par DEFAULT_BRICS
-    //Player(std::string name, unsigned width, unsigned height, std::vector<unsigned> brics);
+    Player(std::string name, unsigned width, unsigned height);
 
     /*!
      * \brief Destructeur de \ref Player.

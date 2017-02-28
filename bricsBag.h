@@ -22,6 +22,11 @@ class BricsBag{
 
 public:
 
+    /*! TODO doc
+     * \brief BricsBag
+     */
+    BricsBag();
+
     /*!
      * \brief Constructeur de \ref BricsBag.
      *

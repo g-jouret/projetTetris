@@ -26,6 +26,11 @@ class Bric{
 
 public:
 
+    /*! TODO doc
+     * \brief Bric
+     */
+    Bric();
+
     /*!
      * \brief Constructeur de \ref Bric.
      *
