@@ -22,6 +22,9 @@ class Bric{
      * Représente l'ensemble des cases qui sont remplie par la brique.
      */
 
+    unsigned side_;
+    /*!< La taille de côté de la brique en nombre de positions. */
+
     // NOTE : pour plus tard : couleur
 
 public:
@@ -68,11 +71,13 @@ public:
     /*!
      * \brief Méthode déplaçant la brique dans une direction.
      *
-     * les directions possibles sont 1 : bas, 2 : gauche et 3 : droite.
+     * les directions possibles sont 1 : bas, 2 : gauche et 3 : droite, 4 : drop (tout en bas).
      *
      * \param direction le numéro de la direction choisie
      */
     void move(unsigned direction);
+
+    std::vector<Position> below();
 };
 
 //implémentations inline

@@ -97,7 +97,7 @@ public:
      *
      * \return si la brique courante peut effectuer son mouvement ou non
      */
-    bool checkPath(std::vector<Position>);
+    bool checkCase(Position);
 
     /*!
      * \brief Méthode qui actualise la grille de jeu après l'effacement d'une ligne remplies.

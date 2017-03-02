@@ -70,6 +70,10 @@ public:
      */
     inline bool isFilled();
 
+    inline void setX(int x);
+
+    inline void setY(int y);
+
     /*!
      * \brief Méthode changeant la valeur du booléen.
      */
@@ -115,6 +119,14 @@ unsigned Position::getY(){
 
 bool Position::isFilled(){
     return filled_;
+}
+
+void Position::setX(int x){
+    x_ += x;
+}
+
+void Position::setY(int y){
+    y_ += y;
 }
 
 }

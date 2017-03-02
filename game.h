@@ -28,10 +28,10 @@ namespace GJ_GW{
 class Game
 {
 public:
-    constexpr static unsigned MINIMUM_TIMER {100};
+    constexpr static unsigned MINIMUM_TIMER {500};
     /*!< Valeur minimale acceptée pour le timer. */
 
-    constexpr static unsigned MAXIMUM_TIMER {500};
+    constexpr static unsigned MAXIMUM_TIMER {2000};
     /*!< Valeur maximale acceptée pour le timer. */
 
     constexpr static unsigned DEFAULT_WIDTH {10};

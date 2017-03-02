@@ -45,6 +45,10 @@ void Board::line(unsigned lineNum){
     }
 }
 
+bool Board::checkCase(Position c){
+    return c.isFilled();
+}
+
 /*std::string Board::to_string() const{
     std::string s;
     for(Position p : grid_){
