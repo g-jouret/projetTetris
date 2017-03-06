@@ -65,7 +65,7 @@ public:
      *
      * \return le nom du joueur
      */
-    inline std::string getName();
+    inline std::string getName() const;
 
     /*!
      * \brief Accesseur en lecture du score du joueur.
@@ -74,14 +74,14 @@ public:
      *
      * \return le score du joueur
      */
-    inline unsigned getScore();
+    inline unsigned getScore() const;
 
     /*!
      * \brief Accesseur en lecture de la brique courante.
      *
      * \return la brique courante
      */
-    inline Bric getCurrentBric();
+    inline Bric getCurrentBric() const;
 
     /*!
      * \brief Accesseur en lecture de la grille de jeu.
@@ -90,7 +90,7 @@ public:
      *
      * \return la grille de jeu
      */
-    inline Board getBoard();
+    inline Board getBoard() const;
 
     /*!
      * \brief Accesseur en lecture du nombre de ligne remplies par le joueur.
@@ -139,12 +139,20 @@ std::ostream & operator<<(std::ostream & out, const Player & in);
 //fonctions inline
 
 //méthodes inline
-std::string Player::getName(){
+std::string Player::getName() const{
     return name_;
 }
 
-unsigned Player::getScore(){
+unsigned Player::getScore() const{
     return score_;
+}
+
+Bric Player::getCurrentBric() const{
+    return currentBric_;
+}
+
+Board Player::getBoard() const{
+    return board_;
 }
 
 }

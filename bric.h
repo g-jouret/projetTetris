@@ -44,6 +44,9 @@ public:
      */
     Bric(std::vector<Position> shape);
 
+    //Bric(const Bric & other);
+    // NOTE : à voir si utile
+
     /*!
      * \brief Destructeur de \ref Bric.
      */
@@ -57,7 +60,7 @@ public:
      *
      * \return la forme de la brique
      */
-    inline std::vector<Position> getShape();
+    inline std::vector<Position> getShape() const;
 
     /*!
      * \brief Méthode qui tourne la brique.
@@ -77,7 +80,9 @@ public:
      */
     void move(unsigned direction);
 
-    std::vector<Position> below();
+    bool isIn(Position toCheck);
+
+    //std::vector<Position> below();
 };
 
 //implémentations inline
@@ -85,7 +90,7 @@ public:
 //fonctions inline
 
 //méthodes inline
-std::vector<Position> Bric::getShape(){
+std::vector<Position> Bric::getShape() const{
     return shape_;
 }
 

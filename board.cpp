@@ -45,8 +45,16 @@ void Board::line(unsigned lineNum){
     }
 }
 
-bool Board::checkCase(Position c){
-    return c.isFilled();
+bool Board::checkCase(Position destination) const{
+    return destination.isFilled();
+}
+
+void swapFill(std::vector<Position> bric){
+    // NOTE : pourrait être intéressant de mettre une 2e vérif au cas où
+    // pour être sur que toutes les positions font bien le même swap
+    for(Position p : bric){
+        p.swapFilled();
+    }
 }
 
 /*std::string Board::to_string() const{

@@ -97,7 +97,7 @@ public:
      *
      * \return si la brique courante peut effectuer son mouvement ou non
      */
-    bool checkCase(Position);
+    bool checkCase(Position destination) const;
 
     /*!
      * \brief Méthode qui actualise la grille de jeu après l'effacement d'une ligne remplies.
@@ -105,6 +105,8 @@ public:
      * \param lineNum le numéro de la ligne
      */
     void gridActualisation(unsigned lineNum);
+
+    void swapFill(std::vector<Position> bric);
 
     std::string to_string() const;
 
