@@ -47,7 +47,11 @@ void Board::swapLine(std::vector<Position> line){
 }
 
 Position * Board::getCase(Position destination){
+<<<<<<< HEAD
+    Position * pntPos {};
+=======
     Position * pntPos {0};
+>>>>>>> origin/master
     for(Position p : grid_){
         if(p == destination){
             pntPos = &p;
@@ -58,6 +62,17 @@ Position * Board::getCase(Position destination){
 
 void Board::swapFill(Position &toSwap){
         toSwap.swapFilled();
+}
+
+void Board::emptyLine(std::vector<Position> line){
+    Position tmpPos;
+    for(Position p : line){
+            if(p.isFilled()){
+                p.swapFilled();
+                tmpPos = *getCase(Position(p.getX(),p.getY()+1));
+                tmpPos.swapFilled();
+            }
+        }
 }
 
 void Board::gridActualisation(unsigned lineNum){
