@@ -83,7 +83,7 @@ public:
      * \param line la ligne à analyse
      * \return 0 si la ligne est vide, 1 si elle est remplie et 2 autrement
      */
-    unsigned checkLine(std::vector<Position> line);
+    unsigned checkLine(std::vector<Position> getLine);
 
     /*!
      * \brief Méthode sélectionnant une ligne de la grille de jeu.
@@ -91,7 +91,7 @@ public:
      * \param lineNum le numéro de la ligne à sélectionner
      * \return la ligne sélectionnée
      */
-    std::vector<Position> line(unsigned lineNum);
+    std::vector<Position> getLine(unsigned lineNum);
 
     /*!
      * \brief Méthode vérifiant que la brique courante peut se déplacer.
@@ -101,7 +101,7 @@ public:
      *
      * \return si la brique courante peut effectuer son mouvement ou non
      */
-    bool checkCase(Position destination) const;
+    Position * getCase(Position destination);
 
     /*!
      * \brief Méthode changeant l'état de toutes les Positions d'une ligne.
@@ -110,7 +110,13 @@ public:
      *
      * \param line la ligne à modifié
      */
-    void swapLine(std::vector<Position> line);
+    void swapLine(std::vector<Position> getLine);
+    /*!
+     * \brief Méthode qui copie toutes les postions qui sont pleine dans un vecteur.
+     *
+     * \param line ligne de position remplie
+     */
+     void emptyLine(std::vector<Position> getLine);
 
     /*!
      * \brief Méthode qui actualise la grille de jeu après l'effacement d'une ligne remplies.
