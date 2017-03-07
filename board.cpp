@@ -15,33 +15,34 @@ width_{width}, height_{height}
     }
 }
 
-
-
-std::vector<unsigned> Board::checkLines(){
-    std::vector<unsigned> filledLines;
-    unsigned check {0}, y {0};
-    for(Position p : grid_){
-        if(y == p.getY()){
-            if(p.isFilled()){
-                ++check;
-                if(check == width_){
-                    filledLines.push_back(p.getY());
-                }
-            }
-        } else{
-            check = 0;
-        }
-    }
-    return filledLines;
-}
-
 // TODO : descendre les lignes au dessus de la ligne enlevé
 // le faire à chaque fois, pourrait y avoir des cas spéciaux
-void Board::line(unsigned lineNum){
+std::vector<Position> Board::line(unsigned lineNum){
+    std::vector<Position> theLine;
     for(Position p : grid_){
         if(p.getY() == lineNum){
-            p.swapFilled();
+            theLine.push_back(p);
         }
+    }
+    return theLine;
+}
+
+unsigned Board::checkLine(std::vector<Position> line){
+    unsigned check;
+    bool fill;
+    fill = line.at(0).isFilled();
+    fill? check = 1 : check = 0;
+    for(Position p : line){
+        if((p.isFilled() && ! fill) || (! p.isFilled() &&  fill)){
+            check = 2;
+        }
+    }
+    return check;
+}
+
+void Board::swapLine(std::vector<Position> line){
+    for(Position p : line){
+        p.swapFilled();
     }
 }
 
@@ -49,12 +50,14 @@ bool Board::checkCase(Position destination) const{
     return destination.isFilled();
 }
 
-void swapFill(std::vector<Position> bric){
+void Board::swapFill(Position &toSwap){
     // NOTE : pourrait être intéressant de mettre une 2e vérif au cas où
     // pour être sur que toutes les positions font bien le même swap
-    for(Position p : bric){
-        p.swapFilled();
-    }
+        toSwap.swapFilled();
+}
+
+void Board::gridActualisation(unsigned lineNum){
+    // TODO implémentation
 }
 
 /*std::string Board::to_string() const{

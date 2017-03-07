@@ -69,24 +69,29 @@ public:
     inline std::vector<Position> getGrid();
 
     /*!
-     * \brief Méthode vérifiant si une(des) ligne(s) a(ont) été remplie(s).
+     * \brief Accesseur en lecture de \ref height_.
      *
-     * Cette méthode est appelée lorsque la brique courante ne peut plus se déplacer
-     * (sauf dans le cas de la défaite du joueur) et renvoie les numéro des lignes
-     * remplies
-     *
-     * \return les numéros (les ordonnées) des lignes remplies
+     * \return le nombre de lignes de la grille
      */
-    std::vector<unsigned> checkLines();
+    inline unsigned getHeight();
 
     /*!
-     * \brief Méthode gérant les lignes remplies.
+     * \brief Méthode vérifiant l'état d'une ligne de la grille de jeu.
      *
-     * Une ligne remplie est effacée.
+     * Cette méthode analyse l'état des Positions d'une ligne et renvoit sont état.
      *
-     * \param lineNum le numéro de la ligne à traiter
+     * \param line la ligne à analyse
+     * \return 0 si la ligne est vide, 1 si elle est remplie et 2 autrement
      */
-    void line(unsigned lineNum);
+    unsigned checkLine(std::vector<Position> line);
+
+    /*!
+     * \brief Méthode sélectionnant une ligne de la grille de jeu.
+     *
+     * \param lineNum le numéro de la ligne à sélectionner
+     * \return la ligne sélectionnée
+     */
+    std::vector<Position> line(unsigned lineNum);
 
     /*!
      * \brief Méthode vérifiant que la brique courante peut se déplacer.
@@ -99,13 +104,22 @@ public:
     bool checkCase(Position destination) const;
 
     /*!
+     * \brief Méthode changeant l'état de toutes les Positions d'une ligne.
+     *
+     * Cette Méthode est utilisée uniquement pour vider les lignes remplies.
+     *
+     * \param line la ligne à modifié
+     */
+    void swapLine(std::vector<Position> line);
+
+    /*!
      * \brief Méthode qui actualise la grille de jeu après l'effacement d'une ligne remplies.
      *
      * \param lineNum le numéro de la ligne
      */
     void gridActualisation(unsigned lineNum);
 
-    void swapFill(std::vector<Position> bric);
+    void swapFill(Position &toSwap);
 
     std::string to_string() const;
 
@@ -127,6 +141,10 @@ std::ostream & operator<<(std::ostream & out, const Board & in);
 // TODO : renvoyer référence : copie défensive
 std::vector<Position> Board::getGrid(){
     return grid_;
+}
+
+unsigned Board::getHeight(){
+    return height_;
 }
 
 }

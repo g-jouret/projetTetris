@@ -60,7 +60,7 @@ public:
      *
      * \return la forme de la brique
      */
-    inline std::vector<Position> getShape() const;
+    inline std::vector<Position> getShape();
 
     /*!
      * \brief Méthode qui tourne la brique.
@@ -90,7 +90,7 @@ public:
 //fonctions inline
 
 //méthodes inline
-std::vector<Position> Bric::getShape() const{
+std::vector<Position> Bric::getShape(){
     return shape_;
 }
 
