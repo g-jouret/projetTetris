@@ -10,14 +10,14 @@ width_{width}, height_{height}
 {
     for(unsigned i = 0; i < height; ++i){
         for(unsigned j = 0; j < width; ++j){
-            grid_.push_back(Position(j,i));
+            grid_.push_back(Position(j, i));
         }
     }
 }
 
 // TODO : descendre les lignes au dessus de la ligne enlevé
 // le faire à chaque fois, pourrait y avoir des cas spéciaux
-std::vector<Position> Board::line(unsigned lineNum){
+std::vector<Position> Board::getLine(unsigned lineNum){
     std::vector<Position> theLine;
     for(Position p : grid_){
         if(p.getY() == lineNum){
@@ -46,13 +46,17 @@ void Board::swapLine(std::vector<Position> line){
     }
 }
 
-bool Board::checkCase(Position destination) const{
-    return destination.isFilled();
+Position * Board::getCase(Position destination){
+    Position * pntPos {0};
+    for(Position p : grid_){
+        if(p == destination){
+            pntPos = &p;
+        }
+    }
+    return pntPos;
 }
 
 void Board::swapFill(Position &toSwap){
-    // NOTE : pourrait être intéressant de mettre une 2e vérif au cas où
-    // pour être sur que toutes les positions font bien le même swap
         toSwap.swapFilled();
 }
 
