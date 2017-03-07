@@ -21,11 +21,17 @@ std::vector<Position> Board::getLine(unsigned lineNum){
     std::vector<Position> theLine;
     for(Position p : grid_){
         if(p.getY() == lineNum){
+<<<<<<< HEAD
+            p.swapFilled();
+            lineGoDown(lineNum);
+=======
             theLine.push_back(p);
+>>>>>>> refs/remotes/origin/master
         }
     }
     return theLine;
 }
+void Board::Line()
 
 unsigned Board::checkLine(std::vector<Position> line){
     unsigned check;

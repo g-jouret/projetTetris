@@ -137,6 +137,28 @@ private:
      * \return la valeur validée
      */
     unsigned validateTimer(unsigned time);
+    /*!
+     * \brief Méthode privée qui augmente le niveau de dificutlée.
+     *
+     * Il y a 4 niveau de dificulté et il commence au niveau 0.
+     * Et augmente toutes les 5 ligne supprimée.
+     *
+     * \param lvl le niveau de dificultée
+     * \param lineDel le nombre de ligne supprimées
+     */
+    unsigned upDificulty(unsigned lvl,unsigned lineDel);
+    /*!
+     * \brief Méthode privée qui diminue le temps entre chaque
+     *  mouvement de brique.
+     *
+     * Selon le niveau de dificultée le timer va diminuer de 0.5s.
+     *
+     * \param lvl le niveau de dificultée
+     * \param timer temps de decente de la brique
+     */
+    unsigned upTimer(unsigned lvl, unsigned timer);
+    //TODO
+    static inline void initializeBric ();
 };
 
 //prototypes
