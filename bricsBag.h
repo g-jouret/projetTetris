@@ -44,14 +44,14 @@ public:
      *
      * \return le sac de briques
      */
-    inline std::vector<Bric> getBrics() const;
+    inline std::vector<Bric> getBrics();
 
     /*!
      * \brief Méthode permettant de tirer la prochaine brique du sac.
      *
      * \return la brique au sommet du sac
      */
-    inline Bric getNextBric() const;
+    inline Bric getNextBric();
 
     /* NOTE : quelle méthode choisir?
      * aléatoire à chaque pioche en ignorant la dernière brique qui est mise à la fin
@@ -68,11 +68,11 @@ public:
 //fonctions inline
 
 //méthodes inline
-std::vector<Bric> BricsBag::getBrics() const{
+std::vector<Bric> BricsBag::getBrics(){
     return brics_;
 }
 
-Bric BricsBag::getNextBric() const{
+Bric BricsBag::getNextBric(){
     return brics_.at(0);
 }
 

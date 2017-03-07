@@ -9,6 +9,7 @@
 #include "player.h"
 #include "bricsBag.h"
 #include "bric.h"
+#include "board.h"
 
 /*! \mainpage Le jeu de Tetris multijoueur, projet de c++ 2016-2017
  *
@@ -41,9 +42,6 @@ public:
     /*!< Valeur par défaut de la hauteur de la grille. */
 
     // NOTE : indice du board : 0 en haut, MAX en bas : plus facile pour la génération de brique sur le board
-    /* WARNING DB : faut trouver un moyen d'initialiser les briques par défaut !*/
-    //static std::vector<Position> DEFAULT_BRICS ;
-
 
 private:
     unsigned level_;
@@ -98,7 +96,7 @@ public:
     //void setPlayer(std::string name1, std::string name2, unsigned width, unsigned height);
 
     //inline std::vector<Player> getPlayers();  pour plus tard
-    inline Player getPlayer() const;
+    inline Player getPlayer();
 
     /*!
      * \brief Méthode vérifiant qu'aucune condition de fin de partie n'a été remplie.
@@ -148,7 +146,7 @@ private:
      * \param lvl le niveau de dificultée
      * \param lineDel le nombre de ligne supprimées
      */
-    unsigned Game::upDificulty(unsigned lvl,unsigned lineDel);
+    unsigned upDificulty(unsigned lvl,unsigned lineDel);
     /*!
      * \brief Méthode privée qui diminue le temps entre chaque
      *  mouvement de brique.
@@ -158,7 +156,7 @@ private:
      * \param lvl le niveau de dificultée
      * \param timer temps de decente de la brique
      */
-    unsigned Game::upTimer(unsigned lvl, unsigned timer);
+    unsigned upTimer(unsigned lvl, unsigned timer);
     //TODO
     static inline void initializeBric ();
 };
@@ -172,7 +170,7 @@ std::ostream & operator<<(std::ostream & out, const Game & in);
 //fonctions inline
 
 //méthodes inline
-Player Game::getPlayer() const{
+Player Game::getPlayer(){
         return player_;
     }
 

@@ -1,7 +1,8 @@
-#include "player.h"
+
 #include <vector>
 #include <ostream>
 #include <iomanip>
+#include "player.h"
 
 namespace GJ_GW{
 
@@ -10,12 +11,12 @@ Player::Player(std::string name, unsigned width, unsigned height):
 {}
 
 void Player::checkLines(){
-    std::vector<unsigned> lines {board_.checkLines()};
-    if(! lines.empty()){
-        for(unsigned l : lines){
-            board_.line(l);
+    for(unsigned i = 0; i < board_.getHeight(); ++i){
+        if(board_.checkLine(board_.getLine(i)) == 1){
+            board_.swapLine(board_.getLine(i));
+            board_.gridActualisation(i);
         }
-        score_ += lines.size();
+
         // TODO : compteur de lignes traversées par le drop
     }
 }
@@ -31,14 +32,18 @@ void Player::moveBric(unsigned direction){
         destination.move(direction);
         while(ok && count < destination.getShape().size()){
             if(! currentBric_.isIn(destination.getShape().at(count))){
-                ok = board_.checkCase(destination.getShape().at(count));
+                ok = board_.getCase(destination.getShape().at(count))->isFilled();
             }
             ++count;
         }
         if(ok){
-            //board_.swapFill(currentBric_.getShape()); WARNING : problème d'allocator
+            for(Position p : currentBric_.getShape()){
+                board_.swapFill(p);
+            }
             currentBric_.move(direction);
-            //board_.swapFill(currentBric_.getShape());
+            for(Position p : currentBric_.getShape()){
+                board_.swapFill(p);
+            }
         }
 }
 

@@ -34,7 +34,8 @@ std::ostream & operator<<(std::ostream & out, const Game & in){
     out << in.to_string();
     return out;
 }*/
-unsigned Game::upDificulty(unsigned lvl,unsigned lineDel){
+/*unsigned Game::upDificulty(unsigned lvl,unsigned lineDel){
+>>>>>>> refs/remotes/origin/master
     if(lineDel == 5 | 10 | 15) lvl+=1;
     return lvl;
 }
@@ -56,4 +57,8 @@ unsigned Game::upTimer(unsigned lvl, unsigned timer){
     }
     return timer;
 }
+<<<<<<< HEAD
+=======
+*/
 }
+
