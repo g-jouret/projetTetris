@@ -5,7 +5,6 @@
 #include <iomanip>
 #include <vector>
 #include "position.h"
-#include "bric.h"
 
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.

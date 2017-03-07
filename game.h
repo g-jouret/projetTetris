@@ -9,6 +9,7 @@
 #include "player.h"
 #include "bricsBag.h"
 #include "bric.h"
+#include "board.h"
 
 /*! \mainpage Le jeu de Tetris multijoueur, projet de c++ 2016-2017
  *

@@ -1,7 +1,8 @@
-#include "player.h"
+
 #include <vector>
 #include <ostream>
 #include <iomanip>
+#include "player.h"
 
 namespace GJ_GW{
 
@@ -36,9 +37,9 @@ void Player::moveBric(unsigned direction){
             ++count;
         }
         if(ok){
-            //board_.swapFill(currentBric_.getShape()); WARNING : problème d'allocator
+            board_.swapFill(currentBric_.getShape()); //WARNING : problème d'allocator
             currentBric_.move(direction);
-            //board_.swapFill(currentBric_.getShape());
+            board_.swapFill(currentBric_.getShape());
         }
 }
 
