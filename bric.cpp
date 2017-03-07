@@ -44,7 +44,7 @@ void Bric::move(unsigned direction){
 // TODO implémentation drop
         break;
     default:
-// TODO implémentation TetrisException
+        throw std::string("Ce n'est pas une direction valide");
         break;
     }
 }

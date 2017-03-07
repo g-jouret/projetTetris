@@ -42,9 +42,6 @@ public:
     /*!< Valeur par défaut de la hauteur de la grille. */
 
     // NOTE : indice du board : 0 en haut, MAX en bas : plus facile pour la génération de brique sur le board
-    /* WARNING DB : faut trouver un moyen d'initialiser les briques par défaut !*/
-    //static std::vector<Position> DEFAULT_BRICS ;
-
 
 private:
     unsigned level_;
@@ -140,8 +137,6 @@ private:
      * \return la valeur validée
      */
     unsigned validateTimer(unsigned time);
-    //TODO
-    static inline void initializeBric ();
 };
 
 //prototypes

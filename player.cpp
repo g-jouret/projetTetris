@@ -12,8 +12,8 @@ Player::Player(std::string name, unsigned width, unsigned height):
 
 void Player::checkLines(){
     for(unsigned i = 0; i < board_.getHeight(); ++i){
-        if(board_.checkLine(board_.line(i)) == 1){
-            board_.swapLine(board_.line(i));
+        if(board_.checkLine(board_.getLine(i)) == 1){
+            board_.swapLine(board_.getLine(i));
             board_.gridActualisation(i);
         }
 
@@ -32,7 +32,7 @@ void Player::moveBric(unsigned direction){
         destination.move(direction);
         while(ok && count < destination.getShape().size()){
             if(! currentBric_.isIn(destination.getShape().at(count))){
-                ok = board_.checkCase(destination.getShape().at(count));
+                ok = board_.getCase(destination.getShape().at(count))->isFilled();
             }
             ++count;
         }
