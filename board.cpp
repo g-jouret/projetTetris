@@ -41,9 +41,11 @@ void Board::line(unsigned lineNum){
     for(Position p : grid_){
         if(p.getY() == lineNum){
             p.swapFilled();
+            lineGoDown(lineNum);
         }
     }
 }
+void Board::Line()
 
 bool Board::checkCase(Position c){
     return c.isFilled();
