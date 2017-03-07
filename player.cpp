@@ -24,32 +24,23 @@ void Player::rotateBric(){
 
 }
 
-/*std::vector<Position> Player::moveBric(unsigned direction){
-    switch(direction){
-    case 1:     //bas
-        if(board_.checkCase()){
-
+void Player::moveBric(unsigned direction){
+        bool ok {1};
+        unsigned count {0};
+        Bric destination = currentBric_;
+        destination.move(direction);
+        while(ok && count < destination.getShape().size()){
+            if(! currentBric_.isIn(destination.getShape().at(count))){
+                ok = board_.checkCase(destination.getShape().at(count));
+            }
+            ++count;
         }
-        break;
-    case 2:     //gauche
-        for(int i = 0; i < shape_.size(); ++i){
-            shape_.at(i).setX(-1);
+        if(ok){
+            //board_.swapFill(currentBric_.getShape()); WARNING : problème d'allocator
+            currentBric_.move(direction);
+            //board_.swapFill(currentBric_.getShape());
         }
-        break;
-    case 3:     //droite
-        for(int i = 0; i < shape_.size(); ++i){
-            shape_.at(i).setX(1);
-        }
-        break;
-    case 4:     //drop
-// TODO implémentation drop
-        break;
-    default:
-// TODO implémentation TetrisException
-        break;
-    }
-    currentBric_.move(direction);
-}*/
+}
 
 /*std::string Player::to_string() const{
     return board_.to_string();

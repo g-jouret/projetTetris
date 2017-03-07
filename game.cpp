@@ -13,7 +13,7 @@ Game::Game():
 /*
 unsigned Game::validate(unsigned value, unsigned def){
     return (value == 0)? def : value;
-}
+}*/
 /* WARNING : revoir les constructeur de copies / destructeurs etc
 void Game::setPlayer(std::string name1, std::string name2, unsigned width, unsigned height){
     players_.emplace(players_.begin()-1,

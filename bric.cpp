@@ -5,7 +5,7 @@
 
 namespace GJ_GW{
 
-Bric::Bric():shape_{NULL}, side_{0}
+Bric::Bric():shape_{Position(0,0)}, side_{0}
 {}
 
 Bric::Bric(std::vector<Position> shape): shape_ {shape}
@@ -20,20 +20,23 @@ Bric::Bric(std::vector<Position> shape): shape_ {shape}
     side_ = temp.size();
 }
 
+//Bric::Bric(const Bric & other): shape_{other.shape_}, side_{other.side_}{}
+// NOTE à voir si utile
+
 void Bric::move(unsigned direction){
     switch(direction){
     case 1:     //bas
-        for(int i = 0; i < shape_.size(); ++i){
+        for(unsigned i = 0; i < shape_.size(); ++i){
             shape_.at(i).setY(1);
         }
         break;
     case 2:     //gauche
-        for(int i = 0; i < shape_.size(); ++i){
+        for(unsigned i = 0; i < shape_.size(); ++i){
             shape_.at(i).setX(-1);
         }
         break;
     case 3:     //droite
-        for(int i = 0; i < shape_.size(); ++i){
+        for(unsigned i = 0; i < shape_.size(); ++i){
             shape_.at(i).setX(1);
         }
         break;
@@ -46,13 +49,23 @@ void Bric::move(unsigned direction){
     }
 }
 
-std::vector<Position> Bric::below(){
-    std::vector<Position> destination;
+bool Bric::isIn(Position toCheck){
+    bool ok {0};
+    for(Position p : shape_){
+        if(p == toCheck){
+            ok = 1;
+        }
+    }
+    return ok;
+}
 
+/*std::vector<Position> Bric::below(){
+    std::vector<Position> destination;
+    unsigned temp {0};
     for(Position pos : shape_){
-        //TODO implémentation
+
         // NOTE peut-être mieux avec un sort direct?
     }
-}
+}*/
 
 }

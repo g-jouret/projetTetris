@@ -52,14 +52,14 @@ public:
      *
      * \return l'abscisse
      */
-    inline unsigned getX();
+    inline unsigned getX() const;
 
     /*!
      * \brief Accesseur en lecture de l'ordonnée.
      *
      * \return l'ordonnée
      */
-    inline unsigned getY();
+    inline unsigned getY() const;
 
     /*!
      * \brief Accesseur en lecture de l'état d'une position sur la grille.
@@ -68,7 +68,7 @@ public:
      *
      * \return si la case à cette position est pleine ou non
      */
-    inline bool isFilled();
+    inline bool isFilled() const;
 
     inline void setX(int x);
 
@@ -104,20 +104,27 @@ public:
     //unsigned validate(unsigned value, unsigned limit);
 };
 
+//prototypes
+inline bool operator==(const Position & lhs, const Position & rhs);
+
 //implémentations inline
 
 //fonctions inline
+bool operator==(const Position & lhs, const Position & rhs)
+{
+    return lhs.getX() == rhs.getX() && lhs.getY() == rhs.getY();
+}
 
 //méthodes inline
-unsigned Position::getX(){
+unsigned Position::getX() const{
     return x_;
 }
 
-unsigned Position::getY(){
+unsigned Position::getY() const{
     return y_;
 }
 
-bool Position::isFilled(){
+bool Position::isFilled() const{
     return filled_;
 }
 
