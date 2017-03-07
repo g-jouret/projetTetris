@@ -47,11 +47,7 @@ void Board::swapLine(std::vector<Position> line){
 }
 
 Position * Board::getCase(Position destination){
-<<<<<<< HEAD
-    Position * pntPos {};
-=======
     Position * pntPos {0};
->>>>>>> origin/master
     for(Position p : grid_){
         if(p == destination){
             pntPos = &p;
