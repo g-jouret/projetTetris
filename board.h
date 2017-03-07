@@ -111,6 +111,7 @@ public:
      * \param line la ligne à modifié
      */
     void swapLine(std::vector<Position> getLine);
+
     /*!
      * \brief Méthode qui copie toutes les postions qui sont pleine dans un vecteur.
      *
