@@ -11,6 +11,8 @@ BricsBag::BricsBag(){
     std::vector<Position> bricL {Position(0,0),Position(1,0),Position(2,0),Position(0,1)};
     std::vector<Position> bricZ {Position(0,0),Position(1,0),Position(1,1),Position(2,1)};
     std::vector<Position> bricS {Position(1,0),Position(2,0),Position(0,1),Position(1,1)};
+    // NOTE : condition de génération de Bric : 1ère position sur le bord => y = 0
+    //      et la somme des y différents <= à la somme des x différents
     brics_.push_back(Bric(bricI));
     brics_.push_back(Bric(bricO));
     brics_.push_back(Bric(bricT));

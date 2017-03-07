@@ -101,7 +101,11 @@ public:
      *
      * \return si la brique courante peut effectuer son mouvement ou non
      */
+<<<<<<< HEAD
     Position * getCase(Position destination);
+=======
+    Position *getCase(Position destination);
+>>>>>>> origin/master
 
     /*!
      * \brief Méthode changeant l'état de toutes les Positions d'une ligne.
@@ -111,12 +115,15 @@ public:
      * \param line la ligne à modifié
      */
     void swapLine(std::vector<Position> getLine);
+<<<<<<< HEAD
     /*!
      * \brief Méthode qui copie toutes les postions qui sont pleine dans un vecteur.
      *
      * \param line ligne de position remplie
      */
      void emptyLine(std::vector<Position> getLine);
+=======
+>>>>>>> origin/master
 
     /*!
      * \brief Méthode qui actualise la grille de jeu après l'effacement d'une ligne remplies.
@@ -143,8 +150,6 @@ std::ostream & operator<<(std::ostream & out, const Board & in);
 //fonctions inline
 
 //méthodes inline
-
-// TODO : renvoyer référence : copie défensive
 std::vector<Position> Board::getGrid(){
     return grid_;
 }

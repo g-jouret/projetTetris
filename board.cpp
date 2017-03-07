@@ -10,7 +10,7 @@ width_{width}, height_{height}
 {
     for(unsigned i = 0; i < height; ++i){
         for(unsigned j = 0; j < width; ++j){
-            grid_.push_back(Position(j,i));
+            grid_.push_back(Position(j, i));
         }
     }
 }
@@ -47,7 +47,11 @@ void Board::swapLine(std::vector<Position> line){
 }
 
 Position * Board::getCase(Position destination){
+<<<<<<< HEAD
     Position * pntPos {};
+=======
+    Position * pntPos {0};
+>>>>>>> origin/master
     for(Position p : grid_){
         if(p == destination){
             pntPos = &p;
@@ -57,8 +61,6 @@ Position * Board::getCase(Position destination){
 }
 
 void Board::swapFill(Position &toSwap){
-    // NOTE : pourrait être intéressant de mettre une 2e vérif au cas où
-    // pour être sur que toutes les positions font bien le même swap
         toSwap.swapFilled();
 }
 
