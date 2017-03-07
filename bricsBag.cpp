@@ -1,5 +1,8 @@
 #include "bricsBag.h"
 #include <vector>
+#include <ostream>
+#include <iomanip>
+#include <iostream>
 
 namespace GJ_GW{
 
@@ -20,6 +23,7 @@ BricsBag::BricsBag(){
     brics_.push_back(Bric(bricL));
     brics_.push_back(Bric(bricZ));
     brics_.push_back(Bric(bricS));
+
 }
 
 BricsBag::BricsBag(std::vector<Bric> brics): brics_ {brics}

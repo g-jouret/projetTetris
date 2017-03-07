@@ -75,6 +75,10 @@ public:
      */
     inline unsigned getHeight();
 
+    inline unsigned getWidth();
+
+    bool checkCase(Position pos);
+
     /*!
      * \brief Méthode vérifiant l'état d'une ligne de la grille de jeu.
      *
@@ -91,7 +95,7 @@ public:
      * \param lineNum le numéro de la ligne à sélectionner
      * \return la ligne sélectionnée
      */
-    std::vector<Position> getLine(unsigned lineNum);
+    std::vector<Position> getLine(unsigned lineNum) const;
 
     /*!
      * \brief Méthode vérifiant que la brique courante peut se déplacer.
@@ -117,16 +121,16 @@ public:
      *
      * \param line ligne de position remplie
      */
-     void emptyLine(std::vector<Position> getLine);
+     void moveLine(std::vector<Position> getLine, unsigned lineNb);
 
     /*!
      * \brief Méthode qui actualise la grille de jeu après l'effacement d'une ligne remplies.
      *
      * \param lineNum le numéro de la ligne
      */
-    void gridActualisation(unsigned lineNum);
+    unsigned gridActualisation(unsigned lineNum);
 
-    void swapFill(Position &toSwap);
+    void swapCase(Position toSwap);
 
     std::string to_string() const;
 
@@ -150,6 +154,10 @@ std::vector<Position> Board::getGrid(){
 
 unsigned Board::getHeight(){
     return height_;
+}
+
+unsigned Board::getWidth(){
+    return width_;
 }
 
 }

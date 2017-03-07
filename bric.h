@@ -62,6 +62,8 @@ public:
      */
     inline std::vector<Position> getShape();
 
+    inline unsigned getSide();
+
     /*!
      * \brief Méthode qui tourne la brique.
      *
@@ -92,6 +94,10 @@ public:
 //méthodes inline
 std::vector<Position> Bric::getShape(){
     return shape_;
+}
+
+unsigned Bric::getSide(){
+    return side_;
 }
 
 }

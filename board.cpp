@@ -6,7 +6,7 @@
 namespace GJ_GW{
 
 Board::Board(unsigned width, unsigned height):
-width_{width}, height_{height}
+    width_{width}, height_{height}
 {
     for(unsigned i = 0; i < height; ++i){
         for(unsigned j = 0; j < width; ++j){
@@ -15,9 +15,19 @@ width_{width}, height_{height}
     }
 }
 
+Position * Board::getCase(Position destination){
+    Position * pntPos {0};
+    for(Position p : grid_){
+        if(p == destination){
+            pntPos = &p;
+        }
+    }
+    return pntPos;
+}
+
 // TODO : descendre les lignes au dessus de la ligne enlevé
 // le faire à chaque fois, pourrait y avoir des cas spéciaux
-std::vector<Position> Board::getLine(unsigned lineNum){
+std::vector<Position> Board::getLine(unsigned lineNum) const{
     std::vector<Position> theLine;
     for(Position p : grid_){
         if(p.getY() == lineNum){
@@ -25,6 +35,10 @@ std::vector<Position> Board::getLine(unsigned lineNum){
         }
     }
     return theLine;
+}
+
+bool Board::checkCase(Position pos){
+    return this->getCase(pos)->isFilled();
 }
 
 unsigned Board::checkLine(std::vector<Position> line){
@@ -40,49 +54,50 @@ unsigned Board::checkLine(std::vector<Position> line){
     return check;
 }
 
+void Board::swapCase(Position toSwap){
+    this->getCase(toSwap)->swapFilled();
+}
+
 void Board::swapLine(std::vector<Position> line){
     for(Position p : line){
-        p.swapFilled();
+        this->getCase(p)->swapFilled();
     }
 }
 
-Position * Board::getCase(Position destination){
-    Position * pntPos {0};
-    for(Position p : grid_){
-        if(p == destination){
-            pntPos = &p;
-        }
-    }
-    return pntPos;
-}
-
-void Board::swapFill(Position &toSwap){
-        toSwap.swapFilled();
-}
-
-void Board::emptyLine(std::vector<Position> line){
-    Position tmpPos;
+void Board::moveLine(std::vector<Position> line, unsigned lineNb){
     for(Position p : line){
-            if(p.isFilled()){
-                p.swapFilled();
-                tmpPos = *getCase(Position(p.getX(),p.getY()+1));
-                tmpPos.swapFilled();
-            }
+        if(p.isFilled()){
+            this->getCase(p)->swapFilled();
+            this->getCase(Position(p.getX(),p.getY()+lineNb))->swapFilled();
         }
+    }
 }
 
-void Board::gridActualisation(unsigned lineNum){
-    // TODO implémentation
+unsigned Board::gridActualisation(unsigned lineNum){
+    unsigned lineCount {1}, check;
+    this->swapLine(this->getLine(lineNum));
+    std::vector<Position> aboveLine;
+   do {
+        aboveLine = this->getLine(--lineNum);
+        check = this->checkLine(aboveLine);
+        if(check == 1){
+            ++lineCount;
+            this->swapLine(aboveLine);
+        } else{
+            this->moveLine(aboveLine, lineCount);
+        }
+    } while(check != 0 && lineNum != 0);
+    return lineCount;
 }
 
-/*std::string Board::to_string() const{
+std::string Board::to_string() const{
     std::string s;
-    for(Position p : grid_){
-        s += "|";
-        (p.isFilled())? s+="B" : s+=" ";
-        if(p.getX() == width_){
-            s += "|\n";
+    for(unsigned i = 0; i < height_; ++i){
+        for(Position p : this->getLine(i)){
+            s += "|";
+            (p.isFilled())? s+="B" : s+=" ";
         }
+        s += "\n";
     }
     return s;
 }
@@ -90,6 +105,6 @@ void Board::gridActualisation(unsigned lineNum){
 std::ostream & operator<<(std::ostream & out, const Board & in){
     out << in.to_string();
     return out;
-}*/
+}
 
 }

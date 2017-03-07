@@ -108,6 +108,8 @@ public:
      */
     void checkLines();
 
+    void generateBric();
+
     /*!
      * \brief Méthode permettant de tourner la brique courante de 45°.
      *
