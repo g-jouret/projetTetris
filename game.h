@@ -9,6 +9,7 @@
 #include "player.h"
 #include "bricsBag.h"
 #include "bric.h"
+#include "board.h"
 
 /*! \mainpage Le jeu de Tetris multijoueur, projet de c++ 2016-2017
  *
@@ -98,7 +99,7 @@ public:
     //void setPlayer(std::string name1, std::string name2, unsigned width, unsigned height);
 
     //inline std::vector<Player> getPlayers();  pour plus tard
-    inline Player getPlayer() const;
+    inline Player getPlayer();
 
     /*!
      * \brief Méthode vérifiant qu'aucune condition de fin de partie n'a été remplie.
@@ -152,7 +153,7 @@ std::ostream & operator<<(std::ostream & out, const Game & in);
 //fonctions inline
 
 //méthodes inline
-Player Game::getPlayer() const{
+Player Game::getPlayer(){
         return player_;
     }
 
