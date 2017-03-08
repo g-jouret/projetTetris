@@ -1,14 +1,11 @@
-#include "game.h"
-#include "player.h"
-#include <iostream>
+#include "mwtetris.h"
+#include <QApplication>
 
-using namespace std;
-
-int main()
+int main(int argc, char *argv[])
 {
-    GJ_GW::Player p("joueur",10,20);
-    cout << p.getBoard() << endl;
-    p.generateBric();
-    cout << p.getBoard() << endl;
-    return 0;
+    QApplication a(argc, argv);
+    MWTetris w;
+    w.show();
+
+    return a.exec();
 }

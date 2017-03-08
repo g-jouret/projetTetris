@@ -1,21 +1,35 @@
-TEMPLATE = app
-CONFIG += console c++14
-CONFIG -= app_bundle
-CONFIG -= qt
-QMAKE_CXXFLAGS += -pedantic-errors
+#-------------------------------------------------
+#
+# Project created by QtCreator 2017-03-08T23:26:00
+#
+#-------------------------------------------------
 
-SOURCES += main.cpp \
-    player.cpp \
+QT       += core gui
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+TARGET = projetTetris
+TEMPLATE = app
+
+
+SOURCES += main.cpp\
+        mwtetris.cpp \
+    board.cpp \
     bric.cpp \
     bricsBag.cpp \
     game.cpp \
+    player.cpp \
     position.cpp \
-    board.cpp
+    configdialog.cpp
 
-HEADERS += \
-    player.h \
+HEADERS  += mwtetris.h \
+    board.h \
     bric.h \
     bricsBag.h \
-    position.h \
     game.h \
-    board.h
+    player.h \
+    position.h \
+    configdialog.h
+
+FORMS    += mwtetris.ui \
+    configdialog.ui
