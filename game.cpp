@@ -2,29 +2,28 @@
 #include <vector>
 #include <ostream>
 #include <iomanip>
+#include <iostream>
 
 namespace GJ_GW {
 
-Game::Game():
-    level_ {0}, timer_ {MAXIMUM_TIMER},
+Game::Game(): level_ {0}, timer_ {MAXIMUM_TIMER}, player_ {Player()}
     //players_ {std::vector<Player> {   pour plus tard
-    player_ {Player("Joueur1", DEFAULT_WIDTH, DEFAULT_HEIGHT)}
+    //player_ {Player("Joueur1", DEFAULT_WIDTH, DEFAULT_HEIGHT)}
 {}
-/*
+
+Game::Game(std::string name, unsigned width, unsigned height):
+    level_ {0}, timer_ {MAXIMUM_TIMER}, player_ {Player(name, width, height)}
+    //player_ {Player(validateName(name), validate(width, DEFAULT_WIDTH), validate(height, DEFAULT_HEIGHT))}
+{}
+
+std::string Game::validateName(std::string name){
+    return (name.empty())? player_.getName() : name;
+}
+
 unsigned Game::validate(unsigned value, unsigned def){
     return (value == 0)? def : value;
-}*/
-/* WARNING : revoir les constructeur de copies / destructeurs etc
-void Game::setPlayer(std::string name1, std::string name2, unsigned width, unsigned height){
-    players_.emplace(players_.begin()-1,
-            Player(name1, validate(width, DEFAULT_WIDTH), validate(height, DEFAULT_HEIGHT),
-                                      }));
-            players_.emplace_back(
-                Player(name2, validate(width, DEFAULT_WIDTH), validate(height, DEFAULT_HEIGHT),
-                                          }));
-
 }
-*/
+// WARNING : revoir les constructeur de copies / destructeurs etc
 
 /*std::string Game::to_string() const{
     return player_.to_string();

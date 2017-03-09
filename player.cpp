@@ -6,6 +6,9 @@
 
 namespace GJ_GW{
 
+Player::Player(): Player(DEFAULT_NAME, DEFAULT_WIDTH, DEFAULT_HEIGHT)
+{}
+
 Player::Player(std::string name, unsigned width, unsigned height):
     name_ {name}, board_{Board(width, height)}, bag_{BricsBag()}, currentBric_{bag_.getNextBric()}
   // TODO : rearrange avant getnextbric

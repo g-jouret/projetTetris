@@ -17,7 +17,19 @@ namespace GJ_GW{
  * \brief Classe représentant un joueur.
  */
 class Player{
+public:
+    constexpr static unsigned DEFAULT_WIDTH {10};
+    /*!< Valeur par défaut de la largeur de la grille. */
 
+    constexpr static unsigned DEFAULT_HEIGHT {20};
+    /*!< Valeur par défaut de la hauteur de la grille. */
+
+    // NOTE : indice du board : 0 en haut, MAX en bas : plus facile pour la génération de brique sur le board
+
+    const std::string DEFAULT_NAME {"Joueur"};
+    /*!< Valeur par défaut du nom du joueur. */
+
+private:
     std::string name_;
     /*!< Le nom du joueur. */
 
@@ -43,6 +55,8 @@ class Player{
     /*!< Le nombre de ligne réalisée par le joueur */
 
 public:
+
+    Player();
 
     /*!
      * \brief Constructeur de \ref Player.

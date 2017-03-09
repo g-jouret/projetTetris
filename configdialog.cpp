@@ -12,3 +12,15 @@ ConfigDialog::~ConfigDialog()
 {
     delete ui;
 }
+
+std::string ConfigDialog::getName(){
+    return ui->leName->text().toStdString();
+}
+
+unsigned ConfigDialog::getWidth(){
+    return ui->sbWidth->value();
+}
+
+unsigned ConfigDialog::getHeight(){
+    return ui->sbHeight->value();
+}

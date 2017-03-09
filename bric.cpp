@@ -5,7 +5,7 @@
 
 namespace GJ_GW{
 
-Bric::Bric():shape_{Position(0,0)}, side_{0}
+Bric::Bric():Bric(std::vector<Position>{Position(0,0), Position(0,1)})
 {}
 
 Bric::Bric(std::vector<Position> shape): shape_ {shape}

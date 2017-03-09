@@ -15,6 +15,10 @@ public:
     explicit ConfigDialog(QWidget *parent = 0);
     ~ConfigDialog();
 
+    std::string getName();
+    unsigned getWidth();
+    unsigned getHeight();
+
 private:
     Ui::ConfigDialog *ui;
 };

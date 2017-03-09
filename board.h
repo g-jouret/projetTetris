@@ -21,7 +21,6 @@ namespace GJ_GW{
  * - sa grille de cases.
  */
 class Board{
-
     const unsigned width_;
     /*!< La largeur de la grille.
      *
@@ -45,6 +44,8 @@ class Board{
      */
 
 public:
+
+    //Board();
 
     /*!
      * \brief Constructeur de \ref Board.

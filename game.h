@@ -35,13 +35,7 @@ public:
     constexpr static unsigned MAXIMUM_TIMER {2000};
     /*!< Valeur maximale acceptée pour le timer. */
 
-    constexpr static unsigned DEFAULT_WIDTH {10};
-    /*!< Valeur par défaut de la largeur de la grille. */
 
-    constexpr static unsigned DEFAULT_HEIGHT {20};
-    /*!< Valeur par défaut de la hauteur de la grille. */
-
-    // NOTE : indice du board : 0 en haut, MAX en bas : plus facile pour la génération de brique sur le board
 
 private:
     unsigned level_;
@@ -70,6 +64,8 @@ public:
      * \brief Constructeur sans argument de \ref Game.
      */
     Game(); 
+
+    Game(std::string name, unsigned width, unsigned height);
 
     /*!
      * \brief Destructeur de \ref Game.
@@ -126,6 +122,16 @@ private:
      * \return la valeur validée
      */
     unsigned validate(unsigned value, unsigned def);
+
+    /*!
+     * \brief Méthode privée de validation du nom du joueur.
+     *
+     * Cette méthode vérifie que le nouveau nom du joueur n'est pas une chaine vide.
+     *
+     * \param name le nom à valider
+     * \return le nom validé
+     */
+    std::string validateName(std::string name);
 
     /*!
      * \brief Méthode privée de validation du timer.

@@ -2,7 +2,7 @@
 
 namespace GJ_GW{
 
-Position::Position(): x_ {0}, y_ {0}, filled_ {0}
+Position::Position(): Position(0,0)
 {}
 
 Position::Position(unsigned x, unsigned y): x_{x}, y_{y}, filled_{0}

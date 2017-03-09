@@ -5,6 +5,9 @@
 
 namespace GJ_GW{
 
+//Board::Board(): Board(DEFAULT_WIDTH, DEFAULT_HEIGHT)
+//{}
+
 Board::Board(unsigned width, unsigned height):
     width_{width}, height_{height}
 {
