@@ -1,5 +1,10 @@
 #include "mwtetris.h"
 #include "ui_mwtetris.h"
+#include <QApplication>
+#include <QtCore>
+#include <QtGui>
+#include <QPushButton>
+#include <QGridLayout>
 
 MWTetris::MWTetris(QWidget *parent) : QMainWindow(parent), ui(new Ui::MWTetris)
 {
@@ -50,7 +55,15 @@ void MWTetris::setName(){
 }
 
 void MWTetris::generateBoard(){
-    ui->listView->setGridSize(QSize(game_->getPlayer().getBoard().getWidth(), game_->getPlayer().getBoard().getHeight()));
+    QWidget *window = new QWidget();
+    QGridLayout *layout = new QGridLayout();
+
+    layout->addWidget(new QLabel("L"),0,0,1,1);
+    layout->addWidget(new QLabel("L"),0,1,1,1);
+    layout->addWidget(new QLabel("L"),1,1,1,1);
+    layout->addWidget(new QLabel("L"),1,0,1,1);
+
+    window->setLayout(layout);
 }
 
 void MWTetris::turn(){

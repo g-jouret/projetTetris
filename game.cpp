@@ -12,17 +12,22 @@ Game::Game(): level_ {0}, timer_ {MAXIMUM_TIMER}, player_ {Player()}
 {}
 
 Game::Game(std::string name, unsigned width, unsigned height):
-    level_ {0}, timer_ {MAXIMUM_TIMER}, player_ {Player(name, width, height)}
-    //player_ {Player(validateName(name), validate(width, DEFAULT_WIDTH), validate(height, DEFAULT_HEIGHT))}
+    level_ {0}, timer_ {MAXIMUM_TIMER}, //player_ {Player(name, width, height)}
+    player_ {Player(validateName(name), validateWidth(width), validateHeight(height))}
 {}
 
 std::string Game::validateName(std::string name){
     return (name.empty())? player_.getName() : name;
 }
 
-unsigned Game::validate(unsigned value, unsigned def){
-    return (value == 0)? def : value;
+unsigned Game::validateHeight(unsigned value){
+    return (value == 0)? player_.getBoard().getHeight() : value;
 }
+
+unsigned Game::validateWidth(unsigned value){
+    return (value == 0)? player_.getBoard().getWidth() : value;
+}
+
 // WARNING : revoir les constructeur de copies / destructeurs etc
 
 /*std::string Game::to_string() const{

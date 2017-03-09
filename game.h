@@ -112,16 +112,24 @@ public:
 private:
 
     /*!
-     * \brief Méthode privée de validation de la largeur et de la hauteur.
+     * \brief Méthode privée de validation de la hauteur.
      *
      * Cette méthode vérifie que la valeur de l'attribut n'est pas égale à zéro.
      *
      * \param value la valeur à valider
-     * \param def la valeur par défaut si l'argument est égal à 0
-     *
      * \return la valeur validée
      */
-    unsigned validate(unsigned value, unsigned def);
+    unsigned validateHeight(unsigned value);
+
+    /*!
+     * \brief Méthode privée de validation de la largeur.
+     *
+     * Cette méthode vérifie que la valeur de l'attribut n'est pas égale à zéro.
+     *
+     * \param value la valeur à valider
+     * \return la valeur validée
+     */
+    unsigned validateWidth(unsigned value);
 
     /*!
      * \brief Méthode privée de validation du nom du joueur.

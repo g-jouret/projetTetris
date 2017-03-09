@@ -6,48 +6,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>497</width>
+    <width>572</width>
     <height>570</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Tetris</string>
   </property>
+  <property name="iconSize">
+   <size>
+    <width>2</width>
+    <height>2</height>
+   </size>
+  </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QListView" name="listView">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>271</width>
-      <height>511</height>
-     </rect>
-    </property>
-    <property name="acceptDrops">
-     <bool>false</bool>
-    </property>
-    <property name="dragDropMode">
-     <enum>QAbstractItemView::InternalMove</enum>
-    </property>
-    <property name="resizeMode">
-     <enum>QListView::Adjust</enum>
-    </property>
-    <property name="gridSize">
-     <size>
-      <width>10</width>
-      <height>20</height>
-     </size>
-    </property>
-    <property name="viewMode">
-     <enum>QListView::IconMode</enum>
-    </property>
-   </widget>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>303</x>
+      <x>380</x>
       <y>40</y>
-      <width>176</width>
+      <width>180</width>
       <height>391</height>
      </rect>
     </property>
@@ -244,33 +222,25 @@
      </item>
     </layout>
    </widget>
-   <zorder>layoutWidget</zorder>
-   <zorder>listView</zorder>
-   <zorder>btnUp</zorder>
-   <zorder>btnRight</zorder>
-   <zorder>btnLeft</zorder>
-   <zorder>btnDown</zorder>
-   <zorder>horizontalSpacer_3</zorder>
-   <zorder>horizontalSpacer_3</zorder>
-   <zorder>horizontalSpacer_4</zorder>
-   <zorder>btnUp</zorder>
-   <zorder>btnUp</zorder>
-   <zorder>horizontalSpacer_3</zorder>
-   <zorder>horizontalSpacer_4</zorder>
-   <zorder>btnLeft</zorder>
-   <zorder>btnRight</zorder>
-   <zorder>horizontalSpacer_5</zorder>
-   <zorder>btnDown</zorder>
-   <zorder>horizontalSpacer_6</zorder>
-   <zorder>verticalSpacer</zorder>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>341</width>
+      <height>501</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout"/>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>497</width>
-     <height>20</height>
+     <width>572</width>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_Jeu">
