@@ -26,7 +26,7 @@ public:
 
     // NOTE : indice du board : 0 en haut, MAX en bas : plus facile pour la génération de brique sur le board
 
-    const static std::string DEFAULT_NAME;
+    //const static std::string DEFAULT_NAME;
     /*!< Valeur par défaut du nom du joueur. */
 
 private:

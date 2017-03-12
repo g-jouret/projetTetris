@@ -5,9 +5,9 @@
 
 namespace GJ_GW{
 
-const std::string Player::DEFAULT_NAME = "Joueur";
+//const std::string Player::DEFAULT_NAME = "Joueur";
 
-Player::Player(): Player(DEFAULT_NAME, DEFAULT_WIDTH, DEFAULT_HEIGHT)
+Player::Player(): Player("Joueur", DEFAULT_WIDTH, DEFAULT_HEIGHT)
 {}
 
 Player::Player(std::string name, unsigned width, unsigned height):

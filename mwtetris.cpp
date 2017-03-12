@@ -5,6 +5,7 @@
 #include <QtGui>
 #include <QPushButton>
 #include <QGridLayout>
+#include "position.h"
 
 MWTetris::MWTetris(GJ_GW::Game * game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris)
 {
@@ -45,7 +46,7 @@ void MWTetris::createGame(){
 
 void MWTetris::closeGame(){
     delete game_;
-    game_ = nullptr;
+    exit(0);
 }
 
 void MWTetris::setName(){
@@ -53,17 +54,20 @@ void MWTetris::setName(){
 }
 
 void MWTetris::generateBoard(){
-    QWidget *window = new QWidget();
-    QGridLayout *layout = new QGridLayout();
+    for(GJ_GW::Position p : game_->getPlayer().getBoard().getGrid()){
+        int x {p.getX()};
+        int y {p.getY()};
+        QLabel * lb = new QLabel();
 
-    QLabel * lb1 = new QLabel;
-    lb1->setStyleSheet("QLabel {background-color : red}");
-    layout->addWidget(lb1,0,0,1,1);
-    layout->addWidget(new QLabel,0,1,1,1);
-    layout->addWidget(new QLabel,1,1,1,1);
-    layout->addWidget(new QLabel,1,0,1,1);
+        lb->setStyleSheet("QLabel {background-color : white;}");
+                                /*"border-style : solid;"
+                                "border-width : 2px;"
+                                "border-color : black;}");*/
+        ui->gridLayout->addWidget(lb, y, x, 1, 1);
 
-    window->setLayout(layout);
+    }
+
+
 }
 
 void MWTetris::turn(){

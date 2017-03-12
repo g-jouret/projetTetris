@@ -141,7 +141,6 @@ Player Game::getPlayer(){
 /* TODO Principal :
  * les destructeurs & constructeurs + copies défensives                     DUO
  * génération de la brique courrante                                        GJ
- * gestion des lignes après suppression                                     GW
  * vérification de fin de partie (le endgame gère tout)                     DUO
  * rearrange du bricsbag                                                    GJ
  * Gestion du niveau de difficulté & itératif                               GW + DUO
