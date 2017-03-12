@@ -13,11 +13,11 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QListView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -35,8 +35,7 @@ public:
     QAction *action_Fermer;
     QAction *action_Quitter;
     QWidget *centralWidget;
-    QListView *listView;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *lbName;
@@ -58,6 +57,8 @@ public:
     QSpacerItem *horizontalSpacer_5;
     QPushButton *btnDown;
     QSpacerItem *horizontalSpacer_6;
+    QWidget *gridLayoutWidget;
+    QGridLayout *gridLayout;
     QMenuBar *menuBar;
     QMenu *menu_Jeu;
 
@@ -65,7 +66,8 @@ public:
     {
         if (MWTetris->objectName().isEmpty())
             MWTetris->setObjectName(QStringLiteral("MWTetris"));
-        MWTetris->resize(497, 570);
+        MWTetris->resize(572, 570);
+        MWTetris->setIconSize(QSize(2, 2));
         action_Nouveau = new QAction(MWTetris);
         action_Nouveau->setObjectName(QStringLiteral("action_Nouveau"));
         action_Fermer = new QAction(MWTetris);
@@ -75,18 +77,10 @@ public:
         action_Quitter->setObjectName(QStringLiteral("action_Quitter"));
         centralWidget = new QWidget(MWTetris);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        listView = new QListView(centralWidget);
-        listView->setObjectName(QStringLiteral("listView"));
-        listView->setGeometry(QRect(20, 20, 271, 511));
-        listView->setAcceptDrops(false);
-        listView->setDragDropMode(QAbstractItemView::InternalMove);
-        listView->setResizeMode(QListView::Adjust);
-        listView->setGridSize(QSize(10, 20));
-        listView->setViewMode(QListView::IconMode);
-        widget = new QWidget(centralWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(303, 40, 176, 391));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(centralWidget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(380, 40, 180, 391));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
@@ -94,7 +88,7 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        lbName = new QLabel(widget);
+        lbName = new QLabel(layoutWidget);
         lbName->setObjectName(QStringLiteral("lbName"));
 
         horizontalLayout->addWidget(lbName);
@@ -103,7 +97,7 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        lbPlayerName = new QLabel(widget);
+        lbPlayerName = new QLabel(layoutWidget);
         lbPlayerName->setObjectName(QStringLiteral("lbPlayerName"));
 
         horizontalLayout->addWidget(lbPlayerName);
@@ -114,7 +108,7 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        lbScore = new QLabel(widget);
+        lbScore = new QLabel(layoutWidget);
         lbScore->setObjectName(QStringLiteral("lbScore"));
 
         horizontalLayout_2->addWidget(lbScore);
@@ -123,7 +117,7 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer_2);
 
-        lcdNumPlayerScore = new QLCDNumber(widget);
+        lcdNumPlayerScore = new QLCDNumber(layoutWidget);
         lcdNumPlayerScore->setObjectName(QStringLiteral("lcdNumPlayerScore"));
 
         horizontalLayout_2->addWidget(lcdNumPlayerScore);
@@ -142,7 +136,7 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_3);
 
-        btnUp = new QPushButton(widget);
+        btnUp = new QPushButton(layoutWidget);
         btnUp->setObjectName(QStringLiteral("btnUp"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(80);
@@ -162,14 +156,14 @@ public:
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        btnLeft = new QPushButton(widget);
+        btnLeft = new QPushButton(layoutWidget);
         btnLeft->setObjectName(QStringLiteral("btnLeft"));
         sizePolicy.setHeightForWidth(btnLeft->sizePolicy().hasHeightForWidth());
         btnLeft->setSizePolicy(sizePolicy);
 
         horizontalLayout_4->addWidget(btnLeft);
 
-        btnRight = new QPushButton(widget);
+        btnRight = new QPushButton(layoutWidget);
         btnRight->setObjectName(QStringLiteral("btnRight"));
 
         horizontalLayout_4->addWidget(btnRight);
@@ -184,7 +178,7 @@ public:
 
         horizontalLayout_5->addItem(horizontalSpacer_5);
 
-        btnDown = new QPushButton(widget);
+        btnDown = new QPushButton(layoutWidget);
         btnDown->setObjectName(QStringLiteral("btnDown"));
         sizePolicy.setHeightForWidth(btnDown->sizePolicy().hasHeightForWidth());
         btnDown->setSizePolicy(sizePolicy);
@@ -198,20 +192,18 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_5);
 
+        gridLayoutWidget = new QWidget(centralWidget);
+        gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
+        gridLayoutWidget->setGeometry(QRect(20, 20, 341, 501));
+        gridLayout = new QGridLayout(gridLayoutWidget);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
         MWTetris->setCentralWidget(centralWidget);
-        listView->raise();
-        btnUp->raise();
-        btnRight->raise();
-        btnLeft->raise();
-        btnDown->raise();
-        btnUp->raise();
-        btnUp->raise();
-        btnLeft->raise();
-        btnRight->raise();
-        btnDown->raise();
         menuBar = new QMenuBar(MWTetris);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 497, 20));
+        menuBar->setGeometry(QRect(0, 0, 572, 25));
         menu_Jeu = new QMenu(menuBar);
         menu_Jeu->setObjectName(QStringLiteral("menu_Jeu"));
         MWTetris->setMenuBar(menuBar);

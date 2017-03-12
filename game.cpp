@@ -12,8 +12,8 @@ Game::Game(): level_ {0}, timer_ {MAXIMUM_TIMER}, player_ {Player()}
 {}
 
 Game::Game(std::string name, unsigned width, unsigned height):
-    level_ {0}, timer_ {MAXIMUM_TIMER}, //player_ {Player(name, width, height)}
-    player_ {Player(validateName(name), validateWidth(width), validateHeight(height))}
+    level_ {0}, timer_ {MAXIMUM_TIMER},
+    player_ {Player(name, width, height)}
 {}
 
 std::string Game::validateName(std::string name){

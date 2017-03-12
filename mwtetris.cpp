@@ -1,16 +1,14 @@
 #include "mwtetris.h"
 #include "ui_mwtetris.h"
-#include <QApplication>
+/*#include <QApplication>
 #include <QtCore>
 #include <QtGui>
 #include <QPushButton>
-#include <QGridLayout>
+#include <QGridLayout>*/
 
-MWTetris::MWTetris(QWidget *parent) : QMainWindow(parent), ui(new Ui::MWTetris)
+MWTetris::MWTetris(GJ_GW::Game *game, QWidget *parent) : game_{game}, QMainWindow{parent}, ui{new Ui::MWTetris}
 {
     ui->setupUi(this);
-    GJ_GW::Game *game = new GJ_GW::Game();
-    game_ = game;
     setName();
     generateBoard();
     connexion();

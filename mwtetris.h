@@ -10,14 +10,13 @@ namespace Ui {
 class MWTetris;
 }
 
-class MWTetris : public QMainWindow
-{
+class MWTetris : public QMainWindow{
     Q_OBJECT
     GJ_GW::Game * game_;
     Ui::MWTetris *ui;
 
 public:
-    explicit MWTetris(QWidget *parent = 0);
+    explicit MWTetris(GJ_GW::Game * game, QWidget *parent = 0);
     ~MWTetris();
 
 private:
