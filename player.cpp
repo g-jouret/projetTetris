@@ -1,10 +1,11 @@
-
 #include <vector>
 #include <ostream>
 #include <iomanip>
 #include "player.h"
 
 namespace GJ_GW{
+
+const std::string Player::DEFAULT_NAME = "Joueur";
 
 Player::Player(): Player(DEFAULT_NAME, DEFAULT_WIDTH, DEFAULT_HEIGHT)
 {}
@@ -13,6 +14,10 @@ Player::Player(std::string name, unsigned width, unsigned height):
     name_ {name}, board_{Board(width, height)}, bag_{BricsBag()}, currentBric_{bag_.getNextBric()}
   // TODO : rearrange avant getnextbric
 {}
+
+std::string Player::validateName(std::string name){
+    return (name.empty())? name_ : name;
+}
 
 void Player::checkLines(){
     for(unsigned i = board_.getHeight()-1; i != 0; --i){
@@ -25,7 +30,7 @@ void Player::checkLines(){
 }
 
 void Player::generateBric(){
-    bool ok {true};
+    bool ok {1};
     unsigned count{0};
     unsigned midBoard = board_.getWidth()/2;
     unsigned midSide = currentBric_.getSide()/2;
@@ -48,25 +53,25 @@ void Player::rotateBric(){
 }
 
 void Player::moveBric(unsigned direction){
-        bool ok {1};
-        unsigned count {0};
-        Bric destination = currentBric_;
-        destination.move(direction);
-        while(ok && count < destination.getShape().size()){
-            if(! currentBric_.isIn(destination.getShape().at(count))){
-                ok = ! board_.checkCase(destination.getShape().at(count));
-            }
-            ++count;
+    bool ok {1};
+    unsigned count {0};
+    Bric destination = currentBric_;
+    destination.move(direction);
+    while(ok && count < destination.getShape().size()){
+        if(! currentBric_.isIn(destination.getShape().at(count))){
+            ok = ! board_.checkCase(destination.getShape().at(count));
         }
-        if(ok){
-            for(Position p : currentBric_.getShape()){
-                board_.swapCase(p);
-            }
-            currentBric_.move(direction);
-            for(Position p : currentBric_.getShape()){
-                board_.swapCase(p);
-            }
+        ++count;
+    }
+    if(ok){
+        for(Position p : currentBric_.getShape()){
+            board_.swapCase(p);
         }
+        currentBric_.move(direction);
+        for(Position p : currentBric_.getShape()){
+            board_.swapCase(p);
+        }
+    }
 }
 
 // TODO : next currentBric_ + show next bric

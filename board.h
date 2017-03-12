@@ -122,7 +122,7 @@ public:
      *
      * \param line ligne de position remplie
      */
-     void moveLine(std::vector<Position> getLine, unsigned lineNb);
+    void moveLine(std::vector<Position> getLine, unsigned lineNb);
 
     /*!
      * \brief Méthode qui actualise la grille de jeu après l'effacement d'une ligne remplies.
@@ -137,7 +137,26 @@ public:
 
     friend std::ostream & operator<<(std::ostream & out, const Board & in);
 
+private:
+    /*!
+     * \brief Méthode privée de validation de la hauteur.
+     *
+     * Cette méthode vérifie que la valeur de l'attribut n'est pas égale à zéro.
+     *
+     * \param value la valeur à valider
+     * \return la valeur validée
+     */
+    unsigned validateHeight(unsigned value);
 
+    /*!
+     * \brief Méthode privée de validation de la largeur.
+     *
+     * Cette méthode vérifie que la valeur de l'attribut n'est pas égale à zéro.
+     *
+     * \param value la valeur à valider
+     * \return la valeur validée
+     */
+    unsigned validateWidth(unsigned value);
 };
 
 //prototypes

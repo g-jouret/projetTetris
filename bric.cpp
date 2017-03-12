@@ -20,15 +20,10 @@ Bric::Bric(std::vector<Position> shape): shape_ {shape}
     side_ = temp.size();
 }
 
-//Bric::Bric(const Bric & other): shape_{other.shape_}, side_{other.side_}{}
-// NOTE à voir si utile
-
 void Bric::move(unsigned direction){
     switch(direction){
-    case 1:     //bas
-        for(unsigned i = 0; i < shape_.size(); ++i){
-            shape_.at(i).setY(1);
-        }
+    case 1:     //drop
+        // TODO implémentation drop
         break;
     case 2:     //gauche
         for(unsigned i = 0; i < shape_.size(); ++i){
@@ -40,11 +35,10 @@ void Bric::move(unsigned direction){
             shape_.at(i).setX(1);
         }
         break;
-    case 4:     //drop
-// TODO implémentation drop
-        break;
-    default:
-        throw std::string("Ce n'est pas une direction valide");
+    default:     //bas
+        for(unsigned i = 0; i < shape_.size(); ++i){
+            shape_.at(i).setY(1);
+        }
         break;
     }
 }

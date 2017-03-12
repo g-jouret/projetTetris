@@ -87,8 +87,8 @@ public:
      */
     //void move(unsigned x, unsigned y);
 
-//private:
-// NOTE : semble inutile car vérification en amont
+    //private:
+    // NOTE : semble inutile car vérification en amont
     /*!
      * \brief Méthode privée de validation de x et y.
      *

@@ -1,18 +1,18 @@
 #include "mwtetris.h"
 #include "ui_mwtetris.h"
-/*#include <QApplication>
+#include <QApplication>
 #include <QtCore>
 #include <QtGui>
 #include <QPushButton>
-#include <QGridLayout>*/
+#include <QGridLayout>
 
-MWTetris::MWTetris(GJ_GW::Game *game, QWidget *parent) : game_{game}, QMainWindow{parent}, ui{new Ui::MWTetris}
+MWTetris::MWTetris(GJ_GW::Game * game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris)
 {
     ui->setupUi(this);
-    setName();
-    generateBoard();
     connexion();
 
+    setName();
+    generateBoard();
 }
 
 MWTetris::~MWTetris(){
@@ -56,10 +56,12 @@ void MWTetris::generateBoard(){
     QWidget *window = new QWidget();
     QGridLayout *layout = new QGridLayout();
 
-    layout->addWidget(new QLabel("L"),0,0,1,1);
-    layout->addWidget(new QLabel("L"),0,1,1,1);
-    layout->addWidget(new QLabel("L"),1,1,1,1);
-    layout->addWidget(new QLabel("L"),1,0,1,1);
+    QLabel * lb1 = new QLabel;
+    lb1->setStyleSheet("QLabel {background-color : red}");
+    layout->addWidget(lb1,0,0,1,1);
+    layout->addWidget(new QLabel,0,1,1,1);
+    layout->addWidget(new QLabel,1,1,1,1);
+    layout->addWidget(new QLabel,1,0,1,1);
 
     window->setLayout(layout);
 }
@@ -68,8 +70,12 @@ void MWTetris::turn(){
     game_->getPlayer().rotateBric();
 }
 
+void MWTetris::down(){
+    game_->getPlayer().moveBric();
+}
+
 void MWTetris::drop(){
-    game_->getPlayer().moveBric(4);
+    game_->getPlayer().moveBric(1);
 }
 
 void MWTetris::left(){

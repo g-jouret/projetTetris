@@ -6,27 +6,15 @@
 
 namespace GJ_GW {
 
-Game::Game(): level_ {0}, timer_ {MAXIMUM_TIMER}, player_ {Player()}
-    //players_ {std::vector<Player> {   pour plus tard
-    //player_ {Player("Joueur1", DEFAULT_WIDTH, DEFAULT_HEIGHT)}
+Game::Game(): level_ {0}, timer_ {MAXIMUM_TIMER}
+  //players_ {std::vector<Player> {   pour plus tard
+  //player_ {Player("Joueur1", DEFAULT_WIDTH, DEFAULT_HEIGHT)}
 {}
 
 Game::Game(std::string name, unsigned width, unsigned height):
     level_ {0}, timer_ {MAXIMUM_TIMER},
     player_ {Player(name, width, height)}
 {}
-
-std::string Game::validateName(std::string name){
-    return (name.empty())? player_.getName() : name;
-}
-
-unsigned Game::validateHeight(unsigned value){
-    return (value == 0)? player_.getBoard().getHeight() : value;
-}
-
-unsigned Game::validateWidth(unsigned value){
-    return (value == 0)? player_.getBoard().getWidth() : value;
-}
 
 // WARNING : revoir les constructeur de copies / destructeurs etc
 

@@ -617,11 +617,12 @@ debug/mwtetris.o: mwtetris.cpp mwtetris.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qinputmethod.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QButtonGroup \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QHBoxLayout \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QGridLayout \
+		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qgridlayout.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qlayout.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QHBoxLayout \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QHeaderView \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qheaderview.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qabstractitemview.h \
@@ -640,8 +641,6 @@ debug/mwtetris.o: mwtetris.cpp mwtetris.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qrubberband.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QLCDNumber \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qlcdnumber.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QListView \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qlistview.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QMenu \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qmenu.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QMenuBar \
@@ -854,8 +853,7 @@ debug/mwtetris.o: mwtetris.cpp mwtetris.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qtextlist.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qtexttable.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qdesktopservices.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qtguiversion.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QGridLayout
+		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qtguiversion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mwtetris.o mwtetris.cpp
 
 debug/board.o: board.cpp board.h \

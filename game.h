@@ -5,7 +5,6 @@
 #include <array>
 #include <ostream>
 #include <iomanip>
-#include <chrono>
 #include "player.h"
 #include "bricsBag.h"
 #include "bric.h"
@@ -63,7 +62,7 @@ public:
     /*!
      * \brief Constructeur sans argument de \ref Game.
      */
-    Game(); 
+    Game();
 
     Game(std::string name, unsigned width, unsigned height);
 
@@ -110,37 +109,6 @@ public:
     friend std::ostream & operator<<(std::ostream & out, const Game & in);
 
 private:
-
-    /*!
-     * \brief Méthode privée de validation de la hauteur.
-     *
-     * Cette méthode vérifie que la valeur de l'attribut n'est pas égale à zéro.
-     *
-     * \param value la valeur à valider
-     * \return la valeur validée
-     */
-    unsigned validateHeight(unsigned value);
-
-    /*!
-     * \brief Méthode privée de validation de la largeur.
-     *
-     * Cette méthode vérifie que la valeur de l'attribut n'est pas égale à zéro.
-     *
-     * \param value la valeur à valider
-     * \return la valeur validée
-     */
-    unsigned validateWidth(unsigned value);
-
-    /*!
-     * \brief Méthode privée de validation du nom du joueur.
-     *
-     * Cette méthode vérifie que le nouveau nom du joueur n'est pas une chaine vide.
-     *
-     * \param name le nom à valider
-     * \return le nom validé
-     */
-    std::string validateName(std::string name);
-
     /*!
      * \brief Méthode privée de validation du timer.
      *
@@ -163,8 +131,8 @@ std::ostream & operator<<(std::ostream & out, const Game & in);
 
 //méthodes inline
 Player Game::getPlayer(){
-        return player_;
-    }
+    return player_;
+}
 
 }
 

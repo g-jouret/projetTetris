@@ -18,15 +18,15 @@ namespace GJ_GW{
  */
 class Player{
 public:
-    constexpr static unsigned DEFAULT_WIDTH {10};
+    constexpr static unsigned DEFAULT_WIDTH {10u};
     /*!< Valeur par défaut de la largeur de la grille. */
 
-    constexpr static unsigned DEFAULT_HEIGHT {20};
+    constexpr static unsigned DEFAULT_HEIGHT {20u};
     /*!< Valeur par défaut de la hauteur de la grille. */
 
     // NOTE : indice du board : 0 en haut, MAX en bas : plus facile pour la génération de brique sur le board
 
-    const std::string DEFAULT_NAME {"Joueur"};
+    const static std::string DEFAULT_NAME;
     /*!< Valeur par défaut du nom du joueur. */
 
 private:
@@ -131,8 +131,6 @@ public:
      */
     void rotateBric();
 
-    // NOTE : sert aussi à générer la nouvelle brique?
-    // NOTE : direction vers le bas : différence entre descente auto et drop du player (toute la hauteur)
     /*!
      * \brief Méthode permettant une translation de la brique courante dans une direction donnée.
      *
@@ -140,11 +138,22 @@ public:
      *
      * \param direction la direction vers laquelle la pièce est bougée
      */
-    void moveBric(unsigned direction);
+    void moveBric(unsigned direction = 0);
 
     std::string to_string() const;
 
     friend std::ostream & operator<<(std::ostream & out, const Player & in);
+
+private:
+    /*!
+     * \brief Méthode privée de validation du nom du joueur.
+     *
+     * Cette méthode vérifie que le nouveau nom du joueur n'est pas une chaine vide.
+     *
+     * \param name le nom à valider
+     * \return le nom validé
+     */
+    std::string validateName(std::string name);
 };
 //prototypes
 

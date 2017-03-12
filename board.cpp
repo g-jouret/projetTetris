@@ -5,17 +5,20 @@
 
 namespace GJ_GW{
 
-//Board::Board(): Board(DEFAULT_WIDTH, DEFAULT_HEIGHT)
-//{}
-
-Board::Board(unsigned width, unsigned height):
-    width_{width}, height_{height}
-{
+Board::Board(unsigned width, unsigned height): width_{width}, height_{height}{
     for(unsigned i = 0; i < height; ++i){
         for(unsigned j = 0; j < width; ++j){
-            grid_.push_back(Position(j, i));
+            grid_.emplace_back(Position(j, i));
         }
     }
+}
+
+unsigned Board::validateHeight(unsigned value){
+    return (value == 0)? height_ : value;
+}
+
+unsigned Board::validateWidth(unsigned value){
+    return (value == 0)? width_ : value;
 }
 
 Position * Board::getCase(Position destination){
@@ -80,7 +83,7 @@ unsigned Board::gridActualisation(unsigned lineNum){
     unsigned lineCount {1}, check;
     this->swapLine(this->getLine(lineNum));
     std::vector<Position> aboveLine;
-   do {
+    do {
         aboveLine = this->getLine(--lineNum);
         check = this->checkLine(aboveLine);
         if(check == 1){
