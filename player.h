@@ -16,7 +16,7 @@ namespace GJ_GW{
  */
 class Player{
 
-    const std::string name_;
+    std::string name_;
     /*!< Le nom du joueur. */
 
     unsigned score_;
@@ -90,7 +90,11 @@ public:
      *
      * \return la grille de jeu
      */
-    Board &getBoard();
+    Board getBoard();
+
+    void setName(std::string name);
+
+    void setBoard(unsigned width, unsigned height);
 
     /*!
      * \brief Accesseur en lecture du nombre de ligne remplies par le joueur.

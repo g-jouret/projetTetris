@@ -24,6 +24,7 @@ private:
     void setName();
     void printFilled();
     void generateBric();
+    void resetGame();
 
 private slots:
     void createGame();

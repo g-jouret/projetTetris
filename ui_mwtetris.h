@@ -58,7 +58,7 @@ public:
     QPushButton *btnDown;
     QSpacerItem *horizontalSpacer_6;
     QWidget *gridLayoutWidget;
-    QGridLayout *gridLayout;
+    QGridLayout *boardGrid;
     QMenuBar *menuBar;
     QMenu *menu_Jeu;
 
@@ -195,12 +195,12 @@ public:
         gridLayoutWidget = new QWidget(centralWidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
         gridLayoutWidget->setGeometry(QRect(20, 20, 341, 501));
-        gridLayout = new QGridLayout(gridLayoutWidget);
-        gridLayout->setSpacing(6);
-        gridLayout->setContentsMargins(11, 11, 11, 11);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        gridLayout->setSizeConstraint(QLayout::SetNoConstraint);
-        gridLayout->setContentsMargins(0, 0, 0, 0);
+        boardGrid = new QGridLayout(gridLayoutWidget);
+        boardGrid->setSpacing(6);
+        boardGrid->setContentsMargins(11, 11, 11, 11);
+        boardGrid->setObjectName(QStringLiteral("boardGrid"));
+        boardGrid->setSizeConstraint(QLayout::SetNoConstraint);
+        boardGrid->setContentsMargins(0, 0, 0, 0);
         MWTetris->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MWTetris);
         menuBar->setObjectName(QStringLiteral("menuBar"));

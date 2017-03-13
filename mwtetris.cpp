@@ -1,6 +1,8 @@
 #include "mwtetris.h"
 #include "ui_mwtetris.h"
 #include "configdialog.h"
+#include <QGridLayout>
+#include <QLabel>
 
 MWTetris::MWTetris(GJ_GW::Game * game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris)
 {
@@ -27,6 +29,8 @@ void MWTetris::createGame(){
     auto ret = cd.exec();
     if(ret == QDialog::Rejected) return;
 
+    resetGame();
+
     std::string name {cd.getName()};
     unsigned width {cd.getWidth()};
     unsigned height {cd.getHeight()};
@@ -34,8 +38,9 @@ void MWTetris::createGame(){
     if(! name.empty() || width != 0 || height != 0){
         game_->setPlayer(name, width, height);
         setName();
-        generateBoard();
+
     }
+    generateBoard();
     generateBric();
 }
 
@@ -56,12 +61,22 @@ void MWTetris::generateBoard(){
                                 /*"border-style : solid;"
                                 "border-width : 2px;"
                                 "border-color : black;}");*/
-        ui->gridLayout->addWidget(lb, p.getY(), p.getX(), 1, 1);
+        ui->boardGrid->addWidget(lb, p.getY(), p.getX(), 1, 1);
     }
 }
 
-void MWTetris::printFilled(){
+void MWTetris::resetGame(){
+    QLayoutItem *child;
+    while((child = ui->boardGrid->takeAt(0)) != 0){
+        delete child->widget();
+    }
+    // TODO : game.reset => remise de toutes les cases en unfilled
+    // NOTE : reset => score, nbLines, level & timer remis à 0?
+    // WARNING : bug : ne répond plus quand trop grande diminution de la largeur(?)
+}
 
+void MWTetris::printFilled(){
+// TODO : implémentation
 }
 
 void MWTetris::turn(){

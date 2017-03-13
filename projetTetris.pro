@@ -10,7 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = projetTetris
 TEMPLATE = app
-
+CONFIG += C++14
 
 SOURCES += main.cpp\
         mwtetris.cpp \

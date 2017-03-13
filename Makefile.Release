@@ -125,7 +125,13 @@ compiler_rcc_clean:
 compiler_moc_header_make_all: release/moc_mwtetris.cpp release/moc_configdialog.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) release\moc_mwtetris.cpp release\moc_configdialog.cpp
-release/moc_mwtetris.cpp: C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QMainWindow \
+release/moc_mwtetris.cpp: game.h \
+		player.h \
+		board.h \
+		position.h \
+		bric.h \
+		bricsBag.h \
+		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qwidget.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qwindowdefs.h \
@@ -225,18 +231,6 @@ release/moc_mwtetris.cpp: C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QMainWi
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qicon.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qframe.h \
-		configdialog.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QDialog \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qdialog.h \
-		game.h \
-		player.h \
-		board.h \
-		position.h \
-		bric.h \
-		bricsBag.h \
 		mwtetris.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/bin/moc.exe
 	C:\Qt\Qt5.7.0\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/win32-g++ -I"D:/GJouret/Documents/ESI/Bloc 2/CPP/projetTetris" -IC:/Qt/Qt5.7.0/5.7/mingw53_32/include -IC:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets -IC:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui -IC:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtANGLE -IC:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore -IC:/Qt/Qt5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward mwtetris.h -o release\moc_mwtetris.cpp
@@ -369,6 +363,12 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 ####### Compile
 
 release/main.o: main.cpp mwtetris.h \
+		game.h \
+		player.h \
+		board.h \
+		position.h \
+		bric.h \
+		bricsBag.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qwidget.h \
@@ -469,18 +469,6 @@ release/main.o: main.cpp mwtetris.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qicon.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qframe.h \
-		configdialog.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QDialog \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qdialog.h \
-		game.h \
-		player.h \
-		board.h \
-		position.h \
-		bric.h \
-		bricsBag.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QApplication \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qapplication.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qcoreapplication.h \
@@ -491,6 +479,12 @@ release/main.o: main.cpp mwtetris.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o main.cpp
 
 release/mwtetris.o: mwtetris.cpp mwtetris.h \
+		game.h \
+		player.h \
+		board.h \
+		position.h \
+		bric.h \
+		bricsBag.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qwidget.h \
@@ -591,18 +585,6 @@ release/mwtetris.o: mwtetris.cpp mwtetris.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qicon.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qframe.h \
-		configdialog.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QDialog \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qdialog.h \
-		game.h \
-		player.h \
-		board.h \
-		position.h \
-		bric.h \
-		bricsBag.h \
 		ui_mwtetris.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QAction \
@@ -627,6 +609,7 @@ release/mwtetris.o: mwtetris.cpp mwtetris.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qheaderview.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qabstractitemview.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qframe.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
@@ -641,6 +624,8 @@ release/mwtetris.o: mwtetris.cpp mwtetris.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qrubberband.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QLCDNumber \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qlcdnumber.h \
+		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QLabel \
+		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qlabel.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QMenu \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qmenu.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QMenuBar \
@@ -651,209 +636,9 @@ release/mwtetris.o: mwtetris.cpp mwtetris.h \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QSpacerItem \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QVBoxLayout \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QWidget \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/QtCore \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/QtCoreDepends \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qabstractanimation.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qanimationgroup.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qparallelanimationgroup.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qpauseanimation.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qpropertyanimation.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qvariantanimation.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qeasingcurve.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qsequentialanimationgroup.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qtextcodec.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qendian.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qlibraryinfo.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qdatetime.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qbuffer.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qdir.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qfileinfo.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qdiriterator.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qfileselector.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/QObject \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/QStringList \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qfilesystemwatcher.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qlockfile.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qloggingcategory.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qprocess.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qresource.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qsavefile.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qsettings.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qstandardpaths.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qstorageinfo.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qtemporarydir.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/QScopedPointer \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qtemporaryfile.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qabstractproxymodel.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qidentityproxymodel.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qsortfilterproxymodel.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qstringlistmodel.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qjsonarray.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qjsonvalue.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qjsondocument.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qjsonobject.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qabstracteventdispatcher.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qabstractnativeeventfilter.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qbasictimer.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qmath.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qmetaobject.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qmimedata.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qobjectcleanuphandler.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qpointer.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qsharedmemory.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qsignalmapper.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qsocketnotifier.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qsystemsemaphore.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qtimer.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qtranslator.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qwineventnotifier.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qmimedatabase.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qmimetype.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qfactoryinterface.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qlibrary.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qplugin.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qpluginloader.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/quuid.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qabstractstate.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qabstracttransition.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qeventtransition.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qfinalstate.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qhistorystate.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qsignaltransition.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qstate.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qstatemachine.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qexception.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qfuture.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qfutureinterface.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qrunnable.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qresultstore.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qfuturesynchronizer.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qfuturewatcher.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qreadwritelock.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qsemaphore.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qthread.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qthreadpool.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qthreadstorage.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qwaitcondition.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qarraydataops.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qarraydatapointer.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qbitarray.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qbytearraymatcher.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qcache.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qcollator.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qcommandlineoption.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qcommandlineparser.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qcryptographichash.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qelapsedtimer.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qlinkedlist.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qmessageauthenticationcode.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qqueue.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qscopedvaluerollback.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qstack.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qtextboundaryfinder.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qtimeline.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qtimezone.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qversionnumber.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qxmlstream.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qtcoreversion.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/QtGui \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/QtGuiDepends \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qaccessible.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qaccessiblebridge.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qaccessibleobject.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qaccessibleplugin.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qbitmap.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qiconengine.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qiconengineplugin.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qimageiohandler.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qimagereader.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qimagewriter.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qmovie.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qpicture.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qpictureformatplugin.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qpixmapcache.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qstandarditemmodel.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qclipboard.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qdrag.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qgenericplugin.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qgenericpluginfactory.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qoffscreensurface.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qsurface.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qsurfaceformat.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qopenglcontext.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/QSurfaceFormat \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qopengl.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/qt_windows.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtANGLE/GLES3/gl3.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtANGLE/GLES3/gl3platform.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtANGLE/KHR/khrplatform.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtANGLE/GLES2/gl2.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtANGLE/GLES2/gl2platform.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qopengles2ext.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qopenglext.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qopenglversionfunctions.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qopenglwindow.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/QPaintDeviceWindow \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qpaintdevicewindow.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/QWindow \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qwindow.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/QEvent \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/QMargins \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/QRect \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/QPaintDevice \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/QOpenGLContext \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/QImage \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qrasterwindow.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qscreen.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/QList \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/QSize \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/QSizeF \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/QTransform \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qsessionmanager.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qstylehints.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qgenericmatrix.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qmatrix4x4.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qvector3d.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qvector4d.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qquaternion.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qopenglbuffer.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qopengldebug.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qopenglextrafunctions.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qopenglfunctions.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qopenglframebufferobject.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qopenglpaintdevice.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qopenglpixeltransferoptions.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtCore/QSharedDataPointer \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qopenglshaderprogram.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qopengltexture.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qopengltimerquery.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qopenglvertexarrayobject.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qbackingstore.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qpagedpaintdevice.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qpagelayout.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qpagesize.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qpaintengine.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qpainter.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qtextoption.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qpen.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qpdfwriter.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qabstracttextdocumentlayout.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qtextlayout.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qtextformat.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qglyphrun.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qrawfont.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qfontdatabase.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qtextcursor.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qtextdocument.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qstatictext.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qsyntaxhighlighter.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qtextobject.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qtextdocumentfragment.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qtextdocumentwriter.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qtextlist.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qtexttable.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qdesktopservices.h \
-		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtGui/qtguiversion.h
+		configdialog.h \
+		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.7.0/5.7/mingw53_32/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mwtetris.o mwtetris.cpp
 
 release/board.o: board.cpp board.h \

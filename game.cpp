@@ -18,7 +18,8 @@ Player Game::getPlayer(){
 }
 
 void Game::setPlayer(std::string name, unsigned width, unsigned height){
-    //player_ = new Player(validateName(name), validateWidth(width), validateHeight(height));
+    player_.setName(validateName(name));
+    player_.setBoard(validateWidth(width), validateHeight(height));
 }
 
 std::string Game::validateName(std::string name){

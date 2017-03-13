@@ -24,8 +24,16 @@ Bric Player::getCurrentBric(){
     return currentBric_;
 }
 
-Board &Player::getBoard(){
+Board Player::getBoard(){
     return board_;
+}
+
+void Player::setName(std::string name){
+    name_ = name;
+}
+
+void Player::setBoard(unsigned width, unsigned height){
+    board_ = Board(width, height);
 }
 
 void Player::checkLines(){

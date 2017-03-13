@@ -3,6 +3,7 @@
 
 #include "position.h"
 #include <vector>
+#include <utility>
 
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
@@ -30,7 +31,7 @@ public:
     // NOTE : indice du board : 0 en haut, MAX en bas : plus facile pour la génération de brique sur le board
 
 private:
-    const unsigned width_;
+    unsigned width_;
     /*!< La largeur de la grille.
      *
      * Cet attribut sert à construire la grille.
@@ -38,7 +39,7 @@ private:
      * Cet attribut est constant.
      */
 
-    const unsigned height_;
+    unsigned height_;
     /*!< La hauteur de la grille.
      *
      * Cet attribut sert à construire la grille.
@@ -54,7 +55,7 @@ private:
 
 public:
 
-    //Board();
+    Board();
 
     /*!
      * \brief Constructeur de \ref Board.
@@ -147,6 +148,8 @@ public:
 
     void swapCase(Position toSwap);
 
+    //inline Board& operator=(Board&& other) noexcept;
+
     //std::string to_string() const;
 
     //friend std::ostream & operator<<(std::ostream & out, const Board & in);
@@ -155,8 +158,18 @@ public:
 };
 
 //prototypes
-
 //std::ostream & operator<<(std::ostream & out, const Board & in);
+
+//implémentation inline
+//méthodes inline
+/*Board& Board::operator =(Board&& other) noexcept{
+    if(this != & other){
+        grid_ = std::move(other.grid_);
+        width_ = std::move(other.width_);
+        height_ = std::move(other.height_);
+    }
+    return *this;
+}*/
 
 }
 

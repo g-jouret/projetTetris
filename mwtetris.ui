@@ -231,7 +231,7 @@
       <height>501</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout">
+    <layout class="QGridLayout" name="boardGrid">
      <property name="sizeConstraint">
       <enum>QLayout::SetNoConstraint</enum>
      </property>
