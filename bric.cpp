@@ -1,7 +1,5 @@
 #include "bric.h"
-
 #include <algorithm>
-#include <ostream>
 
 namespace GJ_GW{
 
@@ -18,6 +16,14 @@ Bric::Bric(std::vector<Position> shape): shape_ {shape}
     std::sort(temp.begin(), temp.end());
     temp.erase(std::unique(temp.begin(), temp.end()), temp.end());
     side_ = temp.size();
+}
+
+std::vector<Position> Bric::getShape(){
+    return shape_;
+}
+
+unsigned Bric::getSide(){
+    return side_;
 }
 
 void Bric::move(unsigned direction){
@@ -58,7 +64,7 @@ bool Bric::isIn(Position toCheck){
     unsigned temp {0};
     for(Position pos : shape_){
 
-        // NOTE peut-être mieux avec un sort direct?
+        // NOTE : peut-être mieux avec un sort direct?
     }
 }*/
 

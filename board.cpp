@@ -1,9 +1,8 @@
 #include "board.h"
-#include <stdexcept>
-#include <ostream>
-#include <iomanip>
 
 namespace GJ_GW{
+
+
 
 Board::Board(unsigned width, unsigned height): width_{width}, height_{height}{
     for(unsigned i = 0; i < height; ++i){
@@ -13,12 +12,16 @@ Board::Board(unsigned width, unsigned height): width_{width}, height_{height}{
     }
 }
 
-unsigned Board::validateHeight(unsigned value){
-    return (value == 0)? height_ : value;
+std::vector<Position> Board::getGrid(){
+    return grid_;
 }
 
-unsigned Board::validateWidth(unsigned value){
-    return (value == 0)? width_ : value;
+unsigned Board::getHeight(){
+    return height_;
+}
+
+unsigned Board::getWidth(){
+    return width_;
 }
 
 Position * Board::getCase(Position destination){
@@ -31,8 +34,6 @@ Position * Board::getCase(Position destination){
     return pntPos;
 }
 
-// TODO : descendre les lignes au dessus de la ligne enlevé
-// le faire à chaque fois, pourrait y avoir des cas spéciaux
 std::vector<Position> Board::getLine(unsigned lineNum) const{
     std::vector<Position> theLine;
     for(Position p : grid_){
@@ -96,7 +97,8 @@ unsigned Board::gridActualisation(unsigned lineNum){
     return lineCount;
 }
 
-std::string Board::to_string() const{
+/*
+    std::string Board::to_string() const{
     std::string s;
     for(unsigned i = 0; i < height_; ++i){
         for(Position p : this->getLine(i)){
@@ -111,6 +113,6 @@ std::string Board::to_string() const{
 std::ostream & operator<<(std::ostream & out, const Board & in){
     out << in.to_string();
     return out;
-}
+}*/
 
 }

@@ -1,12 +1,10 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <string>
-#include <ostream>
-#include <iomanip>
 #include "board.h"
 #include "bric.h"
 #include "bricsBag.h"
+#include <string>
 
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
@@ -17,20 +15,8 @@ namespace GJ_GW{
  * \brief Classe représentant un joueur.
  */
 class Player{
-public:
-    constexpr static unsigned DEFAULT_WIDTH {10u};
-    /*!< Valeur par défaut de la largeur de la grille. */
 
-    constexpr static unsigned DEFAULT_HEIGHT {20u};
-    /*!< Valeur par défaut de la hauteur de la grille. */
-
-    // NOTE : indice du board : 0 en haut, MAX en bas : plus facile pour la génération de brique sur le board
-
-    //const static std::string DEFAULT_NAME;
-    /*!< Valeur par défaut du nom du joueur. */
-
-private:
-    std::string name_;
+    const std::string name_;
     /*!< Le nom du joueur. */
 
     unsigned score_;
@@ -79,7 +65,7 @@ public:
      *
      * \return le nom du joueur
      */
-    inline std::string getName();
+    std::string getName();
 
     /*!
      * \brief Accesseur en lecture du score du joueur.
@@ -88,14 +74,14 @@ public:
      *
      * \return le score du joueur
      */
-    inline unsigned getScore();
+    unsigned getScore();
 
     /*!
      * \brief Accesseur en lecture de la brique courante.
      *
      * \return la brique courante
      */
-    inline Bric getCurrentBric();
+    Bric getCurrentBric();
 
     /*!
      * \brief Accesseur en lecture de la grille de jeu.
@@ -104,7 +90,7 @@ public:
      *
      * \return la grille de jeu
      */
-    inline Board getBoard();
+    Board &getBoard();
 
     /*!
      * \brief Accesseur en lecture du nombre de ligne remplies par le joueur.
@@ -113,7 +99,7 @@ public:
      *
      * \return le nombre de lignes remplies par le joueur
      */
-    inline unsigned getNbLine();
+    unsigned getNbLine();
 
     /*!
      * \brief Méthode vérifiant que des lignes ont été remplies.
@@ -140,45 +126,30 @@ public:
      */
     void moveBric(unsigned direction = 0);
 
-    std::string to_string() const;
+    //std::string to_string() const;
 
-    friend std::ostream & operator<<(std::ostream & out, const Player & in);
+    //friend std::ostream & operator<<(std::ostream & out, const Player & in);
 
-private:
-    /*!
-     * \brief Méthode privée de validation du nom du joueur.
-     *
-     * Cette méthode vérifie que le nouveau nom du joueur n'est pas une chaine vide.
-     *
-     * \param name le nom à valider
-     * \return le nom validé
-     */
-    std::string validateName(std::string name);
 };
+
 //prototypes
 
-std::ostream & operator<<(std::ostream & out, const Player & in);
+//std::ostream & operator<<(std::ostream & out, const Player & in);
+
+//inline Player& operator=(Player&& other) noexcept;
 
 //implémentations inline
-
 //fonctions inline
+/*Player& operator=(Player&& other) noexcept{
+    if(this != &other){
+        delete bag_;
+        delete board_;
+        delete currentBric_;
+        delete[] name_;
 
-//méthodes inline
-std::string Player::getName(){
-    return name_;
-}
-
-unsigned Player::getScore(){
-    return score_;
-}
-
-Bric Player::getCurrentBric(){
-    return currentBric_;
-}
-
-Board Player::getBoard(){
-    return board_;
-}
+    }
+    return *this;
+}*/
 
 }
 

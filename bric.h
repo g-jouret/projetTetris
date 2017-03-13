@@ -1,8 +1,8 @@
 #ifndef BRIC_H
 #define BRIC_H
 
-#include <vector>
 #include "position.h"
+#include <vector>
 
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
@@ -60,9 +60,9 @@ public:
      *
      * \return la forme de la brique
      */
-    inline std::vector<Position> getShape();
+    std::vector<Position> getShape();
 
-    inline unsigned getSide();
+    unsigned getSide();
 
     /*!
      * \brief Méthode qui tourne la brique.
@@ -86,19 +86,6 @@ public:
 
     //std::vector<Position> below();
 };
-
-//implémentations inline
-
-//fonctions inline
-
-//méthodes inline
-std::vector<Position> Bric::getShape(){
-    return shape_;
-}
-
-unsigned Bric::getSide(){
-    return side_;
-}
 
 }
 #endif // BRIC_H

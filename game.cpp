@@ -1,8 +1,5 @@
 #include "game.h"
 #include <vector>
-#include <ostream>
-#include <iomanip>
-#include <iostream>
 
 namespace GJ_GW {
 
@@ -11,10 +8,30 @@ Game::Game(): level_ {0}, timer_ {MAXIMUM_TIMER}
   //player_ {Player("Joueur1", DEFAULT_WIDTH, DEFAULT_HEIGHT)}
 {}
 
-Game::Game(std::string name, unsigned width, unsigned height):
+/*Game::Game(std::string name, unsigned width, unsigned height):
     level_ {0}, timer_ {MAXIMUM_TIMER},
     player_ {Player(name, width, height)}
-{}
+{}*/
+
+Player Game::getPlayer(){
+    return player_;
+}
+
+void Game::setPlayer(std::string name, unsigned width, unsigned height){
+    //player_ = new Player(validateName(name), validateWidth(width), validateHeight(height));
+}
+
+std::string Game::validateName(std::string name){
+    return (name.empty())? player_.getName() : name;
+}
+
+unsigned Game::validateHeight(unsigned value){
+    return (value == 0)? player_.getBoard().getHeight() : value;
+}
+
+unsigned Game::validateWidth(unsigned value){
+    return (value == 0)? player_.getBoard().getWidth() : value;
+}
 
 // WARNING : revoir les constructeur de copies / destructeurs etc
 

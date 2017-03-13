@@ -1,10 +1,8 @@
 #ifndef MWTETRIS_H
 #define MWTETRIS_H
 
-#include <QMainWindow>
-#include <QLabel>
-#include "configdialog.h"
 #include "game.h"
+#include <QMainWindow>
 
 namespace Ui {
 class MWTetris;
@@ -24,6 +22,8 @@ private:
     void connexion();
     void generateBoard();
     void setName();
+    void printFilled();
+    void generateBric();
 
 private slots:
     void createGame();

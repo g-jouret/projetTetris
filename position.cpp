@@ -12,4 +12,24 @@ void Position::swapFilled(){
     filled_ = (filled_)? 0 : 1;
 }
 
+unsigned Position::getX(){
+    return x_;
+}
+
+unsigned Position::getY(){
+    return y_;
+}
+
+bool Position::isFilled(){
+    return filled_;
+}
+
+void Position::setX(int x){
+    x_ += x;
+}
+
+void Position::setY(int y){
+    y_ += y;
+}
+
 }

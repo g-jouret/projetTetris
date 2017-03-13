@@ -1,14 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <vector>
-#include <array>
-#include <ostream>
-#include <iomanip>
 #include "player.h"
-#include "bricsBag.h"
-#include "bric.h"
-#include "board.h"
 
 /*! \mainpage Le jeu de Tetris multijoueur, projet de c++ 2016-2017
  *
@@ -64,7 +57,7 @@ public:
      */
     Game();
 
-    Game(std::string name, unsigned width, unsigned height);
+    //Game(std::string name, unsigned width, unsigned height);
 
     /*!
      * \brief Destructeur de \ref Game.
@@ -83,15 +76,14 @@ public:
      *
      * les noms des joueurs, la taille de la grille // et bientôt les pièces personnalisées
      *
-     * \param name1 le nom du joueur 1
-     * \param name2 le nom du joueur 2
+     * \param name le nom du joueur
      * \param width la largeur de la grille
      * \param height la hauteur de la grille
      */
-    //void setPlayer(std::string name1, std::string name2, unsigned width, unsigned height);
+    void setPlayer(std::string name, unsigned width, unsigned height);
 
     //inline std::vector<Player> getPlayers();  pour plus tard
-    inline Player getPlayer();
+    Player getPlayer();
 
     /*!
      * \brief Méthode vérifiant qu'aucune condition de fin de partie n'a été remplie.
@@ -104,11 +96,41 @@ public:
      */
     void endGame();
 
-    std::string to_string() const;
+    //std::string to_string() const;
 
-    friend std::ostream & operator<<(std::ostream & out, const Game & in);
+    //friend std::ostream & operator<<(std::ostream & out, const Game & in);
 
 private:
+    /*!
+     * \brief Méthode privée de validation du nom du joueur.
+     *
+     * Cette méthode vérifie que le nouveau nom du joueur n'est pas une chaine vide.
+     *
+     * \param name le nom à valider
+     * \return le nom validé
+     */
+    std::string validateName(std::string name);
+
+    /*!
+     * \brief Méthode privée de validation de la hauteur.
+     *
+     * Cette méthode vérifie que la valeur de l'attribut n'est pas égale à zéro.
+     *
+     * \param value la valeur à valider
+     * \return la valeur validée
+     */
+    unsigned validateHeight(unsigned value);
+
+    /*!
+     * \brief Méthode privée de validation de la largeur.
+     *
+     * Cette méthode vérifie que la valeur de l'attribut n'est pas égale à zéro.
+     *
+     * \param value la valeur à valider
+     * \return la valeur validée
+     */
+    unsigned validateWidth(unsigned value);
+
     /*!
      * \brief Méthode privée de validation du timer.
      *
@@ -123,16 +145,7 @@ private:
 
 //prototypes
 
-std::ostream & operator<<(std::ostream & out, const Game & in);
-
-//implémentations inline
-
-//fonctions inline
-
-//méthodes inline
-Player Game::getPlayer(){
-    return player_;
-}
+//std::ostream & operator<<(std::ostream & out, const Game & in);
 
 }
 

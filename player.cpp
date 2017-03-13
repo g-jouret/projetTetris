@@ -1,22 +1,31 @@
-#include <vector>
-#include <ostream>
-#include <iomanip>
 #include "player.h"
 
 namespace GJ_GW{
 
-//const std::string Player::DEFAULT_NAME = "Joueur";
-
-Player::Player(): Player("Joueur", DEFAULT_WIDTH, DEFAULT_HEIGHT)
+Player::Player(): Player("Joueur", board_.DEFAULT_WIDTH, board_.DEFAULT_HEIGHT)
 {}
 
 Player::Player(std::string name, unsigned width, unsigned height):
     name_ {name}, board_{Board(width, height)}, bag_{BricsBag()}, currentBric_{bag_.getNextBric()}
   // TODO : rearrange avant getnextbric
-{}
+{
 
-std::string Player::validateName(std::string name){
-    return (name.empty())? name_ : name;
+}
+
+std::string Player::getName(){
+    return name_;
+}
+
+unsigned Player::getScore(){
+    return score_;
+}
+
+Bric Player::getCurrentBric(){
+    return currentBric_;
+}
+
+Board &Player::getBoard(){
+    return board_;
 }
 
 void Player::checkLines(){

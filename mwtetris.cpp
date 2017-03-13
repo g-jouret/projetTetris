@@ -1,11 +1,6 @@
 #include "mwtetris.h"
 #include "ui_mwtetris.h"
-#include <QApplication>
-#include <QtCore>
-#include <QtGui>
-#include <QPushButton>
-#include <QGridLayout>
-#include "position.h"
+#include "configdialog.h"
 
 MWTetris::MWTetris(GJ_GW::Game * game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris)
 {
@@ -35,13 +30,13 @@ void MWTetris::createGame(){
     std::string name {cd.getName()};
     unsigned width {cd.getWidth()};
     unsigned height {cd.getHeight()};
+
     if(! name.empty() || width != 0 || height != 0){
-        GJ_GW::Game *game = new GJ_GW::Game(name, width, height);
-        delete game_;
-        game_ = game;
+        game_->setPlayer(name, width, height);
         setName();
         generateBoard();
     }
+    generateBric();
 }
 
 void MWTetris::closeGame(){
@@ -55,23 +50,26 @@ void MWTetris::setName(){
 
 void MWTetris::generateBoard(){
     for(GJ_GW::Position p : game_->getPlayer().getBoard().getGrid()){
-        int x {p.getX()};
-        int y {p.getY()};
         QLabel * lb = new QLabel();
 
         lb->setStyleSheet("QLabel {background-color : white;}");
                                 /*"border-style : solid;"
                                 "border-width : 2px;"
                                 "border-color : black;}");*/
-        ui->gridLayout->addWidget(lb, y, x, 1, 1);
-
+        ui->gridLayout->addWidget(lb, p.getY(), p.getX(), 1, 1);
     }
+}
 
+void MWTetris::printFilled(){
 
 }
 
 void MWTetris::turn(){
     game_->getPlayer().rotateBric();
+}
+
+void MWTetris::generateBric(){
+    game_->getPlayer().generateBric();
 }
 
 void MWTetris::down(){

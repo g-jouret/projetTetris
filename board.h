@@ -1,10 +1,8 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include <ostream>
-#include <iomanip>
-#include <vector>
 #include "position.h"
+#include <vector>
 
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
@@ -21,6 +19,17 @@ namespace GJ_GW{
  * - sa grille de cases.
  */
 class Board{
+
+public:
+    constexpr static unsigned DEFAULT_WIDTH {10u};
+    /*!< Valeur par défaut de la largeur de la grille. */
+
+    constexpr static unsigned DEFAULT_HEIGHT {20u};
+    /*!< Valeur par défaut de la hauteur de la grille. */
+
+    // NOTE : indice du board : 0 en haut, MAX en bas : plus facile pour la génération de brique sur le board
+
+private:
     const unsigned width_;
     /*!< La largeur de la grille.
      *
@@ -67,16 +76,21 @@ public:
      *
      * \return la grille de cases
      */
-    inline std::vector<Position> getGrid();
+    std::vector<Position> getGrid();
 
     /*!
      * \brief Accesseur en lecture de \ref height_.
      *
      * \return le nombre de lignes de la grille
      */
-    inline unsigned getHeight();
+    unsigned getHeight();
 
-    inline unsigned getWidth();
+    /*!
+     * \brief Accesseur en lecture de \ref width_.
+     *
+     * \return le nombre de colonnes de la grille
+     */
+    unsigned getWidth();
 
     bool checkCase(Position pos);
 
@@ -133,52 +147,16 @@ public:
 
     void swapCase(Position toSwap);
 
-    std::string to_string() const;
+    //std::string to_string() const;
 
-    friend std::ostream & operator<<(std::ostream & out, const Board & in);
+    //friend std::ostream & operator<<(std::ostream & out, const Board & in);
 
-private:
-    /*!
-     * \brief Méthode privée de validation de la hauteur.
-     *
-     * Cette méthode vérifie que la valeur de l'attribut n'est pas égale à zéro.
-     *
-     * \param value la valeur à valider
-     * \return la valeur validée
-     */
-    unsigned validateHeight(unsigned value);
 
-    /*!
-     * \brief Méthode privée de validation de la largeur.
-     *
-     * Cette méthode vérifie que la valeur de l'attribut n'est pas égale à zéro.
-     *
-     * \param value la valeur à valider
-     * \return la valeur validée
-     */
-    unsigned validateWidth(unsigned value);
 };
 
 //prototypes
 
-std::ostream & operator<<(std::ostream & out, const Board & in);
-
-//implémentations inline
-
-//fonctions inline
-
-//méthodes inline
-std::vector<Position> Board::getGrid(){
-    return grid_;
-}
-
-unsigned Board::getHeight(){
-    return height_;
-}
-
-unsigned Board::getWidth(){
-    return width_;
-}
+//std::ostream & operator<<(std::ostream & out, const Board & in);
 
 }
 

@@ -52,14 +52,14 @@ public:
      *
      * \return l'abscisse
      */
-    inline unsigned getX();
+    unsigned getX();
 
     /*!
      * \brief Accesseur en lecture de l'ordonnée.
      *
      * \return l'ordonnée
      */
-    inline unsigned getY();
+    unsigned getY();
 
     /*!
      * \brief Accesseur en lecture de l'état d'une position sur la grille.
@@ -68,11 +68,11 @@ public:
      *
      * \return si la case à cette position est pleine ou non
      */
-    inline bool isFilled();
+    bool isFilled();
 
-    inline void setX(int x);
+    void setX(int x);
 
-    inline void setY(int y);
+    void setY(int y);
 
     /*!
      * \brief Méthode changeant la valeur du booléen.
@@ -108,32 +108,9 @@ public:
 inline bool operator==(Position & lhs, Position & rhs);
 
 //implémentations inline
-
 //fonctions inline
-bool operator==(Position & lhs, Position & rhs)
-{
+bool operator==(Position & lhs, Position & rhs){
     return lhs.getX() == rhs.getX() && lhs.getY() == rhs.getY();
-}
-
-//méthodes inline
-unsigned Position::getX(){
-    return x_;
-}
-
-unsigned Position::getY(){
-    return y_;
-}
-
-bool Position::isFilled(){
-    return filled_;
-}
-
-void Position::setX(int x){
-    x_ += x;
-}
-
-void Position::setY(int y){
-    y_ += y;
 }
 
 }
