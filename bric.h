@@ -84,8 +84,14 @@ public:
 
     bool isIn(Position toCheck);
 
-    //std::vector<Position> below();
+    std::string to_string() const;
+
+    friend std::ostream & operator<<(std::ostream & out, const Bric & in);
 };
+
+//prototypes
+std::ostream & operator<<(std::ostream & out, const Bric & in);
+//implémentations inline
 
 }
 #endif // BRIC_H

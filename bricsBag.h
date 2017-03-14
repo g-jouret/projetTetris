@@ -53,7 +53,7 @@ public:
      */
     Bric getNextBric();
 
-    /* NOTE : quelle méthode choisir?
+    /* TODO : implémentation
      * aléatoire à chaque pioche en ignorant la dernière brique qui est mise à la fin
      * on ne réarrange pas la dernière brique.
      */

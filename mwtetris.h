@@ -21,10 +21,10 @@ private:
 
     void connexion();
     void generateBoard();
+    void actualiseBoard();
     void setName();
-    void printFilled();
     void generateBric();
-    void resetGame();
+    void resetBoard();
 
 private slots:
     void createGame();

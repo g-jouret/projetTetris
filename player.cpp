@@ -1,4 +1,5 @@
 #include "player.h"
+#include <iostream>
 
 namespace GJ_GW{
 
@@ -8,9 +9,7 @@ Player::Player(): Player("Joueur", board_.DEFAULT_WIDTH, board_.DEFAULT_HEIGHT)
 Player::Player(std::string name, unsigned width, unsigned height):
     name_ {name}, board_{Board(width, height)}, bag_{BricsBag()}, currentBric_{bag_.getNextBric()}
   // TODO : rearrange avant getnextbric
-{
-
-}
+{}
 
 std::string Player::getName(){
     return name_;
@@ -51,18 +50,22 @@ void Player::generateBric(){
     unsigned count{0};
     unsigned midBoard = board_.getWidth()/2;
     unsigned midSide = currentBric_.getSide()/2;
+
     for(unsigned i = 0; i < midBoard-midSide; ++i){
-        currentBric_.move(3);
+        currentBric_.move(2);
     }
     while(ok && count < currentBric_.getShape().size()){
         ok = ! board_.checkCase(currentBric_.getShape().at(count));
         ++count;
     }
+
     if(ok){
         for(Position p : currentBric_.getShape()){
-            board_.swapCase(p);
+            Position & toSwap {board_.getCase(p)};
+            board_.swapCase(toSwap);
         }
     }
+    std::cout << board_ << std::endl;
 }
 
 void Player::rotateBric(){
@@ -70,25 +73,31 @@ void Player::rotateBric(){
 }
 
 void Player::moveBric(unsigned direction){
+    std::cout << board_ << std::endl;
     bool ok {1};
     unsigned count {0};
+    //implémentation du drop : if(direction == 1) => while(peut descendre)
     Bric destination = currentBric_;
-    destination.move(direction);
+    destination.move(direction-1);
     while(ok && count < destination.getShape().size()){
         if(! currentBric_.isIn(destination.getShape().at(count))){
             ok = ! board_.checkCase(destination.getShape().at(count));
         }
         ++count;
     }
+
     if(ok){
         for(Position p : currentBric_.getShape()){
-            board_.swapCase(p);
+            Position & toSwap {board_.getCase(p)};
+            board_.swapCase(toSwap);
         }
         currentBric_.move(direction);
         for(Position p : currentBric_.getShape()){
-            board_.swapCase(p);
+            Position & toSwap {board_.getCase(p)};
+            board_.swapCase(toSwap);
         }
     }
+    std::cout << board_ << std::endl;
 }
 
 // TODO : next currentBric_ + show next bric

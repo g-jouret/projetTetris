@@ -121,7 +121,7 @@ public:
      *
      * \return si la brique courante peut effectuer son mouvement ou non
      */
-    Position * getCase(Position destination);
+    Position &getCase(Position destination);
 
     /*!
      * \brief Méthode changeant l'état de toutes les Positions d'une ligne.
@@ -146,19 +146,19 @@ public:
      */
     unsigned gridActualisation(unsigned lineNum);
 
-    void swapCase(Position toSwap);
+    void swapCase(Position &toSwap);
 
     //inline Board& operator=(Board&& other) noexcept;
 
-    //std::string to_string() const;
+    std::string to_string() const;
 
-    //friend std::ostream & operator<<(std::ostream & out, const Board & in);
+    friend std::ostream & operator<<(std::ostream & out, const Board & in);
 
 
 };
 
 //prototypes
-//std::ostream & operator<<(std::ostream & out, const Board & in);
+std::ostream & operator<<(std::ostream & out, const Board & in);
 
 //implémentation inline
 //méthodes inline

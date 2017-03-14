@@ -28,15 +28,12 @@ unsigned Bric::getSide(){
 
 void Bric::move(unsigned direction){
     switch(direction){
-    case 1:     //drop
-        // TODO implémentation drop
-        break;
-    case 2:     //gauche
+    case 1:     //gauche
         for(unsigned i = 0; i < shape_.size(); ++i){
             shape_.at(i).setX(-1);
         }
         break;
-    case 3:     //droite
+    case 2:     //droite
         for(unsigned i = 0; i < shape_.size(); ++i){
             shape_.at(i).setX(1);
         }
@@ -59,13 +56,17 @@ bool Bric::isIn(Position toCheck){
     return ok;
 }
 
-/*std::vector<Position> Bric::below(){
-    std::vector<Position> destination;
-    unsigned temp {0};
-    for(Position pos : shape_){
+std::string Bric::to_string() const{
+std::string s;
+for(auto it = shape_.begin(); it != shape_.end(); ++it){
+    s += it->to_string();
+}
+return s;
+}
 
-        // NOTE : peut-être mieux avec un sort direct?
-    }
-}*/
+std::ostream & operator<<(std::ostream & out, const Bric & in){
+out << in.to_string();
+return out;
+}
 
 }

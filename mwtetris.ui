@@ -84,7 +84,11 @@
         </spacer>
        </item>
        <item>
-        <widget class="QLCDNumber" name="lcdNumPlayerScore"/>
+        <widget class="QLabel" name="lbPlayerScore">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>

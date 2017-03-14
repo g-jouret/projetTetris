@@ -1,6 +1,8 @@
 #ifndef POSITION_H
 #define POSITION_H
 
+#include <ostream>
+
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
  */
@@ -52,14 +54,14 @@ public:
      *
      * \return l'abscisse
      */
-    unsigned getX();
+    inline unsigned getX() const;
 
     /*!
      * \brief Accesseur en lecture de l'ordonnée.
      *
      * \return l'ordonnée
      */
-    unsigned getY();
+    inline unsigned getY() const;
 
     /*!
      * \brief Accesseur en lecture de l'état d'une position sur la grille.
@@ -79,38 +81,33 @@ public:
      */
     void swapFilled();
 
-    /*! NOTE : inutile : c'est la brique qui bouge, pas la position
-     * \brief Méthode permettant de changer la position en indiquant de combien on veut incrémenter chacun des attributs.
-     *
-     * \param x valeur à ajouter à \ref x_
-     * \param y valeur à ajouter à \ref y_
-     */
-    //void move(unsigned x, unsigned y);
+    std::string to_string() const;
 
-    //private:
-    // NOTE : semble inutile car vérification en amont
-    /*!
-     * \brief Méthode privée de validation de x et y.
-     *
-     * Cette méthode vérifie que la valeur de son argument n'est ni inférieure zéro ni supérieure ou égale à la limite de la grille.
-     *
-     * \param value la valeur à valider
-     * \param limit la limite correspondante de la grille
-     *
-     * \return la valeur validée
-     *
-     * \throw std::invalid_argument si value est inférieure à 0 ou supérieure ou égale à la limite de la grille
-     */
-    //unsigned validate(unsigned value, unsigned limit);
+    friend std::ostream & operator<<(std::ostream & out, const Position & in);
+
 };
 
 //prototypes
-inline bool operator==(Position & lhs, Position & rhs);
-
+inline bool operator==(const Position & lhs, const Position & rhs);
+inline bool operator!=(const Position & lhs, const Position & rhs);
+std::ostream & operator<<(std::ostream & out, const Position & in);
 //implémentations inline
 //fonctions inline
-bool operator==(Position & lhs, Position & rhs){
-    return lhs.getX() == rhs.getX() && lhs.getY() == rhs.getY();
+bool operator==(const Position & lhs, const Position & rhs){
+    return (lhs.getX() == rhs.getX()) && (lhs.getY() == rhs.getY());
+}
+
+bool operator!=(const Position & lhs, const Position & rhs){
+    return ! (lhs == rhs);
+}
+
+//méthodes inline
+inline unsigned Position::getX() const{
+    return x_;
+}
+
+inline unsigned Position::getY() const{
+    return y_;
 }
 
 }

@@ -16,7 +16,6 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
@@ -44,7 +43,7 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QLabel *lbScore;
     QSpacerItem *horizontalSpacer_2;
-    QLCDNumber *lcdNumPlayerScore;
+    QLabel *lbPlayerScore;
     QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer_3;
@@ -117,10 +116,10 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer_2);
 
-        lcdNumPlayerScore = new QLCDNumber(layoutWidget);
-        lcdNumPlayerScore->setObjectName(QStringLiteral("lcdNumPlayerScore"));
+        lbPlayerScore = new QLabel(layoutWidget);
+        lbPlayerScore->setObjectName(QStringLiteral("lbPlayerScore"));
 
-        horizontalLayout_2->addWidget(lcdNumPlayerScore);
+        horizontalLayout_2->addWidget(lbPlayerScore);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
@@ -231,6 +230,7 @@ public:
         lbName->setText(QApplication::translate("MWTetris", "Joueur :", 0));
         lbPlayerName->setText(QApplication::translate("MWTetris", "Joueur", 0));
         lbScore->setText(QApplication::translate("MWTetris", "score :", 0));
+        lbPlayerScore->setText(QApplication::translate("MWTetris", "0", 0));
         btnUp->setText(QApplication::translate("MWTetris", "Haut", 0));
         btnUp->setShortcut(QApplication::translate("MWTetris", "Up", 0));
         btnLeft->setText(QApplication::translate("MWTetris", "Gauche", 0));

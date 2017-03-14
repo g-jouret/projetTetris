@@ -3,6 +3,7 @@
 #include "configdialog.h"
 #include <QGridLayout>
 #include <QLabel>
+#include <iostream>
 
 MWTetris::MWTetris(GJ_GW::Game * game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris)
 {
@@ -29,8 +30,6 @@ void MWTetris::createGame(){
     auto ret = cd.exec();
     if(ret == QDialog::Rejected) return;
 
-    resetGame();
-
     std::string name {cd.getName()};
     unsigned width {cd.getWidth()};
     unsigned height {cd.getHeight()};
@@ -38,10 +37,11 @@ void MWTetris::createGame(){
     if(! name.empty() || width != 0 || height != 0){
         game_->setPlayer(name, width, height);
         setName();
-
     }
-    generateBoard();
     generateBric();
+    generateBoard();
+    down();
+    generateBoard();
 }
 
 void MWTetris::closeGame(){
@@ -54,29 +54,47 @@ void MWTetris::setName(){
 }
 
 void MWTetris::generateBoard(){
-    for(GJ_GW::Position p : game_->getPlayer().getBoard().getGrid()){
+    std::cout << "generateBoard" << std::endl;
+    resetBoard();
+    std::vector<GJ_GW::Position> theGrid {game_->getPlayer().getBoard().getGrid()};
+    /*for(GJ_GW::Position p : game_->getPlayer().getBoard().getGrid()){
         QLabel * lb = new QLabel();
-
-        lb->setStyleSheet("QLabel {background-color : white;}");
-                                /*"border-style : solid;"
-                                "border-width : 2px;"
-                                "border-color : black;}");*/
+        if(p.isFilled()){
+            lb->setStyleSheet("QLabel {background-color : blue;}");
+        } else{
+            lb->setStyleSheet("QLabel {background-color : white;}");
+        }
         ui->boardGrid->addWidget(lb, p.getY(), p.getX(), 1, 1);
+    }*/
+
+    for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
+        QLabel * lb = new QLabel();
+        if(it->isFilled()){
+            std::cout << *it << std::endl;
+            lb->setStyleSheet("QLabel {background-color : blue;}");
+        } else{
+            lb->setStyleSheet("QLabel {background-color : white;}");
+        }
+        ui->boardGrid->addWidget(lb, it->getY(), it->getX(), 1, 1);
     }
 }
 
-void MWTetris::resetGame(){
+void MWTetris::resetBoard(){
     QLayoutItem *child;
     while((child = ui->boardGrid->takeAt(0)) != 0){
         delete child->widget();
     }
-    // TODO : game.reset => remise de toutes les cases en unfilled
-    // NOTE : reset => score, nbLines, level & timer remis à 0?
     // WARNING : bug : ne répond plus quand trop grande diminution de la largeur(?)
 }
 
-void MWTetris::printFilled(){
-// TODO : implémentation
+void MWTetris::actualiseBoard(){
+    /*QLabel *lb;
+    for(GJ_GW::Position p : game_->getPlayer().getBoard().getGrid()){
+        lb = ui->boardGrid->itemAtPosition(p.getX(), p.getY());
+        if(p.isFilled()){
+
+        }
+    }*/
 }
 
 void MWTetris::turn(){
@@ -84,7 +102,10 @@ void MWTetris::turn(){
 }
 
 void MWTetris::generateBric(){
+    std::cout << "generateBric" << std::endl;
     game_->getPlayer().generateBric();
+    std::cout << game_->getPlayer().getCurrentBric()
+              << std::endl;
 }
 
 void MWTetris::down(){
