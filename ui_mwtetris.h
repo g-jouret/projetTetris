@@ -43,6 +43,10 @@ public:
     QLabel *lbScore;
     QSpacerItem *horizontalSpacer_2;
     QLabel *lbPlayerScore;
+    QHBoxLayout *horizontalLayout_6;
+    QLabel *lbTimer;
+    QSpacerItem *horizontalSpacer_7;
+    QLabel *lbTime;
     QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer_3;
@@ -58,11 +62,6 @@ public:
     QWidget *gridLayoutWidget;
     QGridLayout *boardGrid;
     QLabel *lbEnd;
-    QWidget *widget;
-    QHBoxLayout *horizontalLayout_6;
-    QLabel *lbTimer;
-    QSpacerItem *horizontalSpacer_7;
-    QLabel *lbTime;
     QMenuBar *menuBar;
     QMenu *menu_Jeu;
 
@@ -125,6 +124,26 @@ public:
 
 
         verticalLayout->addLayout(horizontalLayout_2);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setSpacing(6);
+        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        lbTimer = new QLabel(layoutWidget);
+        lbTimer->setObjectName(QStringLiteral("lbTimer"));
+
+        horizontalLayout_6->addWidget(lbTimer);
+
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_7);
+
+        lbTime = new QLabel(layoutWidget);
+        lbTime->setObjectName(QStringLiteral("lbTime"));
+
+        horizontalLayout_6->addWidget(lbTime);
+
+
+        verticalLayout->addLayout(horizontalLayout_6);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -204,30 +223,8 @@ public:
         boardGrid->setContentsMargins(0, 0, 0, 0);
         lbEnd = new QLabel(centralWidget);
         lbEnd->setObjectName(QStringLiteral("lbEnd"));
-        lbEnd->setEnabled(false);
-        lbEnd->setGeometry(QRect(440, 510, 47, 13));
-        widget = new QWidget(centralWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(380, 460, 176, 22));
-        horizontalLayout_6 = new QHBoxLayout(widget);
-        horizontalLayout_6->setSpacing(6);
-        horizontalLayout_6->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        horizontalLayout_6->setContentsMargins(0, 0, 0, 0);
-        lbTimer = new QLabel(widget);
-        lbTimer->setObjectName(QStringLiteral("lbTimer"));
-
-        horizontalLayout_6->addWidget(lbTimer);
-
-        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_6->addItem(horizontalSpacer_7);
-
-        lbTime = new QLabel(widget);
-        lbTime->setObjectName(QStringLiteral("lbTime"));
-
-        horizontalLayout_6->addWidget(lbTime);
-
+        lbEnd->setEnabled(true);
+        lbEnd->setGeometry(QRect(440, 470, 61, 16));
         MWTetris->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MWTetris);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -256,6 +253,11 @@ public:
         lbPlayerName->setText(QApplication::translate("MWTetris", "Joueur", Q_NULLPTR));
         lbScore->setText(QApplication::translate("MWTetris", "score :", Q_NULLPTR));
         lbPlayerScore->setText(QApplication::translate("MWTetris", "0", Q_NULLPTR));
+        lbTimer->setText(QApplication::translate("MWTetris", "Temps \303\251coul\303\251 :", Q_NULLPTR));
+#ifndef QT_NO_STATUSTIP
+        lbTime->setStatusTip(QString());
+#endif // QT_NO_STATUSTIP
+        lbTime->setText(QApplication::translate("MWTetris", "0 : 00 : 00", Q_NULLPTR));
         btnUp->setText(QApplication::translate("MWTetris", "Haut", Q_NULLPTR));
         btnUp->setShortcut(QApplication::translate("MWTetris", "Up", Q_NULLPTR));
         btnLeft->setText(QApplication::translate("MWTetris", "Gauche", Q_NULLPTR));
@@ -264,11 +266,6 @@ public:
         btnRight->setShortcut(QApplication::translate("MWTetris", "Right", Q_NULLPTR));
         btnDown->setText(QApplication::translate("MWTetris", "Bas", Q_NULLPTR));
         lbEnd->setText(QApplication::translate("MWTetris", "Game Over", Q_NULLPTR));
-        lbTimer->setText(QApplication::translate("MWTetris", "Temps \303\251coul\303\251 :", Q_NULLPTR));
-#ifndef QT_NO_STATUSTIP
-        lbTime->setStatusTip(QString());
-#endif // QT_NO_STATUSTIP
-        lbTime->setText(QApplication::translate("MWTetris", "0 : 00 : 00", Q_NULLPTR));
         menu_Jeu->setTitle(QApplication::translate("MWTetris", "&Jeu", Q_NULLPTR));
     } // retranslateUi
 

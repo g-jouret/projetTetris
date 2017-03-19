@@ -84,6 +84,8 @@ public:
     //inline std::vector<Player> getPlayers();  pour plus tard
     Player &getPlayer();
 
+    void command(unsigned cmdId);
+
     void reset();
 
     /*!

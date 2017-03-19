@@ -1,8 +1,6 @@
 #ifndef POSITION_H
 #define POSITION_H
 
-#include <ostream>
-
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
  */
@@ -81,16 +79,17 @@ public:
      */
     void swapFilled();
 
-    std::string to_string() const;
+    //std::string to_string() const;
 
-    friend std::ostream & operator<<(std::ostream & out, const Position & in);
+    //friend std::ostream & operator<<(std::ostream & out, const Position & in);
 
 };
 
 //prototypes
 inline bool operator==(const Position & lhs, const Position & rhs);
 inline bool operator!=(const Position & lhs, const Position & rhs);
-std::ostream & operator<<(std::ostream & out, const Position & in);
+//std::ostream & operator<<(std::ostream & out, const Position & in);
+
 //implémentations inline
 //fonctions inline
 bool operator==(const Position & lhs, const Position & rhs){

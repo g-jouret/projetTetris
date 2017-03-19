@@ -5,7 +5,6 @@
 #include "bric.h"
 #include "bricsBag.h"
 #include <string>
-#include <iostream>
 
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
@@ -111,7 +110,7 @@ public:
      *
      * Augmente le score du joueur si c'est le cas.
      */
-    void checkLines();
+    void checkLines(unsigned dropCount);
 
     void generateBric();
 
@@ -122,6 +121,10 @@ public:
      */
     void rotateBric();
 
+    void move(unsigned direction);
+
+    bool checkMove(unsigned direction);
+
     /*!
      * \brief Méthode permettant une translation de la brique courante dans une direction donnée.
      *
@@ -129,7 +132,9 @@ public:
      *
      * \param direction la direction vers laquelle la pièce est bougée
      */
-    void moveBric(unsigned direction = 0);
+    void moveBric(unsigned direction);
+
+
 
     //std::string to_string() const;
 

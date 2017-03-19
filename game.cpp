@@ -36,6 +36,14 @@ unsigned Game::validateWidth(unsigned value){
     return (value == 0)? player_.getBoard().getWidth() : value;
 }
 
+void Game::command(unsigned cmdId){
+    if(cmdId == 4)
+        player_.rotateBric();
+    else
+        player_.moveBric(cmdId);
+    notifyObservers();
+}
+
 void Game::reset(){
     level_ = 0;
     timer_ = MAXIMUM_TIMER;

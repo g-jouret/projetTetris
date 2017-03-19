@@ -22,6 +22,9 @@ void MWTetris::connexion(){
     connect(ui->action_Nouveau, &QAction::triggered, this, &MWTetris::createGame);
     connect(ui->action_Quitter, &QAction::triggered, this, &MWTetris::quitGame);
     // TODO : aide? cf qtpendu.pdf
+    connect(ui->btnDown, &QPushButton::clicked, this, &MWTetris::down);
+    connect(ui->btnLeft, &QPushButton::clicked, this, &MWTetris::left);
+    connect(ui->btnRight, &QPushButton::clicked, this, &MWTetris::right);
 }
 
 void MWTetris::createGame(){
@@ -31,19 +34,20 @@ void MWTetris::createGame(){
 
     if(ret == QDialog::Rejected) return;
 
-    std::string name {cd.getName()};
+    /*std::string name {cd.getName()};
     unsigned width {cd.getWidth()};
     unsigned height {cd.getHeight()};
 
     if(! name.empty() || width != 0 || height != 0){
         game_->setPlayer(name, width, height);
-    }
+    }*/
+    game_->setPlayer(cd.getName(), cd.getWidth(), cd.getHeight());
+
+    ui->lbEnd->hide();
     update(game_);
 
     //version test manuelle
     generateBric();
-    update(game_);
-    down();
     update(game_);
 }
 
@@ -68,7 +72,6 @@ void MWTetris::generateBoard(){
     for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
         QLabel * lb = new QLabel();
         if(it->isFilled()){
-            std::cout << *it << std::endl;
             lb->setStyleSheet("QLabel {background-color : blue;}");
         } else{
             lb->setStyleSheet("QLabel {background-color : white;}");
@@ -85,31 +88,28 @@ void MWTetris::resetBoard(){
     // WARNING : bug : ne répond plus quand trop grande diminution de la largeur(?)
 }
 
-void MWTetris::turn(){
-    game_->getPlayer().rotateBric();
-}
-
 void MWTetris::generateBric(){
-    std::cout << "generateBric" << std::endl;
     game_->getPlayer().generateBric();
-    std::cout << game_->getPlayer().getCurrentBric()
-              << std::endl;
 }
 
 void MWTetris::down(){
-    game_->getPlayer().moveBric();
-}
-
-void MWTetris::drop(){
-    game_->getPlayer().moveBric(1);
+    game_->command(0);
 }
 
 void MWTetris::left(){
-    game_->getPlayer().moveBric(2);
+    game_->command(1);
 }
 
 void MWTetris::right(){
-    game_->getPlayer().moveBric(3);
+    game_->command(2);
+}
+
+void MWTetris::drop(){
+    game_->command(3);
+}
+
+void MWTetris::turn(){
+    game_->command(4);
 }
 
 void MWTetris::update(Subject *){
@@ -119,7 +119,7 @@ void MWTetris::update(Subject *){
     resetBoard();
     generateBoard();
     if(game_->endGame()){
-        ui->lbEnd->setEnabled(1);
+        ui->lbEnd->show();
     }
 }
 

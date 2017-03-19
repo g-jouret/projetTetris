@@ -34,14 +34,33 @@ void Player::setBoard(unsigned width, unsigned height){
     board_ = Board(width, height);
 }
 
-void Player::checkLines(){
-    for(unsigned i = board_.getHeight()-1; i != 0; --i){
+void Player::checkLines(unsigned dropCount){
+    unsigned points, linesFilled {0};
+    for(unsigned i {board_.getHeight()-1}; i != 0; --i){
         if(board_.checkLine(board_.getLine(i)) == 1){
-            nbLine_ += board_.gridActualisation(i);
+            linesFilled += board_.gridActualisation(i);
         }
-
-        // TODO : compteur de lignes traversées par le drop
     }
+    nbLine_ += linesFilled;
+    switch (linesFilled) {
+        case 0:
+        case 1:
+            points = 40;
+            break;
+        case 2:
+            points = 100;
+            break;
+        case 3:
+            points = 300;
+            break;
+        case 4:
+            points = 1200;
+            break;
+        default:
+            points = linesFilled*500;   // multiplicateur pour les briques perso de + de 4 cases de hauteur
+            break;
+    }
+    score_ += points * linesFilled + dropCount;
 }
 
 void Player::generateBric(){
@@ -64,40 +83,53 @@ void Player::generateBric(){
             board_.swapCase(toSwap);
         }
     }
-    std::cout << board_ << std::endl;
 }
 
 void Player::rotateBric(){
 
 }
 
-void Player::moveBric(unsigned direction){
-    std::cout << board_ << std::endl;
+void Player::move(unsigned direction){
+    unsigned count {0};
+    if(direction == 3){
+        while(checkMove(0)){
+            ++count;
+        }
+    } else{
+        checkMove(direction);
+    }
+    checkLines(count);
+}
+
+bool Player::checkMove(unsigned direction){
     bool ok {1};
     unsigned count {0};
-    //implémentation du drop : if(direction == 1) => while(peut descendre)
     Bric destination = currentBric_;
-    destination.move(direction-1);
+    destination.move(direction);
     while(ok && count < destination.getShape().size()){
         if(! currentBric_.isIn(destination.getShape().at(count))){
             ok = ! board_.checkCase(destination.getShape().at(count));
         }
         ++count;
     }
-
-    if(ok){
-        for(Position p : currentBric_.getShape()){
-            Position & toSwap {board_.getCase(p)};
-            board_.swapCase(toSwap);
-        }
-        currentBric_.move(direction);
-        for(Position p : currentBric_.getShape()){
-            Position & toSwap {board_.getCase(p)};
-            board_.swapCase(toSwap);
-        }
-    }
-    std::cout << board_ << std::endl;
+    if(ok)
+        moveBric(direction);
+    return ok;
 }
+
+void Player::moveBric(unsigned direction){
+    for(Position p : currentBric_.getShape()){
+        Position & toSwap {board_.getCase(p)};
+        board_.swapCase(toSwap);
+    }
+    currentBric_.move(direction);
+    for(Position p : currentBric_.getShape()){
+        Position & toSwap {board_.getCase(p)};
+        board_.swapCase(toSwap);
+    }
+}
+
+
 
 // TODO : next currentBric_ + show next bric
 
