@@ -1,7 +1,7 @@
 #include "mwtetris.h"
 #include "ui_mwtetris.h"
 
-MWTetris::MWTetris(GJ_GW::Game * game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris){
+MWTetris::MWTetris(/*GJ_GW::*/Game * game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris){
     ui->setupUi(this);
 
     connexion();
@@ -20,7 +20,7 @@ MWTetris::~MWTetris() noexcept{
 
 void MWTetris::connexion(){
     connect(ui->action_Nouveau, &QAction::triggered, this, &MWTetris::createGame);
-    connect(ui->action_Quitter, &QAction::triggered, this, &MWTetris::closeGame);
+    connect(ui->action_Quitter, &QAction::triggered, this, &MWTetris::quitGame);
     // TODO : aide? cf qtpendu.pdf
 }
 
@@ -48,13 +48,13 @@ void MWTetris::createGame(){
 }
 
 void MWTetris::quitGame(){
-    delete game_;
-    //exit(0);  pas une bonne idée
+    //delete game_; // bug? si présent le application::quit() ne fonctionne pas, double delete?
+    //exit(0); // pas une bonne idée
     QApplication::quit();
 }
 
 void MWTetris::generateBoard(){
-    std::vector<GJ_GW::Position> theGrid {game_->getPlayer().getBoard().getGrid()};
+    std::vector</*GJ_GW::*/Position> theGrid {game_->getPlayer().getBoard().getGrid()};
     /*for(GJ_GW::Position p : game_->getPlayer().getBoard().getGrid()){
         QLabel * lb = new QLabel();
         if(p.isFilled()){
@@ -112,8 +112,8 @@ void MWTetris::right(){
     game_->getPlayer().moveBric(3);
 }
 
-void MWTetris::update(Observer *){
-    if(game_->getPlayer().getName() != ui->lbPlayerName->text()){
+void MWTetris::update(Subject *){
+    if(QString::fromStdString(game_->getPlayer().getName()) != ui->lbPlayerName->text()){
         ui->lbPlayerName->setText(QString::fromStdString(game_->getPlayer().getName()));
     }
     resetBoard();

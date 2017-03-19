@@ -14,11 +14,11 @@ Game::Game(): level_ {0}, timer_ {MAXIMUM_TIMER}
     player_ {Player(name, width, height)}
 {}*/
 
-const Player &Game::getPlayer(){
+Player &Game::getPlayer(){
     return player_;
 }
 
-void Game::setPlayer(std::string & name, unsigned width, unsigned height){
+void Game::setPlayer(std::string name, unsigned width, unsigned height){
     player_.setName(validateName(name));
     player_.setBoard(validateWidth(width), validateHeight(height));
     notifyObservers();

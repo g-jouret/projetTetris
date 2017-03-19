@@ -1,5 +1,4 @@
 #include "bric.h"
-#include <algorithm>
 
 //namespace GJ_GW{
 

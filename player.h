@@ -5,6 +5,7 @@
 #include "bric.h"
 #include "bricsBag.h"
 #include <string>
+#include <iostream>
 
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.

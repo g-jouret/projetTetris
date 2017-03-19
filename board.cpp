@@ -1,6 +1,4 @@
 #include "board.h"
-#include <cstdlib>
-#include <iostream>
 
 //namespace GJ_GW{
 

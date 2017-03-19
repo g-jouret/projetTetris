@@ -23,7 +23,7 @@ class MWTetris : public QMainWindow, public /*GJ_GW::*/Observer{
 
 public:
     explicit MWTetris(/*GJ_GW::*/Game *game, QWidget *parent = 0);
-    void update(Observer *);
+    void update(Subject *);
     ~MWTetris() noexcept;
 
 private:

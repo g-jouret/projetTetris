@@ -4,6 +4,8 @@
 #include "position.h"
 #include <vector>
 #include <utility>
+#include <cstdlib>
+#include <iostream>
 
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.

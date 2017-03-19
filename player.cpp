@@ -1,5 +1,4 @@
 #include "player.h"
-#include <iostream>
 
 //namespace GJ_GW{
 

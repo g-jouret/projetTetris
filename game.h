@@ -79,10 +79,10 @@ public:
      * \param width la largeur de la grille
      * \param height la hauteur de la grille
      */
-    void setPlayer(std::string &name, unsigned width, unsigned height);
+    void setPlayer(std::string name, unsigned width, unsigned height);
 
     //inline std::vector<Player> getPlayers();  pour plus tard
-    const Player &getPlayer();
+    Player &getPlayer();
 
     void reset();
 

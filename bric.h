@@ -3,6 +3,7 @@
 
 #include "position.h"
 #include <vector>
+#include <algorithm>
 
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
