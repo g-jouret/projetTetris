@@ -1,33 +1,34 @@
 #include "mwtetris.h"
 #include "ui_mwtetris.h"
-#include "configdialog.h"
-#include <QGridLayout>
-#include <QLabel>
-#include <iostream>
 
-MWTetris::MWTetris(GJ_GW::Game * game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris)
-{
+MWTetris::MWTetris(GJ_GW::Game * game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris){
     ui->setupUi(this);
+
     connexion();
 
-    setName();
-    generateBoard();
+    game_->addObserver(this);
+
+    time();
+
+    update(game_);
 }
 
-MWTetris::~MWTetris(){
+MWTetris::~MWTetris() noexcept{
+    game_->removeObserver(this);
     delete ui;
 }
 
 void MWTetris::connexion(){
-    connect(ui->action_Quitter, &QAction::triggered, &QCoreApplication::quit);
     connect(ui->action_Nouveau, &QAction::triggered, this, &MWTetris::createGame);
-    connect(ui->action_Fermer, &QAction::triggered, this, &MWTetris::closeGame);
+    connect(ui->action_Quitter, &QAction::triggered, this, &MWTetris::closeGame);
     // TODO : aide? cf qtpendu.pdf
 }
 
 void MWTetris::createGame(){
     ConfigDialog cd {this};
-    auto ret = cd.exec();
+    cd.setWindowTitle("Configuration de la partie");
+    int ret = cd.exec();
+
     if(ret == QDialog::Rejected) return;
 
     std::string name {cd.getName()};
@@ -36,27 +37,23 @@ void MWTetris::createGame(){
 
     if(! name.empty() || width != 0 || height != 0){
         game_->setPlayer(name, width, height);
-        setName();
     }
+    update(game_);
+
+    //version test manuelle
     generateBric();
-    generateBoard();
+    update(game_);
     down();
-    generateBoard();
+    update(game_);
 }
 
-void MWTetris::closeGame(){
+void MWTetris::quitGame(){
     delete game_;
     //exit(0);  pas une bonne idée
     QApplication::quit();
 }
 
-void MWTetris::setName(){
-    ui->lbPlayerName->setText(QString::fromStdString(game_->getPlayer().getName()));
-}
-
 void MWTetris::generateBoard(){
-    std::cout << "generateBoard" << std::endl;
-    resetBoard();
     std::vector<GJ_GW::Position> theGrid {game_->getPlayer().getBoard().getGrid()};
     /*for(GJ_GW::Position p : game_->getPlayer().getBoard().getGrid()){
         QLabel * lb = new QLabel();
@@ -88,16 +85,6 @@ void MWTetris::resetBoard(){
     // WARNING : bug : ne répond plus quand trop grande diminution de la largeur(?)
 }
 
-void MWTetris::actualiseBoard(){
-    /*QLabel *lb;
-    for(GJ_GW::Position p : game_->getPlayer().getBoard().getGrid()){
-        lb = ui->boardGrid->itemAtPosition(p.getX(), p.getY());
-        if(p.isFilled()){
-
-        }
-    }*/
-}
-
 void MWTetris::turn(){
     game_->getPlayer().rotateBric();
 }
@@ -123,4 +110,34 @@ void MWTetris::left(){
 
 void MWTetris::right(){
     game_->getPlayer().moveBric(3);
+}
+
+void MWTetris::update(Observer *){
+    if(game_->getPlayer().getName() != ui->lbPlayerName->text()){
+        ui->lbPlayerName->setText(QString::fromStdString(game_->getPlayer().getName()));
+    }
+    resetBoard();
+    generateBoard();
+    if(game_->endGame()){
+        ui->lbEnd->setEnabled(1);
+    }
+}
+
+void MWTetris::time(){
+    QString lb;
+    unsigned time = (timer_.elapsed() / 1000);
+    unsigned sec = (time % 60);
+    unsigned min = ((time/60) % 60);
+    unsigned hours = ((time/3600) % 24);
+    lb.append(QString::number(hours));
+    lb.append(":");
+    if(min < 10)
+        lb.append("0");
+    lb.append(QString::number(min));
+    lb.append(":");
+    if(sec < 10)
+        lb.append("0");
+    lb.append(QString::number(sec));
+
+    ui->lbTime->setText(lb);
 }

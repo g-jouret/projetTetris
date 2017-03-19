@@ -1,25 +1,27 @@
 #include "game.h"
-#include <vector>
 
-namespace GJ_GW {
+//namespace GJ_GW {
 
 Game::Game(): level_ {0}, timer_ {MAXIMUM_TIMER}
   //players_ {std::vector<Player> {   pour plus tard
   //player_ {Player("Joueur1", DEFAULT_WIDTH, DEFAULT_HEIGHT)}
-{}
+{
+    notifyObservers();
+}
 
 /*Game::Game(std::string name, unsigned width, unsigned height):
     level_ {0}, timer_ {MAXIMUM_TIMER},
     player_ {Player(name, width, height)}
 {}*/
 
-Player Game::getPlayer(){
+const Player &Game::getPlayer(){
     return player_;
 }
 
-void Game::setPlayer(std::string name, unsigned width, unsigned height){
+void Game::setPlayer(std::string & name, unsigned width, unsigned height){
     player_.setName(validateName(name));
     player_.setBoard(validateWidth(width), validateHeight(height));
+    notifyObservers();
 }
 
 std::string Game::validateName(std::string name){
@@ -32,6 +34,17 @@ unsigned Game::validateHeight(unsigned value){
 
 unsigned Game::validateWidth(unsigned value){
     return (value == 0)? player_.getBoard().getWidth() : value;
+}
+
+void Game::reset(){
+    level_ = 0;
+    timer_ = MAXIMUM_TIMER;
+    setPlayer("Joueur", 10, 20);
+    notifyObservers();
+}
+
+bool Game::endGame(){
+    return false;
 }
 
 // WARNING : revoir les constructeur de copies / destructeurs etc
@@ -67,4 +80,5 @@ unsigned Game::upTimer(unsigned lvl, unsigned timer){
     return timer;
 }
 */
-}
+
+//} //namespace GJ_GW

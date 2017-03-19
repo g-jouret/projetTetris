@@ -4,7 +4,8 @@
 int main(int argc, char *argv[]){
     QApplication a(argc, argv);
 
-    GJ_GW::Game * game = new GJ_GW::Game();
+    Game * game;
+    game = new Game();
     MWTetris w(game);
     w.show();
 

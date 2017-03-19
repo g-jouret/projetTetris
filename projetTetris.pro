@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     game.cpp \
     player.cpp \
     position.cpp \
-    configdialog.cpp
+    configdialog.cpp \
+    subject.cpp
 
 HEADERS  += mwtetris.h \
     board.h \
@@ -29,7 +30,9 @@ HEADERS  += mwtetris.h \
     game.h \
     player.h \
     position.h \
-    configdialog.h
+    configdialog.h \
+    subject.h \
+    observer.h
 
 FORMS    += mwtetris.ui \
     configdialog.ui

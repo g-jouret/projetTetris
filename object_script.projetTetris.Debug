@@ -8,6 +8,7 @@ INPUT(
 ./debug\player.o
 ./debug\position.o
 ./debug\configdialog.o
+./debug\subject.o
 ./debug\moc_mwtetris.o
 ./debug\moc_configdialog.o
 );

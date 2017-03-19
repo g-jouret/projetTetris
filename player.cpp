@@ -1,13 +1,13 @@
 #include "player.h"
 #include <iostream>
 
-namespace GJ_GW{
+//namespace GJ_GW{
 
 Player::Player(): Player("Joueur", board_.DEFAULT_WIDTH, board_.DEFAULT_HEIGHT)
 {}
 
 Player::Player(std::string name, unsigned width, unsigned height):
-    name_ {name}, board_{Board(width, height)}, bag_{BricsBag()}, currentBric_{bag_.getNextBric()}
+    name_ {name}, board_{Board(width, height)}, bag_{BricsBag()}, currentBric_{bag_.getNextBric()}, score_{0}, nbLine_{0}
   // TODO : rearrange avant getnextbric
 {}
 
@@ -111,4 +111,4 @@ std::ostream & operator<<(std::ostream & out, const Player & in){
     return out;
 }*/
 
-}
+//} //namespace GJ_GW

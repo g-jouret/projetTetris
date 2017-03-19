@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <iostream>
 
-namespace GJ_GW{
+//namespace GJ_GW{
 
 Board::Board():Board(DEFAULT_WIDTH, DEFAULT_HEIGHT)
 {}
@@ -27,7 +27,7 @@ unsigned Board::getWidth(){
     return width_;
 }
 
-Position &Board::getCase(Position destination){
+Position &Board::getCase(Position & destination){
     auto it = grid_.begin();
     bool ok {0};
     while(it != grid_.end() && !ok){
@@ -50,7 +50,7 @@ std::vector<Position> Board::getLine(unsigned lineNum) const{
     return theLine;
 }
 
-bool Board::checkCase(Position pos){
+bool Board::checkCase(Position & pos){
     return getCase(pos).isFilled();
 }
 
@@ -81,7 +81,8 @@ void Board::moveLine(std::vector<Position> line, unsigned lineNb){
     for(Position p : line){
         if(p.isFilled()){
             getCase(p).swapFilled();
-            getCase(Position(p.getX(),p.getY()+lineNb)).swapFilled();
+            Position pos = Position(p.getX(),p.getY()+lineNb);
+            getCase(pos).swapFilled();
         }
     }
 }
@@ -120,4 +121,4 @@ std::ostream & operator<<(std::ostream & out, const Board & in){
     return out;
 }
 
-}
+//} //namespace GJ_GW

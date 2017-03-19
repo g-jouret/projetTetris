@@ -1,39 +1,46 @@
 #ifndef MWTETRIS_H
 #define MWTETRIS_H
 
-#include "game.h"
 #include <QMainWindow>
+#include "configdialog.h"
+#include "observer.h"
+#include "game.h"
+#include <QElapsedTimer>
+#include <QTimer>
+#include <QGridLayout>
+#include <QLabel>
+#include <iostream>
 
 namespace Ui {
 class MWTetris;
 }
 
-class MWTetris : public QMainWindow{
+class MWTetris : public QMainWindow, public /*GJ_GW::*/Observer{
     Q_OBJECT
-    GJ_GW::Game * game_;
+    /*GJ_GW::*/Game *game_;
+    Ui::MWTetris *ui;
+    QElapsedTimer timer_;
 
 public:
-    explicit MWTetris(GJ_GW::Game *game, QWidget *parent = 0);
+    explicit MWTetris(/*GJ_GW::*/Game *game, QWidget *parent = 0);
+    void update(Observer *);
     ~MWTetris() noexcept;
 
 private:
-    Ui::MWTetris *ui;
-
     void connexion();
     void generateBoard();
-    void actualiseBoard();
-    void setName();
     void generateBric();
     void resetBoard();
 
 private slots:
     void createGame();
-    void closeGame();
+    void quitGame();
     void down();
     void turn();
     void drop();
     void left();
     void right();
+    void time();
 
 };
 

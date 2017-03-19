@@ -7,7 +7,7 @@
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
  */
-namespace GJ_GW{
+//namespace GJ_GW{
 
 /*!
  * \brief Classe représentant le sac de briques générée pour jouer.
@@ -32,7 +32,7 @@ public:
      *
      * \param brics les briques du sac
      */
-    BricsBag(std::vector<Bric> brics);
+    explicit BricsBag(std::vector<Bric> &brics);
 
     /*!
      * \brief Destructeur de \ref BricsBag.
@@ -63,6 +63,6 @@ public:
     void rearrange();
 };
 
-}
+//} //namespace GJ_GW
 
 #endif // BRICSBAG_H

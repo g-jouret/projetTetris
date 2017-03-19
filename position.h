@@ -6,7 +6,7 @@
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
  */
-namespace GJ_GW{
+//namespace GJ_GW{
 
 /*!
  * \brief Classe représentant la position d'une case de la grille de jeu.
@@ -110,6 +110,6 @@ inline unsigned Position::getY() const{
     return y_;
 }
 
-}
+//} //namespace GJ_GW
 
 #endif // POSITION_H

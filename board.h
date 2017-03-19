@@ -8,7 +8,7 @@
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
  */
-namespace GJ_GW{
+//namespace GJ_GW{
 
 /*!
  * \brief Classe représentant la grille de jeu.
@@ -93,7 +93,7 @@ public:
      */
     unsigned getWidth();
 
-    bool checkCase(Position pos);
+    bool checkCase(Position &pos);
 
     /*!
      * \brief Méthode vérifiant l'état d'une ligne de la grille de jeu.
@@ -121,7 +121,7 @@ public:
      *
      * \return si la brique courante peut effectuer son mouvement ou non
      */
-    Position &getCase(Position destination);
+    Position &getCase(Position &destination);
 
     /*!
      * \brief Méthode changeant l'état de toutes les Positions d'une ligne.
@@ -171,6 +171,6 @@ std::ostream & operator<<(std::ostream & out, const Board & in);
     return *this;
 }*/
 
-}
+//} // namespace GJ_GW
 
 #endif // BOARD_H

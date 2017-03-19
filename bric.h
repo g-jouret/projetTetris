@@ -7,7 +7,7 @@
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
  */
-namespace GJ_GW{
+//namespace GJ_GW{
 
 /*!
  * \brief Classe représentant une brique de Tetris.
@@ -42,7 +42,7 @@ public:
      *
      * \param shape les \ref Position remplies
      */
-    Bric(std::vector<Position> shape);
+    explicit Bric(std::vector<Position> shape);
 
     //Bric(const Bric & other);
     // NOTE : à voir si utile
@@ -82,7 +82,7 @@ public:
      */
     void move(unsigned direction);
 
-    bool isIn(Position toCheck);
+    bool isIn(Position &toCheck);
 
     std::string to_string() const;
 
@@ -93,5 +93,5 @@ public:
 std::ostream & operator<<(std::ostream & out, const Bric & in);
 //implémentations inline
 
-}
+//} //namespace GJ_GW
 #endif // BRIC_H

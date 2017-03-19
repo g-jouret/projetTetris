@@ -1,6 +1,6 @@
 #include "position.h"
 
-namespace GJ_GW{
+//namespace GJ_GW{
 
 Position::Position(): Position(0,0)
 {}
@@ -45,4 +45,4 @@ out << in.to_string();
 return out;
 }
 
-}
+//} //namespace GJ_GW

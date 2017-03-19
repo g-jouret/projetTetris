@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'configdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.7.0
+** Created by: Qt User Interface Compiler version 5.7.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -141,10 +141,10 @@ public:
 
     void retranslateUi(QDialog *ConfigDialog)
     {
-        ConfigDialog->setWindowTitle(QApplication::translate("ConfigDialog", "Configuration de la partie", 0));
-        lbName->setText(QApplication::translate("ConfigDialog", "Nom", 0));
-        lbHeight->setText(QApplication::translate("ConfigDialog", "Hauteur", 0));
-        lbWidth->setText(QApplication::translate("ConfigDialog", "Largeur", 0));
+        ConfigDialog->setWindowTitle(QApplication::translate("ConfigDialog", "Configuration de la partie", Q_NULLPTR));
+        lbName->setText(QApplication::translate("ConfigDialog", "Nom", Q_NULLPTR));
+        lbHeight->setText(QApplication::translate("ConfigDialog", "Hauteur", Q_NULLPTR));
+        lbWidth->setText(QApplication::translate("ConfigDialog", "Largeur", Q_NULLPTR));
     } // retranslateUi
 
 };

@@ -1,8 +1,9 @@
-
 #ifndef GAME_H
 #define GAME_H
 
 #include "player.h"
+#include <vector>
+#include "subject.h"
 
 /*! \mainpage Le jeu de Tetris multijoueur, projet de c++ 2016-2017
  *
@@ -14,21 +15,18 @@
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
  */
-namespace GJ_GW{
+//namespace GJ_GW{
 
 /*!
  * \brief Classe déterminant le fonctionnement d'une partie de Tetris.
  */
-class Game
-{
+class Game : public Subject{
 public:
     constexpr static unsigned MINIMUM_TIMER {500};
     /*!< Valeur minimale acceptée pour le timer. */
 
     constexpr static unsigned MAXIMUM_TIMER {2000};
     /*!< Valeur maximale acceptée pour le timer. */
-
-
 
 private:
     unsigned level_;
@@ -81,10 +79,12 @@ public:
      * \param width la largeur de la grille
      * \param height la hauteur de la grille
      */
-    void setPlayer(std::string name, unsigned width, unsigned height);
+    void setPlayer(std::string &name, unsigned width, unsigned height);
 
     //inline std::vector<Player> getPlayers();  pour plus tard
-    Player getPlayer();
+    const Player &getPlayer();
+
+    void reset();
 
     /*!
      * \brief Méthode vérifiant qu'aucune condition de fin de partie n'a été remplie.
@@ -95,7 +95,7 @@ public:
      *  - Un joueur gagne s'il réussi à remplir suffisamment de lignes ;
      *  - la partie s'arrête après un certain temps, le joueur ayant alors le plus haut score l'emporte.
      */
-    void endGame();
+    bool endGame();
 
     //std::string to_string() const;
 
@@ -148,7 +148,7 @@ private:
 
 //std::ostream & operator<<(std::ostream & out, const Game & in);
 
-}
+//} //namespace GJ_GW
 
 #endif // GAME_H
 

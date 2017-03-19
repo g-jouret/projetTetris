@@ -241,6 +241,64 @@
      </property>
     </layout>
    </widget>
+   <widget class="QLabel" name="lbEnd">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>510</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Game Over</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>460</y>
+      <width>176</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_6">
+     <item>
+      <widget class="QLabel" name="lbTimer">
+       <property name="text">
+        <string>Temps écoulé :</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_7">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="lbTime">
+       <property name="statusTip">
+        <string/>
+       </property>
+       <property name="text">
+        <string>0 : 00 : 00</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -256,7 +314,6 @@
      <string>&amp;Jeu</string>
     </property>
     <addaction name="action_Nouveau"/>
-    <addaction name="action_Fermer"/>
     <addaction name="action_Quitter"/>
    </widget>
    <addaction name="menu_Jeu"/>
@@ -267,17 +324,6 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
-   </property>
-  </action>
-  <action name="action_Fermer">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Fermer</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+X</string>
    </property>
   </action>
   <action name="action_Quitter">

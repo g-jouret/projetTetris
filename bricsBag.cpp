@@ -1,7 +1,7 @@
 #include "bricsBag.h"
 #include <vector>
 
-namespace GJ_GW{
+//namespace GJ_GW{
 
 BricsBag::BricsBag(){
     std::vector<Position> bricI {Position(0,0),Position(1,0),Position(2,0),Position(3,0)};
@@ -23,7 +23,7 @@ BricsBag::BricsBag(){
 
 }
 
-BricsBag::BricsBag(std::vector<Bric> brics): brics_ {brics}
+BricsBag::BricsBag(std::vector<Bric> & brics): brics_ {brics}
 {}
 
 std::vector<Bric> BricsBag::getBrics(){
@@ -34,4 +34,4 @@ Bric BricsBag::getNextBric(){
     return brics_.at(0);
 }
 
-}
+//} //namespace GJ_GW

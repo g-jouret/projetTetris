@@ -1,7 +1,7 @@
 #include "bric.h"
 #include <algorithm>
 
-namespace GJ_GW{
+//namespace GJ_GW{
 
 Bric::Bric():Bric(std::vector<Position>{Position(0,0), Position(0,1)})
 {}
@@ -46,7 +46,7 @@ void Bric::move(unsigned direction){
     }
 }
 
-bool Bric::isIn(Position toCheck){
+bool Bric::isIn(Position & toCheck){
     bool ok {0};
     for(Position p : shape_){
         if(p == toCheck){
@@ -69,4 +69,4 @@ out << in.to_string();
 return out;
 }
 
-}
+//} //namespace GJ_GW

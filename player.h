@@ -9,7 +9,7 @@
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
  */
-namespace GJ_GW{
+//namespace GJ_GW{
 
 /*!
  * \brief Classe représentant un joueur.
@@ -18,12 +18,6 @@ class Player{
 
     std::string name_;
     /*!< Le nom du joueur. */
-
-    unsigned score_;
-    /*!< Le score du joueur.
-     *
-     * Augmente au fur et à mesure que le joueur rempli des lignes de la grille.
-     */
 
     Board board_;
     /*!< La grille de jeu du joueur. */
@@ -35,6 +29,12 @@ class Player{
     /*!< La brique courante.
      *
      * Celle que contrôle le joueur.
+     */
+
+    unsigned score_;
+    /*!< Le score du joueur.
+     *
+     * Augmente au fur et à mesure que le joueur rempli des lignes de la grille.
      */
 
     unsigned nbLine_;
@@ -155,6 +155,6 @@ public:
     return *this;
 }*/
 
-}
+//} //namespace GJ_GW
 
 #endif // PLAYER_H
