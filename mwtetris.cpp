@@ -46,7 +46,8 @@ void MWTetris::createGame(){
 
 void MWTetris::closeGame(){
     delete game_;
-    exit(0);
+    //exit(0);  pas une bonne idée
+    QApplication::quit();
 }
 
 void MWTetris::setName(){
