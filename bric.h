@@ -85,13 +85,13 @@ public:
 
     bool isIn(Position &toCheck);
 
-    //std::string to_string() const;
+    std::string to_string() const;
 
-    //friend std::ostream & operator<<(std::ostream & out, const Bric & in);
+    friend std::ostream & operator<<(std::ostream & out, const Bric & in);
 };
 
 //prototypes
-//std::ostream & operator<<(std::ostream & out, const Bric & in);
+std::ostream & operator<<(std::ostream & out, const Bric & in);
 
 //implémentations inline
 

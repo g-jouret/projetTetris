@@ -60,6 +60,16 @@ void Player::checkLines(unsigned dropCount){
             points = linesFilled*500;   // multiplicateur pour les briques perso de + de 4 cases de hauteur
             break;
     }
+
+
+    std::cout << points
+              << " * "
+              << linesFilled
+              << " + "
+              << dropCount
+              << std::endl;
+
+
     score_ += points * linesFilled + dropCount;
 }
 
@@ -91,8 +101,10 @@ void Player::rotateBric(){
 
 void Player::move(unsigned direction){
     unsigned count {0};
+    bool ok {1};
     if(direction == 3){
-        while(checkMove(0)){
+        while(ok){
+            ok = checkMove(0);
             ++count;
         }
     } else{
@@ -108,12 +120,16 @@ bool Player::checkMove(unsigned direction){
     destination.move(direction);
     while(ok && count < destination.getShape().size()){
         if(! currentBric_.isIn(destination.getShape().at(count))){
-            ok = ! board_.checkCase(destination.getShape().at(count));
+            ok = (! board_.checkCase(destination.getShape().at(count))) && board_.isIn(destination.getShape().at(count));
         }
         ++count;
     }
     if(ok)
         moveBric(direction);
+    if(! ok && direction == 0){
+        currentBric_ = bag_.getNextBric();
+        generateBric();
+    }
     return ok;
 }
 

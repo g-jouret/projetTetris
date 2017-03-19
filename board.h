@@ -94,6 +94,8 @@ public:
 
     bool checkCase(Position &pos);
 
+    bool isIn(Position &pos);
+
     /*!
      * \brief Méthode vérifiant l'état d'une ligne de la grille de jeu.
      *
@@ -149,15 +151,15 @@ public:
 
     //inline Board& operator=(Board&& other) noexcept;
 
-    //std::string to_string() const;
+    std::string to_string() const;
 
-    //friend std::ostream & operator<<(std::ostream & out, const Board & in);
+    friend std::ostream & operator<<(std::ostream & out, const Board & in);
 
 
 };
 
 //prototypes
-//std::ostream & operator<<(std::ostream & out, const Board & in);
+std::ostream & operator<<(std::ostream & out, const Board & in);
 
 //implémentation inline
 //méthodes inline

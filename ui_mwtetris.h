@@ -265,6 +265,7 @@ public:
         btnRight->setText(QApplication::translate("MWTetris", "Droite", Q_NULLPTR));
         btnRight->setShortcut(QApplication::translate("MWTetris", "Right", Q_NULLPTR));
         btnDown->setText(QApplication::translate("MWTetris", "Bas", Q_NULLPTR));
+        btnDown->setShortcut(QApplication::translate("MWTetris", "Down", Q_NULLPTR));
         lbEnd->setText(QApplication::translate("MWTetris", "Game Over", Q_NULLPTR));
         menu_Jeu->setTitle(QApplication::translate("MWTetris", "&Jeu", Q_NULLPTR));
     } // retranslateUi

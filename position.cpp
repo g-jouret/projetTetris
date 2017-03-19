@@ -29,7 +29,7 @@ void Position::setY(int y){
     y_ += y;
 }
 
-/*std::string Position::to_string() const{
+std::string Position::to_string() const{
 std::string s;
 s += "(";
 s += std::to_string(x_);
@@ -38,11 +38,11 @@ s += std::to_string(y_);
 s += ") : ";
 s += std::to_string(filled_);
 return s;
-}*/
+}
 
-/*std::ostream & operator<<(std::ostream & out, const Position & in){
+std::ostream & operator<<(std::ostream & out, const Position & in){
 out << in.to_string();
 return out;
-}*/
+}
 
 //} //namespace GJ_GW

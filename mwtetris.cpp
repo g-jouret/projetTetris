@@ -22,11 +22,13 @@ void MWTetris::connexion(){
     connect(ui->action_Nouveau, &QAction::triggered, this, &MWTetris::createGame);
     connect(ui->action_Quitter, &QAction::triggered, this, &MWTetris::quitGame);
     // TODO : aide? cf qtpendu.pdf
-    connect(ui->btnDown, &QPushButton::clicked, this, &MWTetris::down);
+    connect(ui->btnDown, &QPushButton::clicked, this, &MWTetris::drop);
     connect(ui->btnLeft, &QPushButton::clicked, this, &MWTetris::left);
     connect(ui->btnRight, &QPushButton::clicked, this, &MWTetris::right);
+    connect(ui->btnUp, &QPushButton::clicked, this, &MWTetris::turn);
 }
 
+// TODO : faire un VRAI reset au lieu du setPlayer
 void MWTetris::createGame(){
     ConfigDialog cd {this};
     cd.setWindowTitle("Configuration de la partie");
@@ -34,13 +36,6 @@ void MWTetris::createGame(){
 
     if(ret == QDialog::Rejected) return;
 
-    /*std::string name {cd.getName()};
-    unsigned width {cd.getWidth()};
-    unsigned height {cd.getHeight()};
-
-    if(! name.empty() || width != 0 || height != 0){
-        game_->setPlayer(name, width, height);
-    }*/
     game_->setPlayer(cd.getName(), cd.getWidth(), cd.getHeight());
 
     ui->lbEnd->hide();
@@ -88,6 +83,7 @@ void MWTetris::resetBoard(){
     // WARNING : bug : ne répond plus quand trop grande diminution de la largeur(?)
 }
 
+// NOTE : peut-être inutile, gestion par le model?
 void MWTetris::generateBric(){
     game_->getPlayer().generateBric();
 }
@@ -116,6 +112,9 @@ void MWTetris::update(Subject *){
     if(QString::fromStdString(game_->getPlayer().getName()) != ui->lbPlayerName->text()){
         ui->lbPlayerName->setText(QString::fromStdString(game_->getPlayer().getName()));
     }
+    if(QString::number(game_->getPlayer().getScore()) != ui->lbPlayerScore->text()){
+        ui->lbPlayerScore->setText(QString::number(game_->getPlayer().getScore()));
+    }
     resetBoard();
     generateBoard();
     if(game_->endGame()){
@@ -123,6 +122,7 @@ void MWTetris::update(Subject *){
     }
 }
 
+// WARNING : incorrect
 void MWTetris::time(){
     QString lb;
     unsigned time = (timer_.elapsed() / 1000);

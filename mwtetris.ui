@@ -241,6 +241,9 @@
          <property name="text">
           <string>Bas</string>
          </property>
+         <property name="shortcut">
+          <string>Down</string>
+         </property>
         </widget>
        </item>
        <item>

@@ -52,6 +52,10 @@ bool Board::checkCase(Position & pos){
     return getCase(pos).isFilled();
 }
 
+bool Board::isIn(Position & pos){
+    return pos.getX() < width_ && pos.getY() < height_;
+}
+
 unsigned Board::checkLine(std::vector<Position> line){
     unsigned check;
     bool fill;
@@ -102,7 +106,7 @@ unsigned Board::gridActualisation(unsigned lineNum){
     return lineCount;
 }
 
-/*std::string Board::to_string() const{
+std::string Board::to_string() const{
     std::string s;
     for(unsigned i = 0; i < height_; ++i){
         for(Position p : this->getLine(i)){
@@ -112,11 +116,11 @@ unsigned Board::gridActualisation(unsigned lineNum){
         s += "\n";
     }
     return s;
-}*/
+}
 
-/*std::ostream & operator<<(std::ostream & out, const Board & in){
+std::ostream & operator<<(std::ostream & out, const Board & in){
     out << in.to_string();
     return out;
-}*/
+}
 
 //} //namespace GJ_GW

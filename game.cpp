@@ -40,7 +40,7 @@ void Game::command(unsigned cmdId){
     if(cmdId == 4)
         player_.rotateBric();
     else
-        player_.moveBric(cmdId);
+        player_.move(cmdId);
     notifyObservers();
 }
 
