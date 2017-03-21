@@ -33,4 +33,9 @@ Bric BricsBag::getNextBric(){
     return brics_.at(0);
 }
 
+void BricsBag::shuffle(){
+    std::swap(brics_.at(0), brics_.at(brics_.size()-1));
+    std::random_shuffle(brics_.begin(), --brics_.end());
+}
+
 //} //namespace GJ_GW

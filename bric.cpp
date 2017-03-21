@@ -5,8 +5,7 @@
 Bric::Bric():Bric(std::vector<Position>{Position(0,0), Position(0,1)})
 {}
 
-Bric::Bric(std::vector<Position> shape): shape_ {shape}
-{
+Bric::Bric(std::vector<Position> shape): shape_ {shape}{
     // TODO : à la création d'une forme perso : vérification que la brique est dans la longueur (il y a plus de X que de Y)
     std::vector<unsigned> temp;
     for(Position pos : shape_){
@@ -43,6 +42,10 @@ void Bric::move(unsigned direction){
         }
         break;
     }
+}
+
+void Bric::rotate(){
+
 }
 
 bool Bric::isIn(Position & toCheck){

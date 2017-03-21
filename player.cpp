@@ -128,6 +128,8 @@ bool Player::checkMove(unsigned direction){
         moveBric(direction);
     if(! ok && direction == 0){
         currentBric_ = bag_.getNextBric();
+        bag_.shuffle();
+        currentBric_ = bag_.getNextBric();
         generateBric();
     }
     return ok;
@@ -144,10 +146,6 @@ void Player::moveBric(unsigned direction){
         board_.swapCase(toSwap);
     }
 }
-
-
-
-// TODO : next currentBric_ + show next bric
 
 /*std::string Player::to_string() const{
     return board_.to_string();

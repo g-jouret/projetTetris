@@ -72,7 +72,7 @@ public:
      * tourne les positions des cases de ce carrée de 45°.
      */
     // NOTE : la brique est dans un repère carrée, c'est le repère qui tourne, pas seulement la brique
-    void turn();
+    void rotate();
 
     /*!
      * \brief Méthode déplaçant la brique dans une direction.

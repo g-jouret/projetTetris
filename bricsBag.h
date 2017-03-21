@@ -60,7 +60,7 @@ public:
     /*!
      * \brief Méthode mélangeant les briques dans le sac.
      */
-    void rearrange();
+    void shuffle();
 };
 
 //} //namespace GJ_GW
