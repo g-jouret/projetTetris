@@ -101,6 +101,8 @@ Makefile: projetTetris.pro C:/Qt/5.7/mingw53_32/mkspecs/win32-g++/qmake.conf C:/
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designer.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designer_private.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designercomponents_private.pri \
+		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gamepad.pri \
+		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gamepad_private.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gui.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gui_private.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_help.pri \
@@ -125,6 +127,8 @@ Makefile: projetTetris.pro C:/Qt/5.7/mingw53_32/mkspecs/win32-g++/qmake.conf C:/
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_positioning_private.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_printsupport.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_printsupport_private.pri \
+		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_purchasing.pri \
+		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_purchasing_private.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qml.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qml_private.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qmldebug_private.pri \
@@ -140,8 +144,16 @@ Makefile: projetTetris.pro C:/Qt/5.7/mingw53_32/mkspecs/win32-g++/qmake.conf C:/
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quicktemplates2_private.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickwidgets.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickwidgets_private.pri \
+		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_script.pri \
+		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_script_private.pri \
+		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scripttools.pri \
+		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scripttools_private.pri \
+		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scxml.pri \
+		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scxml_private.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sensors.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sensors_private.pri \
+		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialbus.pri \
+		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialbus_private.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialport.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialport_private.pri \
 		C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sql.pri \
@@ -241,6 +253,8 @@ C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_dbus_private.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designer.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designer_private.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designercomponents_private.pri:
+C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gamepad.pri:
+C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gamepad_private.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gui.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gui_private.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_help.pri:
@@ -265,6 +279,8 @@ C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_positioning.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_positioning_private.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_printsupport.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_printsupport_private.pri:
+C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_purchasing.pri:
+C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_purchasing_private.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qml.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qml_private.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qmldebug_private.pri:
@@ -280,8 +296,16 @@ C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickparticles_private.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quicktemplates2_private.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickwidgets.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickwidgets_private.pri:
+C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_script.pri:
+C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_script_private.pri:
+C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scripttools.pri:
+C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scripttools_private.pri:
+C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scxml.pri:
+C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scxml_private.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sensors.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sensors_private.pri:
+C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialbus.pri:
+C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialbus_private.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialport.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialport_private.pri:
 C:/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sql.pri:

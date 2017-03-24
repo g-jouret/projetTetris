@@ -48,7 +48,7 @@ std::vector<Position> Board::getLine(unsigned lineNum) const{
     return theLine;
 }
 
-bool Board::checkCase(Position & pos){
+bool Board::checkCaseFilled(Position & pos){
     return getCase(pos).isFilled();
 }
 
@@ -70,7 +70,7 @@ unsigned Board::checkLine(std::vector<Position> line){
 }
 
 void Board::swapCase(Position & toSwap){
-    toSwap.swapFilled();
+    toSwap.isIn();
 }
 
 void Board::swapLine(std::vector<Position> line){

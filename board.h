@@ -16,7 +16,7 @@
  *
  * - sa hauteur ;
  * - sa largeur ;
- * - sa grille de cases.
+ * - sa grille de case de position.
  */
 class Board{
 
@@ -26,8 +26,6 @@ public:
 
     constexpr static unsigned DEFAULT_HEIGHT {20u};
     /*!< Valeur par défaut de la hauteur de la grille. */
-
-    // NOTE : indice du board : 0 en haut, MAX en bas : plus facile pour la génération de brique sur le board
 
 private:
     unsigned width_;
@@ -90,10 +88,22 @@ public:
      *
      * \return le nombre de colonnes de la grille
      */
-    unsigned getWidth();
+    unsigned getWidth();    
 
-    bool checkCase(Position &pos);
+    /*!
+     * \brief Méthode verifie si la case est pleine
+     *
+     * \param pos la localistation de la position
+     * \return vrais si la case est pleine
+     */
+    bool checkCaseFilled(Position &pos);
 
+    /*!
+     * \brief Méthode qui renvoi vrais si la position donnée est dans \ref grid_.
+     *
+     * \param pos la localistation de la position
+     * \return
+     */
     bool isIn(Position &pos);
 
     /*!
@@ -104,7 +114,7 @@ public:
      * \param line la ligne à analyse
      * \return 0 si la ligne est vide, 1 si elle est remplie et 2 autrement
      */
-    unsigned checkLine(std::vector<Position> getLine);
+    unsigned checkLine(std::vector<Position> line);
 
     /*!
      * \brief Méthode sélectionnant une ligne de la grille de jeu.
@@ -115,12 +125,10 @@ public:
     std::vector<Position> getLine(unsigned lineNum) const;
 
     /*!
-     * \brief Méthode vérifiant que la brique courante peut se déplacer.
+     * \brief Methode qui récuperant la position donnée dans \ref grid_
      *
-     * Si cette méthode renvoie faux, les vérifications de fin de partie
-     * et de lignes remplies sont lancées.
-     *
-     * \return si la brique courante peut effectuer son mouvement ou non
+     * \param destination la localisation de la position à renvoyer
+     * \return position de la grille
      */
     Position &getCase(Position &destination);
 
@@ -131,12 +139,13 @@ public:
      *
      * \param line la ligne à modifié
      */
-    void swapLine(std::vector<Position> getLine);
+    void swapLine(std::vector<Position> line);
 
     /*!
-     * \brief Méthode qui copie toutes les postions qui sont pleine dans un vecteur.
+     * \brief Methode qui
      *
-     * \param line ligne de position remplie
+     * \param getLine
+     * \param lineNb
      */
     void moveLine(std::vector<Position> getLine, unsigned lineNb);
 
@@ -147,6 +156,11 @@ public:
      */
     unsigned gridActualisation(unsigned lineNum);
 
+    /*!
+     * \brief Méthode qui rend la case remplie si elle est vide et à vide si elle est remplie.
+     *
+     * \param toSwap la position à swap
+     */
     void swapCase(Position &toSwap);
 
     //inline Board& operator=(Board&& other) noexcept;
