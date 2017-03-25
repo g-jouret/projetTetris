@@ -35,7 +35,7 @@ private slots:
     void createGame();
     void quitGame();
     void down();
-    void turn();
+    void rotate();
     void drop();
     void left();
     void right();

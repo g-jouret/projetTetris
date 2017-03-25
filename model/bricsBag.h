@@ -3,9 +3,10 @@
 
 #include "model/bric.h"
 #include <vector>
+#include <cstdlib>
 
 /*!
- * \brief Classe représentant le sac de briques générée pour jouer.
+ * \brief Classe représentant le sac de briques du joueur.
  */
 class BricsBag{
 
@@ -17,8 +18,10 @@ class BricsBag{
 
 public:
 
-    /*! TODO doc
-     * \brief BricsBag
+    /*!
+     * \brief Constructeur sans argument de \ref BricsBag.
+     *
+     * Il initialise le sac avec les 7 \ref Bric par défaut.
      */
     BricsBag();
 
@@ -30,30 +33,24 @@ public:
     explicit BricsBag(std::vector<Bric> &brics);
 
     /*!
-     * \brief Destructeur de \ref BricsBag.
-     */
-    // TODO : ~BricsBag();
-
-    /*!
      * \brief Accesseur en lecture du sac de briques.
      *
-     * \return le sac de briques
+     * \return le sac de briques du joueur
      */
-    std::vector<Bric> getBrics();
+    std::vector<Bric> getBrics() const;
 
     /*!
-     * \brief Méthode permettant de tirer la prochaine brique du sac.
+     * \brief Accesseur en lecture de la prochaine brique du sac.
      *
      * \return la brique au sommet du sac
      */
-    Bric getNextBric();
+    Bric getNextBric() const;
 
-    /* TODO : implémentation
-     * aléatoire à chaque pioche en ignorant la dernière brique qui est mise à la fin
-     * on ne réarrange pas la dernière brique.
-     */
     /*!
      * \brief Méthode mélangeant les briques dans le sac.
+     *
+     * Elle mélange les \ref Bric du sac à l'exception de la
+     * dernière brique jouée qui est mise en dernière position.
      */
     void shuffle();
 };

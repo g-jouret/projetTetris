@@ -1,6 +1,7 @@
 #include "model/tetris.h"
 
-Tetris::Tetris(): level_ {0}, timer_ {MAXIMUM_TIMER}{}
+Tetris::Tetris(): level_ {0}, timer_ {MAXIMUM_TIMER}, gameOver_{0}
+{}
 
 Tetris::Tetris(std::string name, unsigned width, unsigned height):Tetris(){
     setPlayer(name, width, height);
@@ -9,6 +10,10 @@ Tetris::Tetris(std::string name, unsigned width, unsigned height):Tetris(){
 
 const Player &Tetris::getPlayer() const{
     return player_;
+}
+
+bool Tetris::isGameOver() const{
+    return gameOver_;
 }
 
 void Tetris::setPlayer(std::string name, unsigned width, unsigned height){
@@ -29,22 +34,21 @@ unsigned Tetris::validateWidth(unsigned value){
 }
 
 void Tetris::command(unsigned cmdId){
-    if(cmdId == 4)
-        player_.rotateBric();
-    else
-        player_.move(cmdId);
+    player_.action(cmdId);
     notifyObservers();
 }
-
+/* inutilisé pour le moment
 void Tetris::reset(){
     level_ = 0;
     timer_ = MAXIMUM_TIMER;
     setPlayer("Joueur", 10, 20);
     notifyObservers();
 }
+*/
 
-bool Tetris::endGame(){
-    return false;
+void Tetris::endGame(){
+    // TODO : implémentation
+    gameOver_ = 1;
 }
 
 /*unsigned Game::upDificulty(unsigned lvl,unsigned lineDel){

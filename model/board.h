@@ -83,7 +83,7 @@ public:
      * \param pos la localistation de la position
      * \return true si la position est comprise dans la grille, false sinon
      */
-    bool isIn(Position &pos);
+    bool isIn(Position &pos) const;
 
     /*!
      * \brief Méthode vérifiant l'état d'une ligne de la grille de jeu.

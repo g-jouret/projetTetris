@@ -17,7 +17,7 @@ void Position::swapFilled(){
     //filled_ = (filled_)? 0 : 1;
 }
 
-bool Position::isFilled(){
+bool Position::isFilled() const{
     return filled_;
 }
 

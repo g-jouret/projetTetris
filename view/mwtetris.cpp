@@ -34,7 +34,7 @@ void MWTetris::createGame(){
     connect(ui->btnDown, &QPushButton::clicked, this, &MWTetris::drop);
     connect(ui->btnLeft, &QPushButton::clicked, this, &MWTetris::left);
     connect(ui->btnRight, &QPushButton::clicked, this, &MWTetris::right);
-    connect(ui->btnUp, &QPushButton::clicked, this, &MWTetris::turn);
+    connect(ui->btnUp, &QPushButton::clicked, this, &MWTetris::rotate);
     ui->lbEnd->hide();
 }
 
@@ -78,11 +78,11 @@ void MWTetris::right(){
     game_->command(2);
 }
 
-void MWTetris::drop(){
+void MWTetris::rotate(){
     game_->command(3);
 }
 
-void MWTetris::turn(){
+void MWTetris::drop(){
     game_->command(4);
 }
 
@@ -95,7 +95,7 @@ void MWTetris::update(Subject *){
     }
     resetBoard();
     generateBoard();
-    if(game_->endGame()){
+    if(game_->isGameOver()){
         ui->lbEnd->show();
     }
 }

@@ -1,13 +1,10 @@
 #include "model/player.h"
 
-//namespace GJ_GW{
-
 Player::Player(): Player("Joueur", board_.DEFAULT_WIDTH, board_.DEFAULT_HEIGHT)
 {}
 
 Player::Player(std::string name, unsigned width, unsigned height):
     name_ {name}, board_{Board(width, height)}, bag_{BricsBag()}, currentBric_{bag_.getNextBric()}, score_{0}, nbLine_{0}
-  // TODO : rearrange avant getnextbric
 {}
 
 std::string Player::getName() const{
@@ -85,18 +82,16 @@ void Player::generateBric(){
     }
 }
 
-void Player::rotateBric(){
-    currentBric_.rotate();
-}
-
-void Player::move(unsigned direction){
+void Player::action(unsigned direction){
     unsigned count {0};
-    if(direction == 3){
+    if(direction == 4){
         bool ok {1};
         while(ok){
             ok = checkMove(0);
             ++count;
         }
+    } else if(direction == 3){
+        checkRotate();
     } else{
         checkMove(direction);
     }
@@ -125,6 +120,14 @@ bool Player::checkMove(unsigned direction){
     return ok;
 }
 
+void Player::checkRotate(){
+
+}
+
+void Player::rotateBric(){
+    currentBric_.rotate();
+}
+
 void Player::moveBric(unsigned direction){
     for(Position p : currentBric_.getShape()){
         Position & toSwap {board_.getCase(p)};
@@ -136,14 +139,3 @@ void Player::moveBric(unsigned direction){
         board_.swapCase(toSwap);
     }
 }
-
-/*std::string Player::to_string() const{
-    return board_.to_string();
-}
-
-std::ostream & operator<<(std::ostream & out, const Player & in){
-    out << in.to_string();
-    return out;
-}*/
-
-//} //namespace GJ_GW

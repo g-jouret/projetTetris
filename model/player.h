@@ -8,6 +8,9 @@
 
 /*!
  * \brief Classe représentant un joueur.
+ *
+ * Elle contient les informations utiles à l'identification du joueur
+ * et contrôle les éléments jouables du \ref Tetris.
  */
 class Player{
 
@@ -33,25 +36,28 @@ class Player{
      */
 
     unsigned nbLine_;
-    /*!< Le nombre de ligne réalisée par le joueur */
+    /*!< Le nombre de lignes réalisées par le joueur */
 
 public:
 
+    /*!
+     * \brief Constructeur sans argument de \ref Player.
+     *
+     * Il initialise le joueur avec le nom et le \ref Board par défaut.
+     */
     Player();
 
     /*!
      * \brief Constructeur de \ref Player.
      *
      * \param name le nom du joueur
-     * \param width la largeur de la grille
-     * \param height la hauteur de la grille
+     * \param width la largeur du \ref Board
+     * \param height la hauteur du \ref Board
      */
     Player(std::string name, unsigned width, unsigned height);
 
     /*!
      * \brief Accesseur en lecture du nom du joueur.
-     *
-     * Cette méthode fait partie de la façade de la classe.
      *
      * \return le nom du joueur
      */
@@ -59,8 +65,6 @@ public:
 
     /*!
      * \brief Accesseur en lecture du score du joueur.
-     *
-     * Cette méthode fait partie de la façade de la classe.
      *
      * \return le score du joueur
      */
@@ -74,81 +78,88 @@ public:
     Bric getCurrentBric() const;
 
     /*!
-     * \brief Accesseur en lecture de la grille de jeu.
-     *
-     * Cette méthode fait partie de la façade de la classe.
+     * \brief Accesseur en lecture du \ref Board.
      *
      * \return la grille de jeu
      */
     Board getBoard() const;
 
-    void setName(std::string name);
-
-    void setBoard(unsigned width, unsigned height);
-
     /*!
      * \brief Accesseur en lecture du nombre de ligne remplies par le joueur.
      *
-     * Cette méthode fait partie de la façade de la classe.
-     *
-     * \return le nombre de lignes remplies par le joueur
+     * \return le nombre de lignes remplies par le joueur depuis le début de la partie
      */
-    unsigned getNbLine();
+    unsigned getNbLine() const;
+
+    /*!
+     * \brief Accesseur en écriture du nom du joueur.
+     * \param name le nouveau nom du joueur
+     */
+    void setName(std::string name);
+
+    /*!
+     * \brief Accesseur en écriture du \ref Board.
+     *
+     * Il recrée une grille avec les nouveaux paramètres.
+     *
+     * \param width la largeur de la grille de jeu
+     * \param height la hauteur de la grille de jeu
+     */
+    void setBoard(unsigned width, unsigned height);
 
     /*!
      * \brief Méthode vérifiant que des lignes ont été remplies.
      *
-     * Augmente le score du joueur si c'est le cas.
+     * Elle est lancée à chaque fois que la \ref Bric courrante
+     * ne peut plus descendre.
+     *
+     * \param dropCount le nombre de cases traversées par un drop
      */
     void checkLines(unsigned dropCount);
 
+    /*!
+     * \brief Méthode plaçant une nouvelle \ref Bric en haut du \ref Board.
+     */
     void generateBric();
 
     /*!
-     * \brief Méthode permettant de tourner la brique courante de 45°.
+     * \brief Méthode de préparation au mouvement ou à la rotation de la \ref Bric courante.
      *
-     * Cette méthode vérifie que le mouvement peut se faire avant de l'exécuter.
+     * \param direction la direction vers laquelle la brique est déplacée
+     */
+    void action(unsigned direction);
+
+    /*!
+     * \brief Méthode vérifiant que le mouvement de la \ref Bric courante est valide.
+     *
+     * Elle crée un fantome de brique à la destination du mouvement
+     * se termine dans une zone inoccupée de la grille de jeu.  // gestion des collisions à venir
+     *
+     * \param direction la direction vers laquelle la brique est déplacée
+     * \return true si le mouvement peut être effectué, false sinon
+     */
+    bool checkMove(unsigned direction);
+
+    /*!
+     * \brief Méthode vérifiant que la rotation de la \ref Bric courante est valide.
+     *
+     * Elle crée un fantome de brique à la destination du mouvement
+     * se termine dans une zone inoccupée de la grille de jeu.  // gestion des collisions à venir
+     */
+    void checkRotate();
+
+    /*!
+     * \brief Méthode permettant de tourner la brique courante de 45°.
      */
     void rotateBric();
-
-    void move(unsigned direction);
-
-    bool checkMove(unsigned direction);
 
     /*!
      * \brief Méthode permettant une translation de la brique courante dans une direction donnée.
      *
-     * Cette méthode vérifie que le mouvement peut se faire avant de l'exécuter.
-     *
-     * \param direction la direction vers laquelle la pièce est bougée
+     * \param direction la direction vers laquelle la brique est déplacée
      */
     void moveBric(unsigned direction);
 
-
-
-    //std::string to_string() const;
-
-    //friend std::ostream & operator<<(std::ostream & out, const Player & in);
-
 };
-
-//prototypes
-
-//std::ostream & operator<<(std::ostream & out, const Player & in);
-
-//inline Player& operator=(Player&& other) noexcept;
-
-//implémentations inline
-//fonctions inline
-/*Player& operator=(Player&& other) noexcept{
-    if(this != &other){
-        delete bag_;
-        delete board_;
-        delete currentBric_;
-        delete[] name_;
-
-    }
-    return *this;
-}*/
 
 #endif // PLAYER_H

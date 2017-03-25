@@ -4,10 +4,10 @@
 #include <iostream>
 
 /*!
- * \brief Classe représentant la position d'une case de la grille de jeu.
+ * \brief Classe représentant la \ref Position d'une case du \ref Board.
  *
  * Une position est atteignable par son abscisse et son ordonnée,
- * elle peut être vide ou pleine si une brique est dessus.
+ * elle peut être vide ou pleine.
  */
 class Position
 {
@@ -24,67 +24,97 @@ public:
 
     /*!
      * \brief Constructeur sans argument de \ref Position.
+     *
+     * Il initialise la \ref Position à la localisation par défaut.
      */
     Position();
 
     /*!
      * \brief Constructeur de \ref Position.
      *
-     * Pour ce qui concerne la validation :
-     *  - x doit être compris entre 0 et la largeur-1 de la grille ;
-     *  - y doit être compris entre 0 et la hauteur-1 de la grille.
+     * Une \ref Position nouvellement créée est toujours vide.
      *
-     * \param x l'abscisse de la position.
-     * \param y l'ordonnée de la position.
+     * \param x l'abscisse de la position
+     * \param y l'ordonnée de la position
      */
     Position(unsigned x, unsigned y);
 
     /*!
-     * \brief Destructeur de \ref Position.
-     */
-    // TODO : ~Position();
-
-    /*!
      * \brief Accesseur en lecture de l'abscisse.
      *
-     * \return l'abscisse
+     * \return l'abscisse de la \ref Position
      */
     inline unsigned getX() const;
 
     /*!
      * \brief Accesseur en lecture de l'ordonnée.
      *
-     * \return l'ordonnée
+     * \return l'ordonnée de la \ref Position
      */
     inline unsigned getY() const;
 
     /*!
      * \brief Accesseur en lecture de l'état d'une position sur la grille.
      *
-     * Cette méthode est nécessaire à la vérification
-     *
-     * \return si la case à cette position est pleine ou non
+     * \return true si la case à cette position est pleine, false sinon
      */
-    bool isFilled();
+    bool isFilled() const;
 
+    /*!
+     * \brief Accesseur en écriture de l'abscisse.
+     * \param x la nouvelle abscisse de la \ref Position
+     */
     void setX(int x);
 
+    /*!
+     * \brief Accesseur en écriture de l'ordonnée.
+     * \param y la nouvelle ordonnée de la \ref Position
+     */
     void setY(int y);
 
     /*!
-     * \brief Méthode changeant la valeur du booléen.
+     * \brief Méthode changeant l'état de la \ref Position.
      */
     void swapFilled();
 
+    /*!
+     * \brief Méthode convertissant une \ref Position en std::string.
+     *
+     * \return une représentation d'une position sous la forme d'une std::string
+     */
     std::string to_string() const;
+
+    // amis
 
     friend std::ostream & operator<<(std::ostream & out, const Position & in);
 
 };
 
 //prototypes
+
+/*!
+ * \brief Opérateur de comparaison de deux \ref Position.
+ * \param lhs le membre de gauche
+ * \param rhs le membre de droite
+ * \return true si les deux membres de la comparaison sont égaux, false sinon
+ */
 inline bool operator==(const Position & lhs, const Position & rhs);
+
+/*!
+ * \brief Opérateur de comparaison d'inégalité de deux \ref Position.
+ * \param lhs le membre de gauche
+ * \param rhs le membre de droite
+ * \return true si les deux membres de la comparaison sont différents, false sinon
+ */
 inline bool operator!=(const Position & lhs, const Position & rhs);
+
+/*!
+ * \brief Opérateur d'injection d'une \ref Position dans un flux en sortie.
+ *
+ * \param out le flux en sortie
+ * \param in la \ref Position à injecter
+ * \return le flux après l'injection
+ */
 std::ostream & operator<<(std::ostream & out, const Position & in);
 
 //implémentations inline

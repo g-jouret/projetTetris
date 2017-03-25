@@ -1,7 +1,5 @@
 #include "model/bricsBag.h"
 
-//namespace GJ_GW{
-
 BricsBag::BricsBag(){
     std::vector<Position> bricI {Position(0,0),Position(1,0),Position(2,0),Position(3,0)};
     std::vector<Position> bricO {Position(0,0),Position(1,0),Position(0,1),Position(1,1)};
@@ -25,17 +23,16 @@ BricsBag::BricsBag(){
 BricsBag::BricsBag(std::vector<Bric> & brics): brics_ {brics}
 {}
 
-std::vector<Bric> BricsBag::getBrics(){
+std::vector<Bric> BricsBag::getBrics() const{
     return brics_;
 }
 
-Bric BricsBag::getNextBric(){
+Bric BricsBag::getNextBric() const{
     return brics_.at(0);
 }
 
 void BricsBag::shuffle(){
     std::swap(brics_.at(0), brics_.at(brics_.size()-1));
+
     std::random_shuffle(brics_.begin(), --brics_.end());
 }
-
-//} //namespace GJ_GW

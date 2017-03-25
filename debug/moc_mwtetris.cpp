@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MWTetris_t {
     QByteArrayData data[10];
-    char stringdata0[61];
+    char stringdata0[63];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,15 +34,15 @@ QT_MOC_LITERAL(1, 9, 10), // "createGame"
 QT_MOC_LITERAL(2, 20, 0), // ""
 QT_MOC_LITERAL(3, 21, 8), // "quitGame"
 QT_MOC_LITERAL(4, 30, 4), // "down"
-QT_MOC_LITERAL(5, 35, 4), // "turn"
-QT_MOC_LITERAL(6, 40, 4), // "drop"
-QT_MOC_LITERAL(7, 45, 4), // "left"
-QT_MOC_LITERAL(8, 50, 5), // "right"
-QT_MOC_LITERAL(9, 56, 4) // "time"
+QT_MOC_LITERAL(5, 35, 6), // "rotate"
+QT_MOC_LITERAL(6, 42, 4), // "drop"
+QT_MOC_LITERAL(7, 47, 4), // "left"
+QT_MOC_LITERAL(8, 52, 5), // "right"
+QT_MOC_LITERAL(9, 58, 4) // "time"
 
     },
     "MWTetris\0createGame\0\0quitGame\0down\0"
-    "turn\0drop\0left\0right\0time"
+    "rotate\0drop\0left\0right\0time"
 };
 #undef QT_MOC_LITERAL
 
@@ -91,7 +91,7 @@ void MWTetris::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 0: _t->createGame(); break;
         case 1: _t->quitGame(); break;
         case 2: _t->down(); break;
-        case 3: _t->turn(); break;
+        case 3: _t->rotate(); break;
         case 4: _t->drop(); break;
         case 5: _t->left(); break;
         case 6: _t->right(); break;

@@ -38,14 +38,19 @@ public:
     /*!
      * \brief Accesseur en lecture de la forme de la brique.
      *
-     * Cette méthode est nécessaire à la génération des briques
+     * Cette méthode est nécessaire à la génération des \ref Bric
      * sur la grille.
      *
      * \return la forme de la brique
      */
-    std::vector<Position> getShape();
+    std::vector<Position> getShape() const;
 
-    unsigned getSide();
+    /*!
+     * \brief Accesseur en lecture de la longueur de la brique.
+     *
+     * \return la taille en nombre de \ref Position
+     */
+    unsigned getSide() const;
 
     /*!
      * \brief Méthode qui tourne la brique.
@@ -59,13 +64,19 @@ public:
     /*!
      * \brief Méthode déplaçant la brique dans une direction.
      *
-     * les directions possibles sont 1 : bas, 2 : gauche et 3 : droite, 4 : drop (tout en bas).
+     * Les directions possibles sont 1 : gauche, 2 : droite, autre : bas.
      *
      * \param direction le numéro de la direction choisie
      */
     void move(unsigned direction);
 
-    bool isIn(Position &toCheck);
+    /*!
+     * \brief Méthode vérifiant qu'une \ref Position fait partie de la brique.
+     *
+     * \param pos la localisation de la \ref Position à vérifier
+     * \return true si la brique occupe la position, false sinon
+     */
+    bool isIn(Position &pos) const;
 
     /*!
      * \brief Méthode convertissant une \ref Bric en std::string.

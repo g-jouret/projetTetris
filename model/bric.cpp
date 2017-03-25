@@ -11,11 +11,11 @@ Bric::Bric(std::vector<Position> shape): shape_ {shape}{
     side_ = temp.size();
 }
 
-std::vector<Position> Bric::getShape(){
+std::vector<Position> Bric::getShape() const{
     return shape_;
 }
 
-unsigned Bric::getSide(){
+unsigned Bric::getSide() const{
     return side_;
 }
 
@@ -43,10 +43,10 @@ void Bric::rotate(){
 
 }
 
-bool Bric::isIn(Position & toCheck){
+bool Bric::isIn(Position & pos) const{
     bool ok {0};
     for(Position p : shape_){
-        if(p == toCheck){
+        if(p == pos){
             ok = 1;
         }
     }

@@ -47,7 +47,7 @@ bool Board::checkCaseFilled(Position & pos){
     return getCase(pos).isFilled();
 }
 
-bool Board::isIn(Position & pos){
+bool Board::isIn(Position & pos) const{
     return pos.getX() < width_ && pos.getY() < height_;
 }
 
