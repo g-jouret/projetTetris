@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['player',['Player',['../class_g_j___g_w_1_1_player.html#ae396a3f2009531d4831cee0eaa7a24c4',1,'GJ_GW::Player']]],
-  ['position',['Position',['../class_g_j___g_w_1_1_position.html#a90913522e4c57a095bd9c3669f708c7b',1,'GJ_GW::Position::Position()'],['../class_g_j___g_w_1_1_position.html#ab3e634a5c6392113d2b5f6ecc214997a',1,'GJ_GW::Position::Position(unsigned x, unsigned y)']]]
+  ['notifyobservers',['notifyObservers',['../class_subject.html#a130edb815aef88deebc1542a32fa9af9',1,'Subject']]]
 ];

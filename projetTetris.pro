@@ -12,27 +12,27 @@ TARGET = projetTetris
 TEMPLATE = app
 CONFIG += C++14
 
-SOURCES += main.cpp\
-        mwtetris.cpp \
-    board.cpp \
-    bric.cpp \
-    bricsBag.cpp \
-    game.cpp \
-    player.cpp \
-    position.cpp \
-    configdialog.cpp \
-    subject.cpp
+SOURCES += model/board.cpp \
+    model/bric.cpp \
+    model/bricsBag.cpp \
+    model/game.cpp \
+    model/main.cpp \
+    model/player.cpp \
+    model/position.cpp \
+    observer/subject.cpp \
+    view/configdialog.cpp \
+    view/mwtetris.cpp
 
-HEADERS  += mwtetris.h \
-    board.h \
-    bric.h \
-    bricsBag.h \
-    game.h \
-    player.h \
-    position.h \
-    configdialog.h \
-    subject.h \
-    observer.h
+HEADERS  += model/board.h \
+    model/bric.h \
+    model/bricsBag.h \
+    model/game.h \
+    model/player.h \
+    model/position.h \
+    observer/observer.h \
+    observer/subject.h \
+    view/configdialog.h \
+    view/mwtetris.h
 
-FORMS    += mwtetris.ui \
-    configdialog.ui
+FORMS    += view/configdialog.ui \
+    view/mwtetris.ui
