@@ -1,16 +1,15 @@
 #include "view/mwtetris.h"
 #include "view/ui_mwtetris.h"
 
-MWTetris::MWTetris(/*GJ_GW::*/Game * game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris){
+MWTetris::MWTetris(Tetris * game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris){
     ui->setupUi(this);
-
-    connexion();
-
+    connect(ui->action_Nouveau, &QAction::triggered, this, &MWTetris::createGame);
+    connect(ui->action_Quitter, &QAction::triggered, this, &MWTetris::quitGame);
+    // TODO : aide? cf qtpendu.pdf
     game_->addObserver(this);
+    update(game_);
 
     time();
-
-    update(game_);
 }
 
 MWTetris::~MWTetris() noexcept{
@@ -18,32 +17,25 @@ MWTetris::~MWTetris() noexcept{
     delete ui;
 }
 
-void MWTetris::connexion(){
-    connect(ui->action_Nouveau, &QAction::triggered, this, &MWTetris::createGame);
-    connect(ui->action_Quitter, &QAction::triggered, this, &MWTetris::quitGame);
-    // TODO : aide? cf qtpendu.pdf
-    connect(ui->btnDown, &QPushButton::clicked, this, &MWTetris::drop);
-    connect(ui->btnLeft, &QPushButton::clicked, this, &MWTetris::left);
-    connect(ui->btnRight, &QPushButton::clicked, this, &MWTetris::right);
-    connect(ui->btnUp, &QPushButton::clicked, this, &MWTetris::turn);
-}
-
-// TODO : faire un VRAI reset au lieu du setPlayer
 void MWTetris::createGame(){
     ConfigDialog cd {this};
     cd.setWindowTitle("Configuration de la partie");
     int ret = cd.exec();
 
     if(ret == QDialog::Rejected) return;
+    Tetris * game = new Tetris(cd.getName(), cd.getWidth(), cd.getHeight());
+    game_->removeObserver(this);
+    delete game_;
+    game_ = game;
+    game_->addObserver(this);
+    update(game_);
+    // NOTE : fonctionne mais remet la valeur par défaut pour chaque variable non entrée, peut-être mieux de conserver la valeur précédente?
 
-    game_->setPlayer(cd.getName(), cd.getWidth(), cd.getHeight());
-
+    connect(ui->btnDown, &QPushButton::clicked, this, &MWTetris::drop);
+    connect(ui->btnLeft, &QPushButton::clicked, this, &MWTetris::left);
+    connect(ui->btnRight, &QPushButton::clicked, this, &MWTetris::right);
+    connect(ui->btnUp, &QPushButton::clicked, this, &MWTetris::turn);
     ui->lbEnd->hide();
-    update(game_);
-
-    //version test manuelle
-    generateBric();
-    update(game_);
 }
 
 void MWTetris::quitGame(){
@@ -72,11 +64,6 @@ void MWTetris::resetBoard(){
         delete child->widget();
     }
     // WARNING : bug : ne répond plus quand trop grande diminution de la largeur(?)
-}
-
-// NOTE : peut-être inutile, gestion par le model?
-void MWTetris::generateBric(){
-    game_->generateBric();
 }
 
 void MWTetris::down(){

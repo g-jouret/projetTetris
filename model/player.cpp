@@ -86,7 +86,7 @@ void Player::generateBric(){
 }
 
 void Player::rotateBric(){
-
+    currentBric_.rotate();
 }
 
 void Player::move(unsigned direction){

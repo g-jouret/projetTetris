@@ -8,45 +8,32 @@
 /*!
  * \brief Classe représentant une brique de Tetris.
  *
- * Son attribut est la forme d'une brique.
+ * La forme de la brique est représentée par un ensemble de \ref Position
+ * et sa longueur est connue.
  */
 class Bric{
 
     std::vector<Position> shape_;
     /*!< La forme de la brique.
      *
-     * Représente l'ensemble des cases qui sont remplie par la brique.
+     * Représente l'ensemble des cases qui sont remplies par la brique.
      */
 
     unsigned side_;
-    /*!< La taille de côté de la brique en nombre de positions. */
-
-    // NOTE : pour plus tard : couleur
+    /*!< La taille de côté de la brique en nombre de cases. */
 
 public:
-
-    /*! TODO doc
-     * \brief Bric
-     */
-    Bric();
 
     /*!
      * \brief Constructeur de \ref Bric.
      *
-     * Construit une brique à partir des positions couverte par la briques
-     * dans un repère quadrillé.
+     * Construit une brique à partir des \ref Position couvertes par la brique
+     * dans un repère carré, la longueur de la brique est la taille de côté
+     * de ce repère.
      *
      * \param shape les \ref Position remplies
      */
-    explicit Bric(std::vector<Position> shape);
-
-    //Bric(const Bric & other);
-    // NOTE : à voir si utile
-
-    /*!
-     * \brief Destructeur de \ref Bric.
-     */
-    // TODO : ~Bric();
+    Bric(std::vector<Position> shape);
 
     /*!
      * \brief Accesseur en lecture de la forme de la brique.
@@ -80,12 +67,27 @@ public:
 
     bool isIn(Position &toCheck);
 
+    /*!
+     * \brief Méthode convertissant une \ref Bric en std::string.
+     *
+     * \return une représentation d'une brique sous la forme d'une std::string
+     */
     std::string to_string() const;
+
+    //amis
 
     friend std::ostream & operator<<(std::ostream & out, const Bric & in);
 };
 
 //prototypes
+
+/*!
+ * \brief Opérateur d'injection d'une \ref Bric dans un flux en sortie.
+ *
+ * \param out le flux en sortie
+ * \param in la \ref Bric à injecter
+ * \return le flux après l'injection
+ */
 std::ostream & operator<<(std::ostream & out, const Bric & in);
 
 #endif // BRIC_H

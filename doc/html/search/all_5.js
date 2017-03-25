@@ -1,12 +1,9 @@
 var searchData=
 [
-  ['game',['Game',['../class_game.html',1,'Game'],['../class_game.html#ad59df6562a58a614fda24622d3715b65',1,'Game::Game()']]],
-  ['game_2ecpp',['game.cpp',['../game_8cpp.html',1,'']]],
-  ['game_2eh',['game.h',['../game_8h.html',1,'']]],
-  ['generatebric',['generateBric',['../class_game.html#a331aa717be982d5274d97860d503f30d',1,'Game::generateBric()'],['../class_player.html#a3ecb72ab934e961d26f8c4ddb89afb9e',1,'Player::generateBric()']]],
+  ['generatebric',['generateBric',['../class_player.html#a3ecb72ab934e961d26f8c4ddb89afb9e',1,'Player::generateBric()'],['../class_tetris.html#a292f7ccd0a2aec5079364e0b476eb755',1,'Tetris::generateBric()']]],
   ['getboard',['getBoard',['../class_player.html#a8782c9d29fd04f692848aa88249491e8',1,'Player']]],
   ['getbrics',['getBrics',['../class_brics_bag.html#a8a24b15db3b51689c6ffa60a5967d03c',1,'BricsBag']]],
-  ['getcase',['getCase',['../class_board.html#a16bd4e9674061d312051adf6b720a301',1,'Board']]],
+  ['getcase',['getCase',['../class_board.html#a24dd45318bc1403fd7915653fff498ea',1,'Board']]],
   ['getcurrentbric',['getCurrentBric',['../class_player.html#ab810a6da95418835d39a51ba520d457f',1,'Player']]],
   ['getgrid',['getGrid',['../class_board.html#a0d19cc1bcbdb8130126530afc84d3164',1,'Board']]],
   ['getheight',['getHeight',['../class_board.html#abbc7d5be210011b7c37315512a8a2cdb',1,'Board::getHeight()'],['../class_config_dialog.html#a248029b8bde88918fb1718c46cb0068b',1,'ConfigDialog::getHeight()']]],
@@ -14,7 +11,7 @@ var searchData=
   ['getname',['getName',['../class_player.html#a73e4ff2d70e62ca7e3be1d9b4ad9de85',1,'Player::getName()'],['../class_config_dialog.html#a6bd7d14534a44d3926e0e4d0372db4fa',1,'ConfigDialog::getName()']]],
   ['getnbline',['getNbLine',['../class_player.html#ae3f2fd23eb1b0b959d81cfd50e5baea5',1,'Player']]],
   ['getnextbric',['getNextBric',['../class_brics_bag.html#a205ba8552c93d3b6bd493384f0b9daaf',1,'BricsBag']]],
-  ['getplayer',['getPlayer',['../class_game.html#a8110342698f11147b699d418c82469ae',1,'Game']]],
+  ['getplayer',['getPlayer',['../class_tetris.html#aadb1768cc3507d68f5263ff9bae31f46',1,'Tetris']]],
   ['getscore',['getScore',['../class_player.html#a33c3795505dae9046b797bf2a398c67e',1,'Player']]],
   ['getshape',['getShape',['../class_bric.html#ae8228cf8fea73f632af357fb56d320f2',1,'Bric']]],
   ['getside',['getSide',['../class_bric.html#a4c32ff018426c52212f76c4d3e618eaa',1,'Bric']]],

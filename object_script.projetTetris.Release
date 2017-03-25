@@ -2,13 +2,13 @@ INPUT(
 ./release\board.o
 ./release\bric.o
 ./release\bricsBag.o
-./release\game.o
 ./release\main.o
 ./release\player.o
 ./release\position.o
 ./release\subject.o
 ./release\configdialog.o
 ./release\mwtetris.o
+./release\tetris.o
 ./release\moc_configdialog.o
 ./release\moc_mwtetris.o
 );

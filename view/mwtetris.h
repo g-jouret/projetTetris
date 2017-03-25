@@ -3,7 +3,7 @@
 
 #include "view/configdialog.h"
 #include "observer/observer.h"
-#include "model/game.h"
+#include "model/tetris.h"
 #include <QMainWindow>
 #include <QElapsedTimer>
 #include <QTimer>
@@ -17,19 +17,18 @@ class MWTetris;
 
 class MWTetris : public QMainWindow, public Observer{
     Q_OBJECT
-    Game *game_;
+    Tetris *game_;
     Ui::MWTetris *ui;
     QElapsedTimer timer_;
 
 public:
-    explicit MWTetris(Game *game, QWidget *parent = 0);
+    explicit MWTetris(Tetris *game, QWidget *parent = 0);
     void update(Subject *);
     ~MWTetris() noexcept;
 
 private:
     void connexion();
     void generateBoard();
-    void generateBric();
     void resetBoard();
 
 private slots:

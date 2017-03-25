@@ -14,7 +14,7 @@
 /*!
  * \brief Classe déterminant le fonctionnement d'une partie de Tetris.
  */
-class Game : public Subject{
+class Tetris : public Subject{
 public:
     constexpr static unsigned MINIMUM_TIMER {500};
     /*!< Valeur minimale acceptée pour le timer. */
@@ -46,28 +46,18 @@ private:
 public:
 
     /*!
-     * \brief Constructeur sans argument de \ref Game.
+     * \brief Constructeur sans argument de \ref Tetris.
      */
-    Game();
+    Tetris();
 
-    //Game(std::string name, unsigned width, unsigned height);
-
-    /*!
-     * \brief Destructeur de \ref Game.
-     */
-    // TODO : ~Game();
+    Tetris(std::string name, unsigned width, unsigned height);
 
     // TODO : implémentation de la génération de briques perso
-    /* NOTE : choix perso : changement dans les "settings" du joueur possible qu'une seule fois:
-     * avant de commencer la partie : choix entre paramètres par défaut ou paramètres perso
-     * => plus facile pour implémentation : suffit de refaire appel au constructeur de Player
-     * => Player = classe immutable
-    */
 
     /*!
      * \brief Méthode permettant de changer les paramètres de jeux :
      *
-     * les noms des joueurs, la taille de la grille // et bientôt les pièces personnalisées
+     * les noms des joueurs, la taille de la grille // et bientôt les briques personnalisées
      *
      * \param name le nom du joueur
      * \param width la largeur de la grille
@@ -93,10 +83,6 @@ public:
      *  - la partie s'arrête après un certain temps, le joueur ayant alors le plus haut score l'emporte.
      */
     bool endGame();
-
-    //std::string to_string() const;
-
-    //friend std::ostream & operator<<(std::ostream & out, const Game & in);
 
 private:
     /*!
@@ -140,10 +126,6 @@ private:
      */
     unsigned validateTimer(unsigned time);
 };
-
-//prototypes
-
-//std::ostream & operator<<(std::ostream & out, const Game & in);
 
 #endif // GAME_H
 

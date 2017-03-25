@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['endgame',['endGame',['../class_game.html#a82206afb0164fe775b2738236098caa6',1,'Game']]]
+  ['endgame',['endGame',['../class_tetris.html#ac12673eb5980b5e192880fa619e75247',1,'Tetris']]]
 ];

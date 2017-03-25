@@ -46,46 +46,46 @@ OBJECTS_DIR   = release
 SOURCES       = model\board.cpp \
 		model\bric.cpp \
 		model\bricsBag.cpp \
-		model\game.cpp \
 		model\main.cpp \
 		model\player.cpp \
 		model\position.cpp \
 		observer\subject.cpp \
 		view\configdialog.cpp \
-		view\mwtetris.cpp release\moc_configdialog.cpp \
+		view\mwtetris.cpp \
+		model\tetris.cpp release\moc_configdialog.cpp \
 		release\moc_mwtetris.cpp
 OBJECTS       = release/board.o \
 		release/bric.o \
 		release/bricsBag.o \
-		release/game.o \
 		release/main.o \
 		release/player.o \
 		release/position.o \
 		release/subject.o \
 		release/configdialog.o \
 		release/mwtetris.o \
+		release/tetris.o \
 		release/moc_configdialog.o \
 		release/moc_mwtetris.o
 
 DIST          =  model\board.h \
 		model\bric.h \
 		model\bricsBag.h \
-		model\game.h \
 		model\player.h \
 		model\position.h \
 		observer\observer.h \
 		observer\subject.h \
 		view\configdialog.h \
-		view\mwtetris.h model\board.cpp \
+		view\mwtetris.h \
+		model\tetris.h model\board.cpp \
 		model\bric.cpp \
 		model\bricsBag.cpp \
-		model\game.cpp \
 		model\main.cpp \
 		model\player.cpp \
 		model\position.cpp \
 		observer\subject.cpp \
 		view\configdialog.cpp \
-		view\mwtetris.cpp
+		view\mwtetris.cpp \
+		model\tetris.cpp
 QMAKE_TARGET  = projetTetris
 DESTDIR        = release\ #avoid trailing-slash linebreak
 TARGET         = projetTetris.exe
@@ -108,7 +108,7 @@ dist:
 	$(ZIP) projetTetris.zip $(SOURCES) $(DIST) projetTetris.pro C:\Qt\5.7\mingw53_32\mkspecs\features\spec_pre.prf C:\Qt\5.7\mingw53_32\mkspecs\qdevice.pri C:\Qt\5.7\mingw53_32\mkspecs\features\device_config.prf C:\Qt\5.7\mingw53_32\mkspecs\common\angle.conf C:\Qt\5.7\mingw53_32\mkspecs\qconfig.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_3drender.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_axbase.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_axserver.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_clucene_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_core.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_core_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_dbus.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_designer.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_gui.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_help.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_help_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_location.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_location_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_network.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_network_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_nfc.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_opengl.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_platformsupport_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_positioning.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_qml.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_quick.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_sensors.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_serialport.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_sql.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_svg.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_testlib.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_uitools.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_websockets.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_widgets.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_winextras.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_xml.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\5.7\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\5.7\mingw53_32\mkspecs\features\qt_functions.prf C:\Qt\5.7\mingw53_32\mkspecs\features\qt_config.prf C:\Qt\5.7\mingw53_32\mkspecs\features\win32\qt_config.prf C:\Qt\5.7\mingw53_32\mkspecs\win32-g++\qmake.conf C:\Qt\5.7\mingw53_32\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\5.7\mingw53_32\mkspecs\features\exclusive_builds.prf C:\Qt\5.7\mingw53_32\mkspecs\features\toolchain.prf C:\Qt\5.7\mingw53_32\mkspecs\features\default_pre.prf C:\Qt\5.7\mingw53_32\mkspecs\features\win32\default_pre.prf C:\Qt\5.7\mingw53_32\mkspecs\features\resolve_config.prf C:\Qt\5.7\mingw53_32\mkspecs\features\exclusive_builds_post.prf C:\Qt\5.7\mingw53_32\mkspecs\features\default_post.prf C:\Qt\5.7\mingw53_32\mkspecs\features\build_pass.prf C:\Qt\5.7\mingw53_32\mkspecs\features\qml_debug.prf C:\Qt\5.7\mingw53_32\mkspecs\features\win32\rtti.prf C:\Qt\5.7\mingw53_32\mkspecs\features\precompile_header.prf C:\Qt\5.7\mingw53_32\mkspecs\features\warn_on.prf C:\Qt\5.7\mingw53_32\mkspecs\features\qt.prf C:\Qt\5.7\mingw53_32\mkspecs\features\resources.prf C:\Qt\5.7\mingw53_32\mkspecs\features\moc.prf C:\Qt\5.7\mingw53_32\mkspecs\features\win32\opengl.prf C:\Qt\5.7\mingw53_32\mkspecs\features\uic.prf C:\Qt\5.7\mingw53_32\mkspecs\features\file_copies.prf C:\Qt\5.7\mingw53_32\mkspecs\features\win32\windows.prf C:\Qt\5.7\mingw53_32\mkspecs\features\testcase_targets.prf C:\Qt\5.7\mingw53_32\mkspecs\features\exceptions.prf C:\Qt\5.7\mingw53_32\mkspecs\features\yacc.prf C:\Qt\5.7\mingw53_32\mkspecs\features\lex.prf projetTetris.pro C:\Qt\5.7\mingw53_32\lib\qtmain.prl C:\Qt\5.7\mingw53_32\lib\Qt5Widgets.prl C:\Qt\5.7\mingw53_32\lib\Qt5Gui.prl C:\Qt\5.7\mingw53_32\lib\Qt5Core.prl  NO_PCH_SOURCES RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES FORMS YACCSOURCES YACCSOURCES LEXSOURCES 
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\board.o release\bric.o release\bricsBag.o release\game.o release\main.o release\player.o release\position.o release\subject.o release\configdialog.o release\mwtetris.o release\moc_configdialog.o release\moc_mwtetris.o
+	-$(DEL_FILE) release\board.o release\bric.o release\bricsBag.o release\main.o release\player.o release\position.o release\subject.o release\configdialog.o release\mwtetris.o release\tetris.o release\moc_configdialog.o release\moc_mwtetris.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -232,8 +232,9 @@ release/moc_configdialog.cpp: C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/5.7/mingw53_32/bin/moc.exe
 	C:\Qt\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/5.7/mingw53_32/mkspecs/win32-g++ -I"D:/GJouret/Documents/ESI/Bloc 2/CPP/projetTetris" -IC:/Qt/5.7/mingw53_32/include -IC:/Qt/5.7/mingw53_32/include/QtWidgets -IC:/Qt/5.7/mingw53_32/include/QtGui -IC:/Qt/5.7/mingw53_32/include/QtANGLE -IC:/Qt/5.7/mingw53_32/include/QtCore -IC:/Qt/Qt5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward view\configdialog.h -o release\moc_configdialog.cpp
 
-release/moc_mwtetris.cpp: C:/Qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
+release/moc_mwtetris.cpp: view/configdialog.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qwidget.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qwindowdefs.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qglobal.h \
@@ -330,11 +331,18 @@ release/moc_mwtetris.cpp: C:/Qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
+		observer/observer.h \
+		model/tetris.h \
+		model/player.h \
+		model/board.h \
+		model/position.h \
+		model/bric.h \
+		model/bricsBag.h \
+		observer/subject.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qicon.h \
-		view/configdialog.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/QTimer \
@@ -393,17 +401,12 @@ release/bricsBag.o: model/bricsBag.cpp model/bricsBag.h \
 		model/position.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\bricsBag.o model\bricsBag.cpp
 
-release/game.o: model/game.cpp model/game.h \
-		model/player.h \
-		model/board.h \
-		model/position.h \
-		model/bric.h \
-		model/bricsBag.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\game.o model\game.cpp
-
-release/main.o: model/main.cpp C:/Qt/5.7/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/5.7/mingw53_32/include/QtCore/qcoreapplication.h \
+release/main.o: model/main.cpp view/mwtetris.h \
+		view/configdialog.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdialog.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qwidget.h \
+		C:/Qt/5.7/mingw53_32/include/QtGui/qwindowdefs.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qglobal.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qconfig.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qfeatures.h \
@@ -426,16 +429,17 @@ release/main.o: model/main.cpp C:/Qt/5.7/mingw53_32/include/QtWidgets/QApplicati
 		C:/Qt/5.7/mingw53_32/include/QtCore/qmutex.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qnumeric.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qversiontagging.h \
+		C:/Qt/5.7/mingw53_32/include/QtCore/qobjectdefs.h \
+		C:/Qt/5.7/mingw53_32/include/QtCore/qnamespace.h \
+		C:/Qt/5.7/mingw53_32/include/QtCore/qobjectdefs_impl.h \
+		C:/Qt/5.7/mingw53_32/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/5.7/mingw53_32/include/QtCore/qobject.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qstring.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qchar.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qbytearray.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qrefcount.h \
-		C:/Qt/5.7/mingw53_32/include/QtCore/qnamespace.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qarraydata.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qstringbuilder.h \
-		C:/Qt/5.7/mingw53_32/include/QtCore/qobject.h \
-		C:/Qt/5.7/mingw53_32/include/QtCore/qobjectdefs.h \
-		C:/Qt/5.7/mingw53_32/include/QtCore/qobjectdefs_impl.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qlist.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qalgorithms.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qiterator.h \
@@ -451,17 +455,11 @@ release/main.o: model/main.cpp C:/Qt/5.7/mingw53_32/include/QtWidgets/QApplicati
 		C:/Qt/5.7/mingw53_32/include/QtCore/qvarlengtharray.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qcontainerfwd.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qobject_impl.h \
-		C:/Qt/5.7/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/5.7/mingw53_32/include/QtGui/qwindowdefs.h \
-		C:/Qt/5.7/mingw53_32/include/QtGui/qwindowdefs_win.h \
-		C:/Qt/5.7/mingw53_32/include/QtCore/qpoint.h \
-		C:/Qt/5.7/mingw53_32/include/QtCore/qsize.h \
-		C:/Qt/5.7/mingw53_32/include/QtGui/qcursor.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qwidget.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qmargins.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qpaintdevice.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qrect.h \
+		C:/Qt/5.7/mingw53_32/include/QtCore/qsize.h \
+		C:/Qt/5.7/mingw53_32/include/QtCore/qpoint.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qpalette.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qcolor.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qrgb.h \
@@ -487,6 +485,7 @@ release/main.o: model/main.cpp C:/Qt/5.7/mingw53_32/include/QtWidgets/QApplicati
 		C:/Qt/5.7/mingw53_32/include/QtGui/qfontmetrics.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qfontinfo.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qsizepolicy.h \
+		C:/Qt/5.7/mingw53_32/include/QtGui/qcursor.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qkeysequence.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qevent.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qvariant.h \
@@ -502,6 +501,39 @@ release/main.o: model/main.cpp C:/Qt/5.7/mingw53_32/include/QtWidgets/QApplicati
 		C:/Qt/5.7/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
+		observer/observer.h \
+		model/tetris.h \
+		model/player.h \
+		model/board.h \
+		model/position.h \
+		model/bric.h \
+		model/bricsBag.h \
+		observer/subject.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
+		C:/Qt/5.7/mingw53_32/include/QtGui/qicon.h \
+		C:/Qt/5.7/mingw53_32/include/QtCore/QElapsedTimer \
+		C:/Qt/5.7/mingw53_32/include/QtCore/qelapsedtimer.h \
+		C:/Qt/5.7/mingw53_32/include/QtCore/QTimer \
+		C:/Qt/5.7/mingw53_32/include/QtCore/qtimer.h \
+		C:/Qt/5.7/mingw53_32/include/QtCore/qbasictimer.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QGridLayout \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QLabel \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlabel.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qframe.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QPushButton \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QApplication \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qapplication.h \
+		C:/Qt/5.7/mingw53_32/include/QtCore/qcoreapplication.h \
+		C:/Qt/5.7/mingw53_32/include/QtCore/qeventloop.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdesktopwidget.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qguiapplication.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qinputmethod.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o model\main.cpp
@@ -675,8 +707,9 @@ release/configdialog.o: view/configdialog.cpp view/configdialog.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\configdialog.o view\configdialog.cpp
 
 release/mwtetris.o: view/mwtetris.cpp view/mwtetris.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
+		view/configdialog.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qwidget.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qwindowdefs.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qglobal.h \
@@ -773,11 +806,18 @@ release/mwtetris.o: view/mwtetris.cpp view/mwtetris.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
+		observer/observer.h \
+		model/tetris.h \
+		model/player.h \
+		model/board.h \
+		model/position.h \
+		model/bric.h \
+		model/bricsBag.h \
+		observer/subject.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qicon.h \
-		view/configdialog.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qelapsedtimer.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/QTimer \
@@ -833,6 +873,15 @@ release/mwtetris.o: view/mwtetris.cpp view/mwtetris.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QVBoxLayout \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mwtetris.o view\mwtetris.cpp
+
+release/tetris.o: model/tetris.cpp model/tetris.h \
+		model/player.h \
+		model/board.h \
+		model/position.h \
+		model/bric.h \
+		model/bricsBag.h \
+		observer/subject.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\tetris.o model\tetris.cpp
 
 release/moc_configdialog.o: release/moc_configdialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_configdialog.o release\moc_configdialog.cpp

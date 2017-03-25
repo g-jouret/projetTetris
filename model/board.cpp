@@ -1,10 +1,5 @@
 #include "model/board.h"
 
-//namespace GJ_GW{
-
-Board::Board():Board(DEFAULT_WIDTH, DEFAULT_HEIGHT)
-{}
-
 Board::Board(unsigned width, unsigned height): width_{width}, height_{height}{
     for(unsigned u {0}; u < width; ++u){
         for(unsigned j{0}; j < height; ++j){
@@ -25,11 +20,11 @@ unsigned Board::getWidth() const{
     return width_;
 }
 
-Position &Board::getCase(Position & destination){
+Position &Board::getCase(Position & pos){
     auto it = grid_.begin();
     bool ok {0};
     while(it != grid_.end() && !ok){
-        if(destination == *it){
+        if(pos == *it){
             ok = 1;
         } else{
             ++it;
@@ -69,8 +64,8 @@ unsigned Board::checkLine(std::vector<Position> line){
     return check;
 }
 
-void Board::swapCase(Position & toSwap){
-    toSwap.swapFilled();
+void Board::swapCase(Position & pos){
+    pos.swapFilled();
 }
 
 void Board::swapLine(std::vector<Position> line){
@@ -122,5 +117,3 @@ std::ostream & operator<<(std::ostream & out, const Board & in){
     out << in.to_string();
     return out;
 }
-
-//} //namespace GJ_GW

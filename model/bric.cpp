@@ -1,10 +1,5 @@
 #include "model/bric.h"
 
-//namespace GJ_GW{
-
-Bric::Bric():Bric(std::vector<Position>{Position(0,0), Position(0,1)})
-{}
-
 Bric::Bric(std::vector<Position> shape): shape_ {shape}{
     // TODO : à la création d'une forme perso : vérification que la brique est dans la longueur (il y a plus de X que de Y)
     std::vector<unsigned> temp;
@@ -70,5 +65,3 @@ std::ostream & operator<<(std::ostream & out, const Bric & in){
 out << in.to_string();
 return out;
 }
-
-//} //namespace GJ_GW

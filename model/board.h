@@ -8,7 +8,7 @@
  * \brief Classe représentant la grille de jeu.
  *
  * Elle est composée de \ref Position et sa taille
- * est délimité par sa largeur et sa hauteur.
+ * est délimitée par sa largeur et sa hauteur.
  */
 class Board{
 
@@ -41,13 +41,6 @@ private:
 public:
 
     /*!
-     * \brief Constructeur sans argument de \ref Board.
-     *
-     * Il initialise la largeur et la hauteur de la grille avec leur valeur par défaut.
-     */
-    Board();
-
-    /*!
      * \brief Constructeur de \ref Board.
      *
      * \param height la hauteur de la grille en nombre de cases.
@@ -56,56 +49,54 @@ public:
     Board(unsigned width, unsigned height);
 
     /*!
-     * \brief Accesseur en lecture de .
-     *
-     * Cette méthode fait partie de la façade de cette classe.
+     * \brief Accesseur en lecture de la grille de jeu.
      *
      * \return la grille de cases
      */
     std::vector<Position> getGrid() const;
 
     /*!
-     * \brief Accesseur en lecture de \ref height_.
+     * \brief Accesseur en lecture de la hauteur de la grille.
      *
      * \return le nombre de lignes de la grille
      */
     unsigned getHeight() const;
 
     /*!
-     * \brief Accesseur en lecture de \ref width_.
+     * \brief Accesseur en lecture de la largeur de la grille.
      *
      * \return le nombre de colonnes de la grille
      */
     unsigned getWidth() const;
 
     /*!
-     * \brief Méthode verifie si la case est pleine
+     * \brief Méthode vérifiant si une case donnée est pleine ou non.
      *
-     * \param pos la localistation de la position
-     * \return vrais si la case est pleine
+     * \param pos la localisation de la position
+     * \return true si la case est pleine, false sinon
      */
     bool checkCaseFilled(Position &pos);
 
     /*!
-     * \brief Méthode qui renvoi vrais si la position donnée est dans \ref grid_.
+     * \brief Méthode vérifiant si la position donnée est incluse dans la grille de jeu.
      *
      * \param pos la localistation de la position
-     * \return
+     * \return true si la position est comprise dans la grille, false sinon
      */
     bool isIn(Position &pos);
 
     /*!
      * \brief Méthode vérifiant l'état d'une ligne de la grille de jeu.
      *
-     * Cette méthode analyse l'état des Positions d'une ligne et renvoit sont état.
+     * Cette méthode analyse l'état des \ref Position d'une ligne et renvoie son état.
      *
-     * \param line la ligne à analyse
+     * \param line la ligne à analyser
      * \return 0 si la ligne est vide, 1 si elle est remplie et 2 autrement
      */
     unsigned checkLine(std::vector<Position> line);
 
     /*!
-     * \brief Méthode sélectionnant une ligne de la grille de jeu.
+     * \brief Accesseur en lecture d'une ligne de la grille de jeu.
      *
      * \param lineNum le numéro de la ligne à sélectionner
      * \return la ligne sélectionnée
@@ -113,65 +104,70 @@ public:
     std::vector<Position> getLine(unsigned lineNum) const;
 
     /*!
-     * \brief Methode qui récuperant la position donnée dans \ref grid_
+     * \brief Méthode permettant de retrouver la case de la grille correspondant à une \ref Position donnée.
      *
-     * \param destination la localisation de la position à renvoyer
-     * \return position de la grille
+     * \param pos la localisation de la position à renvoyer
+     * \return la case correspondante
      */
-    Position &getCase(Position &destination);
+    Position &getCase(Position &pos);
 
     /*!
-     * \brief Méthode changeant l'état de toutes les Positions d'une ligne.
+     * \brief Méthode qui efface les lignes remplies et ré-aligne la grille de jeu.
      *
-     * Cette Méthode est utilisée uniquement pour vider les lignes remplies.
-     *
-     * \param line la ligne à modifié
-     */
-    void swapLine(std::vector<Position> line);
-
-    /*!
-     * \brief Methode qui
-     *
-     * \param getLine
-     * \param lineNb
-     */
-    void moveLine(std::vector<Position> getLine, unsigned lineNb);
-
-    /*!
-     * \brief Méthode qui actualise la grille de jeu après l'effacement d'une ligne remplies.
-     *
-     * \param lineNum le numéro de la ligne
+     * \param lineNum le numéro de la première ligne remplie
+     * \return le nombre de lignes remplies traitées
      */
     unsigned gridActualisation(unsigned lineNum);
 
     /*!
-     * \brief Méthode qui rend la case remplie si elle est vide et à vide si elle est remplie.
+     * \brief Méthode faisant passer une case remplie à vide et à remplie si elle est vide.
      *
-     * \param toSwap la position à swap
+     * \param pos la position à modifier
      */
-    void swapCase(Position &toSwap);
+    void swapCase(Position &pos);
 
-    //inline Board& operator=(Board&& other) noexcept;
-
+    /*!
+     * \brief Méthode convertissant un \ref Board en std::string.
+     *
+     * \return une représentation de la grille de jeu sous la forme d'une std::string
+     */
     std::string to_string() const;
+
+    // amis
 
     friend std::ostream & operator<<(std::ostream & out, const Board & in);
 
+private:
+
+    /*!
+     * \brief Méthode changeant l'état de toutes les \ref Position d'une ligne.
+     *
+     * Cette Méthode est utilisée principalement pour vider les lignes remplies,
+     * mais pourrait servir à remplir ou juste à inverser une ligne.
+     *
+     * \param line la ligne à modifier
+     */
+    void swapLine(std::vector<Position> line);
+
+    /*!
+     * \brief Méthode descendant une ligne d'un nombre de cases donné.
+     *
+     * \param line la ligne à traiter
+     * \param lineNb le nombre de case que la ligne doit descendre
+     */
+    void moveLine(std::vector<Position> line, unsigned lineNb);
 
 };
 
 //prototypes
-std::ostream & operator<<(std::ostream & out, const Board & in);
 
-//implémentation inline
-//méthodes inline
-/*Board& Board::operator =(Board&& other) noexcept{
-    if(this != & other){
-        grid_ = std::move(other.grid_);
-        width_ = std::move(other.width_);
-        height_ = std::move(other.height_);
-    }
-    return *this;
-}*/
+/*!
+ * \brief Opérateur d'injection d'un \ref Board dans un flux en sortie.
+ *
+ * \param out le flux en sortie
+ * \param in le \ref Board à injecter
+ * \return le flux après l'injection
+ */
+std::ostream & operator<<(std::ostream & out, const Board & in);
 
 #endif // BOARD_H

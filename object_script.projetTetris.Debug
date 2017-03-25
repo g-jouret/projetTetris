@@ -2,13 +2,13 @@ INPUT(
 ./debug\board.o
 ./debug\bric.o
 ./debug\bricsBag.o
-./debug\game.o
 ./debug\main.o
 ./debug\player.o
 ./debug\position.o
 ./debug\subject.o
 ./debug\configdialog.o
 ./debug\mwtetris.o
+./debug\tetris.o
 ./debug\moc_configdialog.o
 ./debug\moc_mwtetris.o
 );
