@@ -1,8 +1,12 @@
 var searchData=
 [
-  ['removeobserver',['removeObserver',['../class_subject.html#afcc4f6a1dc8177a747699e9ef4cbc18f',1,'Subject']]],
-  ['reset',['reset',['../class_tetris.html#adfafc1aef57b0440c8b19dd7b30a3a68',1,'Tetris']]],
-  ['retranslateui',['retranslateUi',['../class_ui___config_dialog.html#ab60d649af45498dee23f4e61fcfe94d8',1,'Ui_ConfigDialog::retranslateUi()'],['../class_ui___m_w_tetris.html#a558c6d6e1ee5bc84e9c7fafd5e6fa6fe',1,'Ui_MWTetris::retranslateUi()'],['../class_ui___config_dialog.html#ab60d649af45498dee23f4e61fcfe94d8',1,'Ui_ConfigDialog::retranslateUi()'],['../class_ui___m_w_tetris.html#a558c6d6e1ee5bc84e9c7fafd5e6fa6fe',1,'Ui_MWTetris::retranslateUi()']]],
-  ['rotate',['rotate',['../class_bric.html#a5ba7a5686d06d7833706899aba707dab',1,'Bric']]],
-  ['rotatebric',['rotateBric',['../class_player.html#aaa0f60317e9f1dce18d96a50f2399b3f',1,'Player']]]
+  ['setboard',['setBoard',['../class_player.html#ab4dd86092ed0ed6247de236f31ea385b',1,'Player']]],
+  ['setname',['setName',['../class_player.html#a95d2b46eee230ad3e31612ff2bc681da',1,'Player']]],
+  ['setupui',['setupUi',['../class_ui___config_dialog.html#a3b38bb7b9733099bde7fdee708b64fd8',1,'Ui_ConfigDialog::setupUi()'],['../class_ui___m_w_tetris.html#a284c54ff298a348cc2431883f3fe8fc3',1,'Ui_MWTetris::setupUi()'],['../class_ui___config_dialog.html#a3b38bb7b9733099bde7fdee708b64fd8',1,'Ui_ConfigDialog::setupUi()'],['../class_ui___m_w_tetris.html#a284c54ff298a348cc2431883f3fe8fc3',1,'Ui_MWTetris::setupUi()']]],
+  ['setx',['setX',['../class_position.html#ad46bb77324e2d9538e15f1a25320f1ff',1,'Position']]],
+  ['sety',['setY',['../class_position.html#a473274f1a3e4888f9c5e3eba0889a1ab',1,'Position']]],
+  ['shuffle',['shuffle',['../class_brics_bag.html#a95f48a6b454672df1118205e502187e5',1,'BricsBag']]],
+  ['subject',['Subject',['../class_subject.html#ab4f33719b83034be37c7f8223f1a5e63',1,'Subject']]],
+  ['swapcase',['swapCase',['../class_board.html#a8529576230c77326937c54b570ec4c71',1,'Board']]],
+  ['swapfilled',['swapFilled',['../class_position.html#a8a1639466b9845ab33632bcc1055cee6',1,'Position']]]
 ];

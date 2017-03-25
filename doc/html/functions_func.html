@@ -62,6 +62,9 @@ $(function() {
 &#160;
 
 <h3><a id="index_a"></a>- a -</h3><ul>
+<li>action()
+: <a class="el" href="class_player.html#aad522fd89e8ad9f58ac920b0e426c25e">Player</a>
+</li>
 <li>addObserver()
 : <a class="el" href="class_subject.html#a1b06aca224dc4cea7bad6b5a77ec0f85">Subject</a>
 </li>
@@ -94,6 +97,9 @@ $(function() {
 <li>checkMove()
 : <a class="el" href="class_player.html#ad2ad379d73439f1db4078485bf7ec77f">Player</a>
 </li>
+<li>checkRotate()
+: <a class="el" href="class_player.html#ab7fe12ee6e35e5e37ca077da740a258b">Player</a>
+</li>
 <li>command()
 : <a class="el" href="class_tetris.html#ae3978ae6769ca5741c0f5b7bc7beef0b">Tetris</a>
 </li>
@@ -103,23 +109,15 @@ $(function() {
 </ul>
 
 
-<h3><a id="index_e"></a>- e -</h3><ul>
-<li>endGame()
-: <a class="el" href="class_tetris.html#ac12673eb5980b5e192880fa619e75247">Tetris</a>
-</li>
-</ul>
-
-
 <h3><a id="index_g"></a>- g -</h3><ul>
 <li>generateBric()
 : <a class="el" href="class_player.html#a3ecb72ab934e961d26f8c4ddb89afb9e">Player</a>
-, <a class="el" href="class_tetris.html#a292f7ccd0a2aec5079364e0b476eb755">Tetris</a>
 </li>
 <li>getBoard()
 : <a class="el" href="class_player.html#a8782c9d29fd04f692848aa88249491e8">Player</a>
 </li>
 <li>getBrics()
-: <a class="el" href="class_brics_bag.html#a8a24b15db3b51689c6ffa60a5967d03c">BricsBag</a>
+: <a class="el" href="class_brics_bag.html#a011364842d900c9b77be199058dfe8fe">BricsBag</a>
 </li>
 <li>getCase()
 : <a class="el" href="class_board.html#a24dd45318bc1403fd7915653fff498ea">Board</a>
@@ -142,10 +140,10 @@ $(function() {
 , <a class="el" href="class_player.html#a73e4ff2d70e62ca7e3be1d9b4ad9de85">Player</a>
 </li>
 <li>getNbLine()
-: <a class="el" href="class_player.html#ae3f2fd23eb1b0b959d81cfd50e5baea5">Player</a>
+: <a class="el" href="class_player.html#a5be6dc9269c2e6b791fa95c4963b621f">Player</a>
 </li>
 <li>getNextBric()
-: <a class="el" href="class_brics_bag.html#a205ba8552c93d3b6bd493384f0b9daaf">BricsBag</a>
+: <a class="el" href="class_brics_bag.html#a1ec0ca46bf84c749e29e7c12ece820bf">BricsBag</a>
 </li>
 <li>getPlayer()
 : <a class="el" href="class_tetris.html#aadb1768cc3507d68f5263ff9bae31f46">Tetris</a>
@@ -154,10 +152,10 @@ $(function() {
 : <a class="el" href="class_player.html#a33c3795505dae9046b797bf2a398c67e">Player</a>
 </li>
 <li>getShape()
-: <a class="el" href="class_bric.html#ae8228cf8fea73f632af357fb56d320f2">Bric</a>
+: <a class="el" href="class_bric.html#a7b37fc3b843b6f5fe6cc78fe663b6dca">Bric</a>
 </li>
 <li>getSide()
-: <a class="el" href="class_bric.html#a4c32ff018426c52212f76c4d3e618eaa">Bric</a>
+: <a class="el" href="class_bric.html#a3a704eed5c407714144ef645cec4e4cf">Bric</a>
 </li>
 <li>getWidth()
 : <a class="el" href="class_board.html#aaee53d499b43971e1ef5b6fa0d65aca3">Board</a>
@@ -177,11 +175,14 @@ $(function() {
 
 <h3><a id="index_i"></a>- i -</h3><ul>
 <li>isFilled()
-: <a class="el" href="class_position.html#a62de52bac7705416f9c0299a165d644b">Position</a>
+: <a class="el" href="class_position.html#ad7e57427f0814743a6b596c81c664386">Position</a>
+</li>
+<li>isGameOver()
+: <a class="el" href="class_tetris.html#ab3fa6f34e09d0ff841912328e2568c69">Tetris</a>
 </li>
 <li>isIn()
-: <a class="el" href="class_board.html#a5ce237ab7c35bdc38caf0fa383b5d21a">Board</a>
-, <a class="el" href="class_bric.html#ae2a3c17ec10e839566bced4cf5cc4f8e">Bric</a>
+: <a class="el" href="class_board.html#a76e93cb2541d37e5fb65d9eb7e6a91da">Board</a>
+, <a class="el" href="class_bric.html#a86382a01a2388031d3b077aae855297a">Bric</a>
 </li>
 </ul>
 
@@ -189,7 +190,6 @@ $(function() {
 <h3><a id="index_m"></a>- m -</h3><ul>
 <li>move()
 : <a class="el" href="class_bric.html#a881223ecaf7a0d58db4829aaa179d0c9">Bric</a>
-, <a class="el" href="class_player.html#a186d96005a836954d902a6af6bfe052f">Player</a>
 </li>
 <li>moveBric()
 : <a class="el" href="class_player.html#a38e94da0a9d786eb3b53eab054c6929a">Player</a>
@@ -221,9 +221,6 @@ $(function() {
 <li>removeObserver()
 : <a class="el" href="class_subject.html#afcc4f6a1dc8177a747699e9ef4cbc18f">Subject</a>
 </li>
-<li>reset()
-: <a class="el" href="class_tetris.html#adfafc1aef57b0440c8b19dd7b30a3a68">Tetris</a>
-</li>
 <li>retranslateUi()
 : <a class="el" href="class_ui___config_dialog.html#ab60d649af45498dee23f4e61fcfe94d8">Ui_ConfigDialog</a>
 , <a class="el" href="class_ui___m_w_tetris.html#a558c6d6e1ee5bc84e9c7fafd5e6fa6fe">Ui_MWTetris</a>
@@ -243,9 +240,6 @@ $(function() {
 </li>
 <li>setName()
 : <a class="el" href="class_player.html#a95d2b46eee230ad3e31612ff2bc681da">Player</a>
-</li>
-<li>setPlayer()
-: <a class="el" href="class_tetris.html#a81ae069fb5991502acb206518c1120e1">Tetris</a>
 </li>
 <li>setupUi()
 : <a class="el" href="class_ui___config_dialog.html#a3b38bb7b9733099bde7fdee708b64fd8">Ui_ConfigDialog</a>

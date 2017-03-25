@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['tetris',['Tetris',['../class_tetris.html#a0216a055ecb3568412c35fc78e52bf14',1,'Tetris::Tetris()'],['../class_tetris.html#abf8b4bca507f6d92373eae4eaec4687c',1,'Tetris::Tetris(std::string name, unsigned width, unsigned height)']]],
-  ['to_5fstring',['to_string',['../class_board.html#a11fa123adbd6e8c8adad06a5e2c6929d',1,'Board::to_string()'],['../class_bric.html#a8814b3b683cff23930ada1515a07ccd7',1,'Bric::to_string()'],['../class_position.html#a57612dd3e6ef03edaf6598700216a5d1',1,'Position::to_string()']]]
+  ['update',['update',['../class_observer.html#ae57eaed66de8024b3fe57df52755b11e',1,'Observer::update()'],['../class_m_w_tetris.html#a26282f9cc2d2e039b6129ef84a679783',1,'MWTetris::update()']]]
 ];

@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['player',['Player',['../class_player.html#affe0cc3cb714f6deb4e62f0c0d3f1fd8',1,'Player::Player()'],['../class_player.html#a8c647f7659d4e48dc4e66c801aca8d64',1,'Player::Player(std::string name, unsigned width, unsigned height)']]],
-  ['position',['Position',['../class_position.html#a369a577425f8ba02e8750d04b6a088db',1,'Position::Position()'],['../class_position.html#a0044984d39c391777b14b5edcfa044ae',1,'Position::Position(unsigned x, unsigned y)']]]
+  ['removeobserver',['removeObserver',['../class_subject.html#afcc4f6a1dc8177a747699e9ef4cbc18f',1,'Subject']]],
+  ['retranslateui',['retranslateUi',['../class_ui___config_dialog.html#ab60d649af45498dee23f4e61fcfe94d8',1,'Ui_ConfigDialog::retranslateUi()'],['../class_ui___m_w_tetris.html#a558c6d6e1ee5bc84e9c7fafd5e6fa6fe',1,'Ui_MWTetris::retranslateUi()'],['../class_ui___config_dialog.html#ab60d649af45498dee23f4e61fcfe94d8',1,'Ui_ConfigDialog::retranslateUi()'],['../class_ui___m_w_tetris.html#a558c6d6e1ee5bc84e9c7fafd5e6fa6fe',1,'Ui_MWTetris::retranslateUi()']]],
+  ['rotate',['rotate',['../class_bric.html#a5ba7a5686d06d7833706899aba707dab',1,'Bric']]],
+  ['rotatebric',['rotateBric',['../class_player.html#aaa0f60317e9f1dce18d96a50f2399b3f',1,'Player']]]
 ];

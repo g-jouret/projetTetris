@@ -1,11 +1,6 @@
 var searchData=
 [
-  ['ui',['Ui',['../namespace_ui.html',1,'']]],
-  ['ui_5fconfigdialog',['Ui_ConfigDialog',['../class_ui___config_dialog.html',1,'']]],
-  ['ui_5fconfigdialog_2eh',['ui_configdialog.h',['../ui__configdialog_8h.html',1,'']]],
-  ['ui_5fconfigdialog_2eh',['ui_configdialog.h',['../view_2ui__configdialog_8h.html',1,'']]],
-  ['ui_5fmwtetris',['Ui_MWTetris',['../class_ui___m_w_tetris.html',1,'']]],
-  ['ui_5fmwtetris_2eh',['ui_mwtetris.h',['../view_2ui__mwtetris_8h.html',1,'']]],
-  ['ui_5fmwtetris_2eh',['ui_mwtetris.h',['../ui__mwtetris_8h.html',1,'']]],
-  ['update',['update',['../class_observer.html#ae57eaed66de8024b3fe57df52755b11e',1,'Observer::update()'],['../class_m_w_tetris.html#a26282f9cc2d2e039b6129ef84a679783',1,'MWTetris::update()']]]
+  ['verticallayout',['verticalLayout',['../class_ui___config_dialog.html#ac793218500d672ca1524ef2b1f3ab9fa',1,'Ui_ConfigDialog::verticalLayout()'],['../class_ui___m_w_tetris.html#aed3642a6c93c36ee348e370feb3d26ef',1,'Ui_MWTetris::verticalLayout()']]],
+  ['verticallayout_5f2',['verticalLayout_2',['../class_ui___config_dialog.html#a381b959aea9125c8a815fc494f74a305',1,'Ui_ConfigDialog']]],
+  ['verticalspacer',['verticalSpacer',['../class_ui___config_dialog.html#a5fbbe8039d810dda79b31180441b9b92',1,'Ui_ConfigDialog::verticalSpacer()'],['../class_ui___m_w_tetris.html#a95022092361ee0fc0eea1cd271926724',1,'Ui_MWTetris::verticalSpacer()']]]
 ];
