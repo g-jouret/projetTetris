@@ -1,4 +1,6 @@
-#include "model/bricsBag.h"
+#include "bricsBag.h"
+
+using namespace GJ_GW;
 
 BricsBag::BricsBag(){
     std::vector<Position> bricI {Position(0,0),Position(1,0),Position(2,0),Position(3,0)};
@@ -22,10 +24,6 @@ BricsBag::BricsBag(){
 
 BricsBag::BricsBag(std::vector<Bric> & brics): brics_ {brics}
 {}
-
-std::vector<Bric> BricsBag::getBrics() const{
-    return brics_;
-}
 
 Bric BricsBag::getNextBric() const{
     return brics_.at(0);

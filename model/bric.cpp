@@ -1,4 +1,8 @@
-#include "model/bric.h"
+#include "bric.h"
+
+using namespace GJ_GW;
+
+Bric::Bric(){}
 
 Bric::Bric(std::vector<Position> shape): shape_ {shape}{
     // TODO : à la création d'une forme perso : vérification que la brique est dans la longueur (il y a plus de X que de Y)
@@ -19,14 +23,14 @@ unsigned Bric::getSide() const{
     return side_;
 }
 
-void Bric::move(unsigned direction){
-    switch(direction){
-    case 1:     //gauche
+void Bric::move(Direction dir){
+    switch(dir){
+    case Direction::LEFT:
         for(unsigned i = 0; i < shape_.size(); ++i){
             shape_.at(i).setX(-1);
         }
         break;
-    case 2:     //droite
+    case Direction::RIGHT:
         for(unsigned i = 0; i < shape_.size(); ++i){
             shape_.at(i).setX(1);
         }
@@ -43,7 +47,7 @@ void Bric::rotate(){
 
 }
 
-bool Bric::isIn(Position & pos) const{
+bool Bric::contains(Position & pos) const{
     bool ok {0};
     for(Position p : shape_){
         if(p == pos){

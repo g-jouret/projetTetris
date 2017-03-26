@@ -1,25 +1,12 @@
-#include "model/position.h"
+#include "position.h"
 
-//namespace GJ_GW{
+using namespace GJ_GW;
 
 Position::Position(): Position(0,0)
 {}
 
-Position::Position(unsigned x, unsigned y): x_{x}, y_{y}, filled_{0}
+Position::Position(unsigned x, unsigned y): x_{x}, y_{y}
 {}
-
-void Position::swapFilled(){
-    if(filled_){
-        filled_ = 0;
-    } else{
-        filled_ = 1;
-    }
-    //filled_ = (filled_)? 0 : 1;
-}
-
-bool Position::isFilled() const{
-    return filled_;
-}
 
 void Position::setX(int x){
     x_ += x;
@@ -35,8 +22,7 @@ s += "(";
 s += std::to_string(x_);
 s += ", ";
 s += std::to_string(y_);
-s += ") : ";
-s += std::to_string(filled_);
+s += ")";
 return s;
 }
 
@@ -44,5 +30,3 @@ std::ostream & operator<<(std::ostream & out, const Position & in){
 out << in.to_string();
 return out;
 }
-
-//} //namespace GJ_GW

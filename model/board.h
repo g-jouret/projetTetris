@@ -1,8 +1,13 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include "model/position.h"
-#include <vector>
+#include "position.h"
+#include <map>
+
+/*!
+ * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
+ */
+namespace GJ_GW{
 
 /*!
  * \brief Classe représentant la grille de jeu.
@@ -11,15 +16,6 @@
  * est délimitée par sa largeur et sa hauteur.
  */
 class Board{
-
-public:
-    constexpr static unsigned DEFAULT_WIDTH {10u};
-    /*!< Valeur par défaut de la largeur de la grille. */
-
-    constexpr static unsigned DEFAULT_HEIGHT {20u};
-    /*!< Valeur par défaut de la hauteur de la grille. */
-
-private:
     unsigned width_;
     /*!< La largeur de la grille.
      *
@@ -32,10 +28,11 @@ private:
      * Cet attribut sert à construire la grille.
      */
 
-    std::vector<Position> grid_;
+    std::map<Position, bool> grid_;
     /*!< La grille de case.
      *
-     * Elle est composée de cases représentées par des \ref Position.
+     * Elle est composée d'éléments dont les clés sont des \ref Position
+     * et qui peuvent être soit plein soit vide.
      */
 
 public:
@@ -53,7 +50,7 @@ public:
      *
      * \return la grille de cases
      */
-    std::vector<Position> getGrid() const;
+    std::map<Position, bool> getGrid() const;
 
     /*!
      * \brief Accesseur en lecture de la hauteur de la grille.
@@ -70,30 +67,29 @@ public:
     unsigned getWidth() const;
 
     /*!
-     * \brief Méthode vérifiant si une case donnée est pleine ou non.
-     *
-     * \param pos la localisation de la position
-     * \return true si la case est pleine, false sinon
-     */
-    bool checkCaseFilled(Position &pos);
-
-    /*!
      * \brief Méthode vérifiant si la position donnée est incluse dans la grille de jeu.
      *
-     * \param pos la localistation de la position
+     * \param pos la localisation de la position
      * \return true si la position est comprise dans la grille, false sinon
      */
-    bool isIn(Position &pos) const;
+    bool contains(Position &pos) const;
 
     /*!
-     * \brief Méthode vérifiant l'état d'une ligne de la grille de jeu.
+     * \brief Méthode vérifiant si une case donnée est une destination valide pour un déplacement.
      *
-     * Cette méthode analyse l'état des \ref Position d'une ligne et renvoie son état.
+     * Une case est valide si elle est incluse dans la grille de jeu et qu'elle n'est pas pleine.
      *
-     * \param line la ligne à analyser
-     * \return 0 si la ligne est vide, 1 si elle est remplie et 2 autrement
+     * \param pos la localisation de la position
+     * \return true si la case est valide, false sinon
      */
-    unsigned checkLine(std::vector<Position> line);
+    bool checkCase(Position &pos) const;
+
+    /*!
+     * \brief Méthode faisant passer une case remplie à vide, et à remplie si elle était vide.
+     *
+     * \param pos la position à modifier
+     */
+    void swapCase(Position &pos);
 
     /*!
      * \brief Accesseur en lecture d'une ligne de la grille de jeu.
@@ -101,30 +97,26 @@ public:
      * \param lineNum le numéro de la ligne à sélectionner
      * \return la ligne sélectionnée
      */
-    std::vector<Position> getLine(unsigned lineNum) const;
+    std::map<Position, bool> getLine(unsigned lineNum) const;
 
     /*!
-     * \brief Méthode permettant de retrouver la case de la grille correspondant à une \ref Position donnée.
+     * \brief Méthode vérifiant l'état d'une ligne de la grille de jeu.
      *
-     * \param pos la localisation de la position à renvoyer
-     * \return la case correspondante
+     * Cette méthode vérifie si les \ref Position d'une ligne de la grille
+     * sont pleines ou non et renvoie son état.
+     *
+     * \param line la ligne à analyser
+     * \return 0 si la ligne est vide, 1 si elle est remplie et 2 autrement // NOTE : peut être remplacé par une énumération si besoin
      */
-    Position &getCase(Position &pos);
+    unsigned checkLine(std::map<Position, bool> line);
 
     /*!
-     * \brief Méthode qui efface les lignes remplies et ré-aligne la grille de jeu.
+     * \brief Méthode qui vide les lignes remplies et ré-aligne la grille de jeu.
      *
      * \param lineNum le numéro de la première ligne remplie
      * \return le nombre de lignes remplies traitées
      */
     unsigned gridActualisation(unsigned lineNum);
-
-    /*!
-     * \brief Méthode faisant passer une case remplie à vide et à remplie si elle est vide.
-     *
-     * \param pos la position à modifier
-     */
-    void swapCase(Position &pos);
 
     /*!
      * \brief Méthode convertissant un \ref Board en std::string.
@@ -147,7 +139,7 @@ private:
      *
      * \param line la ligne à modifier
      */
-    void swapLine(std::vector<Position> line);
+    void swapLine(std::map<Position, bool> line);
 
     /*!
      * \brief Méthode descendant une ligne d'un nombre de cases donné.
@@ -155,7 +147,7 @@ private:
      * \param line la ligne à traiter
      * \param lineNb le nombre de case que la ligne doit descendre
      */
-    void moveLine(std::vector<Position> line, unsigned lineNb);
+    void moveLine(std::map<Position, bool> line, unsigned lineNb);
 
 };
 
@@ -169,5 +161,7 @@ private:
  * \return le flux après l'injection
  */
 std::ostream & operator<<(std::ostream & out, const Board & in);
+
+} // namespace GJ_GW
 
 #endif // BOARD_H

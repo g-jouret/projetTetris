@@ -1,9 +1,15 @@
 #ifndef BRIC_H
 #define BRIC_H
 
-#include "model/position.h"
+#include "direction.h"
+#include "position.h"
 #include <vector>
 #include <algorithm>
+
+/*!
+ * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
+ */
+namespace GJ_GW{
 
 /*!
  * \brief Classe représentant une brique de Tetris.
@@ -23,6 +29,13 @@ class Bric{
     /*!< La taille de côté de la brique en nombre de cases. */
 
 public:
+
+    /*!
+     * \brief Constructeur sans argument de \ref Bric.
+     *
+     * Il initialise la brique avec une \ref Position par défaut.
+     */
+    Bric();
 
     /*!
      * \brief Constructeur de \ref Bric.
@@ -64,11 +77,9 @@ public:
     /*!
      * \brief Méthode déplaçant la brique dans une direction.
      *
-     * Les directions possibles sont 1 : gauche, 2 : droite, autre : bas.
-     *
-     * \param direction le numéro de la direction choisie
+     * \param dir la direction choisie
      */
-    void move(unsigned direction);
+    void move(Direction dir);
 
     /*!
      * \brief Méthode vérifiant qu'une \ref Position fait partie de la brique.
@@ -76,7 +87,7 @@ public:
      * \param pos la localisation de la \ref Position à vérifier
      * \return true si la brique occupe la position, false sinon
      */
-    bool isIn(Position &pos) const;
+    bool contains(Position &pos) const;
 
     /*!
      * \brief Méthode convertissant une \ref Bric en std::string.
@@ -100,5 +111,7 @@ public:
  * \return le flux après l'injection
  */
 std::ostream & operator<<(std::ostream & out, const Bric & in);
+
+} // namespace GJ_GW
 
 #endif // BRIC_H

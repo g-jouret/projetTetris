@@ -1,22 +1,4 @@
 var searchData=
 [
-  ['generatebric',['generateBric',['../class_player.html#a3ecb72ab934e961d26f8c4ddb89afb9e',1,'Player']]],
-  ['getboard',['getBoard',['../class_player.html#a8782c9d29fd04f692848aa88249491e8',1,'Player']]],
-  ['getbrics',['getBrics',['../class_brics_bag.html#a011364842d900c9b77be199058dfe8fe',1,'BricsBag']]],
-  ['getcase',['getCase',['../class_board.html#a24dd45318bc1403fd7915653fff498ea',1,'Board']]],
-  ['getcurrentbric',['getCurrentBric',['../class_player.html#ab810a6da95418835d39a51ba520d457f',1,'Player']]],
-  ['getgrid',['getGrid',['../class_board.html#a0d19cc1bcbdb8130126530afc84d3164',1,'Board']]],
-  ['getheight',['getHeight',['../class_board.html#abbc7d5be210011b7c37315512a8a2cdb',1,'Board::getHeight()'],['../class_config_dialog.html#a248029b8bde88918fb1718c46cb0068b',1,'ConfigDialog::getHeight()']]],
-  ['getline',['getLine',['../class_board.html#a5a1c9a6065cf51c3efb54c917a6ddfff',1,'Board']]],
-  ['getname',['getName',['../class_player.html#a73e4ff2d70e62ca7e3be1d9b4ad9de85',1,'Player::getName()'],['../class_config_dialog.html#a6bd7d14534a44d3926e0e4d0372db4fa',1,'ConfigDialog::getName()']]],
-  ['getnbline',['getNbLine',['../class_player.html#a5be6dc9269c2e6b791fa95c4963b621f',1,'Player']]],
-  ['getnextbric',['getNextBric',['../class_brics_bag.html#a1ec0ca46bf84c749e29e7c12ece820bf',1,'BricsBag']]],
-  ['getplayer',['getPlayer',['../class_tetris.html#aadb1768cc3507d68f5263ff9bae31f46',1,'Tetris']]],
-  ['getscore',['getScore',['../class_player.html#a33c3795505dae9046b797bf2a398c67e',1,'Player']]],
-  ['getshape',['getShape',['../class_bric.html#a7b37fc3b843b6f5fe6cc78fe663b6dca',1,'Bric']]],
-  ['getside',['getSide',['../class_bric.html#a3a704eed5c407714144ef645cec4e4cf',1,'Bric']]],
-  ['getwidth',['getWidth',['../class_board.html#aaee53d499b43971e1ef5b6fa0d65aca3',1,'Board::getWidth()'],['../class_config_dialog.html#aebe8c64fd8f97d68221e6c2152d4ca68',1,'ConfigDialog::getWidth()']]],
-  ['getx',['getX',['../class_position.html#a98538b78e3f6f5c57a21f1c06a2d0af8',1,'Position']]],
-  ['gety',['getY',['../class_position.html#a003c6c5902e926fe42d1fc86e108f809',1,'Position']]],
-  ['gridactualisation',['gridActualisation',['../class_board.html#ae5f6ae39097193c62cd2a8a5e40c8bea',1,'Board']]]
+  ['drop',['drop',['../class_g_j___g_w_1_1_tetris.html#a139afef5f8a79ebd40e1150fff141629',1,'GJ_GW::Tetris']]]
 ];

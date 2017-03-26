@@ -29,8 +29,7 @@ QT_BEGIN_NAMESPACE
 class Ui_ConfigDialog
 {
 public:
-    QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout_2;
+    QWidget *widget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *lbName;
@@ -45,24 +44,26 @@ public:
     QLabel *lbWidth;
     QSpacerItem *horizontalSpacer_3;
     QSpinBox *sbWidth;
+    QHBoxLayout *horizontalLayout_4;
+    QLabel *lbLevel;
+    QSpacerItem *horizontalSpacer_4;
+    QSpinBox *sbLevel;
     QDialogButtonBox *buttonBox;
 
     void setupUi(QDialog *ConfigDialog)
     {
         if (ConfigDialog->objectName().isEmpty())
             ConfigDialog->setObjectName(QStringLiteral("ConfigDialog"));
-        ConfigDialog->resize(247, 200);
-        layoutWidget = new QWidget(ConfigDialog);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(20, 20, 213, 163));
-        verticalLayout_2 = new QVBoxLayout(layoutWidget);
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        verticalLayout = new QVBoxLayout();
+        ConfigDialog->resize(222, 252);
+        widget = new QWidget(ConfigDialog);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(21, 21, 185, 211));
+        verticalLayout = new QVBoxLayout(widget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        lbName = new QLabel(layoutWidget);
+        lbName = new QLabel(widget);
         lbName->setObjectName(QStringLiteral("lbName"));
 
         horizontalLayout->addWidget(lbName);
@@ -71,7 +72,7 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        leName = new QLineEdit(layoutWidget);
+        leName = new QLineEdit(widget);
         leName->setObjectName(QStringLiteral("leName"));
 
         horizontalLayout->addWidget(leName);
@@ -85,7 +86,7 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        lbHeight = new QLabel(layoutWidget);
+        lbHeight = new QLabel(widget);
         lbHeight->setObjectName(QStringLiteral("lbHeight"));
 
         horizontalLayout_2->addWidget(lbHeight);
@@ -94,7 +95,7 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer_2);
 
-        sbHeight = new QSpinBox(layoutWidget);
+        sbHeight = new QSpinBox(widget);
         sbHeight->setObjectName(QStringLiteral("sbHeight"));
 
         horizontalLayout_2->addWidget(sbHeight);
@@ -104,7 +105,7 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        lbWidth = new QLabel(layoutWidget);
+        lbWidth = new QLabel(widget);
         lbWidth->setObjectName(QStringLiteral("lbWidth"));
 
         horizontalLayout_3->addWidget(lbWidth);
@@ -113,7 +114,7 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_3);
 
-        sbWidth = new QSpinBox(layoutWidget);
+        sbWidth = new QSpinBox(widget);
         sbWidth->setObjectName(QStringLiteral("sbWidth"));
 
         horizontalLayout_3->addWidget(sbWidth);
@@ -121,15 +122,31 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_3);
 
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        lbLevel = new QLabel(widget);
+        lbLevel->setObjectName(QStringLiteral("lbLevel"));
 
-        verticalLayout_2->addLayout(verticalLayout);
+        horizontalLayout_4->addWidget(lbLevel);
 
-        buttonBox = new QDialogButtonBox(layoutWidget);
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_4);
+
+        sbLevel = new QSpinBox(widget);
+        sbLevel->setObjectName(QStringLiteral("sbLevel"));
+
+        horizontalLayout_4->addWidget(sbLevel);
+
+
+        verticalLayout->addLayout(horizontalLayout_4);
+
+        buttonBox = new QDialogButtonBox(widget);
         buttonBox->setObjectName(QStringLiteral("buttonBox"));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
 
-        verticalLayout_2->addWidget(buttonBox);
+        verticalLayout->addWidget(buttonBox);
 
 
         retranslateUi(ConfigDialog);
@@ -145,6 +162,7 @@ public:
         lbName->setText(QApplication::translate("ConfigDialog", "Nom", Q_NULLPTR));
         lbHeight->setText(QApplication::translate("ConfigDialog", "Hauteur", Q_NULLPTR));
         lbWidth->setText(QApplication::translate("ConfigDialog", "Largeur", Q_NULLPTR));
+        lbLevel->setText(QApplication::translate("ConfigDialog", "Niveau de difficult\303\251", Q_NULLPTR));
     } // retranslateUi
 
 };

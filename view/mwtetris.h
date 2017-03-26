@@ -1,7 +1,7 @@
 #ifndef MWTETRIS_H
 #define MWTETRIS_H
 
-#include "view/configdialog.h"
+#include "configdialog.h"
 #include "observer/observer.h"
 #include "model/tetris.h"
 #include <QMainWindow>
@@ -14,8 +14,9 @@
 namespace Ui {
 class MWTetris;
 }
+using namespace GJ_GW;
 
-class MWTetris : public QMainWindow, public Observer{
+class MWTetris : public QMainWindow, public GJ_GW::Observer{
     Q_OBJECT
     Tetris *game_;
     Ui::MWTetris *ui;
@@ -23,7 +24,7 @@ class MWTetris : public QMainWindow, public Observer{
 
 public:
     explicit MWTetris(Tetris *game, QWidget *parent = 0);
-    void update(Subject *);
+    void update(GJ_GW::Subject *);
     ~MWTetris() noexcept;
 
 private:
@@ -34,7 +35,6 @@ private:
 private slots:
     void createGame();
     void quitGame();
-    void down();
     void rotate();
     void drop();
     void left();

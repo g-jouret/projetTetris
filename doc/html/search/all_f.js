@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['tetris',['Tetris',['../class_tetris.html',1,'Tetris'],['../class_tetris.html#a0216a055ecb3568412c35fc78e52bf14',1,'Tetris::Tetris()'],['../class_tetris.html#abf8b4bca507f6d92373eae4eaec4687c',1,'Tetris::Tetris(std::string name, unsigned width, unsigned height)']]],
-  ['tetris_2ecpp',['tetris.cpp',['../tetris_8cpp.html',1,'']]],
-  ['tetris_2eh',['tetris.h',['../tetris_8h.html',1,'']]],
-  ['to_5fstring',['to_string',['../class_board.html#a11fa123adbd6e8c8adad06a5e2c6929d',1,'Board::to_string()'],['../class_bric.html#a8814b3b683cff23930ada1515a07ccd7',1,'Bric::to_string()'],['../class_position.html#a57612dd3e6ef03edaf6598700216a5d1',1,'Position::to_string()']]]
+  ['ui_5fconfigdialog',['Ui_ConfigDialog',['../class_ui___config_dialog.html',1,'']]],
+  ['ui_5fmwtetris',['Ui_MWTetris',['../class_ui___m_w_tetris.html',1,'']]],
+  ['ui_5fsetbricsdialog',['Ui_SetBricsDialog',['../class_ui___set_brics_dialog.html',1,'']]],
+  ['update',['update',['../class_g_j___g_w_1_1_observer.html#ad95d10cf748e1c542741b3b1c7b535ce',1,'GJ_GW::Observer::update()'],['../class_m_w_tetris.html#ac48a18309dcb8664289a8fe218f43687',1,'MWTetris::update()']]]
 ];

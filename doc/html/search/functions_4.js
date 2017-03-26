@@ -1,6 +1,19 @@
 var searchData=
 [
-  ['isfilled',['isFilled',['../class_position.html#ad7e57427f0814743a6b596c81c664386',1,'Position']]],
-  ['isgameover',['isGameOver',['../class_tetris.html#ab3fa6f34e09d0ff841912328e2568c69',1,'Tetris']]],
-  ['isin',['isIn',['../class_board.html#a76e93cb2541d37e5fb65d9eb7e6a91da',1,'Board::isIn()'],['../class_bric.html#a86382a01a2388031d3b077aae855297a',1,'Bric::isIn()']]]
+  ['getboard',['getBoard',['../class_g_j___g_w_1_1_tetris.html#ab43530c5480d40af39a303c659899e0b',1,'GJ_GW::Tetris']]],
+  ['getcurrentbric',['getCurrentBric',['../class_g_j___g_w_1_1_tetris.html#afc3741b148d1d8f13308fbe29bc94b03',1,'GJ_GW::Tetris']]],
+  ['getgrid',['getGrid',['../class_g_j___g_w_1_1_board.html#a34c0be73c2fa65e53cec2bd78da349fd',1,'GJ_GW::Board']]],
+  ['getheight',['getHeight',['../class_g_j___g_w_1_1_board.html#abbc7d5be210011b7c37315512a8a2cdb',1,'GJ_GW::Board']]],
+  ['getline',['getLine',['../class_g_j___g_w_1_1_board.html#aaa0e9bd5e1110ffbfe4e3ef9493449f6',1,'GJ_GW::Board']]],
+  ['getname',['getName',['../class_g_j___g_w_1_1_player.html#a73e4ff2d70e62ca7e3be1d9b4ad9de85',1,'GJ_GW::Player']]],
+  ['getnblines',['getNbLines',['../class_g_j___g_w_1_1_player.html#a6875e68effe82f8dfec74b6cfcff30bc',1,'GJ_GW::Player']]],
+  ['getnextbric',['getNextBric',['../class_g_j___g_w_1_1_brics_bag.html#a1ec0ca46bf84c749e29e7c12ece820bf',1,'GJ_GW::BricsBag']]],
+  ['getplayer',['getPlayer',['../class_g_j___g_w_1_1_tetris.html#a17b0e3dc6ea811e2fe0cd8762659dccc',1,'GJ_GW::Tetris']]],
+  ['getscore',['getScore',['../class_g_j___g_w_1_1_player.html#a33c3795505dae9046b797bf2a398c67e',1,'GJ_GW::Player']]],
+  ['getshape',['getShape',['../class_g_j___g_w_1_1_bric.html#a7b37fc3b843b6f5fe6cc78fe663b6dca',1,'GJ_GW::Bric']]],
+  ['getside',['getSide',['../class_g_j___g_w_1_1_bric.html#a3a704eed5c407714144ef645cec4e4cf',1,'GJ_GW::Bric']]],
+  ['getwidth',['getWidth',['../class_g_j___g_w_1_1_board.html#aaee53d499b43971e1ef5b6fa0d65aca3',1,'GJ_GW::Board']]],
+  ['getx',['getX',['../class_g_j___g_w_1_1_position.html#aa83c6ae3666961bb1bdc94f762a22faa',1,'GJ_GW::Position']]],
+  ['gety',['getY',['../class_g_j___g_w_1_1_position.html#ad323b4a3382d5a3cb658bd7aafcb0ae3',1,'GJ_GW::Position']]],
+  ['gridactualisation',['gridActualisation',['../class_g_j___g_w_1_1_board.html#ae5f6ae39097193c62cd2a8a5e40c8bea',1,'GJ_GW::Board']]]
 ];

@@ -1,20 +1,30 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "model/player.h"
+#include "player.h"
+#include "board.h"
+#include "bricsBag.h"
 #include "observer/subject.h"
-#include <vector>
 
 /*! \mainpage Le jeu de Tetris multijoueur, projet de c++ 2016-2017
  *
  * Projet réalisé dans le cadre du cours de c++ de l'ESI
  * par Guillaume Jouret et Guillaume Walravens.
+ *
+ * Un bon point d'entrée est celui de la documentation de
+ * l'espace de nom \ref GJ_GW.
  */
+
+/*!
+ * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
+ */
+namespace GJ_GW{
 
 /*!
  * \brief Classe déterminant le fonctionnement d'une partie de Tetris.
  *
- * Elle fournit à la vue les données du modèle nécessaires à son bon fonctionnement.
+ * Elle fournit à la vue les données du modèle nécessaires à son bon fonctionnement
+ * et implémente \ref Subject.
  */
 class Tetris : public Subject{
 public:
@@ -25,13 +35,6 @@ public:
     /*!< Valeur maximale acceptée pour le timer. */
 
 private:
-    unsigned level_;
-    /*!< Le niveau de difficulté.
-     *
-     * Il représente l'accroissement de la difficulté du jeu au fur et à mesure de la partie, il augmente en fonction du nombre
-     * de lignes remplies par le joueur.
-     */
-
     unsigned timer_;
     /*!< Le timer.
      *
@@ -48,38 +51,69 @@ private:
      */
 
     Player player_;
-    /*!< Le \ref Player, sa \ref Board et son \ref BricsBag. */
+    /*!< Le joueur. */
+
+    Board board_;
+    /*!< La grille de jeu. */
+
+    BricsBag bag_;
+    /*!< Le sac de briques. */
+
+    Bric currentBric_;
+    /*!< La brique courante.
+     *
+     * Celle que contrôle le jeu.
+     */
 
 public:
 
     /*!
      * \brief Constructeur sans argument de \ref Tetris.
      *
-     * Il initialise la partie avec les paramètres par défaut
-     * et crée un \ref Player par défaut.
+     * Il initialise la partie avec les paramètres par défaut,
+     * crée un \ref Player, un \ref Board et un \ref BricsBag par défaut.
      */
     Tetris();
 
     /*!
-     * \brief Constructeur de \ref Tetris.
+     * \brief Méthode permettant d'initialiser des briques personnalisées.
+     * \param keepDefault indique si le joueur souhaite ajouter ses briques au
+     * sac par défaut ou s'il souhaite créé un nouveau sac ne contenant que ses
+     * briques personnelles.
+     */
+    void setBag(bool keepDefault);
+
+    /*!
+     * \brief Méthode permettant de lancer une partie de \ref Tetris.
      *
-     * Il initialise la partie avec les paramètres par défaut
-     * et crée un \ref Player avec les paramètres reçu.
+     * Elle ré-initialise la partie avec les paramètres donnés et lance le jeu.
      *
      * \param name le nom du joueur
      * \param width la largeur du \ref Board
      * \param height la hauteur du \ref Board
+     * \param level le niveau de difficulté de départ
      */
-    Tetris(std::string name, unsigned width, unsigned height);
-
-    // TODO : implémentation des paramètre perso de partie
-    // TODO : implémentation de la génération de briques perso
+    void startGame(std::string name, unsigned width, unsigned height, unsigned level = 0);
 
     /*!
      * \brief Accesseur en lecture du \ref Player.
      * \return le joueur
      */
-    const Player &getPlayer() const;
+    Player getPlayer() const;
+
+    /*!
+     * \brief Accesseur en lecture du \ref Board.
+     *
+     * \return la grille de jeu
+     */
+    Board getBoard() const;
+
+    /*!
+     * \brief Accesseur en lecture de la brique courante.
+     *
+     * \return la brique courante
+     */
+    Bric getCurrentBric() const;
 
     /*!
      * \brief Méthode vérifiant l'état de la partie.
@@ -88,48 +122,59 @@ public:
     bool isGameOver() const;
 
     /*!
-     * \brief Méthode transmettant la commande d'action de la vue au \ref Player.
-     * \param cmdId l'identifiant de la commande
-     * \see Player::action().
+     * \brief Méthode permettant d'effectuer autant de déplacement
+     * de la \ref Bric courante vers le bas que possible.
      */
-    void command(unsigned cmdId);
+    void drop();
 
+    /*!
+     * \brief Méthode vérifiant que le mouvement de la \ref Bric courante est valide.
+     *
+     * Elle crée un fantome de brique à la destination du mouvement et vérifie que le fantôme
+     * se trouve dans une zone inoccupée de la grille de jeu.  // gestion des collisions à venir
+     *
+     * \param dir la direction vers laquelle la brique est déplacée
+     * \param dropsCount le nombre de drop effectué, si la méthode a été appelée par un drop
+     * \return true si le mouvement peut être effectué, false sinon
+     */
+    bool checkMove(Direction dir, unsigned dropsCount = 0);
 
-    //void reset(); inutilisé pour le moment
+    /*!
+     * \brief Méthode vérifiant que la rotation de la \ref Bric courante est valide.
+     *
+     * Elle crée un fantome de brique à la destination du mouvement et vérifie que le fantôme
+     * se trouve dans une zone inoccupée de la grille de jeu.  // gestion des collisions à venir
+     */
+    void checkRotate();
+
+    /*!
+     * \brief Méthode lançant une nouvelle itération du jeu.
+     *
+     * Une itération de \ref Tetris comprend un mouvement automatique
+     * de la \ref Bric courante vers le bas ou la génération d'une
+     * nouvelle brique courante si la précédente ne pouvait plus
+     * descendre.
+     */
+    void next();
 
 private:
 
     /*!
-     * \brief Méthode permettant de changer les paramètres du \ref Player,
-     *
-     * le nom du joueur, la taille de la grille // et bientôt les briques personnalisées
-     *
+     * \brief Méthode permettant de changer le nom du \ref Player et de remttre à zéro
+     * le compteur de lignes remplies (mais pas le score).
      * \param name le nom du joueur
-     * \param width la largeur de la grille
-     * \param height la hauteur de la grille
      */
-    void setPlayer(std::string name, unsigned width, unsigned height);
+    void setPlayer(std::string name);
 
     /*!
-     * \brief Méthode vérifiant qu'aucune condition de fin de partie n'a été remplie.
+     * \brief Accesseur en écriture du \ref Board.
      *
-     * Si un joueur perd ou gagne, elle arrête la partie et affiche le résultat.
-     *  - Un joueur perd si la brique suivante ne peut être mise en jeu par manque de place ;
-     *  - Un joueur gagne s'il atteint un score suffisant ;
-     *  - Un joueur gagne s'il réussi à remplir suffisamment de lignes ;
-     *  - la partie s'arrête après un certain temps, le joueur ayant alors le plus haut score l'emporte.
+     * Il recrée une grille avec les nouveaux paramètres.
+     *
+     * \param width la largeur de la grille de jeu
+     * \param height la hauteur de la grille de jeu
      */
-    void endGame();
-
-    /*!
-     * \brief Méthode de validation du nom du joueur.
-     *
-     * Cette méthode vérifie que le nouveau nom du joueur n'est pas une chaine vide.
-     *
-     * \param name le nom à valider
-     * \return le nom validé
-     */
-    std::string validateName(std::string name);
+    void setBoard(unsigned width, unsigned height);
 
     /*!
      * \brief Méthode de validation de la hauteur.
@@ -152,16 +197,59 @@ private:
     unsigned validateWidth(unsigned value);
 
     /*!
-     * \brief Méthode de validation du timer.
-     *
-     * Le timer doit être compris entre \ref MAXIMUM_TIMER et \ref MINIMUM_TIMER.
-     *
-     * \param time la valeur du timer à vérifier
-     *
-     * \return la valeur validée
+     * \brief Méthode plaçant une nouvelle \ref Bric en haut du \ref Board.
      */
-    unsigned validateTimer(unsigned time);
+    void generateBric();
+
+    /*!
+     * \brief Méthode permettant une translation de la brique courante dans une direction donnée.
+     *
+     * \param direction la direction vers laquelle la brique est déplacée
+     */
+    void moveBric(Direction dir);
+
+    /*!
+     * \brief Méthode permettant de tourner la brique courante de 90°.
+     */
+    void rotateBric();
+
+    /*!
+     * \brief Méthode vérifiant que des lignes ont été remplies.
+     *
+     * Elle est lancée à chaque fois que la \ref Bric courrante
+     * ne peut plus descendre.
+     *
+     * \param dropCount le nombre de cases traversées par un drop
+     */
+    void checkLines(unsigned dropsCount);
+
+    /*!
+     * \brief Méthode vérifiant qu'aucune condition de fin de partie n'a été remplie.
+     *
+     * Si un joueur perd ou gagne, elle arrête la partie et affiche le résultat.
+     *  - Un joueur perd si la brique suivante ne peut être mise en jeu par manque de place ;
+     *  - Un joueur gagne s'il atteint un score suffisant ;
+     *  - Un joueur gagne s'il réussi à remplir suffisamment de lignes ;
+     *  - la partie s'arrête après un certain temps, le joueur ayant alors le plus haut score l'emporte.
+     */
+    void endGame();
+
+    /*!
+     * \brief Méthode modifiant le temps entre chaque itération en fonction
+     * du niveau de difficulté.
+     *
+     * \return le timer modifié
+     */
+    void setTimer();
+
+    /*!
+     * \brief Méthode modifiant le niveau de difficulté en fonction du nombre de lignes remplies par le joueur.
+     */
+    void setLevel();
+
 };
+
+} // namespace GJ_GW
 
 #endif // GAME_H
 

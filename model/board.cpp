@@ -1,14 +1,16 @@
-#include "model/board.h"
+#include "board.h"
+
+using namespace GJ_GW;
 
 Board::Board(unsigned width, unsigned height): width_{width}, height_{height}{
     for(unsigned u {0}; u < width; ++u){
         for(unsigned j{0}; j < height; ++j){
-            grid_.emplace_back(Position(u, j));
+            grid_.emplace(std::pair<Position,bool>{Position(u, j), 0});
         }
     }
 }
 
-std::vector<Position> Board::getGrid() const{
+std::map<Position, bool> Board::getGrid() const{
     return grid_;
 }
 
@@ -20,39 +22,36 @@ unsigned Board::getWidth() const{
     return width_;
 }
 
-Position &Board::getCase(Position & pos){
-    auto it = grid_.begin();
-    bool ok {0};
-    while(it != grid_.end() && !ok){
-        if(pos == *it){
-            ok = 1;
-        } else{
-            ++it;
-        }
-    }
-    return *it;
+bool Board::contains(Position & pos) const{
+    return pos.getX() < width_ && pos.getY() < height_;
 }
 
-std::vector<Position> Board::getLine(unsigned lineNum) const{
-    std::vector<Position> theLine;
-    for(Position p : grid_){
-        if(p.getY() == lineNum){
+bool Board::checkCase(Position & pos) const{
+    if(contains(pos))
+        return ! grid_.at(pos);
+    return 0;
+}
+
+void Board::swapCase(Position &pos){
+    (grid_.at(pos))? grid_.at(pos) = 0 : grid_.at(pos) = 1;
+}
+
+std::map<Position, bool> Board::getLine(unsigned lineNum) const{
+    /*std::map<Position, bool> theLine;
+    for(auto it = grid_.begin(); it != grid_.end(); ++it){
+        if(){
             theLine.push_back(p);
         }
     }
     return theLine;
 }
 
-bool Board::checkCaseFilled(Position & pos){
-    return getCase(pos).isFilled();
+void Board::swapCase(Position & pos){
+    grid_.at(pos) = grid_.at(pos)%1;*/
 }
 
-bool Board::isIn(Position & pos) const{
-    return pos.getX() < width_ && pos.getY() < height_;
-}
-
-unsigned Board::checkLine(std::vector<Position> line){
-    unsigned check;
+unsigned Board::checkLine(std::map<Position, bool> line){
+    /*unsigned check;
     bool fill;
     fill = line.at(0).isFilled();
     fill? check = 1 : check = 0;
@@ -61,31 +60,27 @@ unsigned Board::checkLine(std::vector<Position> line){
             check = 2;
         }
     }
-    return check;
+    return check;*/
 }
 
-void Board::swapCase(Position & pos){
-    pos.swapFilled();
-}
-
-void Board::swapLine(std::vector<Position> line){
-    for(Position p : line){
+void Board::swapLine(std::map<Position, bool> line){
+    /*for(Position p : line){
         getCase(p).swapFilled();
-    }
+    }*/
 }
 
-void Board::moveLine(std::vector<Position> line, unsigned lineNb){
-    for(Position p : line){
+void Board::moveLine(std::map<Position, bool> line, unsigned lineNb){
+    /*for(Position p : line){
         if(p.isFilled()){
             getCase(p).swapFilled();
             Position pos = Position(p.getX(),p.getY()+lineNb);
             getCase(pos).swapFilled();
         }
-    }
+    }*/
 }
 
 unsigned Board::gridActualisation(unsigned lineNum){
-    unsigned lineCount {1}, check;
+    /*unsigned lineCount {1}, check;
     swapLine(getLine(lineNum));
     std::vector<Position> aboveLine;
     do {
@@ -98,11 +93,11 @@ unsigned Board::gridActualisation(unsigned lineNum){
             moveLine(aboveLine, lineCount);
         }
     } while(check != 0 && lineNum != 0);
-    return lineCount;
+    return lineCount;*/
 }
 
 std::string Board::to_string() const{
-    std::string s;
+    /*std::string s;
     for(unsigned i = 0; i < height_; ++i){
         for(Position p : this->getLine(i)){
             s += "|";
@@ -110,7 +105,7 @@ std::string Board::to_string() const{
         }
         s += "\n";
     }
-    return s;
+    return s;*/
 }
 
 std::ostream & operator<<(std::ostream & out, const Board & in){

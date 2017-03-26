@@ -9,6 +9,8 @@ INPUT(
 ./debug\configdialog.o
 ./debug\mwtetris.o
 ./debug\tetris.o
+./debug\setbricsdialog.o
 ./debug\moc_configdialog.o
 ./debug\moc_mwtetris.o
+./debug\moc_setbricsdialog.o
 );

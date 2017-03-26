@@ -1,76 +1,161 @@
-#include "model/tetris.h"
+#include "tetris.h"
 
-Tetris::Tetris(): level_ {0}, timer_ {MAXIMUM_TIMER}, gameOver_{0}
+using namespace GJ_GW;
+
+Tetris::Tetris(): timer_ {MAXIMUM_TIMER}, gameOver_{1}, player_{Player("Joueur")},
+    board_{Board(10u, 20u)}
 {}
 
-Tetris::Tetris(std::string name, unsigned width, unsigned height):Tetris(){
-    setPlayer(name, width, height);
-    player_.generateBric();
+/*Tetris::Tetris(std::string name, unsigned width, unsigned height):
+{
+
+    generateBric();
+}*/
+
+Player Tetris::getPlayer() const{
+    return player_;
 }
 
-const Player &Tetris::getPlayer() const{
-    return player_;
+Bric Tetris::getCurrentBric() const{
+    return currentBric_;
+}
+
+Board Tetris::getBoard() const{
+    return board_;
 }
 
 bool Tetris::isGameOver() const{
     return gameOver_;
 }
 
-void Tetris::setPlayer(std::string name, unsigned width, unsigned height){
-    player_.setName(validateName(name));
-    player_.setBoard(validateWidth(width), validateHeight(height));
+void Tetris::setBag(bool keepDefault){
+    // TODO : implémentation de la génération de briques perso
 }
 
-std::string Tetris::validateName(std::string name){
-    return (name.empty())? player_.getName() : name;
+void Tetris::startGame(std::string name, unsigned width, unsigned height, unsigned level){
+    timer_ = MAXIMUM_TIMER;
+    for(unsigned u {0}; u < level; ++u){
+        setTimer();
+    }
+    gameOver_ = 0;
+    if(name.empty())
+        player_.setName(name);
+    player_.resetNbLines();
+    setBoard(validateWidth(width), validateHeight(height));
+    currentBric_ = bag_.getNextBric();
+    generateBric();
+    notifyObservers();
 }
 
-unsigned Tetris::validateHeight(unsigned value){
-    return (value == 0)? player_.getBoard().getHeight() : value;
+void Tetris::setBoard(unsigned width, unsigned height){
+    board_ = Board(width, height);
 }
 
 unsigned Tetris::validateWidth(unsigned value){
-    return (value == 0)? player_.getBoard().getWidth() : value;
+    return (value == 0)? board_.getWidth() : value;
 }
 
-void Tetris::command(unsigned cmdId){
-    player_.action(cmdId);
-    notifyObservers();
+unsigned Tetris::validateHeight(unsigned value){
+    return (value == 0)? board_.getHeight() : value;
 }
-/* inutilisé pour le moment
-void Tetris::reset(){
-    level_ = 0;
-    timer_ = MAXIMUM_TIMER;
-    setPlayer("Joueur", 10, 20);
-    notifyObservers();
+
+
+
+void Tetris::generateBric(){
+    bool ok {1};
+    unsigned count{0};
+    unsigned midBoard = board_.getWidth()/2;
+    unsigned midSide = currentBric_.getSide()/2;
+
+    for(unsigned i = 0; i < midBoard-midSide; ++i){
+        currentBric_.move(Direction::RIGHT);
+    }
+    while(ok && count < currentBric_.getShape().size()){
+        ok = board_.checkCase(currentBric_.getShape().at(count));
+        ++count;
+    }
+
+    if(ok){
+        for(Position p : currentBric_.getShape()){
+            board_.swapCase(p);
+        }
+    }
 }
-*/
+
+void Tetris::drop(){
+    unsigned count {0};
+    bool ok {1};
+    while(ok){
+        ok = checkMove(Direction::DOWN, count);
+        ++count;
+    }
+    checkLines(count);
+}
+
+bool Tetris::checkMove(Direction dir, unsigned dropsCount){
+    bool ok {1};
+    unsigned count {0};
+    Bric destination = currentBric_;
+    destination.move(dir);
+    while(ok && count < destination.getShape().size()){
+        if(! currentBric_.contains(destination.getShape().at(count))){
+            ok = (board_.checkCase(destination.getShape().at(count)));
+        }
+        ++count;
+    }
+    if(ok)
+        moveBric(dir);
+    if(! ok && dir == Direction::DOWN){
+        checkLines(dropsCount);
+        bag_.shuffle();
+        currentBric_ = bag_.getNextBric();
+        generateBric();
+    }
+    return ok;
+}
+
+void Tetris::checkRotate(){
+
+}
+
+void Tetris::rotateBric(){
+    currentBric_.rotate();
+}
+
+void Tetris::moveBric(Direction dir){
+    for(Position p : currentBric_.getShape()){
+        board_.swapCase(p);
+    }
+    currentBric_.move(dir);
+    for(Position p : currentBric_.getShape()){
+        board_.swapCase(p);
+    }
+}
+
+void Tetris::checkLines(unsigned dropsCount){
+    unsigned linesFilled {0};
+    for(unsigned i {board_.getHeight()-1}; i != 0; --i){
+        if(board_.checkLine(board_.getLine(i)) == 1){
+            linesFilled += board_.gridActualisation(i);
+        }
+    }
+    player_.setNbLines(linesFilled);
+    player_.setScore(dropsCount, linesFilled);
+}
 
 void Tetris::endGame(){
     // TODO : implémentation
     gameOver_ = 1;
 }
 
-/*unsigned Game::upDificulty(unsigned lvl,unsigned lineDel){
-    if(lineDel == 5 | 10 | 15) lvl+=1;
-    return lvl;
+void Tetris::setLevel(){
+    if(player_.getNbLines()%5 == 0)
+        setTimer();
 }
-//NOTE Pas d'idée de nom
-unsigned Game::upTimer(unsigned lvl, unsigned timer){
-    switch ( lvl ){
-       case 0:
-        timer=2000;
-       case 1:
-        timer=1500;
-        break;
-       case 2:
-        timer=1000;
-       case 3:
-        timer=500;
-       default  :
-        //TODO Exception
-        break;
-    }
-    return timer;
+
+void Tetris::setTimer(){
+    if(timer_ > MINIMUM_TIMER)
+        timer_ -= 500;
+    if(timer_ < MINIMUM_TIMER)
+        timer_ = MINIMUM_TIMER;
 }
-*/

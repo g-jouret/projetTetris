@@ -1,11 +1,12 @@
-#include "view/configdialog.h"
-#include "view/ui_configdialog.h"
+#include "configdialog.h"
+#include "ui_configdialog.h"
 
 ConfigDialog::ConfigDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ConfigDialog)
 {
     ui->setupUi(this);
+    ui->sbLevel->setMaximum(4);
 }
 
 ConfigDialog::~ConfigDialog()
@@ -23,4 +24,8 @@ unsigned ConfigDialog::getWidth(){
 
 unsigned ConfigDialog::getHeight(){
     return ui->sbHeight->value();
+}
+
+unsigned ConfigDialog::getLevel(){
+    return ui->sbLevel->value();
 }

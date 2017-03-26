@@ -1,5 +1,5 @@
-#include "view/mwtetris.h"
-#include "view/ui_mwtetris.h"
+#include "mwtetris.h"
+#include "ui_mwtetris.h"
 
 MWTetris::MWTetris(Tetris * game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris){
     ui->setupUi(this);
@@ -23,13 +23,13 @@ void MWTetris::createGame(){
     int ret = cd.exec();
 
     if(ret == QDialog::Rejected) return;
-    Tetris * game = new Tetris(cd.getName(), cd.getWidth(), cd.getHeight());
+    /*Tetris * game = new Tetris(cd.getName(), cd.getWidth(), cd.getHeight());
     game_->removeObserver(this);
     delete game_;
     game_ = game;
     game_->addObserver(this);
-    update(game_);
-    // NOTE : fonctionne mais remet la valeur par défaut pour chaque variable non entrée, peut-être mieux de conserver la valeur précédente?
+    update(game_);*/
+    game_->startGame(cd.getName(), cd.getWidth(), cd.getHeight(), cd.getLevel());
 
     connect(ui->btnDown, &QPushButton::clicked, this, &MWTetris::drop);
     connect(ui->btnLeft, &QPushButton::clicked, this, &MWTetris::left);
@@ -45,7 +45,7 @@ void MWTetris::quitGame(){
 }
 
 void MWTetris::generateBoard(){
-    std::vector<Position> theGrid {game_->getPlayer().getBoard().getGrid()};
+    /*std::vector<Position> theGrid {game_->getPlayer().getBoard().getGrid()};
 
     for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
         QLabel * lb = new QLabel();
@@ -55,7 +55,7 @@ void MWTetris::generateBoard(){
             lb->setStyleSheet("QLabel {background-color : white;}");
         }
         ui->boardGrid->addWidget(lb, it->getY(), it->getX(), 1, 1);
-    }
+    }*/
 }
 
 void MWTetris::resetBoard(){
@@ -66,24 +66,20 @@ void MWTetris::resetBoard(){
     // WARNING : bug : ne répond plus quand trop grande diminution de la largeur(?)
 }
 
-void MWTetris::down(){
-    game_->command(0);
-}
-
 void MWTetris::left(){
-    game_->command(1);
+    game_->checkMove(Direction::LEFT);
 }
 
 void MWTetris::right(){
-    game_->command(2);
+    game_->checkMove(Direction::RIGHT);
 }
 
 void MWTetris::rotate(){
-    game_->command(3);
+    game_->checkRotate();
 }
 
 void MWTetris::drop(){
-    game_->command(4);
+    game_->drop();
 }
 
 void MWTetris::update(Subject *){

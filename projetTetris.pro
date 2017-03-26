@@ -21,7 +21,8 @@ SOURCES += model/board.cpp \
     observer/subject.cpp \
     view/configdialog.cpp \
     view/mwtetris.cpp \
-    model/tetris.cpp
+    model/tetris.cpp \
+    view/setbricsdialog.cpp
 
 HEADERS  += model/board.h \
     model/bric.h \
@@ -32,7 +33,10 @@ HEADERS  += model/board.h \
     observer/subject.h \
     view/configdialog.h \
     view/mwtetris.h \
-    model/tetris.h
+    model/tetris.h \
+    model/direction.h \
+    view/setbricsdialog.h
 
 FORMS    += view/configdialog.ui \
-    view/mwtetris.ui
+    view/mwtetris.ui \
+    view/setbricsdialog.ui

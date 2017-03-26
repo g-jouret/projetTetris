@@ -18,6 +18,7 @@ public:
     std::string getName();
     unsigned getWidth();
     unsigned getHeight();
+    unsigned getLevel();
 
 private:
     Ui::ConfigDialog *ui;

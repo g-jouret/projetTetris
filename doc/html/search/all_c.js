@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['qt_5fmeta_5fstringdata_5fconfigdialog_5ft',['qt_meta_stringdata_ConfigDialog_t',['../structqt__meta__stringdata___config_dialog__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fmwtetris_5ft',['qt_meta_stringdata_MWTetris_t',['../structqt__meta__stringdata___m_w_tetris__t.html',1,'']]],
-  ['qt_5fmoc_5fliteral',['QT_MOC_LITERAL',['../moc__configdialog_8cpp.html#a75bb9482d242cde0a06c9dbdc6b83abe',1,'QT_MOC_LITERAL():&#160;moc_configdialog.cpp'],['../moc__mwtetris_8cpp.html#a75bb9482d242cde0a06c9dbdc6b83abe',1,'QT_MOC_LITERAL():&#160;moc_mwtetris.cpp']]]
+  ['removeobserver',['removeObserver',['../class_g_j___g_w_1_1_subject.html#afcc4f6a1dc8177a747699e9ef4cbc18f',1,'GJ_GW::Subject']]],
+  ['resetnblines',['resetNbLines',['../class_g_j___g_w_1_1_player.html#a49f57aa90de9b3564eeaaed621cab154',1,'GJ_GW::Player']]],
+  ['right',['RIGHT',['../namespace_g_j___g_w.html#a2e9a1df55314c548add4bb721be86667a21507b40c80068eda19865706fdc2403',1,'GJ_GW']]],
+  ['rotate',['rotate',['../class_g_j___g_w_1_1_bric.html#a5ba7a5686d06d7833706899aba707dab',1,'GJ_GW::Bric']]]
 ];

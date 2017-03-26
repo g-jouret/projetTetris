@@ -1,7 +1,6 @@
-#include "observer/subject.h"
-#include "observer/observer.h"
+#include "subject.h"
 
-//namespace GJ_GW {
+using namespace GJ_GW;
 
 void Subject::addObserver(Observer * observer)
 {
@@ -20,5 +19,3 @@ void Subject::notifyObservers()
         o->update(this);
     }
 }
-
-//} //namespace GJ_GW

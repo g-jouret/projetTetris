@@ -1,9 +1,13 @@
 #ifndef BRICSBAG_H
 #define BRICSBAG_H
 
-#include "model/bric.h"
-#include <vector>
+#include "bric.h"
 #include <cstdlib>
+
+/*!
+ * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
+ */
+namespace GJ_GW{
 
 /*!
  * \brief Classe représentant le sac de briques du joueur.
@@ -11,7 +15,7 @@
 class BricsBag{
 
     std::vector<Bric> brics_;
-    /*!< Les briques contenue dans le sac.
+    /*!< Les briques contenues dans le sac.
      *
      * Représente l'ensemble des briques utilisables en jeu.
      */
@@ -33,13 +37,6 @@ public:
     explicit BricsBag(std::vector<Bric> &brics);
 
     /*!
-     * \brief Accesseur en lecture du sac de briques.
-     *
-     * \return le sac de briques du joueur
-     */
-    std::vector<Bric> getBrics() const;
-
-    /*!
      * \brief Accesseur en lecture de la prochaine brique du sac.
      *
      * \return la brique au sommet du sac
@@ -54,5 +51,7 @@ public:
      */
     void shuffle();
 };
+
+} // namespace GJ_GW
 
 #endif // BRICSBAG_H

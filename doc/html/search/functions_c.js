@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['update',['update',['../class_observer.html#ae57eaed66de8024b3fe57df52755b11e',1,'Observer::update()'],['../class_m_w_tetris.html#a26282f9cc2d2e039b6129ef84a679783',1,'MWTetris::update()']]]
+  ['tetris',['Tetris',['../class_g_j___g_w_1_1_tetris.html#a0216a055ecb3568412c35fc78e52bf14',1,'GJ_GW::Tetris']]],
+  ['to_5fstring',['to_string',['../class_g_j___g_w_1_1_board.html#a11fa123adbd6e8c8adad06a5e2c6929d',1,'GJ_GW::Board::to_string()'],['../class_g_j___g_w_1_1_bric.html#a8814b3b683cff23930ada1515a07ccd7',1,'GJ_GW::Bric::to_string()'],['../class_g_j___g_w_1_1_position.html#a57612dd3e6ef03edaf6598700216a5d1',1,'GJ_GW::Position::to_string()']]]
 ];

@@ -4,10 +4,14 @@
 #include <iostream>
 
 /*!
+ * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
+ */
+namespace GJ_GW{
+
+/*!
  * \brief Classe représentant la \ref Position d'une case du \ref Board.
  *
- * Une position est atteignable par son abscisse et son ordonnée,
- * elle peut être vide ou pleine.
+ * Une position est atteignable par son abscisse et son ordonnée.
  */
 class Position
 {
@@ -16,9 +20,6 @@ class Position
 
     unsigned y_;
     /*!< L'ordonnée de la position. */
-
-    bool filled_;
-    /*!< L'état de la position. */
 
 public:
 
@@ -54,13 +55,6 @@ public:
     inline unsigned getY() const;
 
     /*!
-     * \brief Accesseur en lecture de l'état d'une position sur la grille.
-     *
-     * \return true si la case à cette position est pleine, false sinon
-     */
-    bool isFilled() const;
-
-    /*!
      * \brief Accesseur en écriture de l'abscisse.
      * \param x la nouvelle abscisse de la \ref Position
      */
@@ -71,11 +65,6 @@ public:
      * \param y la nouvelle ordonnée de la \ref Position
      */
     void setY(int y);
-
-    /*!
-     * \brief Méthode changeant l'état de la \ref Position.
-     */
-    void swapFilled();
 
     /*!
      * \brief Méthode convertissant une \ref Position en std::string.
@@ -93,7 +82,7 @@ public:
 //prototypes
 
 /*!
- * \brief Opérateur de comparaison de deux \ref Position.
+ * \brief Opérateur de test d'égalité de deux \ref Position.
  * \param lhs le membre de gauche
  * \param rhs le membre de droite
  * \return true si les deux membres de la comparaison sont égaux, false sinon
@@ -101,12 +90,28 @@ public:
 inline bool operator==(const Position & lhs, const Position & rhs);
 
 /*!
- * \brief Opérateur de comparaison d'inégalité de deux \ref Position.
+ * \brief Opérateur de test d'inégalité de deux \ref Position.
  * \param lhs le membre de gauche
  * \param rhs le membre de droite
  * \return true si les deux membres de la comparaison sont différents, false sinon
  */
 inline bool operator!=(const Position & lhs, const Position & rhs);
+
+/*!
+ * \brief Opérateur de comparaison de deux \ref Position.
+ * \param lhs le membre de gauche
+ * \param rhs le membre de droite
+ * \return true si le membre de gauche est strictement inférieur au membre de droite, false sinon
+ */
+inline bool operator<(const Position & lhs, const Position & rhs);
+
+/*!
+ * \brief Opérateur de comparaison de deux \ref Position.
+ * \param lhs le membre de gauche
+ * \param rhs le membre de droite
+ * \return true si le membre de gauche est strictement supérieur au membre de droite, false sinon
+ */
+inline bool operator>(const Position & lhs, const Position & rhs);
 
 /*!
  * \brief Opérateur d'injection d'une \ref Position dans un flux en sortie.
@@ -127,6 +132,14 @@ bool operator!=(const Position & lhs, const Position & rhs){
     return ! (lhs == rhs);
 }
 
+bool operator<(const Position & lhs, const Position & rhs){
+    return lhs.getY() < rhs.getY() || (lhs.getY() == rhs.getY() && lhs.getX() < rhs.getX());
+}
+
+inline bool operator>(const Position & lhs, const Position & rhs){
+    return rhs < lhs;
+}
+
 //méthodes inline
 inline unsigned Position::getX() const{
     return x_;
@@ -135,5 +148,7 @@ inline unsigned Position::getX() const{
 inline unsigned Position::getY() const{
     return y_;
 }
+
+} // namespace GJ_GW
 
 #endif // POSITION_H
