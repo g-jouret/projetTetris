@@ -136,16 +136,16 @@ bool operator<(const Position & lhs, const Position & rhs){
     return lhs.getY() < rhs.getY() || (lhs.getY() == rhs.getY() && lhs.getX() < rhs.getX());
 }
 
-inline bool operator>(const Position & lhs, const Position & rhs){
+bool operator>(const Position & lhs, const Position & rhs){
     return rhs < lhs;
 }
 
 //méthodes inline
-inline unsigned Position::getX() const{
+unsigned Position::getX() const{
     return x_;
 }
 
-inline unsigned Position::getY() const{
+unsigned Position::getY() const{
     return y_;
 }
 
