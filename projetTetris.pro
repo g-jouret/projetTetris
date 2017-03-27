@@ -15,14 +15,14 @@ CONFIG += C++14
 SOURCES += model/board.cpp \
     model/bric.cpp \
     model/bricsBag.cpp \
-    model/main.cpp \
     model/player.cpp \
     model/position.cpp \
     observer/subject.cpp \
     view/configdialog.cpp \
     view/mwtetris.cpp \
     model/tetris.cpp \
-    view/setbricsdialog.cpp
+    view/setbricsdialog.cpp \
+    main.cpp
 
 HEADERS  += model/board.h \
     model/bric.h \

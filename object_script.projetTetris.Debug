@@ -2,7 +2,6 @@ INPUT(
 ./debug\board.o
 ./debug\bric.o
 ./debug\bricsBag.o
-./debug\main.o
 ./debug\player.o
 ./debug\position.o
 ./debug\subject.o
@@ -10,6 +9,7 @@ INPUT(
 ./debug\mwtetris.o
 ./debug\tetris.o
 ./debug\setbricsdialog.o
+./debug\main.o
 ./debug\moc_configdialog.o
 ./debug\moc_mwtetris.o
 ./debug\moc_setbricsdialog.o

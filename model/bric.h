@@ -1,3 +1,4 @@
+
 #ifndef BRIC_H
 #define BRIC_H
 
@@ -60,7 +61,6 @@ public:
 
     /*!
      * \brief Accesseur en lecture de la longueur de la brique.
-     *
      * \return la taille en nombre de \ref Position
      */
     unsigned getSide() const;
@@ -69,14 +69,12 @@ public:
      * \brief Méthode qui tourne la brique.
      *
      * Si l'on imagine la brique comme étant dans un carré de case :
-     * tourne les positions des cases de ce carrée de 45°.
+     * tourne les positions des cases de ce carrée de 90°.
      */
-    // NOTE : la brique est dans un repère carrée, c'est le repère qui tourne, pas seulement la brique
     void rotate();
 
     /*!
      * \brief Méthode déplaçant la brique dans une direction.
-     *
      * \param dir la direction choisie
      */
     void move(Direction dir);
@@ -91,7 +89,6 @@ public:
 
     /*!
      * \brief Méthode convertissant une \ref Bric en std::string.
-     *
      * \return une représentation d'une brique sous la forme d'une std::string
      */
     std::string to_string() const;
@@ -105,7 +102,6 @@ public:
 
 /*!
  * \brief Opérateur d'injection d'une \ref Bric dans un flux en sortie.
- *
  * \param out le flux en sortie
  * \param in la \ref Bric à injecter
  * \return le flux après l'injection
