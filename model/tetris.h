@@ -221,7 +221,7 @@ private:
      *
      * \param dropCount le nombre de cases traversées par un drop
      */
-    void checkLines(unsigned dropsCount);
+    void checkLines(unsigned top, unsigned dropsCount);
 
     /*!
      * \brief Méthode vérifiant qu'aucune condition de fin de partie n'a été remplie.
@@ -252,12 +252,3 @@ private:
 } // namespace GJ_GW
 
 #endif // GAME_H
-
-/* TODO Principal :
- * rotation des briques
- * Gestion du niveau de difficulté & itératif
- * vérification de fin de partie (le endgame gère tout)
- * implémentation de la gestion des collisions en mouvement
- * renforcement du random de getNextBric
- * couleur des briques
- */

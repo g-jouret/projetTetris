@@ -61,7 +61,7 @@ unsigned Board::checkColumn(unsigned y){
         //throw new TetrisException
     }
     state = checkRow(0u, u, state);
-    while(state != LineState::FILL && u < y){
+    while(state != LineState::FILL && u > y){
         --u;
         state = LineState::NONE;
         state = checkRow(0, u, state);
@@ -151,8 +151,9 @@ std::string Board::to_string() const{
     }
     return s;
 }
-
+namespace GJ_GW {
 std::ostream & operator<<(std::ostream & out, const Board & in){
     out << in.to_string();
     return out;
+}
 }

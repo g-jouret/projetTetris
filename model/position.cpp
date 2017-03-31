@@ -25,8 +25,9 @@ s += std::to_string(y_);
 s += ")";
 return s;
 }
-
+namespace GJ_GW {
 std::ostream & operator<<(std::ostream & out, const Position & in){
 out << in.to_string();
 return out;
+}
 }

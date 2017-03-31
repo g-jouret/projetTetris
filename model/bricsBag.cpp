@@ -29,8 +29,11 @@ Bric BricsBag::getNextBric() const{
     return brics_.at(0);
 }
 
-void BricsBag::shuffle(){
-    std::swap(brics_.at(0), brics_.at(brics_.size()-1));
-
-    std::random_shuffle(brics_.begin(), --brics_.end());
+void BricsBag::shuffle(bool first){
+    if(first){
+        std::random_shuffle(brics_.begin(), brics_.end());
+    } else{
+        std::swap(brics_.at(0), brics_.at(brics_.size()-1));
+        std::random_shuffle(brics_.begin(), --brics_.end());
+    }
 }

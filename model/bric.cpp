@@ -24,7 +24,7 @@ unsigned Bric::getSide() const{
 }
 
 unsigned Bric::getHigherY(){
-    Position temp {0,0};
+    Position temp {shape_.at(0)};
     for(Position p : shape_){
         if(temp > p)
             temp = p;
@@ -74,7 +74,9 @@ for(auto it = shape_.begin(); it != shape_.end(); ++it){
 return s;
 }
 
+namespace GJ_GW {
 std::ostream & operator<<(std::ostream & out, const Bric & in){
 out << in.to_string();
 return out;
+}
 }

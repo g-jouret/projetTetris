@@ -49,7 +49,7 @@ public:
      * Elle mélange les \ref Bric du sac à l'exception de la
      * dernière brique jouée qui est mise en dernière position.
      */
-    void shuffle();
+    void shuffle(bool first = false);
 };
 
 } // namespace GJ_GW
