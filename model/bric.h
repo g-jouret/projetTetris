@@ -65,6 +65,8 @@ public:
      */
     unsigned getSide() const;
 
+    unsigned getHigherY();
+
     /*!
      * \brief Méthode qui tourne la brique.
      *

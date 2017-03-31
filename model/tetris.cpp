@@ -44,7 +44,6 @@ void Tetris::startGame(std::string name, unsigned width, unsigned height, unsign
     setBoard(validateWidth(width), validateHeight(height));
     currentBric_ = bag_.getNextBric();
     generateBric();
-    notifyObservers();
 }
 
 void Tetris::setBoard(unsigned width, unsigned height){
@@ -58,8 +57,6 @@ unsigned Tetris::validateWidth(unsigned value){
 unsigned Tetris::validateHeight(unsigned value){
     return (value == 0)? board_.getHeight() : value;
 }
-
-
 
 void Tetris::generateBric(){
     bool ok {1};
@@ -80,6 +77,7 @@ void Tetris::generateBric(){
             board_.swapCase(p);
         }
     }
+    notifyObservers();
 }
 
 void Tetris::drop(){
@@ -99,7 +97,7 @@ bool Tetris::checkMove(Direction dir, unsigned dropsCount){
     destination.move(dir);
     while(ok && count < destination.getShape().size()){
         if(! currentBric_.contains(destination.getShape().at(count))){
-            ok = (board_.checkCase(destination.getShape().at(count)));
+            ok = board_.checkCase(destination.getShape().at(count));
         }
         ++count;
     }
@@ -115,11 +113,23 @@ bool Tetris::checkMove(Direction dir, unsigned dropsCount){
 }
 
 void Tetris::checkRotate(){
-
+    bool ok {1};
+    unsigned count {0};
+    Bric destination = currentBric_;
+    destination.rotate();
+    while(ok && count < destination.getShape().size()){
+        if(! currentBric_.contains(destination.getShape().at(count))){
+            ok = board_.checkCase(destination.getShape().at(count));
+        }
+        ++count;
+    }
+    if(ok)
+        rotateBric();
 }
 
 void Tetris::rotateBric(){
     currentBric_.rotate();
+    notifyObservers();
 }
 
 void Tetris::moveBric(Direction dir){
@@ -130,17 +140,16 @@ void Tetris::moveBric(Direction dir){
     for(Position p : currentBric_.getShape()){
         board_.swapCase(p);
     }
+    if(dir != Direction::DOWN)
+        notifyObservers();
 }
 
 void Tetris::checkLines(unsigned dropsCount){
-    unsigned linesFilled {0};
-    for(unsigned i {board_.getHeight()-1}; i != 0; --i){
-        if(board_.checkLine(board_.getLine(i)) == 1){
-            linesFilled += board_.gridActualisation(i);
-        }
-    }
+    unsigned linesFilled;
+    linesFilled = board_.checkColumn(currentBric_.getHigherY());
     player_.setNbLines(linesFilled);
     player_.setScore(dropsCount, linesFilled);
+    notifyObservers();
 }
 
 void Tetris::endGame(){

@@ -19,6 +19,7 @@ unsigned Player::getNbLines() const{
 
 void Player::setName(std::string name){
     name_ = name;
+    // NOTE : reset score si setName ou que si reset
 }
 
 void Player::setNbLines(unsigned linesCount){

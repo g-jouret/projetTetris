@@ -45,17 +45,17 @@ void MWTetris::quitGame(){
 }
 
 void MWTetris::generateBoard(){
-    /*std::vector<Position> theGrid {game_->getPlayer().getBoard().getGrid()};
+    std::map<Position, bool> theGrid {game_->getBoard().getGrid()};
 
     for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
         QLabel * lb = new QLabel();
-        if(it->isFilled()){
+        if(it->second){
             lb->setStyleSheet("QLabel {background-color : blue;}");
         } else{
             lb->setStyleSheet("QLabel {background-color : white;}");
         }
-        ui->boardGrid->addWidget(lb, it->getY(), it->getX(), 1, 1);
-    }*/
+        ui->boardGrid->addWidget(lb, it->first.getY(), it->first.getX(), 1, 1);
+    }
 }
 
 void MWTetris::resetBoard(){

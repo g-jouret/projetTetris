@@ -343,6 +343,7 @@ release/moc_mwtetris.cpp: view/configdialog.h \
 		model/player.h \
 		model/board.h \
 		model/position.h \
+		model/linestate.h \
 		model/bricsBag.h \
 		model/bric.h \
 		model/direction.h \
@@ -503,7 +504,8 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 ####### Compile
 
 release/board.o: model/board.cpp model/board.h \
-		model/position.h
+		model/position.h \
+		model/linestate.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\board.o model\board.cpp
 
 release/bric.o: model/bric.cpp model/bric.h \
@@ -786,6 +788,7 @@ release/mwtetris.o: view/mwtetris.cpp view/mwtetris.h \
 		model/player.h \
 		model/board.h \
 		model/position.h \
+		model/linestate.h \
 		model/bricsBag.h \
 		model/bric.h \
 		model/direction.h \
@@ -854,6 +857,7 @@ release/tetris.o: model/tetris.cpp model/tetris.h \
 		model/player.h \
 		model/board.h \
 		model/position.h \
+		model/linestate.h \
 		model/bricsBag.h \
 		model/bric.h \
 		model/direction.h \
@@ -1102,6 +1106,7 @@ release/main.o: main.cpp view/mwtetris.h \
 		model/player.h \
 		model/board.h \
 		model/position.h \
+		model/linestate.h \
 		model/bricsBag.h \
 		model/bric.h \
 		model/direction.h \

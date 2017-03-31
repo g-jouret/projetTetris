@@ -2,6 +2,7 @@
 #define BOARD_H
 
 #include "position.h"
+#include "linestate.h"
 #include <map>
 
 /*!
@@ -67,14 +68,6 @@ public:
     unsigned getWidth() const;
 
     /*!
-     * \brief Méthode vérifiant si la position donnée est incluse dans la grille de jeu.
-     *
-     * \param pos la localisation de la position
-     * \return true si la position est comprise dans la grille, false sinon
-     */
-    bool contains(Position &pos) const;
-
-    /*!
      * \brief Méthode vérifiant si une case donnée est une destination valide pour un déplacement.
      *
      * Une case est valide si elle est incluse dans la grille de jeu et qu'elle n'est pas pleine.
@@ -97,7 +90,7 @@ public:
      * \param lineNum le numéro de la ligne à sélectionner
      * \return la ligne sélectionnée
      */
-    std::map<Position, bool> getLine(unsigned lineNum) const;
+    //std::map<Position, bool> getLine(unsigned lineNum) const;
 
     /*!
      * \brief Méthode vérifiant l'état d'une ligne de la grille de jeu.
@@ -105,10 +98,9 @@ public:
      * Cette méthode vérifie si les \ref Position d'une ligne de la grille
      * sont pleines ou non et renvoie son état.
      *
-     * \param line la ligne à analyser
      * \return 0 si la ligne est vide, 1 si elle est remplie et 2 autrement // NOTE : peut être remplacé par une énumération si besoin
      */
-    unsigned checkLine(std::map<Position, bool> line);
+    unsigned checkColumn(unsigned y = 0);
 
     /*!
      * \brief Méthode qui vide les lignes remplies et ré-aligne la grille de jeu.
@@ -130,6 +122,18 @@ public:
     friend std::ostream & operator<<(std::ostream & out, const Board & in);
 
 private:
+    //bool contains(unsigned & x, unsigned & y) const;
+    /*!
+     * \brief Méthode vérifiant si la position donnée est incluse dans la grille de jeu.
+     *
+     * \param pos la localisation de la position
+     * \return true si la position est comprise dans la grille, false sinon
+     */
+    bool contains(Position &pos) const;
+
+    bool checkCase(unsigned & x, unsigned & y) const;
+
+    LineState checkRow(unsigned x, unsigned &y, LineState &state);
 
     /*!
      * \brief Méthode changeant l'état de toutes les \ref Position d'une ligne.
@@ -139,7 +143,7 @@ private:
      *
      * \param line la ligne à modifier
      */
-    void swapLine(std::map<Position, bool> line);
+    void swapRow(unsigned y);
 
     /*!
      * \brief Méthode descendant une ligne d'un nombre de cases donné.
@@ -147,7 +151,7 @@ private:
      * \param line la ligne à traiter
      * \param lineNb le nombre de case que la ligne doit descendre
      */
-    void moveLine(std::map<Position, bool> line, unsigned lineNb);
+    void moveLine(unsigned y, unsigned lineNb);
 
 };
 

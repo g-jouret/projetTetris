@@ -26,18 +26,22 @@ bool Board::contains(Position & pos) const{
     return pos.getX() < width_ && pos.getY() < height_;
 }
 
+/*bool Board::contains(unsigned & x, unsigned & y) const{
+    return x < width_ && y < height_;
+}*/
+
 bool Board::checkCase(Position & pos) const{
     if(contains(pos))
         return ! grid_.at(pos);
     return 0;
 }
 
-void Board::swapCase(Position &pos){
-    (grid_.at(pos))? grid_.at(pos) = 0 : grid_.at(pos) = 1;
+bool Board::checkCase(unsigned &x, unsigned &y) const{
+    return grid_.at(Position(x, y));
 }
 
-std::map<Position, bool> Board::getLine(unsigned lineNum) const{
-    /*std::map<Position, bool> theLine;
+/*std::map<Position, bool> Board::getLine(unsigned lineNum) const{
+    std::map<Position, bool> theLine;
     for(auto it = grid_.begin(); it != grid_.end(); ++it){
         if(){
             theLine.push_back(p);
@@ -47,10 +51,21 @@ std::map<Position, bool> Board::getLine(unsigned lineNum) const{
 }
 
 void Board::swapCase(Position & pos){
-    grid_.at(pos) = grid_.at(pos)%1;*/
-}
+    grid_.at(pos) = grid_.at(pos)%1;
+}*/
 
-unsigned Board::checkLine(std::map<Position, bool> line){
+unsigned Board::checkColumn(unsigned y){
+    LineState state {LineState::NONE};
+    unsigned u {height_-1};
+    if(y > u){
+        //throw new TetrisException
+    }
+    state = checkRow(0u, u, state);
+    while(state != LineState::FILL && u < y){
+        --u;
+        state = LineState::NONE;
+        state = checkRow(0, u, state);
+    }
     /*unsigned check;
     bool fill;
     fill = line.at(0).isFilled();
@@ -61,51 +76,80 @@ unsigned Board::checkLine(std::map<Position, bool> line){
         }
     }
     return check;*/
+    if(state == LineState::FILL){
+        u = gridActualisation(u);
+    } else{
+        u = 0;
+    }
+    return u;
 }
 
-void Board::swapLine(std::map<Position, bool> line){
-    /*for(Position p : line){
-        getCase(p).swapFilled();
-    }*/
-}
-
-void Board::moveLine(std::map<Position, bool> line, unsigned lineNb){
-    /*for(Position p : line){
-        if(p.isFilled()){
-            getCase(p).swapFilled();
-            Position pos = Position(p.getX(),p.getY()+lineNb);
-            getCase(pos).swapFilled();
+LineState Board::checkRow(unsigned x, unsigned & y, LineState & state){
+    if(state == LineState::NONE){
+        if(checkCase(x,y)){
+            state = LineState::FILL;
+        } else{
+            state = LineState::EMPTY;
         }
-    }*/
+    }
+    if((state == LineState::FILL && ! checkCase(x,y)) || (state == LineState::EMPTY && checkCase(x,y))){
+        state = LineState::BOTH;
+    } else{
+        if(x < width_){
+            ++x;
+            checkRow(x, y, state);
+        }
+    }
+    return state;
+}
+
+void Board::swapCase(Position &pos){
+    (grid_.at(pos))? grid_.at(pos) = 0 : grid_.at(pos) = 1;
+}
+
+void Board::swapRow(unsigned y){
+    for(unsigned u {0}; u < width_; ++u){
+        Position pos {Position(u, y)};
+        swapCase(pos);
+    }
+}
+
+void Board::moveLine(unsigned y, unsigned lineNb){
+    for(unsigned u {0}; u < width_; ++u){
+        if(checkCase(u, y)){
+            Position pos {Position(u, y)};
+            swapCase(pos);
+            pos = Position(pos.getX(),pos.getY()+lineNb);
+            swapCase(pos);
+        }
+    }
 }
 
 unsigned Board::gridActualisation(unsigned lineNum){
-    /*unsigned lineCount {1}, check;
-    swapLine(getLine(lineNum));
-    std::vector<Position> aboveLine;
+    unsigned lineCount {1};
+    LineState state {LineState::NONE};
+    swapRow(lineNum);
     do {
-        aboveLine = getLine(--lineNum);
-        check = checkLine(aboveLine);
-        if(check == 1){
+        --lineNum;
+        state = checkRow(0, lineNum, state);
+        if(state == LineState::FILL){
             ++lineCount;
-            swapLine(aboveLine);
+            swapRow(lineNum);
         } else{
-            moveLine(aboveLine, lineCount);
+            moveLine(lineNum, lineCount);
         }
-    } while(check != 0 && lineNum != 0);
-    return lineCount;*/
+    } while(state != LineState::EMPTY && lineNum != 0);
+    return lineCount;
 }
 
 std::string Board::to_string() const{
-    /*std::string s;
-    for(unsigned i = 0; i < height_; ++i){
-        for(Position p : this->getLine(i)){
-            s += "|";
-            (p.isFilled())? s+="B" : s+=" ";
+    std::string s {""};
+    for(auto it {grid_.begin()}; it != grid_.end(); ++it){
+        if(it->second){
+            s += it->first.to_string();
         }
-        s += "\n";
     }
-    return s;*/
+    return s;
 }
 
 std::ostream & operator<<(std::ostream & out, const Board & in){

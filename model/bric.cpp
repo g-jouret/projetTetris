@@ -23,6 +23,15 @@ unsigned Bric::getSide() const{
     return side_;
 }
 
+unsigned Bric::getHigherY(){
+    Position temp {0,0};
+    for(Position p : shape_){
+        if(temp > p)
+            temp = p;
+    }
+    return temp.getY();
+}
+
 void Bric::move(Direction dir){
     switch(dir){
     case Direction::LEFT:
