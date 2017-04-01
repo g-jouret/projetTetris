@@ -161,6 +161,12 @@ void Tetris::endGame(){
     gameOver_ = 1;
 }
 
+void Tetris::next(){
+    // TODO : implémentation itératif
+    checkMove(Direction::DOWN);
+    notifyObservers();
+}
+
 void Tetris::setLevel(){
     if(player_.getNbLines()%5 == 0)
         setTimer();
