@@ -6,6 +6,10 @@ MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{ga
     connect(ui->action_Nouveau, &QAction::triggered, this, &MWTetris::createGame);
     connect(ui->action_Quitter, &QAction::triggered, this, &MWTetris::quitGame);
     // TODO : aide? cf qtpendu.pdf
+    connect(ui->btnDown, &QPushButton::clicked, this, &MWTetris::drop);
+    connect(ui->btnLeft, &QPushButton::clicked, this, &MWTetris::left);
+    connect(ui->btnRight, &QPushButton::clicked, this, &MWTetris::right);
+    connect(ui->btnUp, &QPushButton::clicked, this, &MWTetris::rotate);
     game_.addObserver(this);
     update(&game_);
 
@@ -23,12 +27,7 @@ void MWTetris::createGame(){
     int ret = cd.exec();
 
     if(ret == QDialog::Rejected) return;
-    /*Tetris * game = new Tetris(cd.getName(), cd.getWidth(), cd.getHeight());
-    game_->removeObserver(this);
-    delete game_;
-    game_ = game;
-    game_->addObserver(this);
-    update(game_);*/
+
     std::string name;
     unsigned score, width, height;
     name = (cd.getName().empty())? game_.getPlayer().getName() : cd.getName();
@@ -38,16 +37,10 @@ void MWTetris::createGame(){
 
     game_.startGame(name, score, width, height, cd.getLevel());
 
-    connect(ui->btnDown, &QPushButton::clicked, this, &MWTetris::drop);
-    connect(ui->btnLeft, &QPushButton::clicked, this, &MWTetris::left);
-    connect(ui->btnRight, &QPushButton::clicked, this, &MWTetris::right);
-    connect(ui->btnUp, &QPushButton::clicked, this, &MWTetris::rotate);
     ui->lbEnd->hide();
 }
 
 void MWTetris::quitGame(){
-    //delete game_; // bug? si présent le application::quit() ne fonctionne pas, double delete?
-    //exit(0); // pas une bonne idée
     QApplication::quit();
 }
 
@@ -104,23 +97,31 @@ void MWTetris::update(Subject *){
         break;
     case GameState::LOOSE:
         ui->lbEnd->setText(QString::fromStdString("Vous avez PERDU"));
-        ui->lbEnd->show();
+        endGame();
         break;
     case GameState::LINE:
         ui->lbEnd->setText(QString::fromStdString("Vous avez gagné LIGNE"));
-        ui->lbEnd->show();
+        endGame();
         break;
     case GameState::SCORE:
         ui->lbEnd->setText(QString::fromStdString("Vous avez gagné SCORE"));
-        ui->lbEnd->show();
+        endGame();
     break;
     case GameState::TIME:
         ui->lbEnd->setText(QString::fromStdString("Vous avez gagné TEMPS"));
-        ui->lbEnd->show();
+        endGame();
         break;
     default:
         break;
     }
+}
+
+void MWTetris::endGame(){
+    disconnect(ui->btnDown, 0, 0, 0);
+    disconnect(ui->btnLeft, 0, 0, 0);
+    disconnect(ui->btnRight, 0, 0, 0);
+    disconnect(ui->btnUp, 0, 0, 0);
+    ui->lbEnd->show();
 }
 
 // WARNING : incorrect

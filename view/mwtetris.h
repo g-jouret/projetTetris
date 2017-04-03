@@ -31,6 +31,7 @@ private:
     void connexion();
     void generateBoard();
     void resetBoard();
+    void endGame();
 
 private slots:
     void createGame();
