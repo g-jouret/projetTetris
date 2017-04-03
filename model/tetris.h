@@ -131,7 +131,7 @@ public:
      * \brief Méthode vérifiant que le mouvement de la \ref Bric courante est valide.
      *
      * Elle crée un fantome de brique à la destination du mouvement et vérifie que le fantôme
-     * se trouve dans une zone inoccupée de la grille de jeu.  // gestion des collisions à venir
+     * se trouve dans une zone inoccupée de la grille de jeu.
      *
      * \param dir la direction vers laquelle la brique est déplacée
      * \param dropsCount le nombre de drop effectué, si la méthode a été appelée par un drop
@@ -143,7 +143,7 @@ public:
      * \brief Méthode vérifiant que la rotation de la \ref Bric courante est valide.
      *
      * Elle crée un fantome de brique à la destination du mouvement et vérifie que le fantôme
-     * se trouve dans une zone inoccupée de la grille de jeu.  // gestion des collisions à venir
+     * se trouve dans une zone inoccupée de la grille de jeu.
      */
     void checkRotate();
 

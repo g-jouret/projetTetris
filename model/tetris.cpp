@@ -78,6 +78,8 @@ void Tetris::generateBric(){
         for(Position p : currentBric_.getShape()){
             board_.swapCase(p);
         }
+    } else{
+        endGame(/* status : loose */);
     }
     notifyObservers();
 }
@@ -151,12 +153,18 @@ void Tetris::checkLines(unsigned top, unsigned dropsCount){
     linesFilled = board_.checkColumn(top);
     player_.setNbLines(linesFilled);
     player_.setScore(dropsCount, linesFilled);
+    if(player_.getScore() >= 200){
+        endGame(/* score */);
+    } else if(player_.getNbLines() >= 2){
+        endGame(/* nbLines */);
+    }
     notifyObservers();
 }
 
 void Tetris::endGame(){
-    // TODO : implémentation
+    // TODO : implémentation time
     gameOver_ = 1;
+    notifyObservers();
 }
 
 void Tetris::next(){
