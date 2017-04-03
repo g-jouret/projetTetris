@@ -6,12 +6,6 @@ Tetris::Tetris(): timer_ {MAXIMUM_TIMER}, gameState_{GameState::NONE}, player_{P
     board_{Board(10u, 20u)}
 {}
 
-/*Tetris::Tetris(std::string name, unsigned width, unsigned height):
-{
-
-    generateBric();
-}*/
-
 Player Tetris::getPlayer() const{
     return player_;
 }
@@ -64,7 +58,7 @@ void Tetris::generateBric(bool first){
     bag_.shuffle(first);
     currentBric_ = bag_.getNextBric();
     unsigned midBoard = board_.getWidth()/2;
-    unsigned midSide = currentBric_.getSide()/2;
+    unsigned midSide = currentBric_.getMiddle().getX();
 
     for(unsigned u {0}; u < midBoard-midSide; ++u){
         currentBric_.move(Direction::RIGHT);
@@ -113,23 +107,57 @@ bool Tetris::checkMove(Direction dir, unsigned dropsCount){
     return ok;
 }
 
+void Tetris::relocate(Bric & origin, Bric & destination){
+    int distance = destination.getShape().at(0).getX() - origin.getShape().at(0).getX();
+    if(distance >= 0){
+        for (int i {0}; i < distance; ++i){
+            origin.move(Direction::RIGHT);
+        }
+    } else{
+        for (int i {0}; i > distance; --i){
+            origin.move(Direction::LEFT);
+        }
+    }
+    distance = destination.getShape().at(0).getY() - origin.getShape().at(0).getY();
+    if(distance >= 0){
+        for (int i {0}; i < distance; ++i){
+            origin.move(Direction::DOWN);
+        }
+    } else{
+        for (int i {0}; i > distance; --i){
+            origin.move(Direction::UP);
+        }
+    }
+}
+
 void Tetris::checkRotate(){
     bool ok {1};
     unsigned count {0};
+
     Bric destination = currentBric_;
     destination.rotate();
+
     while(ok && count < destination.getShape().size()){
         if(! currentBric_.contains(destination.getShape().at(count))){
             ok = board_.checkCase(destination.getShape().at(count));
         }
         ++count;
     }
-    if(ok)
+    if(ok){
         rotateBric();
+    }
 }
 
 void Tetris::rotateBric(){
+    for(Position p : currentBric_.getShape()){
+        board_.swapCase(p);
+    }
+
     currentBric_.rotate();
+
+    for(Position p : currentBric_.getShape()){
+        board_.swapCase(p);
+    }
     notifyObservers();
 }
 
@@ -150,7 +178,7 @@ void Tetris::checkLines(unsigned top, unsigned dropsCount){
     linesFilled = board_.checkColumn(top);
     player_.setNbLines(linesFilled);
     player_.setScore(dropsCount, linesFilled);
-    if(player_.getScore() >= 200){
+    if(player_.getScore() >= 400){
         setGameState(GameState::SCORE);
     } else if(player_.getNbLines() >= 2){
         setGameState(GameState::LINE);

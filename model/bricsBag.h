@@ -50,7 +50,11 @@ public:
      * dernière brique jouée qui est mise en dernière position.
      */
     void shuffle(bool first);
+
+    std::string to_string() const;
 };
+
+std::ostream & operator<<(std::ostream & out, const BricsBag & in);
 
 } // namespace GJ_GW
 

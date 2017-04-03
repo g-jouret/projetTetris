@@ -10,6 +10,10 @@ MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{ga
     connect(ui->btnLeft, &QPushButton::clicked, this, &MWTetris::left);
     connect(ui->btnRight, &QPushButton::clicked, this, &MWTetris::right);
     connect(ui->btnUp, &QPushButton::clicked, this, &MWTetris::rotate);
+    ui->btnUp->setDisabled(true);
+    ui->btnDown->setDisabled(true);
+    ui->btnLeft->setDisabled(true);
+    ui->btnRight->setDisabled(true);
     game_.addObserver(this);
     update(&game_);
 
@@ -38,6 +42,10 @@ void MWTetris::createGame(){
     game_.startGame(name, score, width, height, cd.getLevel());
 
     ui->lbEnd->hide();
+    ui->btnUp->setEnabled(true);
+    ui->btnDown->setEnabled(true);
+    ui->btnLeft->setEnabled(true);
+    ui->btnRight->setEnabled(true);
 }
 
 void MWTetris::quitGame(){
@@ -117,10 +125,14 @@ void MWTetris::update(Subject *){
 }
 
 void MWTetris::endGame(){
-    disconnect(ui->btnDown, 0, 0, 0);
+    /*disconnect(ui->btnDown, 0, 0, 0);
     disconnect(ui->btnLeft, 0, 0, 0);
     disconnect(ui->btnRight, 0, 0, 0);
-    disconnect(ui->btnUp, 0, 0, 0);
+    disconnect(ui->btnUp, 0, 0, 0);*/
+    ui->btnUp->setDisabled(true);
+    ui->btnDown->setDisabled(true);
+    ui->btnLeft->setDisabled(true);
+    ui->btnRight->setDisabled(true);
     ui->lbEnd->show();
 }
 

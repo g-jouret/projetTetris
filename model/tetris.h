@@ -203,6 +203,8 @@ private:
      */
     void generateBric(bool first = false);
 
+    void relocate(Bric & origin, Bric & destination);
+
     /*!
      * \brief Méthode permettant une translation de la brique courante dans une direction donnée.
      *

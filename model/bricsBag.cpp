@@ -37,3 +37,18 @@ void BricsBag::shuffle(bool first){
         std::random_shuffle(brics_.begin(), --brics_.end());
     }
 }
+
+std::string BricsBag::to_string() const{
+    std::string s;
+    for(Bric b : brics_){
+        s += b.to_string() + "\n";
+    }
+    return s;
+}
+
+namespace GJ_GW {
+std::ostream & operator<<(std::ostream & out, const BricsBag & in){
+out << in.to_string();
+return out;
+}
+}

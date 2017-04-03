@@ -26,8 +26,8 @@ class Bric{
      * Représente l'ensemble des cases qui sont remplies par la brique.
      */
 
-    unsigned side_;
-    /*!< La taille de côté de la brique en nombre de cases. */
+    Position middle_;
+    /*!< Le point central du carré entourant la brique. */
 
 public:
 
@@ -60,11 +60,15 @@ public:
     std::vector<Position> getShape() const;
 
     /*!
-     * \brief Accesseur en lecture de la longueur de la brique.
-     * \return la taille en nombre de \ref Position
+     * \brief Accesseur en lecture du milieu du carré entourant la brique.
+     * \return la \ref Position occupant le milieu
      */
-    unsigned getSide() const;
+    Position getMiddle() const;
 
+    /*!
+     * \brief Accesseur en lecture de l'ordonnée de la \ref Position la plus haute de la brique.
+     * \return l'ordonnée du point le plus haut de la brique
+     */
     unsigned getHigherY();
 
     /*!

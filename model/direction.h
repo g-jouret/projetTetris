@@ -15,6 +15,8 @@ enum class Direction{
     LEFT,
     /*! Représente la droite. */
     RIGHT,
+    /*! Représente le haut. */
+    UP,
     /*! Représente le bas. */
     DOWN
 };
