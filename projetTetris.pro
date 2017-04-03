@@ -36,7 +36,8 @@ HEADERS  += model/board.h \
     model/tetris.h \
     model/direction.h \
     view/setbricsdialog.h \
-    model/linestate.h
+    model/linestate.h \
+    model/gamestate.h
 
 FORMS    += view/configdialog.ui \
     view/mwtetris.ui \

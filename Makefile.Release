@@ -83,7 +83,8 @@ DIST          =  model\board.h \
 		model\tetris.h \
 		model\direction.h \
 		view\setbricsdialog.h \
-		model\linestate.h model\board.cpp \
+		model\linestate.h \
+		model\gamestate.h model\board.cpp \
 		model\bric.cpp \
 		model\bricsBag.cpp \
 		model\player.cpp \
@@ -348,6 +349,7 @@ release/moc_mwtetris.cpp: view/configdialog.h \
 		model/bricsBag.h \
 		model/bric.h \
 		model/direction.h \
+		model/gamestate.h \
 		observer/subject.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
@@ -793,6 +795,7 @@ release/mwtetris.o: view/mwtetris.cpp view/mwtetris.h \
 		model/bricsBag.h \
 		model/bric.h \
 		model/direction.h \
+		model/gamestate.h \
 		observer/subject.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
@@ -862,6 +865,7 @@ release/tetris.o: model/tetris.cpp model/tetris.h \
 		model/bricsBag.h \
 		model/bric.h \
 		model/direction.h \
+		model/gamestate.h \
 		observer/subject.h \
 		observer/observer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\tetris.o model\tetris.cpp
@@ -1111,6 +1115,7 @@ release/main.o: main.cpp view/mwtetris.h \
 		model/bricsBag.h \
 		model/bric.h \
 		model/direction.h \
+		model/gamestate.h \
 		observer/subject.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \

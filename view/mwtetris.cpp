@@ -90,16 +90,36 @@ void MWTetris::drop(){
 }
 
 void MWTetris::update(Subject *){
-    if(QString::fromStdString(game_.getPlayer().getName()) != ui->lbPlayerName->text()){
-        ui->lbPlayerName->setText(QString::fromStdString(game_.getPlayer().getName()));
-    }
-    if(QString::number(game_.getPlayer().getScore()) != ui->lbPlayerScore->text()){
-        ui->lbPlayerScore->setText(QString::number(game_.getPlayer().getScore()));
-    }
-    resetBoard();
-    generateBoard();
-    if(game_.isGameOver()){
+    switch (game_.getGameState()){
+    case GameState::NONE:
+        if(QString::fromStdString(game_.getPlayer().getName()) != ui->lbPlayerName->text()){
+            ui->lbPlayerName->setText(QString::fromStdString(game_.getPlayer().getName()));
+        }
+    case GameState::ON:
+        if(QString::number(game_.getPlayer().getScore()) != ui->lbPlayerScore->text()){
+            ui->lbPlayerScore->setText(QString::number(game_.getPlayer().getScore()));
+        }
+        resetBoard();
+        generateBoard();
+        break;
+    case GameState::LOOSE:
+        ui->lbEnd->setText(QString::fromStdString("Vous avez PERDU"));
         ui->lbEnd->show();
+        break;
+    case GameState::LINE:
+        ui->lbEnd->setText(QString::fromStdString("Vous avez gagné LIGNE"));
+        ui->lbEnd->show();
+        break;
+    case GameState::SCORE:
+        ui->lbEnd->setText(QString::fromStdString("Vous avez gagné SCORE"));
+        ui->lbEnd->show();
+    break;
+    case GameState::TIME:
+        ui->lbEnd->setText(QString::fromStdString("Vous avez gagné TEMPS"));
+        ui->lbEnd->show();
+        break;
+    default:
+        break;
     }
 }
 

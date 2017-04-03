@@ -4,6 +4,7 @@
 #include "player.h"
 #include "board.h"
 #include "bricsBag.h"
+#include "gamestate.h"
 #include "observer/subject.h"
 
 /*! \mainpage Le jeu de Tetris multijoueur, projet de c++ 2016-2017
@@ -44,7 +45,7 @@ private:
      * Sa valeur est en milliseconde et peut aller de \ref MINIMUM_TIMER à \ref MAXIMUM_MONTH.
      */
 
-    bool gameOver_;
+    GameState gameState_;
     /*!< L'état de la partie.
      *
      * En cours ou arrêtée.
@@ -116,10 +117,11 @@ public:
     Bric getCurrentBric() const;
 
     /*!
-     * \brief Méthode vérifiant l'état de la partie.
-     * \return true si la partie est terminée, false sinon
+     * \brief Accesseur en lecture de l'état du jeu.
+     *
+     * \return l'état du jeu
      */
-    bool isGameOver() const;
+    GameState getGameState() const;
 
     /*!
      * \brief Méthode permettant d'effectuer autant de déplacement
@@ -232,7 +234,7 @@ private:
      *  - Un joueur gagne s'il réussi à remplir suffisamment de lignes ;
      *  - la partie s'arrête après un certain temps, le joueur ayant alors le plus haut score l'emporte.
      */
-    void endGame();
+    void setGameState(GameState gameState);
 
     /*!
      * \brief Méthode modifiant le temps entre chaque itération en fonction

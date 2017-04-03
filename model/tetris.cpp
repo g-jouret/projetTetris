@@ -2,7 +2,7 @@
 
 using namespace GJ_GW;
 
-Tetris::Tetris(): timer_ {MAXIMUM_TIMER}, gameOver_{1}, player_{Player("Joueur")},
+Tetris::Tetris(): timer_ {MAXIMUM_TIMER}, gameState_{GameState::NONE}, player_{Player("Joueur")},
     board_{Board(10u, 20u)}
 {}
 
@@ -24,8 +24,8 @@ Board Tetris::getBoard() const{
     return board_;
 }
 
-bool Tetris::isGameOver() const{
-    return gameOver_;
+GameState Tetris::getGameState() const{
+    return gameState_;
 }
 
 void Tetris::setBag(bool keepDefault){
@@ -33,16 +33,16 @@ void Tetris::setBag(bool keepDefault){
 }
 
 void Tetris::startGame(std::string name, unsigned score, unsigned width, unsigned height, unsigned level){
+    gameState_ = GameState::NONE;
     timer_ = MAXIMUM_TIMER;
     for(unsigned u {0}; u < level; ++u){
         setTimer();
     }
     player_.setName(name);
     player_.setScore(score);
-    gameOver_ = 0;
     player_.resetNbLines();
     setBoard(validateWidth(width), validateHeight(height));
-
+    notifyObservers();
     generateBric(true);
 }
 
@@ -78,10 +78,10 @@ void Tetris::generateBric(bool first){
         for(Position p : currentBric_.getShape()){
             board_.swapCase(p);
         }
+        setGameState(GameState::ON);
     } else{
-        endGame(/* status : loose */);
+        setGameState(GameState::LOOSE);
     }
-    notifyObservers();
 }
 
 void Tetris::drop(){
@@ -151,16 +151,16 @@ void Tetris::checkLines(unsigned top, unsigned dropsCount){
     player_.setNbLines(linesFilled);
     player_.setScore(dropsCount, linesFilled);
     if(player_.getScore() >= 200){
-        endGame(/* score */);
+        setGameState(GameState::SCORE);
     } else if(player_.getNbLines() >= 2){
-        endGame(/* nbLines */);
+        setGameState(GameState::LINE);
+    } else{
+        notifyObservers();
     }
-    notifyObservers();
 }
 
-void Tetris::endGame(){
-    // TODO : implémentation time
-    gameOver_ = 1;
+void Tetris::setGameState(GameState gameState){
+    gameState_ = gameState;
     notifyObservers();
 }
 
