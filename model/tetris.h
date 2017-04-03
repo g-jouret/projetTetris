@@ -93,7 +93,7 @@ public:
      * \param height la hauteur du \ref Board
      * \param level le niveau de difficulté de départ
      */
-    void startGame(std::string name, unsigned width, unsigned height, unsigned level = 0);
+    void startGame(std::string name, unsigned score, unsigned width, unsigned height, unsigned level = 0);
 
     /*!
      * \brief Accesseur en lecture du \ref Player.
@@ -199,7 +199,7 @@ private:
     /*!
      * \brief Méthode plaçant une nouvelle \ref Bric en haut du \ref Board.
      */
-    void generateBric();
+    void generateBric(bool first = false);
 
     /*!
      * \brief Méthode permettant une translation de la brique courante dans une direction donnée.

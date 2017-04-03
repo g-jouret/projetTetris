@@ -18,12 +18,12 @@ using namespace GJ_GW;
 
 class MWTetris : public QMainWindow, public GJ_GW::Observer{
     Q_OBJECT
-    Tetris *game_;
+    Tetris game_;
     Ui::MWTetris *ui;
     QElapsedTimer timer_;
 
 public:
-    explicit MWTetris(Tetris *game, QWidget *parent = 0);
+    explicit MWTetris(Tetris game, QWidget *parent = 0);
     void update(GJ_GW::Subject *);
     ~MWTetris() noexcept;
 

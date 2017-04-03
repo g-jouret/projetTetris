@@ -6,7 +6,7 @@ using namespace GJ_GW;
 int main(int argc, char *argv[]){
     QApplication a(argc, argv);
 
-    Tetris * game = new Tetris();
+    Tetris game;
     MWTetris w(game);
     w.show();
 

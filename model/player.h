@@ -65,7 +65,13 @@ public:
     void setName(std::string name);
 
     /*!
-     * \brief Accesseur en écriture du score du joueur.
+     * \brief Accesseur en écriture d'initialisation du score du joueur.
+     * \param score le score sauvegardé précédemment
+     */
+    void setScore(unsigned score);
+
+    /*!
+     * \brief Accesseur en écriture d'incrémentation du score du joueur.
      * \param dropsCount le nombre de lignes parcourue en drop lors du dernier mouvement
      * \param linesCount le nombre de lignes remplies lors du dernier mouvement
      */

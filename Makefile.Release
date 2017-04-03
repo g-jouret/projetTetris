@@ -82,7 +82,8 @@ DIST          =  model\board.h \
 		view\mwtetris.h \
 		model\tetris.h \
 		model\direction.h \
-		view\setbricsdialog.h model\board.cpp \
+		view\setbricsdialog.h \
+		model\linestate.h model\board.cpp \
 		model\bric.cpp \
 		model\bricsBag.cpp \
 		model\player.cpp \

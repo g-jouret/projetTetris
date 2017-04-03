@@ -224,7 +224,7 @@ public:
         lbEnd = new QLabel(centralWidget);
         lbEnd->setObjectName(QStringLiteral("lbEnd"));
         lbEnd->setEnabled(true);
-        lbEnd->setGeometry(QRect(440, 470, 61, 16));
+        lbEnd->setGeometry(QRect(380, 470, 171, 16));
         MWTetris->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MWTetris);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -250,7 +250,7 @@ public:
         action_Quitter->setText(QApplication::translate("MWTetris", "&Quitter", Q_NULLPTR));
         action_Quitter->setShortcut(QApplication::translate("MWTetris", "Ctrl+Q", Q_NULLPTR));
         lbName->setText(QApplication::translate("MWTetris", "Joueur :", Q_NULLPTR));
-        lbPlayerName->setText(QApplication::translate("MWTetris", "Joueur", Q_NULLPTR));
+        lbPlayerName->setText(QApplication::translate("MWTetris", "lbPlayerName", Q_NULLPTR));
         lbScore->setText(QApplication::translate("MWTetris", "score :", Q_NULLPTR));
         lbPlayerScore->setText(QApplication::translate("MWTetris", "0", Q_NULLPTR));
         lbTimer->setText(QApplication::translate("MWTetris", "Temps \303\251coul\303\251 :", Q_NULLPTR));
@@ -266,7 +266,7 @@ public:
         btnRight->setShortcut(QApplication::translate("MWTetris", "Right", Q_NULLPTR));
         btnDown->setText(QApplication::translate("MWTetris", "Bas", Q_NULLPTR));
         btnDown->setShortcut(QApplication::translate("MWTetris", "Down", Q_NULLPTR));
-        lbEnd->setText(QApplication::translate("MWTetris", "Game Over", Q_NULLPTR));
+        lbEnd->setText(QApplication::translate("MWTetris", "lbEnd", Q_NULLPTR));
         menu_Jeu->setTitle(QApplication::translate("MWTetris", "&Jeu", Q_NULLPTR));
     } // retranslateUi
 

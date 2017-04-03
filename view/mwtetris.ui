@@ -55,7 +55,7 @@
        <item>
         <widget class="QLabel" name="lbPlayerName">
          <property name="text">
-          <string>Joueur</string>
+          <string>lbPlayerName</string>
          </property>
         </widget>
        </item>
@@ -284,14 +284,14 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>440</x>
+      <x>380</x>
       <y>470</y>
-      <width>61</width>
+      <width>171</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Game Over</string>
+     <string>lbEnd</string>
     </property>
    </widget>
   </widget>

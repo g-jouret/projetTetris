@@ -1,19 +1,19 @@
 #include "mwtetris.h"
 #include "ui_mwtetris.h"
 
-MWTetris::MWTetris(Tetris * game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris){
+MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris){
     ui->setupUi(this);
     connect(ui->action_Nouveau, &QAction::triggered, this, &MWTetris::createGame);
     connect(ui->action_Quitter, &QAction::triggered, this, &MWTetris::quitGame);
     // TODO : aide? cf qtpendu.pdf
-    game_->addObserver(this);
-    update(game_);
+    game_.addObserver(this);
+    update(&game_);
 
     time();
 }
 
 MWTetris::~MWTetris() noexcept{
-    game_->removeObserver(this);
+    game_.removeObserver(this);
     delete ui;
 }
 
@@ -29,7 +29,14 @@ void MWTetris::createGame(){
     game_ = game;
     game_->addObserver(this);
     update(game_);*/
-    game_->startGame(cd.getName(), cd.getWidth(), cd.getHeight(), cd.getLevel());
+    std::string name;
+    unsigned score, width, height;
+    name = (cd.getName().empty())? game_.getPlayer().getName() : cd.getName();
+    score = (cd.getName().empty())? game_.getPlayer().getScore() : 0;
+    width = (cd.getWidth() == 0)? game_.getBoard().getWidth() : cd.getWidth();
+    height = (cd.getHeight() == 0)? game_.getBoard().getHeight() : cd.getHeight();
+
+    game_.startGame(name, score, width, height, cd.getLevel());
 
     connect(ui->btnDown, &QPushButton::clicked, this, &MWTetris::drop);
     connect(ui->btnLeft, &QPushButton::clicked, this, &MWTetris::left);
@@ -45,7 +52,7 @@ void MWTetris::quitGame(){
 }
 
 void MWTetris::generateBoard(){
-    std::map<Position, bool> theGrid {game_->getBoard().getGrid()};
+    std::map<Position, bool> theGrid {game_.getBoard().getGrid()};
 
     for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
         QLabel * lb = new QLabel();
@@ -67,31 +74,31 @@ void MWTetris::resetBoard(){
 }
 
 void MWTetris::left(){
-    game_->checkMove(Direction::LEFT);
+    game_.checkMove(Direction::LEFT);
 }
 
 void MWTetris::right(){
-    game_->checkMove(Direction::RIGHT);
+    game_.checkMove(Direction::RIGHT);
 }
 
 void MWTetris::rotate(){
-    game_->checkRotate();
+    game_.checkRotate();
 }
 
 void MWTetris::drop(){
-    game_->drop();
+    game_.drop();
 }
 
 void MWTetris::update(Subject *){
-    if(QString::fromStdString(game_->getPlayer().getName()) != ui->lbPlayerName->text()){
-        ui->lbPlayerName->setText(QString::fromStdString(game_->getPlayer().getName()));
+    if(QString::fromStdString(game_.getPlayer().getName()) != ui->lbPlayerName->text()){
+        ui->lbPlayerName->setText(QString::fromStdString(game_.getPlayer().getName()));
     }
-    if(QString::number(game_->getPlayer().getScore()) != ui->lbPlayerScore->text()){
-        ui->lbPlayerScore->setText(QString::number(game_->getPlayer().getScore()));
+    if(QString::number(game_.getPlayer().getScore()) != ui->lbPlayerScore->text()){
+        ui->lbPlayerScore->setText(QString::number(game_.getPlayer().getScore()));
     }
     resetBoard();
     generateBoard();
-    if(game_->isGameOver()){
+    if(game_.isGameOver()){
         ui->lbEnd->show();
     }
 }
