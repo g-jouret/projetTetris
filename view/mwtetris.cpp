@@ -114,7 +114,7 @@ void MWTetris::update(Subject *){
     case GameState::SCORE:
         ui->lbEnd->setText(QString::fromStdString("Vous avez gagné SCORE"));
         endGame();
-    break;
+        break;
     case GameState::TIME:
         ui->lbEnd->setText(QString::fromStdString("Vous avez gagné TEMPS"));
         endGame();

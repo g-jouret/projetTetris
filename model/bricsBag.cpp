@@ -48,7 +48,7 @@ std::string BricsBag::to_string() const{
 
 namespace GJ_GW {
 std::ostream & operator<<(std::ostream & out, const BricsBag & in){
-out << in.to_string();
-return out;
+    out << in.to_string();
+    return out;
 }
 }

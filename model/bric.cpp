@@ -81,17 +81,17 @@ bool Bric::contains(Position & pos) const{
 }
 
 std::string Bric::to_string() const{
-std::string s;
-for(auto it = shape_.begin(); it != shape_.end(); ++it){
-    s += it->to_string();
-}
-s += ", milieu : " + middle_.to_string();
-return s;
+    std::string s;
+    for(auto it = shape_.begin(); it != shape_.end(); ++it){
+        s += it->to_string();
+    }
+    s += ", milieu : " + middle_.to_string();
+    return s;
 }
 
 namespace GJ_GW {
 std::ostream & operator<<(std::ostream & out, const Bric & in){
-out << in.to_string();
-return out;
+    out << in.to_string();
+    return out;
 }
 }

@@ -107,6 +107,7 @@ bool Tetris::checkMove(Direction dir, unsigned dropsCount){
     return ok;
 }
 
+// NOTE : à enlever si non utilisé
 void Tetris::relocate(Bric & origin, Bric & destination){
     int distance = destination.getShape().at(0).getX() - origin.getShape().at(0).getX();
     if(distance >= 0){
