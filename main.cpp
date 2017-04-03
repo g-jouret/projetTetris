@@ -14,7 +14,6 @@ int main(int argc, char *argv[]){
 }
 
 /* TODO Principal :
- * bug : erreur fatale dans le checkRow || checkColumn
  * bug : lorsqu'on relance une nouvelle partie, on a 2 briques courantes
  *
  * rotation des briques

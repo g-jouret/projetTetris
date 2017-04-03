@@ -43,7 +43,7 @@ void Tetris::startGame(std::string name, unsigned width, unsigned height, unsign
     player_.resetNbLines();
     setBoard(validateWidth(width), validateHeight(height));
     bag_.shuffle(true);
-    currentBric_ = bag_.getNextBric();
+    //currentBric_ = bag_.getNextBric();
     generateBric();
 }
 
@@ -60,6 +60,7 @@ unsigned Tetris::validateHeight(unsigned value){
 }
 
 void Tetris::generateBric(){
+    currentBric_ = bag_.getNextBric();
     bool ok {1};
     unsigned count{0};
     unsigned midBoard = board_.getWidth()/2;
@@ -107,7 +108,7 @@ bool Tetris::checkMove(Direction dir, unsigned dropsCount){
     if(! ok && dir == Direction::DOWN){
         checkLines(currentBric_.getHigherY(), dropsCount);
         bag_.shuffle();
-        currentBric_ = bag_.getNextBric();
+        //currentBric_ = bag_.getNextBric();
         generateBric();
     }
     return ok;
@@ -147,9 +148,6 @@ void Tetris::moveBric(Direction dir){
 
 void Tetris::checkLines(unsigned top, unsigned dropsCount){
     unsigned linesFilled;
-    std::cout << currentBric_
-              << top
-              << std::endl;
     linesFilled = board_.checkColumn(top);
     player_.setNbLines(linesFilled);
     player_.setScore(dropsCount, linesFilled);

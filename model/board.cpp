@@ -2,6 +2,10 @@
 
 using namespace GJ_GW;
 
+void Board::debug(){
+    swapRow(height_-1);
+}
+
 Board::Board(unsigned width, unsigned height): width_{width}, height_{height}{
     for(unsigned u {0}; u < width; ++u){
         for(unsigned j{0}; j < height; ++j){
@@ -61,6 +65,7 @@ unsigned Board::checkColumn(unsigned y){
         //throw new TetrisException
     }
     state = checkRow(0u, u, state);
+
     while(state != LineState::FILL && u > y){
         --u;
         state = LineState::NONE;
@@ -76,11 +81,15 @@ unsigned Board::checkColumn(unsigned y){
         }
     }
     return check;*/
+
+
+
     if(state == LineState::FILL){
         u = gridActualisation(u);
     } else{
         u = 0;
     }
+
     return u;
 }
 
@@ -95,7 +104,7 @@ LineState Board::checkRow(unsigned x, unsigned & y, LineState & state){
     if((state == LineState::FILL && ! checkCase(x,y)) || (state == LineState::EMPTY && checkCase(x,y))){
         state = LineState::BOTH;
     } else{
-        if(x < width_){
+        if(x < width_-1){
             ++x;
             checkRow(x, y, state);
         }
@@ -127,9 +136,10 @@ void Board::moveLine(unsigned y, unsigned lineNb){
 
 unsigned Board::gridActualisation(unsigned lineNum){
     unsigned lineCount {1};
-    LineState state {LineState::NONE};
+    LineState state;
     swapRow(lineNum);
     do {
+        state = LineState::NONE;
         --lineNum;
         state = checkRow(0, lineNum, state);
         if(state == LineState::FILL){

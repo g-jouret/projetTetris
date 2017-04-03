@@ -38,6 +38,8 @@ class Board{
 
 public:
 
+    void debug();
+
     /*!
      * \brief Constructeur de \ref Board.
      *
