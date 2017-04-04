@@ -2,9 +2,21 @@
 
 using namespace GJ_GW;
 
-Tetris::Tetris(): timer_ {MAXIMUM_TIMER}, gameState_{GameState::NONE}, player_{Player("Joueur")},
+Tetris::Tetris(): timer_ {MAXIMUM_TIMER}, winScore_{500}, winLines_{5}, gameState_{GameState::NONE}, player_{Player("Joueur")},
     board_{Board(10u, 20u)}
 {}
+
+unsigned Tetris::getTimer() const{
+    return timer_;
+}
+
+unsigned Tetris::getWinScore() const{
+    return winScore_;
+}
+
+unsigned Tetris::getWinLines() const{
+    return winLines_;
+}
 
 Player Tetris::getPlayer() const{
     return player_;
@@ -26,7 +38,7 @@ void Tetris::setBag(bool keepDefault){
     // TODO : implémentation de la génération de briques perso
 }
 
-void Tetris::startGame(std::string name, unsigned score, unsigned width, unsigned height, unsigned level){
+void Tetris::startGame(std::string name, unsigned score, unsigned width, unsigned height, unsigned winScore, unsigned winLines, unsigned level){
     gameState_ = GameState::NONE;
     timer_ = MAXIMUM_TIMER;
     for(unsigned u {0}; u < level; ++u){
@@ -36,6 +48,8 @@ void Tetris::startGame(std::string name, unsigned score, unsigned width, unsigne
     player_.setScore(score);
     player_.resetNbLines();
     setBoard(validateWidth(width), validateHeight(height));
+    winScore_ = winScore;
+    winLines_ = winLines;
     notifyObservers();
     generateBric(true);
 }
@@ -179,9 +193,9 @@ void Tetris::checkLines(unsigned top, unsigned dropsCount){
     linesFilled = board_.checkColumn(top);
     player_.setNbLines(linesFilled);
     player_.setScore(dropsCount, linesFilled);
-    if(player_.getScore() >= 400){
+    if(player_.getScore() >= winScore_){
         setGameState(GameState::SCORE);
-    } else if(player_.getNbLines() >= 2){
+    } else if(player_.getNbLines() >= winLines_){
         setGameState(GameState::LINE);
     } else{
         notifyObservers();

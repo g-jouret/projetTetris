@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>616</width>
+    <width>617</width>
     <height>634</height>
    </rect>
   </property>
@@ -113,7 +113,38 @@
        <item>
         <widget class="QLabel" name="lbPlayerScore">
          <property name="text">
-          <string>0</string>
+          <string>00</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <item>
+        <widget class="QLabel" name="lbLines">
+         <property name="text">
+          <string>nombre de lignes :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_8">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="lbPlayerLines">
+         <property name="text">
+          <string>00</string>
          </property>
         </widget>
        </item>
@@ -147,7 +178,7 @@
           <string/>
          </property>
          <property name="text">
-          <string>0 : 00 : 00</string>
+          <string>0:00:00</string>
          </property>
         </widget>
        </item>
@@ -466,7 +497,7 @@ background-color: grey;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>616</width>
+     <width>617</width>
      <height>20</height>
     </rect>
    </property>

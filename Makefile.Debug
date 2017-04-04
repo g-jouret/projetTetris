@@ -71,7 +71,7 @@ OBJECTS       = debug/board.o \
 		debug/moc_mwtetris.o \
 		debug/moc_setbricsdialog.o
 
-DIST          = image/background.jpg model\board.h \
+DIST          =  model\board.h \
 		model\bric.h \
 		model\bricsBag.h \
 		model\player.h \
@@ -682,6 +682,9 @@ debug/configdialog.o: view/configdialog.cpp view/configdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QSpacerItem \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QSpinBox \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qspinbox.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QTimeEdit \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdatetimeedit.h \
+		C:/Qt/5.7/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QVBoxLayout \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\configdialog.o view\configdialog.cpp

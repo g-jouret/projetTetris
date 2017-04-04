@@ -12,13 +12,15 @@ class ConfigDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit ConfigDialog(QWidget *parent = 0);
+    explicit ConfigDialog(unsigned width, unsigned height, unsigned score, unsigned lines, QWidget *parent = 0);
     ~ConfigDialog();
 
-    std::string getName();
-    unsigned getWidth();
-    unsigned getHeight();
-    unsigned getLevel();
+    std::string getName() const;
+    unsigned getWidth() const;
+    unsigned getHeight() const;
+    unsigned getWinScore() const;
+    unsigned getWinLines() const;
+    unsigned getLevel() const;
 
 private:
     Ui::ConfigDialog *ui;

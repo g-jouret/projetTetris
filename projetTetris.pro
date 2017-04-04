@@ -42,5 +42,4 @@ FORMS    += view/configdialog.ui \
     view/mwtetris.ui \
     view/setbricsdialog.ui
 
-DISTFILES += \
-    image/background.jpg
+DISTFILES +=

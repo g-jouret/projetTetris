@@ -45,6 +45,12 @@ private:
      * Sa valeur est en milliseconde et peut aller de \ref MINIMUM_TIMER à \ref MAXIMUM_MONTH.
      */
 
+    unsigned winScore_;
+
+    unsigned winLines_;
+
+    // NOTE : winTime?
+
     GameState gameState_;
     /*!< L'état de la partie.
      *
@@ -94,7 +100,13 @@ public:
      * \param height la hauteur du \ref Board
      * \param level le niveau de difficulté de départ
      */
-    void startGame(std::string name, unsigned score, unsigned width, unsigned height, unsigned level = 0);
+    void startGame(std::string name, unsigned score, unsigned width, unsigned height, unsigned winScore, unsigned winLines, unsigned level = 0);
+
+    unsigned getTimer() const;
+
+    unsigned getWinScore() const;
+
+    unsigned getWinLines() const;
 
     /*!
      * \brief Accesseur en lecture du \ref Player.

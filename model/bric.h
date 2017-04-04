@@ -47,7 +47,7 @@ public:
      *
      * \param shape les \ref Position remplies
      */
-    Bric(std::vector<Position> shape);
+    explicit Bric(std::vector<Position> shape);
 
     /*!
      * \brief Accesseur en lecture de la forme de la brique.

@@ -20,7 +20,7 @@ class MWTetris : public QMainWindow, public GJ_GW::Observer{
     Q_OBJECT
     Tetris game_;
     Ui::MWTetris *ui;
-    QElapsedTimer timer_;
+    QElapsedTimer chrono_;
 
 public:
     explicit MWTetris(Tetris game, QWidget *parent = 0);
@@ -41,7 +41,7 @@ private slots:
     void left();
     void right();
     void time();
-
+    void next();
 };
 
 #endif // MWTETRIS_H

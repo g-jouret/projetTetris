@@ -17,6 +17,7 @@ int main(int argc, char *argv[]){
  * itératif
  * amélioration graphique (resize auto)
  * renforcement du random de getNextBric
+ * optimisation mémoire (board - itératif à la place de récursif)
  * amélioration rotation des briques + génération (pair & impair)
  * couleur des briques
  */
