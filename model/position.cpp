@@ -16,7 +16,7 @@ void Position::setY(int y){
     y_ += y;
 }
 
-std::string Position::to_string() const{
+/*std::string Position::to_string() const{
     std::string s;
     s += "(";
     s += std::to_string(x_);
@@ -31,3 +31,4 @@ std::ostream & operator<<(std::ostream & out, const Position & in){
     return out;
 }
 }
+*/

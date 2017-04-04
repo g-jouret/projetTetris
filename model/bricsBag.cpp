@@ -1,4 +1,5 @@
 #include "bricsBag.h"
+#include <algorithm>
 
 using namespace GJ_GW;
 
@@ -43,7 +44,7 @@ void BricsBag::shuffle(bool first){
     }
 }
 
-std::string BricsBag::to_string() const{
+/*std::string BricsBag::to_string() const{
     std::string s;
     for(Bric b : brics_){
         s += b.to_string() + "\n";
@@ -57,3 +58,4 @@ std::ostream & operator<<(std::ostream & out, const BricsBag & in){
     return out;
 }
 }
+*/

@@ -29,10 +29,14 @@ MWTetris::~MWTetris() noexcept{
 }
 
 void MWTetris::createGame(){
-    ConfigDialog cd (game_.getBoard().getWidth(),
-                     game_.getBoard().getHeight(),
-                     game_.getWinScore(), game_.getWinLines(),
-                     game_.getWinTime(), this);
+    std::vector<unsigned> args {game_.MAXIMUM_SIZE_NAME,
+        game_.MINIMUM_WIDTH, game_.MAXIMUM_WIDTH, game_.getBoard().getWidth(),
+        game_.MINIMUM_HEIGHT, game_.MAXIMUM_HEIGHT, game_.getBoard().getHeight(),
+        game_.MINIMUM_WIN_SCORE, game_.MAXIMUM_WIN_SCORE, game_.getWinScore(),
+        game_.MINIMUM_WIN_LINES, game_.MAXIMUM_WIN_LINES, game_.getWinLines(),
+        game_.MINIMUM_WIN_TIME, game_.MAXIMUM_WIN_TIME, game_.getWinTime(),
+        game_.MINIMUM_LEVEL, game_.MAXIMUM_LEVEL};
+    ConfigDialog cd (args, this);
     cd.setWindowTitle("Configuration de la partie");
     int ret = cd.exec();
 

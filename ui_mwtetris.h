@@ -395,7 +395,7 @@ public:
 #ifndef QT_NO_STATUSTIP
         lbTime->setStatusTip(QString());
 #endif // QT_NO_STATUSTIP
-        lbTime->setText(QApplication::translate("MWTetris", "0:00:00", Q_NULLPTR));
+        lbTime->setText(QApplication::translate("MWTetris", "00:00", Q_NULLPTR));
         btnUp->setText(QApplication::translate("MWTetris", "Haut", Q_NULLPTR));
         btnUp->setShortcut(QApplication::translate("MWTetris", "Up", Q_NULLPTR));
         btnLeft->setText(QApplication::translate("MWTetris", "Gauche", Q_NULLPTR));

@@ -14,7 +14,6 @@ int main(int argc, char *argv[]){
 }
 
 /* TODO Principal :
- * mettre les limitations de la partie view aussi dans la partie model, sinon c'est pas propre
  * amélioration graphique (resize auto)
  * renforcement du random de getNextBric
  * gestion score si win au score

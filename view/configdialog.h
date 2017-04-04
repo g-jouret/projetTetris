@@ -12,7 +12,7 @@ class ConfigDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit ConfigDialog(unsigned width, unsigned height, unsigned score, unsigned lines, unsigned time, QWidget *parent = 0);
+    explicit ConfigDialog(std::vector<unsigned> args, QWidget *parent = 0);
     ~ConfigDialog();
 
     std::string getName() const;
@@ -25,6 +25,7 @@ public:
 
 private:
     Ui::ConfigDialog *ui;
+    QTime convertUnsToTime(unsigned time);
 };
 
 #endif // CONFIGDIALOG_H

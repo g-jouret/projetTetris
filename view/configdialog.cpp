@@ -1,43 +1,39 @@
 #include "configdialog.h"
 #include "ui_configdialog.h"
 
-ConfigDialog::ConfigDialog(unsigned width, unsigned height, unsigned score,
-                           unsigned lines, unsigned time, QWidget *parent) :
+
+ConfigDialog::ConfigDialog(std::vector<unsigned> args, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ConfigDialog)
 {
     ui->setupUi(this);
 
-    ui->leName->setMaxLength(15);
+    ui->leName->setMaxLength(args.at(0));
 
-    ui->sbWidth->setMinimum(6);
-    ui->sbWidth->setMaximum(30);
-    ui->sbWidth->setValue(width);
+    ui->sbWidth->setMinimum(args.at(1));
+    ui->sbWidth->setMaximum(args.at(2));
+    ui->sbWidth->setValue(args.at(3));
 
-    ui->sbHeight->setMinimum(10);
-    ui->sbHeight->setMaximum(50);
-    ui->sbHeight->setValue(height);
+    ui->sbHeight->setMinimum(args.at(4));
+    ui->sbHeight->setMaximum(args.at(5));
+    ui->sbHeight->setValue(args.at(6));
 
-    ui->sbWinScore->setMinimum(200);
-    ui->sbWinScore->setMaximum(2000);
-    ui->sbWinScore->setValue(score);
+    ui->sbWinScore->setMinimum(args.at(7));
+    ui->sbWinScore->setMaximum(args.at(8));
+    ui->sbWinScore->setValue(args.at(9));
 
-    ui->sbWinLines->setMinimum(5);
-    ui->sbWinLines->setMaximum(20);
-    ui->sbWinLines->setValue(lines);
+    ui->sbWinLines->setMinimum(args.at(10));
+    ui->sbWinLines->setMaximum(args.at(11));
+    ui->sbWinLines->setValue(args.at(12));
 
-    ui->timeEdit->setMinimumTime(QTime (0,1));
-    ui->timeEdit->setMaximumTime(QTime (0,59,59,999));
-    unsigned ms = (time % 1000);
-    unsigned sec = ((time/1000) % 60);
-    unsigned min = ((time/60000) % 60);
-    //unsigned hours = ((time/3600000) % 24);
-    ui->timeEdit->setTime(QTime (0, min, sec, ms));
 
-    ui->sbLevel->setMinimum(0);
-    ui->sbLevel->setMaximum(4);
-    ui->sbLevel->setValue(0);
+    ui->timeEdit->setMinimumTime(convertUnsToTime(args.at(13)));
+    ui->timeEdit->setMaximumTime(convertUnsToTime(args.at(14)));
+    ui->timeEdit->setTime(convertUnsToTime(args.at(15)));
 
+    ui->sbLevel->setMinimum(args.at(16));
+    ui->sbLevel->setMaximum(args.at(17));
+    ui->sbLevel->setValue(args.at(16));
 }
 
 ConfigDialog::~ConfigDialog()
@@ -71,4 +67,12 @@ unsigned ConfigDialog::getWinLines() const{
 
 unsigned ConfigDialog::getWinTime() const{
     return ui->timeEdit->time().msecsSinceStartOfDay();
+}
+
+QTime ConfigDialog::convertUnsToTime(unsigned time){
+    unsigned ms = (time % 1000);
+    unsigned sec = ((time/1000) % 60);
+    unsigned min = ((time/60000) % 60);
+    unsigned hours = ((time/3600000) % 24);
+    return QTime(hours, min, sec, ms);
 }

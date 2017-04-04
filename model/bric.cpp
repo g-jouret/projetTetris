@@ -1,4 +1,5 @@
 #include "bric.h"
+#include <algorithm>
 
 using namespace GJ_GW;
 
@@ -80,7 +81,7 @@ bool Bric::contains(Position & pos) const{
     return ok;
 }
 
-std::string Bric::to_string() const{
+/*std::string Bric::to_string() const{
     std::string s;
     for(auto it = shape_.begin(); it != shape_.end(); ++it){
         s += it->to_string();
@@ -94,4 +95,4 @@ std::ostream & operator<<(std::ostream & out, const Bric & in){
     out << in.to_string();
     return out;
 }
-}
+}*/

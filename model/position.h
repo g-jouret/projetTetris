@@ -1,7 +1,7 @@
 #ifndef POSITION_H
 #define POSITION_H
 
-#include <iostream>
+//#include <iostream>
 
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
@@ -71,11 +71,7 @@ public:
      *
      * \return une représentation d'une position sous la forme d'une std::string
      */
-    std::string to_string() const;
-
-    // amis
-
-    friend std::ostream & operator<<(std::ostream & out, const Position & in);
+    //std::string to_string() const;
 
 };
 
@@ -120,7 +116,7 @@ inline bool operator>(const Position & lhs, const Position & rhs);
  * \param in la \ref Position à injecter
  * \return le flux après l'injection
  */
-std::ostream & operator<<(std::ostream & out, const Position & in);
+//std::ostream & operator<<(std::ostream & out, const Position & in);
 
 //implémentations inline
 //fonctions inline

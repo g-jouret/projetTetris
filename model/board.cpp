@@ -30,10 +30,6 @@ bool Board::contains(Position & pos) const{
     return pos.getX() < width_ && pos.getY() < height_;
 }
 
-/*bool Board::contains(unsigned & x, unsigned & y) const{
-    return x < width_ && y < height_;
-}*/
-
 bool Board::checkCase(Position & pos) const{
     if(contains(pos))
         return ! grid_.at(pos);
@@ -43,20 +39,6 @@ bool Board::checkCase(Position & pos) const{
 bool Board::checkCase(unsigned &x, unsigned &y) const{
     return grid_.at(Position(x, y));
 }
-
-/*std::map<Position, bool> Board::getLine(unsigned lineNum) const{
-    std::map<Position, bool> theLine;
-    for(auto it = grid_.begin(); it != grid_.end(); ++it){
-        if(){
-            theLine.push_back(p);
-        }
-    }
-    return theLine;
-}
-
-void Board::swapCase(Position & pos){
-    grid_.at(pos) = grid_.at(pos)%1;
-}*/
 
 unsigned Board::checkColumn(unsigned y){
     LineState state {LineState::NONE};
@@ -71,19 +53,6 @@ unsigned Board::checkColumn(unsigned y){
         state = LineState::NONE;
         state = checkRow(0, u, state);
     }
-    /*unsigned check;
-    bool fill;
-    fill = line.at(0).isFilled();
-    fill? check = 1 : check = 0;
-    for(Position p : line){
-        if((p.isFilled() && ! fill) || (! p.isFilled() &&  fill)){
-            check = 2;
-        }
-    }
-    return check;*/
-
-
-
     if(state == LineState::FILL){
         u = gridActualisation(u);
     } else{
@@ -152,7 +121,7 @@ unsigned Board::gridActualisation(unsigned lineNum){
     return lineCount;
 }
 
-std::string Board::to_string() const{
+/*std::string Board::to_string() const{
     std::string s {""};
     for(auto it {grid_.begin()}; it != grid_.end(); ++it){
         if(it->second){
@@ -167,3 +136,4 @@ std::ostream & operator<<(std::ostream & out, const Board & in){
     return out;
 }
 }
+*/

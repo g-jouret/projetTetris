@@ -35,6 +35,32 @@ public:
     constexpr static unsigned MAXIMUM_TIMER {1600};
     /*!< Valeur maximale acceptée pour le timer. */
 
+    constexpr static unsigned MAXIMUM_SIZE_NAME {15};
+
+    constexpr static unsigned MINIMUM_WIDTH {6};
+
+    constexpr static unsigned MAXIMUM_WIDTH {30};
+
+    constexpr static unsigned MINIMUM_HEIGHT {10};
+
+    constexpr static unsigned MAXIMUM_HEIGHT {50};
+
+    constexpr static unsigned MINIMUM_WIN_SCORE {200};
+
+    constexpr static unsigned MAXIMUM_WIN_SCORE {2000};
+
+    constexpr static unsigned MINIMUM_WIN_LINES {5};
+
+    constexpr static unsigned MAXIMUM_WIN_LINES {20};
+
+    constexpr static unsigned MINIMUM_WIN_TIME {60000};
+
+    constexpr static unsigned MAXIMUM_WIN_TIME {3599000};
+
+    constexpr static unsigned MINIMUM_LEVEL {0};
+
+    constexpr static unsigned MAXIMUM_LEVEL {4};
+
 private:
     unsigned timer_;
     /*!< Le timer.

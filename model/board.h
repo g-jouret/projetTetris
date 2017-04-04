@@ -100,7 +100,8 @@ public:
      * Cette méthode vérifie si les \ref Position d'une ligne de la grille
      * sont pleines ou non et renvoie son état.
      *
-     * \return 0 si la ligne est vide, 1 si elle est remplie et 2 autrement // NOTE : peut être remplacé par une énumération si besoin
+     * \param la ligne jusqu'à laquelle il faut effectuer les vérifications
+     * \return le nombre de lignes remplies
      */
     unsigned checkColumn(unsigned y = 0);
 
@@ -117,11 +118,7 @@ public:
      *
      * \return une représentation de la grille de jeu sous la forme d'une std::string
      */
-    std::string to_string() const;
-
-    // amis
-
-    friend std::ostream & operator<<(std::ostream & out, const Board & in);
+    //std::string to_string() const;
 
 private:
     //bool contains(unsigned & x, unsigned & y) const;
@@ -166,7 +163,7 @@ private:
  * \param in le \ref Board à injecter
  * \return le flux après l'injection
  */
-std::ostream & operator<<(std::ostream & out, const Board & in);
+//std::ostream & operator<<(std::ostream & out, const Board & in);
 
 } // namespace GJ_GW
 

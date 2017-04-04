@@ -5,7 +5,7 @@
 #include "direction.h"
 #include "position.h"
 #include <vector>
-#include <algorithm>
+//#include <algorithm>
 
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
@@ -97,11 +97,8 @@ public:
      * \brief Méthode convertissant une \ref Bric en std::string.
      * \return une représentation d'une brique sous la forme d'une std::string
      */
-    std::string to_string() const;
+    //std::string to_string() const;
 
-    //amis
-
-    friend std::ostream & operator<<(std::ostream & out, const Bric & in);
 };
 
 //prototypes
@@ -112,7 +109,7 @@ public:
  * \param in la \ref Bric à injecter
  * \return le flux après l'injection
  */
-std::ostream & operator<<(std::ostream & out, const Bric & in);
+//std::ostream & operator<<(std::ostream & out, const Bric & in);
 
 } // namespace GJ_GW
 
