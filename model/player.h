@@ -83,6 +83,8 @@ public:
      */
     bool setNbLines(unsigned linesCount);
 
+    void reset();
+
     /*!
      * \brief Méthode de remise à 0 du compteur de lignes remplies par le joueur.
      */

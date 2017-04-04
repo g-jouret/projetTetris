@@ -12,7 +12,7 @@ class ConfigDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit ConfigDialog(std::vector<unsigned> args, QWidget *parent = 0);
+    explicit ConfigDialog(std::string name, std::vector<unsigned> args, QWidget *parent = 0);
     ~ConfigDialog();
 
     std::string getName() const;

@@ -42,7 +42,7 @@ void Tetris::setBag(bool keepDefault){
     // TODO : implémentation de la génération de briques perso
 }
 
-void Tetris::startGame(std::string name, unsigned score, unsigned width,
+void Tetris::startGame(std::string name, /*unsigned score,*/ unsigned width,
                        unsigned height, unsigned winScore, unsigned winLines,
                        unsigned winTime, unsigned level){
     gameState_ = GameState::NONE;
@@ -51,8 +51,9 @@ void Tetris::startGame(std::string name, unsigned score, unsigned width,
         setTimer();
     }
     player_.setName(name);
-    player_.setScore(score);
-    player_.resetNbLines();
+    //player_.setScore(score);
+    player_.reset();
+    //player_.resetNbLines();
     setBoard(validateWidth(width), validateHeight(height));
     winScore_ = winScore;
     winLines_ = winLines;

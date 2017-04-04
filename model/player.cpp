@@ -27,8 +27,14 @@ bool Player::setNbLines(unsigned linesCount){
     return linesCount;
 }
 
+// TODO à choisir reset all ou seulement lines
 void Player::resetNbLines(){
     nbLines_ = 0;
+}
+
+void Player::reset(){
+    nbLines_ = 0;
+    score_ = 0;
 }
 
 void Player::setScore(unsigned score){

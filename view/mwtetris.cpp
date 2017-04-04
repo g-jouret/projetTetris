@@ -36,18 +36,18 @@ void MWTetris::createGame(){
         game_.MINIMUM_WIN_LINES, game_.MAXIMUM_WIN_LINES, game_.getWinLines(),
         game_.MINIMUM_WIN_TIME, game_.MAXIMUM_WIN_TIME, game_.getWinTime(),
         game_.MINIMUM_LEVEL, game_.MAXIMUM_LEVEL};
-    ConfigDialog cd (args, this);
+    ConfigDialog cd (game_.getPlayer().getName(), args, this);
     cd.setWindowTitle("Configuration de la partie");
     int ret = cd.exec();
 
     if(ret == QDialog::Rejected) return;
 
     std::string name;
-    unsigned score;
+    //unsigned score;
     name = (cd.getName().empty())? game_.getPlayer().getName() : cd.getName();
-    score = (cd.getName().empty())? game_.getPlayer().getScore() : 0;
+    //score = (name == game_.getPlayer().getName())? game_.getPlayer().getScore() : 0;
 
-    game_.startGame(name, score, cd.getWidth(), cd.getHeight(),
+    game_.startGame(name, /*score,*/ cd.getWidth(), cd.getHeight(),
                     cd.getWinScore(), cd.getWinLines(), cd.getWinTime(),
                     cd.getLevel());
 

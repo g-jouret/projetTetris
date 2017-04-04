@@ -126,7 +126,7 @@ public:
      * \param height la hauteur du \ref Board
      * \param level le niveau de difficulté de départ
      */
-    void startGame(std::string name, unsigned score, unsigned width, unsigned height, unsigned winScore, unsigned winLines, unsigned winTime, unsigned level = 0);
+    void startGame(std::string name, unsigned width, unsigned height, unsigned winScore, unsigned winLines, unsigned winTime, unsigned level = 0);
 
     unsigned getTimer() const;
 

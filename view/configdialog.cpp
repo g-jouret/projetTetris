@@ -2,12 +2,13 @@
 #include "ui_configdialog.h"
 
 
-ConfigDialog::ConfigDialog(std::vector<unsigned> args, QWidget *parent) :
+ConfigDialog::ConfigDialog(std::string name, std::vector<unsigned> args, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ConfigDialog)
 {
     ui->setupUi(this);
 
+    ui->leName->setText(QString::fromStdString(name));
     ui->leName->setMaxLength(args.at(0));
 
     ui->sbWidth->setMinimum(args.at(1));
