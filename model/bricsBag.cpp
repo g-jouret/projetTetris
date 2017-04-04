@@ -26,6 +26,10 @@ BricsBag::BricsBag(std::vector<Bric> & brics): brics_ {brics}
 {}
 
 Bric BricsBag::getNextBric() const{
+    return brics_.at(1);
+}
+
+Bric BricsBag::getCurrentBric() const{
     return brics_.at(0);
 }
 
@@ -34,7 +38,8 @@ void BricsBag::shuffle(bool first){
         std::random_shuffle(brics_.begin(), brics_.end());
     } else{
         std::swap(brics_.at(0), brics_.at(brics_.size()-1));
-        std::random_shuffle(brics_.begin(), --brics_.end());
+        std::swap(brics_.at(0), brics_.at(1));
+        std::random_shuffle(++brics_.begin(), --brics_.end());
     }
 }
 

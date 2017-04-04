@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>SetBricsDialog</class>
  <widget class="QDialog" name="SetBricsDialog">
@@ -6,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>480</width>
-    <height>640</height>
+    <height>397</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>600</y>
+     <y>360</y>
      <width>461</width>
      <height>32</height>
     </rect>
@@ -27,6 +28,17 @@
    <property name="standardButtons">
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>431</width>
+     <height>331</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout"/>
   </widget>
  </widget>
  <resources/>

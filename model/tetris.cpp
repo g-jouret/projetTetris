@@ -56,7 +56,7 @@ void Tetris::generateBric(bool first){
     bool ok {1};
     unsigned count{0};
     bag_.shuffle(first);
-    currentBric_ = bag_.getNextBric();
+    currentBric_ = bag_.getCurrentBric();
     unsigned midBoard = board_.getWidth()/2;
     unsigned midSide = currentBric_.getMiddle().getX();
 

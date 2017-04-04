@@ -34,7 +34,7 @@ public:
     QAction *action_Quitter;
     QWidget *centralWidget;
     QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout;
+    QVBoxLayout *infoBox;
     QHBoxLayout *horizontalLayout;
     QLabel *lbName;
     QSpacerItem *horizontalSpacer;
@@ -59,9 +59,11 @@ public:
     QSpacerItem *horizontalSpacer_5;
     QPushButton *btnDown;
     QSpacerItem *horizontalSpacer_6;
+    QSpacerItem *verticalSpacer_2;
+    QLabel *lbEnd;
+    QSpacerItem *verticalSpacer_3;
     QWidget *gridLayoutWidget;
     QGridLayout *boardGrid;
-    QLabel *lbEnd;
     QMenuBar *menuBar;
     QMenu *menu_Jeu;
 
@@ -69,7 +71,8 @@ public:
     {
         if (MWTetris->objectName().isEmpty())
             MWTetris->setObjectName(QStringLiteral("MWTetris"));
-        MWTetris->resize(572, 570);
+        MWTetris->resize(616, 634);
+        MWTetris->setStyleSheet(QStringLiteral("background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 1, stop: 0 #eef, stop: 1 #ccf);"));
         MWTetris->setIconSize(QSize(2, 2));
         action_Nouveau = new QAction(MWTetris);
         action_Nouveau->setObjectName(QStringLiteral("action_Nouveau"));
@@ -77,19 +80,22 @@ public:
         action_Quitter->setObjectName(QStringLiteral("action_Quitter"));
         centralWidget = new QWidget(MWTetris);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        centralWidget->setStyleSheet(QStringLiteral(""));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(380, 40, 180, 391));
-        verticalLayout = new QVBoxLayout(layoutWidget);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        layoutWidget->setGeometry(QRect(390, 0, 221, 611));
+        infoBox = new QVBoxLayout(layoutWidget);
+        infoBox->setSpacing(10);
+        infoBox->setContentsMargins(11, 11, 11, 11);
+        infoBox->setObjectName(QStringLiteral("infoBox"));
+        infoBox->setSizeConstraint(QLayout::SetFixedSize);
+        infoBox->setContentsMargins(20, 20, 20, 20);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         lbName = new QLabel(layoutWidget);
         lbName->setObjectName(QStringLiteral("lbName"));
+        lbName->setStyleSheet(QStringLiteral("QLabel {font-weight: bold; font-size: 15px;}"));
 
         horizontalLayout->addWidget(lbName);
 
@@ -103,7 +109,7 @@ public:
         horizontalLayout->addWidget(lbPlayerName);
 
 
-        verticalLayout->addLayout(horizontalLayout);
+        infoBox->addLayout(horizontalLayout);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
@@ -123,7 +129,7 @@ public:
         horizontalLayout_2->addWidget(lbPlayerScore);
 
 
-        verticalLayout->addLayout(horizontalLayout_2);
+        infoBox->addLayout(horizontalLayout_2);
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setSpacing(6);
@@ -143,11 +149,11 @@ public:
         horizontalLayout_6->addWidget(lbTime);
 
 
-        verticalLayout->addLayout(horizontalLayout_6);
+        infoBox->addLayout(horizontalLayout_6);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer = new QSpacerItem(20, 100, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        verticalLayout->addItem(verticalSpacer);
+        infoBox->addItem(verticalSpacer);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(6);
@@ -163,6 +169,30 @@ public:
         sizePolicy.setVerticalStretch(20);
         sizePolicy.setHeightForWidth(btnUp->sizePolicy().hasHeightForWidth());
         btnUp->setSizePolicy(sizePolicy);
+        btnUp->setStyleSheet(QLatin1String("QPushButton {\n"
+"color: white;\n"
+"background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c, stop: 0.5 #66b, stop: 1 #77c);\n"
+"border-width: 1px;\n"
+"border-color: #339;\n"
+"border-style: solid;\n"
+"border-radius: 7;\n"
+"padding: 3px;\n"
+"font-size: 10px;\n"
+"padding-left: 5px;\n"
+"padding-right: 5px;\n"
+"min-width: 50px;\n"
+"max-width: 50px;\n"
+"min-height: 13px;\n"
+"max-height: 13px;\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"background-color: rgb(0, 0, 180);\n"
+" border-style: inset;\n"
+"border-color: rgb(0, 0, 200);\n"
+"}\n"
+" QPushButton:disabled{\n"
+"background-color: grey;\n"
+"}"));
 
         horizontalLayout_3->addWidget(btnUp);
 
@@ -171,7 +201,7 @@ public:
         horizontalLayout_3->addItem(horizontalSpacer_4);
 
 
-        verticalLayout->addLayout(horizontalLayout_3);
+        infoBox->addLayout(horizontalLayout_3);
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setSpacing(6);
@@ -180,16 +210,64 @@ public:
         btnLeft->setObjectName(QStringLiteral("btnLeft"));
         sizePolicy.setHeightForWidth(btnLeft->sizePolicy().hasHeightForWidth());
         btnLeft->setSizePolicy(sizePolicy);
+        btnLeft->setStyleSheet(QLatin1String("QPushButton {\n"
+"color: white;\n"
+"background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c, stop: 0.5 #66b, stop: 1 #77c);\n"
+"border-width: 1px;\n"
+"border-color: #339;\n"
+"border-style: solid;\n"
+"border-radius: 7;\n"
+"padding: 3px;\n"
+"font-size: 10px;\n"
+"padding-left: 5px;\n"
+"padding-right: 5px;\n"
+"min-width: 50px;\n"
+"max-width: 50px;\n"
+"min-height: 13px;\n"
+"max-height: 13px;\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"background-color: rgb(0, 0, 180);\n"
+" border-style: inset;\n"
+"border-color: rgb(0, 0, 200);\n"
+"}\n"
+" QPushButton:disabled{\n"
+"background-color: grey;\n"
+"}"));
 
         horizontalLayout_4->addWidget(btnLeft);
 
         btnRight = new QPushButton(layoutWidget);
         btnRight->setObjectName(QStringLiteral("btnRight"));
+        btnRight->setStyleSheet(QLatin1String("QPushButton {\n"
+"color: white;\n"
+"background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c, stop: 0.5 #66b, stop: 1 #77c);\n"
+"border-width: 1px;\n"
+"border-color: #339;\n"
+"border-style: solid;\n"
+"border-radius: 7;\n"
+"padding: 3px;\n"
+"font-size: 10px;\n"
+"padding-left: 5px;\n"
+"padding-right: 5px;\n"
+"min-width: 50px;\n"
+"max-width: 50px;\n"
+"min-height: 13px;\n"
+"max-height: 13px;\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"background-color: rgb(0, 0, 180);\n"
+" border-style: inset;\n"
+"border-color: rgb(0, 0, 200);\n"
+"}\n"
+" QPushButton:disabled{\n"
+"background-color: grey;\n"
+"}"));
 
         horizontalLayout_4->addWidget(btnRight);
 
 
-        verticalLayout->addLayout(horizontalLayout_4);
+        infoBox->addLayout(horizontalLayout_4);
 
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setSpacing(6);
@@ -202,6 +280,30 @@ public:
         btnDown->setObjectName(QStringLiteral("btnDown"));
         sizePolicy.setHeightForWidth(btnDown->sizePolicy().hasHeightForWidth());
         btnDown->setSizePolicy(sizePolicy);
+        btnDown->setStyleSheet(QLatin1String("QPushButton {\n"
+"color: white;\n"
+"background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c, stop: 0.5 #66b, stop: 1 #77c);\n"
+"border-width: 1px;\n"
+"border-color: #339;\n"
+"border-style: solid;\n"
+"border-radius: 7;\n"
+"padding: 3px;\n"
+"font-size: 10px;\n"
+"padding-left: 5px;\n"
+"padding-right: 5px;\n"
+"min-width: 50px;\n"
+"max-width: 50px;\n"
+"min-height: 13px;\n"
+"max-height: 13px;\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"background-color: rgb(0, 0, 180);\n"
+" border-style: inset;\n"
+"border-color: rgb(0, 0, 200);\n"
+"}\n"
+" QPushButton:disabled{\n"
+"background-color: grey;\n"
+"}"));
 
         horizontalLayout_5->addWidget(btnDown);
 
@@ -210,25 +312,35 @@ public:
         horizontalLayout_5->addItem(horizontalSpacer_6);
 
 
-        verticalLayout->addLayout(horizontalLayout_5);
+        infoBox->addLayout(horizontalLayout_5);
+
+        verticalSpacer_2 = new QSpacerItem(20, 50, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        infoBox->addItem(verticalSpacer_2);
+
+        lbEnd = new QLabel(layoutWidget);
+        lbEnd->setObjectName(QStringLiteral("lbEnd"));
+        lbEnd->setEnabled(true);
+
+        infoBox->addWidget(lbEnd);
+
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        infoBox->addItem(verticalSpacer_3);
 
         gridLayoutWidget = new QWidget(centralWidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(20, 20, 341, 501));
+        gridLayoutWidget->setGeometry(QRect(0, 0, 391, 611));
         boardGrid = new QGridLayout(gridLayoutWidget);
-        boardGrid->setSpacing(6);
+        boardGrid->setSpacing(5);
         boardGrid->setContentsMargins(11, 11, 11, 11);
         boardGrid->setObjectName(QStringLiteral("boardGrid"));
-        boardGrid->setSizeConstraint(QLayout::SetNoConstraint);
-        boardGrid->setContentsMargins(0, 0, 0, 0);
-        lbEnd = new QLabel(centralWidget);
-        lbEnd->setObjectName(QStringLiteral("lbEnd"));
-        lbEnd->setEnabled(true);
-        lbEnd->setGeometry(QRect(380, 470, 171, 16));
+        boardGrid->setSizeConstraint(QLayout::SetMinimumSize);
+        boardGrid->setContentsMargins(20, 20, 20, 20);
         MWTetris->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MWTetris);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 572, 20));
+        menuBar->setGeometry(QRect(0, 0, 616, 20));
         menu_Jeu = new QMenu(menuBar);
         menu_Jeu->setObjectName(QStringLiteral("menu_Jeu"));
         MWTetris->setMenuBar(menuBar);

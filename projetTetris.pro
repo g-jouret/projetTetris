@@ -38,7 +38,9 @@ HEADERS  += model/board.h \
     view/setbricsdialog.h \
     model/linestate.h \
     model/gamestate.h
-
 FORMS    += view/configdialog.ui \
     view/mwtetris.ui \
     view/setbricsdialog.ui
+
+DISTFILES += \
+    image/background.jpg

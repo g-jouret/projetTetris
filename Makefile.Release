@@ -71,7 +71,7 @@ OBJECTS       = release/board.o \
 		release/moc_mwtetris.o \
 		release/moc_setbricsdialog.o
 
-DIST          =  model\board.h \
+DIST          = image/background.jpg model\board.h \
 		model\bric.h \
 		model\bricsBag.h \
 		model\player.h \
@@ -986,6 +986,11 @@ release/setbricsdialog.o: view/setbricsdialog.cpp view/setbricsdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qbuttongroup.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialogButtonBox \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdialogbuttonbox.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QGridLayout \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qboxlayout.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QHeaderView \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qheaderview.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qabstractitemview.h \
@@ -1003,7 +1008,8 @@ release/setbricsdialog.o: view/setbricsdialog.cpp view/setbricsdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qstyle.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qtabbar.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qrubberband.h
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qrubberband.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\setbricsdialog.o view\setbricsdialog.cpp
 
 release/main.o: main.cpp view/mwtetris.h \

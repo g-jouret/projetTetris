@@ -41,6 +41,8 @@ public:
      *
      * \return la brique au sommet du sac
      */
+    Bric getCurrentBric() const;
+
     Bric getNextBric() const;
 
     /*!

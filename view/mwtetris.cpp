@@ -3,6 +3,8 @@
 
 MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris){
     ui->setupUi(this);
+    //ui->centralWidget->setStyleSheet("background-image: url(image/background.jpg);");
+    //ui->infoBox->setAlignment(ui->centralWidget, Qt::AlignRight);
     connect(ui->action_Nouveau, &QAction::triggered, this, &MWTetris::createGame);
     connect(ui->action_Quitter, &QAction::triggered, this, &MWTetris::quitGame);
     // TODO : aide? cf qtpendu.pdf
@@ -18,6 +20,13 @@ MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{ga
     update(&game_);
 
     time();
+    //*[mandatoryField="true"]{background-color: blue}
+    /*QLabel[fill=true]{
+        color: blue;
+    }
+    QLabel[empty=true]{
+        color:white;
+    }*/
 }
 
 MWTetris::~MWTetris() noexcept{
@@ -54,16 +63,33 @@ void MWTetris::quitGame(){
 
 void MWTetris::generateBoard(){
     std::map<Position, bool> theGrid {game_.getBoard().getGrid()};
-
+    ui->boardGrid->setSpacing(2);
     for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
         QLabel * lb = new QLabel();
+        lb->setStyleSheet(/*"QLabel{"
+                          "min-width: 25px;"
+                          "max-width: 25px;"
+                          "min-height: 25px;"
+                          "max-height: 25px;"
+                          "}"*/
+                          "QLabel[fill=true]{"
+                          "background-color : blue;"
+                          "}"
+                          "QLabel[empty=true]{"
+                          "background-color : white;"
+                          "}");
         if(it->second){
-            lb->setStyleSheet("QLabel {background-color : blue;}");
+            //lb->setStyleSheet(";");
+            lb->setProperty("fill", true);
+            //lb->style()->polish(lb);
         } else{
-            lb->setStyleSheet("QLabel {background-color : white;}");
+            //lb->setStyleSheet(";");
+            lb->setProperty("empty", true);
+            //lb->style()->polish(lb);
         }
         ui->boardGrid->addWidget(lb, it->first.getY(), it->first.getX(), 1, 1);
     }
+
 }
 
 void MWTetris::resetBoard(){
