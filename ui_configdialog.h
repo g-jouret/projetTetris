@@ -240,6 +240,7 @@ public:
         lbWinScore->setText(QApplication::translate("ConfigDialog", "Score de victoire ", Q_NULLPTR));
         lbWinLines->setText(QApplication::translate("ConfigDialog", "Nombre de lignes ", Q_NULLPTR));
         lbWinTime->setText(QApplication::translate("ConfigDialog", "Temps de jeu ", Q_NULLPTR));
+        timeEdit->setDisplayFormat(QApplication::translate("ConfigDialog", "mm:ss", Q_NULLPTR));
         lbLevel->setText(QApplication::translate("ConfigDialog", "Niveau de difficult\303\251", Q_NULLPTR));
     } // retranslateUi
 

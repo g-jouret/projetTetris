@@ -21,6 +21,8 @@ class MWTetris : public QMainWindow, public GJ_GW::Observer{
     Tetris game_;
     Ui::MWTetris *ui;
     QElapsedTimer chrono_;
+    QTimer * time_;
+    QTimer * timer_;
 
 public:
     explicit MWTetris(Tetris game, QWidget *parent = 0);

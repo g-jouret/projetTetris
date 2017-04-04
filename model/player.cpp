@@ -22,8 +22,9 @@ void Player::setName(std::string name){
     // NOTE : reset score si setName ou que si reset
 }
 
-void Player::setNbLines(unsigned linesCount){
+bool Player::setNbLines(unsigned linesCount){
     nbLines_ += linesCount;
+    return linesCount;
 }
 
 void Player::resetNbLines(){

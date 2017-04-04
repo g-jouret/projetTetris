@@ -2,7 +2,6 @@
 #define BRICSBAG_H
 
 #include "bric.h"
-#include <cstdlib>
 
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.

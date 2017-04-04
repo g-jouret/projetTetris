@@ -207,7 +207,11 @@
        </spacer>
       </item>
       <item>
-       <widget class="QTimeEdit" name="timeEdit"/>
+       <widget class="QTimeEdit" name="timeEdit">
+        <property name="displayFormat">
+         <string>mm:ss</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>

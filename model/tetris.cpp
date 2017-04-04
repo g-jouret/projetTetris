@@ -2,7 +2,7 @@
 
 using namespace GJ_GW;
 
-Tetris::Tetris(): timer_ {MAXIMUM_TIMER}, winScore_{500}, winLines_{5}, gameState_{GameState::NONE}, player_{Player("Joueur")},
+Tetris::Tetris(): timer_ {MAXIMUM_TIMER}, winScore_{500}, winLines_{5}, winTime_{300000}, gameState_{GameState::NONE}, player_{Player("Joueur")},
     board_{Board(10u, 20u)}
 {}
 
@@ -16,6 +16,10 @@ unsigned Tetris::getWinScore() const{
 
 unsigned Tetris::getWinLines() const{
     return winLines_;
+}
+
+unsigned Tetris::getWinTime() const{
+    return winTime_;
 }
 
 Player Tetris::getPlayer() const{
@@ -38,7 +42,9 @@ void Tetris::setBag(bool keepDefault){
     // TODO : implémentation de la génération de briques perso
 }
 
-void Tetris::startGame(std::string name, unsigned score, unsigned width, unsigned height, unsigned winScore, unsigned winLines, unsigned level){
+void Tetris::startGame(std::string name, unsigned score, unsigned width,
+                       unsigned height, unsigned winScore, unsigned winLines,
+                       unsigned winTime, unsigned level){
     gameState_ = GameState::NONE;
     timer_ = MAXIMUM_TIMER;
     for(unsigned u {0}; u < level; ++u){
@@ -50,6 +56,7 @@ void Tetris::startGame(std::string name, unsigned score, unsigned width, unsigne
     setBoard(validateWidth(width), validateHeight(height));
     winScore_ = winScore;
     winLines_ = winLines;
+    winTime_ = winTime;
     notifyObservers();
     generateBric(true);
 }
@@ -90,6 +97,7 @@ void Tetris::generateBric(bool first){
     } else{
         setGameState(GameState::LOOSE);
     }
+    notifyObservers();
 }
 
 void Tetris::drop(){
@@ -191,36 +199,39 @@ void Tetris::moveBric(Direction dir){
 void Tetris::checkLines(unsigned top, unsigned dropsCount){
     unsigned linesFilled;
     linesFilled = board_.checkColumn(top);
-    player_.setNbLines(linesFilled);
+    if(player_.setNbLines(linesFilled))
+        setLevel();
     player_.setScore(dropsCount, linesFilled);
     if(player_.getScore() >= winScore_){
         setGameState(GameState::SCORE);
     } else if(player_.getNbLines() >= winLines_){
         setGameState(GameState::LINE);
-    } else{
-        notifyObservers();
     }
+    notifyObservers();
+
 }
 
 void Tetris::setGameState(GameState gameState){
     gameState_ = gameState;
-    notifyObservers();
 }
 
-void Tetris::next(){
-    // TODO : implémentation itératif
-    checkMove(Direction::DOWN);
+void Tetris::next(unsigned timeElapsed){
+    if(timeElapsed < winTime_){
+        checkMove(Direction::DOWN);
+    } else{
+        setGameState(GameState::TIME);
+    }
     notifyObservers();
 }
 
 void Tetris::setLevel(){
-    if(player_.getNbLines()%5 == 0)
+    if(player_.getNbLines()%2 == 0)
         setTimer();
 }
 
 void Tetris::setTimer(){
     if(timer_ > MINIMUM_TIMER)
-        timer_ -= 500;
+        timer_ -= 400;
     if(timer_ < MINIMUM_TIMER)
         timer_ = MINIMUM_TIMER;
 }

@@ -1,7 +1,8 @@
 #include "configdialog.h"
 #include "ui_configdialog.h"
 
-ConfigDialog::ConfigDialog(unsigned width, unsigned height, unsigned score, unsigned lines, QWidget *parent) :
+ConfigDialog::ConfigDialog(unsigned width, unsigned height, unsigned score,
+                           unsigned lines, unsigned time, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ConfigDialog)
 {
@@ -25,6 +26,15 @@ ConfigDialog::ConfigDialog(unsigned width, unsigned height, unsigned score, unsi
     ui->sbWinLines->setMaximum(20);
     ui->sbWinLines->setValue(lines);
 
+    ui->timeEdit->setMinimumTime(QTime (0,1));
+    ui->timeEdit->setMaximumTime(QTime (0,59,59,999));
+    unsigned ms = (time % 1000);
+    unsigned sec = ((time/1000) % 60);
+    unsigned min = ((time/60000) % 60);
+    //unsigned hours = ((time/3600000) % 24);
+    ui->timeEdit->setTime(QTime (0, min, sec, ms));
+
+    ui->sbLevel->setMinimum(0);
     ui->sbLevel->setMaximum(4);
     ui->sbLevel->setValue(0);
 
@@ -57,4 +67,8 @@ unsigned ConfigDialog::getWinScore() const{
 
 unsigned ConfigDialog::getWinLines() const{
     return ui->sbWinLines->value();
+}
+
+unsigned ConfigDialog::getWinTime() const{
+    return ui->timeEdit->time().msecsSinceStartOfDay();
 }

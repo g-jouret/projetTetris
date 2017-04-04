@@ -81,7 +81,7 @@ public:
      * \brief Accesseur en écriture du nombre de lignes remplies par le joueur.
      * \param linesCount le nombre de lignes remplies lors du dernier mouvement
      */
-    void setNbLines(unsigned linesCount);
+    bool setNbLines(unsigned linesCount);
 
     /*!
      * \brief Méthode de remise à 0 du compteur de lignes remplies par le joueur.

@@ -29,10 +29,10 @@ namespace GJ_GW{
  */
 class Tetris : public Subject{
 public:
-    constexpr static unsigned MINIMUM_TIMER {500};
+    constexpr static unsigned MINIMUM_TIMER {400};
     /*!< Valeur minimale acceptée pour le timer. */
 
-    constexpr static unsigned MAXIMUM_TIMER {2000};
+    constexpr static unsigned MAXIMUM_TIMER {1600};
     /*!< Valeur maximale acceptée pour le timer. */
 
 private:
@@ -49,7 +49,7 @@ private:
 
     unsigned winLines_;
 
-    // NOTE : winTime?
+    unsigned winTime_;
 
     GameState gameState_;
     /*!< L'état de la partie.
@@ -100,13 +100,15 @@ public:
      * \param height la hauteur du \ref Board
      * \param level le niveau de difficulté de départ
      */
-    void startGame(std::string name, unsigned score, unsigned width, unsigned height, unsigned winScore, unsigned winLines, unsigned level = 0);
+    void startGame(std::string name, unsigned score, unsigned width, unsigned height, unsigned winScore, unsigned winLines, unsigned winTime, unsigned level = 0);
 
     unsigned getTimer() const;
 
     unsigned getWinScore() const;
 
     unsigned getWinLines() const;
+
+    unsigned getWinTime() const;
 
     /*!
      * \brief Accesseur en lecture du \ref Player.
@@ -169,7 +171,7 @@ public:
      * nouvelle brique courante si la précédente ne pouvait plus
      * descendre.
      */
-    void next();
+    void next(unsigned timeElapsed);
 
 private:
 
