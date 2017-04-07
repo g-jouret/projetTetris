@@ -1,4 +1,5 @@
 #include "subject.h"
+#include "observer.h"
 
 using namespace GJ_GW;
 

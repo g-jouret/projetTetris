@@ -2,13 +2,15 @@
 #define BOARD_H
 
 #include "position.h"
-#include "linestate.h"
+//#include "linestate.h"
 #include <map>
 
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
  */
 namespace GJ_GW{
+
+enum class LineState;
 
 /*!
  * \brief Classe représentant la grille de jeu.

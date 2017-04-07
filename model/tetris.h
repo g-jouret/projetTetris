@@ -29,7 +29,7 @@ namespace GJ_GW{
  */
 class Tetris : public Subject{
 public:
-    constexpr static unsigned MINIMUM_TIMER {400};
+    constexpr static unsigned MINIMUM_TIMER {200};
     /*!< Valeur minimale acceptée pour le timer. */
 
     constexpr static unsigned MAXIMUM_TIMER {1600};
@@ -45,13 +45,13 @@ public:
 
     constexpr static unsigned MAXIMUM_HEIGHT {50};
 
-    constexpr static unsigned MINIMUM_WIN_SCORE {200};
+    constexpr static unsigned MINIMUM_WIN_SCORE {100};
 
-    constexpr static unsigned MAXIMUM_WIN_SCORE {2000};
+    constexpr static unsigned MAXIMUM_WIN_SCORE {5000};
 
     constexpr static unsigned MINIMUM_WIN_LINES {5};
 
-    constexpr static unsigned MAXIMUM_WIN_LINES {20};
+    constexpr static unsigned MAXIMUM_WIN_LINES {50};
 
     constexpr static unsigned MINIMUM_WIN_TIME {60000};
 
@@ -59,7 +59,7 @@ public:
 
     constexpr static unsigned MINIMUM_LEVEL {0};
 
-    constexpr static unsigned MAXIMUM_LEVEL {4};
+    constexpr static unsigned MAXIMUM_LEVEL {8};
 
 private:
     unsigned timer_;
@@ -114,7 +114,7 @@ public:
      * sac par défaut ou s'il souhaite créé un nouveau sac ne contenant que ses
      * briques personnelles.
      */
-    void setBag(bool keepDefault);
+    void setBag(std::vector<Position> shape, bool keepBag = true);
 
     /*!
      * \brief Méthode permettant de lancer une partie de \ref Tetris.
@@ -208,15 +208,7 @@ private:
      */
     void setPlayer(std::string name);
 
-    /*!
-     * \brief Accesseur en écriture du \ref Board.
-     *
-     * Il recrée une grille avec les nouveaux paramètres.
-     *
-     * \param width la largeur de la grille de jeu
-     * \param height la hauteur de la grille de jeu
-     */
-    void setBoard(unsigned width, unsigned height);
+    // TODO : corriger les validations
 
     /*!
      * \brief Méthode de validation de la hauteur.
@@ -226,7 +218,7 @@ private:
      * \param value la valeur à valider
      * \return la valeur validée
      */
-    unsigned validateHeight(unsigned value);
+    unsigned validateHeight(unsigned height);
 
     /*!
      * \brief Méthode de validation de la largeur.
@@ -236,7 +228,15 @@ private:
      * \param value la valeur à valider
      * \return la valeur validée
      */
-    unsigned validateWidth(unsigned value);
+    unsigned validateWidth(unsigned width);
+
+    unsigned validateWinScore(unsigned winScore);
+
+    unsigned validateWinLines(unsigned winLines);
+
+    unsigned validateWinTime(unsigned winTime);
+
+    std::string message(const std::string & label, unsigned value, unsigned min, unsigned max) const;
 
     /*!
      * \brief Méthode plaçant une nouvelle \ref Bric en haut du \ref Board.

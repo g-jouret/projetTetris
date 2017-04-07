@@ -17,6 +17,8 @@ public:
 
 private:
     Ui::SetBricsDialog *ui;
+    void generateBoard();
+    void reset();
 };
 
 #endif // SETBRICSDIALOG_H

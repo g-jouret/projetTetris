@@ -241,9 +241,17 @@ debug/moc_configdialog.cpp: C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/5.7/mingw53_32/bin/moc.exe
 	C:\Qt\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/5.7/mingw53_32/mkspecs/win32-g++ -I"D:/GJouret/Documents/ESI/Bloc 2/CPP/projetTetris" -IC:/Qt/5.7/mingw53_32/include -IC:/Qt/5.7/mingw53_32/include/QtWidgets -IC:/Qt/5.7/mingw53_32/include/QtGui -IC:/Qt/5.7/mingw53_32/include/QtANGLE -IC:/Qt/5.7/mingw53_32/include/QtCore -IC:/Qt/Qt5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward view\configdialog.h -o debug\moc_configdialog.cpp
 
-debug/moc_mwtetris.cpp: view/configdialog.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdialog.h \
+debug/moc_mwtetris.cpp: observer/observer.h \
+		model/tetris.h \
+		model/player.h \
+		model/board.h \
+		model/position.h \
+		model/bricsBag.h \
+		model/bric.h \
+		model/gamestate.h \
+		observer/subject.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qwidget.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qwindowdefs.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qglobal.h \
@@ -340,37 +348,10 @@ debug/moc_mwtetris.cpp: view/configdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
-		observer/observer.h \
-		model/tetris.h \
-		model/player.h \
-		model/board.h \
-		model/position.h \
-		model/linestate.h \
-		model/bricsBag.h \
-		model/bric.h \
-		model/direction.h \
-		model/gamestate.h \
-		observer/subject.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qelapsedtimer.h \
-		C:/Qt/5.7/mingw53_32/include/QtCore/QTimer \
-		C:/Qt/5.7/mingw53_32/include/QtCore/qtimer.h \
-		C:/Qt/5.7/mingw53_32/include/QtCore/qbasictimer.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QGridLayout \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qabstractbutton.h \
 		view/mwtetris.h \
 		C:/Qt/5.7/mingw53_32/bin/moc.exe
 	C:\Qt\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/5.7/mingw53_32/mkspecs/win32-g++ -I"D:/GJouret/Documents/ESI/Bloc 2/CPP/projetTetris" -IC:/Qt/5.7/mingw53_32/include -IC:/Qt/5.7/mingw53_32/include/QtWidgets -IC:/Qt/5.7/mingw53_32/include/QtGui -IC:/Qt/5.7/mingw53_32/include/QtANGLE -IC:/Qt/5.7/mingw53_32/include/QtCore -IC:/Qt/Qt5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward view\mwtetris.h -o debug\moc_mwtetris.cpp
@@ -512,13 +493,12 @@ debug/board.o: model/board.cpp model/board.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\board.o model\board.cpp
 
 debug/bric.o: model/bric.cpp model/bric.h \
-		model/direction.h \
-		model/position.h
+		model/position.h \
+		model/direction.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\bric.o model\bric.cpp
 
 debug/bricsBag.o: model/bricsBag.cpp model/bricsBag.h \
 		model/bric.h \
-		model/direction.h \
 		model/position.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\bricsBag.o model\bricsBag.cpp
 
@@ -690,9 +670,17 @@ debug/configdialog.o: view/configdialog.cpp view/configdialog.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\configdialog.o view\configdialog.cpp
 
 debug/mwtetris.o: view/mwtetris.cpp view/mwtetris.h \
-		view/configdialog.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdialog.h \
+		observer/observer.h \
+		model/tetris.h \
+		model/player.h \
+		model/board.h \
+		model/position.h \
+		model/bricsBag.h \
+		model/bric.h \
+		model/gamestate.h \
+		observer/subject.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qwidget.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qwindowdefs.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qglobal.h \
@@ -789,37 +777,10 @@ debug/mwtetris.o: view/mwtetris.cpp view/mwtetris.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
-		observer/observer.h \
-		model/tetris.h \
-		model/player.h \
-		model/board.h \
-		model/position.h \
-		model/linestate.h \
-		model/bricsBag.h \
-		model/bric.h \
-		model/direction.h \
-		model/gamestate.h \
-		observer/subject.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qelapsedtimer.h \
-		C:/Qt/5.7/mingw53_32/include/QtCore/QTimer \
-		C:/Qt/5.7/mingw53_32/include/QtCore/qtimer.h \
-		C:/Qt/5.7/mingw53_32/include/QtCore/qbasictimer.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QGridLayout \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qabstractbutton.h \
 		ui_mwtetris.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QAction \
@@ -834,11 +795,17 @@ debug/mwtetris.o: view/mwtetris.cpp view/mwtetris.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qinputmethod.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QButtonGroup \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QGridLayout \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qboxlayout.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QHBoxLayout \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QHeaderView \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qheaderview.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qabstractitemview.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qframe.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
@@ -851,26 +818,38 @@ debug/mwtetris.o: view/mwtetris.cpp view/mwtetris.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qstyle.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qtabbar.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qrubberband.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QLabel \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlabel.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QMenu \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qmenu.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QMenuBar \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qmenubar.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QPushButton \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QSpacerItem \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QVBoxLayout \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QWidget
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QWidget \
+		model/direction.h \
+		view/configdialog.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdialog.h \
+		C:/Qt/5.7/mingw53_32/include/QtCore/QTimer \
+		C:/Qt/5.7/mingw53_32/include/QtCore/qtimer.h \
+		C:/Qt/5.7/mingw53_32/include/QtCore/qbasictimer.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QErrorMessage \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qerrormessage.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mwtetris.o view\mwtetris.cpp
 
 debug/tetris.o: model/tetris.cpp model/tetris.h \
 		model/player.h \
 		model/board.h \
 		model/position.h \
-		model/linestate.h \
 		model/bricsBag.h \
 		model/bric.h \
-		model/direction.h \
 		model/gamestate.h \
 		observer/subject.h \
-		observer/observer.h
+		model/direction.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\tetris.o model\tetris.cpp
 
 debug/setbricsdialog.o: view/setbricsdialog.cpp view/setbricsdialog.h \
@@ -1016,9 +995,17 @@ debug/setbricsdialog.o: view/setbricsdialog.cpp view/setbricsdialog.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\setbricsdialog.o view\setbricsdialog.cpp
 
 debug/main.o: main.cpp view/mwtetris.h \
-		view/configdialog.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdialog.h \
+		observer/observer.h \
+		model/tetris.h \
+		model/player.h \
+		model/board.h \
+		model/position.h \
+		model/bricsBag.h \
+		model/bric.h \
+		model/gamestate.h \
+		observer/subject.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qwidget.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qwindowdefs.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qglobal.h \
@@ -1115,37 +1102,10 @@ debug/main.o: main.cpp view/mwtetris.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
-		observer/observer.h \
-		model/tetris.h \
-		model/player.h \
-		model/board.h \
-		model/position.h \
-		model/linestate.h \
-		model/bricsBag.h \
-		model/bric.h \
-		model/direction.h \
-		model/gamestate.h \
-		observer/subject.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/QElapsedTimer \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qelapsedtimer.h \
-		C:/Qt/5.7/mingw53_32/include/QtCore/QTimer \
-		C:/Qt/5.7/mingw53_32/include/QtCore/qtimer.h \
-		C:/Qt/5.7/mingw53_32/include/QtCore/qbasictimer.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QGridLayout \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QApplication \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qapplication.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qcoreapplication.h \

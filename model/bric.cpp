@@ -1,20 +1,70 @@
 #include "bric.h"
+#include "direction.h"
 #include <algorithm>
 
 using namespace GJ_GW;
 
 Bric::Bric(){}
 
-Bric::Bric(std::vector<Position> shape): shape_ {shape}{
-    // TODO : à la création d'une forme perso : vérification que la brique est dans la longueur (il y a plus de X que de Y)
-    std::vector<unsigned> temp;
-    for(Position pos : shape_){
-        temp.push_back(pos.getX());
+Bric::Bric(std::vector<Position> shape){
+    shape_ = validate(shape);
+}
+
+std::vector<Position> Bric::validate(std::vector<Position> shape){
+    std::vector<Position> tested;
+    std::vector<unsigned> tempX;
+    std::vector<unsigned> tempY;
+    if(shape.at(0).getY() != 0){
+        throw std::invalid_argument(message());
     }
-    std::sort(temp.begin(), temp.end());
-    temp.erase(std::unique(temp.begin(), temp.end()), temp.end());
-    unsigned side = temp.size();
-    middle_ = Position(side/2, side/2);
+    tested.push_back(shape.at(0));
+    tempX.push_back(shape.at(0).getX());
+    tempY.push_back(shape.at(0).getY());
+    for(Position p : shape){
+        if(tested.size() > 1){
+            if(! isAdjacent(tested, p)){
+                throw std::invalid_argument(message());
+            }
+        }
+        tested.push_back(p);
+        tempX.push_back((p.getX()));
+        tempY.push_back(p.getY());
+    }
+    std::sort(tempX.begin(), tempX.end());
+    tempX.erase(std::unique(tempX.begin(), tempX.end()), tempX.end());
+    unsigned sideX = tempX.size();
+    std::sort(tempY.begin(), tempY.end());
+    tempY.erase(std::unique(tempY.begin(), tempY.end()), tempY.end());
+    unsigned sideY = tempY.size();
+    if(sideX > 6 || sideX < sideY){
+        throw std::invalid_argument(message());
+    }
+    if(sideX % 2 == 0){
+        even_ = 1;
+        middle_ = Position((sideX/2)-1, (sideX/2)-1);
+    } else{
+        even_ = 0;
+        middle_ = Position(sideX/2, sideX/2);
+    }
+    return shape;
+}
+
+bool Bric::isAdjacent(std::vector<Position> &tested, Position &pos) const{
+    bool ok {0};
+    unsigned count {0};
+    while(! ok && count < tested.size()){
+        ok = tested.at(count).isAdjacent(pos);
+        ++count;
+    }
+    return ok;
+}
+
+std::string Bric::message() const{
+    return "Votre brique n'est pas valide, veuillez vérifier que :\n"
+           "    - la 1ère case touche le haut du repère\n"
+           "    - toutes les cases sont adjacentes à une autre\n"
+           "    - la brique est placées horizontalement\n"
+           "    - la taille de côté de la brique n'excède pas "+ std::to_string(MAXIMUM_SIDE);
 }
 
 std::vector<Position> Bric::getShape() const{
@@ -64,10 +114,17 @@ void Bric::move(Direction dir){
 }
 
 void Bric::rotate(){
+    double midX = middle_.getX(), midY = middle_.getY();
+    if(even_){
+        midX += 0.5;
+        midY += 0.5;
+    }
     for(unsigned u {0}; u < shape_.size(); ++u){
         shape_.at(u) = Position (
-                    middle_.getX() - shape_.at(u).getY() + middle_.getY(),
-                    middle_.getY() + shape_.at(u).getX() - middle_.getX());
+                    //middle_.getX() - shape_.at(u).getY() + middle_.getY(),
+                    //middle_.getY() + shape_.at(u).getX() - middle_.getX());
+                    midX - shape_.at(u).getY() + midY, midY + shape_.at(u).getX() - midX);
+
     }
 }
 
@@ -81,7 +138,9 @@ bool Bric::contains(Position & pos) const{
     return ok;
 }
 
-/*std::string Bric::to_string() const{
+
+
+std::string Bric::to_string() const{
     std::string s;
     for(auto it = shape_.begin(); it != shape_.end(); ++it){
         s += it->to_string();
@@ -95,4 +154,4 @@ std::ostream & operator<<(std::ostream & out, const Bric & in){
     out << in.to_string();
     return out;
 }
-}*/
+}

@@ -1,7 +1,7 @@
 #ifndef POSITION_H
 #define POSITION_H
 
-//#include <iostream>
+#include <iostream>
 
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
@@ -66,12 +66,14 @@ public:
      */
     void setY(int y);
 
+    bool isAdjacent(const Position & other);
+
     /*!
      * \brief Méthode convertissant une \ref Position en std::string.
      *
      * \return une représentation d'une position sous la forme d'une std::string
      */
-    //std::string to_string() const;
+    std::string to_string() const;
 
 };
 
@@ -95,6 +97,9 @@ inline bool operator!=(const Position & lhs, const Position & rhs);
 
 /*!
  * \brief Opérateur de comparaison de deux \ref Position.
+ *
+ * La comparaison se fait sur y en priorité.
+ *
  * \param lhs le membre de gauche
  * \param rhs le membre de droite
  * \return true si le membre de gauche est strictement inférieur au membre de droite, false sinon
@@ -103,6 +108,9 @@ inline bool operator<(const Position & lhs, const Position & rhs);
 
 /*!
  * \brief Opérateur de comparaison de deux \ref Position.
+ *
+ * La comparaison se fait sur x en priorité.
+ *
  * \param lhs le membre de gauche
  * \param rhs le membre de droite
  * \return true si le membre de gauche est strictement supérieur au membre de droite, false sinon
@@ -116,7 +124,7 @@ inline bool operator>(const Position & lhs, const Position & rhs);
  * \param in la \ref Position à injecter
  * \return le flux après l'injection
  */
-//std::ostream & operator<<(std::ostream & out, const Position & in);
+std::ostream & operator<<(std::ostream & out, const Position & in);
 
 //implémentations inline
 //fonctions inline

@@ -1,7 +1,7 @@
 #ifndef SUBJECT_H
 #define SUBJECT_H
 
-#include "observer.h"
+//#include "observer.h"
 #include <set>
 
 /*!

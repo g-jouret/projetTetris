@@ -1,4 +1,5 @@
 #include "board.h"
+#include "linestate.h"
 
 using namespace GJ_GW;
 

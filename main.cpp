@@ -4,22 +4,25 @@
 using namespace GJ_GW;
 
 int main(int argc, char *argv[]){
-    QApplication a(argc, argv);
-
-    Tetris game;
-    MWTetris w(game);
-    w.show();
-
-    return a.exec();
+    try{
+        QApplication a(argc, argv);
+        Tetris game;
+        MWTetris w(game);
+        w.show();
+        return a.exec();
+    } catch(const std::invalid_argument & e){
+        std::cerr << "Erreur au lancement : "
+                  << e.what()
+                  << std::endl;
+        std::exit(1);
+    }
 }
 
 /* TODO Principal :
  * amélioration graphique (resize auto)
- * renforcement du random de getNextBric
- * gestion score si win au score
  * optimisation mémoire (board - itératif à la place de récursif) /!\ drop de secondes! certains rafraichissements toutes les 2 secondes au lieu d'une
- * amélioration rotation des briques + génération (pair & impair)
  * implémentation briques perso
  * vision de la nouvelle brique
  * couleur des briques
+ * amélioration rotation des briques + génération (pair & impair)
  */

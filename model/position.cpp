@@ -16,7 +16,11 @@ void Position::setY(int y){
     y_ += y;
 }
 
-/*std::string Position::to_string() const{
+bool Position::isAdjacent(const Position & other){
+    return (x_ == other.x_ && (y_ == other.y_-1 || y_ == other.y_+1)) || (y_ == other.y_ && (x_ == other.x_-1 || x_ == other.x_+1));
+}
+
+std::string Position::to_string() const{
     std::string s;
     s += "(";
     s += std::to_string(x_);
@@ -31,4 +35,4 @@ std::ostream & operator<<(std::ostream & out, const Position & in){
     return out;
 }
 }
-*/
+

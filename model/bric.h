@@ -2,7 +2,7 @@
 #ifndef BRIC_H
 #define BRIC_H
 
-#include "direction.h"
+//#include "direction.h"
 #include "position.h"
 #include <vector>
 //#include <algorithm>
@@ -12,6 +12,8 @@
  */
 namespace GJ_GW{
 
+enum class Direction;
+
 /*!
  * \brief Classe représentant une brique de Tetris.
  *
@@ -19,7 +21,10 @@ namespace GJ_GW{
  * et sa longueur est connue.
  */
 class Bric{
+public:
+    constexpr static unsigned MAXIMUM_SIDE {6};
 
+private:
     std::vector<Position> shape_;
     /*!< La forme de la brique.
      *
@@ -28,6 +33,8 @@ class Bric{
 
     Position middle_;
     /*!< Le point central du carré entourant la brique. */
+
+    bool even_;
 
 public:
 
@@ -97,8 +104,14 @@ public:
      * \brief Méthode convertissant une \ref Bric en std::string.
      * \return une représentation d'une brique sous la forme d'une std::string
      */
-    //std::string to_string() const;
+    std::string to_string() const;
 
+private:
+    std::vector<Position> validate(std::vector<Position> shape);
+
+    bool isAdjacent(std::vector<Position> &tested, Position &pos) const;
+
+    std::string message() const;
 };
 
 //prototypes
@@ -109,7 +122,7 @@ public:
  * \param in la \ref Bric à injecter
  * \return le flux après l'injection
  */
-//std::ostream & operator<<(std::ostream & out, const Bric & in);
+std::ostream & operator<<(std::ostream & out, const Bric & in);
 
 } // namespace GJ_GW
 

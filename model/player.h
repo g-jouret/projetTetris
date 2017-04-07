@@ -62,7 +62,7 @@ public:
      * \brief Accesseur en écriture du nom du joueur.
      * \param name le nouveau nom du joueur
      */
-    void setName(std::string name);
+    void setPlayer(std::string name);
 
     /*!
      * \brief Accesseur en écriture d'initialisation du score du joueur.
@@ -83,13 +83,8 @@ public:
      */
     bool setNbLines(unsigned linesCount);
 
+private:
     void reset();
-
-    /*!
-     * \brief Méthode de remise à 0 du compteur de lignes remplies par le joueur.
-     */
-    void resetNbLines();
-
 };
 
 } // namespace GJ_GW

@@ -52,6 +52,8 @@ public:
     QSpacerItem *horizontalSpacer_7;
     QLabel *lbTime;
     QSpacerItem *verticalSpacer;
+    QGridLayout *boardNext;
+    QSpacerItem *verticalSpacer_4;
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer_3;
     QPushButton *btnUp;
@@ -75,7 +77,7 @@ public:
     {
         if (MWTetris->objectName().isEmpty())
             MWTetris->setObjectName(QStringLiteral("MWTetris"));
-        MWTetris->resize(617, 634);
+        MWTetris->resize(644, 634);
         MWTetris->setStyleSheet(QStringLiteral("background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 1, stop: 0 #eef, stop: 1 #ccf);"));
         MWTetris->setIconSize(QSize(2, 2));
         action_Nouveau = new QAction(MWTetris);
@@ -87,19 +89,19 @@ public:
         centralWidget->setStyleSheet(QStringLiteral(""));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(390, 0, 221, 611));
+        layoutWidget->setGeometry(QRect(390, 0, 248, 611));
         infoBox = new QVBoxLayout(layoutWidget);
         infoBox->setSpacing(10);
         infoBox->setContentsMargins(11, 11, 11, 11);
         infoBox->setObjectName(QStringLiteral("infoBox"));
-        infoBox->setSizeConstraint(QLayout::SetFixedSize);
+        infoBox->setSizeConstraint(QLayout::SetNoConstraint);
         infoBox->setContentsMargins(20, 20, 20, 20);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         lbName = new QLabel(layoutWidget);
         lbName->setObjectName(QStringLiteral("lbName"));
-        lbName->setStyleSheet(QStringLiteral("QLabel {font-weight: bold; font-size: 15px;}"));
+        lbName->setStyleSheet(QStringLiteral("QLabel {font-weight: bold; }"));
 
         horizontalLayout->addWidget(lbName);
 
@@ -120,6 +122,7 @@ public:
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         lbScore = new QLabel(layoutWidget);
         lbScore->setObjectName(QStringLiteral("lbScore"));
+        lbScore->setStyleSheet(QStringLiteral("QLabel {font-weight: bold; }"));
 
         horizontalLayout_2->addWidget(lbScore);
 
@@ -140,6 +143,7 @@ public:
         horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
         lbLines = new QLabel(layoutWidget);
         lbLines->setObjectName(QStringLiteral("lbLines"));
+        lbLines->setStyleSheet(QStringLiteral("QLabel {font-weight: bold; }"));
 
         horizontalLayout_7->addWidget(lbLines);
 
@@ -160,6 +164,7 @@ public:
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
         lbTimer = new QLabel(layoutWidget);
         lbTimer->setObjectName(QStringLiteral("lbTimer"));
+        lbTimer->setStyleSheet(QStringLiteral("QLabel {font-weight: bold; }"));
 
         horizontalLayout_6->addWidget(lbTimer);
 
@@ -175,9 +180,20 @@ public:
 
         infoBox->addLayout(horizontalLayout_6);
 
-        verticalSpacer = new QSpacerItem(20, 100, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         infoBox->addItem(verticalSpacer);
+
+        boardNext = new QGridLayout();
+        boardNext->setSpacing(5);
+        boardNext->setObjectName(QStringLiteral("boardNext"));
+        boardNext->setSizeConstraint(QLayout::SetMinimumSize);
+
+        infoBox->addLayout(boardNext);
+
+        verticalSpacer_4 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        infoBox->addItem(verticalSpacer_4);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(6);
@@ -338,7 +354,7 @@ public:
 
         infoBox->addLayout(horizontalLayout_5);
 
-        verticalSpacer_2 = new QSpacerItem(20, 50, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         infoBox->addItem(verticalSpacer_2);
 
@@ -356,15 +372,15 @@ public:
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
         gridLayoutWidget->setGeometry(QRect(0, 0, 391, 611));
         boardGrid = new QGridLayout(gridLayoutWidget);
-        boardGrid->setSpacing(5);
+        boardGrid->setSpacing(3);
         boardGrid->setContentsMargins(11, 11, 11, 11);
         boardGrid->setObjectName(QStringLiteral("boardGrid"));
-        boardGrid->setSizeConstraint(QLayout::SetMinimumSize);
+        boardGrid->setSizeConstraint(QLayout::SetNoConstraint);
         boardGrid->setContentsMargins(20, 20, 20, 20);
         MWTetris->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MWTetris);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 617, 20));
+        menuBar->setGeometry(QRect(0, 0, 644, 20));
         menu_Jeu = new QMenu(menuBar);
         menu_Jeu->setObjectName(QStringLiteral("menu_Jeu"));
         MWTetris->setMenuBar(menuBar);

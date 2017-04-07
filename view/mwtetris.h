@@ -1,18 +1,20 @@
 #ifndef MWTETRIS_H
 #define MWTETRIS_H
 
-#include "configdialog.h"
+//#include "configdialog.h"
 #include "observer/observer.h"
 #include "model/tetris.h"
 #include <QMainWindow>
 #include <QElapsedTimer>
-#include <QTimer>
-#include <QGridLayout>
-#include <QLabel>
-#include <QPushButton>
+//#include <QTimer>
+//#include <QGridLayout>
+//#include <QLabel>
+//#include <QPushButton>
 
 namespace Ui {
 class MWTetris;
+//class ConfigDialog;
+class QTimer;
 }
 using namespace GJ_GW;
 
@@ -33,6 +35,7 @@ private:
     void connexion();
     void generateBoard();
     void resetBoard();
+    void showNextBric();
     void endGame();
 
 private slots:

@@ -1,9 +1,12 @@
 #include "tetris.h"
+#include "direction.h"
+#include <stdexcept>
 
 using namespace GJ_GW;
 
-Tetris::Tetris(): timer_ {MAXIMUM_TIMER}, winScore_{500}, winLines_{5}, winTime_{300000}, gameState_{GameState::NONE}, player_{Player("Joueur")},
-    board_{Board(10u, 20u)}
+Tetris::Tetris(): timer_ {MAXIMUM_TIMER}, winScore_{validateWinScore(1000)}, winLines_{validateWinLines(10)},
+    winTime_{validateWinTime(300000)}, gameState_{GameState::NONE}, player_{Player("Joueur")},
+    board_{Board(validateWidth(10), validateHeight(20))}
 {}
 
 unsigned Tetris::getTimer() const{
@@ -38,11 +41,18 @@ GameState Tetris::getGameState() const{
     return gameState_;
 }
 
-void Tetris::setBag(bool keepDefault){
-    // TODO : implémentation de la génération de briques perso
+void Tetris::setBag(std::vector<Position> shape, bool keepBag){
+    Bric bric = Bric(shape);
+    if(keepBag){
+        bag_.add(bric);
+    } else{
+        std::vector<Bric> firstBric;
+        firstBric.push_back(bric);
+        bag_ = BricsBag(firstBric);
+    }
 }
 
-void Tetris::startGame(std::string name, /*unsigned score,*/ unsigned width,
+void Tetris::startGame(std::string name, unsigned width,
                        unsigned height, unsigned winScore, unsigned winLines,
                        unsigned winTime, unsigned level){
     gameState_ = GameState::NONE;
@@ -50,28 +60,52 @@ void Tetris::startGame(std::string name, /*unsigned score,*/ unsigned width,
     for(unsigned u {0}; u < level; ++u){
         setTimer();
     }
-    player_.setName(name);
-    //player_.setScore(score);
-    player_.reset();
-    //player_.resetNbLines();
-    setBoard(validateWidth(width), validateHeight(height));
-    winScore_ = winScore;
-    winLines_ = winLines;
-    winTime_ = winTime;
+    player_.setPlayer(name);
+    board_ = Board(validateWidth(width), validateHeight(height));
+    winScore_ = validateWinScore(winScore);
+    winLines_ = validateWinLines(winLines);
+    winTime_ = validateWinTime(winTime);
     notifyObservers();
     generateBric(true);
 }
 
-void Tetris::setBoard(unsigned width, unsigned height){
-    board_ = Board(width, height);
+unsigned Tetris::validateWidth(unsigned width){
+    if(width < MINIMUM_WIDTH || width > MAXIMUM_WIDTH){
+        throw std::invalid_argument(message("largeur", width, MINIMUM_WIDTH, MAXIMUM_WIDTH));
+    }
+    return width;
 }
 
-unsigned Tetris::validateWidth(unsigned value){
-    return (value == 0)? board_.getWidth() : value;
+unsigned Tetris::validateHeight(unsigned height){
+    if(height < MINIMUM_HEIGHT || height > MAXIMUM_HEIGHT){
+        throw std::invalid_argument(message("hauteur", height, MINIMUM_HEIGHT, MAXIMUM_HEIGHT));
+    }
+    return height;
 }
 
-unsigned Tetris::validateHeight(unsigned value){
-    return (value == 0)? board_.getHeight() : value;
+unsigned Tetris::validateWinScore(unsigned winScore){
+    if(winScore < MINIMUM_WIN_SCORE || winScore > MAXIMUM_WIN_SCORE){
+        throw std::invalid_argument(message("score de victoire", winScore, MINIMUM_WIN_SCORE, MAXIMUM_WIN_SCORE));
+    }
+    return winScore;
+}
+
+unsigned Tetris::validateWinLines(unsigned winLines){
+    if(winLines < MINIMUM_WIN_LINES || winLines > MAXIMUM_WIN_LINES){
+        throw std::invalid_argument(message("nombre de lignes de victoire", winLines, MINIMUM_WIN_LINES, MAXIMUM_WIN_LINES));
+    }
+    return winLines;
+}
+
+unsigned Tetris::validateWinTime(unsigned winTime){
+    if(winTime < MINIMUM_WIN_TIME || winTime > MAXIMUM_WIN_TIME){
+        throw std::invalid_argument(message("temps de victoire", winTime, MINIMUM_WIN_TIME, MAXIMUM_WIN_TIME));
+    }
+    return winTime;
+}
+
+std::string Tetris::message(const std::string &label, unsigned value, unsigned min, unsigned max) const{
+    return label +" non valide : "+ std::to_string(value) +" n'est pas compris entre "+ std::to_string(min) +" et "+ std::to_string(max);
 }
 
 void Tetris::generateBric(bool first){
@@ -80,7 +114,7 @@ void Tetris::generateBric(bool first){
     bag_.shuffle(first);
     currentBric_ = bag_.getCurrentBric();
     unsigned midBoard = board_.getWidth()/2;
-    unsigned midSide = currentBric_.getMiddle().getX();
+    unsigned midSide = currentBric_.getMiddle().getX() + 1;
 
     for(unsigned u {0}; u < midBoard-midSide; ++u){
         currentBric_.move(Direction::RIGHT);
@@ -232,7 +266,7 @@ void Tetris::setLevel(){
 
 void Tetris::setTimer(){
     if(timer_ > MINIMUM_TIMER)
-        timer_ -= 400;
+        timer_ -= 200;
     if(timer_ < MINIMUM_TIMER)
         timer_ = MINIMUM_TIMER;
 }

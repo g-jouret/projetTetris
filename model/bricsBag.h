@@ -35,6 +35,8 @@ public:
      */
     explicit BricsBag(std::vector<Bric> &brics);
 
+    void add(Bric & bric);
+
     /*!
      * \brief Accesseur en lecture de la prochaine brique du sac.
      *
@@ -52,10 +54,10 @@ public:
      */
     void shuffle(bool first);
 
-    //std::string to_string() const;
+    std::string to_string() const;
 };
 
-//std::ostream & operator<<(std::ostream & out, const BricsBag & in);
+std::ostream & operator<<(std::ostream & out, const BricsBag & in);
 
 } // namespace GJ_GW
 
