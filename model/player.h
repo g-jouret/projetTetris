@@ -35,7 +35,7 @@ public:
      *
      * \param name le nom du joueur
      */
-    explicit Player(std::string name);
+    explicit Player(std::string &name);
 
     /*!
      * \brief Accesseur en lecture du nom du joueur.

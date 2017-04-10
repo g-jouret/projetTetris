@@ -18,7 +18,7 @@ class Color{
 public:
     Color();
 
-    Color(std::vector<unsigned> code);
+    explicit Color(std::vector<unsigned> code);
 
     std::vector<unsigned> getCode() const;
 };

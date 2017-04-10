@@ -6,7 +6,7 @@ using namespace GJ_GW;
 
 Bric::Bric(){}
 
-Bric::Bric(std::vector<Position> shape, Color color){
+Bric::Bric(std::vector<Position> &shape, Color color){
     shape_ = validate(shape);
     color_ = color;
 }

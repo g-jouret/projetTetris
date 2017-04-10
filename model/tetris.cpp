@@ -4,8 +4,8 @@
 
 using namespace GJ_GW;
 
-Tetris::Tetris(): timer_ {MAXIMUM_TIMER}, winScore_{validateWinScore(1000)}, winLines_{validateWinLines(10)},
-    winTime_{validateWinTime(300000)}, gameState_{GameState::NONE}, player_{Player("Joueur")},
+Tetris::Tetris(std::string &name): timer_ {MAXIMUM_TIMER}, winScore_{validateWinScore(1000)}, winLines_{validateWinLines(10)},
+    winTime_{validateWinTime(300000)}, gameState_{GameState::NONE}, player_{Player(name)},
     board_{Board(validateWidth(10), validateHeight(20))}
 {}
 

@@ -19,13 +19,13 @@ BricsBag::BricsBag(){
     brics_.push_back(Bric(bricJ, std::vector<unsigned>{0x00,0x00,0xff}));
     brics_.push_back(Bric(bricZ, std::vector<unsigned>{0xcd,0x5c,0x5c}));
     brics_.push_back(Bric(bricS, std::vector<unsigned>{0x00,0x80,0x00}));*/
-    brics_.push_back(Bric(bricI, std::vector<unsigned>{32,178,170}));
-    brics_.push_back(Bric(bricO, std::vector<unsigned>{255,215,0}));
-    brics_.push_back(Bric(bricT, std::vector<unsigned>{128,0,128}));
-    brics_.push_back(Bric(bricL, std::vector<unsigned>{218,165,32}));
-    brics_.push_back(Bric(bricJ, std::vector<unsigned>{0,0,255}));
-    brics_.push_back(Bric(bricZ, std::vector<unsigned>{205,92,92}));
-    brics_.push_back(Bric(bricS, std::vector<unsigned>{0,128,0}));
+    brics_.push_back(Bric(bricI, Color(std::vector<unsigned> {32,178,170})));
+    brics_.push_back(Bric(bricO, Color(std::vector<unsigned> {255,215,0})));
+    brics_.push_back(Bric(bricT, Color(std::vector<unsigned> {128,0,128})));
+    brics_.push_back(Bric(bricL, Color(std::vector<unsigned> {218,165,32})));
+    brics_.push_back(Bric(bricJ, Color(std::vector<unsigned>{0,0,255})));
+    brics_.push_back(Bric(bricZ, Color(std::vector<unsigned>{205,92,92})));
+    brics_.push_back(Bric(bricS, Color(std::vector<unsigned>{0,128,0})));
 }
 
 BricsBag::BricsBag(std::vector<Bric> & brics): brics_ {brics}

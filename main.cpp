@@ -6,7 +6,8 @@ using namespace GJ_GW;
 int main(int argc, char *argv[]){
     try{
         QApplication a(argc, argv);
-        Tetris game;
+        std::string name {"Joueur"};
+        Tetris game(name);
         MWTetris w(game);
         w.show();
         return a.exec();

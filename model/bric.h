@@ -57,7 +57,7 @@ public:
      *
      * \param shape les \ref Position remplies
      */
-    explicit Bric(std::vector<Position> shape, Color color);
+    explicit Bric(std::vector<Position> &shape, Color color);
 
     /*!
      * \brief Accesseur en lecture de la forme de la brique.

@@ -2,7 +2,7 @@
 
 using namespace GJ_GW;
 
-Player::Player(std::string name): name_ {name}, score_{0}, nbLines_{0}
+Player::Player(std::string &name): name_ {name}, score_{0}, nbLines_{0}
 {}
 
 std::string Player::getName() const{

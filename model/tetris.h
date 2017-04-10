@@ -127,7 +127,7 @@ public:
      * Il initialise la partie avec les paramètres par défaut,
      * crée un \ref Player, un \ref Board et un \ref BricsBag par défaut.
      */
-    Tetris();
+    explicit Tetris(std::string &name);
 
     /*!
      * \brief Méthode permettant d'initialiser une brique personnalisée.
