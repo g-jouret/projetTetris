@@ -6,8 +6,9 @@ using namespace GJ_GW;
 
 Bric::Bric(){}
 
-Bric::Bric(std::vector<Position> shape){
+Bric::Bric(std::vector<Position> shape, Color color){
     shape_ = validate(shape);
+    color_ = color;
 }
 
 std::vector<Position> Bric::validate(std::vector<Position> shape){
@@ -73,6 +74,10 @@ std::vector<Position> Bric::getShape() const{
 
 Position Bric::getMiddle() const{
     return middle_;
+}
+
+Color Bric::getColor() const{
+    return color_;
 }
 
 unsigned Bric::getHigherY(){

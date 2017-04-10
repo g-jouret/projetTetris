@@ -41,8 +41,8 @@ GameState Tetris::getGameState() const{
     return gameState_;
 }
 
-void Tetris::setBag(std::vector<Position> shape, bool keepBag){
-    Bric bric = Bric(shape);
+void Tetris::setBag(std::vector<Position> shape, Color color, bool keepBag){
+    Bric bric = Bric(shape, color);
     if(keepBag){
         bag_.add(bric);
     } else{
@@ -126,7 +126,7 @@ void Tetris::generateBric(bool first){
 
     if(ok){
         for(Position p : currentBric_.getShape()){
-            board_.swapCase(p);
+            board_.swapCase(p, currentBric_.getColor());
         }
         setGameState(GameState::ON);
     } else{
@@ -184,24 +184,24 @@ void Tetris::checkRotate(){
 
 void Tetris::rotateBric(){
     for(Position p : currentBric_.getShape()){
-        board_.swapCase(p);
+        board_.swapCase(p, Color());
     }
 
     currentBric_.rotate();
 
     for(Position p : currentBric_.getShape()){
-        board_.swapCase(p);
+        board_.swapCase(p, currentBric_.getColor());
     }
     notifyObservers();
 }
 
 void Tetris::moveBric(Direction dir){
     for(Position p : currentBric_.getShape()){
-        board_.swapCase(p);
+        board_.swapCase(p, Color());
     }
     currentBric_.move(dir);
     for(Position p : currentBric_.getShape()){
-        board_.swapCase(p);
+        board_.swapCase(p, currentBric_.getColor());
     }
     if(dir != Direction::DOWN)
         notifyObservers();

@@ -2,6 +2,7 @@
 #define BOARD_H
 
 #include "position.h"
+#include "color.h"
 //#include "linestate.h"
 #include <map>
 
@@ -31,7 +32,7 @@ class Board{
      * Cet attribut sert à construire la grille.
      */
 
-    std::map<Position, bool> grid_;
+    std::map<Position, Color> grid_;
     /*!< La grille de case.
      *
      * Elle est composée d'éléments dont les clés sont des \ref Position
@@ -39,8 +40,6 @@ class Board{
      */
 
 public:
-
-    void debug();
 
     /*!
      * \brief Constructeur de \ref Board.
@@ -55,7 +54,7 @@ public:
      *
      * \return la grille de cases
      */
-    std::map<Position, bool> getGrid() const;
+    std::map<Position, Color> getGrid() const;
 
     /*!
      * \brief Accesseur en lecture de la hauteur de la grille.
@@ -86,7 +85,7 @@ public:
      *
      * \param pos la position à modifier
      */
-    void swapCase(Position &pos);
+    void swapCase(Position &pos, Color color);
 
     /*!
      * \brief Accesseur en lecture d'une ligne de la grille de jeu.
@@ -144,7 +143,7 @@ private:
      *
      * \param line la ligne à modifier
      */
-    void swapRow(unsigned y);
+    void EmptyRow(unsigned y);
 
     /*!
      * \brief Méthode descendant une ligne d'un nombre de cases donné.

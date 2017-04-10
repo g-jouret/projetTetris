@@ -2,14 +2,15 @@
 #include "ui_mwtetris.h"
 #include "model/direction.h"
 #include "configdialog.h"
+#include <sstream>
 #include <QTimer>
 #include <QErrorMessage>
 
 MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris){
     ui->setupUi(this);
+    this->resize(640,640);
     connect(ui->action_Nouveau, &QAction::triggered, this, &MWTetris::createGame);
     connect(ui->action_Quitter, &QAction::triggered, this, &MWTetris::quitGame);
-    // TODO : aide? cf qtpendu.pdf
     connect(ui->btnDown, &QPushButton::clicked, this, &MWTetris::drop);
     connect(ui->btnLeft, &QPushButton::clicked, this, &MWTetris::left);
     connect(ui->btnRight, &QPushButton::clicked, this, &MWTetris::right);
@@ -40,7 +41,7 @@ void MWTetris::createGame(){
                 game_.MINIMUM_WIN_SCORE, game_.MAXIMUM_WIN_SCORE, game_.getWinScore(),
                 game_.MINIMUM_WIN_LINES, game_.MAXIMUM_WIN_LINES, game_.getWinLines(),
                 game_.MINIMUM_WIN_TIME, game_.MAXIMUM_WIN_TIME, game_.getWinTime(),
-                game_.MINIMUM_LEVEL, game_.MAXIMUM_LEVEL};
+                0, 8};      //minimum and maximum level
     ConfigDialog cd (game_.getPlayer().getName(), args, this);
     cd.setWindowTitle("Configuration de la partie");
     int ret = cd.exec();
@@ -74,25 +75,26 @@ void MWTetris::quitGame(){
 }
 
 void MWTetris::generateBoard(){
-    std::map<Position, bool> theGrid {game_.getBoard().getGrid()};
+    std::map<Position, Color> theGrid {game_.getBoard().getGrid()};
     for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
         QLabel * lb = new QLabel();
-        lb->setStyleSheet(/*"QLabel{"
+
+        std::stringstream stream;
+        stream << "#" << std::hex;
+        if(it->second.getCode().at(0)/10 == 0)
+            stream << 0;
+        stream << it->second.getCode().at(0);
+        if(it->second.getCode().at(1)/10 == 0)
+            stream << 0;
+        stream << it->second.getCode().at(1);
+        if(it->second.getCode().at(2)/10 == 0)
+            stream << 0;
+        stream << it->second.getCode().at(2);
+        lb->setStyleSheet("QLabel{"
                           "width: 20px;"
                           "height: 20px;"
-                          "}"*/
-                          "QLabel[fill=true]{"
-                          "background-color : blue;"
-                          "}"
-                          "QLabel[empty=true]{"
-                          "background-color : white;"
+                          "background-color : "+ QString::fromStdString(stream.str()) +";"
                           "}");
-        if(it->second){
-            lb->setProperty("fill", true);
-        } else{
-            lb->setProperty("empty", true);
-        }
-        //lb->resize(20,20);
         ui->boardGrid->addWidget(lb, it->first.getY(), it->first.getX(), 1, 1);
     }
 }
@@ -128,21 +130,21 @@ void MWTetris::drop(){
 }
 
 void MWTetris::update(Subject *){
-    //unsigned width;
-    //unsigned height;
+    unsigned width;
+    unsigned height;
     switch (game_.getGameState()){
     case GameState::NONE:
         if(QString::fromStdString(game_.getPlayer().getName()) != ui->lbPlayerName->text()){
             ui->lbPlayerName->setText(QString::fromStdString(game_.getPlayer().getName()));
         }
-        /*width = (23)*game_.getBoard().getWidth();
+        width = (23)*game_.getBoard().getWidth();
         height = (23)*game_.getBoard().getHeight() + ui->menuBar->height();
         ui->boardGrid->setGeometry(QRect (0, 0, width, height));
         ui->infoBox->setGeometry(QRect (width, 0, 350, 650));
-        width += 350;
-        height = (height > 650)? height : 650;
-        ui->centralWidget->resize(width,height);
-        this->resize(width,height);*/
+        //width += 350;
+        //height = (height > 650)? height : 650;
+        //ui->centralWidget->resize(width,height);
+        //this->resize(width,height);
     case GameState::ON:
         ui->lbPlayerScore->setText(QString::number(game_.getPlayer().getScore()) + "/" + QString::number(game_.getWinScore()));
         ui->lbPlayerLines->setText(QString::number(game_.getPlayer().getNbLines()) + "/" + QString::number(game_.getWinLines()));

@@ -12,16 +12,13 @@ BricsBag::BricsBag(){
     std::vector<Position> bricJ {Position(0,0),Position(0,1),Position(1,1),Position(2,1)};
     std::vector<Position> bricZ {Position(0,0),Position(1,0),Position(1,1),Position(2,1)};
     std::vector<Position> bricS {Position(2,0),Position(1,0),Position(1,1),Position(0,1)};
-    // NOTE : condition de génération de Bric : 1ère position sur le bord => y = 0
-    //      et la somme des y différents <= à la somme des x différents
-    brics_.push_back(Bric(bricI));
-    brics_.push_back(Bric(bricO));
-    brics_.push_back(Bric(bricT));
-    brics_.push_back(Bric(bricL));
-    brics_.push_back(Bric(bricJ));
-    brics_.push_back(Bric(bricZ));
-    brics_.push_back(Bric(bricS));
-
+    brics_.push_back(Bric(bricI, std::vector<unsigned>{0x20,0xb2,0xaa}));    //cyan
+    brics_.push_back(Bric(bricO, std::vector<unsigned>{0xff,0xd7,0x00}));    //yellow
+    brics_.push_back(Bric(bricT, std::vector<unsigned>{0x80,0x00,0x80}));    //purple
+    brics_.push_back(Bric(bricL, std::vector<unsigned>{0xff,0xa5,0x00}));    //orange
+    brics_.push_back(Bric(bricJ, std::vector<unsigned>{0x00,0x00,0xff}));    //blue
+    brics_.push_back(Bric(bricZ, std::vector<unsigned>{0xcd,0x5c,0x5c}));    //red
+    brics_.push_back(Bric(bricS, std::vector<unsigned>{0x00,0x80,0x00}));    //green
 }
 
 BricsBag::BricsBag(std::vector<Bric> & brics): brics_ {brics}

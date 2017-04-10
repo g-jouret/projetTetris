@@ -22,7 +22,8 @@ SOURCES += model/board.cpp \
     view/mwtetris.cpp \
     model/tetris.cpp \
     view/setbricsdialog.cpp \
-    main.cpp
+    main.cpp \
+    model/color.cpp
 
 HEADERS  += model/board.h \
     model/bric.h \
@@ -37,7 +38,8 @@ HEADERS  += model/board.h \
     model/direction.h \
     view/setbricsdialog.h \
     model/linestate.h \
-    model/gamestate.h
+    model/gamestate.h \
+    model/color.h
 
 FORMS    += view/configdialog.ui \
     view/mwtetris.ui \

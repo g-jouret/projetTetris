@@ -3,19 +3,15 @@
 
 using namespace GJ_GW;
 
-void Board::debug(){
-    swapRow(height_-1);
-}
-
 Board::Board(unsigned width, unsigned height): width_{width}, height_{height}{
     for(unsigned u {0}; u < width; ++u){
         for(unsigned j{0}; j < height; ++j){
-            grid_.emplace(std::pair<Position,bool>{Position(u, j), 0});
+            grid_.emplace(std::pair<Position,Color>{Position(u, j), Color()});
         }
     }
 }
 
-std::map<Position, bool> Board::getGrid() const{
+std::map<Position, Color> Board::getGrid() const{
     return grid_;
 }
 
@@ -33,19 +29,19 @@ bool Board::contains(Position & pos) const{
 
 bool Board::checkCase(Position & pos) const{
     if(contains(pos))
-        return ! grid_.at(pos);
+        return grid_.at(pos) == Color();
     return 0;
 }
 
 bool Board::checkCase(unsigned &x, unsigned &y) const{
-    return grid_.at(Position(x, y));
+    return grid_.at(Position(x, y)) == Color();
 }
 
 unsigned Board::checkColumn(unsigned y){
     LineState state {LineState::NONE};
     unsigned u {height_-1};
     if(y > u){
-        //throw new TetrisException
+        throw std::invalid_argument("la ligne est hors de la grille");
     }
     state = checkRow(0u, u, state);
 
@@ -66,12 +62,12 @@ unsigned Board::checkColumn(unsigned y){
 LineState Board::checkRow(unsigned x, unsigned & y, LineState & state){
     if(state == LineState::NONE){
         if(checkCase(x,y)){
-            state = LineState::FILL;
-        } else{
             state = LineState::EMPTY;
+        } else{
+            state = LineState::FILL;
         }
     }
-    if((state == LineState::FILL && ! checkCase(x,y)) || (state == LineState::EMPTY && checkCase(x,y))){
+    if((state == LineState::FILL && checkCase(x,y)) || (state == LineState::EMPTY && ! checkCase(x,y))){
         state = LineState::BOTH;
     } else{
         if(x < width_-1){
@@ -82,24 +78,25 @@ LineState Board::checkRow(unsigned x, unsigned & y, LineState & state){
     return state;
 }
 
-void Board::swapCase(Position &pos){
-    (grid_.at(pos))? grid_.at(pos) = 0 : grid_.at(pos) = 1;
+void Board::swapCase(Position &pos, Color color){
+    (grid_.at(pos) == Color())? grid_.at(pos) = color : grid_.at(pos) = Color();
 }
 
-void Board::swapRow(unsigned y){
+void Board::EmptyRow(unsigned y){
     for(unsigned u {0}; u < width_; ++u){
         Position pos {Position(u, y)};
-        swapCase(pos);
+        swapCase(pos, Color());
     }
 }
 
 void Board::moveLine(unsigned y, unsigned lineNb){
     for(unsigned u {0}; u < width_; ++u){
-        if(checkCase(u, y)){
+        if(! checkCase(u, y)){
             Position pos {Position(u, y)};
-            swapCase(pos);
+            Color temp {grid_.at(pos)};
+            swapCase(pos, Color());
             pos = Position(pos.getX(),pos.getY()+lineNb);
-            swapCase(pos);
+            swapCase(pos, temp);
         }
     }
 }
@@ -107,14 +104,14 @@ void Board::moveLine(unsigned y, unsigned lineNb){
 unsigned Board::gridActualisation(unsigned lineNum){
     unsigned lineCount {1};
     LineState state;
-    swapRow(lineNum);
+    EmptyRow(lineNum);
     do {
         state = LineState::NONE;
         --lineNum;
         state = checkRow(0, lineNum, state);
         if(state == LineState::FILL){
             ++lineCount;
-            swapRow(lineNum);
+            EmptyRow(lineNum);
         } else{
             moveLine(lineNum, lineCount);
         }

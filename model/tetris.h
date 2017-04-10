@@ -67,12 +67,6 @@ public:
     constexpr static unsigned MAXIMUM_WIN_TIME {3599000};
     /*!< Valeur maximale acceptée pour le temps de victoire. */
 
-    constexpr static unsigned MINIMUM_LEVEL {0};
-    /*!< Valeur minimale acceptée pour le niveau de difficulté. */
-
-    constexpr static unsigned MAXIMUM_LEVEL {8};
-    /*!< Valeur maximale acceptée pour le niveau de difficulté. */
-
 private:
     unsigned timer_;
     /*!< Le timer.
@@ -141,7 +135,7 @@ public:
      * \param keepBag indique si le joueur souhaite ajouter sa brique au
      * sac déjà existant ou s'il souhaite créer un nouveau sac de briques.
      */
-    void setBag(std::vector<Position> shape, bool keepBag = true);
+    void setBag(std::vector<Position> shape, Color color, bool keepBag = true);
 
     /*!
      * \brief Méthode permettant de lancer une partie de \ref Tetris.

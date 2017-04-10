@@ -23,7 +23,9 @@ int main(int argc, char *argv[]){
  * optimisation mémoire (board - itératif à la place de récursif) /!\ drop de secondes! certains rafraichissements toutes les 2 secondes au lieu d'une
  * implémentation briques perso
  * vision de la nouvelle brique
- * couleur des briques
- * amélioration rotation des briques + génération (pair & impair)
+ * amélioration rotation des briques
  * condition de victoire ignorable (checkbox)
+ * multi-langue
+ * pause / stopper temps (save elapsed, delete => pointeur?)
+ * aide? cf qtpendu.pdf
  */

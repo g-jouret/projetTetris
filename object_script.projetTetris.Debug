@@ -10,6 +10,7 @@ INPUT(
 ./debug\tetris.o
 ./debug\setbricsdialog.o
 ./debug\main.o
+./debug\color.o
 ./debug\moc_configdialog.o
 ./debug\moc_mwtetris.o
 ./debug\moc_setbricsdialog.o

@@ -4,6 +4,7 @@
 
 //#include "direction.h"
 #include "position.h"
+#include "color.h"
 #include <vector>
 //#include <algorithm>
 
@@ -31,6 +32,8 @@ private:
      * Représente l'ensemble des cases qui sont remplies par la brique.
      */
 
+    Color color_;
+
     Position middle_;
     /*!< Le point central du carré entourant la brique. */
 
@@ -54,7 +57,7 @@ public:
      *
      * \param shape les \ref Position remplies
      */
-    explicit Bric(std::vector<Position> shape);
+    explicit Bric(std::vector<Position> shape, Color color);
 
     /*!
      * \brief Accesseur en lecture de la forme de la brique.
@@ -71,6 +74,8 @@ public:
      * \return la \ref Position occupant le milieu
      */
     Position getMiddle() const;
+
+    Color getColor() const;
 
     /*!
      * \brief Accesseur en lecture de l'ordonnée de la \ref Position la plus haute de la brique.
