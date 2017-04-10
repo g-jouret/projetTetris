@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.12"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>projetTetris: GJ_GW::Position Class Reference</title>
+<title>Tetris: GJ_GW::Position Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">projetTetris
+   <div id="projectname">Tetris
    </div>
   </td>
  </tr>
@@ -64,7 +64,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#friends">Friends</a> &#124;
 <a href="class_g_j___g_w_1_1_position-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">GJ_GW::Position Class Reference</div>  </div>
@@ -96,15 +95,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a473274f1a3e4888f9c5e3eba0889a1ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_position.html#a473274f1a3e4888f9c5e3eba0889a1ab">setY</a> (int y)</td></tr>
 <tr class="memdesc:a473274f1a3e4888f9c5e3eba0889a1ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en écriture de l'ordonnée.  <a href="#a473274f1a3e4888f9c5e3eba0889a1ab">More...</a><br /></td></tr>
 <tr class="separator:a473274f1a3e4888f9c5e3eba0889a1ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d358b6b3bc58593aff3456224a23569"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_position.html#a0d358b6b3bc58593aff3456224a23569">isAdjacent</a> (const <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> &amp;other)</td></tr>
+<tr class="separator:a0d358b6b3bc58593aff3456224a23569"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57612dd3e6ef03edaf6598700216a5d1"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_position.html#a57612dd3e6ef03edaf6598700216a5d1">to_string</a> () const</td></tr>
 <tr class="memdesc:a57612dd3e6ef03edaf6598700216a5d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode convertissant une <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> en std::string.  <a href="#a57612dd3e6ef03edaf6598700216a5d1">More...</a><br /></td></tr>
 <tr class="separator:a57612dd3e6ef03edaf6598700216a5d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:a9b03f9d43b59c1ae8205d0bda9911d23"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_position.html#a9b03f9d43b59c1ae8205d0bda9911d23">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> &amp;in)</td></tr>
-<tr class="memdesc:a9b03f9d43b59c1ae8205d0bda9911d23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opérateur d'injection d'une <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> dans un flux en sortie.  <a href="#a9b03f9d43b59c1ae8205d0bda9911d23">More...</a><br /></td></tr>
-<tr class="separator:a9b03f9d43b59c1ae8205d0bda9911d23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Classe représentant la <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> d'une case du <a class="el" href="class_g_j___g_w_1_1_board.html">Board</a>. </p>
@@ -225,6 +220,24 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="a0d358b6b3bc58593aff3456224a23569"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d358b6b3bc58593aff3456224a23569">&sect;&nbsp;</a></span>isAdjacent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Position::isAdjacent </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ad46bb77324e2d9538e15f1a25320f1ff"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad46bb77324e2d9538e15f1a25320f1ff">&sect;&nbsp;</a></span>setX()</h2>
 
@@ -297,56 +310,9 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Friends And Related Function Documentation</h2>
-<a id="a9b03f9d43b59c1ae8205d0bda9911d23"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b03f9d43b59c1ae8205d0bda9911d23">&sect;&nbsp;</a></span>operator<<</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> &amp;&#160;</td>
-          <td class="paramname"><em>in</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Opérateur d'injection d'une <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> dans un flux en sortie. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">out</td><td>le flux en sortie </td></tr>
-    <tr><td class="paramname">in</td><td>la <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> à injecter </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>le flux après l'injection </dd></dl>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>model/<a class="el" href="position_8h_source.html">position.h</a></li>
-<li>model/position.cpp</li>
+<li>model/<a class="el" href="position_8cpp.html">position.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

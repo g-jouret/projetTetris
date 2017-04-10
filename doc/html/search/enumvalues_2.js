@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['right',['RIGHT',['../namespace_g_j___g_w.html#a2e9a1df55314c548add4bb721be86667a21507b40c80068eda19865706fdc2403',1,'GJ_GW']]]
+  ['empty',['EMPTY',['../namespace_g_j___g_w.html#aa751ef2ffb2166a4acd0ebc431c3e3baaba2b45bdc11e2a4a6e86aab2ac693cbb',1,'GJ_GW']]]
 ];

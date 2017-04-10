@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['ui_5fconfigdialog',['Ui_ConfigDialog',['../class_ui___config_dialog.html',1,'']]],
-  ['ui_5fmwtetris',['Ui_MWTetris',['../class_ui___m_w_tetris.html',1,'']]],
-  ['ui_5fsetbricsdialog',['Ui_SetBricsDialog',['../class_ui___set_brics_dialog.html',1,'']]],
-  ['update',['update',['../class_g_j___g_w_1_1_observer.html#ad95d10cf748e1c542741b3b1c7b535ce',1,'GJ_GW::Observer::update()'],['../class_m_w_tetris.html#ac48a18309dcb8664289a8fe218f43687',1,'MWTetris::update()']]]
+  ['removeobserver',['removeObserver',['../class_g_j___g_w_1_1_subject.html#afcc4f6a1dc8177a747699e9ef4cbc18f',1,'GJ_GW::Subject']]],
+  ['retranslateui',['retranslateUi',['../class_ui___config_dialog.html#ab60d649af45498dee23f4e61fcfe94d8',1,'Ui_ConfigDialog::retranslateUi()'],['../class_ui___m_w_tetris.html#a558c6d6e1ee5bc84e9c7fafd5e6fa6fe',1,'Ui_MWTetris::retranslateUi()'],['../class_ui___set_brics_dialog.html#a3857e30ad36d9dce5bb68b91dea17933',1,'Ui_SetBricsDialog::retranslateUi()']]],
+  ['right',['RIGHT',['../namespace_g_j___g_w.html#a2e9a1df55314c548add4bb721be86667a21507b40c80068eda19865706fdc2403',1,'GJ_GW']]],
+  ['rotate',['rotate',['../class_g_j___g_w_1_1_bric.html#a5ba7a5686d06d7833706899aba707dab',1,'GJ_GW::Bric']]]
 ];

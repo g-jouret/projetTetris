@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.12"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>projetTetris: GJ_GW::Tetris Class Reference</title>
+<title>Tetris: GJ_GW::Tetris Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">projetTetris
+   <div id="projectname">Tetris
    </div>
   </td>
  </tr>
@@ -90,12 +90,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0216a055ecb3568412c35fc78e52bf14"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a0216a055ecb3568412c35fc78e52bf14">Tetris</a> ()</td></tr>
 <tr class="memdesc:a0216a055ecb3568412c35fc78e52bf14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur sans argument de <a class="el" href="class_g_j___g_w_1_1_tetris.html">Tetris</a>.  <a href="#a0216a055ecb3568412c35fc78e52bf14">More...</a><br /></td></tr>
 <tr class="separator:a0216a055ecb3568412c35fc78e52bf14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ec5102f98dbb8337508e0edbc993b64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a8ec5102f98dbb8337508e0edbc993b64">setBag</a> (bool keepDefault)</td></tr>
-<tr class="memdesc:a8ec5102f98dbb8337508e0edbc993b64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode permettant d'initialiser des briques personnalisées.  <a href="#a8ec5102f98dbb8337508e0edbc993b64">More...</a><br /></td></tr>
-<tr class="separator:a8ec5102f98dbb8337508e0edbc993b64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2888073aff5783d9a6b2d38a32e2ba13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a2888073aff5783d9a6b2d38a32e2ba13">startGame</a> (std::string name, unsigned width, unsigned height, unsigned level=0)</td></tr>
-<tr class="memdesc:a2888073aff5783d9a6b2d38a32e2ba13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode permettant de lancer une partie de <a class="el" href="class_g_j___g_w_1_1_tetris.html">Tetris</a>.  <a href="#a2888073aff5783d9a6b2d38a32e2ba13">More...</a><br /></td></tr>
-<tr class="separator:a2888073aff5783d9a6b2d38a32e2ba13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa180197b75ea45a694333f7c17a9782f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#aa180197b75ea45a694333f7c17a9782f">setBag</a> (std::vector&lt; <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> &gt; shape, bool keepBag=true)</td></tr>
+<tr class="memdesc:aa180197b75ea45a694333f7c17a9782f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode permettant d'initialiser une brique personnalisée.  <a href="#aa180197b75ea45a694333f7c17a9782f">More...</a><br /></td></tr>
+<tr class="separator:aa180197b75ea45a694333f7c17a9782f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b24246d45450a30d284363caf503ee6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a5b24246d45450a30d284363caf503ee6">startGame</a> (std::string name, unsigned width, unsigned height, unsigned winScore, unsigned winLines, unsigned winTime, unsigned level=0)</td></tr>
+<tr class="memdesc:a5b24246d45450a30d284363caf503ee6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode permettant de lancer une partie de <a class="el" href="class_g_j___g_w_1_1_tetris.html">Tetris</a>.  <a href="#a5b24246d45450a30d284363caf503ee6">More...</a><br /></td></tr>
+<tr class="separator:a5b24246d45450a30d284363caf503ee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add8f7b99b1bf04a401d19feb6440ab13"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#add8f7b99b1bf04a401d19feb6440ab13">getTimer</a> () const</td></tr>
+<tr class="memdesc:add8f7b99b1bf04a401d19feb6440ab13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture du timer.  <a href="#add8f7b99b1bf04a401d19feb6440ab13">More...</a><br /></td></tr>
+<tr class="separator:add8f7b99b1bf04a401d19feb6440ab13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2b643f31b457158175068fbfa65a66c"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#ad2b643f31b457158175068fbfa65a66c">getWinScore</a> () const</td></tr>
+<tr class="memdesc:ad2b643f31b457158175068fbfa65a66c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture du score de victoire.  <a href="#ad2b643f31b457158175068fbfa65a66c">More...</a><br /></td></tr>
+<tr class="separator:ad2b643f31b457158175068fbfa65a66c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0b460fd262200270787e0fc20e0146f"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#ae0b460fd262200270787e0fc20e0146f">getWinLines</a> () const</td></tr>
+<tr class="memdesc:ae0b460fd262200270787e0fc20e0146f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture du nombre de lignes de victoire.  <a href="#ae0b460fd262200270787e0fc20e0146f">More...</a><br /></td></tr>
+<tr class="separator:ae0b460fd262200270787e0fc20e0146f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f5d603592c137338ad579d690ea2398"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a5f5d603592c137338ad579d690ea2398">getWinTime</a> () const</td></tr>
+<tr class="memdesc:a5f5d603592c137338ad579d690ea2398"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture du temps de victoire.  <a href="#a5f5d603592c137338ad579d690ea2398">More...</a><br /></td></tr>
+<tr class="separator:a5f5d603592c137338ad579d690ea2398"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17b0e3dc6ea811e2fe0cd8762659dccc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_g_j___g_w_1_1_player.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a17b0e3dc6ea811e2fe0cd8762659dccc">getPlayer</a> () const</td></tr>
 <tr class="memdesc:a17b0e3dc6ea811e2fe0cd8762659dccc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture du <a class="el" href="class_g_j___g_w_1_1_player.html">Player</a>.  <a href="#a17b0e3dc6ea811e2fe0cd8762659dccc">More...</a><br /></td></tr>
 <tr class="separator:a17b0e3dc6ea811e2fe0cd8762659dccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -103,14 +115,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ab43530c5480d40af39a303c659899e0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture du <a class="el" href="class_g_j___g_w_1_1_board.html">Board</a>.  <a href="#ab43530c5480d40af39a303c659899e0b">More...</a><br /></td></tr>
 <tr class="separator:ab43530c5480d40af39a303c659899e0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc3741b148d1d8f13308fbe29bc94b03"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#afc3741b148d1d8f13308fbe29bc94b03">getCurrentBric</a> () const</td></tr>
-<tr class="memdesc:afc3741b148d1d8f13308fbe29bc94b03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture de la brique courante.  <a href="#afc3741b148d1d8f13308fbe29bc94b03">More...</a><br /></td></tr>
+<tr class="memdesc:afc3741b148d1d8f13308fbe29bc94b03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture de la <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> courante.  <a href="#afc3741b148d1d8f13308fbe29bc94b03">More...</a><br /></td></tr>
 <tr class="separator:afc3741b148d1d8f13308fbe29bc94b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3fa6f34e09d0ff841912328e2568c69"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#ab3fa6f34e09d0ff841912328e2568c69">isGameOver</a> () const</td></tr>
-<tr class="memdesc:ab3fa6f34e09d0ff841912328e2568c69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode vérifiant l'état de la partie.  <a href="#ab3fa6f34e09d0ff841912328e2568c69">More...</a><br /></td></tr>
-<tr class="separator:ab3fa6f34e09d0ff841912328e2568c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a139afef5f8a79ebd40e1150fff141629"><td class="memItemLeft" align="right" valign="top"><a id="a139afef5f8a79ebd40e1150fff141629"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a139afef5f8a79ebd40e1150fff141629">drop</a> ()</td></tr>
-<tr class="memdesc:a139afef5f8a79ebd40e1150fff141629"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode permettant d'effectuer autant de déplacement de la <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> courante vers le bas que possible. <br /></td></tr>
+<tr class="memitem:a4054aa425acd757e7f093dbc82b0ef28"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_g_j___g_w.html#a5d1e7cf11499226bc17670b68d152547">GameState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a4054aa425acd757e7f093dbc82b0ef28">getGameState</a> () const</td></tr>
+<tr class="memdesc:a4054aa425acd757e7f093dbc82b0ef28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture du <a class="el" href="namespace_g_j___g_w.html#a5d1e7cf11499226bc17670b68d152547">GameState</a>.  <a href="#a4054aa425acd757e7f093dbc82b0ef28">More...</a><br /></td></tr>
+<tr class="separator:a4054aa425acd757e7f093dbc82b0ef28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a139afef5f8a79ebd40e1150fff141629"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a139afef5f8a79ebd40e1150fff141629">drop</a> ()</td></tr>
+<tr class="memdesc:a139afef5f8a79ebd40e1150fff141629"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode permettant d'effectuer autant de déplacement de la <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> courante vers le bas que possible.  <a href="#a139afef5f8a79ebd40e1150fff141629">More...</a><br /></td></tr>
 <tr class="separator:a139afef5f8a79ebd40e1150fff141629"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f63949495c19c0029af369782646c13"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a0f63949495c19c0029af369782646c13">checkMove</a> (<a class="el" href="namespace_g_j___g_w.html#a2e9a1df55314c548add4bb721be86667">Direction</a> dir, unsigned dropsCount=0)</td></tr>
 <tr class="memdesc:a0f63949495c19c0029af369782646c13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode vérifiant que le mouvement de la <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> courante est valide.  <a href="#a0f63949495c19c0029af369782646c13">More...</a><br /></td></tr>
@@ -118,10 +129,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a4d03b11f9b335596ea08898aedc7923c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a4d03b11f9b335596ea08898aedc7923c">checkRotate</a> ()</td></tr>
 <tr class="memdesc:a4d03b11f9b335596ea08898aedc7923c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode vérifiant que la rotation de la <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> courante est valide.  <a href="#a4d03b11f9b335596ea08898aedc7923c">More...</a><br /></td></tr>
 <tr class="separator:a4d03b11f9b335596ea08898aedc7923c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbba3dc823099153b91256270f65c91c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#afbba3dc823099153b91256270f65c91c">next</a> ()</td></tr>
-<tr class="memdesc:afbba3dc823099153b91256270f65c91c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode lançant une nouvelle itération du jeu.  <a href="#afbba3dc823099153b91256270f65c91c">More...</a><br /></td></tr>
-<tr class="separator:afbba3dc823099153b91256270f65c91c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa394d086c50ea81a51c380f89361a86e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#aa394d086c50ea81a51c380f89361a86e">next</a> (unsigned timeElapsed)</td></tr>
+<tr class="memdesc:aa394d086c50ea81a51c380f89361a86e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode lançant une nouvelle itération du jeu.  <a href="#aa394d086c50ea81a51c380f89361a86e">More...</a><br /></td></tr>
+<tr class="separator:aa394d086c50ea81a51c380f89361a86e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_g_j___g_w_1_1_subject"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_g_j___g_w_1_1_subject')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_g_j___g_w_1_1_subject.html">GJ_GW::Subject</a></td></tr>
+<tr class="memitem:ac60e63aa733ad5fb33762041155970b8 inherit pub_methods_class_g_j___g_w_1_1_subject"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_subject.html#ac60e63aa733ad5fb33762041155970b8">~Subject</a> ()=default</td></tr>
+<tr class="separator:ac60e63aa733ad5fb33762041155970b8 inherit pub_methods_class_g_j___g_w_1_1_subject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b06aca224dc4cea7bad6b5a77ec0f85 inherit pub_methods_class_g_j___g_w_1_1_subject"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_subject.html#a1b06aca224dc4cea7bad6b5a77ec0f85">addObserver</a> (<a class="el" href="class_g_j___g_w_1_1_observer.html">Observer</a> *observer)</td></tr>
 <tr class="memdesc:a1b06aca224dc4cea7bad6b5a77ec0f85 inherit pub_methods_class_g_j___g_w_1_1_subject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode abstraite permettant d'ajouter un <a class="el" href="class_g_j___g_w_1_1_observer.html">Observer</a>.  <a href="class_g_j___g_w_1_1_subject.html#a1b06aca224dc4cea7bad6b5a77ec0f85">More...</a><br /></td></tr>
 <tr class="separator:a1b06aca224dc4cea7bad6b5a77ec0f85 inherit pub_methods_class_g_j___g_w_1_1_subject"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,17 +144,42 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:ae1648f5be99b83c36f57050aaf66c441"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#ae1648f5be99b83c36f57050aaf66c441">MINIMUM_TIMER</a> {500}</td></tr>
+<tr class="memitem:ae1648f5be99b83c36f57050aaf66c441"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#ae1648f5be99b83c36f57050aaf66c441">MINIMUM_TIMER</a> {200}</td></tr>
 <tr class="separator:ae1648f5be99b83c36f57050aaf66c441"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c35400e73fe5e75b62350b55ddad715"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a6c35400e73fe5e75b62350b55ddad715">MAXIMUM_TIMER</a> {2000}</td></tr>
+<tr class="memitem:a6c35400e73fe5e75b62350b55ddad715"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a6c35400e73fe5e75b62350b55ddad715">MAXIMUM_TIMER</a> {1600}</td></tr>
 <tr class="separator:a6c35400e73fe5e75b62350b55ddad715"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbb6ae14e59b45ef808ce3839f6cda2f"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#abbb6ae14e59b45ef808ce3839f6cda2f">MINIMUM_WIDTH</a> {6}</td></tr>
+<tr class="separator:abbb6ae14e59b45ef808ce3839f6cda2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08e2847914e742a0f575768dfa0c25ac"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a08e2847914e742a0f575768dfa0c25ac">MAXIMUM_WIDTH</a> {30}</td></tr>
+<tr class="separator:a08e2847914e742a0f575768dfa0c25ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8c0bd2703ee33f876d1ca73b873826b"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#aa8c0bd2703ee33f876d1ca73b873826b">MINIMUM_HEIGHT</a> {10}</td></tr>
+<tr class="separator:aa8c0bd2703ee33f876d1ca73b873826b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90546461a4d0054155befb52e5a5f58c"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a90546461a4d0054155befb52e5a5f58c">MAXIMUM_HEIGHT</a> {50}</td></tr>
+<tr class="separator:a90546461a4d0054155befb52e5a5f58c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56e1ab98d84c102be5e0902bcfe1b47c"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a56e1ab98d84c102be5e0902bcfe1b47c">MINIMUM_WIN_SCORE</a> {100}</td></tr>
+<tr class="separator:a56e1ab98d84c102be5e0902bcfe1b47c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa85ccfb33e40622ed12a7f1e53c48ac6"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#aa85ccfb33e40622ed12a7f1e53c48ac6">MAXIMUM_WIN_SCORE</a> {10000}</td></tr>
+<tr class="separator:aa85ccfb33e40622ed12a7f1e53c48ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f7184a43d297b5265b3591c70cc7040"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a5f7184a43d297b5265b3591c70cc7040">MINIMUM_WIN_LINES</a> {10}</td></tr>
+<tr class="separator:a5f7184a43d297b5265b3591c70cc7040"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a496e8167a5cb6dd1ba4233c3ecc29e5a"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a496e8167a5cb6dd1ba4233c3ecc29e5a">MAXIMUM_WIN_LINES</a> {50}</td></tr>
+<tr class="separator:a496e8167a5cb6dd1ba4233c3ecc29e5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1cfac8ca2c102133187792c9966a891"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#af1cfac8ca2c102133187792c9966a891">MINIMUM_WIN_TIME</a> {60000}</td></tr>
+<tr class="separator:af1cfac8ca2c102133187792c9966a891"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb10987d725700e3ff6b8f821c83b423"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#aeb10987d725700e3ff6b8f821c83b423">MAXIMUM_WIN_TIME</a> {3599000}</td></tr>
+<tr class="separator:aeb10987d725700e3ff6b8f821c83b423"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a7b3c8234dbdfb5aca68a32cc42fe51"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#a3a7b3c8234dbdfb5aca68a32cc42fe51">MINIMUM_LEVEL</a> {0}</td></tr>
+<tr class="separator:a3a7b3c8234dbdfb5aca68a32cc42fe51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb81cad2447a38030ca8f9f81c322dad"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_tetris.html#aeb81cad2447a38030ca8f9f81c322dad">MAXIMUM_LEVEL</a> {8}</td></tr>
+<tr class="separator:aeb81cad2447a38030ca8f9f81c322dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_class_g_j___g_w_1_1_subject"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_g_j___g_w_1_1_subject')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_g_j___g_w_1_1_subject.html">GJ_GW::Subject</a></td></tr>
-<tr class="memitem:a130edb815aef88deebc1542a32fa9af9 inherit pro_methods_class_g_j___g_w_1_1_subject"><td class="memItemLeft" align="right" valign="top"><a id="a130edb815aef88deebc1542a32fa9af9"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_subject.html#a130edb815aef88deebc1542a32fa9af9">notifyObservers</a> ()</td></tr>
-<tr class="memdesc:a130edb815aef88deebc1542a32fa9af9 inherit pro_methods_class_g_j___g_w_1_1_subject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode abstraite permettant de demander à tous les <a class="el" href="class_g_j___g_w_1_1_observer.html">Observer</a> de faire une mise à jour des données. <br /></td></tr>
+<tr class="memitem:a85202aa01d71e2f75cb89998f9e893c1 inherit pro_methods_class_g_j___g_w_1_1_subject"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_subject.html#a85202aa01d71e2f75cb89998f9e893c1">Subject</a> ()=default</td></tr>
+<tr class="separator:a85202aa01d71e2f75cb89998f9e893c1 inherit pro_methods_class_g_j___g_w_1_1_subject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a130edb815aef88deebc1542a32fa9af9 inherit pro_methods_class_g_j___g_w_1_1_subject"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_subject.html#a130edb815aef88deebc1542a32fa9af9">notifyObservers</a> ()</td></tr>
+<tr class="memdesc:a130edb815aef88deebc1542a32fa9af9 inherit pro_methods_class_g_j___g_w_1_1_subject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode abstraite permettant de demander à tous les <a class="el" href="class_g_j___g_w_1_1_observer.html">Observer</a> de faire une mise à jour des données.  <a href="class_g_j___g_w_1_1_subject.html#a130edb815aef88deebc1542a32fa9af9">More...</a><br /></td></tr>
 <tr class="separator:a130edb815aef88deebc1542a32fa9af9 inherit pro_methods_class_g_j___g_w_1_1_subject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_g_j___g_w_1_1_subject"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_g_j___g_w_1_1_subject')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_g_j___g_w_1_1_subject.html">GJ_GW::Subject</a></td></tr>
 <tr class="memitem:ab3649f1f71fa2ba4ccbd9848266a3b51 inherit pro_attribs_class_g_j___g_w_1_1_subject"><td class="memItemLeft" align="right" valign="top">std::set&lt; <a class="el" href="class_g_j___g_w_1_1_observer.html">Observer</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_subject.html#ab3649f1f71fa2ba4ccbd9848266a3b51">observers_</a></td></tr>
@@ -199,7 +237,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div><div class="memdoc">
 
 <p>Méthode vérifiant que le mouvement de la <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> courante est valide. </p>
-<p>Elle crée un fantome de brique à la destination du mouvement et vérifie que le fantôme se trouve dans une zone inoccupée de la grille de jeu. // gestion des collisions à venir</p>
+<p>Elle crée un fantome de brique à la destination du mouvement et vérifie que le fantôme se trouve dans une zone inoccupée de la grille de jeu.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dir</td><td>la direction vers laquelle la brique est déplacée </td></tr>
@@ -227,7 +265,26 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div><div class="memdoc">
 
 <p>Méthode vérifiant que la rotation de la <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> courante est valide. </p>
-<p>Elle crée un fantome de brique à la destination du mouvement et vérifie que le fantôme se trouve dans une zone inoccupée de la grille de jeu. // gestion des collisions à venir </p>
+<p>Elle crée un fantome de brique à la destination du mouvement et vérifie que le fantôme se trouve dans une zone inoccupée de la grille de jeu. </p>
+
+</div>
+</div>
+<a id="a139afef5f8a79ebd40e1150fff141629"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a139afef5f8a79ebd40e1150fff141629">&sect;&nbsp;</a></span>drop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tetris::drop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Méthode permettant d'effectuer autant de déplacement de la <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> courante vers le bas que possible. </p>
 
 </div>
 </div>
@@ -266,8 +323,28 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
       </table>
 </div><div class="memdoc">
 
-<p>Accesseur en lecture de la brique courante. </p>
+<p>Accesseur en lecture de la <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> courante. </p>
 <dl class="section return"><dt>Returns</dt><dd>la brique courante </dd></dl>
+
+</div>
+</div>
+<a id="a4054aa425acd757e7f093dbc82b0ef28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4054aa425acd757e7f093dbc82b0ef28">&sect;&nbsp;</a></span>getGameState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_g_j___g_w.html#a5d1e7cf11499226bc17670b68d152547">GameState</a> Tetris::getGameState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accesseur en lecture du <a class="el" href="namespace_g_j___g_w.html#a5d1e7cf11499226bc17670b68d152547">GameState</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>l'état du jeu </dd></dl>
 
 </div>
 </div>
@@ -291,14 +368,14 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 </div>
 </div>
-<a id="ab3fa6f34e09d0ff841912328e2568c69"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab3fa6f34e09d0ff841912328e2568c69">&sect;&nbsp;</a></span>isGameOver()</h2>
+<a id="add8f7b99b1bf04a401d19feb6440ab13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add8f7b99b1bf04a401d19feb6440ab13">&sect;&nbsp;</a></span>getTimer()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool Tetris::isGameOver </td>
+          <td class="memname">unsigned Tetris::getTimer </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -306,33 +383,100 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
       </table>
 </div><div class="memdoc">
 
-<p>Méthode vérifiant l'état de la partie. </p>
-<dl class="section return"><dt>Returns</dt><dd>true si la partie est terminée, false sinon </dd></dl>
+<p>Accesseur en lecture du timer. </p>
+<dl class="section return"><dt>Returns</dt><dd>le timer </dd></dl>
 
 </div>
 </div>
-<a id="afbba3dc823099153b91256270f65c91c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afbba3dc823099153b91256270f65c91c">&sect;&nbsp;</a></span>next()</h2>
+<a id="ae0b460fd262200270787e0fc20e0146f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0b460fd262200270787e0fc20e0146f">&sect;&nbsp;</a></span>getWinLines()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void GJ_GW::Tetris::next </td>
+          <td class="memname">unsigned Tetris::getWinLines </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accesseur en lecture du nombre de lignes de victoire. </p>
+<dl class="section return"><dt>Returns</dt><dd>le nombre de lignes de victoire </dd></dl>
+
+</div>
+</div>
+<a id="ad2b643f31b457158175068fbfa65a66c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2b643f31b457158175068fbfa65a66c">&sect;&nbsp;</a></span>getWinScore()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned Tetris::getWinScore </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accesseur en lecture du score de victoire. </p>
+<dl class="section return"><dt>Returns</dt><dd>le score de victoire </dd></dl>
+
+</div>
+</div>
+<a id="a5f5d603592c137338ad579d690ea2398"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f5d603592c137338ad579d690ea2398">&sect;&nbsp;</a></span>getWinTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned Tetris::getWinTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accesseur en lecture du temps de victoire. </p>
+<dl class="section return"><dt>Returns</dt><dd>le temps de victoire </dd></dl>
+
+</div>
+</div>
+<a id="aa394d086c50ea81a51c380f89361a86e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa394d086c50ea81a51c380f89361a86e">&sect;&nbsp;</a></span>next()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tetris::next </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>timeElapsed</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Méthode lançant une nouvelle itération du jeu. </p>
-<p>Une itération de <a class="el" href="class_g_j___g_w_1_1_tetris.html">Tetris</a> comprend un mouvement automatique de la <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> courante vers le bas ou la génération d'une nouvelle brique courante si la précédente ne pouvait plus descendre. </p>
+<p>Une itération de <a class="el" href="class_g_j___g_w_1_1_tetris.html">Tetris</a> comprend un mouvement automatique de la <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> courante vers le bas ou la génération d'une nouvelle brique courante si la précédente ne pouvait plus descendre.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeElapsed</td><td>le temps écoulé depuis le début de la partie, s'il dépasse le winScore la partie est gagnée </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a8ec5102f98dbb8337508e0edbc993b64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ec5102f98dbb8337508e0edbc993b64">&sect;&nbsp;</a></span>setBag()</h2>
+<a id="aa180197b75ea45a694333f7c17a9782f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa180197b75ea45a694333f7c17a9782f">&sect;&nbsp;</a></span>setBag()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -340,25 +484,36 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
         <tr>
           <td class="memname">void Tetris::setBag </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>keepDefault</em></td><td>)</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> &gt;&#160;</td>
+          <td class="paramname"><em>shape</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>keepBag</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Méthode permettant d'initialiser des briques personnalisées. </p>
+<p>Méthode permettant d'initialiser une brique personnalisée. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">keepDefault</td><td>indique si le joueur souhaite ajouter ses briques au sac par défaut ou s'il souhaite créé un nouveau sac ne contenant que ses briques personnelles. </td></tr>
+    <tr><td class="paramname">la</td><td>forme de la brique que le joueur souhaite ajouter </td></tr>
+    <tr><td class="paramname">keepBag</td><td>indique si le joueur souhaite ajouter sa brique au sac déjà existant ou s'il souhaite créer un nouveau sac de briques. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a2888073aff5783d9a6b2d38a32e2ba13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2888073aff5783d9a6b2d38a32e2ba13">&sect;&nbsp;</a></span>startGame()</h2>
+<a id="a5b24246d45450a30d284363caf503ee6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b24246d45450a30d284363caf503ee6">&sect;&nbsp;</a></span>startGame()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -385,6 +540,24 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>winScore</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>winLines</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>winTime</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
           <td class="paramname"><em>level</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -402,6 +575,9 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
     <tr><td class="paramname">name</td><td>le nom du joueur </td></tr>
     <tr><td class="paramname">width</td><td>la largeur du <a class="el" href="class_g_j___g_w_1_1_board.html">Board</a> </td></tr>
     <tr><td class="paramname">height</td><td>la hauteur du <a class="el" href="class_g_j___g_w_1_1_board.html">Board</a> </td></tr>
+    <tr><td class="paramname">winScore</td><td>le score de victoire </td></tr>
+    <tr><td class="paramname">winLines</td><td>le nombre de lignes de victoire </td></tr>
+    <tr><td class="paramname">winTime</td><td>le temps de victoire </td></tr>
     <tr><td class="paramname">level</td><td>le niveau de difficulté de départ </td></tr>
   </table>
   </dd>
@@ -410,6 +586,52 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a90546461a4d0054155befb52e5a5f58c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90546461a4d0054155befb52e5a5f58c">&sect;&nbsp;</a></span>MAXIMUM_HEIGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned GJ_GW::Tetris::MAXIMUM_HEIGHT {50}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Valeur maximale acceptée pour la hauteur. </p>
+
+</div>
+</div>
+<a id="aeb81cad2447a38030ca8f9f81c322dad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb81cad2447a38030ca8f9f81c322dad">&sect;&nbsp;</a></span>MAXIMUM_LEVEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned GJ_GW::Tetris::MAXIMUM_LEVEL {8}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Valeur maximale acceptée pour le niveau de difficulté. </p>
+
+</div>
+</div>
 <a id="a6c35400e73fe5e75b62350b55ddad715"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6c35400e73fe5e75b62350b55ddad715">&sect;&nbsp;</a></span>MAXIMUM_TIMER</h2>
 
@@ -420,7 +642,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr unsigned GJ_GW::Tetris::MAXIMUM_TIMER {2000}</td>
+          <td class="memname">constexpr unsigned GJ_GW::Tetris::MAXIMUM_TIMER {1600}</td>
         </tr>
       </table>
   </td>
@@ -430,6 +652,144 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </table>
 </div><div class="memdoc">
 <p>Valeur maximale acceptée pour le timer. </p>
+
+</div>
+</div>
+<a id="a08e2847914e742a0f575768dfa0c25ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08e2847914e742a0f575768dfa0c25ac">&sect;&nbsp;</a></span>MAXIMUM_WIDTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned GJ_GW::Tetris::MAXIMUM_WIDTH {30}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Valeur maximale acceptée pour la largeur. </p>
+
+</div>
+</div>
+<a id="a496e8167a5cb6dd1ba4233c3ecc29e5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a496e8167a5cb6dd1ba4233c3ecc29e5a">&sect;&nbsp;</a></span>MAXIMUM_WIN_LINES</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned GJ_GW::Tetris::MAXIMUM_WIN_LINES {50}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Valeur maximale acceptée pour le nombe de lignes de victoire. </p>
+
+</div>
+</div>
+<a id="aa85ccfb33e40622ed12a7f1e53c48ac6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa85ccfb33e40622ed12a7f1e53c48ac6">&sect;&nbsp;</a></span>MAXIMUM_WIN_SCORE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned GJ_GW::Tetris::MAXIMUM_WIN_SCORE {10000}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Valeur maximale acceptée pour le score de victoire. </p>
+
+</div>
+</div>
+<a id="aeb10987d725700e3ff6b8f821c83b423"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb10987d725700e3ff6b8f821c83b423">&sect;&nbsp;</a></span>MAXIMUM_WIN_TIME</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned GJ_GW::Tetris::MAXIMUM_WIN_TIME {3599000}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Valeur maximale acceptée pour le temps de victoire. </p>
+
+</div>
+</div>
+<a id="aa8c0bd2703ee33f876d1ca73b873826b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8c0bd2703ee33f876d1ca73b873826b">&sect;&nbsp;</a></span>MINIMUM_HEIGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned GJ_GW::Tetris::MINIMUM_HEIGHT {10}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Valeur minimale acceptée pour la hauteur. </p>
+
+</div>
+</div>
+<a id="a3a7b3c8234dbdfb5aca68a32cc42fe51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a7b3c8234dbdfb5aca68a32cc42fe51">&sect;&nbsp;</a></span>MINIMUM_LEVEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned GJ_GW::Tetris::MINIMUM_LEVEL {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Valeur minimale acceptée pour le niveau de difficulté. </p>
 
 </div>
 </div>
@@ -443,7 +803,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr unsigned GJ_GW::Tetris::MINIMUM_TIMER {500}</td>
+          <td class="memname">constexpr unsigned GJ_GW::Tetris::MINIMUM_TIMER {200}</td>
         </tr>
       </table>
   </td>
@@ -456,9 +816,101 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 </div>
 </div>
+<a id="abbb6ae14e59b45ef808ce3839f6cda2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbb6ae14e59b45ef808ce3839f6cda2f">&sect;&nbsp;</a></span>MINIMUM_WIDTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned GJ_GW::Tetris::MINIMUM_WIDTH {6}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Valeur minimale acceptée pour la largeur. </p>
+
+</div>
+</div>
+<a id="a5f7184a43d297b5265b3591c70cc7040"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f7184a43d297b5265b3591c70cc7040">&sect;&nbsp;</a></span>MINIMUM_WIN_LINES</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned GJ_GW::Tetris::MINIMUM_WIN_LINES {10}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Valeur minimale acceptée pour le nombe de lignes de victoire. </p>
+
+</div>
+</div>
+<a id="a56e1ab98d84c102be5e0902bcfe1b47c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56e1ab98d84c102be5e0902bcfe1b47c">&sect;&nbsp;</a></span>MINIMUM_WIN_SCORE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned GJ_GW::Tetris::MINIMUM_WIN_SCORE {100}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Valeur minimale acceptée pour le score de victoire. </p>
+
+</div>
+</div>
+<a id="af1cfac8ca2c102133187792c9966a891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1cfac8ca2c102133187792c9966a891">&sect;&nbsp;</a></span>MINIMUM_WIN_TIME</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned GJ_GW::Tetris::MINIMUM_WIN_TIME {60000}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Valeur minimale acceptée pour le temps de victoire. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>model/<a class="el" href="tetris_8h_source.html">tetris.h</a></li>
-<li>model/tetris.cpp</li>
+<li>model/<a class="el" href="tetris_8cpp.html">tetris.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

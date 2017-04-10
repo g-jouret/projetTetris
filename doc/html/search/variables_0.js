@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['maximum_5ftimer',['MAXIMUM_TIMER',['../class_g_j___g_w_1_1_tetris.html#a6c35400e73fe5e75b62350b55ddad715',1,'GJ_GW::Tetris']]],
-  ['minimum_5ftimer',['MINIMUM_TIMER',['../class_g_j___g_w_1_1_tetris.html#ae1648f5be99b83c36f57050aaf66c441',1,'GJ_GW::Tetris']]]
+  ['action_5fnouveau',['action_Nouveau',['../class_ui___m_w_tetris.html#ad243b0cfb6dd6b4bfe1c5179dcafcf57',1,'Ui_MWTetris']]],
+  ['action_5fquitter',['action_Quitter',['../class_ui___m_w_tetris.html#a85583b9c8112942e01612bf37076910e',1,'Ui_MWTetris']]]
 ];

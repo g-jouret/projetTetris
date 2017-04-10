@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.12"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>projetTetris: GJ_GW::Subject Class Reference</title>
+<title>Tetris: GJ_GW::Subject Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">projetTetris
+   <div id="projectname">Tetris
    </div>
   </td>
  </tr>
@@ -88,6 +88,8 @@ Inheritance diagram for GJ_GW::Subject:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ac60e63aa733ad5fb33762041155970b8"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_subject.html#ac60e63aa733ad5fb33762041155970b8">~Subject</a> ()=default</td></tr>
+<tr class="separator:ac60e63aa733ad5fb33762041155970b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b06aca224dc4cea7bad6b5a77ec0f85"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_subject.html#a1b06aca224dc4cea7bad6b5a77ec0f85">addObserver</a> (<a class="el" href="class_g_j___g_w_1_1_observer.html">Observer</a> *observer)</td></tr>
 <tr class="memdesc:a1b06aca224dc4cea7bad6b5a77ec0f85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode abstraite permettant d'ajouter un <a class="el" href="class_g_j___g_w_1_1_observer.html">Observer</a>.  <a href="#a1b06aca224dc4cea7bad6b5a77ec0f85">More...</a><br /></td></tr>
 <tr class="separator:a1b06aca224dc4cea7bad6b5a77ec0f85"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -97,9 +99,10 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a130edb815aef88deebc1542a32fa9af9"><td class="memItemLeft" align="right" valign="top"><a id="a130edb815aef88deebc1542a32fa9af9"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_subject.html#a130edb815aef88deebc1542a32fa9af9">notifyObservers</a> ()</td></tr>
-<tr class="memdesc:a130edb815aef88deebc1542a32fa9af9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode abstraite permettant de demander à tous les <a class="el" href="class_g_j___g_w_1_1_observer.html">Observer</a> de faire une mise à jour des données. <br /></td></tr>
+<tr class="memitem:a85202aa01d71e2f75cb89998f9e893c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_subject.html#a85202aa01d71e2f75cb89998f9e893c1">Subject</a> ()=default</td></tr>
+<tr class="separator:a85202aa01d71e2f75cb89998f9e893c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a130edb815aef88deebc1542a32fa9af9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_subject.html#a130edb815aef88deebc1542a32fa9af9">notifyObservers</a> ()</td></tr>
+<tr class="memdesc:a130edb815aef88deebc1542a32fa9af9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode abstraite permettant de demander à tous les <a class="el" href="class_g_j___g_w_1_1_observer.html">Observer</a> de faire une mise à jour des données.  <a href="#a130edb815aef88deebc1542a32fa9af9">More...</a><br /></td></tr>
 <tr class="separator:a130edb815aef88deebc1542a32fa9af9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -109,7 +112,58 @@ Protected Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Classe abstraite représentant un sujet d'observation du Design Pattern <a class="el" href="class_g_j___g_w_1_1_observer.html" title="Classe abstraite représentant un observateur du Design Pattern Observer. ">Observer</a>. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ac60e63aa733ad5fb33762041155970b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac60e63aa733ad5fb33762041155970b8">&sect;&nbsp;</a></span>~Subject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual GJ_GW::Subject::~Subject </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a85202aa01d71e2f75cb89998f9e893c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85202aa01d71e2f75cb89998f9e893c1">&sect;&nbsp;</a></span>Subject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GJ_GW::Subject::Subject </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a1b06aca224dc4cea7bad6b5a77ec0f85"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1b06aca224dc4cea7bad6b5a77ec0f85">&sect;&nbsp;</a></span>addObserver()</h2>
 
@@ -141,6 +195,33 @@ Protected Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a130edb815aef88deebc1542a32fa9af9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a130edb815aef88deebc1542a32fa9af9">&sect;&nbsp;</a></span>notifyObservers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Subject::notifyObservers </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Méthode abstraite permettant de demander à tous les <a class="el" href="class_g_j___g_w_1_1_observer.html">Observer</a> de faire une mise à jour des données. </p>
 
 </div>
 </div>
@@ -204,7 +285,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>observer/<a class="el" href="subject_8h_source.html">subject.h</a></li>
-<li>observer/subject.cpp</li>
+<li>observer/<a class="el" href="subject_8cpp.html">subject.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

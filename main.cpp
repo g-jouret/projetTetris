@@ -25,4 +25,5 @@ int main(int argc, char *argv[]){
  * vision de la nouvelle brique
  * couleur des briques
  * amélioration rotation des briques + génération (pair & impair)
+ * condition de victoire ignorable (checkbox)
  */

@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['sbheight',['sbHeight',['../class_ui___config_dialog.html#a99e25a0b868647e94a78e5d199fad2bc',1,'Ui_ConfigDialog']]],
-  ['sbwidth',['sbWidth',['../class_ui___config_dialog.html#ad27639f55da057097fdef1568e7ffa9c',1,'Ui_ConfigDialog']]],
-  ['stringdata0',['stringdata0',['../structqt__meta__stringdata___config_dialog__t.html#a756190c9fb2412acb482d63c758b4fa5',1,'qt_meta_stringdata_ConfigDialog_t::stringdata0()'],['../structqt__meta__stringdata___m_w_tetris__t.html#a4b36d46307b4bc72bb7bc6be3f3ea450',1,'qt_meta_stringdata_MWTetris_t::stringdata0()']]]
+  ['observers_5f',['observers_',['../class_g_j___g_w_1_1_subject.html#ab3649f1f71fa2ba4ccbd9848266a3b51',1,'GJ_GW::Subject']]]
 ];

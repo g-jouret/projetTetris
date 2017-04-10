@@ -164,30 +164,6 @@ bool Tetris::checkMove(Direction dir, unsigned dropsCount){
     return ok;
 }
 
-// NOTE : à enlever si non utilisé
-void Tetris::relocate(Bric & origin, Bric & destination){
-    int distance = destination.getShape().at(0).getX() - origin.getShape().at(0).getX();
-    if(distance >= 0){
-        for (int i {0}; i < distance; ++i){
-            origin.move(Direction::RIGHT);
-        }
-    } else{
-        for (int i {0}; i > distance; --i){
-            origin.move(Direction::LEFT);
-        }
-    }
-    distance = destination.getShape().at(0).getY() - origin.getShape().at(0).getY();
-    if(distance >= 0){
-        for (int i {0}; i < distance; ++i){
-            origin.move(Direction::DOWN);
-        }
-    } else{
-        for (int i {0}; i > distance; --i){
-            origin.move(Direction::UP);
-        }
-    }
-}
-
 void Tetris::checkRotate(){
     bool ok {1};
     unsigned count {0};

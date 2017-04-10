@@ -1,8 +1,19 @@
 var searchData=
 [
-  ['maximum_5ftimer',['MAXIMUM_TIMER',['../class_g_j___g_w_1_1_tetris.html#a6c35400e73fe5e75b62350b55ddad715',1,'GJ_GW::Tetris']]],
-  ['minimum_5ftimer',['MINIMUM_TIMER',['../class_g_j___g_w_1_1_tetris.html#ae1648f5be99b83c36f57050aaf66c441',1,'GJ_GW::Tetris']]],
-  ['move',['move',['../class_g_j___g_w_1_1_bric.html#a5d1e179056c222438bc1d1adf22c3c38',1,'GJ_GW::Bric']]],
-  ['mwtetris',['MWTetris',['../class_m_w_tetris.html',1,'']]],
-  ['mwtetris',['MWTetris',['../class_ui_1_1_m_w_tetris.html',1,'Ui']]]
+  ['horizontallayout',['horizontalLayout',['../class_ui___config_dialog.html#a1b0df89a86fc23ae83eeb430643c3691',1,'Ui_ConfigDialog::horizontalLayout()'],['../class_ui___m_w_tetris.html#adb2fd2f0f08e9a39279834304daa054b',1,'Ui_MWTetris::horizontalLayout()']]],
+  ['horizontallayout_5f2',['horizontalLayout_2',['../class_ui___config_dialog.html#aa552f1b89accbba48b9be8ba2996bebe',1,'Ui_ConfigDialog::horizontalLayout_2()'],['../class_ui___m_w_tetris.html#ae68f7498615016710750c7a49e7da306',1,'Ui_MWTetris::horizontalLayout_2()']]],
+  ['horizontallayout_5f3',['horizontalLayout_3',['../class_ui___config_dialog.html#a2a2bd65b3a8a05a8bda39709218f0dde',1,'Ui_ConfigDialog::horizontalLayout_3()'],['../class_ui___m_w_tetris.html#a0cd0e612d7ba007859009e36e6223967',1,'Ui_MWTetris::horizontalLayout_3()']]],
+  ['horizontallayout_5f4',['horizontalLayout_4',['../class_ui___config_dialog.html#a38d1bbfaa30d46fb284c5e76e4a1da05',1,'Ui_ConfigDialog::horizontalLayout_4()'],['../class_ui___m_w_tetris.html#a99c2b859cac45a2a09d3a99b0b739a77',1,'Ui_MWTetris::horizontalLayout_4()']]],
+  ['horizontallayout_5f5',['horizontalLayout_5',['../class_ui___config_dialog.html#ab48c43d9d51115283017b84bd9ac427a',1,'Ui_ConfigDialog::horizontalLayout_5()'],['../class_ui___m_w_tetris.html#aac62c399a92d871f91249cd85964d6a5',1,'Ui_MWTetris::horizontalLayout_5()']]],
+  ['horizontallayout_5f6',['horizontalLayout_6',['../class_ui___m_w_tetris.html#a0b291e7519d6d701f83239987b33d42f',1,'Ui_MWTetris']]],
+  ['horizontallayout_5f7',['horizontalLayout_7',['../class_ui___config_dialog.html#ad5036facba622ca0ca0faa267c6fed95',1,'Ui_ConfigDialog::horizontalLayout_7()'],['../class_ui___m_w_tetris.html#a25307edc8c6227c2e41c55a2432be499',1,'Ui_MWTetris::horizontalLayout_7()']]],
+  ['horizontallayout_5f8',['horizontalLayout_8',['../class_ui___config_dialog.html#a6934446550e7169073c54bd16ae3bbc0',1,'Ui_ConfigDialog']]],
+  ['horizontalspacer',['horizontalSpacer',['../class_ui___config_dialog.html#aa71162af8718364140cd86b3f2d7baaf',1,'Ui_ConfigDialog::horizontalSpacer()'],['../class_ui___m_w_tetris.html#ab230e0164096bb7676e5b242637597af',1,'Ui_MWTetris::horizontalSpacer()']]],
+  ['horizontalspacer_5f2',['horizontalSpacer_2',['../class_ui___config_dialog.html#a475e32e862136d61d92fbfed2df1a248',1,'Ui_ConfigDialog::horizontalSpacer_2()'],['../class_ui___m_w_tetris.html#ae8b98eaa474ca648ec67ad0dfda6fee7',1,'Ui_MWTetris::horizontalSpacer_2()']]],
+  ['horizontalspacer_5f3',['horizontalSpacer_3',['../class_ui___config_dialog.html#a4e7a111857a67257e6f3b40da290a679',1,'Ui_ConfigDialog::horizontalSpacer_3()'],['../class_ui___m_w_tetris.html#a407239c126b27232bafbf603eb861074',1,'Ui_MWTetris::horizontalSpacer_3()']]],
+  ['horizontalspacer_5f4',['horizontalSpacer_4',['../class_ui___config_dialog.html#af6564190bade4d6b1a952c3f4f1b69e9',1,'Ui_ConfigDialog::horizontalSpacer_4()'],['../class_ui___m_w_tetris.html#ae4c2305b2017c0b2969a4b6d1a7d9079',1,'Ui_MWTetris::horizontalSpacer_4()']]],
+  ['horizontalspacer_5f5',['horizontalSpacer_5',['../class_ui___config_dialog.html#a709e65f79d4f52a589a5a469c3888abd',1,'Ui_ConfigDialog::horizontalSpacer_5()'],['../class_ui___m_w_tetris.html#afc8212499f0da59c9c539f8febffe7a5',1,'Ui_MWTetris::horizontalSpacer_5()']]],
+  ['horizontalspacer_5f6',['horizontalSpacer_6',['../class_ui___m_w_tetris.html#a3eb27155791aff2f7dc704c21b975dde',1,'Ui_MWTetris']]],
+  ['horizontalspacer_5f7',['horizontalSpacer_7',['../class_ui___config_dialog.html#ae2fa5063b0280652c148c939c23bab24',1,'Ui_ConfigDialog::horizontalSpacer_7()'],['../class_ui___m_w_tetris.html#ad4a4c16eb02278a2a14198f8a0d5c159',1,'Ui_MWTetris::horizontalSpacer_7()']]],
+  ['horizontalspacer_5f8',['horizontalSpacer_8',['../class_ui___config_dialog.html#a0f195eb2979b9792d86a56a3e26c3bc0',1,'Ui_ConfigDialog::horizontalSpacer_8()'],['../class_ui___m_w_tetris.html#abd70f6145e66e3c6eb0ab9116f2680b5',1,'Ui_MWTetris::horizontalSpacer_8()']]]
 ];

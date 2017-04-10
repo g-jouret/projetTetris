@@ -35,31 +35,43 @@ public:
     constexpr static unsigned MAXIMUM_TIMER {1600};
     /*!< Valeur maximale acceptée pour le timer. */
 
-    constexpr static unsigned MAXIMUM_SIZE_NAME {15};
+    //constexpr static unsigned MAXIMUM_SIZE_NAME {15};
 
     constexpr static unsigned MINIMUM_WIDTH {6};
+    /*!< Valeur minimale acceptée pour la largeur. */
 
     constexpr static unsigned MAXIMUM_WIDTH {30};
+    /*!< Valeur maximale acceptée pour la largeur. */
 
     constexpr static unsigned MINIMUM_HEIGHT {10};
+    /*!< Valeur minimale acceptée pour la hauteur. */
 
     constexpr static unsigned MAXIMUM_HEIGHT {50};
+    /*!< Valeur maximale acceptée pour la hauteur. */
 
     constexpr static unsigned MINIMUM_WIN_SCORE {100};
+    /*!< Valeur minimale acceptée pour le score de victoire. */
 
-    constexpr static unsigned MAXIMUM_WIN_SCORE {5000};
+    constexpr static unsigned MAXIMUM_WIN_SCORE {10000};
+    /*!< Valeur maximale acceptée pour le score de victoire. */
 
-    constexpr static unsigned MINIMUM_WIN_LINES {5};
+    constexpr static unsigned MINIMUM_WIN_LINES {10};
+    /*!< Valeur minimale acceptée pour le nombe de lignes de victoire. */
 
     constexpr static unsigned MAXIMUM_WIN_LINES {50};
+    /*!< Valeur maximale acceptée pour le nombe de lignes de victoire. */
 
     constexpr static unsigned MINIMUM_WIN_TIME {60000};
+    /*!< Valeur minimale acceptée pour le temps de victoire. */
 
     constexpr static unsigned MAXIMUM_WIN_TIME {3599000};
+    /*!< Valeur maximale acceptée pour le temps de victoire. */
 
     constexpr static unsigned MINIMUM_LEVEL {0};
+    /*!< Valeur minimale acceptée pour le niveau de difficulté. */
 
     constexpr static unsigned MAXIMUM_LEVEL {8};
+    /*!< Valeur maximale acceptée pour le niveau de difficulté. */
 
 private:
     unsigned timer_;
@@ -68,20 +80,35 @@ private:
      * Il représente le temps entre chaque mouvement automatique de la \ref Bric courante,
      * il se réduit en fonction du niveau de difficulté.
      *
-     * Sa valeur est en milliseconde et peut aller de \ref MINIMUM_TIMER à \ref MAXIMUM_MONTH.
+     * Sa valeur est en milliseconde et peut aller de \ref MINIMUM_TIMER à \ref MAXIMUM_TIMER.
      */
 
     unsigned winScore_;
+    /*!< Le score de victoire.
+     *
+     * Il représente le score à atteindre pour gagner une partie.
+     *
+     * Sa valeur peut aller de \ref MINIMUM_WIN_SCORE à \ref MAXIMUM_WIN_SCORE.
+     */
 
     unsigned winLines_;
+    /*!< Le nombre de lignes de victoire.
+     *
+     * Il représente le nombre de lignes à remplir pour gagner une partie.
+     *
+     * Sa valeur peut aller de \ref MINIMUM_WIN_LINES à \ref MAXIMUM_WIN_LINES.
+     */
 
     unsigned winTime_;
+    /*!< Le temps de victoire.
+     *
+     * Il représente le temps de jeu à atteindre pour gagner une partie.
+     *
+     * Sa valeur peut aller de \ref MINIMUM_WIN_TIME à \ref MAXIMUM_WIN_TIME.
+     */
 
     GameState gameState_;
-    /*!< L'état de la partie.
-     *
-     * En cours ou arrêtée.
-     */
+    /*!< L'état de la partie. */
 
     Player player_;
     /*!< Le joueur. */
@@ -95,7 +122,7 @@ private:
     Bric currentBric_;
     /*!< La brique courante.
      *
-     * Celle que contrôle le jeu.
+     * Celle que contrôle le joueur.
      */
 
 public:
@@ -109,10 +136,10 @@ public:
     Tetris();
 
     /*!
-     * \brief Méthode permettant d'initialiser des briques personnalisées.
-     * \param keepDefault indique si le joueur souhaite ajouter ses briques au
-     * sac par défaut ou s'il souhaite créé un nouveau sac ne contenant que ses
-     * briques personnelles.
+     * \brief Méthode permettant d'initialiser une brique personnalisée.
+     * \param la forme de la  brique que le joueur souhaite ajouter
+     * \param keepBag indique si le joueur souhaite ajouter sa brique au
+     * sac déjà existant ou s'il souhaite créer un nouveau sac de briques.
      */
     void setBag(std::vector<Position> shape, bool keepBag = true);
 
@@ -124,16 +151,35 @@ public:
      * \param name le nom du joueur
      * \param width la largeur du \ref Board
      * \param height la hauteur du \ref Board
+     * \param winScore le score de victoire
+     * \param winLines le nombre de lignes de victoire
+     * \param winTime le temps de victoire
      * \param level le niveau de difficulté de départ
      */
     void startGame(std::string name, unsigned width, unsigned height, unsigned winScore, unsigned winLines, unsigned winTime, unsigned level = 0);
 
+    /*!
+     * \brief Accesseur en lecture du timer.
+     * \return le timer
+     */
     unsigned getTimer() const;
 
+    /*!
+     * \brief Accesseur en lecture du score de victoire.
+     * \return le score de victoire
+     */
     unsigned getWinScore() const;
 
+    /*!
+     * \brief Accesseur en lecture du nombre de lignes de victoire.
+     * \return le nombre de lignes de victoire
+     */
     unsigned getWinLines() const;
 
+    /*!
+     * \brief Accesseur en lecture du temps de victoire.
+     * \return le temps de victoire
+     */
     unsigned getWinTime() const;
 
     /*!
@@ -144,21 +190,18 @@ public:
 
     /*!
      * \brief Accesseur en lecture du \ref Board.
-     *
      * \return la grille de jeu
      */
     Board getBoard() const;
 
     /*!
-     * \brief Accesseur en lecture de la brique courante.
-     *
+     * \brief Accesseur en lecture de la \ref Bric courante.
      * \return la brique courante
      */
     Bric getCurrentBric() const;
 
     /*!
-     * \brief Accesseur en lecture de l'état du jeu.
-     *
+     * \brief Accesseur en lecture du \ref GameState.
      * \return l'état du jeu
      */
     GameState getGameState() const;
@@ -196,19 +239,32 @@ public:
      * de la \ref Bric courante vers le bas ou la génération d'une
      * nouvelle brique courante si la précédente ne pouvait plus
      * descendre.
+     *
+     * \param timeElapsed le temps écoulé depuis le début de la partie,
+     * s'il dépasse le winScore la partie est gagnée
      */
     void next(unsigned timeElapsed);
 
 private:
 
     /*!
-     * \brief Méthode permettant de changer le nom du \ref Player et de remttre à zéro
-     * le compteur de lignes remplies (mais pas le score).
+     * \brief Méthode permettant de changer le nom du \ref Player et de remettre à zéro
+     * le compteur de lignes remplies et le score.
      * \param name le nom du joueur
      */
     void setPlayer(std::string name);
 
-    // TODO : corriger les validations
+    // TODO : continuer doc
+
+    /*!
+     * \brief Méthode de validation de la largeur.
+     *
+     * Cette méthode vérifie que la valeur de l'attribut .
+     *
+     * \param value la valeur à valider
+     * \return la valeur validée
+     */
+    unsigned validateWidth(unsigned width);
 
     /*!
      * \brief Méthode de validation de la hauteur.
@@ -217,19 +273,23 @@ private:
      *
      * \param value la valeur à valider
      * \return la valeur validée
+     * \throw std::invalid_argument si
+     *              height \f$\notin\f$ [\ref MINIMUM_HEIGHT,
+     *                                          \ref MAXIMUM_HEIGHT]
      */
     unsigned validateHeight(unsigned height);
 
     /*!
-     * \brief Méthode de validation de la largeur.
+     * \brief Méthode de validation du score de victoire.
      *
      * Cette méthode vérifie que la valeur de l'attribut n'est pas égale à zéro.
      *
      * \param value la valeur à valider
      * \return la valeur validée
+     * \throw std::invalid_argument si
+     *              height \f$\notin\f$ [\ref MINIMUM_HEIGHT,
+     *                                          \ref MAXIMUM_HEIGHT]
      */
-    unsigned validateWidth(unsigned width);
-
     unsigned validateWinScore(unsigned winScore);
 
     unsigned validateWinLines(unsigned winLines);
@@ -242,8 +302,6 @@ private:
      * \brief Méthode plaçant une nouvelle \ref Bric en haut du \ref Board.
      */
     void generateBric(bool first = false);
-
-    void relocate(Bric & origin, Bric & destination);
 
     /*!
      * \brief Méthode permettant une translation de la brique courante dans une direction donnée.

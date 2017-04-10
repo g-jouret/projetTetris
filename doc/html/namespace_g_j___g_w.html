@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.12"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>projetTetris: GJ_GW Namespace Reference</title>
+<title>Tetris: GJ_GW Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">projetTetris
+   <div id="projectname">Tetris
    </div>
   </td>
  </tr>
@@ -101,19 +101,41 @@ Classes</h2></td></tr>
 Enumerations</h2></td></tr>
 <tr class="memitem:a2e9a1df55314c548add4bb721be86667"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_g_j___g_w.html#a2e9a1df55314c548add4bb721be86667">Direction</a> { <a class="el" href="namespace_g_j___g_w.html#a2e9a1df55314c548add4bb721be86667a684d325a7303f52e64011467ff5c5758">Direction::LEFT</a>, 
 <a class="el" href="namespace_g_j___g_w.html#a2e9a1df55314c548add4bb721be86667a21507b40c80068eda19865706fdc2403">Direction::RIGHT</a>, 
+<a class="el" href="namespace_g_j___g_w.html#a2e9a1df55314c548add4bb721be86667afbaedde498cdead4f2780217646e9ba1">Direction::UP</a>, 
 <a class="el" href="namespace_g_j___g_w.html#a2e9a1df55314c548add4bb721be86667ac4e0e4e3118472beeb2ae75827450f1f">Direction::DOWN</a>
  }<tr class="memdesc:a2e9a1df55314c548add4bb721be86667"><td class="mdescLeft">&#160;</td><td class="mdescRight">Énumération fortement typée pour représenter une direction.  <a href="namespace_g_j___g_w.html#a2e9a1df55314c548add4bb721be86667">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:a2e9a1df55314c548add4bb721be86667"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d1e7cf11499226bc17670b68d152547"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_g_j___g_w.html#a5d1e7cf11499226bc17670b68d152547">GameState</a> { <br />
+&#160;&#160;<a class="el" href="namespace_g_j___g_w.html#a5d1e7cf11499226bc17670b68d152547ab50339a10e1de285ac99d4c3990b8693">GameState::NONE</a>, 
+<a class="el" href="namespace_g_j___g_w.html#a5d1e7cf11499226bc17670b68d152547a90651ebea9a35ec4e018c8157492e17c">GameState::ON</a>, 
+<a class="el" href="namespace_g_j___g_w.html#a5d1e7cf11499226bc17670b68d152547adbaf6dcb72e493412eb5407eeb4c45ab">GameState::LOOSE</a>, 
+<a class="el" href="namespace_g_j___g_w.html#a5d1e7cf11499226bc17670b68d152547ac9b2281fa6fd403855443e6555aa16a9">GameState::SCORE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespace_g_j___g_w.html#a5d1e7cf11499226bc17670b68d152547a17b8ef2c330f1430e00c9de5469fc7e7">GameState::LINE</a>, 
+<a class="el" href="namespace_g_j___g_w.html#a5d1e7cf11499226bc17670b68d152547a346ff32eaa3c09983fb2ec057816d352">GameState::TIME</a>
+<br />
+ }<tr class="memdesc:a5d1e7cf11499226bc17670b68d152547"><td class="mdescLeft">&#160;</td><td class="mdescRight">Énumération fortement typée pour représenter l'état d'une ligne de la grille de jeu.  <a href="namespace_g_j___g_w.html#a5d1e7cf11499226bc17670b68d152547">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:a5d1e7cf11499226bc17670b68d152547"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa751ef2ffb2166a4acd0ebc431c3e3ba"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_g_j___g_w.html#aa751ef2ffb2166a4acd0ebc431c3e3ba">LineState</a> { <a class="el" href="namespace_g_j___g_w.html#aa751ef2ffb2166a4acd0ebc431c3e3baaba2b45bdc11e2a4a6e86aab2ac693cbb">LineState::EMPTY</a>, 
+<a class="el" href="namespace_g_j___g_w.html#aa751ef2ffb2166a4acd0ebc431c3e3baae8225b11842409df543692aebed34fd1">LineState::FILL</a>, 
+<a class="el" href="namespace_g_j___g_w.html#aa751ef2ffb2166a4acd0ebc431c3e3baa6328e5e3186c227a021ef2ff77e40197">LineState::BOTH</a>, 
+<a class="el" href="namespace_g_j___g_w.html#aa751ef2ffb2166a4acd0ebc431c3e3baab50339a10e1de285ac99d4c3990b8693">LineState::NONE</a>
+ }<tr class="memdesc:aa751ef2ffb2166a4acd0ebc431c3e3ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Énumération fortement typée pour représenter l'état d'une ligne de la grille de jeu.  <a href="namespace_g_j___g_w.html#aa751ef2ffb2166a4acd0ebc431c3e3ba">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:aa751ef2ffb2166a4acd0ebc431c3e3ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:acd223b01543d5d5fe2d3ae15cd908bd9"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_g_j___g_w.html#acd223b01543d5d5fe2d3ae15cd908bd9">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="class_g_j___g_w_1_1_board.html">Board</a> &amp;in)</td></tr>
-<tr class="memdesc:acd223b01543d5d5fe2d3ae15cd908bd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opérateur d'injection d'un <a class="el" href="class_g_j___g_w_1_1_board.html">Board</a> dans un flux en sortie.  <a href="#acd223b01543d5d5fe2d3ae15cd908bd9">More...</a><br /></td></tr>
-<tr class="separator:acd223b01543d5d5fe2d3ae15cd908bd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85a85d5aec0de730655e8803a3f8d85b"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_g_j___g_w.html#a85a85d5aec0de730655e8803a3f8d85b">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> &amp;in)</td></tr>
-<tr class="memdesc:a85a85d5aec0de730655e8803a3f8d85b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opérateur d'injection d'une <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> dans un flux en sortie.  <a href="#a85a85d5aec0de730655e8803a3f8d85b">More...</a><br /></td></tr>
-<tr class="separator:a85a85d5aec0de730655e8803a3f8d85b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a946df4d62efa27d88edbb208f9566eb8"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_g_j___g_w.html#a946df4d62efa27d88edbb208f9566eb8">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> &amp;in)</td></tr>
+<tr class="memdesc:a946df4d62efa27d88edbb208f9566eb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opérateur d'injection d'une <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> dans un flux en sortie.  <a href="#a946df4d62efa27d88edbb208f9566eb8">More...</a><br /></td></tr>
+<tr class="separator:a946df4d62efa27d88edbb208f9566eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33a8f58268a6c26b37421cb2ca5c316a"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_g_j___g_w.html#a33a8f58268a6c26b37421cb2ca5c316a">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="class_g_j___g_w_1_1_brics_bag.html">BricsBag</a> &amp;in)</td></tr>
+<tr class="separator:a33a8f58268a6c26b37421cb2ca5c316a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea3eb433806ba1768c242dfdcc9a9c63"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_g_j___g_w.html#aea3eb433806ba1768c242dfdcc9a9c63">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> &amp;in)</td></tr>
+<tr class="memdesc:aea3eb433806ba1768c242dfdcc9a9c63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opérateur d'injection d'une <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> dans un flux en sortie.  <a href="#aea3eb433806ba1768c242dfdcc9a9c63">More...</a><br /></td></tr>
+<tr class="separator:aea3eb433806ba1768c242dfdcc9a9c63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c569e4211b1512d9fdd4ec1bb0d42e8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_g_j___g_w.html#a1c569e4211b1512d9fdd4ec1bb0d42e8">operator==</a> (const <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> &amp;lhs, const <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> &amp;rhs)</td></tr>
 <tr class="memdesc:a1c569e4211b1512d9fdd4ec1bb0d42e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opérateur de test d'égalité de deux <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a>.  <a href="#a1c569e4211b1512d9fdd4ec1bb0d42e8">More...</a><br /></td></tr>
 <tr class="separator:a1c569e4211b1512d9fdd4ec1bb0d42e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -126,9 +148,6 @@ Functions</h2></td></tr>
 <tr class="memitem:abb809324ed233dad604bc9f6716d104c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_g_j___g_w.html#abb809324ed233dad604bc9f6716d104c">operator&gt;</a> (const <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> &amp;lhs, const <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> &amp;rhs)</td></tr>
 <tr class="memdesc:abb809324ed233dad604bc9f6716d104c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opérateur de comparaison de deux <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a>.  <a href="#abb809324ed233dad604bc9f6716d104c">More...</a><br /></td></tr>
 <tr class="separator:abb809324ed233dad604bc9f6716d104c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82481f400a65f52f6e4ead80be130736"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_g_j___g_w.html#a82481f400a65f52f6e4ead80be130736">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> &amp;in)</td></tr>
-<tr class="memdesc:a82481f400a65f52f6e4ead80be130736"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opérateur d'injection d'une <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> dans un flux en sortie.  <a href="#a82481f400a65f52f6e4ead80be130736">More...</a><br /></td></tr>
-<tr class="separator:a82481f400a65f52f6e4ead80be130736"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Espace de nom de Guillaume Jouret &amp; Guillaume Walravens. </p>
@@ -159,7 +178,81 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="a2e9a1df55314c548add4bb721be86667a21507b40c80068eda19865706fdc2403"></a>RIGHT&#160;</td><td class="fielddoc"><p>Représente la droite. </p>
 </td></tr>
+<tr><td class="fieldname"><a id="a2e9a1df55314c548add4bb721be86667afbaedde498cdead4f2780217646e9ba1"></a>UP&#160;</td><td class="fielddoc"><p>Représente le haut. </p>
+</td></tr>
 <tr><td class="fieldname"><a id="a2e9a1df55314c548add4bb721be86667ac4e0e4e3118472beeb2ae75827450f1f"></a>DOWN&#160;</td><td class="fielddoc"><p>Représente le bas. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a5d1e7cf11499226bc17670b68d152547"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d1e7cf11499226bc17670b68d152547">&sect;&nbsp;</a></span>GameState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_g_j___g_w.html#a5d1e7cf11499226bc17670b68d152547">GJ_GW::GameState</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Énumération fortement typée pour représenter l'état d'une ligne de la grille de jeu. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a5d1e7cf11499226bc17670b68d152547ab50339a10e1de285ac99d4c3990b8693"></a>NONE&#160;</td><td class="fielddoc"><p>Représente le moment où la parite n'a pas encore commencée </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5d1e7cf11499226bc17670b68d152547a90651ebea9a35ec4e018c8157492e17c"></a>ON&#160;</td><td class="fielddoc"><p>Représente une partie en cours </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5d1e7cf11499226bc17670b68d152547adbaf6dcb72e493412eb5407eeb4c45ab"></a>LOOSE&#160;</td><td class="fielddoc"><p>Représente la perte de la partie. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5d1e7cf11499226bc17670b68d152547ac9b2281fa6fd403855443e6555aa16a9"></a>SCORE&#160;</td><td class="fielddoc"><p>Représente une victoire par le score. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5d1e7cf11499226bc17670b68d152547a17b8ef2c330f1430e00c9de5469fc7e7"></a>LINE&#160;</td><td class="fielddoc"><p>Représente une victoire grâce au nombre de ligne faite. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5d1e7cf11499226bc17670b68d152547a346ff32eaa3c09983fb2ec057816d352"></a>TIME&#160;</td><td class="fielddoc"><p>Représente une victoire grâce au temps rester dans la partie sans perdre </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="aa751ef2ffb2166a4acd0ebc431c3e3ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa751ef2ffb2166a4acd0ebc431c3e3ba">&sect;&nbsp;</a></span>LineState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_g_j___g_w.html#aa751ef2ffb2166a4acd0ebc431c3e3ba">GJ_GW::LineState</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Énumération fortement typée pour représenter l'état d'une ligne de la grille de jeu. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa751ef2ffb2166a4acd0ebc431c3e3baaba2b45bdc11e2a4a6e86aab2ac693cbb"></a>EMPTY&#160;</td><td class="fielddoc"><p>représente une ligne vide. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa751ef2ffb2166a4acd0ebc431c3e3baae8225b11842409df543692aebed34fd1"></a>FILL&#160;</td><td class="fielddoc"><p>Représente une ligne remplie. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa751ef2ffb2166a4acd0ebc431c3e3baa6328e5e3186c227a021ef2ff77e40197"></a>BOTH&#160;</td><td class="fielddoc"><p>Représente une ligne n'étant ni vide ni totalement remplie. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa751ef2ffb2166a4acd0ebc431c3e3baab50339a10e1de285ac99d4c3990b8693"></a>NONE&#160;</td><td class="fielddoc"><p>Représente une ligne dont l'état n'est pas encore défini. </p>
 </td></tr>
 </table>
 
@@ -247,6 +340,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Opérateur de comparaison de deux <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a>. </p>
+<p>La comparaison se fait sur y en priorité.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lhs</td><td>le membre de gauche </td></tr>
@@ -258,52 +352,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a85a85d5aec0de730655e8803a3f8d85b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a85a85d5aec0de730655e8803a3f8d85b">&sect;&nbsp;</a></span>operator<<() <span class="overload">[1/3]</span></h2>
+<a id="aea3eb433806ba1768c242dfdcc9a9c63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea3eb433806ba1768c242dfdcc9a9c63">&sect;&nbsp;</a></span>operator<<() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::ostream&amp; GJ_GW::operator&lt;&lt; </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> &amp;&#160;</td>
-          <td class="paramname"><em>in</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Opérateur d'injection d'une <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> dans un flux en sortie. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">out</td><td>le flux en sortie </td></tr>
-    <tr><td class="paramname">in</td><td>la <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> à injecter </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>le flux après l'injection </dd></dl>
-
-</div>
-</div>
-<a id="a82481f400a65f52f6e4ead80be130736"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82481f400a65f52f6e4ead80be130736">&sect;&nbsp;</a></span>operator<<() <span class="overload">[2/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream&amp; GJ_GW::operator&lt;&lt; </td>
+          <td class="memname">std::ostream &amp; GJ_GW::operator&lt;&lt; </td>
           <td>(</td>
           <td class="paramtype">std::ostream &amp;&#160;</td>
           <td class="paramname"><em>out</em>, </td>
@@ -334,14 +390,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="acd223b01543d5d5fe2d3ae15cd908bd9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acd223b01543d5d5fe2d3ae15cd908bd9">&sect;&nbsp;</a></span>operator<<() <span class="overload">[3/3]</span></h2>
+<a id="a33a8f58268a6c26b37421cb2ca5c316a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33a8f58268a6c26b37421cb2ca5c316a">&sect;&nbsp;</a></span>operator<<() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::ostream&amp; GJ_GW::operator&lt;&lt; </td>
+          <td class="memname">std::ostream &amp; GJ_GW::operator&lt;&lt; </td>
           <td>(</td>
           <td class="paramtype">std::ostream &amp;&#160;</td>
           <td class="paramname"><em>out</em>, </td>
@@ -349,7 +405,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="class_g_j___g_w_1_1_board.html">Board</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="class_g_j___g_w_1_1_brics_bag.html">BricsBag</a> &amp;&#160;</td>
           <td class="paramname"><em>in</em>&#160;</td>
         </tr>
         <tr>
@@ -360,11 +416,39 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Opérateur d'injection d'un <a class="el" href="class_g_j___g_w_1_1_board.html">Board</a> dans un flux en sortie. </p>
+</div>
+</div>
+<a id="a946df4d62efa27d88edbb208f9566eb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a946df4d62efa27d88edbb208f9566eb8">&sect;&nbsp;</a></span>operator<<() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; GJ_GW::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> &amp;&#160;</td>
+          <td class="paramname"><em>in</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Opérateur d'injection d'une <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> dans un flux en sortie. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">out</td><td>le flux en sortie </td></tr>
-    <tr><td class="paramname">in</td><td>le <a class="el" href="class_g_j___g_w_1_1_board.html">Board</a> à injecter </td></tr>
+    <tr><td class="paramname">in</td><td>la <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> à injecter </td></tr>
   </table>
   </dd>
 </dl>
@@ -453,6 +537,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Opérateur de comparaison de deux <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a>. </p>
+<p>La comparaison se fait sur x en priorité.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lhs</td><td>le membre de gauche </td></tr>

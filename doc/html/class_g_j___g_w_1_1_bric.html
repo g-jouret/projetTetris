@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.12"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>projetTetris: GJ_GW::Bric Class Reference</title>
+<title>Tetris: GJ_GW::Bric Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">projetTetris
+   <div id="projectname">Tetris
    </div>
   </td>
  </tr>
@@ -64,7 +64,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#friends">Friends</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="class_g_j___g_w_1_1_bric-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">GJ_GW::Bric Class Reference</div>  </div>
@@ -87,9 +87,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7b37fc3b843b6f5fe6cc78fe663b6dca"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_bric.html#a7b37fc3b843b6f5fe6cc78fe663b6dca">getShape</a> () const</td></tr>
 <tr class="memdesc:a7b37fc3b843b6f5fe6cc78fe663b6dca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture de la forme de la brique.  <a href="#a7b37fc3b843b6f5fe6cc78fe663b6dca">More...</a><br /></td></tr>
 <tr class="separator:a7b37fc3b843b6f5fe6cc78fe663b6dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a704eed5c407714144ef645cec4e4cf"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_bric.html#a3a704eed5c407714144ef645cec4e4cf">getSide</a> () const</td></tr>
-<tr class="memdesc:a3a704eed5c407714144ef645cec4e4cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture de la longueur de la brique.  <a href="#a3a704eed5c407714144ef645cec4e4cf">More...</a><br /></td></tr>
-<tr class="separator:a3a704eed5c407714144ef645cec4e4cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b0b0adbf04bbb3a455db29ce3a18796"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_g_j___g_w_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_bric.html#a5b0b0adbf04bbb3a455db29ce3a18796">getMiddle</a> () const</td></tr>
+<tr class="memdesc:a5b0b0adbf04bbb3a455db29ce3a18796"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture du milieu du carré entourant la brique.  <a href="#a5b0b0adbf04bbb3a455db29ce3a18796">More...</a><br /></td></tr>
+<tr class="separator:a5b0b0adbf04bbb3a455db29ce3a18796"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dd16eb52101ee7d84dba3d6204a27f1"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_bric.html#a4dd16eb52101ee7d84dba3d6204a27f1">getHigherY</a> ()</td></tr>
+<tr class="memdesc:a4dd16eb52101ee7d84dba3d6204a27f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture de l'ordonnée de la <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> la plus haute de la brique.  <a href="#a4dd16eb52101ee7d84dba3d6204a27f1">More...</a><br /></td></tr>
+<tr class="separator:a4dd16eb52101ee7d84dba3d6204a27f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ba7a5686d06d7833706899aba707dab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_bric.html#a5ba7a5686d06d7833706899aba707dab">rotate</a> ()</td></tr>
 <tr class="memdesc:a5ba7a5686d06d7833706899aba707dab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode qui tourne la brique.  <a href="#a5ba7a5686d06d7833706899aba707dab">More...</a><br /></td></tr>
 <tr class="separator:a5ba7a5686d06d7833706899aba707dab"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -103,11 +106,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a8814b3b683cff23930ada1515a07ccd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode convertissant une <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> en std::string.  <a href="#a8814b3b683cff23930ada1515a07ccd7">More...</a><br /></td></tr>
 <tr class="separator:a8814b3b683cff23930ada1515a07ccd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:a061c859a169d8aa02da6ffb45d4142ce"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_bric.html#a061c859a169d8aa02da6ffb45d4142ce">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> &amp;in)</td></tr>
-<tr class="memdesc:a061c859a169d8aa02da6ffb45d4142ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opérateur d'injection d'une <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> dans un flux en sortie.  <a href="#a061c859a169d8aa02da6ffb45d4142ce">More...</a><br /></td></tr>
-<tr class="separator:a061c859a169d8aa02da6ffb45d4142ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a6ede2bb35abdbc0b3adc7b2326b276d5"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_bric.html#a6ede2bb35abdbc0b3adc7b2326b276d5">MAXIMUM_SIDE</a> {6}</td></tr>
+<tr class="separator:a6ede2bb35abdbc0b3adc7b2326b276d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Classe représentant une brique de <a class="el" href="class_g_j___g_w_1_1_tetris.html" title="Classe déterminant le fonctionnement d&#39;une partie de Tetris. ">Tetris</a>. </p>
@@ -138,6 +140,9 @@ Friends</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Bric::Bric </td>
@@ -147,6 +152,11 @@ Friends</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Constructeur de <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a>. </p>
@@ -188,6 +198,46 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="a4dd16eb52101ee7d84dba3d6204a27f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dd16eb52101ee7d84dba3d6204a27f1">&sect;&nbsp;</a></span>getHigherY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned Bric::getHigherY </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accesseur en lecture de l'ordonnée de la <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> la plus haute de la brique. </p>
+<dl class="section return"><dt>Returns</dt><dd>l'ordonnée du point le plus haut de la brique </dd></dl>
+
+</div>
+</div>
+<a id="a5b0b0adbf04bbb3a455db29ce3a18796"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b0b0adbf04bbb3a455db29ce3a18796">&sect;&nbsp;</a></span>getMiddle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> Bric::getMiddle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accesseur en lecture du milieu du carré entourant la brique. </p>
+<dl class="section return"><dt>Returns</dt><dd>la <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> occupant le milieu </dd></dl>
+
+</div>
+</div>
 <a id="a7b37fc3b843b6f5fe6cc78fe663b6dca"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7b37fc3b843b6f5fe6cc78fe663b6dca">&sect;&nbsp;</a></span>getShape()</h2>
 
@@ -206,26 +256,6 @@ Friends</h2></td></tr>
 <p>Accesseur en lecture de la forme de la brique. </p>
 <p>Cette méthode est nécessaire à la génération des <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> sur la grille.</p>
 <dl class="section return"><dt>Returns</dt><dd>la forme de la brique </dd></dl>
-
-</div>
-</div>
-<a id="a3a704eed5c407714144ef645cec4e4cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a704eed5c407714144ef645cec4e4cf">&sect;&nbsp;</a></span>getSide()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned Bric::getSide </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Accesseur en lecture de la longueur de la brique. </p>
-<dl class="section return"><dt>Returns</dt><dd>la taille en nombre de <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> </dd></dl>
 
 </div>
 </div>
@@ -295,9 +325,9 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Friends And Related Function Documentation</h2>
-<a id="a061c859a169d8aa02da6ffb45d4142ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a061c859a169d8aa02da6ffb45d4142ce">&sect;&nbsp;</a></span>operator<<</h2>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a6ede2bb35abdbc0b3adc7b2326b276d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ede2bb35abdbc0b3adc7b2326b276d5">&sect;&nbsp;</a></span>MAXIMUM_SIDE</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -306,45 +336,21 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> &amp;&#160;</td>
-          <td class="paramname"><em>in</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">constexpr unsigned GJ_GW::Bric::MAXIMUM_SIDE {6}</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Opérateur d'injection d'une <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> dans un flux en sortie. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">out</td><td>le flux en sortie </td></tr>
-    <tr><td class="paramname">in</td><td>la <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> à injecter </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>le flux après l'injection </dd></dl>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>model/<a class="el" href="bric_8h_source.html">bric.h</a></li>
-<li>model/bric.cpp</li>
+<li>model/<a class="el" href="bric_8cpp.html">bric.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
