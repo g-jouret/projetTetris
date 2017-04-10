@@ -22,7 +22,7 @@ int main(int argc, char *argv[]){
  * amélioration graphique (resize auto)
  * optimisation mémoire (board - itératif à la place de récursif) /!\ drop de secondes! certains rafraichissements toutes les 2 secondes au lieu d'une
  * implémentation briques perso
- * vision de la nouvelle brique
+ * améliorer vision de la nouvelle brique
  * amélioration rotation des briques
  * condition de victoire ignorable (checkbox)
  * multi-langue

@@ -77,6 +77,8 @@ public:
 
     Color getColor() const;
 
+    bool isEven() const;
+
     /*!
      * \brief Accesseur en lecture de l'ordonnée de la \ref Position la plus haute de la brique.
      * \return l'ordonnée du point le plus haut de la brique

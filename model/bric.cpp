@@ -76,6 +76,10 @@ Position Bric::getMiddle() const{
     return middle_;
 }
 
+bool Bric::isEven() const{
+    return even_;
+}
+
 Color Bric::getColor() const{
     return color_;
 }

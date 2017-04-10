@@ -7,7 +7,7 @@
 #include <QMainWindow>
 #include <QElapsedTimer>
 //#include <QTimer>
-//#include <QGridLayout>
+#include <QGridLayout>
 //#include <QLabel>
 //#include <QPushButton>
 
@@ -15,6 +15,7 @@ namespace Ui {
 class MWTetris;
 //class ConfigDialog;
 class QTimer;
+//class QGridLayout;
 }
 using namespace GJ_GW;
 
@@ -34,7 +35,7 @@ public:
 private:
     void connexion();
     void generateBoard();
-    void resetBoard();
+    void resetBoard(QGridLayout * board);
     void showNextBric();
     void endGame();
 

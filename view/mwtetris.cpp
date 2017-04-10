@@ -5,6 +5,7 @@
 #include <sstream>
 #include <QTimer>
 #include <QErrorMessage>
+//#include <QGridLayout>
 
 MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris){
     ui->setupUi(this);
@@ -36,12 +37,12 @@ MWTetris::~MWTetris() noexcept{
 void MWTetris::createGame(){
     timer_->stop();
     std::vector<unsigned> args {15,     //maximum size of player name
-                game_.MINIMUM_WIDTH, game_.MAXIMUM_WIDTH, game_.getBoard().getWidth(),
-                game_.MINIMUM_HEIGHT, game_.MAXIMUM_HEIGHT, game_.getBoard().getHeight(),
-                game_.MINIMUM_WIN_SCORE, game_.MAXIMUM_WIN_SCORE, game_.getWinScore(),
-                game_.MINIMUM_WIN_LINES, game_.MAXIMUM_WIN_LINES, game_.getWinLines(),
-                game_.MINIMUM_WIN_TIME, game_.MAXIMUM_WIN_TIME, game_.getWinTime(),
-                0, 8};      //minimum and maximum level
+                                game_.MINIMUM_WIDTH, game_.MAXIMUM_WIDTH, game_.getBoard().getWidth(),
+                                        game_.MINIMUM_HEIGHT, game_.MAXIMUM_HEIGHT, game_.getBoard().getHeight(),
+                                        game_.MINIMUM_WIN_SCORE, game_.MAXIMUM_WIN_SCORE, game_.getWinScore(),
+                                        game_.MINIMUM_WIN_LINES, game_.MAXIMUM_WIN_LINES, game_.getWinLines(),
+                                        game_.MINIMUM_WIN_TIME, game_.MAXIMUM_WIN_TIME, game_.getWinTime(),
+                                        0, 8};      //minimum and maximum level
     ConfigDialog cd (game_.getPlayer().getName(), args, this);
     cd.setWindowTitle("Configuration de la partie");
     int ret = cd.exec();
@@ -79,7 +80,7 @@ void MWTetris::generateBoard(){
     for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
         QLabel * lb = new QLabel();
 
-        std::stringstream stream;
+        /*std::stringstream stream;
         stream << "#" << std::hex;
         if(it->second.getCode().at(0)/10 == 0)
             stream << 0;
@@ -89,27 +90,67 @@ void MWTetris::generateBoard(){
         stream << it->second.getCode().at(1);
         if(it->second.getCode().at(2)/10 == 0)
             stream << 0;
-        stream << it->second.getCode().at(2);
+        stream << it->second.getCode().at(2);*/
+        QColor color(it->second.getCode().at(0),
+                     it->second.getCode().at(1),
+                     it->second.getCode().at(2));
         lb->setStyleSheet("QLabel{"
                           "width: 20px;"
                           "height: 20px;"
-                          "background-color : "+ QString::fromStdString(stream.str()) +";"
+                          //"background-color : "+ QString::fromStdString(stream.str()) +";"
+                          "background-color : "+ color.name() +";"
                           "}");
         ui->boardGrid->addWidget(lb, it->first.getY(), it->first.getX(), 1, 1);
     }
 }
 
-void MWTetris::resetBoard(){
+void MWTetris::resetBoard(QGridLayout * board){
     QLayoutItem *child;
-    while((child = ui->boardGrid->takeAt(0)) != 0){
+    while((child = board->takeAt(0)) != 0){
         delete child->widget();
     }
 }
 
 void MWTetris::showNextBric(){
-    Bric theBric = game_.getCurrentBric();
-    for(auto it = theBric.getShape().begin(); it != theBric.getShape().end(); ++it){
-// TODO implémentation
+    Bric theBric = game_.getNextBric();
+    unsigned side = (theBric.isEven())? (theBric.getMiddle().getX()*2)+2 : (theBric.getMiddle().getX()*2)+1;
+    for(unsigned u {0}; u < side; ++u){
+        for(unsigned v {0}; v < side; ++v){
+            QLabel * lb = new QLabel();
+
+            /*std::stringstream stream;
+            stream << "#" << std::hex;
+            Position temp = Position(u, v);
+            if(theBric.contains(temp)){
+                if(theBric.getColor().getCode().at(0)/10 == 0)
+                    stream << 0;
+                stream << theBric.getColor().getCode().at(0);
+                if(theBric.getColor().getCode().at(1)/10 == 0)
+                    stream << 0;
+                stream << theBric.getColor().getCode().at(1);
+                if(theBric.getColor().getCode().at(2)/10 == 0)
+                    stream << 0;
+                stream << theBric.getColor().getCode().at(2);
+            } else{
+                stream << 0xffffff;
+            }*/
+            Position temp = Position(u, v);
+            QColor color;
+            if(theBric.contains(temp)){
+                color = QColor(theBric.getColor().getCode().at(0),
+                         theBric.getColor().getCode().at(1),
+                         theBric.getColor().getCode().at(2));
+            } else{
+                color= QColor(255,255,255);
+            }
+            lb->setStyleSheet("QLabel{"
+                              "width: 20px;"
+                              "height: 20px;"
+                              //"background-color : "+ QString::fromStdString(stream.str()) +";"
+                              "background-color : "+ color.name() +";"
+                              "}");
+            ui->boardNext->addWidget(lb, v, u, 1, 1);
+        }
     }
 }
 
@@ -150,9 +191,10 @@ void MWTetris::update(Subject *){
         ui->lbPlayerLines->setText(QString::number(game_.getPlayer().getNbLines()) + "/" + QString::number(game_.getWinLines()));
         if(timer_->interval() != game_.getTimer())
             timer_->setInterval(game_.getTimer());
-        resetBoard();
+        resetBoard(ui->boardGrid);
+        resetBoard(ui->boardNext);
         generateBoard();
-        //showNextBric();
+        showNextBric();
         break;
     case GameState::LOOSE:
         ui->lbEnd->setText(QString::fromStdString("Vous avez PERDU"));

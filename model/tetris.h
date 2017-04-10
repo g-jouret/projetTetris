@@ -188,6 +188,8 @@ public:
      */
     Board getBoard() const;
 
+    Bric getNextBric() const;
+
     /*!
      * \brief Accesseur en lecture de la \ref Bric courante.
      * \return la brique courante

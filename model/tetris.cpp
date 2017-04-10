@@ -29,6 +29,10 @@ Player Tetris::getPlayer() const{
     return player_;
 }
 
+Bric Tetris::getNextBric() const{
+    return bag_.getNextBric();
+}
+
 Bric Tetris::getCurrentBric() const{
     return currentBric_;
 }
