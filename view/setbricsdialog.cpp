@@ -11,7 +11,7 @@ SetBricsDialog::SetBricsDialog(QWidget *parent) :
     ui(new Ui::SetBricsDialog)
 {
     ui->setupUi(this);
-    //connect(ui->buttonBox, )
+    ui->checkBox->setText("Voulez-vous conserver le sac de brique actuel?");
     checked_ = std::vector<std::vector<bool>> (6, std::vector<bool>(6,0));
     generateGrid(true);
 }
@@ -23,6 +23,10 @@ SetBricsDialog::~SetBricsDialog()
 
 std::vector<Position> SetBricsDialog::getSaved() const{
     return saved_;
+}
+
+bool SetBricsDialog::isKeepingBag() const{
+    return ui->checkBox->isChecked();
 }
 
 void SetBricsDialog::generateGrid(bool first){
@@ -86,7 +90,7 @@ void SetBricsDialog::save(){
     for(unsigned u {0}; u < 6; ++u){
         for(unsigned v {0}; v < 6; ++v){
             if(checked_[v][u]){
-                Position pos = Position(v, u);
+                Position pos = Position(u, v);
                 saved_.push_back(pos);
             }
         }

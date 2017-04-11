@@ -14,6 +14,7 @@ class ConfigDialog : public QDialog
 {
     Q_OBJECT
     std::vector<Bric> brics_;
+    bool keepBag_;
 
 public:
     explicit ConfigDialog(std::string name, std::vector<unsigned> args, QWidget *parent = 0);
@@ -27,6 +28,7 @@ public:
     unsigned getWinTime() const;
     unsigned getLevel() const;
     std::vector<Bric> getBrics() const;
+    bool isKeepingBag() const;
 
 private:
     Ui::ConfigDialog *ui;

@@ -8,7 +8,7 @@ ConfigDialog::ConfigDialog(std::string name, std::vector<unsigned> args, QWidget
     ui(new Ui::ConfigDialog)
 {
     ui->setupUi(this);
-
+    keepBag_ = true;
     connect(ui->bricSetter, &QPushButton::clicked, this, &ConfigDialog::setBrics);
 
     ui->leName->setText(QString::fromStdString(name));
@@ -77,6 +77,10 @@ std::vector<Bric> ConfigDialog::getBrics() const{
     return brics_;
 }
 
+bool ConfigDialog::isKeepingBag() const{
+    return keepBag_;
+}
+
 void ConfigDialog::setBrics(){
     SetBricsDialog newBric (this);
     newBric.setWindowTitle("Éditeur de brique");
@@ -84,6 +88,7 @@ void ConfigDialog::setBrics(){
     if(ret == QDialog::Rejected) return;
     std::vector<Position> bric = newBric.getSaved();
     brics_.push_back(Bric(bric, Color(std::vector<unsigned>{29,69,19})));
+    keepBag_ = newBric.isKeepingBag();
 }
 
 QTime ConfigDialog::convertUnsToTime(unsigned time){

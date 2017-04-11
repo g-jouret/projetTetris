@@ -54,7 +54,7 @@ void MWTetris::createGame(){
         name = (cd.getName().empty())? game_.getPlayer().getName() : cd.getName();
         try{
             if(cd.getBrics().size() != 0){
-                game_.setBag(cd.getBrics(),0);
+                game_.setBag(cd.getBrics(), cd.isKeepingBag());
             }
             game_.startGame(name, cd.getWidth(), cd.getHeight(),
                             cd.getWinScore(), cd.getWinLines(), cd.getWinTime(),
