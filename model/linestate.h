@@ -10,7 +10,6 @@ namespace GJ_GW{
  * \brief Énumération fortement typée pour représenter l'état d'une ligne de la grille de jeu.
  */
 enum class LineState{
-
     /*! représente une ligne vide. */
     EMPTY,
     /*! Représente une ligne remplie. */
@@ -24,4 +23,3 @@ enum class LineState{
 } // namespace GJ_GW
 
 #endif // LINESTATE
-

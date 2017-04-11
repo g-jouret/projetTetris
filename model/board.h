@@ -3,7 +3,6 @@
 
 #include "position.h"
 #include "color.h"
-//#include "linestate.h"
 #include <map>
 
 /*!
@@ -40,7 +39,6 @@ class Board{
      */
 
 public:
-
     /*!
      * \brief Constructeur de \ref Board.
      *
@@ -88,14 +86,6 @@ public:
     void swapCase(Position &pos, Color color);
 
     /*!
-     * \brief Accesseur en lecture d'une ligne de la grille de jeu.
-     *
-     * \param lineNum le numéro de la ligne à sélectionner
-     * \return la ligne sélectionnée
-     */
-    //std::map<Position, bool> getLine(unsigned lineNum) const;
-
-    /*!
      * \brief Méthode vérifiant l'état d'une ligne de la grille de jeu.
      *
      * Cette méthode vérifie si les \ref Position d'une ligne de la grille
@@ -106,6 +96,7 @@ public:
      */
     unsigned checkColumn(unsigned y = 0);
 
+private:
     /*!
      * \brief Méthode qui vide les lignes remplies et ré-aligne la grille de jeu.
      *
@@ -114,15 +105,6 @@ public:
      */
     unsigned gridActualisation(unsigned lineNum);
 
-    /*!
-     * \brief Méthode convertissant un \ref Board en std::string.
-     *
-     * \return une représentation de la grille de jeu sous la forme d'une std::string
-     */
-    //std::string to_string() const;
-
-private:
-    //bool contains(unsigned & x, unsigned & y) const;
     /*!
      * \brief Méthode vérifiant si la position donnée est incluse dans la grille de jeu.
      *
@@ -133,7 +115,7 @@ private:
 
     bool checkCase(unsigned & x, unsigned & y) const;
 
-    LineState checkRow(unsigned x, unsigned &y, LineState &state);
+    LineState checkRow(unsigned &y);
 
     /*!
      * \brief Méthode changeant l'état de toutes les \ref Position d'une ligne.
@@ -152,19 +134,7 @@ private:
      * \param lineNb le nombre de case que la ligne doit descendre
      */
     void moveLine(unsigned y, unsigned lineNb);
-
 };
-
-//prototypes
-
-/*!
- * \brief Opérateur d'injection d'un \ref Board dans un flux en sortie.
- *
- * \param out le flux en sortie
- * \param in le \ref Board à injecter
- * \return le flux après l'injection
- */
-//std::ostream & operator<<(std::ostream & out, const Board & in);
 
 } // namespace GJ_GW
 

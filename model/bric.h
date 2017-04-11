@@ -1,12 +1,9 @@
-
 #ifndef BRIC_H
 #define BRIC_H
 
-//#include "direction.h"
 #include "position.h"
 #include "color.h"
 #include <vector>
-//#include <algorithm>
 
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
@@ -22,10 +19,8 @@ enum class Direction;
  * et sa longueur est connue.
  */
 class Bric{
-public:
     constexpr static unsigned MAXIMUM_SIDE {6};
 
-private:
     std::vector<Position> shape_;
     /*!< La forme de la brique.
      *
@@ -40,7 +35,6 @@ private:
     bool even_;
 
 public:
-
     /*!
      * \brief Constructeur sans argument de \ref Bric.
      *
@@ -107,10 +101,7 @@ public:
      */
     bool contains(Position &pos) const;
 
-    /*!
-     * \brief Méthode convertissant une \ref Bric en std::string.
-     * \return une représentation d'une brique sous la forme d'une std::string
-     */
+    // NOTE : à enlever
     std::string to_string() const;
 
 private:
@@ -123,14 +114,7 @@ private:
     std::string message() const;
 };
 
-//prototypes
-
-/*!
- * \brief Opérateur d'injection d'une \ref Bric dans un flux en sortie.
- * \param out le flux en sortie
- * \param in la \ref Bric à injecter
- * \return le flux après l'injection
- */
+// NOTE : à enlever
 std::ostream & operator<<(std::ostream & out, const Bric & in);
 
 } // namespace GJ_GW

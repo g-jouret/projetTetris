@@ -10,18 +10,16 @@ namespace Ui {
 class SetBricsDialog;
 }
 
-using namespace GJ_GW;
-
 class SetBricsDialog : public QDialog
 {
     Q_OBJECT
-    std::vector<Position> saved_;
+    std::vector<GJ_GW::Position> saved_;
     std::vector<std::vector<bool>> checked_;
 
 public:
     explicit SetBricsDialog(QWidget *parent = 0);
     ~SetBricsDialog();
-    std::vector<Position> getSaved() const;
+    std::vector<GJ_GW::Position> getSaved() const;
     bool isKeepingBag() const;
 
 private:

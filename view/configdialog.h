@@ -8,18 +8,15 @@ namespace Ui {
 class ConfigDialog;
 }
 
-using namespace GJ_GW;
-
 class ConfigDialog : public QDialog
 {
     Q_OBJECT
-    std::vector<Bric> brics_;
+    std::vector<GJ_GW::Bric> brics_;
     bool keepBag_;
 
 public:
     explicit ConfigDialog(std::string name, std::vector<unsigned> args, QWidget *parent = 0);
     ~ConfigDialog();
-
     std::string getName() const;
     unsigned getWidth() const;
     unsigned getHeight() const;
@@ -27,7 +24,7 @@ public:
     unsigned getWinLines() const;
     unsigned getWinTime() const;
     unsigned getLevel() const;
-    std::vector<Bric> getBrics() const;
+    std::vector<GJ_GW::Bric> getBrics() const;
     bool isKeepingBag() const;
 
 private:

@@ -12,7 +12,6 @@ namespace GJ_GW{
  * \brief Classe représentant le sac de briques du joueur.
  */
 class BricsBag{
-
     std::vector<Bric> brics_;
     /*!< Les briques contenues dans le sac.
      *
@@ -20,7 +19,6 @@ class BricsBag{
      */
 
 public:
-
     /*!
      * \brief Constructeur sans argument de \ref BricsBag.
      *
@@ -54,9 +52,11 @@ public:
      */
     void shuffle(bool first);
 
+    // NOTE : à enlever
     std::string to_string() const;
 };
 
+// NOTE : à enlever
 std::ostream & operator<<(std::ostream & out, const BricsBag & in);
 
 } // namespace GJ_GW

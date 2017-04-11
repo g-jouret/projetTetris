@@ -9,11 +9,6 @@ Bric::Bric(){}
 Bric::Bric(std::vector<Position> &shape, Color color){
     shape_ = validate(shape);
     color_ = color;
-
-    std::cout << ", "
-              << this->to_string()
-              << std::endl;
-
 }
 
 std::vector<Position> Bric::validate(std::vector<Position> shape){
@@ -46,7 +41,7 @@ std::vector<Position> Bric::validate(std::vector<Position> shape){
     std::sort(tempY.begin(), tempY.end());
     tempY.erase(std::unique(tempY.begin(), tempY.end()), tempY.end());
     unsigned sideY = tempY.size();
-    if(sideX > 6 || sideX < sideY){
+    if(sideX > MAXIMUM_SIDE || sideX < sideY){
         throw std::invalid_argument(message());
     }
     if(sideX % 2 == 0){
@@ -56,10 +51,6 @@ std::vector<Position> Bric::validate(std::vector<Position> shape){
         even_ = 0;
         middle_ = Position(sideX/2, sideX/2);
     }
-
-    std::cout << "side : "
-              << sideX;
-
     return shape;
 }
 
@@ -148,11 +139,8 @@ void Bric::rotate(){
         midY += 0.5;
     }
     for(unsigned u {0}; u < shape_.size(); ++u){
-        shape_.at(u) = Position (
-                    //middle_.getX() - shape_.at(u).getY() + middle_.getY(),
-                    //middle_.getY() + shape_.at(u).getX() - middle_.getX());
-                    midX - shape_.at(u).getY() + midY, midY + shape_.at(u).getX() - midX);
-
+        shape_.at(u) = Position (midX - shape_.at(u).getY() + midY,
+                                 midY + shape_.at(u).getX() - midX);
     }
 }
 

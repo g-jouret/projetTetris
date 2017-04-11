@@ -15,7 +15,6 @@ namespace GJ_GW{
  * qu'il a rempli au cours de la partie
  */
 class Player{
-
     std::string name_;
     /*!< Le nom du joueur. */
 
@@ -29,7 +28,6 @@ class Player{
     /*!< Le nombre de lignes réalisées par le joueur */
 
 public:
-
     /*!
      * \brief Constructeur de \ref Player.
      *

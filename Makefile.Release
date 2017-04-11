@@ -870,8 +870,7 @@ release/mwtetris.o: view/mwtetris.cpp view/mwtetris.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qtimer.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qbasictimer.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QErrorMessage \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qerrormessage.h \
-		view/display.h
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qerrormessage.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mwtetris.o view\mwtetris.cpp
 
 release/tetris.o: model/tetris.cpp model/tetris.h \

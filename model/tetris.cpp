@@ -4,9 +4,9 @@
 
 using namespace GJ_GW;
 
-Tetris::Tetris(std::string &name): timer_ {MAXIMUM_TIMER}, winScore_{validateWinScore(1000)}, winLines_{validateWinLines(10)},
-    winTime_{validateWinTime(300000)}, gameState_{GameState::NONE}, player_{Player(name)},
-    board_{Board(validateWidth(10), validateHeight(20))}
+Tetris::Tetris(std::string &name): timer_ {MAXIMUM_TIMER}, winScore_{validateWinScore(1000)},
+    winLines_{validateWinLines(10)}, winTime_{validateWinTime(300000)}, gameState_{GameState::NONE},
+    player_{Player(name)}, board_{Board(validateWidth(10), validateHeight(20))}
 {}
 
 unsigned Tetris::getTimer() const{
@@ -33,10 +33,6 @@ Bric Tetris::getNextBric() const{
     return bag_.getNextBric();
 }
 
-Bric Tetris::getCurrentBric() const{
-    return currentBric_;
-}
-
 Board Tetris::getBoard() const{
     return board_;
 }
@@ -53,9 +49,9 @@ void Tetris::setBag(std::vector<Bric> newBag, bool keepBag){
     }
 }
 
-void Tetris::startGame(std::string name, unsigned width,
-                       unsigned height, unsigned winScore, unsigned winLines,
-                       unsigned winTime, unsigned level){
+void Tetris::startGame(std::string name, unsigned width, unsigned height,
+                       unsigned winScore, unsigned winLines, unsigned winTime,
+                       unsigned level){
     gameState_ = GameState::NONE;
     timer_ = MAXIMUM_TIMER;
     for(unsigned u {0}; u < level; ++u){
@@ -168,10 +164,8 @@ bool Tetris::checkMove(Direction dir, unsigned dropsCount){
 void Tetris::checkRotate(){
     bool ok {1};
     unsigned count {0};
-
     Bric destination = currentBric_;
     destination.rotate();
-
     while(ok && count < destination.getShape().size()){
         if(! currentBric_.contains(destination.getShape().at(count))){
             ok = board_.checkCase(destination.getShape().at(count));
@@ -187,9 +181,7 @@ void Tetris::rotateBric(){
     for(Position p : currentBric_.getShape()){
         board_.swapCase(p, Color());
     }
-
     currentBric_.rotate();
-
     for(Position p : currentBric_.getShape()){
         board_.swapCase(p, currentBric_.getColor());
     }
@@ -220,7 +212,6 @@ void Tetris::checkLines(unsigned top, unsigned dropsCount){
         setGameState(GameState::LINE);
     }
     notifyObservers();
-
 }
 
 void Tetris::setGameState(GameState gameState){

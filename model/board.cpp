@@ -38,42 +38,36 @@ bool Board::checkCase(unsigned &x, unsigned &y) const{
 }
 
 unsigned Board::checkColumn(unsigned y){
-    LineState state {LineState::NONE};
     unsigned u {height_-1};
     if(y > u){
         throw std::invalid_argument("la ligne est hors de la grille");
     }
-    state = checkRow(0u, u, state);
-
+    LineState state {checkRow(u)};
     while(state != LineState::FILL && u > y){
         --u;
-        state = LineState::NONE;
-        state = checkRow(0, u, state);
+        state = checkRow(u);
     }
     if(state == LineState::FILL){
         u = gridActualisation(u);
     } else{
         u = 0;
     }
-
     return u;
 }
 
-LineState Board::checkRow(unsigned x, unsigned & y, LineState & state){
-    if(state == LineState::NONE){
-        if(checkCase(x,y)){
-            state = LineState::EMPTY;
-        } else{
-            state = LineState::FILL;
-        }
-    }
-    if((state == LineState::FILL && checkCase(x,y)) || (state == LineState::EMPTY && ! checkCase(x,y))){
-        state = LineState::BOTH;
+LineState Board::checkRow(unsigned & y){
+    LineState state {LineState::NONE};
+    unsigned count {0};
+    if(checkCase(count, y)){
+        state = LineState::EMPTY;
     } else{
-        if(x < width_-1){
-            ++x;
-            checkRow(x, y, state);
+        state = LineState::FILL;
+    }
+    while(state != LineState::BOTH && count < width_){
+        if((state == LineState::FILL && checkCase(count, y)) || (state == LineState::EMPTY && ! checkCase(count, y))){
+            state = LineState::BOTH;
         }
+        ++count;
     }
     return state;
 }
@@ -106,9 +100,8 @@ unsigned Board::gridActualisation(unsigned lineNum){
     LineState state;
     EmptyRow(lineNum);
     do {
-        state = LineState::NONE;
         --lineNum;
-        state = checkRow(0, lineNum, state);
+        state = checkRow(lineNum);
         if(state == LineState::FILL){
             ++lineCount;
             EmptyRow(lineNum);
@@ -118,20 +111,3 @@ unsigned Board::gridActualisation(unsigned lineNum){
     } while(state != LineState::EMPTY && lineNum != 0);
     return lineCount;
 }
-
-/*std::string Board::to_string() const{
-    std::string s {""};
-    for(auto it {grid_.begin()}; it != grid_.end(); ++it){
-        if(it->second){
-            s += it->first.to_string();
-        }
-    }
-    return s;
-}
-namespace GJ_GW {
-std::ostream & operator<<(std::ostream & out, const Board & in){
-    out << in.to_string();
-    return out;
-}
-}
-*/

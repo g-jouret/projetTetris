@@ -5,7 +5,8 @@
 #include <sstream>
 #include <QTimer>
 #include <QErrorMessage>
-#include "display.h"
+
+using namespace GJ_GW;
 
 MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris){
     ui->setupUi(this);
@@ -25,7 +26,6 @@ MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{ga
     connect(time_, SIGNAL(timeout()), this, SLOT(time()));
     timer_ = new QTimer(this);
     connect(timer_, SIGNAL(timeout()), this, SLOT(next()));
-
     game_.addObserver(this);
     update(&game_);
 }
@@ -62,7 +62,6 @@ void MWTetris::createGame(){
             chrono_.restart();
             time_->start(1000);
             timer_->start(game_.getTimer());
-
             ui->lbEnd->hide();
             ui->btnUp->setEnabled(true);
             ui->btnDown->setEnabled(true);
@@ -101,8 +100,8 @@ void MWTetris::generateBoard(){
     for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
         QLabel * lb = new QLabel();
         QColor border((it->second.getCode().at(0) <= 30)? 0 : it->second.getCode().at(0)-30,
-                              it->second.getCode().at(1),
-                              it->second.getCode().at(2));
+                      it->second.getCode().at(1),
+                      it->second.getCode().at(2));
         QColor color(it->second.getCode().at(0),
                      it->second.getCode().at(1),
                      it->second.getCode().at(2));
@@ -112,7 +111,7 @@ void MWTetris::generateBoard(){
                           "border-style: outset;"
                           "border-width:5px;"
                           "border-color:"+border.name()+";"
-                          "background-color : "+ color.name() +";}");
+                                                        "background-color : "+ color.name() +";}");
         ui->boardGrid->addWidget(lb, it->first.getY(), it->first.getX(), 1, 1);
     }
 }
@@ -148,9 +147,9 @@ void MWTetris::showNextBric(){
                               "width: 20px;"
                               "height: 20px;"
                               /* NOTE : cf ci-dessus
-                               * "border-style: outset;"
-                              "border-width:5px;"
-                              "border-color:"+border.name()+";"*/
+                                                                   * "border-style: outset;"
+                                                                  "border-width:5px;"
+                                                                  "border-color:"+border.name()+";"*/
                               "background-color : "+ color.name() +";}");
             ui->boardNext->addWidget(lb, v, u, 1, 1);
         }
@@ -240,7 +239,6 @@ void MWTetris::time(){
     if(sec < 10)
         lb.append("0");
     lb.append(QString::number(sec));
-
     ui->lbTime->setText(lb);
 }
 

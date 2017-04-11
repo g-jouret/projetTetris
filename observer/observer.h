@@ -20,7 +20,6 @@ public:
     virtual void update(Subject * subject) = 0;
 
     virtual ~Observer() = default;
-
 };
 
 } // namespace GJ_GW

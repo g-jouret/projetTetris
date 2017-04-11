@@ -23,6 +23,7 @@ int main(int argc, char *argv[]){
  * amélioration graphique (resize auto)
  * amélioration rotation des briques
  * condition de victoire ignorable (checkbox)
+ * choix couleur brique perso (qcolordialog)
  * optimisation mémoire (board - itératif à la place de récursif) /!\ drop de secondes! certains rafraichissements toutes les 2 secondes au lieu d'une
  * pause / stopper temps (save elapsed, delete => pointeur?)
  * multi-langue

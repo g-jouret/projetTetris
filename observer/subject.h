@@ -1,7 +1,6 @@
 #ifndef SUBJECT_H
 #define SUBJECT_H
 
-//#include "observer.h"
 #include <set>
 
 /*!
@@ -15,6 +14,10 @@ class Observer;
  * \brief Classe abstraite représentant un sujet d'observation du Design Pattern Observer.
  */
 class Subject{
+protected:
+    std::set<Observer *> observers_;
+    /*!< La liste des \ref Observer de \ref Subject. */
+
 public:
     virtual ~Subject() = default;
 
@@ -38,10 +41,6 @@ protected:
      * de faire une mise à jour des données.
      */
     virtual void notifyObservers();
-
-protected:
-    std::set<Observer *> observers_;
-    /*!< La liste des \ref Observer de \ref Subject. */
 };
 
 } // namespace GJ_GW

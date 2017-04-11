@@ -70,13 +70,8 @@ public:
 
     bool isAdjacent(const Position & other);
 
-    /*!
-     * \brief Méthode convertissant une \ref Position en std::string.
-     *
-     * \return une représentation d'une position sous la forme d'une std::string
-     */
+    // NOTE : à enlever
     std::string to_string() const;
-
 };
 
 //prototypes
@@ -119,13 +114,7 @@ inline bool operator<(const Position & lhs, const Position & rhs);
  */
 inline bool operator>(const Position & lhs, const Position & rhs);
 
-/*!
- * \brief Opérateur d'injection d'une \ref Position dans un flux en sortie.
- *
- * \param out le flux en sortie
- * \param in la \ref Position à injecter
- * \return le flux après l'injection
- */
+// NOTE : à enlever
 std::ostream & operator<<(std::ostream & out, const Position & in);
 
 //implémentations inline

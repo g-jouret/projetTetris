@@ -2,11 +2,10 @@
 #include "ui_configdialog.h"
 #include "setbricsdialog.h"
 
+using namespace GJ_GW;
 
-ConfigDialog::ConfigDialog(std::string name, std::vector<unsigned> args, QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::ConfigDialog)
-{
+ConfigDialog::ConfigDialog(std::string name, std::vector<unsigned> args, QWidget *parent):
+    QDialog(parent), ui(new Ui::ConfigDialog){
     ui->setupUi(this);
     keepBag_ = true;
     connect(ui->bricSetter, &QPushButton::clicked, this, &ConfigDialog::setBrics);
@@ -40,8 +39,7 @@ ConfigDialog::ConfigDialog(std::string name, std::vector<unsigned> args, QWidget
     ui->sbLevel->setValue(args.at(16));
 }
 
-ConfigDialog::~ConfigDialog()
-{
+ConfigDialog::~ConfigDialog(){
     delete ui;
 }
 

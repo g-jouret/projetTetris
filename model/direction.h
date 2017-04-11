@@ -10,7 +10,6 @@ namespace GJ_GW{
  * \brief Énumération fortement typée pour représenter une direction.
  */
 enum class Direction{
-
     /*! Représente la gauche. */
     LEFT,
     /*! Représente la droite. */

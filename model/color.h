@@ -12,7 +12,6 @@ namespace GJ_GW{
  * \brief Classe représentant la couleur d'une case de la grille.
  */
 class Color{
-
     std::vector<unsigned> code_;
 
 public:

@@ -12,7 +12,6 @@ BricsBag::BricsBag(){
     std::vector<Position> bricJ {Position(0,0),Position(0,1),Position(1,1),Position(2,1)};
     std::vector<Position> bricZ {Position(0,0),Position(1,0),Position(1,1),Position(2,1)};
     std::vector<Position> bricS {Position(2,0),Position(1,0),Position(1,1),Position(0,1)};
-
     brics_.push_back(Bric(bricI, Color(std::vector<unsigned> {130,180,190})));
     brics_.push_back(Bric(bricO, Color(std::vector<unsigned> {255,215,0})));
     brics_.push_back(Bric(bricT, Color(std::vector<unsigned> {128,0,128})));

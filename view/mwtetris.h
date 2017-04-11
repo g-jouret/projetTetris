@@ -9,23 +9,19 @@
 
 namespace Ui {
 class MWTetris;
-//class ConfigDialog;
 class QTimer;
-//class QGridLayout;
 }
-using namespace GJ_GW;
 
 class MWTetris : public QMainWindow, public GJ_GW::Observer{
     Q_OBJECT
-    Tetris game_;
-
+    GJ_GW::Tetris game_;
     Ui::MWTetris *ui;
     QElapsedTimer chrono_;
     QTimer * time_;
     QTimer * timer_;
 
 public:
-    explicit MWTetris(Tetris game, QWidget *parent = 0);
+    explicit MWTetris(GJ_GW::Tetris game, QWidget *parent = 0);
     void update(GJ_GW::Subject *);
     ~MWTetris() noexcept;
 

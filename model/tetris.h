@@ -29,14 +29,6 @@ namespace GJ_GW{
  */
 class Tetris : public Subject{
 public:
-    constexpr static unsigned MINIMUM_TIMER {200};
-    /*!< Valeur minimale acceptée pour le timer. */
-
-    constexpr static unsigned MAXIMUM_TIMER {1600};
-    /*!< Valeur maximale acceptée pour le timer. */
-
-    //constexpr static unsigned MAXIMUM_SIZE_NAME {15};
-
     constexpr static unsigned MINIMUM_WIDTH {6};
     /*!< Valeur minimale acceptée pour la largeur. */
 
@@ -68,6 +60,12 @@ public:
     /*!< Valeur maximale acceptée pour le temps de victoire. */
 
 private:
+    constexpr static unsigned MINIMUM_TIMER {200};
+    /*!< Valeur minimale acceptée pour le timer. */
+
+    constexpr static unsigned MAXIMUM_TIMER {1600};
+    /*!< Valeur maximale acceptée pour le timer. */
+
     unsigned timer_;
     /*!< Le timer.
      *
@@ -120,7 +118,6 @@ private:
      */
 
 public:
-
     /*!
      * \brief Constructeur sans argument de \ref Tetris.
      *
@@ -191,12 +188,6 @@ public:
     Bric getNextBric() const;
 
     /*!
-     * \brief Accesseur en lecture de la \ref Bric courante.
-     * \return la brique courante
-     */
-    Bric getCurrentBric() const;
-
-    /*!
      * \brief Accesseur en lecture du \ref GameState.
      * \return l'état du jeu
      */
@@ -242,14 +233,6 @@ public:
     void next(unsigned timeElapsed);
 
 private:
-
-    /*!
-     * \brief Méthode permettant de changer le nom du \ref Player et de remettre à zéro
-     * le compteur de lignes remplies et le score.
-     * \param name le nom du joueur
-     */
-    void setPlayer(std::string name);
-
     // TODO : continuer doc
 
     /*!
@@ -344,7 +327,6 @@ private:
      * \brief Méthode modifiant le niveau de difficulté en fonction du nombre de lignes remplies par le joueur.
      */
     void setLevel();
-
 };
 
 } // namespace GJ_GW
