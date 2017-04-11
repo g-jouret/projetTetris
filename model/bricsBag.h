@@ -35,7 +35,7 @@ public:
      */
     explicit BricsBag(std::vector<Bric> &brics);
 
-    void add(Bric & bric);
+    void add(std::vector<Bric> &newBrics);
 
     /*!
      * \brief Accesseur en lecture de la prochaine brique du sac.

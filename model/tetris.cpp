@@ -45,14 +45,11 @@ GameState Tetris::getGameState() const{
     return gameState_;
 }
 
-void Tetris::setBag(std::vector<Position> shape, Color color, bool keepBag){
-    Bric bric = Bric(shape, color);
+void Tetris::setBag(std::vector<Bric> newBag, bool keepBag){
     if(keepBag){
-        bag_.add(bric);
+        bag_.add(newBag);
     } else{
-        std::vector<Bric> firstBric;
-        firstBric.push_back(bric);
-        bag_ = BricsBag(firstBric);
+        bag_ = BricsBag(newBag);
     }
 }
 

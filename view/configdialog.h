@@ -2,14 +2,18 @@
 #define CONFIGDIALOG_H
 
 #include <QDialog>
+#include "model/bric.h"
 
 namespace Ui {
 class ConfigDialog;
 }
 
+using namespace GJ_GW;
+
 class ConfigDialog : public QDialog
 {
     Q_OBJECT
+    std::vector<Bric> brics_;
 
 public:
     explicit ConfigDialog(std::string name, std::vector<unsigned> args, QWidget *parent = 0);
@@ -22,6 +26,7 @@ public:
     unsigned getWinLines() const;
     unsigned getWinTime() const;
     unsigned getLevel() const;
+    std::vector<Bric> getBrics() const;
 
 private:
     Ui::ConfigDialog *ui;

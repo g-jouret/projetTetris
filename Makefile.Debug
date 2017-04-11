@@ -245,6 +245,9 @@ debug/moc_configdialog.cpp: C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
+		model/bric.h \
+		model/position.h \
+		model/color.h \
 		view/configdialog.h \
 		C:/Qt/5.7/mingw53_32/bin/moc.exe
 	C:\Qt\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/5.7/mingw53_32/mkspecs/win32-g++ -I"D:/GJouret/Documents/ESI/Bloc 2/CPP/projetTetris" -IC:/Qt/5.7/mingw53_32/include -IC:/Qt/5.7/mingw53_32/include/QtWidgets -IC:/Qt/5.7/mingw53_32/include/QtGui -IC:/Qt/5.7/mingw53_32/include/QtANGLE -IC:/Qt/5.7/mingw53_32/include/QtCore -IC:/Qt/Qt5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward view\configdialog.h -o debug\moc_configdialog.cpp
@@ -468,6 +471,10 @@ debug/moc_setbricsdialog.cpp: C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QLabel \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlabel.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qframe.h \
+		model/position.h \
 		view/setbricsdialog.h \
 		C:/Qt/5.7/mingw53_32/bin/moc.exe
 	C:\Qt\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/5.7/mingw53_32/mkspecs/win32-g++ -I"D:/GJouret/Documents/ESI/Bloc 2/CPP/projetTetris" -IC:/Qt/5.7/mingw53_32/include -IC:/Qt/5.7/mingw53_32/include/QtWidgets -IC:/Qt/5.7/mingw53_32/include/QtGui -IC:/Qt/5.7/mingw53_32/include/QtANGLE -IC:/Qt/5.7/mingw53_32/include/QtCore -IC:/Qt/Qt5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward view\setbricsdialog.h -o debug\moc_setbricsdialog.cpp
@@ -628,6 +635,9 @@ debug/configdialog.o: view/configdialog.cpp view/configdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
+		model/bric.h \
+		model/position.h \
+		model/color.h \
 		ui_configdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QAction \
@@ -676,6 +686,9 @@ debug/configdialog.o: view/configdialog.cpp view/configdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qtextformat.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qpen.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qtextoption.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QPushButton \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QSpacerItem \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QSpinBox \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qspinbox.h \
@@ -683,7 +696,8 @@ debug/configdialog.o: view/configdialog.cpp view/configdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdatetimeedit.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QVBoxLayout \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QWidget
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QWidget \
+		view/setbricsdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\configdialog.o view\configdialog.cpp
 
 debug/mwtetris.o: view/mwtetris.cpp view/mwtetris.h \
@@ -971,6 +985,10 @@ debug/setbricsdialog.o: view/setbricsdialog.cpp view/setbricsdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QLabel \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlabel.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qframe.h \
+		model/position.h \
 		ui_setbricsdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QAction \
@@ -997,7 +1015,6 @@ debug/setbricsdialog.o: view/setbricsdialog.cpp view/setbricsdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qheaderview.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qabstractitemview.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/qframe.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
@@ -1011,7 +1028,10 @@ debug/setbricsdialog.o: view/setbricsdialog.cpp view/setbricsdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qtabbar.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/5.7/mingw53_32/include/QtWidgets/QWidget
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QWidget \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QPushButton \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\setbricsdialog.o view\setbricsdialog.cpp
 
 debug/main.o: main.cpp view/mwtetris.h \

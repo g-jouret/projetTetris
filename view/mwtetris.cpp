@@ -53,6 +53,9 @@ void MWTetris::createGame(){
         std::string name;
         name = (cd.getName().empty())? game_.getPlayer().getName() : cd.getName();
         try{
+            if(cd.getBrics().size() != 0){
+                game_.setBag(cd.getBrics(),0);
+            }
             game_.startGame(name, cd.getWidth(), cd.getHeight(),
                             cd.getWinScore(), cd.getWinLines(), cd.getWinTime(),
                             cd.getLevel());
@@ -97,25 +100,18 @@ void MWTetris::generateBoard(){
     std::map<Position, Color> theGrid {game_.getBoard().getGrid()};
     for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
         QLabel * lb = new QLabel();
-
-        /*std::stringstream stream;
-        stream << "#" << std::hex;
-        if(it->second.getCode().at(0)/10 == 0)
-            stream << 0;
-        stream << it->second.getCode().at(0);
-        if(it->second.getCode().at(1)/10 == 0)
-            stream << 0;
-        stream << it->second.getCode().at(1);
-        if(it->second.getCode().at(2)/10 == 0)
-            stream << 0;
-        stream << it->second.getCode().at(2);*/
+        QColor border((it->second.getCode().at(0) <= 30)? 0 : it->second.getCode().at(0)-30,
+                              it->second.getCode().at(1),
+                              it->second.getCode().at(2));
         QColor color(it->second.getCode().at(0),
                      it->second.getCode().at(1),
                      it->second.getCode().at(2));
         lb->setStyleSheet("QLabel{"
                           "width: 20px;"
                           "height: 20px;"
-                          //"background-color : "+ QString::fromStdString(stream.str()) +";"
+                          "border-style: outset;"
+                          "border-width:5px;"
+                          "border-color:"+border.name()+";"
                           "background-color : "+ color.name() +";}");
         ui->boardGrid->addWidget(lb, it->first.getY(), it->first.getX(), 1, 1);
     }
@@ -134,23 +130,6 @@ void MWTetris::showNextBric(){
     for(unsigned u {0}; u < side; ++u){
         for(unsigned v {0}; v < side; ++v){
             QLabel * lb = new QLabel();
-
-            /*std::stringstream stream;
-            stream << "#" << std::hex;
-            Position temp = Position(u, v);
-            if(theBric.contains(temp)){
-                if(theBric.getColor().getCode().at(0)/10 == 0)
-                    stream << 0;
-                stream << theBric.getColor().getCode().at(0);
-                if(theBric.getColor().getCode().at(1)/10 == 0)
-                    stream << 0;
-                stream << theBric.getColor().getCode().at(1);
-                if(theBric.getColor().getCode().at(2)/10 == 0)
-                    stream << 0;
-                stream << theBric.getColor().getCode().at(2);
-            } else{
-                stream << 0xffffff;
-            }*/
             Position temp = Position(u, v);
             QColor color;
             if(theBric.contains(temp)){
@@ -158,12 +137,20 @@ void MWTetris::showNextBric(){
                                theBric.getColor().getCode().at(1),
                                theBric.getColor().getCode().at(2));
             } else{
-                color= QColor(255,255,255);
+                lb->setHidden(true);
             }
+            /* NOTE : a rajouter quand le resize sera implémenté
+             * QColor border;
+            border = QColor  (theBric.getColor().getCode().at(0)-30,
+                              theBric.getColor().getCode().at(1),
+                              theBric.getColor().getCode().at(2));*/
             lb->setStyleSheet("QLabel{"
                               "width: 20px;"
                               "height: 20px;"
-                              //"background-color : "+ QString::fromStdString(stream.str()) +";"
+                              /* NOTE : cf ci-dessus
+                               * "border-style: outset;"
+                              "border-width:5px;"
+                              "border-color:"+border.name()+";"*/
                               "background-color : "+ color.name() +";}");
             ui->boardNext->addWidget(lb, v, u, 1, 1);
         }

@@ -12,26 +12,23 @@ BricsBag::BricsBag(){
     std::vector<Position> bricJ {Position(0,0),Position(0,1),Position(1,1),Position(2,1)};
     std::vector<Position> bricZ {Position(0,0),Position(1,0),Position(1,1),Position(2,1)};
     std::vector<Position> bricS {Position(2,0),Position(1,0),Position(1,1),Position(0,1)};
-    /*brics_.push_back(Bric(bricI, std::vector<unsigned>{0x20,0xb2,0xaa}));
-    brics_.push_back(Bric(bricO, std::vector<unsigned>{0xff,0xd7,0x00}));
-    brics_.push_back(Bric(bricT, std::vector<unsigned>{0x80,0x00,0x80}));
-    brics_.push_back(Bric(bricL, std::vector<unsigned>{0xda,0xa5,0x20}));
-    brics_.push_back(Bric(bricJ, std::vector<unsigned>{0x00,0x00,0xff}));
-    brics_.push_back(Bric(bricZ, std::vector<unsigned>{0xcd,0x5c,0x5c}));
-    brics_.push_back(Bric(bricS, std::vector<unsigned>{0x00,0x80,0x00}));*/
-    brics_.push_back(Bric(bricI, Color(std::vector<unsigned> {32,178,170})));
+
+    brics_.push_back(Bric(bricI, Color(std::vector<unsigned> {130,180,190})));
     brics_.push_back(Bric(bricO, Color(std::vector<unsigned> {255,215,0})));
     brics_.push_back(Bric(bricT, Color(std::vector<unsigned> {128,0,128})));
     brics_.push_back(Bric(bricL, Color(std::vector<unsigned> {218,165,32})));
-    brics_.push_back(Bric(bricJ, Color(std::vector<unsigned>{0,0,255})));
-    brics_.push_back(Bric(bricZ, Color(std::vector<unsigned>{205,92,92})));
-    brics_.push_back(Bric(bricS, Color(std::vector<unsigned>{0,128,0})));
+    brics_.push_back(Bric(bricJ, Color(std::vector<unsigned>{150,0,255})));
+    brics_.push_back(Bric(bricZ, Color(std::vector<unsigned>{150,20,30})));
+    brics_.push_back(Bric(bricS, Color(std::vector<unsigned>{150,200,7})));
 }
 
 BricsBag::BricsBag(std::vector<Bric> & brics): brics_ {brics}
 {}
 
 Bric BricsBag::getNextBric() const{
+    if(brics_.size() == 1){
+        return brics_.at(0);
+    }
     return brics_.at(1);
 }
 
@@ -39,18 +36,22 @@ Bric BricsBag::getCurrentBric() const{
     return brics_.at(0);
 }
 
-void BricsBag::add(Bric & bric){
-    brics_.push_back(bric);
+void BricsBag::add(std::vector<Bric> & newBrics){
+    for(Bric b : newBrics){
+        brics_.push_back(b);
+    }
 }
 
 void BricsBag::shuffle(bool first){
-    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-    if(first){
-        std::shuffle(brics_.begin(), brics_.end(), std::default_random_engine(seed));
-    } else{
-        std::swap(brics_.at(0), brics_.at(brics_.size()-1));
-        std::swap(brics_.at(0), brics_.at(1));
-        std::random_shuffle(++brics_.begin(), --brics_.end());
+    if(brics_.size() > 1){
+        unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+        if(first){
+            std::shuffle(brics_.begin(), brics_.end(), std::default_random_engine(seed));
+        } else{
+            std::swap(brics_.at(0), brics_.at(brics_.size()-1));
+            std::swap(brics_.at(0), brics_.at(1));
+            std::random_shuffle(++brics_.begin(), --brics_.end());
+        }
     }
 }
 

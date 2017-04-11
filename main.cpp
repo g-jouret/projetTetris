@@ -21,8 +21,7 @@ int main(int argc, char *argv[]){
 
 /* TODO Principal :
  * amélioration graphique (resize auto)
- * implémentation briques perso
- * améliorer vision de la nouvelle brique
+ * briques perso amélioration choix de création
  * amélioration rotation des briques
  * condition de victoire ignorable (checkbox)
  * optimisation mémoire (board - itératif à la place de récursif) /!\ drop de secondes! certains rafraichissements toutes les 2 secondes au lieu d'une
