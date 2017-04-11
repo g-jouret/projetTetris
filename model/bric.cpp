@@ -66,7 +66,7 @@ bool Bric::isAdjacent(std::vector<Position> &tested, Position &pos) const{
 
 void Bric::adjustPositions(std::vector<Position> &shape, unsigned xMin){
     for(auto it {shape.begin()}; it != shape.end(); ++it){
-        it->setX(xMin*-1);
+        it->setX(-xMin);
     }
 }
 
