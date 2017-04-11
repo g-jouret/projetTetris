@@ -27,14 +27,14 @@ public:
 private:
     Ui::SetBricsDialog *ui;
     void generateGrid(bool first);
-    QPushButton *createBtn(QPushButton * btn, unsigned x, unsigned y);
-    QLabel *createLb(QLabel * lb);
+    QPushButton *createBtn(unsigned x, unsigned y);
+    QLabel *createLb();
 
 
 private slots:
     void update();
     void accept();
-    void save();
+    //void save();
     //void reset();
 };
 

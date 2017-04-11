@@ -69,10 +69,10 @@ public:
     {
         if (ConfigDialog->objectName().isEmpty())
             ConfigDialog->setObjectName(QStringLiteral("ConfigDialog"));
-        ConfigDialog->resize(229, 329);
+        ConfigDialog->resize(256, 329);
         layoutWidget = new QWidget(ConfigDialog);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(21, 21, 185, 291));
+        layoutWidget->setGeometry(QRect(11, 21, 231, 291));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -237,11 +237,11 @@ public:
     {
         ConfigDialog->setWindowTitle(QApplication::translate("ConfigDialog", "Configuration de la partie", Q_NULLPTR));
         lbName->setText(QApplication::translate("ConfigDialog", "Nom", Q_NULLPTR));
-        lbHeight->setText(QApplication::translate("ConfigDialog", "Hauteur", Q_NULLPTR));
-        lbWidth->setText(QApplication::translate("ConfigDialog", "Largeur", Q_NULLPTR));
+        lbHeight->setText(QApplication::translate("ConfigDialog", "Hauteur du cadre (cases)", Q_NULLPTR));
+        lbWidth->setText(QApplication::translate("ConfigDialog", "Largeur du cadre (cases)", Q_NULLPTR));
         bricSetter->setText(QApplication::translate("ConfigDialog", "Brique personnalis\303\251e", Q_NULLPTR));
         lbWinScore->setText(QApplication::translate("ConfigDialog", "Score de victoire ", Q_NULLPTR));
-        lbWinLines->setText(QApplication::translate("ConfigDialog", "Nombre de lignes ", Q_NULLPTR));
+        lbWinLines->setText(QApplication::translate("ConfigDialog", "Nombre de lignes de victoire", Q_NULLPTR));
         lbWinTime->setText(QApplication::translate("ConfigDialog", "Temps de jeu ", Q_NULLPTR));
         timeEdit->setDisplayFormat(QApplication::translate("ConfigDialog", "mm:ss", Q_NULLPTR));
         lbLevel->setText(QApplication::translate("ConfigDialog", "Niveau de difficult\303\251", Q_NULLPTR));

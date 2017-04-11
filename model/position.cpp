@@ -16,9 +16,15 @@ void Position::setY(int y){
     y_ += y;
 }
 
-bool Position::isAdjacent(const Position & other){
-    return (x_ == other.x_ && (y_ == other.y_-1 || y_ == other.y_+1)) || (y_ == other.y_ && (x_ == other.x_-1 || x_ == other.x_+1));
+bool Position::isAdjacent(const unsigned &x, const unsigned &y){
+    return (x_ == x && (y_ == y-1 || y_ == y+1)) || (y_ == y && (x_ == x-1 || x_ == x+1));
 }
+
+bool Position::isAdjacent(const Position & other){
+    return isAdjacent(other.x_, other.y_);
+}
+
+
 
 std::string Position::to_string() const{
     std::string s;

@@ -66,6 +66,8 @@ public:
      */
     void setY(int y);
 
+    bool isAdjacent(const unsigned & x, const unsigned & y);
+
     bool isAdjacent(const Position & other);
 
     /*!

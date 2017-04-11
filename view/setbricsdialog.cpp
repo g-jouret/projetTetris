@@ -11,7 +11,7 @@ SetBricsDialog::SetBricsDialog(QWidget *parent) :
     ui(new Ui::SetBricsDialog)
 {
     ui->setupUi(this);
-    ui->checkBox->setText("Voulez-vous conserver le sac de brique actuel?");
+    ui->checkBox->setText("Voulez-vous conserver le sac de briques actuel?");
     checked_ = std::vector<std::vector<bool>> (6, std::vector<bool>(6,0));
     generateGrid(true);
 }
@@ -33,17 +33,25 @@ void SetBricsDialog::generateGrid(bool first){
     for(unsigned u {0}; u < 6; ++u){
         for(unsigned v {0}; v < 6; ++v){
             if(first){
-                QPushButton * btn = createBtn(btn, u, v);
+                QPushButton * btn = createBtn(u, v);
                 if(v != 0){
                     btn->setDisabled(true);
                 }
                 ui->gridLayout->addWidget(btn, v, u, 1, 1);
             } else{
                 if(checked_[v][u]){
-                    QLabel * lb = createLb(lb);
+                    QLabel * lb = createLb();
                     ui->gridLayout->addWidget(lb, v, u, 1, 1);
                 } else{
-                    QPushButton * btn = createBtn(btn, u, v);
+                    QPushButton * btn = createBtn(u, v);
+                    unsigned count {0};
+                    bool ok {0};
+                    while(! ok && count < saved_.size()){
+                        ok = saved_.at(count).isAdjacent(u, v);
+                        ++count;
+                    }
+                    if(!ok)
+                        btn->setDisabled(true);
                     ui->gridLayout->addWidget(btn, v, u, 1, 1);
                 }
             }
@@ -51,9 +59,9 @@ void SetBricsDialog::generateGrid(bool first){
     }
 }
 
-QPushButton *SetBricsDialog::createBtn(QPushButton * btn, unsigned x, unsigned y){
+QPushButton *SetBricsDialog::createBtn(unsigned x, unsigned y){
     QString pos {QString::number(x) +"-"+ QString::number(y)};
-    btn = new QPushButton(pos, this);
+    QPushButton * btn = new QPushButton(this);
     btn->setObjectName(pos);
     connect(btn, SIGNAL(clicked()), this, SLOT(update()));
     btn->setStyleSheet("QPushButton{"
@@ -67,8 +75,8 @@ QPushButton *SetBricsDialog::createBtn(QPushButton * btn, unsigned x, unsigned y
     return btn;
 }
 
-QLabel *SetBricsDialog::createLb(QLabel * lb){
-    lb = new QLabel();
+QLabel *SetBricsDialog::createLb(){
+    QLabel * lb = new QLabel();
     lb->setStyleSheet("Qlabel{"
                       "width: 40px;"
                       "height: 40px;"
@@ -77,7 +85,8 @@ QLabel *SetBricsDialog::createLb(QLabel * lb){
     return lb;
 }
 
-/*void SetBricsDialog::reset(){
+/* TODO annuler dernier mouvement?
+ * void SetBricsDialog::reset(){
     QLayoutItem *child;
     while((child = ui->gridLayout->takeAt(0)) != 0){
         delete child->widget();
@@ -86,7 +95,7 @@ QLabel *SetBricsDialog::createLb(QLabel * lb){
     generateGrid(true);
 }*/
 
-void SetBricsDialog::save(){
+/*void SetBricsDialog::save(){
     for(unsigned u {0}; u < 6; ++u){
         for(unsigned v {0}; v < 6; ++v){
             if(checked_[v][u]){
@@ -95,14 +104,16 @@ void SetBricsDialog::save(){
             }
         }
     }
-}
+}*/
 
 void SetBricsDialog::update(){
     QObject *senderObj = sender();
-    QString pos = senderObj->objectName();
-    unsigned x = pos.at(0).digitValue();
-    unsigned y = pos.at(2).digitValue();
+    QString posBtn = senderObj->objectName();
+    unsigned x = posBtn.at(0).digitValue();
+    unsigned y = posBtn.at(2).digitValue();
     checked_[y][x] = 1;
+    Position pos = Position(x, y);
+    saved_.push_back(pos);
     QLayoutItem *child;
     while((child = ui->gridLayout->takeAt(0)) != 0){
         delete child->widget();
@@ -111,6 +122,6 @@ void SetBricsDialog::update(){
 }
 
 void SetBricsDialog::accept(){
-    save();
+    //save();
     QDialog::accept();
 }

@@ -1,4 +1,4 @@
-#include "display.h"
+/*#include "display.h"
 
 char* eng[] = {"Player :",
                "Score :",
@@ -8,3 +8,4 @@ char* fr[] = {"Joueur :",
              "Amount of lines :"};
 
 char** lang[] = {eng, fr};
+*/

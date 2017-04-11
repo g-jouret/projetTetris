@@ -116,6 +116,8 @@ public:
 private:
     std::vector<Position> validate(std::vector<Position> shape);
 
+    void adjustPositions(std::vector<Position> &shape, unsigned xMin);
+
     bool isAdjacent(std::vector<Position> &tested, Position &pos) const;
 
     std::string message() const;

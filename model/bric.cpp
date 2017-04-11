@@ -9,12 +9,18 @@ Bric::Bric(){}
 Bric::Bric(std::vector<Position> &shape, Color color){
     shape_ = validate(shape);
     color_ = color;
+
+    std::cout << ", "
+              << this->to_string()
+              << std::endl;
+
 }
 
 std::vector<Position> Bric::validate(std::vector<Position> shape){
     std::vector<Position> tested;
     std::vector<unsigned> tempX;
     std::vector<unsigned> tempY;
+
     if(shape.at(0).getY() != 0){
         throw std::invalid_argument(message());
     }
@@ -32,6 +38,9 @@ std::vector<Position> Bric::validate(std::vector<Position> shape){
         tempY.push_back(p.getY());
     }
     std::sort(tempX.begin(), tempX.end());
+    if(tempX.at(0) != 0){
+        adjustPositions(shape, tempX.at(0));
+    }
     tempX.erase(std::unique(tempX.begin(), tempX.end()), tempX.end());
     unsigned sideX = tempX.size();
     std::sort(tempY.begin(), tempY.end());
@@ -47,6 +56,10 @@ std::vector<Position> Bric::validate(std::vector<Position> shape){
         even_ = 0;
         middle_ = Position(sideX/2, sideX/2);
     }
+
+    std::cout << "side : "
+              << sideX;
+
     return shape;
 }
 
@@ -58,6 +71,12 @@ bool Bric::isAdjacent(std::vector<Position> &tested, Position &pos) const{
         ++count;
     }
     return ok;
+}
+
+void Bric::adjustPositions(std::vector<Position> &shape, unsigned xMin){
+    for(auto it {shape.begin()}; it != shape.end(); ++it){
+        it->setX(xMin*-1);
+    }
 }
 
 std::string Bric::message() const{

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>229</width>
+    <width>256</width>
     <height>329</height>
    </rect>
   </property>
@@ -16,9 +16,9 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>21</x>
+     <x>11</x>
      <y>21</y>
-     <width>185</width>
+     <width>231</width>
      <height>291</height>
     </rect>
    </property>
@@ -68,7 +68,7 @@
       <item>
        <widget class="QLabel" name="lbHeight">
         <property name="text">
-         <string>Hauteur</string>
+         <string>Hauteur du cadre (cases)</string>
         </property>
        </widget>
       </item>
@@ -95,7 +95,7 @@
       <item>
        <widget class="QLabel" name="lbWidth">
         <property name="text">
-         <string>Largeur</string>
+         <string>Largeur du cadre (cases)</string>
         </property>
        </widget>
       </item>
@@ -156,7 +156,7 @@
       <item>
        <widget class="QLabel" name="lbWinLines">
         <property name="text">
-         <string>Nombre de lignes </string>
+         <string>Nombre de lignes de victoire</string>
         </property>
        </widget>
       </item>

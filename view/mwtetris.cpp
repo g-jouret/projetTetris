@@ -88,8 +88,8 @@ void MWTetris::initLang(){
     ui->btnDown->setText("Bas");
     ui->btnLeft->setText("Gauche");
     ui->btnRight->setText("Droite");    /!\ bug avec les shortcuts => redéfinition en code
-    //ui->lbName->setText(QString(lang[FR][LBNAME]));
-    /*ui->lbScore->setText(Display::lbScore::fr);
+    ui->lbName->setText(QString(lang[FR][LBNAME]));
+    ui->lbScore->setText(Display::lbScore::fr);
     ui->lbLines->setText(Display::lbLines::fr);
     ui->lbTimer->setText(Display::lbTimer::fr);
     ui->btnUp->setText(Display::btnUp::fr);
@@ -192,7 +192,7 @@ void MWTetris::update(Subject *){
     case GameState::ON:
         ui->lbPlayerScore->setText(QString::number(game_.getPlayer().getScore()) + "/" + QString::number(game_.getWinScore()));
         ui->lbPlayerLines->setText(QString::number(game_.getPlayer().getNbLines()) + "/" + QString::number(game_.getWinLines()));
-        if(timer_->interval() != game_.getTimer())
+        if(game_.getTimer() != timer_->interval())
             timer_->setInterval(game_.getTimer());
         resetBoard(ui->boardGrid);
         resetBoard(ui->boardNext);

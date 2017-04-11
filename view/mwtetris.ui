@@ -279,7 +279,7 @@ background-color: grey;
 }</string>
          </property>
          <property name="text">
-          <string>btnUp</string>
+          <string>Haut</string>
          </property>
          <property name="shortcut">
           <string>Up</string>
@@ -338,7 +338,7 @@ background-color: grey;
 }</string>
          </property>
          <property name="text">
-          <string>btnLeft</string>
+          <string>Gauche</string>
          </property>
          <property name="shortcut">
           <string>Left</string>
@@ -374,7 +374,7 @@ background-color: grey;
 }</string>
          </property>
          <property name="text">
-          <string>btnRight</string>
+          <string>Droite</string>
          </property>
          <property name="shortcut">
           <string>Right</string>
@@ -433,7 +433,7 @@ background-color: grey;
 }</string>
          </property>
          <property name="text">
-          <string>btnDown</string>
+          <string>Bas</string>
          </property>
          <property name="shortcut">
           <string>Down</string>

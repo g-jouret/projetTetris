@@ -1,4 +1,4 @@
-#ifndef DISPLAY_H
+/*#ifndef DISPLAY_H
 #define DISPLAY_H
 
 enum {
@@ -13,7 +13,7 @@ enum {
 };
 
 #endif // DISPLAY_H
-/*
+
 #include <string>
 
 struct DisplayFr{
