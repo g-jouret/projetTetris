@@ -15,7 +15,7 @@ SetBricsDialog::~SetBricsDialog()
 }
 
 void SetBricsDialog::generateBoard(){
-/*    for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
+    /*for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
         QLabel * lb = new QLabel();
         lb->setStyleSheet("QLabel[fill=true]{"
                           "background-color : blue;"

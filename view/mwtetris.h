@@ -1,15 +1,11 @@
 #ifndef MWTETRIS_H
 #define MWTETRIS_H
 
-//#include "configdialog.h"
 #include "observer/observer.h"
 #include "model/tetris.h"
 #include <QMainWindow>
 #include <QElapsedTimer>
-//#include <QTimer>
 #include <QGridLayout>
-//#include <QLabel>
-//#include <QPushButton>
 
 namespace Ui {
 class MWTetris;
@@ -22,6 +18,7 @@ using namespace GJ_GW;
 class MWTetris : public QMainWindow, public GJ_GW::Observer{
     Q_OBJECT
     Tetris game_;
+
     Ui::MWTetris *ui;
     QElapsedTimer chrono_;
     QTimer * time_;
@@ -38,6 +35,7 @@ private:
     void resetBoard(QGridLayout * board);
     void showNextBric();
     void endGame();
+    void initLang();
 
 private slots:
     void createGame();

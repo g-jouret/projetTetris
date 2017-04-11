@@ -401,24 +401,24 @@ public:
         action_Nouveau->setShortcut(QApplication::translate("MWTetris", "Ctrl+N", Q_NULLPTR));
         action_Quitter->setText(QApplication::translate("MWTetris", "&Quitter", Q_NULLPTR));
         action_Quitter->setShortcut(QApplication::translate("MWTetris", "Ctrl+Q", Q_NULLPTR));
-        lbName->setText(QApplication::translate("MWTetris", "Joueur :", Q_NULLPTR));
+        lbName->setText(QApplication::translate("MWTetris", "lbName", Q_NULLPTR));
         lbPlayerName->setText(QApplication::translate("MWTetris", "lbPlayerName", Q_NULLPTR));
-        lbScore->setText(QApplication::translate("MWTetris", "score :", Q_NULLPTR));
+        lbScore->setText(QApplication::translate("MWTetris", "lbScore", Q_NULLPTR));
         lbPlayerScore->setText(QApplication::translate("MWTetris", "00", Q_NULLPTR));
-        lbLines->setText(QApplication::translate("MWTetris", "nombre de lignes :", Q_NULLPTR));
+        lbLines->setText(QApplication::translate("MWTetris", "lbLines", Q_NULLPTR));
         lbPlayerLines->setText(QApplication::translate("MWTetris", "00", Q_NULLPTR));
-        lbTimer->setText(QApplication::translate("MWTetris", "Temps \303\251coul\303\251 :", Q_NULLPTR));
+        lbTimer->setText(QApplication::translate("MWTetris", "lbTimer", Q_NULLPTR));
 #ifndef QT_NO_STATUSTIP
         lbTime->setStatusTip(QString());
 #endif // QT_NO_STATUSTIP
         lbTime->setText(QApplication::translate("MWTetris", "00:00", Q_NULLPTR));
-        btnUp->setText(QApplication::translate("MWTetris", "Haut", Q_NULLPTR));
+        btnUp->setText(QApplication::translate("MWTetris", "btnUp", Q_NULLPTR));
         btnUp->setShortcut(QApplication::translate("MWTetris", "Up", Q_NULLPTR));
-        btnLeft->setText(QApplication::translate("MWTetris", "Gauche", Q_NULLPTR));
+        btnLeft->setText(QApplication::translate("MWTetris", "btnLeft", Q_NULLPTR));
         btnLeft->setShortcut(QApplication::translate("MWTetris", "Left", Q_NULLPTR));
-        btnRight->setText(QApplication::translate("MWTetris", "Droite", Q_NULLPTR));
+        btnRight->setText(QApplication::translate("MWTetris", "btnRight", Q_NULLPTR));
         btnRight->setShortcut(QApplication::translate("MWTetris", "Right", Q_NULLPTR));
-        btnDown->setText(QApplication::translate("MWTetris", "Bas", Q_NULLPTR));
+        btnDown->setText(QApplication::translate("MWTetris", "btnDown", Q_NULLPTR));
         btnDown->setShortcut(QApplication::translate("MWTetris", "Down", Q_NULLPTR));
         lbEnd->setText(QApplication::translate("MWTetris", "lbEnd", Q_NULLPTR));
         menu_Jeu->setTitle(QApplication::translate("MWTetris", "&Jeu", Q_NULLPTR));

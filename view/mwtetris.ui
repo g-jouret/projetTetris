@@ -62,7 +62,7 @@
           <string notr="true">QLabel {font-weight: bold; }</string>
          </property>
          <property name="text">
-          <string>Joueur :</string>
+          <string>lbName</string>
          </property>
         </widget>
        </item>
@@ -96,7 +96,7 @@
           <string notr="true">QLabel {font-weight: bold; }</string>
          </property>
          <property name="text">
-          <string>score :</string>
+          <string>lbScore</string>
          </property>
         </widget>
        </item>
@@ -130,7 +130,7 @@
           <string notr="true">QLabel {font-weight: bold; }</string>
          </property>
          <property name="text">
-          <string>nombre de lignes :</string>
+          <string>lbLines</string>
          </property>
         </widget>
        </item>
@@ -164,7 +164,7 @@
           <string notr="true">QLabel {font-weight: bold; }</string>
          </property>
          <property name="text">
-          <string>Temps écoulé :</string>
+          <string>lbTimer</string>
          </property>
         </widget>
        </item>
@@ -279,7 +279,7 @@ background-color: grey;
 }</string>
          </property>
          <property name="text">
-          <string>Haut</string>
+          <string>btnUp</string>
          </property>
          <property name="shortcut">
           <string>Up</string>
@@ -338,7 +338,7 @@ background-color: grey;
 }</string>
          </property>
          <property name="text">
-          <string>Gauche</string>
+          <string>btnLeft</string>
          </property>
          <property name="shortcut">
           <string>Left</string>
@@ -374,7 +374,7 @@ background-color: grey;
 }</string>
          </property>
          <property name="text">
-          <string>Droite</string>
+          <string>btnRight</string>
          </property>
          <property name="shortcut">
           <string>Right</string>
@@ -433,7 +433,7 @@ background-color: grey;
 }</string>
          </property>
          <property name="text">
-          <string>Bas</string>
+          <string>btnDown</string>
          </property>
          <property name="shortcut">
           <string>Down</string>

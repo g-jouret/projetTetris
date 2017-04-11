@@ -5,11 +5,12 @@
 #include <sstream>
 #include <QTimer>
 #include <QErrorMessage>
-//#include <QGridLayout>
+#include "display.h"
 
 MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris){
     ui->setupUi(this);
     this->resize(640,640);
+    initLang();
     connect(ui->action_Nouveau, &QAction::triggered, this, &MWTetris::createGame);
     connect(ui->action_Quitter, &QAction::triggered, this, &MWTetris::quitGame);
     connect(ui->btnDown, &QPushButton::clicked, this, &MWTetris::drop);
@@ -75,6 +76,23 @@ void MWTetris::quitGame(){
     QApplication::quit();
 }
 
+void MWTetris::initLang(){
+    ui->lbName->setText("Joueur :");
+    ui->lbScore->setText("Score :");
+    ui->lbLines->setText("Nombre de lignes :");
+    ui->lbTimer->setText("Temps écoulé :");
+    /*ui->btnUp->setText("Haut");
+    ui->btnDown->setText("Bas");
+    ui->btnLeft->setText("Gauche");
+    ui->btnRight->setText("Droite");    /!\ bug avec les shortcuts => redéfinition en code
+    //ui->lbName->setText(QString(lang[FR][LBNAME]));
+    /*ui->lbScore->setText(Display::lbScore::fr);
+    ui->lbLines->setText(Display::lbLines::fr);
+    ui->lbTimer->setText(Display::lbTimer::fr);
+    ui->btnUp->setText(Display::btnUp::fr);
+    ui->btnDown->setText(Display::btnDown::fr);*/
+}
+
 void MWTetris::generateBoard(){
     std::map<Position, Color> theGrid {game_.getBoard().getGrid()};
     for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
@@ -99,7 +117,7 @@ void MWTetris::generateBoard(){
                           "height: 20px;"
                           //"background-color : "+ QString::fromStdString(stream.str()) +";"
                           "background-color : "+ color.name() +";"
-                          "}");
+                                                               "}");
         ui->boardGrid->addWidget(lb, it->first.getY(), it->first.getX(), 1, 1);
     }
 }
@@ -138,8 +156,8 @@ void MWTetris::showNextBric(){
             QColor color;
             if(theBric.contains(temp)){
                 color = QColor(theBric.getColor().getCode().at(0),
-                         theBric.getColor().getCode().at(1),
-                         theBric.getColor().getCode().at(2));
+                               theBric.getColor().getCode().at(1),
+                               theBric.getColor().getCode().at(2));
             } else{
                 color= QColor(255,255,255);
             }
@@ -148,7 +166,7 @@ void MWTetris::showNextBric(){
                               "height: 20px;"
                               //"background-color : "+ QString::fromStdString(stream.str()) +";"
                               "background-color : "+ color.name() +";"
-                              "}");
+                                                                   "}");
             ui->boardNext->addWidget(lb, v, u, 1, 1);
         }
     }

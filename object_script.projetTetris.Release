@@ -11,6 +11,7 @@ INPUT(
 ./release\setbricsdialog.o
 ./release\main.o
 ./release\color.o
+./release\display.o
 ./release\moc_configdialog.o
 ./release\moc_mwtetris.o
 ./release\moc_setbricsdialog.o
