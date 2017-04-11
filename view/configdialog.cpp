@@ -1,5 +1,6 @@
 #include "configdialog.h"
 #include "ui_configdialog.h"
+#include "setbricsdialog.h"
 
 
 ConfigDialog::ConfigDialog(std::string name, std::vector<unsigned> args, QWidget *parent) :
@@ -7,6 +8,7 @@ ConfigDialog::ConfigDialog(std::string name, std::vector<unsigned> args, QWidget
     ui(new Ui::ConfigDialog)
 {
     ui->setupUi(this);
+    connect(ui->bricSetter, &QPushButton::clicked, this, &ConfigDialog::setBrics);
 
     ui->leName->setText(QString::fromStdString(name));
     ui->leName->setMaxLength(args.at(0));
@@ -68,6 +70,14 @@ unsigned ConfigDialog::getWinLines() const{
 
 unsigned ConfigDialog::getWinTime() const{
     return ui->timeEdit->time().msecsSinceStartOfDay();
+}
+
+void ConfigDialog::setBrics(){
+    SetBricsDialog newBric (this);
+    newBric.setWindowTitle("Éditeur de brique");
+    int ret = newBric.exec();
+    if(ret == QDialog::Rejected) return;
+
 }
 
 QTime ConfigDialog::convertUnsToTime(unsigned time){

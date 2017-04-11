@@ -26,6 +26,9 @@ public:
 private:
     Ui::ConfigDialog *ui;
     QTime convertUnsToTime(unsigned time);
+
+private slots:
+    void setBrics();
 };
 
 #endif // CONFIGDIALOG_H

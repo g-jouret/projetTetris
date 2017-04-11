@@ -19,6 +19,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTimeEdit>
@@ -45,7 +46,7 @@ public:
     QLabel *lbWidth;
     QSpacerItem *horizontalSpacer_3;
     QSpinBox *sbWidth;
-    QSpacerItem *verticalSpacer_2;
+    QPushButton *bricSetter;
     QHBoxLayout *horizontalLayout_5;
     QLabel *lbWinScore;
     QSpacerItem *horizontalSpacer_5;
@@ -136,9 +137,10 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_3);
 
-        verticalSpacer_2 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        bricSetter = new QPushButton(layoutWidget);
+        bricSetter->setObjectName(QStringLiteral("bricSetter"));
 
-        verticalLayout->addItem(verticalSpacer_2);
+        verticalLayout->addWidget(bricSetter);
 
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
@@ -237,6 +239,7 @@ public:
         lbName->setText(QApplication::translate("ConfigDialog", "Nom", Q_NULLPTR));
         lbHeight->setText(QApplication::translate("ConfigDialog", "Hauteur", Q_NULLPTR));
         lbWidth->setText(QApplication::translate("ConfigDialog", "Largeur", Q_NULLPTR));
+        bricSetter->setText(QApplication::translate("ConfigDialog", "Brique personnalis\303\251e", Q_NULLPTR));
         lbWinScore->setText(QApplication::translate("ConfigDialog", "Score de victoire ", Q_NULLPTR));
         lbWinLines->setText(QApplication::translate("ConfigDialog", "Nombre de lignes ", Q_NULLPTR));
         lbWinTime->setText(QApplication::translate("ConfigDialog", "Temps de jeu ", Q_NULLPTR));

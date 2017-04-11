@@ -116,8 +116,7 @@ void MWTetris::generateBoard(){
                           "width: 20px;"
                           "height: 20px;"
                           //"background-color : "+ QString::fromStdString(stream.str()) +";"
-                          "background-color : "+ color.name() +";"
-                                                               "}");
+                          "background-color : "+ color.name() +";}");
         ui->boardGrid->addWidget(lb, it->first.getY(), it->first.getX(), 1, 1);
     }
 }
@@ -165,8 +164,7 @@ void MWTetris::showNextBric(){
                               "width: 20px;"
                               "height: 20px;"
                               //"background-color : "+ QString::fromStdString(stream.str()) +";"
-                              "background-color : "+ color.name() +";"
-                                                                   "}");
+                              "background-color : "+ color.name() +";}");
             ui->boardNext->addWidget(lb, v, u, 1, 1);
         }
     }
