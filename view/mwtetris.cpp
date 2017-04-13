@@ -2,6 +2,7 @@
 #include "ui_mwtetris.h"
 #include "model/direction.h"
 #include "configdialog.h"
+#include "model/gamestate.h"
 #include <sstream>
 #include <QTimer>
 #include <QErrorMessage>
@@ -23,6 +24,7 @@ MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{ga
     ui->btnDown->setDisabled(true);
     ui->btnLeft->setDisabled(true);
     ui->btnRight->setDisabled(true);
+    ui->winWidget->hide();
     time_ = new QTimer(this);
     connect(time_, SIGNAL(timeout()), this, SLOT(time()));
     timer_ = new QTimer(this);
@@ -61,6 +63,7 @@ void MWTetris::createGame(){
                             cd.getWinScore(), cd.getWinLines(), cd.getWinTime(),
                             cd.getLevel());
             ui->btnStart->hide();
+            ui->winWidget->hide();
             chrono_.restart();
             time_->start(1000);
             timer_->start(game_.getTimer());
@@ -126,34 +129,36 @@ void MWTetris::resetBoard(QGridLayout * board){
 }
 
 void MWTetris::showNextBric(){
-    Bric theBric = game_.getNextBric();
-    unsigned side = (theBric.isEven())? (theBric.getMiddle().getX()*2)+2 : (theBric.getMiddle().getX()*2)+1;
-    for(unsigned u {0}; u < side; ++u){
-        for(unsigned v {0}; v < side; ++v){
-            QLabel * lb = new QLabel();
-            Position temp = Position(u, v);
-            QColor color;
-            if(theBric.contains(temp)){
-                color = QColor(theBric.getColor().getCode().at(0),
-                               theBric.getColor().getCode().at(1),
-                               theBric.getColor().getCode().at(2));
-            } else{
-                lb->setHidden(true);
-            }
-            /* NOTE : a rajouter quand le resize sera implémenté
+    if(game_.getGameState() == GameState::ON){
+        Bric theBric = game_.getNextBric();
+        unsigned side = (theBric.isEven())? (theBric.getMiddle().getX()*2)+2 : (theBric.getMiddle().getX()*2)+1;
+        for(unsigned u {0}; u < side; ++u){
+            for(unsigned v {0}; v < side; ++v){
+                QLabel * lb = new QLabel();
+                Position temp = Position(u, v);
+                QColor color;
+                if(theBric.contains(temp)){
+                    color = QColor(theBric.getColor().getCode().at(0),
+                                   theBric.getColor().getCode().at(1),
+                                   theBric.getColor().getCode().at(2));
+                } else{
+                    lb->setHidden(true);
+                }
+                /* NOTE : a rajouter quand le resize sera implémenté
              * QColor border;
             border = QColor  (theBric.getColor().getCode().at(0)-30,
                               theBric.getColor().getCode().at(1),
                               theBric.getColor().getCode().at(2));*/
-            lb->setStyleSheet("QLabel{"
-                              "width: 20px;"
-                              "height: 20px;"
-                              /* NOTE : cf ci-dessus
-                                                                   * "border-style: outset;"
-                                                                  "border-width:5px;"
-                                                                  "border-color:"+border.name()+";"*/
-                              "background-color : "+ color.name() +";}");
-            ui->boardNext->addWidget(lb, v, u, 1, 1);
+                lb->setStyleSheet("QLabel{"
+                                  "width: 20px;"
+                                  "height: 20px;"
+                                  /* NOTE : cf ci-dessus
+                                   * "border-style: outset;"
+                                     "border-width:5px;"
+                                     "border-color:"+border.name()+";"*/
+                                  "background-color : "+ color.name() +";}");
+                ui->boardNext->addWidget(lb, v, u, 1, 1);
+            }
         }
     }
 }
@@ -204,19 +209,24 @@ void MWTetris::update(Subject *){
         showNextBric();
         break;
     case GameState::LOOSE:
-        //ui->lbEnd->setText(QString::fromStdString("Vous avez PERDU"));
+        ui->lbEnd->setText(QString::fromStdString("Game Over..."));
         endGame();
         break;
     case GameState::LINE:
-        //ui->lbEnd->setText(QString::fromStdString("Vous avez gagné LIGNE"));
+        //ui->winWidget->setProperty("win", true);
+        ui->lbEnd->setText(QString::fromStdString("Vous êtes un empilateur né!\n"
+                                                  "Vous avez fait assez de ligne pour gagner!"));
         endGame();
         break;
     case GameState::SCORE:
-        //ui->lbEnd->setText(QString::fromStdString("Vous avez gagné SCORE"));
+        //ui->winWidget->setProperty("win", true);
+        ui->lbEnd->setText(QString::fromStdString("Quel score! J'ai du mal à suivre!"));
         endGame();
         break;
     case GameState::TIME:
-        //ui->lbEnd->setText(QString::fromStdString("Vous avez gagné TEMPS"));
+        //ui->winWidget->setProperty("win", true);
+        ui->lbEnd->setText(QString::fromStdString("Vous avez survécu!\n"
+                                                  "Vous avez triompher de la patience du Tetris"));
         endGame();
         break;
     }
@@ -227,6 +237,7 @@ void MWTetris::endGame(){
     ui->btnDown->setDisabled(true);
     ui->btnLeft->setDisabled(true);
     ui->btnRight->setDisabled(true);
+    ui->winWidget->setVisible(true);
     time_->stop();
     timer_->stop();
 }

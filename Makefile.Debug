@@ -697,7 +697,9 @@ debug/configdialog.o: view/configdialog.cpp view/configdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QVBoxLayout \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QWidget \
-		view/setbricsdialog.h
+		view/setbricsdialog.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QErrorMessage \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qerrormessage.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\configdialog.o view\configdialog.cpp
 
 debug/mwtetris.o: view/mwtetris.cpp view/mwtetris.h \
