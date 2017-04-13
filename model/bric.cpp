@@ -72,10 +72,10 @@ void Bric::adjustPositions(std::vector<Position> &shape, unsigned xMin){
 
 std::string Bric::message() const{
     return "Votre brique n'est pas valide, veuillez vérifier que :\n"
-           "    - la 1ère case touche le haut du repère\n"
-           "    - toutes les cases sont adjacentes à une autre\n"
-           "    - la brique est placées horizontalement\n"
-           "    - la taille de côté de la brique n'excède pas "+ std::to_string(MAXIMUM_SIDE);
+           "- la 1ère case touche le haut du repère\n"
+           "- toutes les cases sont adjacentes à une autre\n"
+           "- la brique est placées horizontalement\n"
+           "- la taille de côté de la brique n'excède pas "+ std::to_string(MAXIMUM_SIDE);
 }
 
 std::vector<Position> Bric::getShape() const{

@@ -41,16 +41,16 @@ public:
     constexpr static unsigned MAXIMUM_HEIGHT {50};
     /*!< Valeur maximale acceptée pour la hauteur. */
 
-    constexpr static unsigned MINIMUM_WIN_SCORE {100};
+    constexpr static unsigned MINIMUM_WIN_SCORE {1000};
     /*!< Valeur minimale acceptée pour le score de victoire. */
 
-    constexpr static unsigned MAXIMUM_WIN_SCORE {10000};
+    constexpr static unsigned MAXIMUM_WIN_SCORE {25000};
     /*!< Valeur maximale acceptée pour le score de victoire. */
 
-    constexpr static unsigned MINIMUM_WIN_LINES {10};
+    constexpr static unsigned MINIMUM_WIN_LINES {30};
     /*!< Valeur minimale acceptée pour le nombe de lignes de victoire. */
 
-    constexpr static unsigned MAXIMUM_WIN_LINES {50};
+    constexpr static unsigned MAXIMUM_WIN_LINES {100};
     /*!< Valeur maximale acceptée pour le nombe de lignes de victoire. */
 
     constexpr static unsigned MINIMUM_WIN_TIME {60000};
@@ -60,11 +60,13 @@ public:
     /*!< Valeur maximale acceptée pour le temps de victoire. */
 
 private:
-    constexpr static unsigned MINIMUM_TIMER {200};
+    constexpr static unsigned MINIMUM_TIMER {100};
     /*!< Valeur minimale acceptée pour le timer. */
 
-    constexpr static unsigned MAXIMUM_TIMER {1600};
+    constexpr static unsigned MAXIMUM_TIMER {1200};
     /*!< Valeur maximale acceptée pour le timer. */
+
+    unsigned level_;
 
     unsigned timer_;
     /*!< Le timer.
@@ -148,6 +150,12 @@ public:
      * \param level le niveau de difficulté de départ
      */
     void startGame(std::string name, unsigned width, unsigned height, unsigned winScore, unsigned winLines, unsigned winTime, unsigned level = 0);
+
+    /*!
+     * \brief Accesseur en lecture du niveau de difficulté.
+     * \return le niveau de difficulté
+     */
+    unsigned getLevel() const;
 
     /*!
      * \brief Accesseur en lecture du timer.

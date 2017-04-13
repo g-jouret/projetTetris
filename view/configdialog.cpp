@@ -1,6 +1,7 @@
 #include "configdialog.h"
 #include "ui_configdialog.h"
 #include "setbricsdialog.h"
+#include <QErrorMessage>
 
 using namespace GJ_GW;
 
@@ -85,8 +86,13 @@ void ConfigDialog::setBrics(){
     int ret = newBric.exec();
     if(ret == QDialog::Rejected) return;
     std::vector<Position> bric = newBric.getSaved();
-    brics_.push_back(Bric(bric, Color(std::vector<unsigned>{29,69,19})));
-    keepBag_ = newBric.isKeepingBag();
+    try{
+        brics_.push_back(Bric(bric, Color(std::vector<unsigned>{29,69,19})));
+        keepBag_ = newBric.isKeepingBag();
+    } catch(const std::invalid_argument & e){
+        QErrorMessage * except = new QErrorMessage(this);
+        except->showMessage(e.what());
+    }
 }
 
 QTime ConfigDialog::convertUnsToTime(unsigned time){

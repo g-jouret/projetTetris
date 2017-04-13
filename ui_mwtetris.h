@@ -53,6 +53,7 @@ public:
     QLabel *lbTime;
     QSpacerItem *verticalSpacer;
     QGridLayout *boardNext;
+    QPushButton *btnStart;
     QSpacerItem *verticalSpacer_4;
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer_3;
@@ -66,7 +67,10 @@ public:
     QPushButton *btnDown;
     QSpacerItem *horizontalSpacer_6;
     QSpacerItem *verticalSpacer_2;
-    QLabel *lbEnd;
+    QHBoxLayout *horizontalLayout_8;
+    QLabel *lbLevel;
+    QLabel *lbLevelGame;
+    QSpacerItem *horizontalSpacer_9;
     QSpacerItem *verticalSpacer_3;
     QWidget *gridLayoutWidget;
     QGridLayout *boardGrid;
@@ -77,7 +81,7 @@ public:
     {
         if (MWTetris->objectName().isEmpty())
             MWTetris->setObjectName(QStringLiteral("MWTetris"));
-        MWTetris->resize(644, 634);
+        MWTetris->resize(783, 634);
         MWTetris->setStyleSheet(QStringLiteral("background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 1, stop: 0 #eef, stop: 1 #ccf);"));
         MWTetris->setIconSize(QSize(2, 2));
         action_Nouveau = new QAction(MWTetris);
@@ -190,6 +194,11 @@ public:
         boardNext->setSizeConstraint(QLayout::SetMinimumSize);
 
         infoBox->addLayout(boardNext);
+
+        btnStart = new QPushButton(layoutWidget);
+        btnStart->setObjectName(QStringLiteral("btnStart"));
+
+        infoBox->addWidget(btnStart);
 
         verticalSpacer_4 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -354,17 +363,32 @@ public:
 
         infoBox->addLayout(horizontalLayout_5);
 
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_2 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         infoBox->addItem(verticalSpacer_2);
 
-        lbEnd = new QLabel(layoutWidget);
-        lbEnd->setObjectName(QStringLiteral("lbEnd"));
-        lbEnd->setEnabled(true);
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setSpacing(6);
+        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
+        lbLevel = new QLabel(layoutWidget);
+        lbLevel->setObjectName(QStringLiteral("lbLevel"));
+        lbLevel->setEnabled(true);
 
-        infoBox->addWidget(lbEnd);
+        horizontalLayout_8->addWidget(lbLevel);
 
-        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        lbLevelGame = new QLabel(layoutWidget);
+        lbLevelGame->setObjectName(QStringLiteral("lbLevelGame"));
+
+        horizontalLayout_8->addWidget(lbLevelGame);
+
+        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_8->addItem(horizontalSpacer_9);
+
+
+        infoBox->addLayout(horizontalLayout_8);
+
+        verticalSpacer_3 = new QSpacerItem(20, 60, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         infoBox->addItem(verticalSpacer_3);
 
@@ -380,7 +404,7 @@ public:
         MWTetris->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MWTetris);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 644, 20));
+        menuBar->setGeometry(QRect(0, 0, 783, 20));
         menu_Jeu = new QMenu(menuBar);
         menu_Jeu->setObjectName(QStringLiteral("menu_Jeu"));
         MWTetris->setMenuBar(menuBar);
@@ -412,6 +436,7 @@ public:
         lbTime->setStatusTip(QString());
 #endif // QT_NO_STATUSTIP
         lbTime->setText(QApplication::translate("MWTetris", "00:00", Q_NULLPTR));
+        btnStart->setText(QApplication::translate("MWTetris", "COMMENCER", Q_NULLPTR));
         btnUp->setText(QApplication::translate("MWTetris", "Haut", Q_NULLPTR));
         btnUp->setShortcut(QApplication::translate("MWTetris", "Up", Q_NULLPTR));
         btnLeft->setText(QApplication::translate("MWTetris", "Gauche", Q_NULLPTR));
@@ -420,7 +445,8 @@ public:
         btnRight->setShortcut(QApplication::translate("MWTetris", "Right", Q_NULLPTR));
         btnDown->setText(QApplication::translate("MWTetris", "Bas", Q_NULLPTR));
         btnDown->setShortcut(QApplication::translate("MWTetris", "Down", Q_NULLPTR));
-        lbEnd->setText(QApplication::translate("MWTetris", "lbEnd", Q_NULLPTR));
+        lbLevel->setText(QApplication::translate("MWTetris", "lbLevel", Q_NULLPTR));
+        lbLevelGame->setText(QApplication::translate("MWTetris", "0", Q_NULLPTR));
         menu_Jeu->setTitle(QApplication::translate("MWTetris", "&Jeu", Q_NULLPTR));
     } // retranslateUi
 

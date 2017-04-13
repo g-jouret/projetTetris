@@ -18,6 +18,7 @@ MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{ga
     connect(ui->btnLeft, &QPushButton::clicked, this, &MWTetris::left);
     connect(ui->btnRight, &QPushButton::clicked, this, &MWTetris::right);
     connect(ui->btnUp, &QPushButton::clicked, this, &MWTetris::rotate);
+    connect(ui->btnStart, &QPushButton::clicked, this, &MWTetris::createGame);
     ui->btnUp->setDisabled(true);
     ui->btnDown->setDisabled(true);
     ui->btnLeft->setDisabled(true);
@@ -59,10 +60,10 @@ void MWTetris::createGame(){
             game_.startGame(name, cd.getWidth(), cd.getHeight(),
                             cd.getWinScore(), cd.getWinLines(), cd.getWinTime(),
                             cd.getLevel());
+            ui->btnStart->hide();
             chrono_.restart();
             time_->start(1000);
             timer_->start(game_.getTimer());
-            ui->lbEnd->hide();
             ui->btnUp->setEnabled(true);
             ui->btnDown->setEnabled(true);
             ui->btnLeft->setEnabled(true);
@@ -83,6 +84,7 @@ void MWTetris::initLang(){
     ui->lbScore->setText("Score :");
     ui->lbLines->setText("Nombre de lignes :");
     ui->lbTimer->setText("Temps écoulé :");
+    ui->lbLevel->setText("Niveaux : ");
     /*ui->btnUp->setText("Haut");
     ui->btnDown->setText("Bas");
     ui->btnLeft->setText("Gauche");
@@ -193,25 +195,28 @@ void MWTetris::update(Subject *){
         ui->lbPlayerLines->setText(QString::number(game_.getPlayer().getNbLines()) + "/" + QString::number(game_.getWinLines()));
         if(game_.getTimer() != timer_->interval())
             timer_->setInterval(game_.getTimer());
+        if(QString::number(game_.getLevel()) != ui->lbLevelGame->text()){
+            ui->lbLevelGame->setText(QString::number(game_.getLevel()));
+        }
         resetBoard(ui->boardGrid);
         resetBoard(ui->boardNext);
         generateBoard();
         showNextBric();
         break;
     case GameState::LOOSE:
-        ui->lbEnd->setText(QString::fromStdString("Vous avez PERDU"));
+        //ui->lbEnd->setText(QString::fromStdString("Vous avez PERDU"));
         endGame();
         break;
     case GameState::LINE:
-        ui->lbEnd->setText(QString::fromStdString("Vous avez gagné LIGNE"));
+        //ui->lbEnd->setText(QString::fromStdString("Vous avez gagné LIGNE"));
         endGame();
         break;
     case GameState::SCORE:
-        ui->lbEnd->setText(QString::fromStdString("Vous avez gagné SCORE"));
+        //ui->lbEnd->setText(QString::fromStdString("Vous avez gagné SCORE"));
         endGame();
         break;
     case GameState::TIME:
-        ui->lbEnd->setText(QString::fromStdString("Vous avez gagné TEMPS"));
+        //ui->lbEnd->setText(QString::fromStdString("Vous avez gagné TEMPS"));
         endGame();
         break;
     }
@@ -224,7 +229,6 @@ void MWTetris::endGame(){
     ui->btnRight->setDisabled(true);
     time_->stop();
     timer_->stop();
-    ui->lbEnd->show();
 }
 
 void MWTetris::time(){

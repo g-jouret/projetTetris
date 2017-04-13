@@ -4,10 +4,15 @@
 
 using namespace GJ_GW;
 
-Tetris::Tetris(std::string &name): timer_ {MAXIMUM_TIMER}, winScore_{validateWinScore(1000)},
-    winLines_{validateWinLines(10)}, winTime_{validateWinTime(300000)}, gameState_{GameState::NONE},
+Tetris::Tetris(std::string &name): level_ {0}, timer_ {MAXIMUM_TIMER}, winScore_{validateWinScore(3000)},
+    winLines_{validateWinLines(50)}, winTime_{validateWinTime(300000)}, gameState_{GameState::NONE},
     player_{Player(name)}, board_{Board(validateWidth(10), validateHeight(20))}
 {}
+
+unsigned Tetris::getLevel() const{
+    unsigned lvl = level_ + (player_.getNbLines()/10);
+    return (lvl > 6)? 6 : lvl;
+}
 
 unsigned Tetris::getTimer() const{
     return timer_;
@@ -53,6 +58,7 @@ void Tetris::startGame(std::string name, unsigned width, unsigned height,
                        unsigned winScore, unsigned winLines, unsigned winTime,
                        unsigned level){
     gameState_ = GameState::NONE;
+    level_ = level;
     timer_ = MAXIMUM_TIMER;
     for(unsigned u {0}; u < level; ++u){
         setTimer();
@@ -228,8 +234,11 @@ void Tetris::next(unsigned timeElapsed){
 }
 
 void Tetris::setLevel(){
-    if(player_.getNbLines()%2 == 0)
+    timer_ = MAXIMUM_TIMER;
+
+    for(unsigned u {0}; u < level_+(player_.getNbLines()/10); ++u){
         setTimer();
+    }
 }
 
 void Tetris::setTimer(){

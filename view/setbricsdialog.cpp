@@ -76,7 +76,6 @@ QLabel *SetBricsDialog::createLb(){
     lb->setStyleSheet("Qlabel{"
                       "width: 40px;"
                       "height: 40px;"
-                      "background-color : blue;"
                       "}");
     return lb;
 }
