@@ -33,7 +33,7 @@ public:
     QAction *action_Nouveau;
     QAction *action_Quitter;
     QWidget *centralWidget;
-    QWidget *layoutWidget;
+    QGridLayout *gridLayout;
     QVBoxLayout *infoBox;
     QHBoxLayout *horizontalLayout;
     QLabel *lbName;
@@ -52,7 +52,14 @@ public:
     QSpacerItem *horizontalSpacer_7;
     QLabel *lbTime;
     QSpacerItem *verticalSpacer;
+    QHBoxLayout *horizontalLayout_8;
+    QLabel *lbLevel;
+    QLabel *lbLevelGame;
+    QSpacerItem *horizontalSpacer_9;
+    QHBoxLayout *horizontalLayout_9;
+    QSpacerItem *horizontalSpacer_13;
     QGridLayout *boardNext;
+    QSpacerItem *horizontalSpacer_12;
     QPushButton *btnStart;
     QHBoxLayout *horizontalLayout_10;
     QSpacerItem *verticalSpacer_4;
@@ -61,22 +68,16 @@ public:
     QPushButton *btnUp;
     QSpacerItem *horizontalSpacer_4;
     QHBoxLayout *horizontalLayout_4;
+    QSpacerItem *horizontalSpacer_11;
     QPushButton *btnLeft;
     QPushButton *btnRight;
+    QSpacerItem *horizontalSpacer_10;
     QHBoxLayout *horizontalLayout_5;
     QSpacerItem *horizontalSpacer_5;
     QPushButton *btnDown;
     QSpacerItem *horizontalSpacer_6;
     QSpacerItem *verticalSpacer_2;
-    QHBoxLayout *horizontalLayout_8;
-    QLabel *lbLevel;
-    QLabel *lbLevelGame;
-    QSpacerItem *horizontalSpacer_9;
-    QSpacerItem *verticalSpacer_3;
-    QWidget *gridLayoutWidget;
     QGridLayout *boardGrid;
-    QWidget *winWidget;
-    QLabel *lbEnd;
     QMenuBar *menuBar;
     QMenu *menu_Jeu;
 
@@ -84,7 +85,7 @@ public:
     {
         if (MWTetris->objectName().isEmpty())
             MWTetris->setObjectName(QStringLiteral("MWTetris"));
-        MWTetris->resize(646, 634);
+        MWTetris->resize(270, 658);
         MWTetris->setStyleSheet(QStringLiteral("background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 1, stop: 0 #eef, stop: 1 #ccf);"));
         MWTetris->setIconSize(QSize(2, 2));
         action_Nouveau = new QAction(MWTetris);
@@ -94,19 +95,19 @@ public:
         centralWidget = new QWidget(MWTetris);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         centralWidget->setStyleSheet(QStringLiteral(""));
-        layoutWidget = new QWidget(centralWidget);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(390, 0, 251, 611));
-        infoBox = new QVBoxLayout(layoutWidget);
+        gridLayout = new QGridLayout(centralWidget);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        infoBox = new QVBoxLayout();
         infoBox->setSpacing(10);
-        infoBox->setContentsMargins(11, 11, 11, 11);
         infoBox->setObjectName(QStringLiteral("infoBox"));
-        infoBox->setSizeConstraint(QLayout::SetNoConstraint);
-        infoBox->setContentsMargins(20, 20, 20, 20);
+        infoBox->setSizeConstraint(QLayout::SetFixedSize);
+        infoBox->setContentsMargins(10, 10, 10, 10);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        lbName = new QLabel(layoutWidget);
+        lbName = new QLabel(centralWidget);
         lbName->setObjectName(QStringLiteral("lbName"));
         lbName->setStyleSheet(QStringLiteral("QLabel {font-weight: bold; }"));
 
@@ -116,7 +117,7 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        lbPlayerName = new QLabel(layoutWidget);
+        lbPlayerName = new QLabel(centralWidget);
         lbPlayerName->setObjectName(QStringLiteral("lbPlayerName"));
 
         horizontalLayout->addWidget(lbPlayerName);
@@ -127,7 +128,7 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        lbScore = new QLabel(layoutWidget);
+        lbScore = new QLabel(centralWidget);
         lbScore->setObjectName(QStringLiteral("lbScore"));
         lbScore->setStyleSheet(QStringLiteral("QLabel {font-weight: bold; }"));
 
@@ -137,7 +138,7 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer_2);
 
-        lbPlayerScore = new QLabel(layoutWidget);
+        lbPlayerScore = new QLabel(centralWidget);
         lbPlayerScore->setObjectName(QStringLiteral("lbPlayerScore"));
 
         horizontalLayout_2->addWidget(lbPlayerScore);
@@ -148,7 +149,7 @@ public:
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setSpacing(6);
         horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
-        lbLines = new QLabel(layoutWidget);
+        lbLines = new QLabel(centralWidget);
         lbLines->setObjectName(QStringLiteral("lbLines"));
         lbLines->setStyleSheet(QStringLiteral("QLabel {font-weight: bold; }"));
 
@@ -158,7 +159,7 @@ public:
 
         horizontalLayout_7->addItem(horizontalSpacer_8);
 
-        lbPlayerLines = new QLabel(layoutWidget);
+        lbPlayerLines = new QLabel(centralWidget);
         lbPlayerLines->setObjectName(QStringLiteral("lbPlayerLines"));
 
         horizontalLayout_7->addWidget(lbPlayerLines);
@@ -169,7 +170,7 @@ public:
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setSpacing(6);
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        lbTimer = new QLabel(layoutWidget);
+        lbTimer = new QLabel(centralWidget);
         lbTimer->setObjectName(QStringLiteral("lbTimer"));
         lbTimer->setStyleSheet(QStringLiteral("QLabel {font-weight: bold; }"));
 
@@ -179,7 +180,7 @@ public:
 
         horizontalLayout_6->addItem(horizontalSpacer_7);
 
-        lbTime = new QLabel(layoutWidget);
+        lbTime = new QLabel(centralWidget);
         lbTime->setObjectName(QStringLiteral("lbTime"));
 
         horizontalLayout_6->addWidget(lbTime);
@@ -191,14 +192,49 @@ public:
 
         infoBox->addItem(verticalSpacer);
 
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setSpacing(6);
+        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
+        lbLevel = new QLabel(centralWidget);
+        lbLevel->setObjectName(QStringLiteral("lbLevel"));
+        lbLevel->setEnabled(true);
+
+        horizontalLayout_8->addWidget(lbLevel);
+
+        lbLevelGame = new QLabel(centralWidget);
+        lbLevelGame->setObjectName(QStringLiteral("lbLevelGame"));
+
+        horizontalLayout_8->addWidget(lbLevelGame);
+
+        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_8->addItem(horizontalSpacer_9);
+
+
+        infoBox->addLayout(horizontalLayout_8);
+
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setSpacing(6);
+        horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
+        horizontalSpacer_13 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_9->addItem(horizontalSpacer_13);
+
         boardNext = new QGridLayout();
         boardNext->setSpacing(5);
         boardNext->setObjectName(QStringLiteral("boardNext"));
-        boardNext->setSizeConstraint(QLayout::SetMinimumSize);
+        boardNext->setSizeConstraint(QLayout::SetMaximumSize);
 
-        infoBox->addLayout(boardNext);
+        horizontalLayout_9->addLayout(boardNext);
 
-        btnStart = new QPushButton(layoutWidget);
+        horizontalSpacer_12 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_9->addItem(horizontalSpacer_12);
+
+
+        infoBox->addLayout(horizontalLayout_9);
+
+        btnStart = new QPushButton(centralWidget);
         btnStart->setObjectName(QStringLiteral("btnStart"));
         btnStart->setStyleSheet(QLatin1String("QPushButton {\n"
 "color: BLACK;\n"
@@ -228,7 +264,7 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_3);
 
-        btnUp = new QPushButton(layoutWidget);
+        btnUp = new QPushButton(centralWidget);
         btnUp->setObjectName(QStringLiteral("btnUp"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(80);
@@ -272,7 +308,11 @@ public:
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        btnLeft = new QPushButton(layoutWidget);
+        horizontalSpacer_11 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_11);
+
+        btnLeft = new QPushButton(centralWidget);
         btnLeft->setObjectName(QStringLiteral("btnLeft"));
         sizePolicy.setHeightForWidth(btnLeft->sizePolicy().hasHeightForWidth());
         btnLeft->setSizePolicy(sizePolicy);
@@ -303,7 +343,7 @@ public:
 
         horizontalLayout_4->addWidget(btnLeft);
 
-        btnRight = new QPushButton(layoutWidget);
+        btnRight = new QPushButton(centralWidget);
         btnRight->setObjectName(QStringLiteral("btnRight"));
         btnRight->setStyleSheet(QLatin1String("QPushButton {\n"
 "color: white;\n"
@@ -332,6 +372,10 @@ public:
 
         horizontalLayout_4->addWidget(btnRight);
 
+        horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_10);
+
 
         infoBox->addLayout(horizontalLayout_4);
 
@@ -342,7 +386,7 @@ public:
 
         horizontalLayout_5->addItem(horizontalSpacer_5);
 
-        btnDown = new QPushButton(layoutWidget);
+        btnDown = new QPushButton(centralWidget);
         btnDown->setObjectName(QStringLiteral("btnDown"));
         sizePolicy.setHeightForWidth(btnDown->sizePolicy().hasHeightForWidth());
         btnDown->setSizePolicy(sizePolicy);
@@ -384,63 +428,21 @@ public:
 
         infoBox->addItem(verticalSpacer_2);
 
-        horizontalLayout_8 = new QHBoxLayout();
-        horizontalLayout_8->setSpacing(6);
-        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
-        lbLevel = new QLabel(layoutWidget);
-        lbLevel->setObjectName(QStringLiteral("lbLevel"));
-        lbLevel->setEnabled(true);
 
-        horizontalLayout_8->addWidget(lbLevel);
+        gridLayout->addLayout(infoBox, 0, 1, 1, 1);
 
-        lbLevelGame = new QLabel(layoutWidget);
-        lbLevelGame->setObjectName(QStringLiteral("lbLevelGame"));
-
-        horizontalLayout_8->addWidget(lbLevelGame);
-
-        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_8->addItem(horizontalSpacer_9);
-
-
-        infoBox->addLayout(horizontalLayout_8);
-
-        verticalSpacer_3 = new QSpacerItem(20, 60, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        infoBox->addItem(verticalSpacer_3);
-
-        gridLayoutWidget = new QWidget(centralWidget);
-        gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(0, 0, 391, 611));
-        boardGrid = new QGridLayout(gridLayoutWidget);
+        boardGrid = new QGridLayout();
         boardGrid->setSpacing(3);
-        boardGrid->setContentsMargins(11, 11, 11, 11);
         boardGrid->setObjectName(QStringLiteral("boardGrid"));
-        boardGrid->setSizeConstraint(QLayout::SetNoConstraint);
-        boardGrid->setContentsMargins(20, 20, 20, 20);
-        winWidget = new QWidget(centralWidget);
-        winWidget->setObjectName(QStringLiteral("winWidget"));
-        winWidget->setGeometry(QRect(-1, 169, 641, 201));
-        winWidget->setAutoFillBackground(false);
-        winWidget->setStyleSheet(QStringLiteral("QWidget{background-color: qconicalgradient(cx:0, cy:0, angle:135, stop:0 rgba(255, 176, 0, 69), stop:0.375 rgba(255, 223, 0, 69), stop:0.423533 rgba(255, 223, 0, 145), stop:0.45 rgba(255, 214, 0, 208), stop:0.477581 rgba(255, 219, 71, 130), stop:0.518717 rgba(255, 218, 71, 130), stop:0.547739 rgba(255, 214, 0, 255), stop:0.57754 rgba(255, 203, 0, 130), stop:0.625 rgba(251, 255, 0, 69), stop:1 rgba(255, 242, 0, 69));}"));
-        lbEnd = new QLabel(winWidget);
-        lbEnd->setObjectName(QStringLiteral("lbEnd"));
-        lbEnd->setGeometry(QRect(20, 40, 601, 131));
-        lbEnd->setStyleSheet(QLatin1String("QLabel{\n"
-"font-weight: bold;\n"
-"font-size: 20px;\n"
-"}"));
-        lbEnd->setAlignment(Qt::AlignCenter);
+        boardGrid->setSizeConstraint(QLayout::SetFixedSize);
+        boardGrid->setContentsMargins(10, 10, 10, 10);
+
+        gridLayout->addLayout(boardGrid, 0, 0, 1, 1);
+
         MWTetris->setCentralWidget(centralWidget);
-        layoutWidget->raise();
-        gridLayoutWidget->raise();
-        lbLevel->raise();
-        lbLevelGame->raise();
-        btnStart->raise();
-        winWidget->raise();
         menuBar = new QMenuBar(MWTetris);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 646, 20));
+        menuBar->setGeometry(QRect(0, 0, 270, 20));
         menu_Jeu = new QMenu(menuBar);
         menu_Jeu->setObjectName(QStringLiteral("menu_Jeu"));
         MWTetris->setMenuBar(menuBar);
@@ -472,6 +474,8 @@ public:
         lbTime->setStatusTip(QString());
 #endif // QT_NO_STATUSTIP
         lbTime->setText(QApplication::translate("MWTetris", "00:00", Q_NULLPTR));
+        lbLevel->setText(QApplication::translate("MWTetris", "lbLevel", Q_NULLPTR));
+        lbLevelGame->setText(QApplication::translate("MWTetris", "0", Q_NULLPTR));
         btnStart->setText(QApplication::translate("MWTetris", "COMMENCER", Q_NULLPTR));
         btnUp->setText(QApplication::translate("MWTetris", "Haut", Q_NULLPTR));
         btnUp->setShortcut(QApplication::translate("MWTetris", "Up", Q_NULLPTR));
@@ -481,9 +485,6 @@ public:
         btnRight->setShortcut(QApplication::translate("MWTetris", "Right", Q_NULLPTR));
         btnDown->setText(QApplication::translate("MWTetris", "Bas", Q_NULLPTR));
         btnDown->setShortcut(QApplication::translate("MWTetris", "Down", Q_NULLPTR));
-        lbLevel->setText(QApplication::translate("MWTetris", "lbLevel", Q_NULLPTR));
-        lbLevelGame->setText(QApplication::translate("MWTetris", "0", Q_NULLPTR));
-        lbEnd->setText(QApplication::translate("MWTetris", "TextLabel", Q_NULLPTR));
         menu_Jeu->setTitle(QApplication::translate("MWTetris", "&Jeu", Q_NULLPTR));
     } // retranslateUi
 

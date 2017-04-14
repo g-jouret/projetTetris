@@ -11,7 +11,6 @@ using namespace GJ_GW;
 
 MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris){
     ui->setupUi(this);
-    this->resize(640,640);
     initLang();
     connect(ui->action_Nouveau, &QAction::triggered, this, &MWTetris::createGame);
     connect(ui->action_Quitter, &QAction::triggered, this, &MWTetris::quitGame);
@@ -24,7 +23,7 @@ MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{ga
     ui->btnDown->setDisabled(true);
     ui->btnLeft->setDisabled(true);
     ui->btnRight->setDisabled(true);
-    ui->winWidget->hide();
+    lbEnd_ = new QLabel(this, Qt::WindowStaysOnTopHint);
     time_ = new QTimer(this);
     connect(time_, SIGNAL(timeout()), this, SLOT(time()));
     timer_ = new QTimer(this);
@@ -63,7 +62,7 @@ void MWTetris::createGame(){
                             cd.getWinScore(), cd.getWinLines(), cd.getWinTime(),
                             cd.getLevel());
             ui->btnStart->hide();
-            ui->winWidget->hide();
+            //ui->winWidget->hide();
             chrono_.restart();
             time_->start(1000);
             timer_->start(game_.getTimer());
@@ -71,6 +70,8 @@ void MWTetris::createGame(){
             ui->btnDown->setEnabled(true);
             ui->btnLeft->setEnabled(true);
             ui->btnRight->setEnabled(true);
+            lbEnd_->hide();
+            update(&game_);
         } catch(const std::invalid_argument & e){
             QErrorMessage * except = new QErrorMessage(this);
             except->showMessage(e.what());
@@ -91,17 +92,16 @@ void MWTetris::initLang(){
     /*ui->btnUp->setText("Haut");
     ui->btnDown->setText("Bas");
     ui->btnLeft->setText("Gauche");
-    ui->btnRight->setText("Droite");    /!\ bug avec les shortcuts => redéfinition en code
-    ui->lbName->setText(QString(lang[FR][LBNAME]));
-    ui->lbScore->setText(Display::lbScore::fr);
-    ui->lbLines->setText(Display::lbLines::fr);
-    ui->lbTimer->setText(Display::lbTimer::fr);
-    ui->btnUp->setText(Display::btnUp::fr);
-    ui->btnDown->setText(Display::btnDown::fr);*/
+    ui->btnRight->setText("Droite");    /!\ bug avec les shortcuts => redéfinition en code*/
 }
 
 void MWTetris::generateBoard(){
     std::map<Position, Color> theGrid {game_.getBoard().getGrid()};
+    unsigned width {((30+3)*game_.getBoard().getWidth())-3+40};     //(30px + 3px de spacing) * nombre de cases en largeur - 1 spacing + 2*20px de margin
+    unsigned height {((30+3)*game_.getBoard().getHeight())-3+40};   //(30px + 3px de spacing) * nombre de cases en hauteur - 1 spacing + 2*20px de margin
+    ui->boardGrid->setSpacing(3);
+    ui->boardGrid->setGeometry(QRect(0,0,width,height));
+    //ui->boardGrid->
     for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
         QLabel * lb = new QLabel();
         QColor border((it->second.getCode().at(0) <= 30)? 0 : it->second.getCode().at(0)-30,
@@ -111,14 +111,16 @@ void MWTetris::generateBoard(){
                      it->second.getCode().at(1),
                      it->second.getCode().at(2));
         lb->setStyleSheet("QLabel{"
-                          "width: 20px;"
-                          "height: 20px;"
+                          //"width: 20px;"
+                          //"height: 20px;"
                           "border-style: outset;"
                           "border-width:5px;"
                           "border-color:"+border.name()+";"
-                                                        "background-color : "+ color.name() +";}");
+                          "background-color : "+ color.name() +";}");
+        lb->setFixedSize(30,30);
         ui->boardGrid->addWidget(lb, it->first.getY(), it->first.getX(), 1, 1);
     }
+
 }
 
 void MWTetris::resetBoard(QGridLayout * board){
@@ -150,13 +152,15 @@ void MWTetris::showNextBric(){
                               theBric.getColor().getCode().at(1),
                               theBric.getColor().getCode().at(2));*/
                 lb->setStyleSheet("QLabel{"
-                                  "width: 20px;"
-                                  "height: 20px;"
+                                  //"width: 20px;"
+                                  //"height: 20px;"
                                   /* NOTE : cf ci-dessus
                                    * "border-style: outset;"
                                      "border-width:5px;"
                                      "border-color:"+border.name()+";"*/
                                   "background-color : "+ color.name() +";}");
+                //lb->resize(20,20);
+                lb->setFixedSize(20,20);
                 ui->boardNext->addWidget(lb, v, u, 1, 1);
             }
         }
@@ -179,18 +183,18 @@ void MWTetris::drop(){
     game_.drop();
 }
 
-void MWTetris::update(Subject *){
-    unsigned width;
-    unsigned height;
+void MWTetris::update(Subject *){//Subject *){
+    //unsigned width;
+    //unsigned height;
     switch (game_.getGameState()){
     case GameState::NONE:
         if(QString::fromStdString(game_.getPlayer().getName()) != ui->lbPlayerName->text()){
             ui->lbPlayerName->setText(QString::fromStdString(game_.getPlayer().getName()));
         }
-        width = (23)*game_.getBoard().getWidth();
-        height = (23)*game_.getBoard().getHeight() + ui->menuBar->height();
-        ui->boardGrid->setGeometry(QRect (0, 0, width, height));
-        ui->infoBox->setGeometry(QRect (width, 0, 350, 650));
+        //width = (23)*game_.getBoard().getWidth();
+        //height = (23)*game_.getBoard().getHeight() + ui->menuBar->height();
+        //ui->boardGrid->setGeometry(QRect (0, 0, width, height));
+        //ui->infoBox->setGeometry(QRect (width, 0, 350, 650));
         //width += 350;
         //height = (height > 650)? height : 650;
         //ui->centralWidget->resize(width,height);
@@ -207,39 +211,46 @@ void MWTetris::update(Subject *){
         resetBoard(ui->boardNext);
         generateBoard();
         showNextBric();
+        this->adjustSize();
         break;
     case GameState::LOOSE:
-        ui->lbEnd->setText(QString::fromStdString("Game Over..."));
-        endGame();
+        lbEnd_->setText("Game over...");
+        endGame(lbEnd_);
         break;
     case GameState::LINE:
-        //ui->winWidget->setProperty("win", true);
-        ui->lbEnd->setText(QString::fromStdString("Vous êtes un empilateur né!\n"
-                                                  "Vous avez fait assez de ligne pour gagner!"));
-        endGame();
+        lbEnd_->setText("Vous êtes un empilateur né!\n"
+                       "Vous avez fait assez de ligne pour gagner!");
+        endGame(lbEnd_);
         break;
     case GameState::SCORE:
-        //ui->winWidget->setProperty("win", true);
-        ui->lbEnd->setText(QString::fromStdString("Quel score! J'ai du mal à suivre!"));
-        endGame();
+        lbEnd_->setText("Quel score! J'ai du mal à suivre!");
+        endGame(lbEnd_);
         break;
     case GameState::TIME:
-        //ui->winWidget->setProperty("win", true);
-        ui->lbEnd->setText(QString::fromStdString("Vous avez survécu!\n"
-                                                  "Vous avez triompher de la patience du Tetris"));
-        endGame();
+        lbEnd_->setText("Vous avez survécu!\n"
+                       "Vous avez joué assez longtemps au Tetris");
+        endGame(lbEnd_);
         break;
     }
 }
 
-void MWTetris::endGame(){
+void MWTetris::endGame(QLabel *lbEnd){
     ui->btnUp->setDisabled(true);
     ui->btnDown->setDisabled(true);
     ui->btnLeft->setDisabled(true);
     ui->btnRight->setDisabled(true);
-    ui->winWidget->setVisible(true);
     time_->stop();
     timer_->stop();
+    lbEnd->setStyleSheet("QLabel{font-weight: bold; font-size: 20px;"
+                         "background-color: qconicalgradient(cx:0, cy:0, angle:135, stop:0 rgba(255, 176, 0, 69),"
+                             "stop:0.375 rgba(255, 223, 0, 69), stop:0.423533 rgba(255, 223, 0, 145),"
+                             "stop:0.45 rgba(255, 214, 0, 208), stop:0.477581 rgba(255, 219, 71, 130),"
+                             "stop:0.518717 rgba(255, 218, 71, 130), stop:0.547739 rgba(255, 214, 0, 255),"
+                             "stop:0.57754 rgba(255, 203, 0, 130), stop:0.625 rgba(251, 255, 0, 69),"
+                             "stop:1 rgba(255, 242, 0, 69));}");
+
+    lbEnd->adjustSize();
+    lbEnd->show();
 }
 
 void MWTetris::time(){

@@ -32,13 +32,13 @@ public:
     constexpr static unsigned MINIMUM_WIDTH {6};
     /*!< Valeur minimale acceptée pour la largeur. */
 
-    constexpr static unsigned MAXIMUM_WIDTH {30};
+    constexpr static unsigned MAXIMUM_WIDTH {18};
     /*!< Valeur maximale acceptée pour la largeur. */
 
-    constexpr static unsigned MINIMUM_HEIGHT {10};
+    constexpr static unsigned MINIMUM_HEIGHT {12};
     /*!< Valeur minimale acceptée pour la hauteur. */
 
-    constexpr static unsigned MAXIMUM_HEIGHT {50};
+    constexpr static unsigned MAXIMUM_HEIGHT {28};
     /*!< Valeur maximale acceptée pour la hauteur. */
 
     constexpr static unsigned MINIMUM_WIN_SCORE {1000};

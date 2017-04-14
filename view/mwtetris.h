@@ -6,6 +6,7 @@
 #include <QMainWindow>
 #include <QElapsedTimer>
 #include <QGridLayout>
+#include <QLabel>
 
 namespace Ui {
 class MWTetris;
@@ -16,6 +17,7 @@ class MWTetris : public QMainWindow, public GJ_GW::Observer{
     Q_OBJECT
     GJ_GW::Tetris game_;
     Ui::MWTetris *ui;
+    QLabel * lbEnd_;
     QElapsedTimer chrono_;
     QTimer * time_;
     QTimer * timer_;
@@ -30,7 +32,7 @@ private:
     void generateBoard();
     void resetBoard(QGridLayout * board);
     void showNextBric();
-    void endGame();
+    void endGame(QLabel *lbEnd_);
     void initLang();
 
 private slots:
