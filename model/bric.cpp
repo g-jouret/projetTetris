@@ -55,6 +55,9 @@ std::vector<Position> Bric::validate(std::vector<Position> shape){
         even_ = 0;
         middle_ = Position(sideX/2, sideX/2);
     }
+    if(sideY == 1){
+        middle_.setY(-1);
+    }
     return shape;
 }
 
