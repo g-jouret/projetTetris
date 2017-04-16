@@ -79,8 +79,7 @@ QLabel *SetBricsDialog::createLb(){
     return lb;
 }
 
-/* TODO annuler dernier mouvement?
- * void SetBricsDialog::reset(){
+/* void SetBricsDialog::reset(){
     QLayoutItem *child;
     while((child = ui->gridLayout->takeAt(0)) != 0){
         delete child->widget();

@@ -78,9 +78,9 @@ public:
     QPushButton *btnDown;
     QSpacerItem *horizontalSpacer_6;
     QSpacerItem *verticalSpacer_5;
-    QSpacerItem *horizontalSpacer_15;
     QSpacerItem *verticalSpacer_3;
     QSpacerItem *verticalSpacer_2;
+    QSpacerItem *horizontalSpacer_15;
     QMenuBar *menuBar;
     QMenu *menu_Jeu;
 
@@ -441,11 +441,7 @@ public:
         infoBox->addItem(verticalSpacer_5);
 
 
-        gridLayout->addLayout(infoBox, 0, 2, 1, 1);
-
-        horizontalSpacer_15 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_15, 0, 1, 1, 1);
+        gridLayout->addLayout(infoBox, 0, 3, 1, 1);
 
         verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -453,7 +449,11 @@ public:
 
         verticalSpacer_2 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout->addItem(verticalSpacer_2, 1, 2, 1, 1);
+        gridLayout->addItem(verticalSpacer_2, 1, 3, 1, 1);
+
+        horizontalSpacer_15 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_15, 0, 1, 1, 1);
 
         MWTetris->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MWTetris);

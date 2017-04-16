@@ -21,6 +21,7 @@ int main(int argc, char *argv[]){
 }
 
 /* TODO Principal :
+ * annuler dernier mouvement dans création de brique
  * amélioration rotation des briques
  * condition de victoire ignorable (checkbox)
  * choix couleur brique perso (qcolordialog)

@@ -171,15 +171,16 @@ void MWTetris::drop(){
 }
 
 void MWTetris::update(Subject *){
+    int timer = game_.getTimer();
+    ui->lbPlayerScore->setText(QString::number(game_.getPlayer().getScore()) + "/" + QString::number(game_.getWinScore()));
+    ui->lbPlayerLines->setText(QString::number(game_.getPlayer().getNbLines()) + "/" + QString::number(game_.getWinLines()));
     switch (game_.getGameState()){
     case GameState::NONE:
         if(QString::fromStdString(game_.getPlayer().getName()) != ui->lbPlayerName->text()){
             ui->lbPlayerName->setText(QString::fromStdString(game_.getPlayer().getName()));
         }
     case GameState::ON:
-        ui->lbPlayerScore->setText(QString::number(game_.getPlayer().getScore()) + "/" + QString::number(game_.getWinScore()));
-        ui->lbPlayerLines->setText(QString::number(game_.getPlayer().getNbLines()) + "/" + QString::number(game_.getWinLines()));
-        if(game_.getTimer() != timer_->interval())
+        if(timer != timer_->interval())
             timer_->setInterval(game_.getTimer());
         if(QString::number(game_.getLevel()) != ui->lbLevelGame->text()){
             ui->lbLevelGame->setText(QString::number(game_.getLevel()));

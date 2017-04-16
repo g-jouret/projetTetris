@@ -61,7 +61,6 @@ void Tetris::resetBag(){
 void Tetris::startGame(std::string name, unsigned width, unsigned height,
                        unsigned winScore, unsigned winLines, unsigned winTime,
                        unsigned level){
-    gameState_ = GameState::NONE;
     level_ = level;
     timer_ = MAXIMUM_TIMER;
     for(unsigned u {0}; u < level; ++u){
@@ -72,7 +71,7 @@ void Tetris::startGame(std::string name, unsigned width, unsigned height,
     winScore_ = validateWinScore(winScore);
     winLines_ = validateWinLines(winLines);
     winTime_ = validateWinTime(winTime);
-    notifyObservers();
+    setGameState(GameState::NONE);
     generateBric(true);
 }
 
@@ -140,19 +139,20 @@ void Tetris::generateBric(bool first){
     } else{
         setGameState(GameState::LOOSE);
     }
-    notifyObservers();
 }
 
 void Tetris::drop(){
     unsigned count {0};
     bool ok {1};
     while(ok){
-        ok = checkMove(Direction::DOWN, count);
+        ok = checkMove(Direction::DOWN);
         ++count;
     }
+    checkLines(currentBric_.getHigherY(), count);
+    notifyObservers();
 }
 
-bool Tetris::checkMove(Direction dir, unsigned dropsCount){
+bool Tetris::checkMove(Direction dir){
     bool ok {1};
     unsigned count {0};
     Bric destination = currentBric_;
@@ -165,10 +165,10 @@ bool Tetris::checkMove(Direction dir, unsigned dropsCount){
     }
     if(ok)
         moveBric(dir);
-    if(! ok && dir == Direction::DOWN){
+    /*if(! ok && dir == Direction::DOWN){
         checkLines(currentBric_.getHigherY(), dropsCount);
         generateBric();
-    }
+    }*/
     return ok;
 }
 
@@ -222,20 +222,23 @@ void Tetris::checkLines(unsigned top, unsigned dropsCount){
     } else if(player_.getNbLines() >= winLines_){
         setGameState(GameState::LINE);
     }
-    notifyObservers();
 }
 
 void Tetris::setGameState(GameState gameState){
     gameState_ = gameState;
+    notifyObservers();
 }
 
 void Tetris::next(unsigned timeElapsed){
     if(timeElapsed < winTime_){
-        checkMove(Direction::DOWN);
+        if(! checkMove(Direction::DOWN)){
+            checkLines(currentBric_.getHigherY(), 0);
+            generateBric();
+        }
+        notifyObservers();
     } else{
         setGameState(GameState::TIME);
     }
-    notifyObservers();
 }
 
 void Tetris::setLevel(){

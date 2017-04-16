@@ -227,7 +227,7 @@ public:
      * \param dropsCount le nombre de drop effectué, si la méthode a été appelée par un drop
      * \return true si le mouvement peut être effectué, false sinon
      */
-    bool checkMove(Direction dir, unsigned dropsCount = 0);
+    bool checkMove(Direction dir);
 
     /*!
      * \brief Méthode vérifiant que la rotation de la \ref Bric courante est valide.
@@ -363,14 +363,15 @@ private:
     void checkLines(unsigned top, unsigned dropsCount);
 
     /*!
-     * \brief Méthode vérifiant qu'aucune condition de fin de partie n'a été remplie et
-     * modifiant le \ref GameState en fonction.
+     * \brief Méthode modifiant le \ref GameState et notifiant la vue.
      *
-     * Les conditions de fin de partie sont :
-     *  - Un joueur perd si la brique suivante ne peut être mise en jeu par manque de place ;
-     *  - Un joueur gagne s'il atteint un score suffisant ;
-     *  - Un joueur gagne s'il réussi à remplir suffisamment de lignes ;
-     *  - la partie s'arrête après un certain temps, le joueur ayant alors le plus haut score l'emporte.
+     * Cette méthode est appelée lorsque :
+     *  - La partie s'initialise ;
+     *  - La partie commence ;
+     *  - Un joueur perd, si la brique suivante ne peut être mise en jeu par manque de place ;
+     *  - Un joueur gagne, s'il atteint un score suffisant ;
+     *  - Un joueur gagne, s'il réussi à remplir suffisamment de lignes ;
+     *  - La partie s'arrête, après un certain temps, le joueur ayant alors le plus haut score l'emporte.
      *
      * \param gameState le nouvel état de la partie
      */
