@@ -1,8 +1,8 @@
 #ifndef MWTETRIS_H
 #define MWTETRIS_H
 
-#include "observer/observer.h"
-#include "model/tetris.h"
+#include "../observer/observer.h"
+#include "../model/tetris.h"
 #include <QMainWindow>
 #include <QElapsedTimer>
 #include <QGridLayout>

@@ -5,7 +5,7 @@
 #include "board.h"
 #include "bricsBag.h"
 #include "gamestate.h"
-#include "observer/subject.h"
+#include "../observer/subject.h"
 
 /*! \mainpage Le jeu de Tetris multijoueur, projet de c++ 2016-2017
  *

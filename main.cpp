@@ -21,6 +21,7 @@ int main(int argc, char *argv[]){
 }
 
 /* TODO Principal :
+ * /!\ revérification visibilité + exception si méthode public /!\
  * pause / stopper temps (save elapsed, delete => pointeur?)
  * annuler dernier mouvement dans création de brique
  * condition de victoire ignorable (checkbox)

@@ -4,7 +4,7 @@
 #include <QDialog>
 #include <QLabel>
 #include <vector>
-#include <model/position.h>
+#include <../model/position.h>
 
 namespace Ui {
 class SetBricsDialog;

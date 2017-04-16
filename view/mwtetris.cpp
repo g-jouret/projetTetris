@@ -1,8 +1,8 @@
 #include "mwtetris.h"
 #include "ui_mwtetris.h"
-#include "model/direction.h"
+#include "../model/direction.h"
 #include "configdialog.h"
-#include "model/gamestate.h"
+#include "../model/gamestate.h"
 #include <sstream>
 #include <QTimer>
 #include <QErrorMessage>

@@ -2,7 +2,7 @@
 #define CONFIGDIALOG_H
 
 #include <QDialog>
-#include "model/bric.h"
+#include "../model/bric.h"
 
 namespace Ui {
 class ConfigDialog;
