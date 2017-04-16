@@ -91,14 +91,16 @@ void ConfigDialog::setBrics(){
     newBric.setWindowTitle("Éditeur de brique");
     int ret = newBric.exec();
     if(ret == QDialog::Rejected) return;
-    std::vector<Position> bric = newBric.getSaved();
-    std::vector<unsigned> color {29,69,19};
-    try{
-        brics_.push_back(Bric(bric, Color(color)));
-        keepBag_ = newBric.isKeepingBag();
-    } catch(const std::invalid_argument & e){
-        QErrorMessage * except = new QErrorMessage(this);
-        except->showMessage(e.what());
+    if(newBric.getSaved().size() != 0){
+        std::vector<Position> bric = newBric.getSaved();
+        std::vector<unsigned> color {29,69,19};
+        try{
+            brics_.push_back(Bric(bric, Color(color)));
+            keepBag_ = newBric.isKeepingBag();
+        } catch(const std::invalid_argument & e){
+            QErrorMessage * except = new QErrorMessage(this);
+            except->showMessage(e.what());
+        }
     }
 }
 
