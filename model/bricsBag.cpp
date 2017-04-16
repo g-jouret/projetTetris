@@ -5,20 +5,27 @@
 using namespace GJ_GW;
 
 BricsBag::BricsBag(){
-    std::vector<Position> bricI {Position(0,0),Position(1,0),Position(2,0),Position(3,0)};
-    std::vector<Position> bricO {Position(0,0),Position(1,0),Position(0,1),Position(1,1)};
-    std::vector<Position> bricT {Position(1,0),Position(1,1),Position(0,1),Position(2,1)};
-    std::vector<Position> bricL {Position(2,0),Position(2,1),Position(1,1),Position(0,1)};
-    std::vector<Position> bricJ {Position(0,0),Position(0,1),Position(1,1),Position(2,1)};
-    std::vector<Position> bricZ {Position(0,0),Position(1,0),Position(1,1),Position(2,1)};
-    std::vector<Position> bricS {Position(2,0),Position(1,0),Position(1,1),Position(0,1)};
-    brics_.push_back(Bric(bricI, Color(std::vector<unsigned> {130,180,190})));
-    brics_.push_back(Bric(bricO, Color(std::vector<unsigned> {255,215,0})));
-    brics_.push_back(Bric(bricT, Color(std::vector<unsigned> {128,0,128})));
-    brics_.push_back(Bric(bricL, Color(std::vector<unsigned> {218,165,32})));
-    brics_.push_back(Bric(bricJ, Color(std::vector<unsigned>{150,0,255})));
-    brics_.push_back(Bric(bricZ, Color(std::vector<unsigned>{150,20,30})));
-    brics_.push_back(Bric(bricS, Color(std::vector<unsigned>{150,200,7})));
+    std::vector<Position> shapeI {Position(0,0),Position(1,0),Position(2,0),Position(3,0)};
+    std::vector<Position> shapeO {Position(0,0),Position(1,0),Position(0,1),Position(1,1)};
+    std::vector<Position> shapeT {Position(1,0),Position(1,1),Position(0,1),Position(2,1)};
+    std::vector<Position> shapeL {Position(2,0),Position(2,1),Position(1,1),Position(0,1)};
+    std::vector<Position> shapeJ {Position(0,0),Position(0,1),Position(1,1),Position(2,1)};
+    std::vector<Position> shapeZ {Position(0,0),Position(1,0),Position(1,1),Position(2,1)};
+    std::vector<Position> shapeS {Position(2,0),Position(1,0),Position(1,1),Position(0,1)};
+    std::vector<unsigned> colorI{130,180,190};
+    std::vector<unsigned> colorO{255,215,0};
+    std::vector<unsigned> colorT{128,0,128};
+    std::vector<unsigned> colorL{218,165,32};
+    std::vector<unsigned> colorJ{150,0,255};
+    std::vector<unsigned> colorZ{150,20,30};
+    std::vector<unsigned> colorS{150,200,7};
+    brics_.push_back(Bric(shapeI, Color(colorI)));
+    brics_.push_back(Bric(shapeO, Color(colorO)));
+    brics_.push_back(Bric(shapeT, Color(colorT)));
+    brics_.push_back(Bric(shapeL, Color(colorL)));
+    brics_.push_back(Bric(shapeJ, Color(colorJ)));
+    brics_.push_back(Bric(shapeZ, Color(colorZ)));
+    brics_.push_back(Bric(shapeS, Color(colorS)));
 }
 
 BricsBag::BricsBag(std::vector<Bric> & brics): brics_ {brics}
@@ -53,21 +60,3 @@ void BricsBag::shuffle(bool first){
         }
     }
 }
-
-
-
-std::string BricsBag::to_string() const{
-    std::string s;
-    for(Bric b : brics_){
-        s += b.to_string() + "\n";
-    }
-    return s;
-}
-
-namespace GJ_GW {
-std::ostream & operator<<(std::ostream & out, const BricsBag & in){
-    out << in.to_string();
-    return out;
-}
-}
-

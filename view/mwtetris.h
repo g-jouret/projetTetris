@@ -29,11 +29,10 @@ public:
 
 private:
     void connexion();
-    void generateBoard();
+    void generateBoard(bool end = 0);
     void resetBoard(QGridLayout * board);
     void showNextBric();
-    void endGame(QLabel *lbEnd_);
-    void initLang();
+    void endGame();
 
 private slots:
     void createGame();

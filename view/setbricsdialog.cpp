@@ -61,22 +61,21 @@ QPushButton *SetBricsDialog::createBtn(unsigned x, unsigned y){
     btn->setObjectName(pos);
     connect(btn, SIGNAL(clicked()), this, SLOT(update()));
     btn->setStyleSheet("QPushButton{"
-                       "width: 40px;"
-                       "height: 40px;"
                        "background-color: orange;"
                        "}"
                        "QPushButton:disabled{"
                        "background-color: white;"
                        "}");
+    btn->setFixedSize(40,40);
     return btn;
 }
 
 QLabel *SetBricsDialog::createLb(){
     QLabel * lb = new QLabel();
     lb->setStyleSheet("Qlabel{"
-                      "width: 40px;"
-                      "height: 40px;"
+                      "background-color: blue;"
                       "}");
+    lb->setFixedSize(40,40);
     return lb;
 }
 

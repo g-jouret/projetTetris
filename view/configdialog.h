@@ -26,6 +26,7 @@ public:
     unsigned getLevel() const;
     std::vector<GJ_GW::Bric> getBrics() const;
     bool isKeepingBag() const;
+    bool isResettingBag() const;
 
 private:
     Ui::ConfigDialog *ui;
@@ -33,6 +34,7 @@ private:
 
 private slots:
     void setBrics();
+    void hideSetBrics(bool checked);
 };
 
 #endif // CONFIGDIALOG_H

@@ -1,8 +1,6 @@
 #ifndef POSITION_H
 #define POSITION_H
 
-#include <iostream>
-
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
  */
@@ -26,14 +24,14 @@ public:
     /*!
      * \brief Constructeur sans argument de \ref Position.
      *
-     * Il initialise la \ref Position à la localisation par défaut.
+     * Il initialise la position à la localisation par défaut.
      */
     Position();
 
     /*!
      * \brief Constructeur de \ref Position.
      *
-     * Une \ref Position nouvellement créée est toujours vide.
+     * Une position nouvellement créée est toujours vide.
      *
      * \param x l'abscisse de la position
      * \param y l'ordonnée de la position
@@ -66,12 +64,24 @@ public:
      */
     void setY(int y);
 
+    /*!
+     * \brief Méthode permettant de savoir si une \ref Position
+     * est adjacente à une autre selon son abscisse et son ordonnée.
+     *
+     * \param x l'abscisse de la position
+     * \param y l'ordonnée de la position
+     * \return vrai si les positions sont adjacentes, faux sinon
+     */
     bool isAdjacent(const unsigned & x, const unsigned & y);
 
+    /*!
+     * \brief Méthode permettant de savoir si une \ref Position
+     * est adjacente à une autre position.
+     *
+     * \param other l'autre position
+     * \return vrai si les positions sont adjacentes, faux sinon
+     */
     bool isAdjacent(const Position & other);
-
-    // NOTE : à enlever
-    std::string to_string() const;
 };
 
 //prototypes
@@ -95,8 +105,6 @@ inline bool operator!=(const Position & lhs, const Position & rhs);
 /*!
  * \brief Opérateur de comparaison de deux \ref Position.
  *
- * La comparaison se fait sur y en priorité.
- *
  * \param lhs le membre de gauche
  * \param rhs le membre de droite
  * \return true si le membre de gauche est strictement inférieur au membre de droite, false sinon
@@ -106,16 +114,11 @@ inline bool operator<(const Position & lhs, const Position & rhs);
 /*!
  * \brief Opérateur de comparaison de deux \ref Position.
  *
- * La comparaison se fait sur x en priorité.
- *
  * \param lhs le membre de gauche
  * \param rhs le membre de droite
  * \return true si le membre de gauche est strictement supérieur au membre de droite, false sinon
  */
 inline bool operator>(const Position & lhs, const Position & rhs);
-
-// NOTE : à enlever
-std::ostream & operator<<(std::ostream & out, const Position & in);
 
 //implémentations inline
 //fonctions inline

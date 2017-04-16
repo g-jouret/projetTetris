@@ -10,6 +10,8 @@ ConfigDialog::ConfigDialog(std::string name, std::vector<unsigned> args, QWidget
     ui->setupUi(this);
     keepBag_ = true;
     connect(ui->bricSetter, &QPushButton::clicked, this, &ConfigDialog::setBrics);
+    connect(ui->defaultBrics, &QCheckBox::toggled, this, &ConfigDialog::hideSetBrics);
+    hideSetBrics(true);
 
     ui->leName->setText(QString::fromStdString(name));
     ui->leName->setMaxLength(args.at(0));
@@ -80,18 +82,31 @@ bool ConfigDialog::isKeepingBag() const{
     return keepBag_;
 }
 
+bool ConfigDialog::isResettingBag() const{
+    return ui->defaultBrics->isChecked();
+}
+
 void ConfigDialog::setBrics(){
     SetBricsDialog newBric (this);
     newBric.setWindowTitle("Éditeur de brique");
     int ret = newBric.exec();
     if(ret == QDialog::Rejected) return;
     std::vector<Position> bric = newBric.getSaved();
+    std::vector<unsigned> color {29,69,19};
     try{
-        brics_.push_back(Bric(bric, Color(std::vector<unsigned>{29,69,19})));
+        brics_.push_back(Bric(bric, Color(color)));
         keepBag_ = newBric.isKeepingBag();
     } catch(const std::invalid_argument & e){
         QErrorMessage * except = new QErrorMessage(this);
         except->showMessage(e.what());
+    }
+}
+
+void ConfigDialog::hideSetBrics(bool checked){
+    if(checked){
+        ui->bricSetter->hide();
+    } else{
+        ui->bricSetter->show();
     }
 }
 

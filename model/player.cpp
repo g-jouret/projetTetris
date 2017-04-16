@@ -32,10 +32,6 @@ void Player::reset(){
     score_ = 0;
 }
 
-void Player::setScore(unsigned score){
-    score_ = score;
-}
-
 void Player::setScore(unsigned dropsCount, unsigned linesCount){
     unsigned points;
     switch (linesCount) {

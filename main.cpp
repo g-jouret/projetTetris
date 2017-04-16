@@ -1,5 +1,6 @@
 #include "view/mwtetris.h"
 #include <QApplication>
+#include <iostream>
 
 using namespace GJ_GW;
 
@@ -20,13 +21,9 @@ int main(int argc, char *argv[]){
 }
 
 /* TODO Principal :
- * bouton début partie
- * amélioration graphique (resize auto)
  * amélioration rotation des briques
  * condition de victoire ignorable (checkbox)
- * gestion erreur bric verticale
  * choix couleur brique perso (qcolordialog)
  * pause / stopper temps (save elapsed, delete => pointeur?)
- * multi-langue
- * aide? cf qtpendu.pdf
+ * sauvegarde données hors partie, fichier de save (joueur, brique perso, score...)
  */

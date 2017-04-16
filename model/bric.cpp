@@ -1,6 +1,7 @@
 #include "bric.h"
 #include "direction.h"
 #include <algorithm>
+#include <stdexcept>
 
 using namespace GJ_GW;
 
@@ -17,7 +18,7 @@ std::vector<Position> Bric::validate(std::vector<Position> shape){
     std::vector<unsigned> tempY;
 
     if(shape.at(0).getY() != 0){
-        throw std::invalid_argument(message());
+        throw std::invalid_argument(message("la 1ère case ne touche pas le haut du repère"));
     }
     tested.push_back(shape.at(0));
     tempX.push_back(shape.at(0).getX());
@@ -25,7 +26,7 @@ std::vector<Position> Bric::validate(std::vector<Position> shape){
     for(Position p : shape){
         if(tested.size() > 1){
             if(! isAdjacent(tested, p)){
-                throw std::invalid_argument(message());
+                throw std::invalid_argument(message("toutes les cases ne sont pas adjacentes à une autre"));
             }
         }
         tested.push_back(p);
@@ -41,8 +42,11 @@ std::vector<Position> Bric::validate(std::vector<Position> shape){
     std::sort(tempY.begin(), tempY.end());
     tempY.erase(std::unique(tempY.begin(), tempY.end()), tempY.end());
     unsigned sideY = tempY.size();
-    if(sideX > MAXIMUM_SIDE || sideX < sideY){
-        throw std::invalid_argument(message());
+    if(sideX < sideY){
+        throw std::invalid_argument(message("la brique n'est pas placées horizontalement"));
+    }
+    if(sideX > MAXIMUM_SIDE){
+        throw std::invalid_argument(message("la taille de côté de la brique excède "+ std::to_string(MAXIMUM_SIDE)));
     }
     if(sideX % 2 == 0){
         even_ = 1;
@@ -70,12 +74,8 @@ void Bric::adjustPositions(std::vector<Position> &shape, unsigned xMin){
     }
 }
 
-std::string Bric::message() const{
-    return "Votre brique n'est pas valide, veuillez vérifier que :\n"
-           "- la 1ère case touche le haut du repère\n"
-           "- toutes les cases sont adjacentes à une autre\n"
-           "- la brique est placées horizontalement\n"
-           "- la taille de côté de la brique n'excède pas "+ std::to_string(MAXIMUM_SIDE);
+std::string Bric::message(std::string exception) const{
+    return "Votre brique n'est pas valide, car " + exception;
 }
 
 std::vector<Position> Bric::getShape() const{
@@ -152,22 +152,4 @@ bool Bric::contains(Position & pos) const{
         }
     }
     return ok;
-}
-
-
-
-std::string Bric::to_string() const{
-    std::string s;
-    for(auto it = shape_.begin(); it != shape_.end(); ++it){
-        s += it->to_string();
-    }
-    s += ", milieu : " + middle_.to_string();
-    return s;
-}
-
-namespace GJ_GW {
-std::ostream & operator<<(std::ostream & out, const Bric & in){
-    out << in.to_string();
-    return out;
-}
 }

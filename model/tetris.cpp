@@ -54,6 +54,10 @@ void Tetris::setBag(std::vector<Bric> newBag, bool keepBag){
     }
 }
 
+void Tetris::resetBag(){
+    bag_ = BricsBag();
+}
+
 void Tetris::startGame(std::string name, unsigned width, unsigned height,
                        unsigned winScore, unsigned winLines, unsigned winTime,
                        unsigned level){
@@ -131,7 +135,8 @@ void Tetris::generateBric(bool first){
         for(Position p : currentBric_.getShape()){
             board_.swapCase(p, currentBric_.getColor());
         }
-        setGameState(GameState::ON);
+        if(first)
+            setGameState(GameState::ON);
     } else{
         setGameState(GameState::LOOSE);
     }

@@ -33,31 +33,34 @@ public:
      */
     explicit BricsBag(std::vector<Bric> &brics);
 
+    /*!
+     * \brief Méthode ajoutant de nouvelles \ref Bric au \ref BricsBag.
+     * \param newBrics les nouvelles briques
+     */
     void add(std::vector<Bric> &newBrics);
 
     /*!
-     * \brief Accesseur en lecture de la prochaine brique du sac.
-     *
+     * \brief Accesseur en lecture de la \ref Bric courante.
      * \return la brique au sommet du sac
      */
     Bric getCurrentBric() const;
 
+    /*!
+     * \brief Accesseur en lecture de la prochaine \ref Bric courante.
+     * \return la seconde brique du sac.
+     */
     Bric getNextBric() const;
 
     /*!
-     * \brief Méthode mélangeant les briques dans le sac.
+     * \brief Méthode mélangeant les \ref Bric dans le sac.
      *
-     * Elle mélange les \ref Bric du sac à l'exception de la
-     * dernière brique jouée qui est mise en dernière position.
+     * Si c'est la 1ère fois qu'elle est appelée, elle mélange toutes
+     * les briques du sac.
+     * Sinon elle place l'ancienne brique courante au début du sac
+     * et la nouvelle à la fin, puis mélange les autres briques du sac.
      */
     void shuffle(bool first);
-
-    // NOTE : à enlever
-    std::string to_string() const;
 };
-
-// NOTE : à enlever
-std::ostream & operator<<(std::ostream & out, const BricsBag & in);
 
 } // namespace GJ_GW
 

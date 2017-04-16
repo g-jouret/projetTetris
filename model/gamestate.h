@@ -10,7 +10,7 @@ namespace GJ_GW{
  * \brief Énumération fortement typée pour représenter l'état d'une ligne de la grille de jeu.
  */
 enum class GameState{
-    /*! Représente le moment où la parite n'a pas encore commencée */
+    /*! Représente le moment où la partie n'a pas encore commencé */
     NONE,
     /*! Représente une partie en cours */
     ON,

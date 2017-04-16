@@ -34,6 +34,7 @@ public:
     QAction *action_Quitter;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
+    QGridLayout *boardGrid;
     QVBoxLayout *infoBox;
     QHBoxLayout *horizontalLayout;
     QLabel *lbName;
@@ -51,11 +52,11 @@ public:
     QLabel *lbTimer;
     QSpacerItem *horizontalSpacer_7;
     QLabel *lbTime;
-    QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout_8;
     QLabel *lbLevel;
     QLabel *lbLevelGame;
     QSpacerItem *horizontalSpacer_9;
+    QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout_9;
     QSpacerItem *horizontalSpacer_13;
     QGridLayout *boardNext;
@@ -76,8 +77,10 @@ public:
     QSpacerItem *horizontalSpacer_5;
     QPushButton *btnDown;
     QSpacerItem *horizontalSpacer_6;
+    QSpacerItem *verticalSpacer_5;
+    QSpacerItem *horizontalSpacer_15;
+    QSpacerItem *verticalSpacer_3;
     QSpacerItem *verticalSpacer_2;
-    QGridLayout *boardGrid;
     QMenuBar *menuBar;
     QMenu *menu_Jeu;
 
@@ -85,7 +88,7 @@ public:
     {
         if (MWTetris->objectName().isEmpty())
             MWTetris->setObjectName(QStringLiteral("MWTetris"));
-        MWTetris->resize(270, 658);
+        MWTetris->resize(262, 658);
         MWTetris->setStyleSheet(QStringLiteral("background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 1, stop: 0 #eef, stop: 1 #ccf);"));
         MWTetris->setIconSize(QSize(2, 2));
         action_Nouveau = new QAction(MWTetris);
@@ -99,11 +102,19 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        boardGrid = new QGridLayout();
+        boardGrid->setSpacing(3);
+        boardGrid->setObjectName(QStringLiteral("boardGrid"));
+        boardGrid->setSizeConstraint(QLayout::SetMaximumSize);
+        boardGrid->setContentsMargins(10, 10, 10, 10);
+
+        gridLayout->addLayout(boardGrid, 0, 0, 1, 1);
+
         infoBox = new QVBoxLayout();
         infoBox->setSpacing(10);
         infoBox->setObjectName(QStringLiteral("infoBox"));
         infoBox->setSizeConstraint(QLayout::SetFixedSize);
-        infoBox->setContentsMargins(10, 10, 10, 10);
+        infoBox->setContentsMargins(5, 10, 10, 10);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
@@ -188,16 +199,13 @@ public:
 
         infoBox->addLayout(horizontalLayout_6);
 
-        verticalSpacer = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        infoBox->addItem(verticalSpacer);
-
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setSpacing(6);
         horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
         lbLevel = new QLabel(centralWidget);
         lbLevel->setObjectName(QStringLiteral("lbLevel"));
         lbLevel->setEnabled(true);
+        lbLevel->setStyleSheet(QStringLiteral("QLabel {font-weight: bold; }"));
 
         horizontalLayout_8->addWidget(lbLevel);
 
@@ -213,6 +221,10 @@ public:
 
         infoBox->addLayout(horizontalLayout_8);
 
+        verticalSpacer = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        infoBox->addItem(verticalSpacer);
+
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setSpacing(6);
         horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
@@ -221,7 +233,7 @@ public:
         horizontalLayout_9->addItem(horizontalSpacer_13);
 
         boardNext = new QGridLayout();
-        boardNext->setSpacing(5);
+        boardNext->setSpacing(3);
         boardNext->setObjectName(QStringLiteral("boardNext"));
         boardNext->setSizeConstraint(QLayout::SetMaximumSize);
 
@@ -424,25 +436,29 @@ public:
 
         infoBox->addLayout(horizontalLayout_5);
 
+        verticalSpacer_5 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        infoBox->addItem(verticalSpacer_5);
+
+
+        gridLayout->addLayout(infoBox, 0, 2, 1, 1);
+
+        horizontalSpacer_15 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_15, 0, 1, 1, 1);
+
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer_3, 1, 0, 1, 1);
+
         verticalSpacer_2 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        infoBox->addItem(verticalSpacer_2);
-
-
-        gridLayout->addLayout(infoBox, 0, 1, 1, 1);
-
-        boardGrid = new QGridLayout();
-        boardGrid->setSpacing(3);
-        boardGrid->setObjectName(QStringLiteral("boardGrid"));
-        boardGrid->setSizeConstraint(QLayout::SetFixedSize);
-        boardGrid->setContentsMargins(10, 10, 10, 10);
-
-        gridLayout->addLayout(boardGrid, 0, 0, 1, 1);
+        gridLayout->addItem(verticalSpacer_2, 1, 2, 1, 1);
 
         MWTetris->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MWTetris);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 270, 20));
+        menuBar->setGeometry(QRect(0, 0, 262, 20));
         menu_Jeu = new QMenu(menuBar);
         menu_Jeu->setObjectName(QStringLiteral("menu_Jeu"));
         MWTetris->setMenuBar(menuBar);
@@ -463,18 +479,18 @@ public:
         action_Nouveau->setShortcut(QApplication::translate("MWTetris", "Ctrl+N", Q_NULLPTR));
         action_Quitter->setText(QApplication::translate("MWTetris", "&Quitter", Q_NULLPTR));
         action_Quitter->setShortcut(QApplication::translate("MWTetris", "Ctrl+Q", Q_NULLPTR));
-        lbName->setText(QApplication::translate("MWTetris", "lbName", Q_NULLPTR));
+        lbName->setText(QApplication::translate("MWTetris", "Joueur :", Q_NULLPTR));
         lbPlayerName->setText(QApplication::translate("MWTetris", "lbPlayerName", Q_NULLPTR));
-        lbScore->setText(QApplication::translate("MWTetris", "lbScore", Q_NULLPTR));
+        lbScore->setText(QApplication::translate("MWTetris", "Score :", Q_NULLPTR));
         lbPlayerScore->setText(QApplication::translate("MWTetris", "00", Q_NULLPTR));
-        lbLines->setText(QApplication::translate("MWTetris", "lbLines", Q_NULLPTR));
+        lbLines->setText(QApplication::translate("MWTetris", "Nombre de lignes :", Q_NULLPTR));
         lbPlayerLines->setText(QApplication::translate("MWTetris", "00", Q_NULLPTR));
-        lbTimer->setText(QApplication::translate("MWTetris", "lbTimer", Q_NULLPTR));
+        lbTimer->setText(QApplication::translate("MWTetris", "Temps \303\251coul\303\251 :", Q_NULLPTR));
 #ifndef QT_NO_STATUSTIP
         lbTime->setStatusTip(QString());
 #endif // QT_NO_STATUSTIP
         lbTime->setText(QApplication::translate("MWTetris", "00:00", Q_NULLPTR));
-        lbLevel->setText(QApplication::translate("MWTetris", "lbLevel", Q_NULLPTR));
+        lbLevel->setText(QApplication::translate("MWTetris", "Niveaux : ", Q_NULLPTR));
         lbLevelGame->setText(QApplication::translate("MWTetris", "0", Q_NULLPTR));
         btnStart->setText(QApplication::translate("MWTetris", "COMMENCER", Q_NULLPTR));
         btnUp->setText(QApplication::translate("MWTetris", "Haut", Q_NULLPTR));

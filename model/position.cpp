@@ -23,22 +23,3 @@ bool Position::isAdjacent(const unsigned &x, const unsigned &y){
 bool Position::isAdjacent(const Position & other){
     return isAdjacent(other.x_, other.y_);
 }
-
-
-
-std::string Position::to_string() const{
-    std::string s;
-    s += "(";
-    s += std::to_string(x_);
-    s += ", ";
-    s += std::to_string(y_);
-    s += ")";
-    return s;
-}
-namespace GJ_GW {
-std::ostream & operator<<(std::ostream & out, const Position & in){
-    out << in.to_string();
-    return out;
-}
-}
-

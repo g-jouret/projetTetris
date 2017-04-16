@@ -36,41 +36,35 @@ public:
     explicit Player(std::string &name);
 
     /*!
-     * \brief Accesseur en lecture du nom du joueur.
+     * \brief Accesseur en lecture du nom du \ref Player.
      *
      * \return le nom du joueur
      */
     std::string getName() const;
 
     /*!
-     * \brief Accesseur en lecture du score du joueur.
+     * \brief Accesseur en lecture du score du \ref Player.
      *
      * \return le score du joueur
      */
     unsigned getScore() const;
 
     /*!
-     * \brief Accesseur en lecture du nombre de lignes remplies par le joueur.
+     * \brief Accesseur en lecture du nombre de lignes remplies par le \ref Player.
      *
      * \return le nombre de lignes remplies par le joueur depuis le début de la partie
      */
     unsigned getNbLines() const;
 
     /*!
-     * \brief Accesseur en écriture du nom du joueur.
+     * \brief Accesseur en écriture du nom du \ref Player.
      * \param name le nouveau nom du joueur
      */
     void setPlayer(std::string name);
 
     /*!
-     * \brief Accesseur en écriture d'initialisation du score du joueur.
-     * \param score le score sauvegardé précédemment
-     */
-    void setScore(unsigned score);
-
-    /*!
-     * \brief Accesseur en écriture d'incrémentation du score du joueur.
-     * \param dropsCount le nombre de lignes parcourue en drop lors du dernier mouvement
+     * \brief Accesseur en écriture d'incrémentation du score du \ref Player.
+     * \param dropsCount le nombre de lignes parcouruent en drop lors du dernier mouvement
      * \param linesCount le nombre de lignes remplies lors du dernier mouvement
      */
     void setScore(unsigned dropsCount, unsigned linesCount);
@@ -82,6 +76,9 @@ public:
     bool setNbLines(unsigned linesCount);
 
 private:
+    /*!
+     * \brief Méthode permettant de remettre le nombre de lignes et le score du \ref Player à 0.
+     */
     void reset();
 };
 

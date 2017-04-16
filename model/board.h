@@ -50,7 +50,7 @@ public:
     /*!
      * \brief Accesseur en lecture de la grille de jeu.
      *
-     * \return la grille de cases
+     * \return la grille de \ref Position et de \ref Color
      */
     std::map<Position, Color> getGrid() const;
 
@@ -71,7 +71,8 @@ public:
     /*!
      * \brief Méthode vérifiant si une case donnée est une destination valide pour un déplacement.
      *
-     * Une case est valide si elle est incluse dans la grille de jeu et qu'elle n'est pas pleine.
+     * Une case est valide si elle est incluse dans la grille de jeu et qu'elle est vide.
+     * Une case vide est de \ref Color blanche.
      *
      * \param pos la localisation de la position
      * \return true si la case est valide, false sinon
@@ -79,17 +80,21 @@ public:
     bool checkCase(Position &pos) const;
 
     /*!
-     * \brief Méthode faisant passer une case remplie à vide, et à remplie si elle était vide.
+     * \brief Méthode changeant la couleur d'une case.
+     *
+     * Si elle passe à blanc, la case est considérée comme vide.
      *
      * \param pos la position à modifier
+     * \param color la couleur à appliquer
      */
     void swapCase(Position &pos, Color color);
 
     /*!
-     * \brief Méthode vérifiant l'état d'une ligne de la grille de jeu.
+     * \brief Méthode vérifiant s'il y a des lignes pleines dans la grille de jeu.
      *
-     * Cette méthode vérifie si les \ref Position d'une ligne de la grille
-     * sont pleines ou non et renvoie son état.
+     * Dès que cette méthode trouve une ligne pleines, elle lance l'actualisation de la grille et
+     * renvoie le nombre de ligne pleine rencontrées lors de cette étape. Si elle n'en rencontre
+     * aucune elle renvoie 0.
      *
      * \param la ligne jusqu'à laquelle il faut effectuer les vérifications
      * \return le nombre de lignes remplies
@@ -98,7 +103,9 @@ public:
 
 private:
     /*!
-     * \brief Méthode qui vide les lignes remplies et ré-aligne la grille de jeu.
+     * \brief Méthode qui actualise la grille de jeu.
+     *
+     * L'actualisation de la grille vide les lignes remplies et ré-aligne les autres lignes de la grille.
      *
      * \param lineNum le numéro de la première ligne remplie
      * \return le nombre de lignes remplies traitées
@@ -113,24 +120,42 @@ private:
      */
     bool contains(Position &pos) const;
 
+    /*!
+     * \brief Méthode vérifiant si une case donnée est une destination valide pour un déplacement.
+     *
+     * Une case est valide si elle est incluse dans la grille de jeu et qu'elle est vide.
+     * Une case vide est de \ref Color blanche.
+     *
+     * \param x l'abscisse de la \ref Position à vérifier
+     * \param y l'ordonnée de la \ref Position à vérifier
+     * \return true si la case est valide, false sinon
+     */
     bool checkCase(unsigned & x, unsigned & y) const;
 
+    /*!
+     * \brief Méthode vérifiant l'état d'une ligne de la grille de jeu.
+     *
+     * Cette méthode vérifie si les \ref Position d'une ligne de la grille
+     * sont pleines ou non et renvoie son \ref LineState.
+     *
+     * \param y le numéro de la ligne à vérifier
+     * \return l'état de la ligne
+     */
     LineState checkRow(unsigned &y);
 
     /*!
-     * \brief Méthode changeant l'état de toutes les \ref Position d'une ligne.
+     * \brief Méthode vidant toutes les cases d'une ligne.
      *
-     * Cette Méthode est utilisée principalement pour vider les lignes remplies,
-     * mais pourrait servir à remplir ou juste à inverser une ligne.
+     * Les cases de cette ligne prennent la \ref Color blanche.
      *
-     * \param line la ligne à modifier
+     * \param y le numéro de la ligne à vider
      */
     void EmptyRow(unsigned y);
 
     /*!
      * \brief Méthode descendant une ligne d'un nombre de cases donné.
      *
-     * \param line la ligne à traiter
+     * \param y le numéro de la ligne à traiter
      * \param lineNb le nombre de case que la ligne doit descendre
      */
     void moveLine(unsigned y, unsigned lineNb);

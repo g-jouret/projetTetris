@@ -67,6 +67,7 @@ private:
     /*!< Valeur maximale acceptée pour le timer. */
 
     unsigned level_;
+    /*!< Niveau de difficulté au démarrage de la partie. */
 
     unsigned timer_;
     /*!< Le timer.
@@ -129,12 +130,17 @@ public:
     explicit Tetris(std::string &name);
 
     /*!
-     * \brief Méthode permettant d'initialiser une brique personnalisée.
-     * \param la forme de la  brique que le joueur souhaite ajouter
-     * \param keepBag indique si le joueur souhaite ajouter sa brique au
+     * \brief Méthode permettant d'initialiser des \ref Bric personnalisées.
+     * \param newBag les briques que le joueur souhaite créer
+     * \param keepBag indique si le joueur souhaite ajouter ses briques au
      * sac déjà existant ou s'il souhaite créer un nouveau sac de briques.
      */
     void setBag(std::vector<Bric> newBag, bool keepBag = true);
+
+    /*!
+     * \brief Méthode réinitialisant le \ref BricsBag à sa valeur par défaut.
+     */
+    void resetBag();
 
     /*!
      * \brief Méthode permettant de lancer une partie de \ref Tetris.
@@ -193,6 +199,10 @@ public:
      */
     Board getBoard() const;
 
+    /*!
+     * \brief Accesseur en lecture de la prochaine \ref Bric courante.
+     * \return la prochaine brique courante
+     */
     Bric getNextBric() const;
 
     /*!
@@ -241,24 +251,27 @@ public:
     void next(unsigned timeElapsed);
 
 private:
-    // TODO : continuer doc
-
     /*!
      * \brief Méthode de validation de la largeur.
      *
-     * Cette méthode vérifie que la valeur de l'attribut .
+     * Cette méthode vérifie que la valeur de l'attribut est comprise entre
+     * \ref MINIMUM_WIDTH et \ref MAXIMUM_WIDTH.
      *
-     * \param value la valeur à valider
+     * \param width la valeur à valider
      * \return la valeur validée
+     * \throw std::invalid_argument si
+     *              width \f$\notin\f$ [\ref MINIMUM_WIDTH,
+     *                                          \ref MAXIMUM_WIDTH]
      */
     unsigned validateWidth(unsigned width);
 
     /*!
      * \brief Méthode de validation de la hauteur.
      *
-     * Cette méthode vérifie que la valeur de l'attribut n'est pas égale à zéro.
+     * Cette méthode vérifie que la valeur de l'attribut est comprise entre
+     * \ref MINIMUM_HEIGHT et \ref MAXIMUM_HEIGHT.
      *
-     * \param value la valeur à valider
+     * \param height la valeur à valider
      * \return la valeur validée
      * \throw std::invalid_argument si
      *              height \f$\notin\f$ [\ref MINIMUM_HEIGHT,
@@ -269,36 +282,73 @@ private:
     /*!
      * \brief Méthode de validation du score de victoire.
      *
-     * Cette méthode vérifie que la valeur de l'attribut n'est pas égale à zéro.
+     * Cette méthode vérifie que la valeur de l'attribut est comprise entre
+     * \ref MINIMUM_WIN_SCORE et \ref MAXIMUM_WIN_SCORE.
      *
-     * \param value la valeur à valider
+     * \param winScore la valeur à valider
      * \return la valeur validée
      * \throw std::invalid_argument si
-     *              height \f$\notin\f$ [\ref MINIMUM_HEIGHT,
-     *                                          \ref MAXIMUM_HEIGHT]
+     *              winScore \f$\notin\f$ [\ref MINIMUM_WIN_SCORE,
+     *                                          \ref MAXIMUM_WIN_SCORE]
      */
     unsigned validateWinScore(unsigned winScore);
 
+    /*!
+     * \brief Méthode de validation du nombre de lignes de victoire.
+     *
+     * Cette méthode vérifie que la valeur de l'attribut est comprise entre
+     * \ref MINIMUM_WIN_LINES et \ref MAXIMUM_WIN_LINES.
+     *
+     * \param winLines la valeur à valider
+     * \return la valeur validée
+     * \throw std::invalid_argument si
+     *              winLines \f$\notin\f$ [\ref MINIMUM_WIN_LINES,
+     *                                          \ref MAXIMUM_WIN_LINES]
+     */
     unsigned validateWinLines(unsigned winLines);
 
+    /*!
+     * \brief Méthode de validation du temps de victoire.
+     *
+     * Cette méthode vérifie que la valeur de l'attribut est comprise entre
+     * \ref MINIMUM_WIN_TIME et \ref MAXIMUM_WIN_TIME.
+     *
+     * \param winTime la valeur à valider
+     * \return la valeur validée
+     * \throw std::invalid_argument si
+     *              winTime \f$\notin\f$ [\ref MINIMUM_WIN_TIME,
+     *                                          \ref MAXIMUM_WIN_TIME]
+     */
     unsigned validateWinTime(unsigned winTime);
 
+    /*!
+     * \brief Méthode générant un message d'erreur en fonction de l'exception
+     * rencontrée.
+     *
+     * \param label le label du paramètre invalide
+     * \param value la valeur du paramètre invalide
+     * \param min la valeur minimale de l'attribut
+     * \param max la valeur maximale de l'attribut
+     * \return le message d'erreur
+     */
     std::string message(const std::string & label, unsigned value, unsigned min, unsigned max) const;
 
     /*!
      * \brief Méthode plaçant une nouvelle \ref Bric en haut du \ref Board.
+     *
+     * \param first indique s'il s'agit de la 1ère génération de brique de la partie
      */
     void generateBric(bool first = false);
 
     /*!
-     * \brief Méthode permettant une translation de la brique courante dans une direction donnée.
+     * \brief Méthode permettant une translation de la \ref Bric courante dans une \ref Direction donnée.
      *
      * \param direction la direction vers laquelle la brique est déplacée
      */
     void moveBric(Direction dir);
 
     /*!
-     * \brief Méthode permettant de tourner la brique courante de 90°.
+     * \brief Méthode permettant de tourner la \ref Bric courante de 90°.
      */
     void rotateBric();
 
@@ -313,21 +363,22 @@ private:
     void checkLines(unsigned top, unsigned dropsCount);
 
     /*!
-     * \brief Méthode vérifiant qu'aucune condition de fin de partie n'a été remplie.
+     * \brief Méthode vérifiant qu'aucune condition de fin de partie n'a été remplie et
+     * modifiant le \ref GameState en fonction.
      *
-     * Si un joueur perd ou gagne, elle arrête la partie et affiche le résultat.
+     * Les conditions de fin de partie sont :
      *  - Un joueur perd si la brique suivante ne peut être mise en jeu par manque de place ;
      *  - Un joueur gagne s'il atteint un score suffisant ;
      *  - Un joueur gagne s'il réussi à remplir suffisamment de lignes ;
      *  - la partie s'arrête après un certain temps, le joueur ayant alors le plus haut score l'emporte.
+     *
+     * \param gameState le nouvel état de la partie
      */
     void setGameState(GameState gameState);
 
     /*!
      * \brief Méthode modifiant le temps entre chaque itération en fonction
      * du niveau de difficulté.
-     *
-     * \return le timer modifié
      */
     void setTimer();
 
