@@ -141,7 +141,7 @@ private:
      * \param y le numéro de la ligne à vérifier
      * \return l'état de la ligne
      */
-    LineState checkRow(unsigned &y);
+    LineState checkRow(unsigned &y) const;
 
     /*!
      * \brief Méthode vidant toutes les cases d'une ligne.

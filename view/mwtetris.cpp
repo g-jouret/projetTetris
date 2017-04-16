@@ -127,7 +127,7 @@ void MWTetris::resetBoard(QGridLayout * board){
 void MWTetris::showNextBric(){
     if(game_.getGameState() == GameState::ON){
         Bric theBric = game_.getNextBric();
-        unsigned side = (theBric.isEven())? (theBric.getMiddle().getX()*2)+2 : (theBric.getMiddle().getX()*2)+1;
+        unsigned side = theBric.getSide();
         ui->boardNext->setSpacing(3);
         for(unsigned u {0}; u < side; ++u){
             for(unsigned v {0}; v < side; ++v){

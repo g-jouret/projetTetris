@@ -72,7 +72,7 @@ public:
      * \param y l'ordonnée de la position
      * \return vrai si les positions sont adjacentes, faux sinon
      */
-    bool isAdjacent(const unsigned & x, const unsigned & y);
+    bool isAdjacent(const unsigned & x, const unsigned & y) const;
 
     /*!
      * \brief Méthode permettant de savoir si une \ref Position
@@ -81,7 +81,7 @@ public:
      * \param other l'autre position
      * \return vrai si les positions sont adjacentes, faux sinon
      */
-    bool isAdjacent(const Position & other);
+    bool isAdjacent(const Position & other) const;
 };
 
 //prototypes

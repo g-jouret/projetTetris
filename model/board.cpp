@@ -55,7 +55,7 @@ unsigned Board::checkColumn(unsigned y){
     return u;
 }
 
-LineState Board::checkRow(unsigned & y){
+LineState Board::checkRow(unsigned & y) const{
     LineState state {LineState::NONE};
     unsigned count {0};
     if(checkCase(count, y)){

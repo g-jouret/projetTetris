@@ -17,7 +17,7 @@ enum class Direction;
  * \brief Classe représentant une brique de Tetris.
  *
  * La forme de la brique est représentée par un ensemble de \ref Position,
- * elle possède une \ref Color, un milieu et peut être paire ou impaire.
+ * elle possède une \ref Color, un milieu et une taille de côté.
  */
 class Bric{
     constexpr static unsigned MAXIMUM_SIDE {6};
@@ -34,10 +34,11 @@ class Bric{
     Position middle_;
     /*!< Le point central du carré entourant la brique. */
 
-    bool even_;
-    /*!< La parité de la brique.
+    unsigned side_;
+    /*!< La taille de côté de la brique.
      *
-     * Vrai si la brique a une taille de côté paire, faux sinon.
+     * Elle représente le nombre de positions différentes
+     * du côté le plus grand de la brique.
      */
 
 public:
@@ -69,6 +70,12 @@ public:
      * \return la \ref Position occupant le milieu
      */
     Position getMiddle() const;
+
+    /*!
+     * \brief Accesseur en lecture de la taille de côté de la \ref Bric.
+     * \return la taille de côté de la brique
+     */
+    unsigned getSide() const;
 
     /*!
      * \brief Accesseur en lecture de la \ref Color de la \ref Bric.
@@ -112,7 +119,22 @@ public:
 
 private:
     /*!
-     * \brief Méthode qui vérifie si une forme de \ref Bric est valide.
+     * \brief Méthode calculant la taille de côté d'une \ref Bric.
+     * \param side le côté à calculer
+     * \return la taille de ce côté de la brique
+     */
+    static unsigned calculateSideSize(std::vector<unsigned> side);
+
+    /*!
+     * \brief Méthode calculant, à partir de la forme d'une \ref Bric,
+     * sa taille de côté et vérifiant que la brique est positionnée
+     * horizontalement.
+     * \return les tailles de côté de la brique
+     */
+    std::vector<unsigned> validateSide();
+
+    /*!
+     * \brief Méthode vérifiant si une forme de \ref Bric est valide.
      *
      * Pour qu'une brique soit valide elle doit :
      * - Être créée horizontalement.
@@ -124,14 +146,13 @@ private:
      * \param shape la forme à valider
      * \return la forme valide
      */
-    std::vector<Position> validate(std::vector<Position> shape);
+    std::vector<Position> validateShape(std::vector<Position> shape) const;
 
     /*!
      * \brief Méthode permettant de recadrer une forme de \ref Bric mal positionnée.
-     * \param shape la forme à recadrer
      * \param xMin l'abscisse de la \ref Position la plus à gauche de la forme
      */
-    void adjustPositions(std::vector<Position> &shape, unsigned xMin);
+    void adjustPositions(unsigned xMin);
 
     /*!
      * \brief Méthode qui vérifie si les cases d'une \ref Bric sont adjacentes
@@ -141,7 +162,7 @@ private:
      * \param pos la \ref Position à tester
      * \return vrai si elle est valide, faux sinon
      */
-    bool isAdjacent(std::vector<Position> &tested, Position &pos) const;
+    static bool isAdjacent(std::vector<Position> &tested, Position &pos);
 
     /*!
      * \brief Méthode générant un message d'erreur en fonction de l'exception rencontrée.

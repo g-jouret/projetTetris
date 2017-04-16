@@ -120,9 +120,9 @@ void Tetris::generateBric(bool first){
     bag_.shuffle(first);
     currentBric_ = bag_.getCurrentBric();
     unsigned midBoard = board_.getWidth()/2;
-    unsigned midSide = currentBric_.getMiddle().getX() + 1;
+    unsigned midBric = currentBric_.getMiddle().getX() + 1;
 
-    for(unsigned u {0}; u < midBoard-midSide; ++u){
+    for(unsigned u {0}; u < midBoard-midBric; ++u){
         currentBric_.move(Direction::RIGHT);
     }
     while(ok && count < currentBric_.getShape().size()){
