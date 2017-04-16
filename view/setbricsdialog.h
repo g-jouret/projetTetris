@@ -20,7 +20,6 @@ public:
     explicit SetBricsDialog(QWidget *parent = 0);
     ~SetBricsDialog();
     std::vector<GJ_GW::Position> getSaved() const;
-    bool isKeepingBag() const;
 
 private:
     Ui::SetBricsDialog *ui;

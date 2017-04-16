@@ -12,7 +12,6 @@ class ConfigDialog : public QDialog
 {
     Q_OBJECT
     std::vector<GJ_GW::Bric> brics_;
-    bool keepBag_;
 
 public:
     explicit ConfigDialog(std::string name, std::vector<unsigned> args, QWidget *parent = 0);

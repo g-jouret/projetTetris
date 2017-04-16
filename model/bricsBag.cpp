@@ -14,8 +14,8 @@ BricsBag::BricsBag(){
     std::vector<Position> shapeS {Position(2,0),Position(1,0),Position(1,1),Position(0,1)};
     std::vector<unsigned> colorI{130,180,190};
     std::vector<unsigned> colorO{255,215,0};
-    std::vector<unsigned> colorT{128,0,128};
-    std::vector<unsigned> colorL{218,165,32};
+    std::vector<unsigned> colorT{50,50,160};
+    std::vector<unsigned> colorL{220,120,30};
     std::vector<unsigned> colorJ{150,0,255};
     std::vector<unsigned> colorZ{150,20,30};
     std::vector<unsigned> colorS{150,200,7};

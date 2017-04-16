@@ -65,6 +65,7 @@ public:
     QSpinBox *sbHeight;
     QVBoxLayout *verticalLayout_4;
     QCheckBox *defaultBrics;
+    QCheckBox *keepBag;
     QPushButton *bricSetter;
     QDialogButtonBox *buttonBox;
 
@@ -227,6 +228,14 @@ public:
 
         verticalLayout_4->addWidget(defaultBrics);
 
+        keepBag = new QCheckBox(ConfigDialog);
+        keepBag->setObjectName(QStringLiteral("keepBag"));
+        keepBag->setEnabled(false);
+        keepBag->setCheckable(true);
+        keepBag->setChecked(true);
+
+        verticalLayout_4->addWidget(keepBag);
+
         bricSetter = new QPushButton(ConfigDialog);
         bricSetter->setObjectName(QStringLiteral("bricSetter"));
 
@@ -262,6 +271,7 @@ public:
         lbWidth->setText(QApplication::translate("ConfigDialog", "Largeur du cadre (cases)", Q_NULLPTR));
         lbHeight->setText(QApplication::translate("ConfigDialog", "Hauteur du cadre (cases)", Q_NULLPTR));
         defaultBrics->setText(QApplication::translate("ConfigDialog", "Utiliser les briques par d\303\251faut?", Q_NULLPTR));
+        keepBag->setText(QApplication::translate("ConfigDialog", "Conserver l'ancien sac de briques?", Q_NULLPTR));
         bricSetter->setText(QApplication::translate("ConfigDialog", "Nouvelle brique personnalis\303\251e", Q_NULLPTR));
     } // retranslateUi
 

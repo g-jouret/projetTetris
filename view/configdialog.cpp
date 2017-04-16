@@ -8,7 +8,7 @@ using namespace GJ_GW;
 ConfigDialog::ConfigDialog(std::string name, std::vector<unsigned> args, QWidget *parent):
     QDialog(parent), ui(new Ui::ConfigDialog){
     ui->setupUi(this);
-    keepBag_ = true;
+
     connect(ui->bricSetter, &QPushButton::clicked, this, &ConfigDialog::setBrics);
     connect(ui->defaultBrics, &QCheckBox::toggled, this, &ConfigDialog::hideSetBrics);
     hideSetBrics(true);
@@ -79,7 +79,7 @@ std::vector<Bric> ConfigDialog::getBrics() const{
 }
 
 bool ConfigDialog::isKeepingBag() const{
-    return keepBag_;
+    return ui->keepBag->isChecked();
 }
 
 bool ConfigDialog::isResettingBag() const{
@@ -93,10 +93,16 @@ void ConfigDialog::setBrics(){
     if(ret == QDialog::Rejected) return;
     if(newBric.getSaved().size() != 0){
         std::vector<Position> bric = newBric.getSaved();
-        std::vector<unsigned> color {29,69,19};
+        std::vector<unsigned> color {60, 250, 0};
+        ui->keepBag->setEnabled(true);
+        for(auto it {brics_.begin()}; it != brics_.end(); ++it){
+            if(color.at(1) > 25){
+                color.at(1) -= 25;
+                color.at(2) += 25;
+            }
+        }
         try{
             brics_.push_back(Bric(bric, Color(color)));
-            keepBag_ = newBric.isKeepingBag();
         } catch(const std::invalid_argument & e){
             QErrorMessage * except = new QErrorMessage(this);
             except->showMessage(e.what());
@@ -107,8 +113,10 @@ void ConfigDialog::setBrics(){
 void ConfigDialog::hideSetBrics(bool checked){
     if(checked){
         ui->bricSetter->hide();
+        ui->keepBag->hide();
     } else{
         ui->bricSetter->show();
+        ui->keepBag->show();
     }
 }
 

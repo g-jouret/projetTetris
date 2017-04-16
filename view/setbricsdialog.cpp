@@ -8,7 +8,6 @@ using namespace GJ_GW;
 
 SetBricsDialog::SetBricsDialog(QWidget *parent): QDialog(parent), ui(new Ui::SetBricsDialog){
     ui->setupUi(this);
-    ui->checkBox->setText("Voulez-vous conserver le sac de briques actuel?");
     checked_ = std::vector<std::vector<bool>> (6, std::vector<bool>(6,0));
     generateGrid(true);
 }
@@ -19,10 +18,6 @@ SetBricsDialog::~SetBricsDialog(){
 
 std::vector<Position> SetBricsDialog::getSaved() const{
     return saved_;
-}
-
-bool SetBricsDialog::isKeepingBag() const{
-    return ui->checkBox->isChecked();
 }
 
 void SetBricsDialog::generateGrid(bool first){

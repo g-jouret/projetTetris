@@ -231,6 +231,22 @@
       </widget>
      </item>
      <item>
+      <widget class="QCheckBox" name="keepBag">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>Conserver l'ancien sac de briques?</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="bricSetter">
        <property name="text">
         <string>Nouvelle brique personnalisée</string>
