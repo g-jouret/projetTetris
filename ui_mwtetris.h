@@ -88,7 +88,7 @@ public:
     {
         if (MWTetris->objectName().isEmpty())
             MWTetris->setObjectName(QStringLiteral("MWTetris"));
-        MWTetris->resize(262, 658);
+        MWTetris->resize(273, 658);
         MWTetris->setStyleSheet(QStringLiteral("background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 1, stop: 0 #eef, stop: 1 #ccf);"));
         MWTetris->setIconSize(QSize(2, 2));
         action_Nouveau = new QAction(MWTetris);
@@ -458,7 +458,7 @@ public:
         MWTetris->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MWTetris);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 262, 20));
+        menuBar->setGeometry(QRect(0, 0, 273, 20));
         menu_Jeu = new QMenu(menuBar);
         menu_Jeu->setObjectName(QStringLiteral("menu_Jeu"));
         MWTetris->setMenuBar(menuBar);

@@ -33,6 +33,9 @@ MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{ga
 
 MWTetris::~MWTetris() noexcept{
     game_.removeObserver(this);
+    delete lbEnd_;
+    delete time_;
+    delete timer_;
     delete ui;
 }
 
