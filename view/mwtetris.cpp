@@ -12,7 +12,7 @@ using namespace GJ_GW;
 MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{game}, ui(new Ui::MWTetris){
     ui->setupUi(this);
     connect(ui->action_Nouveau, &QAction::triggered, this, &MWTetris::createGame);
-    connect(ui->action_Quitter, &QAction::triggered, this, &MWTetris::quitGame);
+    connect(ui->action_Quitter, &QAction::triggered, this, &QCoreApplication::quit);
     connect(ui->btnDown, &QPushButton::clicked, this, &MWTetris::drop);
     connect(ui->btnLeft, &QPushButton::clicked, this, &MWTetris::left);
     connect(ui->btnRight, &QPushButton::clicked, this, &MWTetris::right);
@@ -36,6 +36,8 @@ MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{ga
 
 MWTetris::~MWTetris() noexcept{
     game_.removeObserver(this);
+    eraseBoard(ui->boardGrid);
+    eraseBoard(ui->boardNext);
     delete lbEnd_;
     delete time_;
     delete timer_;
@@ -87,10 +89,6 @@ void MWTetris::createGame(){
     }
 }
 
-void MWTetris::quitGame(){
-    QApplication::quit();
-}
-
 void MWTetris::generateBoard(bool end){
     std::map<Position, Color> theGrid {game_.getBoard().getGrid()};
     unsigned width {((30+3)*game_.getBoard().getWidth())-3+40};     //(30px + 3px de spacing) * nombre de cases en largeur - 1 spacing + 2*20px de margin
@@ -118,7 +116,7 @@ void MWTetris::generateBoard(bool end){
     }
 }
 
-void MWTetris::resetBoard(QGridLayout * board){
+void MWTetris::eraseBoard(QGridLayout * board){
     QLayoutItem *child;
     while((child = board->takeAt(0)) != 0){
         delete child->widget();
@@ -189,8 +187,8 @@ void MWTetris::update(Subject *){
         if(QString::number(game_.getLevel()) != ui->lbLevelGame->text()){
             ui->lbLevelGame->setText(QString::number(game_.getLevel()));
         }
-        resetBoard(ui->boardGrid);
-        resetBoard(ui->boardNext);
+        eraseBoard(ui->boardGrid);
+        eraseBoard(ui->boardNext);
         generateBoard();
         showNextBric();
         break;

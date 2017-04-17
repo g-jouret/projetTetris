@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['main',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]],
-  ['move',['move',['../class_g_j___g_w_1_1_bric.html#a5d1e179056c222438bc1d1adf22c3c38',1,'GJ_GW::Bric']]],
-  ['mwtetris',['MWTetris',['../class_m_w_tetris.html#af678c69f73b557d64404680069a6e3a0',1,'MWTetris']]]
+  ['isadjacent',['isAdjacent',['../class_g_j___g_w_1_1_position.html#ae02889995a4baf92f443f5f6622fae70',1,'GJ_GW::Position']]],
+  ['iskeepingbag',['isKeepingBag',['../class_config_dialog.html#a86cc5b2011cc0b7cb9dd06bfe736ef51',1,'ConfigDialog']]],
+  ['isresettingbag',['isResettingBag',['../class_config_dialog.html#a4b53d758f8f292d6e91ea2e8a2206550',1,'ConfigDialog']]]
 ];

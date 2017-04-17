@@ -13,6 +13,7 @@ SetBricsDialog::SetBricsDialog(QWidget *parent): QDialog(parent), ui(new Ui::Set
 }
 
 SetBricsDialog::~SetBricsDialog(){
+    eraseBoard();
     delete ui;
 }
 
@@ -74,25 +75,12 @@ QLabel *SetBricsDialog::createLb(){
     return lb;
 }
 
-/* void SetBricsDialog::reset(){
+void SetBricsDialog::eraseBoard(){
     QLayoutItem *child;
     while((child = ui->gridLayout->takeAt(0)) != 0){
         delete child->widget();
     }
-    checked = std::vector<std::vector<bool>> (6, std::vector<bool>(6,0));
-    generateGrid(true);
-}*/
-
-/*void SetBricsDialog::save(){
-    for(unsigned u {0}; u < 6; ++u){
-        for(unsigned v {0}; v < 6; ++v){
-            if(checked_[v][u]){
-                Position pos = Position(u, v);
-                saved_.push_back(pos);
-            }
-        }
-    }
-}*/
+}
 
 void SetBricsDialog::update(){
     QObject *senderObj = sender();
@@ -102,14 +90,6 @@ void SetBricsDialog::update(){
     checked_[y][x] = 1;
     Position pos = Position(x, y);
     saved_.push_back(pos);
-    QLayoutItem *child;
-    while((child = ui->gridLayout->takeAt(0)) != 0){
-        delete child->widget();
-    }
+    eraseBoard();
     generateGrid(false);
-}
-
-void SetBricsDialog::accept(){
-    //save();
-    QDialog::accept();
 }

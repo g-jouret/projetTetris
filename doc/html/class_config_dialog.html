@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.12"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Tetris: ConfigDialog Class Reference</title>
+<title>projetTetris: ConfigDialog Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Tetris
+   <div id="projectname">projetTetris
    </div>
   </td>
  </tr>
@@ -66,6 +66,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Classe représentant la fenêtre de configuration de la partie de Tetris.  
+ <a href="class_config_dialog.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="configdialog_8h_source.html">configdialog.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ConfigDialog:</div>
@@ -79,25 +82,51 @@ Inheritance diagram for ConfigDialog:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af375227fd49609700a8d3aca0e31afdf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_dialog.html#af375227fd49609700a8d3aca0e31afdf">ConfigDialog</a> (std::string name, std::vector&lt; unsigned &gt; args, QWidget *parent=0)</td></tr>
+<tr class="memdesc:af375227fd49609700a8d3aca0e31afdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur de <a class="el" href="class_config_dialog.html">ConfigDialog</a>.  <a href="#af375227fd49609700a8d3aca0e31afdf">More...</a><br /></td></tr>
 <tr class="separator:af375227fd49609700a8d3aca0e31afdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a485badac4dffa04603f800bb9d396e1d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_dialog.html#a485badac4dffa04603f800bb9d396e1d">~ConfigDialog</a> ()</td></tr>
-<tr class="separator:a485badac4dffa04603f800bb9d396e1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5cb746421080c524f6b6454f2f489629"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_dialog.html#a5cb746421080c524f6b6454f2f489629">getName</a> () const</td></tr>
+<tr class="memdesc:a5cb746421080c524f6b6454f2f489629"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture du nom du Player.  <a href="#a5cb746421080c524f6b6454f2f489629">More...</a><br /></td></tr>
 <tr class="separator:a5cb746421080c524f6b6454f2f489629"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b979354ff40208e804a0c54be7ea06c"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_dialog.html#a8b979354ff40208e804a0c54be7ea06c">getWidth</a> () const</td></tr>
+<tr class="memdesc:a8b979354ff40208e804a0c54be7ea06c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture de la largeur du Board.  <a href="#a8b979354ff40208e804a0c54be7ea06c">More...</a><br /></td></tr>
 <tr class="separator:a8b979354ff40208e804a0c54be7ea06c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c4e22acf768bae3bb125bbbd851c159"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_dialog.html#a4c4e22acf768bae3bb125bbbd851c159">getHeight</a> () const</td></tr>
+<tr class="memdesc:a4c4e22acf768bae3bb125bbbd851c159"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture de la hauteur du Board.  <a href="#a4c4e22acf768bae3bb125bbbd851c159">More...</a><br /></td></tr>
 <tr class="separator:a4c4e22acf768bae3bb125bbbd851c159"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a255bd4be3905a117d3d370690b04215e"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_dialog.html#a255bd4be3905a117d3d370690b04215e">getWinScore</a> () const</td></tr>
+<tr class="memdesc:a255bd4be3905a117d3d370690b04215e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture du score nécessaire pour gagner.  <a href="#a255bd4be3905a117d3d370690b04215e">More...</a><br /></td></tr>
 <tr class="separator:a255bd4be3905a117d3d370690b04215e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc48cdf57e26799075967cd728154743"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_dialog.html#acc48cdf57e26799075967cd728154743">getWinLines</a> () const</td></tr>
+<tr class="memdesc:acc48cdf57e26799075967cd728154743"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture du nombre de lignes nécessaires pour gagner.  <a href="#acc48cdf57e26799075967cd728154743">More...</a><br /></td></tr>
 <tr class="separator:acc48cdf57e26799075967cd728154743"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba36ba6cbfb8672bd4826135b07f2005"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_dialog.html#aba36ba6cbfb8672bd4826135b07f2005">getWinTime</a> () const</td></tr>
+<tr class="memdesc:aba36ba6cbfb8672bd4826135b07f2005"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture du temps nécessaire pour gagner.  <a href="#aba36ba6cbfb8672bd4826135b07f2005">More...</a><br /></td></tr>
 <tr class="separator:aba36ba6cbfb8672bd4826135b07f2005"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff7a800dfe4c19d64629804257373c3c"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_dialog.html#aff7a800dfe4c19d64629804257373c3c">getLevel</a> () const</td></tr>
+<tr class="memdesc:aff7a800dfe4c19d64629804257373c3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture du niveau de difficulté en début de partie.  <a href="#aff7a800dfe4c19d64629804257373c3c">More...</a><br /></td></tr>
 <tr class="separator:aff7a800dfe4c19d64629804257373c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e423646cb7385c406e3ea2a1a23f1e3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_g_j___g_w_1_1_bric.html">GJ_GW::Bric</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_dialog.html#a9e423646cb7385c406e3ea2a1a23f1e3">getBrics</a> () const</td></tr>
+<tr class="memdesc:a9e423646cb7385c406e3ea2a1a23f1e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture de la nouvelle Bric créée.  <a href="#a9e423646cb7385c406e3ea2a1a23f1e3">More...</a><br /></td></tr>
+<tr class="separator:a9e423646cb7385c406e3ea2a1a23f1e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86cc5b2011cc0b7cb9dd06bfe736ef51"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_dialog.html#a86cc5b2011cc0b7cb9dd06bfe736ef51">isKeepingBag</a> () const</td></tr>
+<tr class="memdesc:a86cc5b2011cc0b7cb9dd06bfe736ef51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture de l'utilisation ou non de l'ancien BricsBag.  <a href="#a86cc5b2011cc0b7cb9dd06bfe736ef51">More...</a><br /></td></tr>
+<tr class="separator:a86cc5b2011cc0b7cb9dd06bfe736ef51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b53d758f8f292d6e91ea2e8a2206550"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_dialog.html#a4b53d758f8f292d6e91ea2e8a2206550">isResettingBag</a> () const</td></tr>
+<tr class="memdesc:a4b53d758f8f292d6e91ea2e8a2206550"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture de l'état de réinitialisation du BricsBag.  <a href="#a4b53d758f8f292d6e91ea2e8a2206550">More...</a><br /></td></tr>
+<tr class="separator:a4b53d758f8f292d6e91ea2e8a2206550"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a936b1169656d26b13586df53f6a8a205"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_dialog.html#a936b1169656d26b13586df53f6a8a205">hasWinByScore</a> () const</td></tr>
+<tr class="memdesc:a936b1169656d26b13586df53f6a8a205"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture de l'état d'activation de la victoire au score.  <a href="#a936b1169656d26b13586df53f6a8a205">More...</a><br /></td></tr>
+<tr class="separator:a936b1169656d26b13586df53f6a8a205"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad11e71d9e1647dfb663bca5828755fe7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_dialog.html#ad11e71d9e1647dfb663bca5828755fe7">hasWinByLines</a> () const</td></tr>
+<tr class="memdesc:ad11e71d9e1647dfb663bca5828755fe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture de l'état d'activation de la victoire par lignes.  <a href="#ad11e71d9e1647dfb663bca5828755fe7">More...</a><br /></td></tr>
+<tr class="separator:ad11e71d9e1647dfb663bca5828755fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc72c1fe8aad20d0d0b9ae9bf659c8ca"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_dialog.html#acc72c1fe8aad20d0d0b9ae9bf659c8ca">hasWinByTime</a> () const</td></tr>
+<tr class="memdesc:acc72c1fe8aad20d0d0b9ae9bf659c8ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture de l'état d'activation de la victoire au temps.  <a href="#acc72c1fe8aad20d0d0b9ae9bf659c8ca">More...</a><br /></td></tr>
+<tr class="separator:acc72c1fe8aad20d0d0b9ae9bf659c8ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Classe représentant la fenêtre de configuration de la partie de Tetris. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af375227fd49609700a8d3aca0e31afdf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af375227fd49609700a8d3aca0e31afdf">&sect;&nbsp;</a></span>ConfigDialog()</h2>
 
@@ -138,26 +167,39 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Constructeur de <a class="el" href="class_config_dialog.html">ConfigDialog</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>nom du Player </td></tr>
+    <tr><td class="paramname">args</td><td>les différents arguments numériques </td></tr>
+    <tr><td class="paramname">parent</td><td>fenêtre ayant lancé <a class="el" href="class_config_dialog.html">ConfigDialog</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="a485badac4dffa04603f800bb9d396e1d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a485badac4dffa04603f800bb9d396e1d">&sect;&nbsp;</a></span>~ConfigDialog()</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9e423646cb7385c406e3ea2a1a23f1e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e423646cb7385c406e3ea2a1a23f1e3">&sect;&nbsp;</a></span>getBrics()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ConfigDialog::~ConfigDialog </td>
+          <td class="memname">std::vector&lt; <a class="el" href="class_g_j___g_w_1_1_bric.html">Bric</a> &gt; ConfigDialog::getBrics </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Accesseur en lecture de la nouvelle Bric créée. </p>
+<dl class="section return"><dt>Returns</dt><dd>la forme de la brique créée </dd></dl>
+
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a4c4e22acf768bae3bb125bbbd851c159"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4c4e22acf768bae3bb125bbbd851c159">&sect;&nbsp;</a></span>getHeight()</h2>
 
@@ -172,6 +214,9 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Accesseur en lecture de la hauteur du Board. </p>
+<dl class="section return"><dt>Returns</dt><dd>la hauteur de la grille de jeu </dd></dl>
 
 </div>
 </div>
@@ -190,6 +235,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Accesseur en lecture du niveau de difficulté en début de partie. </p>
+<dl class="section return"><dt>Returns</dt><dd>le niveaux de difficulté </dd></dl>
+
 </div>
 </div>
 <a id="a5cb746421080c524f6b6454f2f489629"></a>
@@ -206,6 +254,9 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Accesseur en lecture du nom du Player. </p>
+<dl class="section return"><dt>Returns</dt><dd>name nom du joueur </dd></dl>
 
 </div>
 </div>
@@ -224,6 +275,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Accesseur en lecture de la largeur du Board. </p>
+<dl class="section return"><dt>Returns</dt><dd>la largeur de la grille de jeu </dd></dl>
+
 </div>
 </div>
 <a id="acc48cdf57e26799075967cd728154743"></a>
@@ -240,6 +294,9 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Accesseur en lecture du nombre de lignes nécessaires pour gagner. </p>
+<dl class="section return"><dt>Returns</dt><dd>Le nombre de lignes nécessaires pour gagner </dd></dl>
 
 </div>
 </div>
@@ -258,6 +315,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Accesseur en lecture du score nécessaire pour gagner. </p>
+<dl class="section return"><dt>Returns</dt><dd>le score nécessaire pour gagner </dd></dl>
+
 </div>
 </div>
 <a id="aba36ba6cbfb8672bd4826135b07f2005"></a>
@@ -275,11 +335,114 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Accesseur en lecture du temps nécessaire pour gagner. </p>
+<dl class="section return"><dt>Returns</dt><dd>Le temps nécessaire pour gagner </dd></dl>
+
+</div>
+</div>
+<a id="ad11e71d9e1647dfb663bca5828755fe7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad11e71d9e1647dfb663bca5828755fe7">&sect;&nbsp;</a></span>hasWinByLines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ConfigDialog::hasWinByLines </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accesseur en lecture de l'état d'activation de la victoire par lignes. </p>
+<dl class="section return"><dt>Returns</dt><dd>vrai si la victoire par lignes est activée, faux sinon </dd></dl>
+
+</div>
+</div>
+<a id="a936b1169656d26b13586df53f6a8a205"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a936b1169656d26b13586df53f6a8a205">&sect;&nbsp;</a></span>hasWinByScore()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ConfigDialog::hasWinByScore </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accesseur en lecture de l'état d'activation de la victoire au score. </p>
+<dl class="section return"><dt>Returns</dt><dd>vrai si la victoire au score est activée, faux sinon </dd></dl>
+
+</div>
+</div>
+<a id="acc72c1fe8aad20d0d0b9ae9bf659c8ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc72c1fe8aad20d0d0b9ae9bf659c8ca">&sect;&nbsp;</a></span>hasWinByTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ConfigDialog::hasWinByTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accesseur en lecture de l'état d'activation de la victoire au temps. </p>
+<dl class="section return"><dt>Returns</dt><dd>vrai si la victoire au temps est activée, faux sinon </dd></dl>
+
+</div>
+</div>
+<a id="a86cc5b2011cc0b7cb9dd06bfe736ef51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86cc5b2011cc0b7cb9dd06bfe736ef51">&sect;&nbsp;</a></span>isKeepingBag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ConfigDialog::isKeepingBag </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accesseur en lecture de l'utilisation ou non de l'ancien BricsBag. </p>
+<dl class="section return"><dt>Returns</dt><dd>vrai si l'ancien sac de briques est conservé, faux sinon </dd></dl>
+
+</div>
+</div>
+<a id="a4b53d758f8f292d6e91ea2e8a2206550"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b53d758f8f292d6e91ea2e8a2206550">&sect;&nbsp;</a></span>isResettingBag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ConfigDialog::isResettingBag </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accesseur en lecture de l'état de réinitialisation du BricsBag. </p>
+<dl class="section return"><dt>Returns</dt><dd>vrai si le sac de briques est réinitialisé à sa valeur par défaut, faux sinon </dd></dl>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>view/<a class="el" href="configdialog_8h_source.html">configdialog.h</a></li>
-<li>view/<a class="el" href="configdialog_8cpp.html">configdialog.cpp</a></li>
+<li>view/configdialog.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

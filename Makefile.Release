@@ -143,7 +143,10 @@ compiler_rcc_clean:
 compiler_moc_header_make_all: release/moc_configdialog.cpp release/moc_mwtetris.cpp release/moc_setbricsdialog.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) release\moc_configdialog.cpp release\moc_mwtetris.cpp release\moc_setbricsdialog.cpp
-release/moc_configdialog.cpp: C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
+release/moc_configdialog.cpp: model/bric.h \
+		model/position.h \
+		model/color.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qwidget.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qwindowdefs.h \
@@ -241,9 +244,6 @@ release/moc_configdialog.cpp: C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
-		model/bric.h \
-		model/position.h \
-		model/color.h \
 		view/configdialog.h \
 		C:/Qt/5.7/mingw53_32/bin/moc.exe
 	C:\Qt\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/5.7/mingw53_32/mkspecs/win32-g++ -I"D:/GJouret/Documents/ESI/Bloc 2/CPP/projetTetris" -IC:/Qt/5.7/mingw53_32/include -IC:/Qt/5.7/mingw53_32/include/QtWidgets -IC:/Qt/5.7/mingw53_32/include/QtGui -IC:/Qt/5.7/mingw53_32/include/QtANGLE -IC:/Qt/5.7/mingw53_32/include/QtCore -IC:/Qt/Qt5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward view\configdialog.h -o release\moc_configdialog.cpp
@@ -372,7 +372,8 @@ release/moc_mwtetris.cpp: observer/observer.h \
 		C:/Qt/5.7/mingw53_32/bin/moc.exe
 	C:\Qt\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/5.7/mingw53_32/mkspecs/win32-g++ -I"D:/GJouret/Documents/ESI/Bloc 2/CPP/projetTetris" -IC:/Qt/5.7/mingw53_32/include -IC:/Qt/5.7/mingw53_32/include/QtWidgets -IC:/Qt/5.7/mingw53_32/include/QtGui -IC:/Qt/5.7/mingw53_32/include/QtANGLE -IC:/Qt/5.7/mingw53_32/include/QtCore -IC:/Qt/Qt5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward view\mwtetris.h -o release\moc_mwtetris.cpp
 
-release/moc_setbricsdialog.cpp: C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
+release/moc_setbricsdialog.cpp: model/position.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qwidget.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qwindowdefs.h \
@@ -473,7 +474,6 @@ release/moc_setbricsdialog.cpp: C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QLabel \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlabel.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qframe.h \
-		model/position.h \
 		view/setbricsdialog.h \
 		C:/Qt/5.7/mingw53_32/bin/moc.exe
 	C:\Qt\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/5.7/mingw53_32/mkspecs/win32-g++ -I"D:/GJouret/Documents/ESI/Bloc 2/CPP/projetTetris" -IC:/Qt/5.7/mingw53_32/include -IC:/Qt/5.7/mingw53_32/include/QtWidgets -IC:/Qt/5.7/mingw53_32/include/QtGui -IC:/Qt/5.7/mingw53_32/include/QtANGLE -IC:/Qt/5.7/mingw53_32/include/QtCore -IC:/Qt/Qt5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.7.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.7.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward view\setbricsdialog.h -o release\moc_setbricsdialog.cpp
@@ -536,6 +536,9 @@ release/subject.o: observer/subject.cpp observer/subject.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\subject.o observer\subject.cpp
 
 release/configdialog.o: view/configdialog.cpp view/configdialog.h \
+		model/bric.h \
+		model/position.h \
+		model/color.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qwidget.h \
@@ -634,9 +637,6 @@ release/configdialog.o: view/configdialog.cpp view/configdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
-		model/bric.h \
-		model/position.h \
-		model/color.h \
 		ui_configdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QAction \
@@ -889,6 +889,7 @@ release/tetris.o: model/tetris.cpp model/tetris.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\tetris.o model\tetris.cpp
 
 release/setbricsdialog.o: view/setbricsdialog.cpp view/setbricsdialog.h \
+		model/position.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qwidget.h \
@@ -990,7 +991,6 @@ release/setbricsdialog.o: view/setbricsdialog.cpp view/setbricsdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QLabel \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qlabel.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qframe.h \
-		model/position.h \
 		ui_setbricsdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QAction \

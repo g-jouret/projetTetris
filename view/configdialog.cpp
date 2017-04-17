@@ -138,25 +138,25 @@ void ConfigDialog::hideSetBrics(bool checked){
 
 void ConfigDialog::toggleScore(bool checked){
     if(checked){
-        ui->sbWinScore->setDisabled(true);
-    } else{
         ui->sbWinScore->setEnabled(true);
+    } else{
+        ui->sbWinScore->setDisabled(true);
     }
 }
 
 void ConfigDialog::toggleLines(bool checked){
     if(checked){
-        ui->sbWinLines->setDisabled(true);
-    } else{
         ui->sbWinLines->setEnabled(true);
+    } else{
+        ui->sbWinLines->setDisabled(true);
     }
 }
 
 void ConfigDialog::toggleTime(bool checked){
     if(checked){
-        ui->timeEdit->setDisabled(true);
-    } else{
         ui->timeEdit->setEnabled(true);
+    } else{
+        ui->timeEdit->setDisabled(true);
     }
 }
 

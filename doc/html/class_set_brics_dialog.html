@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.12"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Tetris: SetBricsDialog Class Reference</title>
+<title>projetTetris: SetBricsDialog Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Tetris
+   <div id="projectname">projetTetris
    </div>
   </td>
  </tr>
@@ -66,6 +66,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Classe représentant l'éditeur de Bric personnalisées.  
+ <a href="class_set_brics_dialog.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="setbricsdialog_8h_source.html">setbricsdialog.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SetBricsDialog:</div>
@@ -79,11 +82,15 @@ Inheritance diagram for SetBricsDialog:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a85f80e0ea8166e8199ffd7f0762f829f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_set_brics_dialog.html#a85f80e0ea8166e8199ffd7f0762f829f">SetBricsDialog</a> (QWidget *parent=0)</td></tr>
+<tr class="memdesc:a85f80e0ea8166e8199ffd7f0762f829f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur de <a class="el" href="class_set_brics_dialog.html">SetBricsDialog</a>.  <a href="#a85f80e0ea8166e8199ffd7f0762f829f">More...</a><br /></td></tr>
 <tr class="separator:a85f80e0ea8166e8199ffd7f0762f829f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70ac6878743de804b33429e7cc36a9c6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_set_brics_dialog.html#a70ac6878743de804b33429e7cc36a9c6">~SetBricsDialog</a> ()</td></tr>
-<tr class="separator:a70ac6878743de804b33429e7cc36a9c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71e74b3ca20f238748d2fd963856175b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_g_j___g_w_1_1_position.html">GJ_GW::Position</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_set_brics_dialog.html#a71e74b3ca20f238748d2fd963856175b">getSaved</a> () const</td></tr>
+<tr class="memdesc:a71e74b3ca20f238748d2fd963856175b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture de la forme de la Bric personnalisée.  <a href="#a71e74b3ca20f238748d2fd963856175b">More...</a><br /></td></tr>
+<tr class="separator:a71e74b3ca20f238748d2fd963856175b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Classe représentant l'éditeur de Bric personnalisées. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a85f80e0ea8166e8199ffd7f0762f829f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a85f80e0ea8166e8199ffd7f0762f829f">&sect;&nbsp;</a></span>SetBricsDialog()</h2>
 
@@ -108,28 +115,40 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Constructeur de <a class="el" href="class_set_brics_dialog.html">SetBricsDialog</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>fenêtre ayant lancé cette fenêtre </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="a70ac6878743de804b33429e7cc36a9c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a70ac6878743de804b33429e7cc36a9c6">&sect;&nbsp;</a></span>~SetBricsDialog()</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a71e74b3ca20f238748d2fd963856175b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71e74b3ca20f238748d2fd963856175b">&sect;&nbsp;</a></span>getSaved()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SetBricsDialog::~SetBricsDialog </td>
+          <td class="memname">std::vector&lt; <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> &gt; SetBricsDialog::getSaved </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Accesseur en lecture de la forme de la Bric personnalisée. </p>
+<dl class="section return"><dt>Returns</dt><dd>la forme de la brique personnalisée </dd></dl>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>view/<a class="el" href="setbricsdialog_8h_source.html">setbricsdialog.h</a></li>
-<li>view/<a class="el" href="setbricsdialog_8cpp.html">setbricsdialog.cpp</a></li>
+<li>view/setbricsdialog.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

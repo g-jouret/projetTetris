@@ -58,6 +58,7 @@ public:
      * dans un repère carré.
      *
      * \param shape les \ref Position remplies
+     * \param color la \ref Color de la brique
      */
     explicit Bric(std::vector<Position> &shape, Color color);
 

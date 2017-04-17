@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.12"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Tetris: GJ_GW::Board Class Reference</title>
+<title>projetTetris: GJ_GW::Board Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Tetris
+   <div id="projectname">projetTetris
    </div>
   </td>
  </tr>
@@ -64,6 +64,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="class_g_j___g_w_1_1_board-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">GJ_GW::Board Class Reference</div>  </div>
@@ -77,32 +78,24 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aca44ef5625ec995578244057b990a5f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_board.html#aca44ef5625ec995578244057b990a5f4">debug</a> ()</td></tr>
-<tr class="separator:aca44ef5625ec995578244057b990a5f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7bba14fd4e011c600b58c2c45695a9f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_board.html#ae7bba14fd4e011c600b58c2c45695a9f">Board</a> (unsigned width, unsigned height)</td></tr>
 <tr class="memdesc:ae7bba14fd4e011c600b58c2c45695a9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur de <a class="el" href="class_g_j___g_w_1_1_board.html">Board</a>.  <a href="#ae7bba14fd4e011c600b58c2c45695a9f">More...</a><br /></td></tr>
 <tr class="separator:ae7bba14fd4e011c600b58c2c45695a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34c0be73c2fa65e53cec2bd78da349fd"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a>, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_board.html#a34c0be73c2fa65e53cec2bd78da349fd">getGrid</a> () const</td></tr>
-<tr class="memdesc:a34c0be73c2fa65e53cec2bd78da349fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture de la grille de jeu.  <a href="#a34c0be73c2fa65e53cec2bd78da349fd">More...</a><br /></td></tr>
-<tr class="separator:a34c0be73c2fa65e53cec2bd78da349fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79caa6dceafa058ce062dba43a083020"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a>, <a class="el" href="class_g_j___g_w_1_1_color.html">Color</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_board.html#a79caa6dceafa058ce062dba43a083020">getGrid</a> () const</td></tr>
+<tr class="memdesc:a79caa6dceafa058ce062dba43a083020"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture de la grille de jeu.  <a href="#a79caa6dceafa058ce062dba43a083020">More...</a><br /></td></tr>
+<tr class="separator:a79caa6dceafa058ce062dba43a083020"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbc7d5be210011b7c37315512a8a2cdb"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_board.html#abbc7d5be210011b7c37315512a8a2cdb">getHeight</a> () const</td></tr>
 <tr class="memdesc:abbc7d5be210011b7c37315512a8a2cdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture de la hauteur de la grille.  <a href="#abbc7d5be210011b7c37315512a8a2cdb">More...</a><br /></td></tr>
 <tr class="separator:abbc7d5be210011b7c37315512a8a2cdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaee53d499b43971e1ef5b6fa0d65aca3"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_board.html#aaee53d499b43971e1ef5b6fa0d65aca3">getWidth</a> () const</td></tr>
 <tr class="memdesc:aaee53d499b43971e1ef5b6fa0d65aca3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture de la largeur de la grille.  <a href="#aaee53d499b43971e1ef5b6fa0d65aca3">More...</a><br /></td></tr>
 <tr class="separator:aaee53d499b43971e1ef5b6fa0d65aca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6acf9057e0017f7fcc46a161f9f75bd9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_board.html#a6acf9057e0017f7fcc46a161f9f75bd9">checkCase</a> (<a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> &amp;pos) const</td></tr>
-<tr class="memdesc:a6acf9057e0017f7fcc46a161f9f75bd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode vérifiant si une case donnée est une destination valide pour un déplacement.  <a href="#a6acf9057e0017f7fcc46a161f9f75bd9">More...</a><br /></td></tr>
-<tr class="separator:a6acf9057e0017f7fcc46a161f9f75bd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8529576230c77326937c54b570ec4c71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_board.html#a8529576230c77326937c54b570ec4c71">swapCase</a> (<a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> &amp;pos)</td></tr>
-<tr class="memdesc:a8529576230c77326937c54b570ec4c71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode faisant passer une case remplie à vide, et à remplie si elle était vide.  <a href="#a8529576230c77326937c54b570ec4c71">More...</a><br /></td></tr>
-<tr class="separator:a8529576230c77326937c54b570ec4c71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d14618af53111295697c873d78eed94"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_board.html#a5d14618af53111295697c873d78eed94">checkColumn</a> (unsigned y=0)</td></tr>
-<tr class="memdesc:a5d14618af53111295697c873d78eed94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur en lecture d'une ligne de la grille de jeu.  <a href="#a5d14618af53111295697c873d78eed94">More...</a><br /></td></tr>
-<tr class="separator:a5d14618af53111295697c873d78eed94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5f6ae39097193c62cd2a8a5e40c8bea"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_j___g_w_1_1_board.html#ae5f6ae39097193c62cd2a8a5e40c8bea">gridActualisation</a> (unsigned lineNum)</td></tr>
-<tr class="memdesc:ae5f6ae39097193c62cd2a8a5e40c8bea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode qui vide les lignes remplies et ré-aligne la grille de jeu.  <a href="#ae5f6ae39097193c62cd2a8a5e40c8bea">More...</a><br /></td></tr>
-<tr class="separator:ae5f6ae39097193c62cd2a8a5e40c8bea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:ab88df12b87b2b741fcefd66991ae218e"><td class="memItemLeft" align="right" valign="top"><a id="ab88df12b87b2b741fcefd66991ae218e"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>Tetris</b></td></tr>
+<tr class="separator:ab88df12b87b2b741fcefd66991ae218e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Classe représentant la grille de jeu. </p>
@@ -146,95 +139,14 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6acf9057e0017f7fcc46a161f9f75bd9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6acf9057e0017f7fcc46a161f9f75bd9">&sect;&nbsp;</a></span>checkCase()</h2>
+<a id="a79caa6dceafa058ce062dba43a083020"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79caa6dceafa058ce062dba43a083020">&sect;&nbsp;</a></span>getGrid()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool Board::checkCase </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> &amp;&#160;</td>
-          <td class="paramname"><em>pos</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Méthode vérifiant si une case donnée est une destination valide pour un déplacement. </p>
-<p>Une case est valide si elle est incluse dans la grille de jeu et qu'elle n'est pas pleine.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pos</td><td>la localisation de la position </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true si la case est valide, false sinon </dd></dl>
-
-</div>
-</div>
-<a id="a5d14618af53111295697c873d78eed94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d14618af53111295697c873d78eed94">&sect;&nbsp;</a></span>checkColumn()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned Board::checkColumn </td>
-          <td>(</td>
-          <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>y</em> = <code>0</code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Accesseur en lecture d'une ligne de la grille de jeu. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">lineNum</td><td>le numéro de la ligne à sélectionner </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>la ligne sélectionnée</dd></dl>
-<p>Méthode vérifiant l'état d'une ligne de la grille de jeu.</p>
-<p>Cette méthode vérifie si les <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> d'une ligne de la grille sont pleines ou non et renvoie son état.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">la</td><td>ligne jusqu'à laquelle il faut effectuer les vérifications </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>le nombre de lignes remplies </dd></dl>
-
-</div>
-</div>
-<a id="aca44ef5625ec995578244057b990a5f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca44ef5625ec995578244057b990a5f4">&sect;&nbsp;</a></span>debug()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Board::debug </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a34c0be73c2fa65e53cec2bd78da349fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34c0be73c2fa65e53cec2bd78da349fd">&sect;&nbsp;</a></span>getGrid()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::map&lt; <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a>, bool &gt; Board::getGrid </td>
+          <td class="memname">std::map&lt; <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a>, <a class="el" href="class_g_j___g_w_1_1_color.html">Color</a> &gt; Board::getGrid </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -243,7 +155,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Accesseur en lecture de la grille de jeu. </p>
-<dl class="section return"><dt>Returns</dt><dd>la grille de cases </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>la grille de <a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> et de <a class="el" href="class_g_j___g_w_1_1_color.html">Color</a> </dd></dl>
 
 </div>
 </div>
@@ -287,62 +199,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae5f6ae39097193c62cd2a8a5e40c8bea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae5f6ae39097193c62cd2a8a5e40c8bea">&sect;&nbsp;</a></span>gridActualisation()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned Board::gridActualisation </td>
-          <td>(</td>
-          <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>lineNum</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Méthode qui vide les lignes remplies et ré-aligne la grille de jeu. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">lineNum</td><td>le numéro de la première ligne remplie </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>le nombre de lignes remplies traitées </dd></dl>
-
-</div>
-</div>
-<a id="a8529576230c77326937c54b570ec4c71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8529576230c77326937c54b570ec4c71">&sect;&nbsp;</a></span>swapCase()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Board::swapCase </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_g_j___g_w_1_1_position.html">Position</a> &amp;&#160;</td>
-          <td class="paramname"><em>pos</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Méthode faisant passer une case remplie à vide, et à remplie si elle était vide. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pos</td><td>la position à modifier </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>model/<a class="el" href="board_8h_source.html">board.h</a></li>
-<li>model/<a class="el" href="board_8cpp.html">board.cpp</a></li>
+<li>model/board.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
