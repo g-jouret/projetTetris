@@ -24,7 +24,8 @@ MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{ga
     ui->btnLeft->setDisabled(true);
     ui->btnRight->setDisabled(true);
     ui->btnPause->setDisabled(true);
-    lbEnd_ = new QLabel();
+    lbEnd_ = new QLabel(this);
+    lbEnd_->hide();
     savedTime_ = 0;
     time_ = new QTimer(this);
     connect(time_, SIGNAL(timeout()), this, SLOT(time()));
@@ -77,7 +78,8 @@ void MWTetris::createGame(){
                             cd.hasWinByTime());
             ui->btnStart->hide();
             lbEnd_ = nullptr;
-            lbEnd_ = new QLabel();
+            lbEnd_ = new QLabel(this);
+            lbEnd_->hide();
             savedTime_ = 0;
             resume();
             ui->btnPause->setEnabled(true);
@@ -96,7 +98,7 @@ void MWTetris::generateBoard(bool end){
     ui->boardGrid->setSpacing(3);
     ui->boardGrid->setGeometry(QRect(0,0,width,height));
     for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
-        QLabel * lb = new QLabel();
+        QLabel * lb = new QLabel(this);
         QColor border((it->second.getCode().at(0) <= 30)? 0 : it->second.getCode().at(0)-30,
                       it->second.getCode().at(1),
                       it->second.getCode().at(2));
@@ -113,6 +115,7 @@ void MWTetris::generateBoard(bool end){
     }
     if(end){
         ui->boardGrid->addWidget(lbEnd_, game_.getBoard().getHeight()/2, 0, 1, game_.getBoard().getWidth(), Qt::AlignCenter);
+        lbEnd_->show();
     }
 }
 
@@ -130,7 +133,7 @@ void MWTetris::showNextBric(){
         ui->boardNext->setSpacing(3);
         for(unsigned u {0}; u < side; ++u){
             for(unsigned v {0}; v < side; ++v){
-                QLabel * lb = new QLabel();
+                QLabel * lb = new QLabel(this);
                 Position temp = Position(u, v);
                 QColor color;
                 if(theBric.contains(temp)){

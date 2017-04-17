@@ -13,7 +13,7 @@ SetBricsDialog::SetBricsDialog(QWidget *parent): QDialog(parent), ui(new Ui::Set
 }
 
 SetBricsDialog::~SetBricsDialog(){
-    eraseBoard();
+    //eraseBoard();
     delete ui;
 }
 
@@ -67,7 +67,7 @@ QPushButton *SetBricsDialog::createBtn(unsigned x, unsigned y){
 }
 
 QLabel *SetBricsDialog::createLb(){
-    QLabel * lb = new QLabel();
+    QLabel * lb = new QLabel(this);
     lb->setStyleSheet("Qlabel{"
                       "background-color: blue;"
                       "}");
