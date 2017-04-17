@@ -9,9 +9,9 @@ int main(int argc, char *argv[]){
         QApplication a(argc, argv);
         std::string name {"Joueur"};
         Tetris game(name);
-        //MWTetris * w = new MWTetris(game);
-        MWTetris w(game);
-        w.show();
+        MWTetris * w = new MWTetris(game);
+        //MWTetris w(game);
+        w->show();
         return a.exec();
     } catch(const std::invalid_argument & e){
         std::cerr << "Erreur au lancement : "
