@@ -241,7 +241,7 @@ void Tetris::setGameState(GameState gameState){
 }
 
 void Tetris::next(unsigned timeElapsed){
-    if(timeElapsed < winTime_){
+    if(timeElapsed < winTime_ || !winByTime_){
         if(! checkMove(Direction::DOWN)){
             checkLines(currentBric_.getHigherY(), 0);
             generateBric();

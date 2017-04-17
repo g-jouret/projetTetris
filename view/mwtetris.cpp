@@ -35,12 +35,12 @@ MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{ga
 }
 
 MWTetris::~MWTetris() noexcept{
-    game_.removeObserver(this);
+    /*game_.removeObserver(this);
     eraseBoard(ui->boardGrid);
     eraseBoard(ui->boardNext);
     delete lbEnd_;
     delete time_;
-    delete timer_;
+    delete timer_;*/
     delete ui;
 }
 
