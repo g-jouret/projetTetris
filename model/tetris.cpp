@@ -6,7 +6,8 @@ using namespace GJ_GW;
 
 Tetris::Tetris(std::string &name): level_ {0}, timer_ {MAXIMUM_TIMER}, winScore_{validateWinScore(3000)},
     winLines_{validateWinLines(50)}, winTime_{validateWinTime(300000)}, gameState_{GameState::NONE},
-    player_{Player(name)}, board_{Board(validateWidth(10), validateHeight(20))}
+    player_{Player(name)}, board_{Board(validateWidth(10), validateHeight(20))}, winByScore_{1},
+    winByLines_{1}, winByTime_{1}
 {}
 
 unsigned Tetris::getLevel() const{
@@ -46,6 +47,14 @@ GameState Tetris::getGameState() const{
     return gameState_;
 }
 
+bool Tetris::hasWinByScore() const{
+    return winByScore_;
+}
+
+bool Tetris::hasWinByLines() const{
+    return winByLines_;
+}
+
 void Tetris::setBag(std::vector<Bric> newBag, bool keepBag){
     if(keepBag){
         bag_.add(newBag);
@@ -60,7 +69,8 @@ void Tetris::resetBag(){
 
 void Tetris::startGame(std::string name, unsigned width, unsigned height,
                        unsigned winScore, unsigned winLines, unsigned winTime,
-                       unsigned level){
+                       unsigned level, bool winByScore, bool winByLines,
+                       bool winByTime){
     level_ = level;
     timer_ = MAXIMUM_TIMER;
     for(unsigned u {0}; u < level; ++u){
@@ -71,6 +81,9 @@ void Tetris::startGame(std::string name, unsigned width, unsigned height,
     winScore_ = validateWinScore(winScore);
     winLines_ = validateWinLines(winLines);
     winTime_ = validateWinTime(winTime);
+    winByScore_ = winByScore;
+    winByLines_ = winByLines;
+    winByTime_ = winByTime;
     setGameState(GameState::NONE);
     generateBric(true);
 }
@@ -214,9 +227,11 @@ void Tetris::checkLines(unsigned top, unsigned dropsCount){
         setLevel();
     player_.setScore(dropsCount, linesFilled);
     if(player_.score_ >= winScore_){
-        setGameState(GameState::SCORE);
+        if(winByScore_)
+            setGameState(GameState::SCORE);
     } else if(player_.nbLines_ >= winLines_){
-        setGameState(GameState::LINE);
+        if(winByLines_)
+            setGameState(GameState::LINE);
     }
 }
 
@@ -233,7 +248,8 @@ void Tetris::next(unsigned timeElapsed){
         }
         notifyObservers();
     } else{
-        setGameState(GameState::TIME);
+        if(winByTime_)
+            setGameState(GameState::TIME);
     }
 }
 

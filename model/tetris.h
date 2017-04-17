@@ -47,7 +47,7 @@ public:
     constexpr static unsigned MAXIMUM_WIN_SCORE {25000};
     /*!< Valeur maximale acceptée pour le score de victoire. */
 
-    constexpr static unsigned MINIMUM_WIN_LINES {30};
+    constexpr static unsigned MINIMUM_WIN_LINES {20};
     /*!< Valeur minimale acceptée pour le nombe de lignes de victoire. */
 
     constexpr static unsigned MAXIMUM_WIN_LINES {100};
@@ -60,7 +60,7 @@ public:
     /*!< Valeur maximale acceptée pour le temps de victoire. */
 
 private:
-    constexpr static unsigned MINIMUM_TIMER {100};
+    constexpr static unsigned MINIMUM_TIMER {150};
     /*!< Valeur minimale acceptée pour le timer. */
 
     constexpr static unsigned MAXIMUM_TIMER {1200};
@@ -120,6 +120,15 @@ private:
      * Celle que contrôle le joueur.
      */
 
+    bool winByScore_;
+    /*!< La victoire par score est-elle activée. */
+
+    bool winByLines_;
+    /*!< La victoire par lignes est-elle activée. */
+
+    bool winByTime_;
+    /*!< La victoire par temps est-elle activée. */
+
 public:
     /*!
      * \brief Constructeur sans argument de \ref Tetris.
@@ -154,8 +163,13 @@ public:
      * \param winLines le nombre de lignes de victoire
      * \param winTime le temps de victoire
      * \param level le niveau de difficulté de départ
+     * \param winByScore si la victoire au score est activée ou non
+     * \param winByLines si la victoire aux lignes est activée ou non
+     * \param winByTime si la victoire au temps est activée ou non
      */
-    void startGame(std::string name, unsigned width, unsigned height, unsigned winScore, unsigned winLines, unsigned winTime, unsigned level = 0);
+    void startGame(std::string name, unsigned width, unsigned height, unsigned winScore,
+                   unsigned winLines, unsigned winTime, unsigned level,
+                   bool winByScore, bool winByLines, bool winByTime);
 
     /*!
      * \brief Accesseur en lecture du niveau de difficulté.
@@ -210,6 +224,18 @@ public:
      * \return l'état du jeu
      */
     GameState getGameState() const;
+
+    /*!
+     * \brief Accesseur en lecture de l'état d'activation de la victoire au score.
+     * \return vrai si la victoire au score est activée, faux sinon
+     */
+    bool hasWinByScore() const;
+
+    /*!
+     * \brief Accesseur en lecture de l'état d'activation de la victoire par lignes.
+     * \return vrai si la victoire par lignes est activée, faux sinon
+     */
+    bool hasWinByLines() const;
 
     /*!
      * \brief Méthode permettant d'effectuer autant de déplacement

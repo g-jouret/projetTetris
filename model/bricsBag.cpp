@@ -49,7 +49,7 @@ void BricsBag::add(std::vector<Bric> & newBrics){
 }
 
 void BricsBag::shuffle(bool first){
-    if(brics_.size() > 1){
+    if(brics_.size() > 2){
         unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
         if(first){
             std::shuffle(brics_.begin(), brics_.end(), std::default_random_engine(seed));
@@ -58,5 +58,7 @@ void BricsBag::shuffle(bool first){
             std::swap(brics_.at(0), brics_.at(1));
             std::random_shuffle(++brics_.begin(), --brics_.end());
         }
+    } else if(brics_.size() == 2){
+        std::swap(brics_.at(0),brics_.at(1));
     }
 }

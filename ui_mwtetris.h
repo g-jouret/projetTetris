@@ -277,13 +277,13 @@ public:
 "height: 150px;\n"
 "}\n"
 "QPushButton:pressed {	\n"
+"border: none;\n"
 "background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(11, 193, 23, 255), stop:0.1 rgba(11, 193, 23, 255), stop:0.4 rgba(5, 113, 11, 255), stop:0.51 rgba(0, 0, 0, 200), stop:0.501 rgba(0,0, 0,255), stop:0.502513 rgba(0, 0, 0, 255), stop:0.52 rgba(0, 0, 0, 0), stop:0.6 rgba(0, 0, 0, 0), stop:1 rgba(255, 255, 255, 0));\n"
-" border-style: inset;\n"
-"border-color: rgb(0, 0, 200);\n"
 "}\n"
 "QPushButton:disabled{\n"
-"background-color: qradi"
-                        "algradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(180, 180, 180, 255), stop:0.1 rgba(180, 180, 180, 255), stop:0.4 rgba(180, 180, 180, 255), stop:0.51 rgba(0, 0, 0, 200), stop:0.501 rgba(0,0, 0,255), stop:0.502513 rgba(0, 0, 0, 255), stop:0.52 rgba(0, 0, 0, 0), stop:0.6 rgba(0, 0, 0, 0), stop:1 rgba(255, 255, 255, 0));\n"
+"border: none;\n"
+"background-color: qradialgradient(spread:pad, c"
+                        "x:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(180, 180, 180, 255), stop:0.1 rgba(180, 180, 180, 255), stop:0.4 rgba(180, 180, 180, 255), stop:0.51 rgba(0, 0, 0, 200), stop:0.501 rgba(0,0, 0,255), stop:0.502513 rgba(0, 0, 0, 255), stop:0.52 rgba(0, 0, 0, 0), stop:0.6 rgba(0, 0, 0, 0), stop:1 rgba(255, 255, 255, 0));\n"
 "}"));
         btnPause->setCheckable(true);
 

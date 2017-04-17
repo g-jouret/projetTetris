@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>417</width>
-    <height>219</height>
+    <width>506</width>
+    <height>244</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -71,6 +71,16 @@
        <item>
         <widget class="QSpinBox" name="sbWinScore"/>
        </item>
+       <item>
+        <widget class="QCheckBox" name="hasWinByScore">
+         <property name="text">
+          <string>Activer?</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>
@@ -97,6 +107,16 @@
        </item>
        <item>
         <widget class="QSpinBox" name="sbWinLines"/>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="hasWinByLines">
+         <property name="text">
+          <string>Activer?</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -126,6 +146,16 @@
         <widget class="QTimeEdit" name="timeEdit">
          <property name="displayFormat">
           <string>mm:ss</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="HasWinByTime">
+         <property name="text">
+          <string>Activer?</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
          </property>
         </widget>
        </item>

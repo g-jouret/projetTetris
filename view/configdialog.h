@@ -26,6 +26,9 @@ public:
     std::vector<GJ_GW::Bric> getBrics() const;
     bool isKeepingBag() const;
     bool isResettingBag() const;
+    bool hasWinByScore() const;
+    bool hasWinByLines() const;
+    bool hasWinByTime() const;
 
 private:
     Ui::ConfigDialog *ui;
@@ -34,6 +37,9 @@ private:
 private slots:
     void setBrics();
     void hideSetBrics(bool checked);
+    void toggleScore(bool checked);
+    void toggleLines(bool checked);
+    void toggleTime(bool checked);
 };
 
 #endif // CONFIGDIALOG_H

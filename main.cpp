@@ -22,6 +22,5 @@ int main(int argc, char *argv[]){
 
 /* TODO Principal :
  * annuler dernier mouvement dans création de brique
- * condition de victoire ignorable (checkbox)
  * sauvegarde données hors partie, fichier de save (joueur, brique perso, score...)
  */

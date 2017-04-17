@@ -42,14 +42,17 @@ public:
     QLabel *lbWinScore;
     QSpacerItem *horizontalSpacer_5;
     QSpinBox *sbWinScore;
+    QCheckBox *hasWinByScore;
     QHBoxLayout *horizontalLayout_7;
     QLabel *lbWinLines;
     QSpacerItem *horizontalSpacer_7;
     QSpinBox *sbWinLines;
+    QCheckBox *hasWinByLines;
     QHBoxLayout *horizontalLayout_8;
     QLabel *lbWinTime;
     QSpacerItem *horizontalSpacer_8;
     QTimeEdit *timeEdit;
+    QCheckBox *HasWinByTime;
     QHBoxLayout *horizontalLayout_4;
     QLabel *lbLevel;
     QSpacerItem *horizontalSpacer_4;
@@ -73,7 +76,7 @@ public:
     {
         if (ConfigDialog->objectName().isEmpty())
             ConfigDialog->setObjectName(QStringLiteral("ConfigDialog"));
-        ConfigDialog->resize(417, 219);
+        ConfigDialog->resize(506, 244);
         gridLayout = new QGridLayout(ConfigDialog);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setSizeConstraint(QLayout::SetFixedSize);
@@ -114,6 +117,12 @@ public:
 
         horizontalLayout_5->addWidget(sbWinScore);
 
+        hasWinByScore = new QCheckBox(ConfigDialog);
+        hasWinByScore->setObjectName(QStringLiteral("hasWinByScore"));
+        hasWinByScore->setChecked(true);
+
+        horizontalLayout_5->addWidget(hasWinByScore);
+
 
         verticalLayout_3->addLayout(horizontalLayout_5);
 
@@ -133,6 +142,12 @@ public:
 
         horizontalLayout_7->addWidget(sbWinLines);
 
+        hasWinByLines = new QCheckBox(ConfigDialog);
+        hasWinByLines->setObjectName(QStringLiteral("hasWinByLines"));
+        hasWinByLines->setChecked(true);
+
+        horizontalLayout_7->addWidget(hasWinByLines);
+
 
         verticalLayout_3->addLayout(horizontalLayout_7);
 
@@ -151,6 +166,12 @@ public:
         timeEdit->setObjectName(QStringLiteral("timeEdit"));
 
         horizontalLayout_8->addWidget(timeEdit);
+
+        HasWinByTime = new QCheckBox(ConfigDialog);
+        HasWinByTime->setObjectName(QStringLiteral("HasWinByTime"));
+        HasWinByTime->setChecked(true);
+
+        horizontalLayout_8->addWidget(HasWinByTime);
 
 
         verticalLayout_3->addLayout(horizontalLayout_8);
@@ -264,9 +285,12 @@ public:
         ConfigDialog->setWindowTitle(QApplication::translate("ConfigDialog", "Configuration de la partie", Q_NULLPTR));
         lbName->setText(QApplication::translate("ConfigDialog", "Nom", Q_NULLPTR));
         lbWinScore->setText(QApplication::translate("ConfigDialog", "Score de victoire ", Q_NULLPTR));
+        hasWinByScore->setText(QApplication::translate("ConfigDialog", "Activer?", Q_NULLPTR));
         lbWinLines->setText(QApplication::translate("ConfigDialog", "Nombre de lignes de victoire", Q_NULLPTR));
+        hasWinByLines->setText(QApplication::translate("ConfigDialog", "Activer?", Q_NULLPTR));
         lbWinTime->setText(QApplication::translate("ConfigDialog", "Temps de jeu ", Q_NULLPTR));
         timeEdit->setDisplayFormat(QApplication::translate("ConfigDialog", "mm:ss", Q_NULLPTR));
+        HasWinByTime->setText(QApplication::translate("ConfigDialog", "Activer?", Q_NULLPTR));
         lbLevel->setText(QApplication::translate("ConfigDialog", "Niveau de difficult\303\251", Q_NULLPTR));
         lbWidth->setText(QApplication::translate("ConfigDialog", "Largeur du cadre (cases)", Q_NULLPTR));
         lbHeight->setText(QApplication::translate("ConfigDialog", "Hauteur du cadre (cases)", Q_NULLPTR));

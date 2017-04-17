@@ -11,6 +11,9 @@ ConfigDialog::ConfigDialog(std::string name, std::vector<unsigned> args, QWidget
 
     connect(ui->bricSetter, &QPushButton::clicked, this, &ConfigDialog::setBrics);
     connect(ui->defaultBrics, &QCheckBox::toggled, this, &ConfigDialog::hideSetBrics);
+    connect(ui->hasWinByScore, &QCheckBox::toggled, this, &ConfigDialog::toggleScore);
+    connect(ui->hasWinByLines, &QCheckBox::toggled, this, &ConfigDialog::toggleLines);
+    connect(ui->HasWinByTime, &QCheckBox::toggled, this, &ConfigDialog::toggleTime);
     hideSetBrics(true);
 
     ui->leName->setText(QString::fromStdString(name));
@@ -86,6 +89,18 @@ bool ConfigDialog::isResettingBag() const{
     return ui->defaultBrics->isChecked();
 }
 
+bool ConfigDialog::hasWinByScore() const{
+    return ui->hasWinByScore->isChecked();
+}
+
+bool ConfigDialog::hasWinByLines() const{
+    return ui->hasWinByLines->isChecked();
+}
+
+bool ConfigDialog::hasWinByTime() const{
+    return ui->HasWinByTime->isChecked();
+}
+
 void ConfigDialog::setBrics(){
     SetBricsDialog newBric (this);
     newBric.setWindowTitle("Éditeur de brique");
@@ -97,6 +112,7 @@ void ConfigDialog::setBrics(){
         ui->keepBag->setEnabled(true);
         for(auto it {brics_.begin()}; it != brics_.end(); ++it){
             if(color.at(1) > 25){
+                color.at(0) += 10;
                 color.at(1) -= 25;
                 color.at(2) += 25;
             }
@@ -117,6 +133,30 @@ void ConfigDialog::hideSetBrics(bool checked){
     } else{
         ui->bricSetter->show();
         ui->keepBag->show();
+    }
+}
+
+void ConfigDialog::toggleScore(bool checked){
+    if(checked){
+        ui->sbWinScore->setDisabled(true);
+    } else{
+        ui->sbWinScore->setEnabled(true);
+    }
+}
+
+void ConfigDialog::toggleLines(bool checked){
+    if(checked){
+        ui->sbWinLines->setDisabled(true);
+    } else{
+        ui->sbWinLines->setEnabled(true);
+    }
+}
+
+void ConfigDialog::toggleTime(bool checked){
+    if(checked){
+        ui->timeEdit->setDisabled(true);
+    } else{
+        ui->timeEdit->setEnabled(true);
     }
 }
 

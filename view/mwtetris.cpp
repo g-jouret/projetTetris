@@ -43,7 +43,6 @@ MWTetris::~MWTetris() noexcept{
 }
 
 void MWTetris::createGame(){
-    //timer_->stop();
     pause();
     std::vector<unsigned> args {15,     //maximum size of player name
                                 game_.MINIMUM_WIDTH, game_.MAXIMUM_WIDTH, game_.getBoard().getWidth(),
@@ -51,13 +50,12 @@ void MWTetris::createGame(){
                                         game_.MINIMUM_WIN_SCORE, game_.MAXIMUM_WIN_SCORE, game_.getWinScore(),
                                         game_.MINIMUM_WIN_LINES, game_.MAXIMUM_WIN_LINES, game_.getWinLines(),
                                         game_.MINIMUM_WIN_TIME, game_.MAXIMUM_WIN_TIME, game_.getWinTime(),
-                                        0, 8};      //minimum and maximum level
+                                        0, 5};      //minimum and maximum level
     ConfigDialog cd (game_.getPlayer().getName(), args, this);
     cd.setWindowTitle("Configuration de la partie");
     int ret = cd.exec();
     if(ret == QDialog::Rejected){
         if(game_.getGameState() != GameState::NONE)
-            //timer_->start(game_.getTimer());
             resume();
     } else{
         std::string name;
@@ -71,14 +69,13 @@ void MWTetris::createGame(){
                 }
             }
             game_.startGame(name, cd.getWidth(), cd.getHeight(),
-                            cd.getWinScore(), cd.getWinLines(), cd.getWinTime(),
-                            cd.getLevel());
+                            cd.getWinScore(), cd.getWinLines(),
+                            cd.getWinTime(), cd.getLevel(),
+                            cd.hasWinByScore(), cd.hasWinByLines(),
+                            cd.hasWinByTime());
             ui->btnStart->hide();
             lbEnd_ = nullptr;
             lbEnd_ = new QLabel();
-            /*chrono_.restart();
-            time_->start(1000);
-            timer_->start(game_.getTimer());*/
             savedTime_ = 0;
             resume();
             ui->btnPause->setEnabled(true);
@@ -179,8 +176,8 @@ void MWTetris::drop(){
 
 void MWTetris::update(Subject *){
     int timer = game_.getTimer();
-    ui->lbPlayerScore->setText(QString::number(game_.getPlayer().getScore()) + "/" + QString::number(game_.getWinScore()));
-    ui->lbPlayerLines->setText(QString::number(game_.getPlayer().getNbLines()) + "/" + QString::number(game_.getWinLines()));
+    ui->lbPlayerScore->setText(QString::number(game_.getPlayer().getScore()) + ((game_.hasWinByScore())? "/" + QString::number(game_.getWinScore()) : ""));
+    ui->lbPlayerLines->setText(QString::number(game_.getPlayer().getNbLines()) + ((game_.hasWinByLines())? "/" + QString::number(game_.getWinLines()) : ""));
     switch (game_.getGameState()){
     case GameState::NONE:
         if(QString::fromStdString(game_.getPlayer().getName()) != ui->lbPlayerName->text()){
@@ -265,6 +262,11 @@ void MWTetris::time(){
     unsigned time = ((savedTime_ + chrono_.elapsed()) / 1000);
     unsigned sec = (time % 60);
     unsigned min = ((time/60) % 60);
+    unsigned hours = ((time/3600) % 24);
+    if(hours != 0){
+        lb.append(QString::number(hours));
+        lb.append(":");
+    }
     if(min < 10)
         lb.append("0");
     lb.append(QString::number(min));
