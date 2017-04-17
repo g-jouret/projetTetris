@@ -1,8 +1,8 @@
 #include "mwtetris.h"
 #include "ui_mwtetris.h"
-#include "../model/direction.h"
 #include "configdialog.h"
 #include "../model/gamestate.h"
+#include "../model/direction.h"
 #include <sstream>
 #include <QTimer>
 #include <QErrorMessage>
@@ -36,12 +36,7 @@ MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{ga
 }
 
 MWTetris::~MWTetris() noexcept{
-    /*game_.removeObserver(this);
-    eraseBoard(ui->boardGrid);
-    eraseBoard(ui->boardNext);
-    delete lbEnd_;
-    delete time_;
-    delete timer_;*/
+    game_.removeObserver(this);
     delete ui;
 }
 

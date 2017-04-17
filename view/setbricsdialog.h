@@ -10,7 +10,7 @@
  * Namespace contenant la vue du \ref Tetris.
  */
 namespace Ui {
-    class SetBricsDialog;
+class SetBricsDialog;
 }
 
 /*!

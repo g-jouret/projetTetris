@@ -2,7 +2,6 @@
 #include "ui_setbricsdialog.h"
 #include <QLabel>
 #include <QPushButton>
-#include <iostream>
 
 using namespace GJ_GW;
 
@@ -13,7 +12,6 @@ SetBricsDialog::SetBricsDialog(QWidget *parent): QDialog(parent), ui(new Ui::Set
 }
 
 SetBricsDialog::~SetBricsDialog(){
-    //eraseBoard();
     delete ui;
 }
 
@@ -57,10 +55,13 @@ QPushButton *SetBricsDialog::createBtn(unsigned x, unsigned y){
     btn->setObjectName(pos);
     connect(btn, SIGNAL(clicked()), this, SLOT(update()));
     btn->setStyleSheet("QPushButton{"
-                       "background-color: orange;"
-                       "}"
+                       "border-style:outset;"
+                       "border-width:10px;"
+                       "background-color:orange;"
+                       "border-color:orange;}"
                        "QPushButton:disabled{"
                        "background-color: white;"
+                       "border-color:rgb(230,255,255);"
                        "}");
     btn->setFixedSize(40,40);
     return btn;
@@ -68,8 +69,11 @@ QPushButton *SetBricsDialog::createBtn(unsigned x, unsigned y){
 
 QLabel *SetBricsDialog::createLb(){
     QLabel * lb = new QLabel(this);
-    lb->setStyleSheet("Qlabel{"
+    lb->setStyleSheet("QLabel{"
                       "background-color: blue;"
+                      "border-width:10px;"
+                      "border-style:outset;"
+                      "border-color:blue;"
                       "}");
     lb->setFixedSize(40,40);
     return lb;

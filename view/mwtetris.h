@@ -12,8 +12,8 @@
  * Namespace contenant la vue du \ref Tetris.
  */
 namespace Ui {
-    class MWTetris;
-    class QTimer;
+class MWTetris;
+class QTimer;
 }
 
 /*!

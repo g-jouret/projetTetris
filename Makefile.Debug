@@ -865,10 +865,10 @@ debug/mwtetris.o: view/mwtetris.cpp view/mwtetris.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QSpacerItem \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QVBoxLayout \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QWidget \
-		model/direction.h \
 		view/configdialog.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qdialog.h \
+		model/direction.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/QTimer \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qtimer.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qbasictimer.h \

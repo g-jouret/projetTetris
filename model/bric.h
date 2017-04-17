@@ -63,18 +63,6 @@ public:
     explicit Bric(std::vector<Position> &shape, Color color);
 
     /*!
-     * \brief Accesseur en lecture de la forme de la \ref Bric.
-     * \return la forme de la brique
-     */
-    //std::vector<Position> getShape() const;
-
-    /*!
-     * \brief Accesseur en lecture du milieu du carré entourant la brique.
-     * \return la \ref Position occupant le milieu
-     */
-    //Position getMiddle() const;
-
-    /*!
      * \brief Accesseur en lecture de la taille de côté de la \ref Bric.
      * \return la taille de côté de la brique
      */

@@ -90,13 +90,6 @@ std::string Bric::message(std::string exception) const{
     return "Votre brique n'est pas valide, car " + exception;
 }
 
-/*std::vector<Position> Bric::getShape() const{
-    return shape_;
-}
-
-Position Bric::getMiddle() const{
-    return middle_;
-}*/
 
 unsigned Bric::getSide() const{
     return side_;
