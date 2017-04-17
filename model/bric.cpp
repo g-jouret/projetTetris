@@ -35,8 +35,8 @@ std::vector<unsigned> Bric::validateSide(){
     unsigned sideX;
     unsigned sideY;
     for(Position p : shape_){
-        tempX.push_back((p.getX()));
-        tempY.push_back(p.getY());
+        tempX.push_back((p.x_));
+        tempY.push_back(p.y_);
     }
     std::sort(tempX.begin(), tempX.end());
     if(tempX.at(0) != 0){
@@ -90,13 +90,13 @@ std::string Bric::message(std::string exception) const{
     return "Votre brique n'est pas valide, car " + exception;
 }
 
-std::vector<Position> Bric::getShape() const{
+/*std::vector<Position> Bric::getShape() const{
     return shape_;
 }
 
 Position Bric::getMiddle() const{
     return middle_;
-}
+}*/
 
 unsigned Bric::getSide() const{
     return side_;
@@ -112,7 +112,7 @@ unsigned Bric::getHigherY(){
         if(temp > p)
             temp = p;
     }
-    return temp.getY();
+    return temp.y_;
 }
 
 void Bric::move(Direction dir){
@@ -145,7 +145,7 @@ void Bric::move(Direction dir){
 }
 
 void Bric::rotate(){
-    double midX = middle_.getX(), midY = middle_.getY();
+    double midX = middle_.x_, midY = middle_.y_;
     if(side_%2 == 0){
         midX += 0.5;
         midY += 0.5;

@@ -20,6 +20,8 @@ enum class Direction;
  * elle possède une \ref Color, un milieu et une taille de côté.
  */
 class Bric{
+    friend class Tetris;
+
     constexpr static unsigned MAXIMUM_SIDE {6};
 
     std::vector<Position> shape_;
@@ -63,13 +65,13 @@ public:
      * \brief Accesseur en lecture de la forme de la \ref Bric.
      * \return la forme de la brique
      */
-    std::vector<Position> getShape() const;
+    //std::vector<Position> getShape() const;
 
     /*!
      * \brief Accesseur en lecture du milieu du carré entourant la brique.
      * \return la \ref Position occupant le milieu
      */
-    Position getMiddle() const;
+    //Position getMiddle() const;
 
     /*!
      * \brief Accesseur en lecture de la taille de côté de la \ref Bric.
@@ -84,32 +86,6 @@ public:
     Color getColor() const;
 
     /*!
-     * \brief Accesseur en lecture de parité de la \ref Bric.
-     * \return vrai si la taille de côté de la brique est paire, faux sinon
-     */
-    bool isEven() const;
-
-    /*!
-     * \brief Méthode trouvant l'ordonnée de la \ref Position la plus haute de la brique.
-     * \return l'ordonnée du point le plus haut de la brique
-     */
-    unsigned getHigherY();
-
-    /*!
-     * \brief Méthode qui tourne la \ref Bric.
-     *
-     * Si l'on imagine la brique comme étant dans un carré de case :
-     * tourne les \ref Position des cases de ce carrée de 90°.
-     */
-    void rotate();
-
-    /*!
-     * \brief Méthode déplaçant la \ref Bric dans une \ref Direction.
-     * \param dir la direction choisie
-     */
-    void move(Direction dir);
-
-    /*!
      * \brief Méthode vérifiant qu'une \ref Position fait partie de la \ref Bric.
      *
      * \param pos la localisation de la position à vérifier
@@ -117,7 +93,7 @@ public:
      */
     bool contains(Position &pos) const;
 
-private:
+private:    
     /*!
      * \brief Méthode calculant la taille de côté d'une \ref Bric.
      * \param side le côté à calculer
@@ -170,6 +146,26 @@ private:
      * \return le message d'erreur
      */
     std::string message(std::__cxx11::string exception) const;
+
+    /*!
+     * \brief Méthode trouvant l'ordonnée de la \ref Position la plus haute de la brique.
+     * \return l'ordonnée du point le plus haut de la brique
+     */
+    unsigned getHigherY();
+
+    /*!
+     * \brief Méthode qui tourne la \ref Bric.
+     *
+     * Si l'on imagine la brique comme étant dans un carré de case :
+     * tourne les \ref Position des cases de ce carrée de 90°.
+     */
+    void rotate();
+
+    /*!
+     * \brief Méthode déplaçant la \ref Bric dans une \ref Direction.
+     * \param dir la direction choisie
+     */
+    void move(Direction dir);
 };
 
 } // namespace GJ_GW

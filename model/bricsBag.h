@@ -12,6 +12,7 @@ namespace GJ_GW{
  * \brief Classe représentant le sac de briques du joueur.
  */
 class BricsBag{
+    friend class Tetris;
     std::vector<Bric> brics_;
     /*!< Les briques contenues dans le sac.
      *
@@ -33,6 +34,7 @@ public:
      */
     explicit BricsBag(std::vector<Bric> &brics);
 
+private:
     /*!
      * \brief Méthode ajoutant de nouvelles \ref Bric au \ref BricsBag.
      * \param newBrics les nouvelles briques

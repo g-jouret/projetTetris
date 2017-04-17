@@ -10,6 +10,7 @@
  */
 namespace GJ_GW{
 
+
 enum class LineState;
 
 /*!
@@ -19,6 +20,8 @@ enum class LineState;
  * est délimitée par sa largeur et sa hauteur.
  */
 class Board{
+    friend class Tetris;
+
     unsigned width_;
     /*!< La largeur de la grille.
      *
@@ -68,6 +71,19 @@ public:
      */
     unsigned getWidth() const;
 
+private:
+    /*!
+     * \brief Méthode vérifiant s'il y a des lignes pleines dans la grille de jeu.
+     *
+     * Dès que cette méthode trouve une ligne pleines, elle lance l'actualisation de la grille et
+     * renvoie le nombre de ligne pleine rencontrées lors de cette étape. Si elle n'en rencontre
+     * aucune elle renvoie 0.
+     *
+     * \param la ligne jusqu'à laquelle il faut effectuer les vérifications
+     * \return le nombre de lignes remplies
+     */
+    unsigned checkColumn(unsigned y = 0);
+
     /*!
      * \brief Méthode vérifiant si une case donnée est une destination valide pour un déplacement.
      *
@@ -89,19 +105,6 @@ public:
      */
     void swapCase(Position &pos, Color color);
 
-    /*!
-     * \brief Méthode vérifiant s'il y a des lignes pleines dans la grille de jeu.
-     *
-     * Dès que cette méthode trouve une ligne pleines, elle lance l'actualisation de la grille et
-     * renvoie le nombre de ligne pleine rencontrées lors de cette étape. Si elle n'en rencontre
-     * aucune elle renvoie 0.
-     *
-     * \param la ligne jusqu'à laquelle il faut effectuer les vérifications
-     * \return le nombre de lignes remplies
-     */
-    unsigned checkColumn(unsigned y = 0);
-
-private:
     /*!
      * \brief Méthode qui actualise la grille de jeu.
      *

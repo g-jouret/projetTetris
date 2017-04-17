@@ -10,7 +10,7 @@ Tetris::Tetris(std::string &name): level_ {0}, timer_ {MAXIMUM_TIMER}, winScore_
 {}
 
 unsigned Tetris::getLevel() const{
-    unsigned lvl = level_ + (player_.getNbLines()/10);
+    unsigned lvl = level_ + (player_.nbLines_/10);
     return (lvl > 6)? 6 : lvl;
 }
 
@@ -110,7 +110,7 @@ unsigned Tetris::validateWinTime(unsigned winTime){
     return winTime;
 }
 
-std::string Tetris::message(const std::string &label, unsigned value, unsigned min, unsigned max) const{
+std::string Tetris::message(const std::string &label, unsigned value, unsigned min, unsigned max){
     return label +" non valide : "+ std::to_string(value) +" n'est pas compris entre "+ std::to_string(min) +" et "+ std::to_string(max);
 }
 
@@ -119,20 +119,20 @@ void Tetris::generateBric(bool first){
     unsigned count{0};
     bag_.shuffle(first);
     currentBric_ = bag_.getCurrentBric();
-    unsigned midBoard = board_.getWidth()/2;
-    unsigned midBric = currentBric_.getMiddle().getX() + 1;
+    unsigned midBoard = board_.width_/2;
+    unsigned midBric = currentBric_.middle_.getX() + 1;
 
     for(unsigned u {0}; u < midBoard-midBric; ++u){
         currentBric_.move(Direction::RIGHT);
     }
-    while(ok && count < currentBric_.getShape().size()){
-        ok = board_.checkCase(currentBric_.getShape().at(count));
+    while(ok && count < currentBric_.shape_.size()){
+        ok = board_.checkCase(currentBric_.shape_.at(count));
         ++count;
     }
 
     if(ok){
-        for(Position p : currentBric_.getShape()){
-            board_.swapCase(p, currentBric_.getColor());
+        for(Position p : currentBric_.shape_){
+            boardSwapCase(p, currentBric_.color_);
         }
         if(first)
             setGameState(GameState::ON);
@@ -157,18 +157,14 @@ bool Tetris::checkMove(Direction dir){
     unsigned count {0};
     Bric destination = currentBric_;
     destination.move(dir);
-    while(ok && count < destination.getShape().size()){
-        if(! currentBric_.contains(destination.getShape().at(count))){
-            ok = board_.checkCase(destination.getShape().at(count));
+    while(ok && count < destination.shape_.size()){
+        if(! currentBric_.contains(destination.shape_.at(count))){
+            ok = board_.checkCase(destination.shape_.at(count));
         }
         ++count;
     }
     if(ok)
         moveBric(dir);
-    /*if(! ok && dir == Direction::DOWN){
-        checkLines(currentBric_.getHigherY(), dropsCount);
-        generateBric();
-    }*/
     return ok;
 }
 
@@ -177,9 +173,9 @@ void Tetris::checkRotate(){
     unsigned count {0};
     Bric destination = currentBric_;
     destination.rotate();
-    while(ok && count < destination.getShape().size()){
-        if(! currentBric_.contains(destination.getShape().at(count))){
-            ok = board_.checkCase(destination.getShape().at(count));
+    while(ok && count < destination.shape_.size()){
+        if(! currentBric_.contains(destination.shape_.at(count))){
+            ok = board_.checkCase(destination.shape_.at(count));
         }
         ++count;
     }
@@ -189,23 +185,23 @@ void Tetris::checkRotate(){
 }
 
 void Tetris::rotateBric(){
-    for(Position p : currentBric_.getShape()){
-        board_.swapCase(p, Color());
+    for(Position p : currentBric_.shape_){
+        boardSwapCase(p, Color());
     }
     currentBric_.rotate();
-    for(Position p : currentBric_.getShape()){
-        board_.swapCase(p, currentBric_.getColor());
+    for(Position p : currentBric_.shape_){
+        boardSwapCase(p, currentBric_.color_);
     }
     notifyObservers();
 }
 
 void Tetris::moveBric(Direction dir){
-    for(Position p : currentBric_.getShape()){
-        board_.swapCase(p, Color());
+    for(Position p : currentBric_.shape_){
+        boardSwapCase(p, Color());
     }
     currentBric_.move(dir);
-    for(Position p : currentBric_.getShape()){
-        board_.swapCase(p, currentBric_.getColor());
+    for(Position p : currentBric_.shape_){
+        boardSwapCase(p, currentBric_.color_);
     }
     if(dir != Direction::DOWN)
         notifyObservers();
@@ -217,9 +213,9 @@ void Tetris::checkLines(unsigned top, unsigned dropsCount){
     if(player_.setNbLines(linesFilled))
         setLevel();
     player_.setScore(dropsCount, linesFilled);
-    if(player_.getScore() >= winScore_){
+    if(player_.score_ >= winScore_){
         setGameState(GameState::SCORE);
-    } else if(player_.getNbLines() >= winLines_){
+    } else if(player_.nbLines_ >= winLines_){
         setGameState(GameState::LINE);
     }
 }
@@ -244,7 +240,7 @@ void Tetris::next(unsigned timeElapsed){
 void Tetris::setLevel(){
     timer_ = MAXIMUM_TIMER;
 
-    for(unsigned u {0}; u < level_+(player_.getNbLines()/10); ++u){
+    for(unsigned u {0}; u < level_+(player_.nbLines_/10); ++u){
         setTimer();
     }
 }
@@ -254,4 +250,8 @@ void Tetris::setTimer(){
         timer_ -= 200;
     if(timer_ < MINIMUM_TIMER)
         timer_ = MINIMUM_TIMER;
+}
+
+void Tetris::boardSwapCase(Position &pos, Color color){
+    board_.swapCase(pos, color);
 }

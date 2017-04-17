@@ -11,8 +11,9 @@ namespace GJ_GW{
  *
  * Une position est atteignable par son abscisse et son ordonnée.
  */
-class Position
-{
+class Position{
+    friend class Bric;
+
     unsigned x_;
     /*!< L'abscisse de la position. */
 
@@ -53,6 +54,17 @@ public:
     inline unsigned getY() const;
 
     /*!
+     * \brief Méthode permettant de savoir si une \ref Position
+     * est adjacente à une autre selon son abscisse et son ordonnée.
+     *
+     * \param x l'abscisse de la position
+     * \param y l'ordonnée de la position
+     * \return vrai si les positions sont adjacentes, faux sinon
+     */
+    bool isAdjacent(const unsigned & x, const unsigned & y) const;
+
+private:
+    /*!
      * \brief Accesseur en écriture de l'abscisse.
      * \param x la nouvelle abscisse de la \ref Position
      */
@@ -63,16 +75,6 @@ public:
      * \param y la nouvelle ordonnée de la \ref Position
      */
     void setY(int y);
-
-    /*!
-     * \brief Méthode permettant de savoir si une \ref Position
-     * est adjacente à une autre selon son abscisse et son ordonnée.
-     *
-     * \param x l'abscisse de la position
-     * \param y l'ordonnée de la position
-     * \return vrai si les positions sont adjacentes, faux sinon
-     */
-    bool isAdjacent(const unsigned & x, const unsigned & y) const;
 
     /*!
      * \brief Méthode permettant de savoir si une \ref Position

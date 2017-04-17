@@ -32,13 +32,13 @@ public:
     constexpr static unsigned MINIMUM_WIDTH {6};
     /*!< Valeur minimale acceptée pour la largeur. */
 
-    constexpr static unsigned MAXIMUM_WIDTH {18};
+    constexpr static unsigned MAXIMUM_WIDTH {12};
     /*!< Valeur maximale acceptée pour la largeur. */
 
     constexpr static unsigned MINIMUM_HEIGHT {12};
     /*!< Valeur minimale acceptée pour la hauteur. */
 
-    constexpr static unsigned MAXIMUM_HEIGHT {28};
+    constexpr static unsigned MAXIMUM_HEIGHT {24};
     /*!< Valeur maximale acceptée pour la hauteur. */
 
     constexpr static unsigned MINIMUM_WIN_SCORE {1000};
@@ -263,7 +263,7 @@ private:
      *              width \f$\notin\f$ [\ref MINIMUM_WIDTH,
      *                                          \ref MAXIMUM_WIDTH]
      */
-    unsigned validateWidth(unsigned width);
+    static unsigned validateWidth(unsigned width);
 
     /*!
      * \brief Méthode de validation de la hauteur.
@@ -277,7 +277,7 @@ private:
      *              height \f$\notin\f$ [\ref MINIMUM_HEIGHT,
      *                                          \ref MAXIMUM_HEIGHT]
      */
-    unsigned validateHeight(unsigned height);
+    static unsigned validateHeight(unsigned height);
 
     /*!
      * \brief Méthode de validation du score de victoire.
@@ -291,7 +291,7 @@ private:
      *              winScore \f$\notin\f$ [\ref MINIMUM_WIN_SCORE,
      *                                          \ref MAXIMUM_WIN_SCORE]
      */
-    unsigned validateWinScore(unsigned winScore);
+    static unsigned validateWinScore(unsigned winScore);
 
     /*!
      * \brief Méthode de validation du nombre de lignes de victoire.
@@ -305,7 +305,7 @@ private:
      *              winLines \f$\notin\f$ [\ref MINIMUM_WIN_LINES,
      *                                          \ref MAXIMUM_WIN_LINES]
      */
-    unsigned validateWinLines(unsigned winLines);
+    static unsigned validateWinLines(unsigned winLines);
 
     /*!
      * \brief Méthode de validation du temps de victoire.
@@ -319,7 +319,7 @@ private:
      *              winTime \f$\notin\f$ [\ref MINIMUM_WIN_TIME,
      *                                          \ref MAXIMUM_WIN_TIME]
      */
-    unsigned validateWinTime(unsigned winTime);
+    static unsigned validateWinTime(unsigned winTime);
 
     /*!
      * \brief Méthode générant un message d'erreur en fonction de l'exception
@@ -331,7 +331,7 @@ private:
      * \param max la valeur maximale de l'attribut
      * \return le message d'erreur
      */
-    std::string message(const std::string & label, unsigned value, unsigned min, unsigned max) const;
+    static std::string message(const std::string & label, unsigned value, unsigned min, unsigned max);
 
     /*!
      * \brief Méthode plaçant une nouvelle \ref Bric en haut du \ref Board.
@@ -387,6 +387,16 @@ private:
      * \brief Méthode modifiant le niveau de difficulté en fonction du nombre de lignes remplies par le joueur.
      */
     void setLevel();
+
+    /*!
+     * \brief Méthode amie de \ref Board, changeant la couleur d'une case.
+     *
+     * Si elle passe à blanc, la case est considérée comme vide.
+     *
+     * \param pos la position à modifier
+     * \param color la couleur à appliquer
+     */
+    void boardSwapCase(Position &pos, Color color);
 };
 
 } // namespace GJ_GW

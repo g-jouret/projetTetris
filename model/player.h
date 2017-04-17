@@ -15,6 +15,8 @@ namespace GJ_GW{
  * qu'il a rempli au cours de la partie
  */
 class Player{
+    friend class Tetris;
+
     std::string name_;
     /*!< Le nom du joueur. */
 
@@ -56,6 +58,7 @@ public:
      */
     unsigned getNbLines() const;
 
+private:
     /*!
      * \brief Accesseur en écriture du nom du \ref Player.
      * \param name le nouveau nom du joueur
@@ -75,7 +78,6 @@ public:
      */
     bool setNbLines(unsigned linesCount);
 
-private:
     /*!
      * \brief Méthode permettant de remettre le nombre de lignes et le score du \ref Player à 0.
      */
