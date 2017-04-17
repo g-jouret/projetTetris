@@ -18,11 +18,14 @@ MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{ga
     connect(ui->btnRight, &QPushButton::clicked, this, &MWTetris::right);
     connect(ui->btnUp, &QPushButton::clicked, this, &MWTetris::rotate);
     connect(ui->btnStart, &QPushButton::clicked, this, &MWTetris::createGame);
+    connect(ui->btnPause, &QPushButton::clicked, this, &MWTetris::pausePlay);
     ui->btnUp->setDisabled(true);
     ui->btnDown->setDisabled(true);
     ui->btnLeft->setDisabled(true);
     ui->btnRight->setDisabled(true);
+    ui->btnPause->setDisabled(true);
     lbEnd_ = new QLabel();
+    savedTime_ = 0;
     time_ = new QTimer(this);
     connect(time_, SIGNAL(timeout()), this, SLOT(time()));
     timer_ = new QTimer(this);
@@ -40,7 +43,8 @@ MWTetris::~MWTetris() noexcept{
 }
 
 void MWTetris::createGame(){
-    timer_->stop();
+    //timer_->stop();
+    pause();
     std::vector<unsigned> args {15,     //maximum size of player name
                                 game_.MINIMUM_WIDTH, game_.MAXIMUM_WIDTH, game_.getBoard().getWidth(),
                                         game_.MINIMUM_HEIGHT, game_.MAXIMUM_HEIGHT, game_.getBoard().getHeight(),
@@ -53,7 +57,8 @@ void MWTetris::createGame(){
     int ret = cd.exec();
     if(ret == QDialog::Rejected){
         if(game_.getGameState() != GameState::NONE)
-            timer_->start(game_.getTimer());
+            //timer_->start(game_.getTimer());
+            resume();
     } else{
         std::string name;
         name = (cd.getName().empty())? game_.getPlayer().getName() : cd.getName();
@@ -71,13 +76,12 @@ void MWTetris::createGame(){
             ui->btnStart->hide();
             lbEnd_ = nullptr;
             lbEnd_ = new QLabel();
-            chrono_.restart();
+            /*chrono_.restart();
             time_->start(1000);
-            timer_->start(game_.getTimer());
-            ui->btnUp->setEnabled(true);
-            ui->btnDown->setEnabled(true);
-            ui->btnLeft->setEnabled(true);
-            ui->btnRight->setEnabled(true);
+            timer_->start(game_.getTimer());*/
+            savedTime_ = 0;
+            resume();
+            ui->btnPause->setEnabled(true);
             update(&game_);
         } catch(const std::invalid_argument & e){
             QErrorMessage * except = new QErrorMessage(this);
@@ -215,12 +219,8 @@ void MWTetris::update(Subject *){
 }
 
 void MWTetris::endGame(){
-    ui->btnUp->setDisabled(true);
-    ui->btnDown->setDisabled(true);
-    ui->btnLeft->setDisabled(true);
-    ui->btnRight->setDisabled(true);
-    time_->stop();
-    timer_->stop();
+    pause();
+    ui->btnPause->setDisabled(true);
     lbEnd_->setStyleSheet("QLabel{font-weight: bold; font-size: 20px;"
                           "background-color: qconicalgradient(cx:0, cy:0, angle:135, stop:0 rgba(255, 176, 0, 69),"
                           "stop:0.375 rgba(255, 223, 0, 69), stop:0.423533 rgba(255, 223, 0, 145),"
@@ -233,9 +233,36 @@ void MWTetris::endGame(){
     generateBoard(true);
 }
 
+void MWTetris::pausePlay(bool checked){
+    if(checked)
+        pause();
+    else
+        resume();
+}
+
+void MWTetris::pause(){
+    savedTime_ += chrono_.elapsed();
+    time_->stop();
+    timer_->stop();
+    ui->btnUp->setDisabled(true);
+    ui->btnDown->setDisabled(true);
+    ui->btnLeft->setDisabled(true);
+    ui->btnRight->setDisabled(true);
+}
+
+void MWTetris::resume(){
+    chrono_.restart();
+    time_->start(1000);
+    timer_->start(game_.getTimer());
+    ui->btnUp->setEnabled(true);
+    ui->btnDown->setEnabled(true);
+    ui->btnLeft->setEnabled(true);
+    ui->btnRight->setEnabled(true);
+}
+
 void MWTetris::time(){
     QString lb;
-    unsigned time = (chrono_.elapsed() / 1000);
+    unsigned time = ((savedTime_ + chrono_.elapsed()) / 1000);
     unsigned sec = (time % 60);
     unsigned min = ((time/60) % 60);
     if(min < 10)

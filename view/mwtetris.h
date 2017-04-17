@@ -19,6 +19,7 @@ class MWTetris : public QMainWindow, public GJ_GW::Observer{
     Ui::MWTetris *ui;
     QLabel * lbEnd_;
     QElapsedTimer chrono_;
+    unsigned savedTime_;
     QTimer * time_;
     QTimer * timer_;
 
@@ -33,6 +34,8 @@ private:
     void resetBoard(QGridLayout * board);
     void showNextBric();
     void endGame();
+    void pause();
+    void resume();
 
 private slots:
     void createGame();
@@ -41,6 +44,7 @@ private slots:
     void drop();
     void left();
     void right();
+    void pausePlay(bool checked);
     void time();
     void next();
 };
