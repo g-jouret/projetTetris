@@ -19,3 +19,7 @@ int main(int argc, char *argv[]){
         std::exit(1);
     }
 }
+
+/* TODO principal :
+ * changer le gridLayout de QLabel en QPixmap de Qpainter
+ */

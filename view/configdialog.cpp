@@ -110,7 +110,7 @@ void ConfigDialog::setBrics(){
         std::vector<Position> bric = newBric.getSaved();
         std::vector<unsigned> color {60, 250, 0};
         ui->keepBag->setEnabled(true);
-        for(auto it {brics_.begin()}; it != brics_.end(); ++it){
+        for(unsigned u {0}; u < brics_.size(); ++u){
             if(color.at(1) > 25){
                 color.at(0) += 10;
                 color.at(1) -= 25;
