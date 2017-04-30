@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'configdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.7.1
+** Created by: Qt User Interface Compiler version 5.6.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -71,12 +71,22 @@ public:
     QCheckBox *keepBag;
     QPushButton *bricSetter;
     QDialogButtonBox *buttonBox;
+    QVBoxLayout *verticalLayout;
+    QCheckBox *playDuo;
+    QHBoxLayout *ipLayout;
+    QLabel *lbHost;
+    QSpacerItem *horizontalSpacer_6;
+    QLineEdit *leHost;
+    QHBoxLayout *portLayout;
+    QLabel *lbPort;
+    QSpacerItem *horizontalSpacer_9;
+    QSpinBox *sbPort;
 
     void setupUi(QDialog *ConfigDialog)
     {
         if (ConfigDialog->objectName().isEmpty())
             ConfigDialog->setObjectName(QStringLiteral("ConfigDialog"));
-        ConfigDialog->resize(506, 244);
+        ConfigDialog->resize(542, 244);
         gridLayout = new QGridLayout(ConfigDialog);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setSizeConstraint(QLayout::SetFixedSize);
@@ -270,7 +280,58 @@ public:
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
 
-        gridLayout->addWidget(buttonBox, 3, 0, 1, 2);
+        gridLayout->addWidget(buttonBox, 6, 0, 1, 2);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        playDuo = new QCheckBox(ConfigDialog);
+        playDuo->setObjectName(QStringLiteral("playDuo"));
+
+        verticalLayout->addWidget(playDuo);
+
+        ipLayout = new QHBoxLayout();
+        ipLayout->setObjectName(QStringLiteral("ipLayout"));
+        lbHost = new QLabel(ConfigDialog);
+        lbHost->setObjectName(QStringLiteral("lbHost"));
+
+        ipLayout->addWidget(lbHost);
+
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        ipLayout->addItem(horizontalSpacer_6);
+
+        leHost = new QLineEdit(ConfigDialog);
+        leHost->setObjectName(QStringLiteral("leHost"));
+
+        ipLayout->addWidget(leHost);
+
+
+        verticalLayout->addLayout(ipLayout);
+
+        portLayout = new QHBoxLayout();
+        portLayout->setObjectName(QStringLiteral("portLayout"));
+        lbPort = new QLabel(ConfigDialog);
+        lbPort->setObjectName(QStringLiteral("lbPort"));
+
+        portLayout->addWidget(lbPort);
+
+        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        portLayout->addItem(horizontalSpacer_9);
+
+        sbPort = new QSpinBox(ConfigDialog);
+        sbPort->setObjectName(QStringLiteral("sbPort"));
+        sbPort->setMinimum(49153);
+        sbPort->setMaximum(65535);
+        sbPort->setValue(49200);
+
+        portLayout->addWidget(sbPort);
+
+
+        verticalLayout->addLayout(portLayout);
+
+
+        gridLayout->addLayout(verticalLayout, 2, 1, 1, 1);
 
 
         retranslateUi(ConfigDialog);
@@ -282,21 +343,24 @@ public:
 
     void retranslateUi(QDialog *ConfigDialog)
     {
-        ConfigDialog->setWindowTitle(QApplication::translate("ConfigDialog", "Configuration de la partie", Q_NULLPTR));
-        lbName->setText(QApplication::translate("ConfigDialog", "Nom", Q_NULLPTR));
-        lbWinScore->setText(QApplication::translate("ConfigDialog", "Score de victoire ", Q_NULLPTR));
-        hasWinByScore->setText(QApplication::translate("ConfigDialog", "Activer?", Q_NULLPTR));
-        lbWinLines->setText(QApplication::translate("ConfigDialog", "Nombre de lignes de victoire", Q_NULLPTR));
-        hasWinByLines->setText(QApplication::translate("ConfigDialog", "Activer?", Q_NULLPTR));
-        lbWinTime->setText(QApplication::translate("ConfigDialog", "Temps de jeu ", Q_NULLPTR));
-        timeEdit->setDisplayFormat(QApplication::translate("ConfigDialog", "mm:ss", Q_NULLPTR));
-        HasWinByTime->setText(QApplication::translate("ConfigDialog", "Activer?", Q_NULLPTR));
-        lbLevel->setText(QApplication::translate("ConfigDialog", "Niveau de difficult\303\251", Q_NULLPTR));
-        lbWidth->setText(QApplication::translate("ConfigDialog", "Largeur du cadre (cases)", Q_NULLPTR));
-        lbHeight->setText(QApplication::translate("ConfigDialog", "Hauteur du cadre (cases)", Q_NULLPTR));
-        defaultBrics->setText(QApplication::translate("ConfigDialog", "Utiliser les briques par d\303\251faut?", Q_NULLPTR));
-        keepBag->setText(QApplication::translate("ConfigDialog", "Conserver l'ancien sac de briques?", Q_NULLPTR));
-        bricSetter->setText(QApplication::translate("ConfigDialog", "Nouvelle brique personnalis\303\251e", Q_NULLPTR));
+        ConfigDialog->setWindowTitle(QApplication::translate("ConfigDialog", "Configuration de la partie", 0));
+        lbName->setText(QApplication::translate("ConfigDialog", "Nom", 0));
+        lbWinScore->setText(QApplication::translate("ConfigDialog", "Score de victoire ", 0));
+        hasWinByScore->setText(QApplication::translate("ConfigDialog", "Activer?", 0));
+        lbWinLines->setText(QApplication::translate("ConfigDialog", "Nombre de lignes de victoire", 0));
+        hasWinByLines->setText(QApplication::translate("ConfigDialog", "Activer?", 0));
+        lbWinTime->setText(QApplication::translate("ConfigDialog", "Temps de jeu ", 0));
+        timeEdit->setDisplayFormat(QApplication::translate("ConfigDialog", "mm:ss", 0));
+        HasWinByTime->setText(QApplication::translate("ConfigDialog", "Activer?", 0));
+        lbLevel->setText(QApplication::translate("ConfigDialog", "Niveau de difficult\303\251", 0));
+        lbWidth->setText(QApplication::translate("ConfigDialog", "Largeur du cadre (cases)", 0));
+        lbHeight->setText(QApplication::translate("ConfigDialog", "Hauteur du cadre (cases)", 0));
+        defaultBrics->setText(QApplication::translate("ConfigDialog", "Utiliser les briques par d\303\251faut?", 0));
+        keepBag->setText(QApplication::translate("ConfigDialog", "Conserver l'ancien sac de briques?", 0));
+        bricSetter->setText(QApplication::translate("ConfigDialog", "Nouvelle brique personnalis\303\251e", 0));
+        playDuo->setText(QApplication::translate("ConfigDialog", "Jouer en duo?", 0));
+        lbHost->setText(QApplication::translate("ConfigDialog", "Nom d'host de votre adversaire", 0));
+        lbPort->setText(QApplication::translate("ConfigDialog", "Port \303\240 utiliser", 0));
     } // retranslateUi
 
 };

@@ -145,6 +145,14 @@ private slots:
     void hideSetBrics(bool checked);
 
     /*!
+     * \brief Méthode permettant de cacher ou non les informations de connexion en duo
+     * en fonction de l'état de la QCheckBox.
+     *
+     * \param checked l'état de la QCheckBox
+     */
+    void hideDuo(bool checked);
+
+    /*!
      * \brief Méthode désactivant l'édition du score de victoire si cette condition de victoire est désactivée.
      *
      * \param checked vrai si la condition de victoire est activée, faux sinon

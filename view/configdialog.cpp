@@ -14,7 +14,9 @@ ConfigDialog::ConfigDialog(std::string name, std::vector<unsigned> args, QWidget
     connect(ui->hasWinByScore, &QCheckBox::toggled, this, &ConfigDialog::toggleScore);
     connect(ui->hasWinByLines, &QCheckBox::toggled, this, &ConfigDialog::toggleLines);
     connect(ui->HasWinByTime, &QCheckBox::toggled, this, &ConfigDialog::toggleTime);
+    connect(ui->playDuo, &QPushButton::toggled, this, &ConfigDialog::hideDuo);
     hideSetBrics(true);
+    hideDuo(false);
 
     ui->leName->setText(QString::fromStdString(name));
     ui->leName->setMaxLength(args.at(0));
@@ -133,6 +135,20 @@ void ConfigDialog::hideSetBrics(bool checked){
     } else{
         ui->bricSetter->show();
         ui->keepBag->show();
+    }
+}
+
+void ConfigDialog::hideDuo(bool checked){
+    if(checked){
+        ui->lbHost->show();
+        ui->lbPort->show();
+        ui->leHost->show();
+        ui->sbPort->show();
+    } else{
+        ui->lbHost->hide();
+        ui->lbPort->hide();
+        ui->leHost->hide();
+        ui->sbPort->hide();
     }
 }
 

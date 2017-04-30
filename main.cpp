@@ -20,6 +20,11 @@ int main(int argc, char *argv[]){
     }
 }
 
-/* TODO principal :
- * changer le gridLayout de QLabel en QPixmap de Qpainter
- */
+/*
+TODO principal
+
+pour réseau : conseil : libraire tierce à import
+    - SocketIO
+    - boost
+    - QTCPSocket
+*/
