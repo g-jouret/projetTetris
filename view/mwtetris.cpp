@@ -8,6 +8,7 @@
 #include <sstream>
 #include <QTimer>
 #include <QErrorMessage>
+#include <iostream>
 
 using namespace GJ_GW;
 
@@ -47,7 +48,7 @@ MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{ga
         ui->lbPortNb->hide();
         server_ = nullptr;
     }
-
+    client_ = nullptr;
 }
 
 MWTetris::~MWTetris() noexcept{
@@ -93,12 +94,11 @@ void MWTetris::createGame(){
             ui->lbPortNb->hide();
             if(!cd.isPlayingDuo()){
                 delete server_;
+                server_ = nullptr;
             } else{
                 QString hostName = cd.getHostName();
                 unsigned port = cd.getPort();
                 client_ = new Client(hostName, port, this, 1);
-
-                //server_ = new Server(this, hostName, port);
             }
             lbEnd_ = nullptr;
             lbEnd_ = new QLabel(this);
@@ -130,6 +130,7 @@ void MWTetris::generateBoard(bool end){
                       it->second.getCode().at(1),
                       it->second.getCode().at(2));
         setStyleSheet(lb, color.name(), border.name());
+        lb->setText(color.name());
         lb->setFixedSize(30,30);
         ui->boardGrid->addWidget(lb, ((it->first.getY() < game_.getBoard().getHeight()/2)? it->first.getY() : it->first.getY()+1), it->first.getX(), 1, 1);
     }
@@ -144,27 +145,31 @@ void MWTetris::setStyleSheet(QLabel *lb, QString color, QString border){
                       "border-style: outset;"
                       "border-width: 5px;"
                       "background-color: %1;"
+                      "color: %1;"
                       "border-color: %2;}";
     lb->setStyleSheet(styleSheet.arg(color, border));
 }
-/*
+
 void MWTetris::refreshBoard(){
     std::map<Position, Color> theGrid {game_.getBoard().getGrid()};
     for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
-        //QLabel *lb = (QLabel*) ui->boardGrid->itemAtPosition(((it->first.getY() < game_.getBoard().getHeight()/2)? it->first.getY() : it->first.getY()+1), it->first.getX())->widget();
-        QLabel *lb = qobject_cast<QLabel*>(ui->boardGrid->itemAtPosition(((it->first.getY() < game_.getBoard().getHeight()/2)? it->first.getY() : it->first.getY()+1), it->first.getX())->widget());
-        QColor border((it->second.getCode().at(0) <= 30)? 0 : it->second.getCode().at(0)-30,
-                      it->second.getCode().at(1),
-                      it->second.getCode().at(2));
+        QLabel *oldLb = qobject_cast<QLabel*>(ui->boardGrid->itemAtPosition(((it->first.getY() < game_.getBoard().getHeight()/2)? it->first.getY() : it->first.getY()+1), it->first.getX())->widget());
         QColor color(it->second.getCode().at(0),
                      it->second.getCode().at(1),
                      it->second.getCode().at(2));
-        setStyleSheet(lb, color.name(), border.name());
-
+        if(oldLb->text().compare(color.name())){
+            QColor border((it->second.getCode().at(0) <= 30)? 0 : it->second.getCode().at(0)-30,
+                      it->second.getCode().at(1),
+                      it->second.getCode().at(2));
+            QLabel *newLb = new QLabel(this);
+            setStyleSheet(newLb, color.name(), border.name());
+            newLb->setFixedSize(30,30);
+            ui->boardGrid->replaceWidget(oldLb,newLb);
+            delete oldLb;
+        }
     }
-
 }
-*/
+
 void MWTetris::eraseBoard(QGridLayout * board){
     QLayoutItem *child;
     while((child = board->takeAt(0)) != 0){
@@ -224,20 +229,19 @@ void MWTetris::update(Subject *){
         if(QString::fromStdString(game_.getPlayer().getName()) != ui->lbPlayerName->text()){
             ui->lbPlayerName->setText(QString::fromStdString(game_.getPlayer().getName()));
         }
-
+        //eraseBoard(ui->boardNext);
+        eraseBoard(ui->boardGrid);
         generateBoard();
         break;
-
     case GameState::ON:
+
         if(timer != timer_->interval())
             timer_->setInterval(game_.getTimer());
         if(QString::number(game_.getLevel()) != ui->lbLevelGame->text()){
             ui->lbLevelGame->setText(QString::number(game_.getLevel()));
         }
-        //refreshBoard();
-        eraseBoard(ui->boardGrid);
+        refreshBoard();
         eraseBoard(ui->boardNext);
-        generateBoard();
         showNextBric();
         break;
     case GameState::LOOSE:
