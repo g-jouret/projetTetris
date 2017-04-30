@@ -83,12 +83,24 @@ std::vector<Bric> ConfigDialog::getBrics() const{
     return brics_;
 }
 
+QString ConfigDialog::getHostName() const{
+    return ui->leHost->text();
+}
+
+unsigned ConfigDialog::getPort() const{
+    return ui->sbPort->value();
+}
+
 bool ConfigDialog::isKeepingBag() const{
     return ui->keepBag->isChecked();
 }
 
 bool ConfigDialog::isResettingBag() const{
     return ui->defaultBrics->isChecked();
+}
+
+bool ConfigDialog::isPlayingDuo() const{
+    return ui->playDuo->isChecked();
 }
 
 bool ConfigDialog::hasWinByScore() const{

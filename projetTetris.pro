@@ -6,7 +6,8 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+#greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT += widgets network
 
 TARGET = projetTetris
 TEMPLATE = app
@@ -23,7 +24,8 @@ SOURCES += model/board.cpp \
     model/tetris.cpp \
     view/setbricsdialog.cpp \
     main.cpp \
-    model/color.cpp
+    model/color.cpp \
+    network/server.cpp
 
 HEADERS  += model/board.h \
     model/bric.h \
@@ -39,7 +41,8 @@ HEADERS  += model/board.h \
     view/setbricsdialog.h \
     model/linestate.h \
     model/gamestate.h \
-    model/color.h
+    model/color.h \
+    network/server.h
 
 FORMS    += view/configdialog.ui \
     view/mwtetris.ui \

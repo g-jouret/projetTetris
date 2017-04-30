@@ -3,6 +3,7 @@
 #include "configdialog.h"
 #include "../model/gamestate.h"
 #include "../model/direction.h"
+#include "../network/server.h"
 #include <sstream>
 #include <QTimer>
 #include <QErrorMessage>
@@ -33,6 +34,15 @@ MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{ga
     connect(timer_, SIGNAL(timeout()), this, SLOT(next()));
     game_.addObserver(this);
     update(&game_);
+    try{
+        server_ = new Server(this);
+        server_->hide();
+        ui->lbHostName->setText(server_->getHostName());
+        ui->lbPortNb->setText(QString::number(server_->getPort()));
+    } catch(const std::exception & e){
+        std::exit(1);
+    }
+
 }
 
 MWTetris::~MWTetris() noexcept{
@@ -72,6 +82,16 @@ void MWTetris::createGame(){
                             cd.hasWinByScore(), cd.hasWinByLines(),
                             cd.hasWinByTime());
             ui->btnStart->hide();
+            ui->lbHost->hide();
+            ui->lbHostName->hide();
+            ui->lbPort->hide();
+            ui->lbPortNb->hide();
+            delete server_;
+            if(cd.isPlayingDuo()){
+                QString hostName = cd.getHostName();
+                unsigned port = cd.getPort();
+                server_ = new Server(this, hostName, port);
+            }
             lbEnd_ = nullptr;
             lbEnd_ = new QLabel(this);
             lbEnd_->hide();

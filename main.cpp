@@ -22,9 +22,8 @@ int main(int argc, char *argv[]){
 
 /*
 TODO principal
-
-pour réseau : conseil : libraire tierce à import
-    - SocketIO
-    - boost
-    - QTCPSocket
+- pour réseau : QTCPSocket
+- choix QThread ou librairie Thread
+- remplacer QGridLayout & QLabel par QPixmap & QPainter ou optimiser utilisation QLabel
+- remplacer QTimer par librairie c++
 */

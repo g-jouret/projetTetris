@@ -89,6 +89,18 @@ public:
     std::vector<GJ_GW::Bric> getBrics() const;
 
     /*!
+     * \brief Accesseur en lecture du nom d'host.
+     * \return le nom d'host
+     */
+    QString getHostName() const;
+
+    /*!
+     * \brief Accesseur en lecture du numéro de port.
+     * \return le numéro de port
+     */
+    unsigned getPort() const;
+
+    /*!
      * \brief Accesseur en lecture de l'utilisation ou non de l'ancien \ref BricsBag.
      *
      * \return vrai si l'ancien sac de briques est conservé, faux sinon
@@ -101,6 +113,12 @@ public:
      * \return vrai si le sac de briques est réinitialisé à sa valeur par défaut, faux sinon
      */
     bool isResettingBag() const;
+
+    /*!
+     * \brief Accesseur en lecture du multijoueur.
+     * \return vrai si le joueur veut jouer en duo, faux sinon
+     */
+    bool isPlayingDuo() const;
 
     /*!
      * \brief Accesseur en lecture de l'état d'activation de la victoire au score.

@@ -16,6 +16,10 @@ class MWTetris;
 class QTimer;
 }
 
+namespace GJ_GW {
+class Server;
+}
+
 /*!
  * \brief Classe représentant la fenêtre principale du \ref Tetris.
  */
@@ -28,6 +32,7 @@ class MWTetris : public QMainWindow, public GJ_GW::Observer{
     unsigned savedTime_;
     QTimer * time_;
     QTimer * timer_;
+    GJ_GW::Server *server_;
 
 public:
     /*!
