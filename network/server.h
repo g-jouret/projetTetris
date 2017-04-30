@@ -13,14 +13,14 @@ class Server : public QWidget
 {
     Q_OBJECT
     QTcpServer *server_;
-    QTcpSocket *client_;
+    QTcpSocket *socket_;
     quint16 messageSize_;
 
 public:
-    Server(QWidget *parent = 0, QString hostName = "", unsigned port = 0);
+    explicit Server(QWidget *parent = 0/*, QString hostName = "", unsigned port = 0*/);
     QString getHostName() const;
     quint16 getPort() const;
-    void sendMessage(const QString &message);
+    void answerMessage(const QString &message);
 
 private slots:
     void connection();

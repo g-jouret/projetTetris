@@ -18,6 +18,7 @@ class QTimer;
 
 namespace GJ_GW {
 class Server;
+class Client;
 }
 
 /*!
@@ -33,6 +34,7 @@ class MWTetris : public QMainWindow, public GJ_GW::Observer{
     QTimer * time_;
     QTimer * timer_;
     GJ_GW::Server *server_;
+    GJ_GW::Client *client_;
 
 public:
     /*!

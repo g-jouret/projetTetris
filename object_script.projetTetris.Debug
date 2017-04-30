@@ -12,8 +12,10 @@ INPUT(
 ./debug\main.o
 ./debug\color.o
 ./debug\server.o
+./debug\client.o
 ./debug\moc_configdialog.o
 ./debug\moc_mwtetris.o
 ./debug\moc_setbricsdialog.o
 ./debug\moc_server.o
+./debug\moc_client.o
 );

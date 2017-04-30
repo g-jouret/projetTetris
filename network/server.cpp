@@ -3,25 +3,26 @@
 
 using namespace GJ_GW;
 
-Server::Server(QWidget *parent, QString hostName, unsigned port) : QWidget(parent){
+Server::Server(QWidget *parent/*, QString hostName, unsigned port*/) : QWidget(parent){
     server_ = new QTcpServer(this);
-    if(hostName.isEmpty() && port == 0){
+    /*if(hostName.isEmpty() && port == 0){
         hostName = QHostInfo::localHostName();
         port = 49200;
-    }
-    if(!server_->listen(QHostAddress(hostName), 49200)){
+    }*/
+    // TODO : implémentation recherche port libre si par défaut occupé
+    if(!server_->listen(QHostAddress(QHostInfo::localHostName()), 49200)){
         throw std::exception();
     } else{
-       connect(server_, SIGNAL(newConnection()), this, SLOT(connection()));
+        connect(server_, SIGNAL(newConnection()), this, SLOT(connection()));
     }
     messageSize_ = 0;
 }
 
 void Server::connection(){
-    client_ = server_->nextPendingConnection();
-
-    connect(client_, SIGNAL(readyRead()), this, SLOT(dataReception()));
-    connect(client_, SIGNAL(disconnected()), this, SLOT(disconnection()));
+    socket_ = server_->nextPendingConnection();
+    //client_ = new Client(this, socket_->peerName(), socket_->peerPort());
+    connect(socket_, SIGNAL(readyRead()), this, SLOT(dataReception()));
+    connect(socket_, SIGNAL(disconnected()), this, SLOT(disconnection()));
 }
 
 void Server::disconnection(){
@@ -42,11 +43,11 @@ void Server::dataReception(){
     QString message;
     in >> message;
 
-    sendMessage(message);
+    answerMessage(message);
     messageSize_ = 0;
 }
 
-void Server::sendMessage(const QString &message){
+void Server::answerMessage(const QString &message){
     QByteArray packet;
     QDataStream out(&packet, QIODevice::WriteOnly);
 
@@ -54,7 +55,7 @@ void Server::sendMessage(const QString &message){
     out << message;
     out.device()->seek(0);
     out << (quint16) (packet.size() - sizeof(quint16));
-    client_->write(packet);
+    socket_->write(packet);
 }
 
 QString Server::getHostName() const{

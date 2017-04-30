@@ -4,6 +4,7 @@
 #include "../model/gamestate.h"
 #include "../model/direction.h"
 #include "../network/server.h"
+#include "../network/client.h"
 #include <sstream>
 #include <QTimer>
 #include <QErrorMessage>
@@ -86,11 +87,14 @@ void MWTetris::createGame(){
             ui->lbHostName->hide();
             ui->lbPort->hide();
             ui->lbPortNb->hide();
-            delete server_;
-            if(cd.isPlayingDuo()){
+            if(!cd.isPlayingDuo()){
+                delete server_;
+            } else{
                 QString hostName = cd.getHostName();
                 unsigned port = cd.getPort();
-                server_ = new Server(this, hostName, port);
+                client_ = new Client(hostName, port, this, 1);
+
+                //server_ = new Server(this, hostName, port);
             }
             lbEnd_ = nullptr;
             lbEnd_ = new QLabel(this);

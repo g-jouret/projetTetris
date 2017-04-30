@@ -25,7 +25,8 @@ SOURCES += model/board.cpp \
     view/setbricsdialog.cpp \
     main.cpp \
     model/color.cpp \
-    network/server.cpp
+    network/server.cpp \
+    network/client.cpp
 
 HEADERS  += model/board.h \
     model/bric.h \
@@ -42,7 +43,8 @@ HEADERS  += model/board.h \
     model/linestate.h \
     model/gamestate.h \
     model/color.h \
-    network/server.h
+    network/server.h \
+    network/client.h
 
 FORMS    += view/configdialog.ui \
     view/mwtetris.ui \
