@@ -65,6 +65,10 @@ private:
      */
     void generateBoard(bool end = 0);
 
+    void refreshBoard();
+
+    void setStyleSheet(QLabel *lb, QString color, QString border);
+
     /*!
      * \brief Méthode permettant d'appeler les destructeurs des éléments
      * contenu dans un QGridLayout.
