@@ -5,7 +5,7 @@
 
 using namespace GJ_GW;
 
-ConfigDialog::ConfigDialog(std::string name, std::vector<unsigned> args, QWidget *parent):
+ConfigDialog::ConfigDialog(std::string name, std::vector<unsigned> args, bool netOk, QWidget *parent):
     QDialog(parent), ui(new Ui::ConfigDialog){
     ui->setupUi(this);
 
@@ -14,7 +14,11 @@ ConfigDialog::ConfigDialog(std::string name, std::vector<unsigned> args, QWidget
     connect(ui->hasWinByScore, &QCheckBox::toggled, this, &ConfigDialog::toggleScore);
     connect(ui->hasWinByLines, &QCheckBox::toggled, this, &ConfigDialog::toggleLines);
     connect(ui->HasWinByTime, &QCheckBox::toggled, this, &ConfigDialog::toggleTime);
-    connect(ui->playDuo, &QPushButton::toggled, this, &ConfigDialog::hideDuo);
+    if(netOk){
+        connect(ui->playDuo, &QPushButton::toggled, this, &ConfigDialog::hideDuo);
+    } else{
+        ui->playDuo->setDisabled(true);
+    }
     hideSetBrics(true);
     hideDuo(false);
 

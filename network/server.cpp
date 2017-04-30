@@ -3,24 +3,21 @@
 
 using namespace GJ_GW;
 
-Server::Server(QWidget *parent/*, QString hostName, unsigned port*/) : QWidget(parent){
+Server::Server(QWidget *parent) : QWidget(parent){
     server_ = new QTcpServer(this);
-    /*if(hostName.isEmpty() && port == 0){
-        hostName = QHostInfo::localHostName();
-        port = 49200;
-    }*/
-    // TODO : implémentation recherche port libre si par défaut occupé
-    if(!server_->listen(QHostAddress(QHostInfo::localHostName()), 49200)){
-        throw std::exception();
-    } else{
-        connect(server_, SIGNAL(newConnection()), this, SLOT(connection()));
+    unsigned port {49152};
+    while(!server_->listen(QHostAddress(QHostInfo::localHostName()), port) && port <= 65535){
+       ++port;
     }
+    if(!server_->isListening()){
+        throw std::exception();
+    }
+    connect(server_, SIGNAL(newConnection()), this, SLOT(connection()));
     messageSize_ = 0;
 }
 
 void Server::connection(){
     socket_ = server_->nextPendingConnection();
-    //client_ = new Client(this, socket_->peerName(), socket_->peerPort());
     connect(socket_, SIGNAL(readyRead()), this, SLOT(dataReception()));
     connect(socket_, SIGNAL(disconnected()), this, SLOT(disconnection()));
 }

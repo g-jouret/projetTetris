@@ -41,7 +41,11 @@ MWTetris::MWTetris(Tetris game, QWidget *parent) : QMainWindow(parent), game_{ga
         ui->lbHostName->setText(server_->getHostName());
         ui->lbPortNb->setText(QString::number(server_->getPort()));
     } catch(const std::exception & e){
-        std::exit(1);
+        ui->lbHost->setText("Aucun port libre, seul le mode un joueur est disponible");
+        ui->lbHostName->hide();
+        ui->lbPort->hide();
+        ui->lbPortNb->hide();
+        server_ = nullptr;
     }
 
 }
@@ -60,7 +64,7 @@ void MWTetris::createGame(){
                                         game_.MINIMUM_WIN_LINES, game_.MAXIMUM_WIN_LINES, game_.getWinLines(),
                                         game_.MINIMUM_WIN_TIME, game_.MAXIMUM_WIN_TIME, game_.getWinTime(),
                                         0, 5};      //minimum and maximum level
-    ConfigDialog cd (game_.getPlayer().getName(), args, this);
+    ConfigDialog cd (game_.getPlayer().getName(), args, (server_ != nullptr), this);
     cd.setWindowTitle("Configuration de la partie");
     int ret = cd.exec();
     if(ret == QDialog::Rejected){
