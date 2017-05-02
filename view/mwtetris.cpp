@@ -163,6 +163,7 @@ void MWTetris::refreshBoard(){
                       it->second.getCode().at(2));
             QLabel *newLb = new QLabel(this);
             setStyleSheet(newLb, color.name(), border.name());
+            newLb->setText(color.name());
             newLb->setFixedSize(30,30);
             ui->boardGrid->replaceWidget(oldLb,newLb);
             delete oldLb;
@@ -178,7 +179,7 @@ void MWTetris::eraseBoard(QGridLayout * board){
 }
 
 void MWTetris::showNextBric(){
-    if(game_.getGameState() == GameState::ON){
+    //if(game_.getGameState() == GameState::ON){
         Bric theBric = game_.getNextBric();
         unsigned side = theBric.getSide();
         ui->boardNext->setSpacing(3);
@@ -201,7 +202,7 @@ void MWTetris::showNextBric(){
                 ui->boardNext->addWidget(lb, v, u, 1, 1);
             }
         }
-    }
+    //}
 }
 
 void MWTetris::left(){
@@ -233,16 +234,19 @@ void MWTetris::update(Subject *){
         eraseBoard(ui->boardGrid);
         generateBoard();
         break;
+    case GameState::NEW_BRIC:
+        eraseBoard(ui->boardNext);
+        showNextBric();
+        break;
     case GameState::ON:
-
         if(timer != timer_->interval())
             timer_->setInterval(game_.getTimer());
         if(QString::number(game_.getLevel()) != ui->lbLevelGame->text()){
             ui->lbLevelGame->setText(QString::number(game_.getLevel()));
         }
         refreshBoard();
-        eraseBoard(ui->boardNext);
-        showNextBric();
+        //eraseBoard(ui->boardNext);
+        //showNextBric();
         break;
     case GameState::LOOSE:
         lbEnd_->setText("Game over...");

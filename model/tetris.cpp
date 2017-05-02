@@ -147,8 +147,9 @@ void Tetris::generateBric(bool first){
         for(Position p : currentBric_.shape_){
             boardSwapCase(p, currentBric_.color_);
         }
-        if(first)
-            setGameState(GameState::ON);
+        /*if(first)
+            setGameState(GameState::ON);*/
+        setGameState(GameState::NEW_BRIC);
     } else{
         setGameState(GameState::LOOSE);
     }
@@ -238,13 +239,18 @@ void Tetris::checkLines(unsigned top, unsigned dropsCount){
 void Tetris::setGameState(GameState gameState){
     gameState_ = gameState;
     notifyObservers();
+    if(gameState_ == GameState::NEW_BRIC){
+        setGameState(GameState::ON);
+    }
 }
 
 void Tetris::next(unsigned timeElapsed){
     if(timeElapsed < winTime_ || !winByTime_){
         if(! checkMove(Direction::DOWN)){
             checkLines(currentBric_.getHigherY(), 0);
-            generateBric();
+            if(gameState_ == GameState::ON){
+                generateBric();
+            }
         }
         notifyObservers();
     } else{

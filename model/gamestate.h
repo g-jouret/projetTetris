@@ -12,6 +12,8 @@ namespace GJ_GW{
 enum class GameState{
     /*! Représente le moment où la partie n'a pas encore commencé */
     NONE,
+    /*! Représente le moment où une nouvelle brique est générée dans la grille*/
+    NEW_BRIC,
     /*! Représente une partie en cours */
     ON,
     /*! Représente la perte de la partie. */
