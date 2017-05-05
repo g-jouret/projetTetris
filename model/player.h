@@ -35,7 +35,7 @@ public:
      *
      * \param name le nom du joueur
      */
-    explicit Player(std::string &name);
+    explicit Player();
 
     /*!
      * \brief Accesseur en lecture du nom du \ref Player.
@@ -63,7 +63,7 @@ private:
      * \brief Accesseur en écriture du nom du \ref Player.
      * \param name le nouveau nom du joueur
      */
-    void setPlayer(std::string name);
+    void setPlayer(std::string &name);
 
     /*!
      * \brief Accesseur en écriture d'incrémentation du score du \ref Player.

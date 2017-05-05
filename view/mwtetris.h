@@ -2,7 +2,8 @@
 #define MWTETRIS_H
 
 #include "../observer/observer.h"
-#include "../model/tetris.h"
+//#include "../model/tetris.h"
+#include "../network/multitetris.h"
 #include <QMainWindow>
 #include <QElapsedTimer>
 #include <QGridLayout>
@@ -16,25 +17,18 @@ class MWTetris;
 class QTimer;
 }
 
-namespace GJ_GW {
-class Server;
-class Client;
-}
-
 /*!
  * \brief Classe représentant la fenêtre principale du \ref Tetris.
  */
 class MWTetris : public QMainWindow, public GJ_GW::Observer{
     Q_OBJECT
-    GJ_GW::Tetris game_;
     Ui::MWTetris *ui;
+    GJ_GW::MultiTetris game_;
     QLabel * lbEnd_;
-    QElapsedTimer chrono_;
+    /*QElapsedTimer chrono_;
     unsigned savedTime_;
+    QTimer * timer_;*/
     QTimer * time_;
-    QTimer * timer_;
-    GJ_GW::Server *server_;
-    GJ_GW::Client *client_;
 
 public:
     /*!
@@ -42,7 +36,7 @@ public:
      * \param game la partie de \ref Tetris
      * \param parent fenêtre ayant lancé cette fenêtre (ici, aucune)
      */
-    explicit MWTetris(GJ_GW::Tetris game, QWidget *parent = 0);
+    explicit MWTetris(QWidget *parent = 0);
 
     /*!
      * \brief Méthode rafraichissant les données affichables en fonction
@@ -90,12 +84,12 @@ private:
     /*!
      * \brief Méthode permettant de mettre la partie en pause.
      */
-    void pause();
+    //void pause();
 
     /*!
      * \brief Méthode permettant de reprendre le cours de la partie.
      */
-    void resume();
+    //void resume();
 
 private slots:
     /*!
@@ -107,6 +101,8 @@ private slots:
      *  - le démarrage de la partie.
      */
     void createGame();
+
+    //void reconnect();
 
     /*!
      * \brief Méthode permettant de demander au \ref Tetris de tourner la \ref Bric courante.
@@ -134,17 +130,17 @@ private slots:
      * \brief Méthode permettant de mettre la pause ou de reprendre suivant l'état du bouton.
      * \param checked l'état du bouton
      */
-    void pausePlay(bool checked);
+    void setPaused(bool checked);
 
     /*!
      * \brief Méthode permettant d'afficher le temps écoulé hors pause depuis le début de la partie.
      */
-    void time();
+    void showTime();
 
     /*!
      * \brief Méthode permettant de demander au \ref Tetris de lancer une nouvelle itération.
      */
-    void next();
+    //void next();
 };
 
 #endif // MWTETRIS_H

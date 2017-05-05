@@ -6,6 +6,8 @@
 #include "bricsBag.h"
 #include "gamestate.h"
 #include "../observer/subject.h"
+#include <QObject>
+#include <QElapsedTimer>
 
 /*! \mainpage Le jeu de Tetris multijoueur, projet de c++ 2016-2017
  *
@@ -15,6 +17,8 @@
  * Un bon point d'entrée est celui de la documentation de
  * l'espace de nom \ref GJ_GW.
  */
+
+class QTimer;
 
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
@@ -27,7 +31,8 @@ namespace GJ_GW{
  * Elle fournit à la vue les données du modèle nécessaires à son bon fonctionnement
  * et implémente \ref Subject.
  */
-class Tetris : public Subject{
+class Tetris : public QObject, public Subject{
+    Q_OBJECT
 public:
     constexpr static unsigned MINIMUM_WIDTH {6};
     /*!< Valeur minimale acceptée pour la largeur. */
@@ -60,16 +65,16 @@ public:
     /*!< Valeur maximale acceptée pour le temps de victoire. */
 
 private:
-    constexpr static unsigned MINIMUM_TIMER {150};
+    constexpr static int MINIMUM_TIMER {150};
     /*!< Valeur minimale acceptée pour le timer. */
 
-    constexpr static unsigned MAXIMUM_TIMER {1200};
+    constexpr static int MAXIMUM_TIMER {1200};
     /*!< Valeur maximale acceptée pour le timer. */
 
     unsigned level_;
     /*!< Niveau de difficulté au démarrage de la partie. */
 
-    unsigned timer_;
+    //unsigned timer_;
     /*!< Le timer.
      *
      * Il représente le temps entre chaque mouvement automatique de la \ref Bric courante,
@@ -129,6 +134,10 @@ private:
     bool winByTime_;
     /*!< La victoire par temps est-elle activée. */
 
+    QElapsedTimer chrono_;
+    unsigned savedTime_;
+    QTimer * timer_;
+
 public:
     /*!
      * \brief Constructeur sans argument de \ref Tetris.
@@ -136,7 +145,7 @@ public:
      * Il initialise la partie avec les paramètres par défaut,
      * crée un \ref Player, un \ref Board et un \ref BricsBag par défaut.
      */
-    explicit Tetris(std::string &name);
+    explicit Tetris();
 
     /*!
      * \brief Méthode permettant d'initialiser des \ref Bric personnalisées.
@@ -181,7 +190,7 @@ public:
      * \brief Accesseur en lecture du timer.
      * \return le timer
      */
-    unsigned getTimer() const;
+    //unsigned getTimer() const;
 
     /*!
      * \brief Accesseur en lecture du score de victoire.
@@ -225,6 +234,8 @@ public:
      */
     GameState getGameState() const;
 
+    unsigned getTimeElapsed() const;
+
     /*!
      * \brief Accesseur en lecture de l'état d'activation de la victoire au score.
      * \return vrai si la victoire au score est activée, faux sinon
@@ -263,18 +274,8 @@ public:
      */
     void checkRotate();
 
-    /*!
-     * \brief Méthode lançant une nouvelle itération du jeu.
-     *
-     * Une itération de \ref Tetris comprend un mouvement automatique
-     * de la \ref Bric courante vers le bas ou la génération d'une
-     * nouvelle brique courante si la précédente ne pouvait plus
-     * descendre.
-     *
-     * \param timeElapsed le temps écoulé depuis le début de la partie,
-     * s'il dépasse le winScore la partie est gagnée
-     */
-    void next(unsigned timeElapsed);
+    void resume();
+    void pause();
 
 private:
     /*!
@@ -423,6 +424,19 @@ private:
      * \param color la couleur à appliquer
      */
     void boardSwapCase(Position &pos, Color color);
+
+private slots:
+    /*!
+     * \brief Méthode lançant une nouvelle itération du jeu.
+     *
+     * Une itération de \ref Tetris comprend un mouvement automatique
+     * de la \ref Bric courante vers le bas ou la génération d'une
+     * nouvelle brique courante si la précédente ne pouvait plus
+     * descendre.
+     * Si le temps écoulé depuis le début de la partie dépasse
+     * le winTime la partie est gagnée
+     */
+    void next();
 };
 
 } // namespace GJ_GW

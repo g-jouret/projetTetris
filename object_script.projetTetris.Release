@@ -11,11 +11,12 @@ INPUT(
 ./release\setbricsdialog.o
 ./release\main.o
 ./release\color.o
-./release\server.o
 ./release\client.o
+./release\multitetris.o
 ./release\moc_configdialog.o
 ./release\moc_mwtetris.o
+./release\moc_tetris.o
 ./release\moc_setbricsdialog.o
-./release\moc_server.o
 ./release\moc_client.o
+./release\moc_multitetris.o
 );

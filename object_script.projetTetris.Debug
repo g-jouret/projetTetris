@@ -11,11 +11,12 @@ INPUT(
 ./debug\setbricsdialog.o
 ./debug\main.o
 ./debug\color.o
-./debug\server.o
 ./debug\client.o
+./debug\multitetris.o
 ./debug\moc_configdialog.o
 ./debug\moc_mwtetris.o
+./debug\moc_tetris.o
 ./debug\moc_setbricsdialog.o
-./debug\moc_server.o
 ./debug\moc_client.o
+./debug\moc_multitetris.o
 );

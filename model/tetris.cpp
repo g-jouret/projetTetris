@@ -1,23 +1,30 @@
 #include "tetris.h"
 #include "direction.h"
 #include <stdexcept>
+#include <QTimer>
 
 using namespace GJ_GW;
 
-Tetris::Tetris(std::string &name): level_ {0}, timer_ {MAXIMUM_TIMER}, winScore_{validateWinScore(3000)},
-    winLines_{validateWinLines(50)}, winTime_{validateWinTime(300000)}, gameState_{GameState::NONE},
-    player_{Player(name)}, board_{Board(validateWidth(10), validateHeight(20))}, winByScore_{1},
+Tetris::Tetris(): QObject(), level_ {0},
+    winScore_{validateWinScore(3000)}, winLines_{validateWinLines(50)}, winTime_{validateWinTime(300000)},
+    gameState_{GameState::NONE}, board_{Board(validateWidth(10), validateHeight(20))}, winByScore_{1},
     winByLines_{1}, winByTime_{1}
-{}
+{
+    //std::string name {"Joueur"};
+    //player_ = Player(name);
+    savedTime_ = 0;
+    timer_ = new QTimer(this);
+    connect(timer_, SIGNAL(timeout()), this, SLOT(next()));
+}
 
 unsigned Tetris::getLevel() const{
     unsigned lvl = level_ + (player_.nbLines_/10);
     return (lvl > 6)? 6 : lvl;
 }
 
-unsigned Tetris::getTimer() const{
+/*unsigned Tetris::getTimer() const{
     return timer_;
-}
+}*/
 
 unsigned Tetris::getWinScore() const{
     return winScore_;
@@ -47,6 +54,10 @@ GameState Tetris::getGameState() const{
     return gameState_;
 }
 
+unsigned Tetris::getTimeElapsed() const{
+    return savedTime_ + chrono_.elapsed()/1000;
+}
+
 bool Tetris::hasWinByScore() const{
     return winByScore_;
 }
@@ -71,11 +82,6 @@ void Tetris::startGame(std::string name, unsigned width, unsigned height,
                        unsigned winScore, unsigned winLines, unsigned winTime,
                        unsigned level, bool winByScore, bool winByLines,
                        bool winByTime){
-    level_ = level;
-    timer_ = MAXIMUM_TIMER;
-    for(unsigned u {0}; u < level; ++u){
-        setTimer();
-    }
     player_.setPlayer(name);
     board_ = Board(validateWidth(width), validateHeight(height));
     winScore_ = validateWinScore(winScore);
@@ -84,7 +90,14 @@ void Tetris::startGame(std::string name, unsigned width, unsigned height,
     winByScore_ = winByScore;
     winByLines_ = winByLines;
     winByTime_ = winByTime;
+    level_ = level;
+    timer_->setInterval(MAXIMUM_TIMER);
+    for(unsigned u {0}; u < level; ++u){
+        setTimer();
+    }
+    savedTime_ = 0;
     setGameState(GameState::NONE);
+    resume();
     generateBric(true);
 }
 
@@ -244,7 +257,8 @@ void Tetris::setGameState(GameState gameState){
     }
 }
 
-void Tetris::next(unsigned timeElapsed){
+void Tetris::next(){
+    unsigned timeElapsed {getTimeElapsed()};
     if(timeElapsed < winTime_ || !winByTime_){
         if(! checkMove(Direction::DOWN)){
             checkLines(currentBric_.getHigherY(), 0);
@@ -259,19 +273,28 @@ void Tetris::next(unsigned timeElapsed){
     }
 }
 
-void Tetris::setLevel(){
-    timer_ = MAXIMUM_TIMER;
+void Tetris::pause(){
+    savedTime_ += chrono_.elapsed();
+    timer_->stop();
+}
 
+void Tetris::resume(){
+    chrono_.restart();
+    timer_->start();
+}
+
+void Tetris::setLevel(){
+    timer_->setInterval(MAXIMUM_TIMER);
     for(unsigned u {0}; u < level_+(player_.nbLines_/10); ++u){
-        setTimer();
+        if(timer_->interval() > MINIMUM_TIMER)
+            setTimer();
     }
 }
 
 void Tetris::setTimer(){
-    if(timer_ > MINIMUM_TIMER)
-        timer_ -= 200;
-    if(timer_ < MINIMUM_TIMER)
-        timer_ = MINIMUM_TIMER;
+    timer_->setInterval(timer_->interval()-200);
+    if(timer_->interval() < MINIMUM_TIMER)
+        timer_->setInterval(MINIMUM_TIMER);
 }
 
 void Tetris::boardSwapCase(Position &pos, Color color){

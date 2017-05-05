@@ -6,10 +6,10 @@ using namespace GJ_GW;
 
 int main(int argc, char *argv[]){
     try{
-        QApplication a(argc, argv);
-        std::string name {"Joueur"};
-        Tetris game(name);
-        MWTetris w(game);
+        QApplication a (argc, argv);
+        //std::string name {"Joueur"};
+        //MultiTetris game(name);
+        MWTetris w;
         w.show();
         return a.exec();
     } catch(const std::invalid_argument & e){
@@ -23,6 +23,7 @@ int main(int argc, char *argv[]){
 /*
 TODO principal
 - pour réseau : QTCPSocket
+- mettre QTimer et QElapsedTimer dans model (tetris est un qobject)
 - choix QThread ou librairie Thread
 - remplacer QGridLayout & QLabel par QPixmap & QPainter ou optimiser utilisation QLabel
 - remplacer QTimer par librairie c++

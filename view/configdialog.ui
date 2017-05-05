@@ -356,13 +356,13 @@
        <item>
         <widget class="QSpinBox" name="sbPort">
          <property name="minimum">
-          <number>49153</number>
+          <number>49152</number>
          </property>
          <property name="maximum">
           <number>65535</number>
          </property>
          <property name="value">
-          <number>49200</number>
+          <number>49152</number>
          </property>
         </widget>
        </item>

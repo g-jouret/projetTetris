@@ -2,7 +2,7 @@
 
 using namespace GJ_GW;
 
-Player::Player(std::string &name): name_ {name}, score_{0}, nbLines_{0}
+Player::Player(): name_ {"Joueur"}, score_{0}, nbLines_{0}
 {}
 
 std::string Player::getName() const{
@@ -17,7 +17,7 @@ unsigned Player::getNbLines() const{
     return nbLines_;
 }
 
-void Player::setPlayer(std::string name){
+void Player::setPlayer(std::string &name){
     name_ = name;
     reset();
 }
