@@ -58,7 +58,7 @@ MWTetris::~MWTetris() noexcept{
 
 void MWTetris::createGame(){
     setPaused(true);
-
+    ui->msgConnect->hide();
     std::vector<unsigned> args {15,     //maximum size of player name
                                 game_.MINIMUM_WIDTH, game_.MAXIMUM_WIDTH, game_.getBoard().getWidth(),
                                         game_.MINIMUM_HEIGHT, game_.MAXIMUM_HEIGHT, game_.getBoard().getHeight(),
@@ -95,7 +95,7 @@ void MWTetris::createGame(){
                 unsigned port = cd.getPort();
                 try{
                     game_.initClient(hostName, port);
-                } catch(QString e){
+                } catch(const QString & e){
                     ui->msgConnect->setText(e);
                     ui->msgConnect->show();
                     return;
@@ -105,7 +105,7 @@ void MWTetris::createGame(){
             ui->lbHostName->hide();
             ui->lbPort->hide();
             ui->lbPortNb->hide();
-            ui->msgConnect->hide();
+            //ui->msgConnect->hide();
 
             ui->btnStart->hide();
             game_.startGame(name, cd.getWidth(), cd.getHeight(),

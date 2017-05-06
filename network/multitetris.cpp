@@ -57,9 +57,8 @@ QString MultiTetris::clientError() const{
 void MultiTetris::initClient(QString hostName, unsigned port){
     try{
         client_.connectToServer(hostName, port);
-    } catch(QString e){
-        std::cout << "error" << std::endl;
-        throw QString(e);
+    } catch(const QString & e){
+        throw;
     }
 }
 

@@ -14,6 +14,7 @@ class Client : public QObject{
     Q_OBJECT
     QTcpSocket *socket_;
     quint16 messageSize_;
+    bool connected_;
 
 public:
     explicit Client();
@@ -25,7 +26,7 @@ public:
 
 private slots:
     void connection();
-    //void disconnection();
+    void disconnection();
     void dataReception();
     void socketError();
 };
