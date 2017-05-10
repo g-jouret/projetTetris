@@ -9,8 +9,7 @@ Bric::Bric(){
     side_ = 0;
 }
 
-Bric::Bric(std::vector<Position> &shape, Color color){
-    shape_ = validateShape(shape);
+Bric::Bric(std::vector<Position> &shape, Color color):shape_{validateShape(shape)}{
     side_ = validateSide().at(0);
     if(side_ % 2 == 0){
         middle_ = Position((side_/2)-1, (side_/2)-1);
@@ -53,7 +52,7 @@ std::vector<unsigned> Bric::validateSide(){
     return {sideX, sideY};
 }
 
-std::vector<Position> Bric::validateShape(std::vector<Position> shape) const{
+std::vector<Position> Bric::validateShape(std::vector<Position> shape){
     std::vector<Position> tested;
     if(shape.at(0).getY() != 0){
         throw std::invalid_argument(message("la 1ère case ne touche pas le haut du repère"));
@@ -86,7 +85,7 @@ void Bric::adjustPositions(unsigned xMin){
     }
 }
 
-std::string Bric::message(std::string exception) const{
+std::string Bric::message(std::string exception){
     return "Votre brique n'est pas valide, car " + exception;
 }
 

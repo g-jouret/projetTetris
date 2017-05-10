@@ -111,7 +111,7 @@ private:
      * \param shape la forme à valider
      * \return la forme valide
      */
-    std::vector<Position> validateShape(std::vector<Position> shape) const;
+    static std::vector<Position> validateShape(std::vector<Position> shape);
 
     /*!
      * \brief Méthode permettant de recadrer une forme de \ref Bric mal positionnée.
@@ -134,7 +134,7 @@ private:
      * \param exception l'exception rencontrée
      * \return le message d'erreur
      */
-    std::string message(std::string exception) const;
+    static std::string message(std::__cxx11::string exception);
 
     /*!
      * \brief Méthode trouvant l'ordonnée de la \ref Position la plus haute de la brique.

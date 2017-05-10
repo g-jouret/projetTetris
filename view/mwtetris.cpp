@@ -134,14 +134,13 @@ void MWTetris::createGame(){
 }*/
 
 void MWTetris::generateBoard(bool end){
-    QLabel *lb;
     std::map<Position, Color> theGrid {game_.getBoard().getGrid()};
     unsigned width {((30+3)*game_.getBoard().getWidth())-3+40};     //(30px + 3px de spacing) * nombre de cases en largeur - 1 spacing + 2*20px de margin
     unsigned height {((30+3)*game_.getBoard().getHeight())-3+40};   //(30px + 3px de spacing) * nombre de cases en hauteur - 1 spacing + 2*20px de margin
     ui->boardGrid->setSpacing(3);
     ui->boardGrid->setGeometry(QRect(0,0,width,height));
     for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
-        lb = new QLabel(this);
+        QLabel *lb = new QLabel(this);
         QColor color(it->second.getCode().at(0),
                      it->second.getCode().at(1),
                      it->second.getCode().at(2));
