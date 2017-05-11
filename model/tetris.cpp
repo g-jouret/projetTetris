@@ -5,10 +5,10 @@
 
 using namespace GJ_GW;
 
-Tetris::Tetris(): QObject(), level_ {0},
-    winScore_{validateWinScore(3000)}, winLines_{validateWinLines(50)}, winTime_{validateWinTime(300000)},
-    gameState_{GameState::NONE}, board_{Board(validateWidth(10), validateHeight(20))}, winByScore_{1},
-    winByLines_{1}, winByTime_{1}
+Tetris::Tetris(): QObject(), level_ {0}, winScore_{validateWinScore(3000)},
+    winLines_{validateWinLines(50)}, winTime_{validateWinTime(300000)},
+    gameState_{GameState::NONE}, board_{Board(validateWidth(10),
+    validateHeight(20))}, winByScore_{1}, winByLines_{1}, winByTime_{1}
 {
     //std::string name {"Joueur"};
     //player_ = Player(name);

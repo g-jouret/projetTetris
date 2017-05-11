@@ -95,6 +95,8 @@ void MWTetris::createGame(){
                 unsigned port = cd.getPort();
                 try{
                     game_.initClient(hostName, port);
+                    ui->msgConnect->setText(game_.getClientNotif());
+                    ui->msgConnect->show();
                 } catch(const QString & e){
                     ui->msgConnect->setText(e);
                     ui->msgConnect->show();

@@ -10,6 +10,8 @@
  */
 namespace GJ_GW{
 
+class NetMsg;
+
 class MultiTetris : public Tetris{
     Q_OBJECT
     QTcpServer *server_;
@@ -24,8 +26,9 @@ public:
     bool isListening() const;
     void closeServer(bool soloMode);
     void initClient(QString hostName, unsigned port);
+    QString getClientNotif() const;
     bool isClientConnected() const;
-    void answerMessage(const QString &message);
+    void answerMessage(const NetMsg &msg);
     QString serverError() const;
     QString clientError() const;
 

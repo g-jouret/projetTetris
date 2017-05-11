@@ -26,7 +26,8 @@ SOURCES += model/board.cpp \
     main.cpp \
     model/color.cpp \
     network/client.cpp \
-    network/multitetris.cpp
+    network/multitetris.cpp \
+    network/netmsg.cpp
 
 HEADERS  += model/board.h \
     model/bric.h \
@@ -44,7 +45,8 @@ HEADERS  += model/board.h \
     model/gamestate.h \
     model/color.h \
     network/client.h \
-    network/multitetris.h
+    network/multitetris.h \
+    network/netmsg.h
 
 FORMS    += view/configdialog.ui \
     view/mwtetris.ui \

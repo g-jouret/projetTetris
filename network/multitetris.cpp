@@ -1,7 +1,8 @@
 #include "multitetris.h"
+#include "netmsg.h"
+#include "../view/mwtetris.h"
 #include <stdexcept>
 #include <iostream>
-#include "../view/mwtetris.h"
 
 using namespace GJ_GW;
 
@@ -57,12 +58,19 @@ QString MultiTetris::clientError() const{
 void MultiTetris::initClient(QString hostName, unsigned port){
     try{
         client_.connectToServer(hostName, port);
+        QList<QString> args;
+        args.append(QHostInfo::localHostName());
+        args.append(QString::number(server_->serverPort()));
+        NetMsg msg(NetMsg::MSG_FIRST, args);
+        client_.sendMessage(msg);
     } catch(const QString & e){
         throw;
     }
 }
 
-
+QString MultiTetris::getClientNotif() const{
+    return client_.getNotif();
+}
 
 void MultiTetris::connection(){
     socket_ = server_->nextPendingConnection();
@@ -86,25 +94,32 @@ void MultiTetris::dataReception(){
         in >> messageSize_;
     }
     if(socket->bytesAvailable() < messageSize_) return;
-    QString message;
-    in >> message;
-    if(message.contains("FIRST")){
-        QStringList connectData = message.split('|');
-        client_.connectToServer(connectData.at(1), connectData.at(2).toInt());
-        answerMessage("ACK");
+    QString msg;
+    in >> msg;
+    NetMsg netMsg(msg);
+    if(netMsg.getHeader() == NetMsg::MSG_FIRST){
+        // TODO : implémentation demande d'acceptation de multi au joueur
+        client_.connectToServer(netMsg.get(0), netMsg.get(1).toInt());
+        QList<QString> args;
+        args.append(netMsg.get(1));
+        NetMsg asw(NetMsg::ACK_FIRST, args);
+        answerMessage(asw);
+        closeServer(false);
     }
     messageSize_ = 0;
 }
 
-void MultiTetris::answerMessage(const QString &message){
+void MultiTetris::answerMessage(const NetMsg &msg){
     QByteArray packet;
     QDataStream out(&packet, QIODevice::WriteOnly);
 
     out << (quint16) 0;
-    out << message;
+    out << msg.to_QString();
     out.device()->seek(0);
     out << (quint16) (packet.size() - sizeof(quint16));
-    socket_->write(packet);
+    if(socket_->write(packet)==-1){
+        throw socket_->errorString();
+    }
 }
 
 
