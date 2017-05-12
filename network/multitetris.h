@@ -22,6 +22,7 @@ class MultiTetris : public Tetris{
 public:
     explicit MultiTetris();
     QString getHostName() const;
+    QString getIP() const;
     quint16 getPort() const;
     bool isListening() const;
     void closeServer(bool soloMode);

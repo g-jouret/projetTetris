@@ -37,6 +37,7 @@ MWTetris::MWTetris(QWidget *parent) : QMainWindow(parent), ui(new Ui::MWTetris){
     //connect(ui->btnRetry, &QPushButton::clicked, this, );
     //ui->btnRetry->hide();
     if(game_.isListening()){
+        //ui->lbHostName->setText(game_.getIP());
         ui->lbHostName->setText(game_.getHostName());
         ui->lbPortNb->setText(QString::number(game_.getPort()));
         ui->msgConnect->hide();

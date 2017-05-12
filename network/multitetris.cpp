@@ -32,7 +32,13 @@ void MultiTetris::closeServer(bool soloMode){
 }
 
 QString MultiTetris::getHostName() const{
-    return QHostInfo::localHostName();
+    QHostInfo hostInfo {QHostInfo::fromName(getIP())};
+    return hostInfo.hostName();
+}
+
+QString MultiTetris::getIP() const{
+    QHostInfo hostInfo {QHostInfo::fromName(QHostInfo::localHostName())};
+    return hostInfo.addresses().first().toString();
 }
 
 quint16 MultiTetris::getPort() const {
