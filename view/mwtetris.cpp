@@ -370,28 +370,6 @@ void MWTetris::setPaused(bool checked){
     }
 }
 
-/*void MWTetris::pause(){
-    savedTime_ += chrono_.elapsed();
-    time_->stop();
-    timer_->stop();
-    game_.pause();
-    ui->btnUp->setDisabled(true);
-    ui->btnDown->setDisabled(true);
-    ui->btnLeft->setDisabled(true);
-    ui->btnRight->setDisabled(true);
-}*/
-
-/*void MWTetris::resume(){
-    chrono_.restart();
-    time_->start(1000);
-    timer_->start(game_.getTimer());
-    game_.resume();
-    ui->btnUp->setEnabled(true);
-    ui->btnDown->setEnabled(true);
-    ui->btnLeft->setEnabled(true);
-    ui->btnRight->setEnabled(true);
-}*/
-
 void MWTetris::showTime(){
     QString lb;
     unsigned time = (game_.getTimeElapsed());
@@ -411,7 +389,3 @@ void MWTetris::showTime(){
     lb.append(QString::number(sec));
     ui->lbTime->setText(lb);
 }
-
-/*void MWTetris::next(){
-    game_.next();
-}*/

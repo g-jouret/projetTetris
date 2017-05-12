@@ -22,10 +22,6 @@ unsigned Tetris::getLevel() const{
     return (lvl > 6)? 6 : lvl;
 }
 
-/*unsigned Tetris::getTimer() const{
-    return timer_;
-}*/
-
 unsigned Tetris::getWinScore() const{
     return winScore_;
 }
@@ -55,7 +51,7 @@ GameState Tetris::getGameState() const{
 }
 
 unsigned Tetris::getTimeElapsed() const{
-    return savedTime_ + chrono_.elapsed()/1000;
+    return (savedTime_ + chrono_.elapsed())/1000;
 }
 
 bool Tetris::hasWinByScore() const{
