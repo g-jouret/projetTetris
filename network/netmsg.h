@@ -23,10 +23,10 @@ public:
         MSG_FIRST,
         /*! Entête de la confirmation de réception du premier message. */
         ACK_FIRST,
-        /*! Entête du message contenant les paramètres de la partie. */
-        MSG_GAME_SET,
-        /*! Entête de la confirmation de réception du message de paramètrage. */
-        ACK_GAME_SET
+        /*! Entête du message demandant les paramètres de la partie. */
+        ASK_GAME_SET,
+        /*! Entête de la réponse contenant les paramètres de la partie. */
+        ASW_GAME_SET
     };
 
 private:
@@ -36,6 +36,7 @@ private:
 
 public:
     NetMsg(const QString &msg);
+    NetMsg(Header msgHeader);
     NetMsg(Header msgHeader, QList<QString> &msgBody);
     Header getHeader() const;
     QString get(int index) const;

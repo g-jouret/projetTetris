@@ -2,7 +2,6 @@
 #define MWTETRIS_H
 
 #include "../observer/observer.h"
-//#include "../model/tetris.h"
 #include "../network/multitetris.h"
 #include <QMainWindow>
 #include <QElapsedTimer>

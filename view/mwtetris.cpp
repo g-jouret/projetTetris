@@ -122,24 +122,14 @@ void MWTetris::createGame(){
             game_.initGame(name, cd.getWidth(), cd.getHeight(), cd.getWinScore(), cd.getWinLines(), cd.getWinTime(),
                            cd.getLevel(), cd.hasWinByScore(), cd.hasWinByLines(), cd.hasWinByTime());
 
-            if(!game_.isReady()){
-                ConfirmLaunchDialog cld(this);
+            //if(!game_.isReady()){
+                ConfirmLaunchDialog cld(game_, this);
                 cld.setWindowTitle("Confirmation de lancement");
                 ret = cld.exec();
 
                 if(ret == QDialog::Rejected) return;
-            }
+            //}
             launchGame();
-            /*QProgressDialog *launching = new QProgressDialog(
-                        "Préparation de la partie, veuillez patienter...",
-                        "Annuler", 0, 1, this);
-            launching->setWindowModality(Qt::WindowModal);
-            launching->show();
-
-            if(game_.isReady()){
-                launching->setValue(1);
-            }
-            if(launching->wasCanceled()) return;*/
         } catch(const std::invalid_argument & e){
             QErrorMessage * except = new QErrorMessage(this);
             except->showMessage(e.what());

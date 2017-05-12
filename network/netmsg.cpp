@@ -12,6 +12,8 @@ NetMsg::NetMsg(const QString &msg):QObject(){
     msgBody_ = listMsg;
 }
 
+NetMsg::NetMsg(Header msgHeader): QObject(), msgHeader_{msgHeader}{}
+
 NetMsg::NetMsg(Header header, QList<QString> &listMsg): QObject(),
     msgHeader_{header}, msgBody_{listMsg}{}
 

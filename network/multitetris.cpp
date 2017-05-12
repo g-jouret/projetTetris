@@ -21,6 +21,7 @@ MultiTetris::MultiTetris() : Tetris(){
     server_ = 0;
     socket_ = 0;
     ready_ = false;
+    host_ = true;
     messageSize_ = 0;
 }
 
@@ -134,21 +135,43 @@ void MultiTetris::dataReception(){
     std::cout << "server : " << msg.toStdString() << std::endl;
 
     NetMsg netMsg(msg);
+    switch(netMsg.getHeader()){
+    case NetMsg::MSG_FIRST:
+
+        break;
+    case NetMsg::ASK_GAME_SET:
+
+        break;
+    }
+
     if(netMsg.getHeader() == NetMsg::MSG_FIRST){
         // TODO : implémentation demande d'acceptation de multi au joueur
+        host_ = false;
         try{
         client_.connectToServer(netMsg.get(0), netMsg.get(1).toInt());
-        QList<QString> args;
-        args.append(netMsg.get(1));
-        NetMsg asw(NetMsg::ACK_FIRST, args);
+
+        //QList<QString> args;
+        //args.append(netMsg.get(1));
+        NetMsg asw(NetMsg::ACK_FIRST);//, args);
         answerMessage(asw);
+
+        NetMsg msg(NetMsg::ASK_GAME_SET);
+        client_.sendMessage(msg);
         } catch(QString & e){
             std::cout << "erreur" << std::endl;
             throw;
         }
-        //closeServer(false);
+        closeServer(false);
     }
     messageSize_ = 0;
+}
+
+void MultiTetris::sendReady(){
+
+}
+
+void MultiTetris::sendCancel(){
+
 }
 
 void MultiTetris::answerMessage(const NetMsg &msg){

@@ -82,7 +82,8 @@ void Client::dataReception(){
     NetMsg netMsg(msg);
     if(netMsg.getHeader() == NetMsg::ACK_FIRST){
         socket_->disconnectFromHost();
-        connectToServer("127.0.0.1", netMsg.get(0).toInt());
+        reset();
+        //connectToServer("127.0.0.1", netMsg.get(0).toInt());
     }
     messageSize_ = 0;
 }
