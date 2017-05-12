@@ -31,7 +31,7 @@ public:
 
 private:
     Q_OBJECT
-    NetMsg::Header msgHeader_;
+    Header msgHeader_;
     QStringList msgBody_;
 
 public:

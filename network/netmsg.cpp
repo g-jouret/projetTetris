@@ -1,5 +1,6 @@
 #include "netmsg.h"
 #include <stdexcept>
+#include <iostream>
 
 using namespace GJ_GW;
 
@@ -7,7 +8,9 @@ using namespace GJ_GW;
 
 NetMsg::NetMsg(const QString &msg):QObject(){
     QStringList listMsg = msg.split('|');
-    msgHeader_ = static_cast<Header>(listMsg.takeFirst().toInt());
+    bool noExcept;
+    int head = listMsg.takeFirst().toInt(&noExcept, 10);
+    msgHeader_ = static_cast<Header>(head);
     msgBody_ = listMsg;
 }
 
@@ -31,7 +34,11 @@ QString NetMsg::get(int index) const{
 }*/
 
 QString NetMsg::to_QString() const{
-    QString out(msgHeader_+'|');
+    int head = msgHeader_;
+    //std::cout << "head : " << head << std::endl;
+    QString out;//(head+'|');
+    out.append(head);
+    out.append('|');
     out.append(msgBody_.join('|'));
     return out;
 }

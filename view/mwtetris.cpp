@@ -9,6 +9,7 @@
 #include <QElapsedTimer>
 #include <QTimer>
 #include <QErrorMessage>
+#include <QtNetwork>
 
 using namespace GJ_GW;
 
@@ -29,11 +30,8 @@ MWTetris::MWTetris(QWidget *parent) : QMainWindow(parent), ui(new Ui::MWTetris){
     ui->btnPause->setDisabled(true);
     lbEnd_ = new QLabel(this);
     lbEnd_->hide();
-    //savedTime_ = 0;
     time_ = new QTimer(this);
     connect(time_, SIGNAL(timeout()), this, SLOT(showTime()));
-    /*timer_ = new QTimer(this);
-    connect(timer_, SIGNAL(timeout()), this, SLOT(next()));*/
     game_.addObserver(this);
     update(&game_);
     //connect(ui->btnRetry, &QPushButton::clicked, this, );

@@ -32,7 +32,7 @@ void MultiTetris::closeServer(bool soloMode){
 }
 
 QString MultiTetris::getHostName() const{
-    return QHostInfo::localHostName();
+    return QHostInfo::localHostName()+"."+QHostInfo::localDomainName();
 }
 
 quint16 MultiTetris::getPort() const {
@@ -96,6 +96,9 @@ void MultiTetris::dataReception(){
     if(socket->bytesAvailable() < messageSize_) return;
     QString msg;
     in >> msg;
+
+    std::cout << "server : " << msg.toStdString() << std::endl;
+
     NetMsg netMsg(msg);
     if(netMsg.getHeader() == NetMsg::MSG_FIRST){
         // TODO : implémentation demande d'acceptation de multi au joueur

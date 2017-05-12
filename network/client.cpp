@@ -38,7 +38,7 @@ void Client::connectToServer(QString hostName, unsigned port){
     connect(socket_, SIGNAL(error(QAbstractSocket::SocketError)), &loop, SLOT(quit()));
     connect(&timer, SIGNAL(timeout()), &loop, SLOT(quit()));
     socket_->connectToHost(hostName, port);
-    timer.start(3000);
+    timer.start(5000);
     loop.exec();
     if(!timer.isActive()){
         throw QString("connection timeout");
@@ -68,6 +68,9 @@ void Client::dataReception(){
     if(socket_->bytesAvailable() < messageSize_) return;
     QString msg;
     in >> msg;
+
+    std::cout << "client : " << msg.toStdString() << std::endl;
+
     NetMsg netMsg(msg);
     if(netMsg.getHeader() == NetMsg::ACK_FIRST){
         socket_->disconnectFromHost();
