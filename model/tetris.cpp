@@ -78,7 +78,7 @@ void Tetris::resetBag(){
     bag_ = BricsBag();
 }
 
-void Tetris::startGame(std::string name, unsigned width, unsigned height,
+void Tetris::initGame(std::string name, unsigned width, unsigned height,
                        unsigned winScore, unsigned winLines, unsigned winTime,
                        unsigned level, bool winByScore, bool winByLines,
                        bool winByTime){
@@ -96,9 +96,17 @@ void Tetris::startGame(std::string name, unsigned width, unsigned height,
         setTimer();
     }
     savedTime_ = 0;
-    setGameState(GameState::NONE);
-    resume();
-    generateBric(true);
+    setGameState(GameState::INITIALIZED);
+    //resume();
+    //generateBric(true);
+}
+
+void Tetris::startGame(){
+    if(gameState_ == GameState::INITIALIZED){
+        resume();
+        generateBric(true);
+
+    }
 }
 
 unsigned Tetris::validateWidth(unsigned width){

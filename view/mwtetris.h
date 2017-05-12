@@ -104,6 +104,7 @@ private slots:
      */
     void createGame();
 
+    void launchGame();
     //void reconnect();
 
     /*!

@@ -22,5 +22,6 @@ int main(int argc, char *argv[]){
 
 /*
 TODO principal
+- fix bug time en pause
 - vérification aucune connexion + message d'erreur
 */

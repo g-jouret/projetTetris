@@ -20,6 +20,7 @@ MultiTetris::MultiTetris() : Tetris(){
     }*/
     server_ = 0;
     socket_ = 0;
+    ready_ = false;
     messageSize_ = 0;
 }
 
@@ -30,6 +31,7 @@ void MultiTetris::closeServer(bool soloMode){
     socket_ = 0;
     if(soloMode){
         client_.reset();
+        ready_ = soloMode;
     }
 }
 
@@ -70,6 +72,10 @@ bool MultiTetris::isListening() const{
     return server_->isListening();
 }
 
+bool MultiTetris::isReady() const {
+    return ready_;
+}
+
 bool MultiTetris::isClientConnected() const{
     return client_.isConnected();
 }
@@ -104,7 +110,7 @@ void MultiTetris::connection(){
     socket_ = server_->nextPendingConnection();
     connect(socket_, SIGNAL(readyRead()), this, SLOT(dataReception()));
     connect(socket_, SIGNAL(disconnected()), this, SLOT(disconnection()));
-    emit newClient();
+    //emit newClient();
 }
 
 void MultiTetris::disconnection(){
@@ -137,9 +143,10 @@ void MultiTetris::dataReception(){
         NetMsg asw(NetMsg::ACK_FIRST, args);
         answerMessage(asw);
         } catch(QString & e){
+            std::cout << "erreur" << std::endl;
             throw;
         }
-        closeServer(false);
+        //closeServer(false);
     }
     messageSize_ = 0;
 }
@@ -147,7 +154,6 @@ void MultiTetris::dataReception(){
 void MultiTetris::answerMessage(const NetMsg &msg){
     QByteArray packet;
     QDataStream out(&packet, QIODevice::WriteOnly);
-
     out << (quint16) 0;
     out << msg.to_QString();
     out.device()->seek(0);

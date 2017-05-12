@@ -18,6 +18,7 @@ class MultiTetris : public Tetris{
     QTcpSocket *socket_;
     Client client_;
     quint16 messageSize_;
+    bool ready_;
 
 public:
     explicit MultiTetris();
@@ -25,6 +26,7 @@ public:
     QString getIP() const;
     quint16 getPort() const;
     bool isListening() const;
+    bool isReady() const;
     void closeServer(bool soloMode);
     void launchServer();
     void initClient(QString hostName, unsigned port);
@@ -34,8 +36,8 @@ public:
     QString serverError() const;
     QString clientError() const;
 
-signals:
-    void newClient();
+//signals:
+    //void newClient();
 
 private slots:
     void connection();

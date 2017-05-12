@@ -10,7 +10,7 @@
 #include <QTimer>
 #include <QErrorMessage>
 #include <QtNetwork>
-
+#include <QProgressDialog>
 #include <iostream>
 
 using namespace GJ_GW;
@@ -30,6 +30,7 @@ MWTetris::MWTetris(QWidget *parent) : QMainWindow(parent), ui(new Ui::MWTetris){
     ui->btnLeft->setDisabled(true);
     ui->btnRight->setDisabled(true);
     ui->btnPause->setDisabled(true);
+    lbEnd_ = 0;
     lbEnd_ = new QLabel(this);
     lbEnd_->hide();
     time_ = new QTimer(this);
@@ -40,12 +41,12 @@ MWTetris::MWTetris(QWidget *parent) : QMainWindow(parent), ui(new Ui::MWTetris){
     //connect(ui->btnRetry, &QPushButton::clicked, this, );
     //ui->btnRetry->hide();
     showHostInfo(1);
-    QEventLoop loop;
+    /*QEventLoop loop;
     connect(ui->action_Nouveau, SIGNAL(triggered(bool)), &loop, SLOT(quit()));
     connect(ui->btnStart, SIGNAL(clicked(bool)), &loop, SLOT(quit()));
     connect(ui->action_Quitter, SIGNAL(triggered(bool)), &loop, SLOT(quit()));
     connect(&game_, SIGNAL(newClient()), &loop, SLOT(quit()));
-    loop.exec();
+    loop.exec();*/
 }
 
 MWTetris::~MWTetris() noexcept{
@@ -75,6 +76,10 @@ void MWTetris::createGame(){
         if(game_.getGameState() != GameState::NONE)
             setPaused(false);
     } else{
+        lbEnd_ = nullptr;
+        lbEnd_ = new QLabel(this);
+        lbEnd_->hide();
+
         std::string name;
         name = (cd.getName().empty())? game_.getPlayer().getName() : cd.getName();
         try{
@@ -112,26 +117,40 @@ void MWTetris::createGame(){
             //ui->msgConnect->hide();
             showHostInfo(0);
 
-            ui->btnStart->hide();
-            game_.startGame(name, cd.getWidth(), cd.getHeight(),
-                            cd.getWinScore(), cd.getWinLines(),
-                            cd.getWinTime(), cd.getLevel(),
-                            cd.hasWinByScore(), cd.hasWinByLines(),
-                            cd.hasWinByTime());
 
-            lbEnd_ = nullptr;
-            lbEnd_ = new QLabel(this);
-            lbEnd_->hide();
-            //savedTime_ = 0;
-            //resume();
-            setPaused(false);
-            ui->btnPause->setEnabled(true);
-            update(&game_);
+            game_.initGame(name, cd.getWidth(), cd.getHeight(),
+                           cd.getWinScore(), cd.getWinLines(),
+                           cd.getWinTime(), cd.getLevel(),
+                           cd.hasWinByScore(), cd.hasWinByLines(),
+                           cd.hasWinByTime());
+
+
+            QProgressDialog *launching = new QProgressDialog(
+                        "Préparation de la partie, veuillez patienter...",
+                        "Annuler", 0, 1, this);
+
+            connect(launching, SIGNAL(finished(int)), this, SLOT(launchGame()));
+            launching->show();
+
+            if(game_.isReady()){
+                launching->setValue(1);
+            }
+            if(launching->wasCanceled()) return;
+
+
+
         } catch(const std::invalid_argument & e){
             QErrorMessage * except = new QErrorMessage(this);
             except->showMessage(e.what());
         }
     }
+}
+
+void MWTetris::launchGame(){
+    game_.startGame();
+    ui->btnStart->hide();
+    setPaused(false);
+    ui->btnPause->setEnabled(true);
 }
 
 void MWTetris::showHostInfo(bool showMsg){
@@ -188,11 +207,11 @@ void MWTetris::generateBoard(bool end){
 
 void MWTetris::setStyleSheet(QLabel *lb, QString color, QString border){
     QString styleSheet = "QLabel{"
-                      "border-style: outset;"
-                      "border-width: 5px;"
-                      "background-color: %1;"
-                      "color: %1;"
-                      "border-color: %2;}";
+                         "border-style: outset;"
+                         "border-width: 5px;"
+                         "background-color: %1;"
+                         "color: %1;"
+                         "border-color: %2;}";
     lb->setStyleSheet(styleSheet.arg(color, border));
 }
 
@@ -205,8 +224,8 @@ void MWTetris::refreshBoard(){
                      it->second.getCode().at(2));
         if(oldLb->text().compare(color.name())){
             QColor border((it->second.getCode().at(0) <= 30)? 0 : it->second.getCode().at(0)-30,
-                      it->second.getCode().at(1),
-                      it->second.getCode().at(2));
+                          it->second.getCode().at(1),
+                          it->second.getCode().at(2));
             QLabel *newLb = new QLabel(this);
             setStyleSheet(newLb, color.name(), border.name());
             newLb->setText(color.name());
@@ -226,28 +245,28 @@ void MWTetris::eraseBoard(QGridLayout * board){
 
 void MWTetris::showNextBric(){
     //if(game_.getGameState() == GameState::ON){
-        Bric theBric = game_.getNextBric();
-        unsigned side = theBric.getSide();
-        ui->boardNext->setSpacing(3);
-        for(unsigned u {0}; u < side; ++u){
-            for(unsigned v {0}; v < side; ++v){
-                QLabel * lb = new QLabel(this);
-                lb->setFixedSize(20,20);
-                Position temp = Position(u, v);
-                if(theBric.contains(temp)){
-                    QColor color(theBric.getColor().getCode().at(0),
-                                   theBric.getColor().getCode().at(1),
-                                   theBric.getColor().getCode().at(2));
-                    QColor border((theBric.getColor().getCode().at(0) <= 30)? 0 : theBric.getColor().getCode().at(0)-30,
-                                      theBric.getColor().getCode().at(1),
-                                      theBric.getColor().getCode().at(2));
-                    setStyleSheet(lb, color.name(), border.name());
-                } else{
-                    lb->setHidden(true);
-                }
-                ui->boardNext->addWidget(lb, v, u, 1, 1);
+    Bric theBric = game_.getNextBric();
+    unsigned side = theBric.getSide();
+    ui->boardNext->setSpacing(3);
+    for(unsigned u {0}; u < side; ++u){
+        for(unsigned v {0}; v < side; ++v){
+            QLabel * lb = new QLabel(this);
+            lb->setFixedSize(20,20);
+            Position temp = Position(u, v);
+            if(theBric.contains(temp)){
+                QColor color(theBric.getColor().getCode().at(0),
+                             theBric.getColor().getCode().at(1),
+                             theBric.getColor().getCode().at(2));
+                QColor border((theBric.getColor().getCode().at(0) <= 30)? 0 : theBric.getColor().getCode().at(0)-30,
+                              theBric.getColor().getCode().at(1),
+                              theBric.getColor().getCode().at(2));
+                setStyleSheet(lb, color.name(), border.name());
+            } else{
+                lb->setHidden(true);
             }
+            ui->boardNext->addWidget(lb, v, u, 1, 1);
         }
+    }
     //}
 }
 
@@ -274,6 +293,7 @@ void MWTetris::update(Subject *){
     //showTime(game_.getTimeElapsed());
     switch (game_.getGameState()){
     case GameState::NONE:
+    case GameState::INITIALIZED:
         if(QString::fromStdString(game_.getPlayer().getName()) != ui->lbPlayerName->text()){
             ui->lbPlayerName->setText(QString::fromStdString(game_.getPlayer().getName()));
         }
