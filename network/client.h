@@ -23,10 +23,11 @@ class Client : public QObject{
 public:
     explicit Client();
     void sendMessage(const NetMsg &msg);
+    void launchClient();
     void connectToServer(QString hostName, unsigned port);
     QString getNotif() const;
     bool isConnected() const;
-    void setSoloMode();
+    void reset();
     QString errorString() const;
 
 private slots:

@@ -26,12 +26,16 @@ public:
     quint16 getPort() const;
     bool isListening() const;
     void closeServer(bool soloMode);
+    void launchServer();
     void initClient(QString hostName, unsigned port);
     QString getClientNotif() const;
     bool isClientConnected() const;
     void answerMessage(const NetMsg &msg);
     QString serverError() const;
     QString clientError() const;
+
+signals:
+    void newClient();
 
 private slots:
     void connection();

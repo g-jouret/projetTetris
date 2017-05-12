@@ -5,9 +5,7 @@
 using namespace GJ_GW;
 
 Client::Client() : QObject(){
-    socket_ = new QTcpSocket(this);
-    connect(socket_, SIGNAL(readyRead()), this, SLOT(dataReception()));
-    connect(socket_, SIGNAL(connected()), this, SLOT(connection()));
+    socket_ = 0;
     notification_ = "";
     messageSize_ = 0;
     connected_ = 0;
@@ -21,9 +19,17 @@ bool Client::isConnected() const{
     return connected_;
 }
 
-void Client::setSoloMode(){
+void Client::reset(){
     delete socket_;
     socket_ = 0;
+}
+
+void Client::launchClient(){
+    if(socket_ == 0){
+        socket_ = new QTcpSocket(this);
+        connect(socket_, SIGNAL(readyRead()), this, SLOT(dataReception()));
+        connect(socket_, SIGNAL(connected()), this, SLOT(connection()));
+    }
 }
 
 QString Client::errorString() const{
@@ -31,6 +37,8 @@ QString Client::errorString() const{
 }
 
 void Client::connectToServer(QString hostName, unsigned port){
+    reset();
+    launchClient();
     QTimer timer;
     timer.setSingleShot(true);
     QEventLoop loop;

@@ -11,6 +11,8 @@
 #include <QErrorMessage>
 #include <QtNetwork>
 
+#include <iostream>
+
 using namespace GJ_GW;
 
 MWTetris::MWTetris(QWidget *parent) : QMainWindow(parent), ui(new Ui::MWTetris){
@@ -32,22 +34,18 @@ MWTetris::MWTetris(QWidget *parent) : QMainWindow(parent), ui(new Ui::MWTetris){
     lbEnd_->hide();
     time_ = new QTimer(this);
     connect(time_, SIGNAL(timeout()), this, SLOT(showTime()));
+    game_.launchServer();
     game_.addObserver(this);
     update(&game_);
     //connect(ui->btnRetry, &QPushButton::clicked, this, );
     //ui->btnRetry->hide();
-    if(game_.isListening()){
-        //ui->lbHostName->setText(game_.getIP());
-        ui->lbHostName->setText(game_.getHostName());
-        ui->lbPortNb->setText(QString::number(game_.getPort()));
-        ui->msgConnect->hide();
-    } else{
-        ui->msgConnect->setText(game_.serverError());
-        ui->lbHost->hide();
-        ui->lbHostName->hide();
-        ui->lbPort->hide();
-        ui->lbPortNb->hide();
-    }
+    showHostInfo(1);
+    QEventLoop loop;
+    connect(ui->action_Nouveau, SIGNAL(triggered(bool)), &loop, SLOT(quit()));
+    connect(ui->btnStart, SIGNAL(clicked(bool)), &loop, SLOT(quit()));
+    connect(ui->action_Quitter, SIGNAL(triggered(bool)), &loop, SLOT(quit()));
+    connect(&game_, SIGNAL(newClient()), &loop, SLOT(quit()));
+    loop.exec();
 }
 
 MWTetris::~MWTetris() noexcept{
@@ -56,8 +54,10 @@ MWTetris::~MWTetris() noexcept{
 }
 
 void MWTetris::createGame(){
+    game_.launchServer();
+    showHostInfo(1);
     setPaused(true);
-    ui->msgConnect->hide();
+    //ui->msgConnect->hide();
     std::vector<unsigned> args {15,     //maximum size of player name
                                 game_.MINIMUM_WIDTH, game_.MAXIMUM_WIDTH, game_.getBoard().getWidth(),
                                         game_.MINIMUM_HEIGHT, game_.MAXIMUM_HEIGHT, game_.getBoard().getHeight(),
@@ -65,9 +65,12 @@ void MWTetris::createGame(){
                                         game_.MINIMUM_WIN_LINES, game_.MAXIMUM_WIN_LINES, game_.getWinLines(),
                                         game_.MINIMUM_WIN_TIME, game_.MAXIMUM_WIN_TIME, game_.getWinTime(),
                                         0, 5};      //minimum and maximum level
+
     ConfigDialog cd (game_.getPlayer().getName(), args, (game_.isListening()), this);
     cd.setWindowTitle("Configuration de la partie");
+
     int ret = cd.exec();
+
     if(ret == QDialog::Rejected){
         if(game_.getGameState() != GameState::NONE)
             setPaused(false);
@@ -102,11 +105,12 @@ void MWTetris::createGame(){
                     return;
                 }
             }
-            ui->lbHost->hide();
+            /*ui->lbHost->hide();
             ui->lbHostName->hide();
             ui->lbPort->hide();
-            ui->lbPortNb->hide();
+            ui->lbPortNb->hide();*/
             //ui->msgConnect->hide();
+            showHostInfo(0);
 
             ui->btnStart->hide();
             game_.startGame(name, cd.getWidth(), cd.getHeight(),
@@ -127,6 +131,29 @@ void MWTetris::createGame(){
             QErrorMessage * except = new QErrorMessage(this);
             except->showMessage(e.what());
         }
+    }
+}
+
+void MWTetris::showHostInfo(bool showMsg){
+    if(game_.isListening()){
+        ui->lbHostName->setText(game_.getHostName());
+        ui->lbHostName->show();
+        ui->lbHost->show();
+        ui->lbPortNb->setText(QString::number(game_.getPort()));
+        ui->lbPortNb->show();
+        ui->lbPort->show();
+        ui->msgConnect->hide();
+    } else{
+        if(showMsg){
+            ui->msgConnect->setText(game_.serverError());
+            ui->msgConnect->show();
+        } else{
+            ui->msgConnect->hide();
+        }
+        ui->lbHost->hide();
+        ui->lbHostName->hide();
+        ui->lbPort->hide();
+        ui->lbPortNb->hide();
     }
 }
 

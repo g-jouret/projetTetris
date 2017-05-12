@@ -4,8 +4,6 @@
 
 using namespace GJ_GW;
 
-//NetMsg::NetMsg():QObject(){}
-
 NetMsg::NetMsg(const QString &msg):QObject(){
     QStringList listMsg = msg.split('|');
     bool noExcept;
@@ -29,15 +27,10 @@ QString NetMsg::get(int index) const{
     return msgBody_.at(index);
 }
 
-/*unsigned NetMsg::sizeMsg() const{
-    return msgBody_.size();
-}*/
-
 QString NetMsg::to_QString() const{
     int head = msgHeader_;
-    //std::cout << "head : " << head << std::endl;
-    QString out;//(head+'|');
-    out.append(head);
+    QString out;
+    out.append(QString::number(head));
     out.append('|');
     out.append(msgBody_.join('|'));
     return out;

@@ -35,13 +35,10 @@ private:
     QStringList msgBody_;
 
 public:
-
-    //NetMsg();
     NetMsg(const QString &msg);
     NetMsg(Header msgHeader, QList<QString> &msgBody);
     Header getHeader() const;
     QString get(int index) const;
-    //unsigned sizeMsg() const;
     QString to_QString() const;
 };
 

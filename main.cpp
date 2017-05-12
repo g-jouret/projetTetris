@@ -22,9 +22,5 @@ int main(int argc, char *argv[]){
 
 /*
 TODO principal
-- pour réseau : QTCPSocket
-- mettre QTimer et QElapsedTimer dans model (tetris est un qobject)
-- choix QThread ou librairie Thread
-- remplacer QGridLayout & QLabel par QPixmap & QPainter ou optimiser utilisation QLabel
-- remplacer QTimer par librairie c++
+- vérification aucune connexion + message d'erreur
 */

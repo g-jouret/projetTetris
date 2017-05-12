@@ -49,6 +49,8 @@ public:
     ~MWTetris() noexcept;
 
 private:
+    void showHostInfo(bool showMsg);
+
     /*!
      * \brief Méthode générant et affichant un \ref Board correspondant
      * à celle de \ref Tetris.

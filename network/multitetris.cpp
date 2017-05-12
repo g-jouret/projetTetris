@@ -7,7 +7,7 @@
 using namespace GJ_GW;
 
 MultiTetris::MultiTetris() : Tetris(){
-    server_ = new QTcpServer(this);
+    /*server_ = new QTcpServer(this);
     socket_ = new QTcpSocket(this);
     unsigned port {49152};
     while(!server_->listen(QHostAddress(QHostInfo::localHostName()), port) && port <= 65535){
@@ -17,7 +17,9 @@ MultiTetris::MultiTetris() : Tetris(){
         closeServer(true);
     } else{
         connect(server_, SIGNAL(newConnection()), this, SLOT(connection()));
-    }
+    }*/
+    server_ = 0;
+    socket_ = 0;
     messageSize_ = 0;
 }
 
@@ -27,7 +29,23 @@ void MultiTetris::closeServer(bool soloMode){
     delete socket_;
     socket_ = 0;
     if(soloMode){
-        client_.setSoloMode();
+        client_.reset();
+    }
+}
+
+void MultiTetris::launchServer(){
+    if(server_ == 0){
+        server_ = new QTcpServer(this);
+        socket_ = new QTcpSocket(this);
+        unsigned port {49152};
+        while(!server_->listen(QHostAddress(QHostInfo::localHostName()), port) && port <= 65535){
+           ++port;
+        }
+        if(!server_->isListening()){
+            closeServer(true);
+        } else{
+            connect(server_, SIGNAL(newConnection()), this, SLOT(connection()));
+        }
     }
 }
 
@@ -46,6 +64,9 @@ quint16 MultiTetris::getPort() const {
 }
 
 bool MultiTetris::isListening() const{
+    if(server_ == 0){
+        return false;
+    }
     return server_->isListening();
 }
 
@@ -65,7 +86,8 @@ void MultiTetris::initClient(QString hostName, unsigned port){
     try{
         client_.connectToServer(hostName, port);
         QList<QString> args;
-        args.append(QHostInfo::localHostName());
+        //args.append(QHostInfo::localHostName());
+        args.append(getIP());
         args.append(QString::number(server_->serverPort()));
         NetMsg msg(NetMsg::MSG_FIRST, args);
         client_.sendMessage(msg);
@@ -82,7 +104,7 @@ void MultiTetris::connection(){
     socket_ = server_->nextPendingConnection();
     connect(socket_, SIGNAL(readyRead()), this, SLOT(dataReception()));
     connect(socket_, SIGNAL(disconnected()), this, SLOT(disconnection()));
-
+    emit newClient();
 }
 
 void MultiTetris::disconnection(){
@@ -108,11 +130,15 @@ void MultiTetris::dataReception(){
     NetMsg netMsg(msg);
     if(netMsg.getHeader() == NetMsg::MSG_FIRST){
         // TODO : implémentation demande d'acceptation de multi au joueur
+        try{
         client_.connectToServer(netMsg.get(0), netMsg.get(1).toInt());
         QList<QString> args;
         args.append(netMsg.get(1));
         NetMsg asw(NetMsg::ACK_FIRST, args);
         answerMessage(asw);
+        } catch(QString & e){
+            throw;
+        }
         closeServer(false);
     }
     messageSize_ = 0;
