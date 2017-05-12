@@ -1,6 +1,7 @@
 #include "mwtetris.h"
 #include "ui_mwtetris.h"
 #include "configdialog.h"
+#include "confirmlaunchdialog.h"
 #include "../model/gamestate.h"
 #include "../model/direction.h"
 #include "../network/multitetris.h"
@@ -73,7 +74,7 @@ void MWTetris::createGame(){
     int ret = cd.exec();
 
     if(ret == QDialog::Rejected){
-        if(game_.getGameState() != GameState::NONE)
+        if(game_.getGameState() == GameState::ON || game_.getGameState() == GameState::NEW_BRIC)
             setPaused(false);
     } else{
         lbEnd_ = nullptr;
@@ -118,27 +119,27 @@ void MWTetris::createGame(){
             showHostInfo(0);
 
 
-            game_.initGame(name, cd.getWidth(), cd.getHeight(),
-                           cd.getWinScore(), cd.getWinLines(),
-                           cd.getWinTime(), cd.getLevel(),
-                           cd.hasWinByScore(), cd.hasWinByLines(),
-                           cd.hasWinByTime());
+            game_.initGame(name, cd.getWidth(), cd.getHeight(), cd.getWinScore(), cd.getWinLines(), cd.getWinTime(),
+                           cd.getLevel(), cd.hasWinByScore(), cd.hasWinByLines(), cd.hasWinByTime());
 
+            if(!game_.isReady()){
+                ConfirmLaunchDialog cld(this);
+                cld.setWindowTitle("Confirmation de lancement");
+                ret = cld.exec();
 
-            QProgressDialog *launching = new QProgressDialog(
+                if(ret == QDialog::Rejected) return;
+            }
+            launchGame();
+            /*QProgressDialog *launching = new QProgressDialog(
                         "Préparation de la partie, veuillez patienter...",
                         "Annuler", 0, 1, this);
-
-            connect(launching, SIGNAL(finished(int)), this, SLOT(launchGame()));
+            launching->setWindowModality(Qt::WindowModal);
             launching->show();
 
             if(game_.isReady()){
                 launching->setValue(1);
             }
-            if(launching->wasCanceled()) return;
-
-
-
+            if(launching->wasCanceled()) return;*/
         } catch(const std::invalid_argument & e){
             QErrorMessage * except = new QErrorMessage(this);
             except->showMessage(e.what());

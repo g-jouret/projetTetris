@@ -14,6 +14,7 @@ INPUT(
 ./debug\client.o
 ./debug\multitetris.o
 ./debug\netmsg.o
+./debug\confirmlaunchdialog.o
 ./debug\moc_configdialog.o
 ./debug\moc_mwtetris.o
 ./debug\moc_tetris.o
@@ -21,4 +22,5 @@ INPUT(
 ./debug\moc_client.o
 ./debug\moc_multitetris.o
 ./debug\moc_netmsg.o
+./debug\moc_confirmlaunchdialog.o
 );

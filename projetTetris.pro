@@ -27,7 +27,8 @@ SOURCES += model/board.cpp \
     model/color.cpp \
     network/client.cpp \
     network/multitetris.cpp \
-    network/netmsg.cpp
+    network/netmsg.cpp \
+    view/confirmlaunchdialog.cpp
 
 HEADERS  += model/board.h \
     model/bric.h \
@@ -46,8 +47,10 @@ HEADERS  += model/board.h \
     model/color.h \
     network/client.h \
     network/multitetris.h \
-    network/netmsg.h
+    network/netmsg.h \
+    view/confirmlaunchdialog.h
 
 FORMS    += view/configdialog.ui \
     view/mwtetris.ui \
-    view/setbricsdialog.ui
+    view/setbricsdialog.ui \
+    view/confirmlaunchdialog.ui
