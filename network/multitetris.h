@@ -16,7 +16,7 @@ class MultiTetris : public Tetris{
     Q_OBJECT
     QTcpServer *server_;
     QTcpSocket *socket_;
-    Client client_;
+    Client *client_;
     quint16 messageSize_;
     bool host_;
     bool ready_;
@@ -38,9 +38,12 @@ public:
 
     void sendReady();
     void sendCancel();
-    void answerMessage(const NetMsg &msg);
     QString serverError() const;
 
+private:
+    void sendData(const NetMsg &msg);
+    void reactToFirstMsg(NetMsg &netMsg);
+    void reactToAskSettings();
 
 //signals:
     //void newClient();

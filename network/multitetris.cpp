@@ -20,19 +20,21 @@ MultiTetris::MultiTetris() : Tetris(){
     }*/
     server_ = 0;
     socket_ = 0;
+    client_ = 0;
     ready_ = false;
     host_ = true;
     messageSize_ = 0;
 }
 
 void MultiTetris::closeServer(bool soloMode){
+    ready_ = soloMode;
     delete server_;
     server_ = 0;
     delete socket_;
     socket_ = 0;
     if(soloMode){
-        client_.reset();
-        ready_ = soloMode;
+        delete client_;
+        client_ = 0;
     }
 }
 
@@ -42,7 +44,7 @@ void MultiTetris::launchServer(){
         socket_ = new QTcpSocket(this);
         unsigned port {49152};
         while(!server_->listen(QHostAddress(QHostInfo::localHostName()), port) && port <= 65535){
-           ++port;
+            ++port;
         }
         if(!server_->isListening()){
             closeServer(true);
@@ -78,7 +80,7 @@ bool MultiTetris::isReady() const {
 }
 
 bool MultiTetris::isClientConnected() const{
-    return client_.isConnected();
+    return client_->isConnected();
 }
 
 QString MultiTetris::serverError() const{
@@ -86,25 +88,28 @@ QString MultiTetris::serverError() const{
 }
 
 QString MultiTetris::clientError() const{
-    return client_.errorString();
+    return client_->errorString();
 }
 
 void MultiTetris::initClient(QString hostName, unsigned port){
+    if(client_ == 0){
+        client_ = new Client(*this);
     try{
-        client_.connectToServer(hostName, port);
+        client_->connectToServer(hostName, port);
         QList<QString> args;
         //args.append(QHostInfo::localHostName());
         args.append(getIP());
         args.append(QString::number(server_->serverPort()));
         NetMsg msg(NetMsg::MSG_FIRST, args);
-        client_.sendMessage(msg);
+        client_->sendData(msg);
     } catch(const QString & e){
         throw;
+    }
     }
 }
 
 QString MultiTetris::getClientNotif() const{
-    return client_.getNotif();
+    return client_->getNotif();
 }
 
 void MultiTetris::connection(){
@@ -137,33 +142,52 @@ void MultiTetris::dataReception(){
     NetMsg netMsg(msg);
     switch(netMsg.getHeader()){
     case NetMsg::MSG_FIRST:
-
+        reactToFirstMsg(netMsg);
         break;
     case NetMsg::ASK_GAME_SET:
-
+        reactToAskSettings();
+        break;
+    default:
+        // TODO : gestion des erreurs de réception de données
         break;
     }
+    messageSize_ = 0;
+}
 
-    if(netMsg.getHeader() == NetMsg::MSG_FIRST){
-        // TODO : implémentation demande d'acceptation de multi au joueur
-        host_ = false;
-        try{
-        client_.connectToServer(netMsg.get(0), netMsg.get(1).toInt());
+void MultiTetris::reactToFirstMsg(NetMsg &netMsg){
+    try{
+        client_->connectToServer(netMsg.get(0), netMsg.get(1).toInt());
 
         //QList<QString> args;
         //args.append(netMsg.get(1));
         NetMsg asw(NetMsg::ACK_FIRST);//, args);
-        answerMessage(asw);
+        sendData(asw);
 
         NetMsg msg(NetMsg::ASK_GAME_SET);
-        client_.sendMessage(msg);
-        } catch(QString & e){
-            std::cout << "erreur" << std::endl;
-            throw;
-        }
-        closeServer(false);
+        client_->sendData(msg);
+    } catch(QString & e){
+        std::cout << "erreur" << std::endl;
+        // TODO : gestion des erreurs de réception de données
     }
-    messageSize_ = 0;
+    host_ = false;
+    closeServer(false);
+}
+
+void MultiTetris::reactToAskSettings(){
+    // TODO : gestion Serialization pour briques perso
+    QList<QString> args;
+    args.append(QString::fromStdString(getPlayer().getName()));
+    args.append(QString::number(getBoard().getWidth()));
+    args.append(QString::number(getBoard().getHeight()));
+    args.append(QString::number(getWinScore()));
+    args.append(QString::number(getWinLines()));
+    args.append(QString::number(getWinTime()));
+    args.append(QString::number(getLevel()));
+    args.append(QString::number(hasWinByScore()));
+    args.append(QString::number(hasWinByLines()));
+    args.append(QString::number(hasWinByTime()));
+    NetMsg netMsg(NetMsg::ASW_GAME_SET, args);
+    sendData(netMsg);
 }
 
 void MultiTetris::sendReady(){
@@ -174,7 +198,7 @@ void MultiTetris::sendCancel(){
 
 }
 
-void MultiTetris::answerMessage(const NetMsg &msg){
+void MultiTetris::sendData(const NetMsg &msg){
     QByteArray packet;
     QDataStream out(&packet, QIODevice::WriteOnly);
     out << (quint16) 0;

@@ -251,6 +251,12 @@ public:
     bool hasWinByLines() const;
 
     /*!
+     * \brief Accesseur en lecture de l'état d'activation de la victoire au temps.
+     * \return vrai si la victoire au temps est activée, faux sinon
+     */
+    bool hasWinByTime() const;
+
+    /*!
      * \brief Méthode permettant d'effectuer autant de déplacement
      * de la \ref Bric courante vers le bas que possible.
      */

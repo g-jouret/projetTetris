@@ -62,6 +62,10 @@ bool Tetris::hasWinByLines() const{
     return winByLines_;
 }
 
+bool Tetris::hasWinByTime() const{
+    return winByTime_;
+}
+
 void Tetris::setBag(std::vector<Bric> newBag, bool keepBag){
     if(keepBag){
         bag_.add(newBag);
@@ -101,7 +105,6 @@ void Tetris::startGame(){
     if(gameState_ == GameState::INITIALIZED){
         resume();
         generateBric(true);
-
     }
 }
 

@@ -1,5 +1,6 @@
 #include "confirmlaunchdialog.h"
 #include "ui_confirmlaunchdialog.h"
+#include "../network/multitetris.h"
 #include <QPushButton>
 
 ConfirmLaunchDialog::ConfirmLaunchDialog(GJ_GW::MultiTetris &game, QWidget *parent) :

@@ -26,7 +26,11 @@ public:
         /*! Entête du message demandant les paramètres de la partie. */
         ASK_GAME_SET,
         /*! Entête de la réponse contenant les paramètres de la partie. */
-        ASW_GAME_SET
+        ASW_GAME_SET,
+        /*! Entête du message indiquant que l'émetteur est prêt à commencer la partie. */
+        MSG_RDY,
+        /*! Entête du message indiquant que l'émetteur souhaite annuler la partie. */
+        MSG_CANCEL
     };
 
 private:

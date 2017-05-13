@@ -111,25 +111,20 @@ void MWTetris::createGame(){
                     return;
                 }
             }
-            /*ui->lbHost->hide();
-            ui->lbHostName->hide();
-            ui->lbPort->hide();
-            ui->lbPortNb->hide();*/
-            //ui->msgConnect->hide();
             showHostInfo(0);
 
 
             game_.initGame(name, cd.getWidth(), cd.getHeight(), cd.getWinScore(), cd.getWinLines(), cd.getWinTime(),
                            cd.getLevel(), cd.hasWinByScore(), cd.hasWinByLines(), cd.hasWinByTime());
 
-            //if(!game_.isReady()){
+            /*if(!game_.isReady()){
                 ConfirmLaunchDialog cld(game_, this);
                 cld.setWindowTitle("Confirmation de lancement");
                 ret = cld.exec();
 
                 if(ret == QDialog::Rejected) return;
-            //}
-            launchGame();
+            }
+            launchGame();*/
         } catch(const std::invalid_argument & e){
             QErrorMessage * except = new QErrorMessage(this);
             except->showMessage(e.what());
@@ -278,19 +273,31 @@ void MWTetris::drop(){
 }
 
 void MWTetris::update(Subject *){
-    //int timer = game_.getTimer();
     ui->lbPlayerScore->setText(QString::number(game_.getPlayer().getScore()) + ((game_.hasWinByScore())? "/" + QString::number(game_.getWinScore()) : ""));
     ui->lbPlayerLines->setText(QString::number(game_.getPlayer().getNbLines()) + ((game_.hasWinByLines())? "/" + QString::number(game_.getWinLines()) : ""));
-    //showTime(game_.getTimeElapsed());
     switch (game_.getGameState()){
+
     case GameState::NONE:
-    case GameState::INITIALIZED:
         if(QString::fromStdString(game_.getPlayer().getName()) != ui->lbPlayerName->text()){
             ui->lbPlayerName->setText(QString::fromStdString(game_.getPlayer().getName()));
         }
-        //eraseBoard(ui->boardNext);
         eraseBoard(ui->boardGrid);
         generateBoard();
+        break;
+    case GameState::INITIALIZED:
+        if(!game_.isReady()){
+            ConfirmLaunchDialog cld(game_, this);
+            cld.setWindowTitle("Confirmation de lancement");
+            int ret = cld.exec();
+
+            if(ret == QDialog::Rejected) return;
+        }
+        if(QString::fromStdString(game_.getPlayer().getName()) != ui->lbPlayerName->text()){
+            ui->lbPlayerName->setText(QString::fromStdString(game_.getPlayer().getName()));
+        }
+        eraseBoard(ui->boardGrid);
+        generateBoard();
+        launchGame();
         break;
     case GameState::NEW_BRIC:
         eraseBoard(ui->boardNext);

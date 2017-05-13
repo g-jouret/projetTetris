@@ -1,14 +1,22 @@
 #include "client.h"
+#include "multitetris.h"
 #include "netmsg.h"
 #include <iostream>
 #include <stdexcept>
+
 using namespace GJ_GW;
 
-Client::Client() : QObject(){
+Client::Client(MultiTetris &game) : QObject(), game_{game}{
     socket_ = 0;
     notification_ = "";
     messageSize_ = 0;
     connected_ = 0;
+    game_.addObserver(this);
+}
+
+Client::~Client(){
+    game_.removeObserver(this);
+    delete socket_;
 }
 
 QString Client::getNotif() const{
@@ -80,15 +88,35 @@ void Client::dataReception(){
     std::cout << "client : " << msg.toStdString() << std::endl;
 
     NetMsg netMsg(msg);
-    if(netMsg.getHeader() == NetMsg::ACK_FIRST){
-        socket_->disconnectFromHost();
-        reset();
-        //connectToServer("127.0.0.1", netMsg.get(0).toInt());
+    switch(netMsg.getHeader()){
+    case NetMsg::ACK_FIRST:
+        reactToFirstAck();
+        break;
+    case NetMsg::ASW_GAME_SET:
+        reactToAswSettings(netMsg);
+        break;
+    default:
+        // TODO : gestion des erreurs de réception de données
+        break;
     }
     messageSize_ = 0;
 }
 
-void Client::sendMessage(const NetMsg &msg){
+void Client::reactToFirstAck(){
+    socket_->disconnectFromHost();
+    reset();
+    //connectToServer("127.0.0.1", netMsg.get(0).toInt());
+}
+
+void Client::reactToAswSettings(NetMsg &netMsg){
+    // TODO : gestion erreur bad_init | invalid_argument de Tetris
+    game_.initGame(netMsg.get(0).toStdString(), netMsg.get(1).toUInt(), netMsg.get(2).toUInt(),
+                    netMsg.get(3).toUInt(), netMsg.get(4).toUInt(), netMsg.get(5).toUInt(),
+                    netMsg.get(6).toUInt(), netMsg.get(7).toInt(),
+                    netMsg.get(8).toInt(), netMsg.get(9).toInt());
+}
+
+void Client::sendData(const NetMsg &msg){
     QByteArray packet;
     QDataStream out(&packet, QIODevice::WriteOnly);
     out << (quint16) 0;
@@ -102,4 +130,8 @@ void Client::sendMessage(const NetMsg &msg){
 
 void Client::socketError(){
     throw socket_->errorString();
+}
+
+void Client::update(Subject *){
+
 }

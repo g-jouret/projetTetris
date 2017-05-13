@@ -2,11 +2,15 @@
 #define CONFIRMLAUNCHDIALOG_H
 
 #include "../observer/observer.h"
-#include "../network/multitetris.h"
+//#include "../network/multitetris.h"
 #include <QDialog>
 
 namespace Ui {
 class ConfirmLaunchDialog;
+}
+
+namespace GJ_GW{
+class MultiTetris;
 }
 
 class ConfirmLaunchDialog : public QDialog, public GJ_GW::Observer{
