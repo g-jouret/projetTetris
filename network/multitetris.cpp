@@ -155,9 +155,14 @@ void MultiTetris::dataReception(){
 }
 
 void MultiTetris::reactToFirstMsg(NetMsg &netMsg){
-    try{
-        client_->connectToServer(netMsg.get(0), netMsg.get(1).toInt());
 
+    std::cout << netMsg.get(0).toStdString()
+              << " "
+              << netMsg.get(1).toInt()
+              << std::endl;
+    try{
+
+        client_->connectToServer(netMsg.get(0), netMsg.get(1).toInt());
         //QList<QString> args;
         //args.append(netMsg.get(1));
         NetMsg asw(NetMsg::ACK_FIRST);//, args);
