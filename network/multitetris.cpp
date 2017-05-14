@@ -265,7 +265,6 @@ void MultiTetris::setGameState(GameState gameState){
     std::cout << "setgamestate"
               << (gameState == GameState::INITIALIZED)
               << std::endl;
-    Tetris::setGameState(gameState);
     if(gameState == GameState::INITIALIZED && mode_ == GameMode::CLIENT){
         QList<QString> args;
         args.append(QString::fromStdString(getPlayer().getName()));
@@ -281,6 +280,8 @@ void MultiTetris::setGameState(GameState gameState){
         NetMsg netMsg(NetMsg::MSG_FIRST, args);
         client_->sendData(netMsg);
     }
+    Tetris::setGameState(gameState);
+
 }
 
 /*void MultiTetris::sendData(const NetMsg &msg){
