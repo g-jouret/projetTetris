@@ -37,6 +37,7 @@ void Client::launchClient(){
         socket_ = new QTcpSocket(this);
         connect(socket_, SIGNAL(readyRead()), this, SLOT(dataReception()));
         connect(socket_, SIGNAL(connected()), this, SLOT(connection()));
+        connect(socket_, SIGNAL(destroyed(QObject*)), this, SLOT(disconnection()));
     }
 }
 
