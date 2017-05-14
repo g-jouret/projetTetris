@@ -6,50 +6,49 @@
 
 using namespace GJ_GW;
 
-Client::Client(MultiTetris &game) : QObject(), game_{game}{
+Client::Client(MultiTetris *game, QObject *parent) : QObject(parent), game_{game}{
     socket_ = 0;
-    notification_ = "";
+    //notification_ = "";
     messageSize_ = 0;
-    connected_ = 0;
-    game_.addObserver(this);
+    //connected_ = 0;
 }
 
-/*Client::~Client(){
-    game_.removeObserver(this);
-    delete socket_;
+/*QString Client::getNotif() const{
+    return notification_;
 }*/
 
-QString Client::getNotif() const{
-    return notification_;
-}
-
 bool Client::isConnected() const{
-    return connected_;
+    return socket_->state() == QAbstractSocket::ConnectedState;
 }
 
-void Client::reset(){
-    delete socket_;
-    socket_ = 0;
+void Client::launch(){
+    close();
+    socket_ = new QTcpSocket(this);
+    connect(socket_, SIGNAL(readyRead()), this, SLOT(dataReception()));
+    connect(socket_, SIGNAL(connected()), this, SLOT(connection()));
+    //connect(socket_, SIGNAL(destroyed(QObject*)), this, SLOT(disconnection()));
 }
 
-void Client::launchClient(){
-    if(socket_ == 0){
-        socket_ = new QTcpSocket(this);
-        connect(socket_, SIGNAL(readyRead()), this, SLOT(dataReception()));
-        connect(socket_, SIGNAL(connected()), this, SLOT(connection()));
-        //connect(socket_, SIGNAL(destroyed(QObject*)), this, SLOT(disconnection()));
+void Client::close(){
+    if(socket_ != 0){
+        socket_->close();
+        delete socket_;
+        socket_ = 0;
     }
+    //notification_ = "";
+    messageSize_ = 0;
+    //connected_ = 0;
 }
 
-QString Client::errorString() const{
+/*QString Client::errorString() const{
     return socket_->errorString();
-}
+}*/
 
 void Client::connectToServer(QString hostName, unsigned port){
     std::cout << "try to connect" << std::endl;
-    reset();
+    close();
     std::cout << "reset" << std::endl;
-    launchClient();
+    launch();
     std::cout << "launch" << std::endl;
     QTimer timer;
     timer.setSingleShot(true);
@@ -72,13 +71,13 @@ void Client::connectToServer(QString hostName, unsigned port){
 }
 
 void Client::connection(){
-    connected_ = 1;
-    notification_ = "connexion effectuée";
+    //connected_ = 1;
+    //notification_ = "connexion effectuée";
 }
 
 void Client::disconnection(){
-    connected_ = 0;
-    notification_ = "déconnexion effectuée";
+    //connected_ = 0;
+    //notification_ = "déconnexion effectuée";
 }
 
 void Client::dataReception(){
@@ -94,20 +93,23 @@ void Client::dataReception(){
     std::cout << "client : " << msg.toStdString() << std::endl;
 
     NetMsg netMsg(msg);
-
     switch(netMsg.getHeader()){
     case NetMsg::ACK_FIRST:
-        reactToFirstAck();
+        close();
         break;
     case NetMsg::ERR_FIRST:
-        notification_ = "Impossible de se connecter à l'hôte";
-        game_.connectError();
+        //notification_ = "Impossible de se connecter à l'hôte";
+        game_->connectError();
         break;
     case NetMsg::ASW_GAME_SET:
-        reactToAswSettings(netMsg);
+        // TODO : gestion erreur bad_init | invalid_argument de Tetris
+        game_->initGame(netMsg.get(0).toStdString(), netMsg.get(1).toUInt(), netMsg.get(2).toUInt(),
+                       netMsg.get(3).toUInt(), netMsg.get(4).toUInt(), netMsg.get(5).toUInt(),
+                       netMsg.get(6).toUInt(), netMsg.get(7).toInt(),
+                       netMsg.get(8).toInt(), netMsg.get(9).toInt());
         break;
     case NetMsg::MSG_RDY:
-        game_.setReady();
+        game_->setReady();
         break;
     case NetMsg::MSG_CANCEL:
         break;
@@ -116,20 +118,6 @@ void Client::dataReception(){
         break;
     }
     messageSize_ = 0;
-}
-
-void Client::reactToFirstAck(){
-    socket_->close();
-    reset();
-    //connectToServer("127.0.0.1", netMsg.get(0).toInt());
-}
-
-void Client::reactToAswSettings(NetMsg &netMsg){
-    // TODO : gestion erreur bad_init | invalid_argument de Tetris
-    game_.initGame(netMsg.get(0).toStdString(), netMsg.get(1).toUInt(), netMsg.get(2).toUInt(),
-                    netMsg.get(3).toUInt(), netMsg.get(4).toUInt(), netMsg.get(5).toUInt(),
-                    netMsg.get(6).toUInt(), netMsg.get(7).toInt(),
-                    netMsg.get(8).toInt(), netMsg.get(9).toInt());
 }
 
 void Client::sendData(const NetMsg &msg){
@@ -146,8 +134,4 @@ void Client::sendData(const NetMsg &msg){
 
 void Client::socketError(){
     throw socket_->errorString();
-}
-
-void Client::update(Subject *){
-
 }

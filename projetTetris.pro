@@ -26,8 +26,9 @@ SOURCES += model/board.cpp \
     view/setbricsdialog.cpp \
     main.cpp \
     model/color.cpp \
-    network/client.cpp \
     network/multitetris.cpp \
+    network/server.cpp \
+    network/client.cpp \
     network/netmsg.cpp \
     view/confirmlaunchdialog.cpp
 
@@ -46,10 +47,12 @@ HEADERS  += model/board.h \
     model/linestate.h \
     model/gamestate.h \
     model/color.h \
-    network/client.h \
     network/multitetris.h \
+    network/server.h \
+    network/client.h \
     network/netmsg.h \
-    view/confirmlaunchdialog.h
+    view/confirmlaunchdialog.h \
+    network/gamemode.h
 
 FORMS    += view/configdialog.ui \
     view/mwtetris.ui \

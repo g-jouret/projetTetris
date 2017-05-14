@@ -1,59 +1,62 @@
-#ifndef SERVER_H
-#define SERVER_H
+#ifndef MULTITETRIS_H
+#define MULTITETRIS_H
 
 #include "../model/tetris.h"
-#include "client.h"
+#include "gamemode.h"
 
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
  */
 namespace GJ_GW{
-
+class Server;
+class Client;
 class NetMsg;
 
 class MultiTetris : public Tetris{
     Q_OBJECT
-    QTcpServer *server_;
-    QTcpSocket *socket_;
+    /*QTcpServer *server_;
+    QTcpSocket *socket_;*/
+    Server *server_;
     Client *client_;
-    quint16 messageSize_;
-    bool host_;
+    GameMode mode_;
+    //quint16 messageSize_;
     bool ready_;
 
 public:
     explicit MultiTetris();
     QString getHostName(QString &ip) const;
     QString getLocalIP() const;
-    quint16 getPort() const;
-    bool isListening() const;
+    unsigned getPort() const;
+    GameMode getMode() const;
+    //bool isListening() const;
     bool isReady() const;
     void setReady();
-    void closeServer(bool soloMode);
-    void launchServer();
-    void initClient(QString hostName, unsigned port);
+    void setMode(GameMode mode);
+    void initServer();
+    void initClient(QString hostName, unsigned port, bool first);
     void connectError();
-    QString getClientNotif() const;
-    bool isClientConnected() const;
-    QString clientError() const;
+    //QString getNotif() const;
+    //bool isClientConnected() const;
+    //QString clientError() const;
 
     void sendReady();
     void sendCancel();
-    QString serverError() const;
+    //QString serverError() const;
 
-private:
+/*private:
     void sendData(const NetMsg &msg);
     void reactToFirstMsg(NetMsg &netMsg);
-    void reactToAskSettings();
+    void reactToAskSettings();*/
 
 //signals:
     //void newClient();
-
+/*
 private slots:
     void connection();
     void disconnection();
-    void dataReception();
+    void dataReception();*/
 };
 
 } // namespace GJ_GW
 
-#endif // SERVER_H
+#endif // MULTITETRIS_H

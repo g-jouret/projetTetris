@@ -36,18 +36,12 @@ MWTetris::MWTetris(QWidget *parent) : QMainWindow(parent), ui(new Ui::MWTetris){
     lbEnd_->hide();
     time_ = new QTimer(this);
     connect(time_, SIGNAL(timeout()), this, SLOT(showTime()));
-    game_.launchServer();
+    game_.initServer();
     game_.addObserver(this);
     update(&game_);
     //connect(ui->btnRetry, &QPushButton::clicked, this, );
     //ui->btnRetry->hide();
-    showHostInfo(1);
-    /*QEventLoop loop;
-    connect(ui->action_Nouveau, SIGNAL(triggered(bool)), &loop, SLOT(quit()));
-    connect(ui->btnStart, SIGNAL(clicked(bool)), &loop, SLOT(quit()));
-    connect(ui->action_Quitter, SIGNAL(triggered(bool)), &loop, SLOT(quit()));
-    connect(&game_, SIGNAL(newClient()), &loop, SLOT(quit()));
-    loop.exec();*/
+    showHostInfo();
 }
 
 MWTetris::~MWTetris() noexcept{
@@ -56,8 +50,8 @@ MWTetris::~MWTetris() noexcept{
 }
 
 void MWTetris::createGame(){
-    game_.launchServer();
-    showHostInfo(1);
+    game_.initServer();
+    showHostInfo();
     setPaused(true);
     //ui->msgConnect->hide();
     std::vector<unsigned> args {15,     //maximum size of player name
@@ -68,7 +62,7 @@ void MWTetris::createGame(){
                                         game_.MINIMUM_WIN_TIME, game_.MAXIMUM_WIN_TIME, game_.getWinTime(),
                                         0, 5};      //minimum and maximum level
 
-    ConfigDialog cd (game_.getPlayer().getName(), args, (game_.isListening()), this);
+    ConfigDialog cd (game_.getPlayer().getName(), args, (game_.getMode() != GameMode::SOLO), this);
     cd.setWindowTitle("Configuration de la partie");
 
     int ret = cd.exec();
@@ -94,7 +88,7 @@ void MWTetris::createGame(){
 
 
             if(!cd.isPlayingDuo()){
-                game_.closeServer(true);
+                game_.setMode(GameMode::SOLO);
             } else{
                 QString hostName = cd.getHostName();
                 if(hostName.isEmpty()){
@@ -102,8 +96,8 @@ void MWTetris::createGame(){
                 }
                 unsigned port = cd.getPort();
                 try{
-                    game_.initClient(hostName, port);
-                    ui->msgConnect->setText(game_.getClientNotif());
+                    game_.initClient(hostName, port, true);
+                    ui->msgConnect->setText("connexion effectuée");
                     ui->msgConnect->show();
                 } catch(const QString & e){
                     ui->msgConnect->setText(e);
@@ -111,20 +105,10 @@ void MWTetris::createGame(){
                     return;
                 }
             }
-            showHostInfo(0);
-
+            showHostInfo();
 
             game_.initGame(name, cd.getWidth(), cd.getHeight(), cd.getWinScore(), cd.getWinLines(), cd.getWinTime(),
                            cd.getLevel(), cd.hasWinByScore(), cd.hasWinByLines(), cd.hasWinByTime());
-
-            /*if(!game_.isReady()){
-                ConfirmLaunchDialog cld(game_, this);
-                cld.setWindowTitle("Confirmation de lancement");
-                ret = cld.exec();
-
-                if(ret == QDialog::Rejected) return;
-            }
-            launchGame();*/
         } catch(const std::invalid_argument & e){
             QErrorMessage * except = new QErrorMessage(this);
             except->showMessage(e.what());
@@ -139,28 +123,33 @@ void MWTetris::launchGame(){
     ui->btnPause->setEnabled(true);
 }
 
-void MWTetris::showHostInfo(bool showMsg){
-    if(game_.isListening()){
-        QString ip = game_.getLocalIP();
+void MWTetris::showHostInfo(){
+    QString ip;
+    switch(game_.getMode()){
+    case GameMode::HOST:
+        ip = game_.getLocalIP();
         ui->lbHostName->setText(game_.getHostName(ip));
         ui->lbHostName->show();
         ui->lbHost->show();
         ui->lbPortNb->setText(QString::number(game_.getPort()));
         ui->lbPortNb->show();
         ui->lbPort->show();
-        ui->msgConnect->setText(game_.getClientNotif());
         ui->msgConnect->show();
-    } else{
-        if(showMsg){
-            ui->msgConnect->setText(game_.serverError());
-            ui->msgConnect->show();
-        } else{
-            ui->msgConnect->hide();
-        }
+        break;
+    case GameMode::CLIENT:
+        ui->msgConnect->show();
         ui->lbHost->hide();
         ui->lbHostName->hide();
         ui->lbPort->hide();
         ui->lbPortNb->hide();
+        break;
+    case GameMode::SOLO:
+        ui->msgConnect->hide();
+        ui->lbHost->hide();
+        ui->lbHostName->hide();
+        ui->lbPort->hide();
+        ui->lbPortNb->hide();
+        break;
     }
 }
 
@@ -287,7 +276,7 @@ void MWTetris::update(Subject *){
         generateBoard();
         break;
     case GameState::INITIALIZED:
-        if(!game_.isReady()){
+        if(game_.getMode() != GameMode::SOLO){
             ConfirmLaunchDialog cld(game_, this);
             cld.setWindowTitle("Confirmation de lancement");
             int ret = cld.exec();
