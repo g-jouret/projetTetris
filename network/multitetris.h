@@ -3,7 +3,6 @@
 
 #include "../model/tetris.h"
 #include "client.h"
-#include <QtNetwork>
 
 /*!
  * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.

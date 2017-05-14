@@ -3,6 +3,7 @@
 #include "../view/mwtetris.h"
 #include <stdexcept>
 #include <iostream>
+#include <QtConcurrent>
 
 using namespace GJ_GW;
 
@@ -143,9 +144,13 @@ void MultiTetris::dataReception(){
     switch(netMsg.getHeader()){
     case NetMsg::MSG_FIRST:
         reactToFirstMsg(netMsg);
+        //extern void MultiTetris::
+
+        //QFuture<void> future = QtConcurrent::run(this->MultiTetris::reactToFirstMsg, netMsg);
         break;
     case NetMsg::ASK_GAME_SET:
         reactToAskSettings();
+        //QFuture<void> future = QtConcurrent::run()
         break;
     default:
         // TODO : gestion des erreurs de réception de données
@@ -161,8 +166,9 @@ void MultiTetris::reactToFirstMsg(NetMsg &netMsg){
               << netMsg.get(1).toInt()
               << std::endl;
     try{
-
-        client_->connectToServer(netMsg.get(0), netMsg.get(1).toInt());
+        //client_->connectToServer(netMsg.get(0), netMsg.get(1).toInt());
+        QFuture<void> future = QtConcurrent::run(this->client_, &Client::connectToServer, netMsg.get(0), netMsg.get(1).toInt());
+        future.waitForFinished();
         //QList<QString> args;
         //args.append(netMsg.get(1));
         NetMsg asw(NetMsg::ACK_FIRST);//, args);
