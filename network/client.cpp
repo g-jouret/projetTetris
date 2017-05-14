@@ -45,6 +45,7 @@ QString Client::errorString() const{
 }
 
 void Client::connectToServer(QString hostName, unsigned port){
+    std::cout << "try to connect" << std::endl;
     reset();
     launchClient();
     QTimer timer;
@@ -63,6 +64,7 @@ void Client::connectToServer(QString hostName, unsigned port){
         throw socket_->errorString();
     }
     connect(socket_, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(socketError()));
+    std::cout << "connected" << std::endl;
 }
 
 void Client::connection(){

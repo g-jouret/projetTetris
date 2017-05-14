@@ -117,13 +117,16 @@ void MultiTetris::connection(){
     socket_ = server_->nextPendingConnection();
     connect(socket_, SIGNAL(readyRead()), this, SLOT(dataReception()));
     connect(socket_, SIGNAL(disconnected()), this, SLOT(disconnection()));
+    connect(socket_, SIGNAL(destroyed(QObject*)), this, SLOT(disconnection()));
     //emit newClient();
 }
 
 void MultiTetris::disconnection(){
+    std::cout << "déco du client" << std::endl;
     QTcpSocket *socket = qobject_cast<QTcpSocket *>(sender());
     if(socket == 0) return;
     socket->deleteLater();
+    std::cout << "client détruit" << std::endl;
 }
 
 void MultiTetris::dataReception(){
