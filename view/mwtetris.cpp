@@ -54,15 +54,13 @@ void MWTetris::createGame(){
     showHostInfo();
     setPaused(true);
     //ui->msgConnect->hide();
-    std::vector<unsigned> args {15,     //maximum size of player name
-                                game_.MINIMUM_WIDTH, game_.MAXIMUM_WIDTH, game_.getBoard().getWidth(),
-                                        game_.MINIMUM_HEIGHT, game_.MAXIMUM_HEIGHT, game_.getBoard().getHeight(),
-                                        game_.MINIMUM_WIN_SCORE, game_.MAXIMUM_WIN_SCORE, game_.getWinScore(),
-                                        game_.MINIMUM_WIN_LINES, game_.MAXIMUM_WIN_LINES, game_.getWinLines(),
-                                        game_.MINIMUM_WIN_TIME, game_.MAXIMUM_WIN_TIME, game_.getWinTime(),
-                                        0, 5};      //minimum and maximum level
-
-    ConfigDialog cd (game_.getPlayer().getName(), args, (game_.getMode() != GameMode::SOLO), this);
+    std::vector<unsigned> args {game_.MINIMUM_WIDTH, game_.MAXIMUM_WIDTH, game_.getBoard().getWidth(),
+                game_.MINIMUM_HEIGHT, game_.MAXIMUM_HEIGHT, game_.getBoard().getHeight(),
+                game_.MINIMUM_WIN_SCORE, game_.MAXIMUM_WIN_SCORE, game_.getWinScore(),
+                game_.MINIMUM_WIN_LINES, game_.MAXIMUM_WIN_LINES, game_.getWinLines(),
+                game_.MINIMUM_WIN_TIME, game_.MAXIMUM_WIN_TIME, game_.getWinTime(),
+                0, 5};      //minimum and maximum level
+    ConfigDialog cd (args, (game_.getMode() != GameMode::SOLO), this);
     cd.setWindowTitle("Configuration de la partie");
 
     int ret = cd.exec();
@@ -75,8 +73,6 @@ void MWTetris::createGame(){
         lbEnd_ = new QLabel(this);
         lbEnd_->hide();
 
-        std::string name;
-        name = (cd.getName().empty())? game_.getPlayer().getName() : cd.getName();
         try{
             if(cd.isResettingBag()){
                 game_.resetBag();
@@ -105,9 +101,12 @@ void MWTetris::createGame(){
                 }
             }
             showHostInfo();
-            game_.initGame(name, cd.getWidth(), cd.getHeight(), cd.getWinScore(), cd.getWinLines(), cd.getWinTime(),
+            QString name(QString::fromStdString(game_.getPlayer().getName()));
+            if(game_.getMode() == GameMode::CLIENT) name.append("-1");
+            else if(game_.getMode() == GameMode::HOST) name.append("-2");
+            game_.initGame(name.toStdString(), cd.getWidth(), cd.getHeight(), cd.getWinScore(), cd.getWinLines(), cd.getWinTime(),
                            cd.getLevel(), cd.hasWinByScore(), cd.hasWinByLines(), cd.hasWinByTime());
-
+            update(&game_);
         } catch(const std::invalid_argument & e){
             QErrorMessage * except = new QErrorMessage(this);
             except->showMessage(e.what());
