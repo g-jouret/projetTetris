@@ -96,7 +96,8 @@ void Tetris::initGame(std::string name, unsigned width, unsigned height,
         setTimer();
     }
     savedTime_ = 0;
-    setGameState(GameState::INITIALIZED);
+    //setGameState(GameState::INITIALIZED);
+    gameState_ = GameState::INITIALIZED;
     //resume();
     //generateBric(true);
 }
