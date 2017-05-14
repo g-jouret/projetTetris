@@ -29,13 +29,13 @@ public:
     void launch();
     void close();
     void sendData(const NetMsg &msg);
-    void dataReception();
 
 private:
     void reactToFirstMsg(NetMsg &netMsg);
     void reactToAskSettings();
 
 private slots:
+    void dataReception();
     void connection();
     void disconnection();
 };
