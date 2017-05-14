@@ -299,7 +299,7 @@ protected:
      *
      * \param gameState le nouvel état de la partie
      */
-    void setGameState(GameState gameState);
+    virtual void setGameState(GameState gameState);
 
 private:
     /*!

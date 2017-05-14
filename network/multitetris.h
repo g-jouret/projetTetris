@@ -43,7 +43,7 @@ public:
     void sendCancel();
 
 protected:
-    void setGameState(GameState gameState);
+    void setGameState(GameState gameState) override;
     //QString serverError() const;
 
 /*private:
