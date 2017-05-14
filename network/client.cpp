@@ -1,6 +1,7 @@
 #include "client.h"
 #include "multitetris.h"
 #include "netmsg.h"
+#include <QtConcurrent>
 #include <iostream>
 #include <stdexcept>
 
@@ -81,6 +82,11 @@ void Client::disconnection(){
 }
 
 void Client::dataReception(){
+    if(socket_ == qobject_cast<QTcpSocket *>(sender())) //readData();
+        QFuture<void> future = QtConcurrent::run(this, &Client::readData);
+}
+
+void Client::readData(){
     QDataStream in(socket_);
     if(messageSize_ == 0){
         if(socket_->bytesAvailable() < (int)sizeof(quint16)) return;

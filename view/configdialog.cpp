@@ -5,7 +5,7 @@
 
 using namespace GJ_GW;
 
-ConfigDialog::ConfigDialog(std::string name, std::vector<unsigned> args, bool netOk, QWidget *parent):
+ConfigDialog::ConfigDialog(std::vector<unsigned> args, bool netOk, QWidget *parent):
     QDialog(parent), ui(new Ui::ConfigDialog){
     ui->setupUi(this);
 
@@ -14,6 +14,7 @@ ConfigDialog::ConfigDialog(std::string name, std::vector<unsigned> args, bool ne
     connect(ui->hasWinByScore, &QCheckBox::toggled, this, &ConfigDialog::toggleScore);
     connect(ui->hasWinByLines, &QCheckBox::toggled, this, &ConfigDialog::toggleLines);
     connect(ui->HasWinByTime, &QCheckBox::toggled, this, &ConfigDialog::toggleTime);
+
     if(netOk){
         connect(ui->playDuo, &QPushButton::toggled, this, &ConfigDialog::hideDuo);
     } else{
@@ -22,41 +23,33 @@ ConfigDialog::ConfigDialog(std::string name, std::vector<unsigned> args, bool ne
     hideSetBrics(true);
     hideDuo(false);
 
-    ui->leName->setText(QString::fromStdString(name));
-    ui->leName->setMaxLength(args.at(0));
+    ui->sbWidth->setMinimum(args.at(0));
+    ui->sbWidth->setMaximum(args.at(1));
+    ui->sbWidth->setValue(args.at(2));
 
-    ui->sbWidth->setMinimum(args.at(1));
-    ui->sbWidth->setMaximum(args.at(2));
-    ui->sbWidth->setValue(args.at(3));
+    ui->sbHeight->setMinimum(args.at(3));
+    ui->sbHeight->setMaximum(args.at(4));
+    ui->sbHeight->setValue(args.at(5));
 
-    ui->sbHeight->setMinimum(args.at(4));
-    ui->sbHeight->setMaximum(args.at(5));
-    ui->sbHeight->setValue(args.at(6));
+    ui->sbWinScore->setMinimum(args.at(6));
+    ui->sbWinScore->setMaximum(args.at(7));
+    ui->sbWinScore->setValue(args.at(8));
 
-    ui->sbWinScore->setMinimum(args.at(7));
-    ui->sbWinScore->setMaximum(args.at(8));
-    ui->sbWinScore->setValue(args.at(9));
+    ui->sbWinLines->setMinimum(args.at(9));
+    ui->sbWinLines->setMaximum(args.at(10));
+    ui->sbWinLines->setValue(args.at(11));
 
-    ui->sbWinLines->setMinimum(args.at(10));
-    ui->sbWinLines->setMaximum(args.at(11));
-    ui->sbWinLines->setValue(args.at(12));
+    ui->timeEdit->setMinimumTime(convertUnsToTime(args.at(12)));
+    ui->timeEdit->setMaximumTime(convertUnsToTime(args.at(13)));
+    ui->timeEdit->setTime(convertUnsToTime(args.at(14)));
 
-
-    ui->timeEdit->setMinimumTime(convertUnsToTime(args.at(13)));
-    ui->timeEdit->setMaximumTime(convertUnsToTime(args.at(14)));
-    ui->timeEdit->setTime(convertUnsToTime(args.at(15)));
-
-    ui->sbLevel->setMinimum(args.at(16));
-    ui->sbLevel->setMaximum(args.at(17));
-    ui->sbLevel->setValue(args.at(16));
+    ui->sbLevel->setMinimum(args.at(15));
+    ui->sbLevel->setMaximum(args.at(16));
+    ui->sbLevel->setValue(args.at(15));
 }
 
 ConfigDialog::~ConfigDialog(){
     delete ui;
-}
-
-std::string ConfigDialog::getName() const{
-    return ui->leName->text().toStdString();
 }
 
 unsigned ConfigDialog::getWidth() const{

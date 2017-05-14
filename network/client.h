@@ -33,6 +33,7 @@ public:
     //QString errorString() const;
 
 private:
+    void readData();
     //void reactToAskSettings();
 
 private slots:

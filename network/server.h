@@ -32,6 +32,7 @@ public:
 
 private:
     void reactToFirstMsg(NetMsg &netMsg);
+    void readData();
 
 private slots:
     void dataReception();

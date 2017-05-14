@@ -3,6 +3,7 @@
 #include "netmsg.h"
 #include <stdexcept>
 #include <iostream>
+#include <QtConcurrent>
 
 using namespace GJ_GW;
 
@@ -86,8 +87,12 @@ void Server::sendData(const NetMsg &msg){
 }
 
 void Server::dataReception(){
-    if(socket_ != qobject_cast<QTcpSocket *>(sender())) return;
 
+    if(socket_ == qobject_cast<QTcpSocket *>(sender())) //readData();
+        QFuture<void> future = QtConcurrent::run(this, &Server::readData);
+}
+
+void Server::readData(){
     QDataStream in(socket_);
     if(messageSize_ == 0){
         if(socket_->bytesAvailable() < (int)sizeof(quint16)) return;

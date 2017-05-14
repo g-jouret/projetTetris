@@ -262,9 +262,6 @@ void MultiTetris::connectError(){
 }
 
 void MultiTetris::setGameState(GameState gameState){
-    std::cout << "setgamestate"
-              << (gameState == GameState::INITIALIZED)
-              << std::endl;
     if(gameState == GameState::INITIALIZED && mode_ == GameMode::CLIENT){
         QList<QString> args;
         args.append(QString::fromStdString(getPlayer().getName()));

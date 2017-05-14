@@ -28,7 +28,7 @@ public:
      * \param args les différents arguments numériques
      * \param parent fenêtre ayant lancé \ref ConfigDialog
      */
-    explicit ConfigDialog(std::string name, std::vector<unsigned> args, bool netOk, QWidget *parent = 0);
+    explicit ConfigDialog(std::vector<unsigned> args, bool netOk, QWidget *parent = 0);
 
     ~ConfigDialog();
 

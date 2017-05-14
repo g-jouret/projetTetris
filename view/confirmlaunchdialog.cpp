@@ -18,7 +18,7 @@ void ConfirmLaunchDialog::accept(){
     if(game_.isReady()){
         game_.sendReady();
         game_.removeObserver(this);
-        QDialog::accept();
+        QDialog::done(QDialog::Accepted);
     } else{
         game_.sendReady();
         hasConfirm_ = true;
@@ -33,16 +33,16 @@ void ConfirmLaunchDialog::reject(){
     } else{
         game_.sendCancel();
         game_.removeObserver(this);
-        QDialog::reject();
+        QDialog::done(QDialog::Rejected);
     }
 }
 
 void ConfirmLaunchDialog::update(GJ_GW::Subject *){
     if(game_.isReady() && hasConfirm_){
         game_.removeObserver(this);
-        QDialog::accept();
+        QDialog::done(QDialog::Accepted);
     } else if(game_.getGameState() == GJ_GW::GameState::NONE){
-        QDialog::reject();
+        QDialog::done(QDialog::Rejected);
     }
 }
 
