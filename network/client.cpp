@@ -95,19 +95,19 @@ void Client::dataReception(){
     NetMsg netMsg(msg);
     switch(netMsg.getHeader()){
     case NetMsg::ACK_FIRST:
-        close();
+        //close();
         break;
     case NetMsg::ERR_FIRST:
         //notification_ = "Impossible de se connecter à l'hôte";
         game_->connectError();
         break;
-    case NetMsg::ASW_GAME_SET:
-        // TODO : gestion erreur bad_init | invalid_argument de Tetris
-        game_->initGame(netMsg.get(0).toStdString(), netMsg.get(1).toUInt(), netMsg.get(2).toUInt(),
+    //case NetMsg::ASK_GAME_SET:
+
+        /*game_->initGame(netMsg.get(0).toStdString(), netMsg.get(1).toUInt(), netMsg.get(2).toUInt(),
                        netMsg.get(3).toUInt(), netMsg.get(4).toUInt(), netMsg.get(5).toUInt(),
                        netMsg.get(6).toUInt(), netMsg.get(7).toInt(),
-                       netMsg.get(8).toInt(), netMsg.get(9).toInt());
-        break;
+                       netMsg.get(8).toInt(), netMsg.get(9).toInt());*/
+        //break;
     case NetMsg::MSG_RDY:
         game_->setReady();
         break;
@@ -119,6 +119,23 @@ void Client::dataReception(){
     }
     messageSize_ = 0;
 }
+
+/*void Server::reactToAskSettings(){
+
+    QList<QString> args;
+    args.append(QString::fromStdString(game_->getPlayer().getName()));
+    args.append(QString::number(game_->getBoard().getWidth()));
+    args.append(QString::number(game_->getBoard().getHeight()));
+    args.append(QString::number(game_->getWinScore()));
+    args.append(QString::number(game_->getWinLines()));
+    args.append(QString::number(game_->getWinTime()));
+    args.append(QString::number(game_->getLevel()));
+    args.append(QString::number(game_->hasWinByScore()));
+    args.append(QString::number(game_->hasWinByLines()));
+    args.append(QString::number(game_->hasWinByTime()));
+    NetMsg netMsg(NetMsg::ASW_GAME_SET, args);
+    sendData(netMsg);
+}*/
 
 void Client::sendData(const NetMsg &msg){
     QByteArray packet;

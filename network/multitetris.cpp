@@ -84,22 +84,32 @@ void MultiTetris::initServer(){
     }
 }
 
-void MultiTetris::initClient(QString hostName, unsigned port, bool first){
+void MultiTetris::initClient(QString hostName, unsigned port){
     if(client_ == 0){
         client_ = new Client(this, this);
         try{
             client_->connectToServer(hostName, port);
-            if(first){
-                QList<QString> args;
-                args.append(getLocalIP());
-                args.append(QString::number(server_->serverPort()));
-                NetMsg netMsg(NetMsg::MSG_FIRST, args);
-                client_->sendData(netMsg);
-            } else{
-                NetMsg netMsg(NetMsg::ASK_GAME_SET);
-                client_->sendData(netMsg);
-            }
+                //QList<QString> args;
+                /*args.append(getLocalIP());
+                args.append(QString::number(server_->serverPort()));*/
+// TODO : gestion Serialization pour briques perso
+                /*args.append(QString::fromStdString(getPlayer().getName()));
+                args.append(QString::number(getBoard().getWidth()));
+                args.append(QString::number(getBoard().getHeight()));
+                args.append(QString::number(getWinScore()));
+                args.append(QString::number(getWinLines()));
+                args.append(QString::number(getWinTime()));
+                args.append(QString::number(getLevel()));
+                args.append(QString::number(hasWinByScore()));
+                args.append(QString::number(hasWinByLines()));
+                args.append(QString::number(hasWinByTime()));
 
+                NetMsg netMsg(NetMsg::MSG_FIRST, args);
+                client_->sendData(netMsg);*/
+                setMode(GameMode::CLIENT);
+
+                /*NetMsg netMsg(NetMsg::ASK_GAME_SET);
+                client_->sendData(netMsg);*/
         } catch(const QString & e){
             setMode(GameMode::HOST);
             throw;
@@ -249,6 +259,25 @@ void MultiTetris::sendCancel(){
 
 void MultiTetris::connectError(){
     setGameState(GameState::NONE);
+}
+
+void MultiTetris::setGameState(GameState gameState){
+    Tetris::setGameState(gameState);
+    if(gameState == GameState::INITIALIZED && mode_ == GameMode::CLIENT){
+        QList<QString> args;
+        args.append(QString::fromStdString(getPlayer().getName()));
+        args.append(QString::number(getBoard().getWidth()));
+        args.append(QString::number(getBoard().getHeight()));
+        args.append(QString::number(getWinScore()));
+        args.append(QString::number(getWinLines()));
+        args.append(QString::number(getWinTime()));
+        args.append(QString::number(getLevel()));
+        args.append(QString::number(hasWinByScore()));
+        args.append(QString::number(hasWinByLines()));
+        args.append(QString::number(hasWinByTime()));
+        NetMsg netMsg(NetMsg::MSG_FIRST, args);
+        client_->sendData(netMsg);
+    }
 }
 
 /*void MultiTetris::sendData(const NetMsg &msg){

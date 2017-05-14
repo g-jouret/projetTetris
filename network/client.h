@@ -32,6 +32,9 @@ public:
     void close();
     //QString errorString() const;
 
+private:
+    //void reactToAskSettings();
+
 private slots:
     void connection();
     void disconnection();

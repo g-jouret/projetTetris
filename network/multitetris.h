@@ -33,7 +33,7 @@ public:
     void setReady();
     void setMode(GameMode mode);
     void initServer();
-    void initClient(QString hostName, unsigned port, bool first);
+    void initClient(QString hostName, unsigned port);
     void connectError();
     //QString getNotif() const;
     //bool isClientConnected() const;
@@ -41,6 +41,9 @@ public:
 
     void sendReady();
     void sendCancel();
+
+protected:
+    void setGameState(GameState gameState);
     //QString serverError() const;
 
 /*private:

@@ -55,6 +55,7 @@ void Server::close(){
 }
 
 void Server::connection(){
+    std::cout << "new connection received" << std::endl;
     socket_ = server_->nextPendingConnection();
     connect(socket_, SIGNAL(readyRead()), this, SLOT(dataReception()));
     connect(socket_, SIGNAL(disconnected()), this, SLOT(disconnection()));
@@ -105,10 +106,11 @@ void Server::dataReception(){
         //extern void MultiTetris::
 
         //QFuture<void> future = QtConcurrent::run(this->MultiTetris::reactToFirstMsg, netMsg);
-        break;
-    case NetMsg::ASK_GAME_SET:
-        reactToAskSettings();
-        //QFuture<void> future = QtConcurrent::run()
+        //break;
+    //case NetMsg::ASW_GAME_SET:
+
+        //reactToAskSettings();
+
         break;
     case NetMsg::MSG_RDY:
         game_->setReady();
@@ -123,21 +125,19 @@ void Server::dataReception(){
 }
 
 void Server::reactToFirstMsg(NetMsg &netMsg){
-    QString ip(netMsg.get(0));
-    QString host(game_->getHostName(ip));
-    std::cout << host.toStdString() << std::endl;
     try{
-        game_->initClient(host, netMsg.get(1).toInt(), false);
-        //QFuture<void> future = QtConcurrent::run(this->client_, &Client::connectToServer, netMsg.get(0), netMsg.get(1).toInt());
-        //future.waitForFinished();
-        //QList<QString> args;
-        //args.append(netMsg.get(1));
-        NetMsg asw(NetMsg::ACK_FIRST);//, args);
-        sendData(asw);
+        // TODO : gestion erreur bad_init | invalid_argument de Tetris
+        game_->initGame(netMsg.get(0).toStdString(), netMsg.get(1).toUInt(), netMsg.get(2).toUInt(),
+                               netMsg.get(3).toUInt(), netMsg.get(4).toUInt(), netMsg.get(5).toUInt(),
+                               netMsg.get(6).toUInt(), netMsg.get(7).toInt(),
+                               netMsg.get(8).toInt(), netMsg.get(9).toInt());
+        //game_->initClient(host, netMsg.get(1).toInt(), false);
+        NetMsg netMsg(NetMsg::ACK_FIRST);
+        sendData(netMsg);
 
         /*NetMsg msg(NetMsg::ASK_GAME_SET);
         client_->sendData(msg);*/
-        game_->setMode(GameMode::CLIENT);
+        game_->setMode(GameMode::HOST);
     } catch(QString & e){
         NetMsg err(NetMsg::ERR_FIRST);
         sendData(err);
@@ -146,7 +146,7 @@ void Server::reactToFirstMsg(NetMsg &netMsg){
     }
 }
 
-void Server::reactToAskSettings(){
+/*void Server::reactToAskSettings(){
     // TODO : gestion Serialization pour briques perso
     QList<QString> args;
     args.append(QString::fromStdString(game_->getPlayer().getName()));
@@ -161,4 +161,4 @@ void Server::reactToAskSettings(){
     args.append(QString::number(game_->hasWinByTime()));
     NetMsg netMsg(NetMsg::ASW_GAME_SET, args);
     sendData(netMsg);
-}
+}*/

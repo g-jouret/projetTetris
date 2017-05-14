@@ -86,7 +86,6 @@ void MWTetris::createGame(){
                 }
             }
 
-
             if(!cd.isPlayingDuo()){
                 game_.setMode(GameMode::SOLO);
             } else{
@@ -96,7 +95,7 @@ void MWTetris::createGame(){
                 }
                 unsigned port = cd.getPort();
                 try{
-                    game_.initClient(hostName, port, true);
+                    game_.initClient(hostName, port);
                     ui->msgConnect->setText("connexion effectuée");
                     ui->msgConnect->show();
                 } catch(const QString & e){
@@ -106,9 +105,9 @@ void MWTetris::createGame(){
                 }
             }
             showHostInfo();
-
             game_.initGame(name, cd.getWidth(), cd.getHeight(), cd.getWinScore(), cd.getWinLines(), cd.getWinTime(),
                            cd.getLevel(), cd.hasWinByScore(), cd.hasWinByLines(), cd.hasWinByTime());
+
         } catch(const std::invalid_argument & e){
             QErrorMessage * except = new QErrorMessage(this);
             except->showMessage(e.what());
