@@ -275,6 +275,11 @@ void MWTetris::update(Subject *){
         generateBoard();
         break;
     case GameState::INITIALIZED:
+        if(QString::fromStdString(game_.getPlayer().getName()) != ui->lbPlayerName->text()){
+            ui->lbPlayerName->setText(QString::fromStdString(game_.getPlayer().getName()));
+        }
+        eraseBoard(ui->boardGrid);
+        generateBoard();
         if(game_.getMode() != GameMode::SOLO){
             ConfirmLaunchDialog cld(game_, this);
             cld.setWindowTitle("Confirmation de lancement");
@@ -282,11 +287,6 @@ void MWTetris::update(Subject *){
 
             if(ret == QDialog::Rejected) return;
         }
-        if(QString::fromStdString(game_.getPlayer().getName()) != ui->lbPlayerName->text()){
-            ui->lbPlayerName->setText(QString::fromStdString(game_.getPlayer().getName()));
-        }
-        eraseBoard(ui->boardGrid);
-        generateBoard();
         launchGame();
         break;
     case GameState::NEW_BRIC:
