@@ -94,9 +94,13 @@ void Client::dataReception(){
     std::cout << "client : " << msg.toStdString() << std::endl;
 
     NetMsg netMsg(msg);
+
     switch(netMsg.getHeader()){
     case NetMsg::ACK_FIRST:
         reactToFirstAck();
+        break;
+    case NetMsg::ERR_FIRST:
+        throw QString("Problème de connexion à l'hôte");
         break;
     case NetMsg::ASW_GAME_SET:
         reactToAswSettings(netMsg);

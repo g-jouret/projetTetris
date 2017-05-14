@@ -117,6 +117,7 @@ void MultiTetris::connection(){
     socket_ = server_->nextPendingConnection();
     connect(socket_, SIGNAL(readyRead()), this, SLOT(dataReception()));
     connect(socket_, SIGNAL(disconnected()), this, SLOT(disconnection()));
+    server_->close();
     //connect(socket_, SIGNAL(destroyed(QObject*)), this, SLOT(disconnection()));
     //emit newClient();
 }
@@ -125,6 +126,7 @@ void MultiTetris::disconnection(){
     std::cout << "déco du client" << std::endl;
     if(socket_ != qobject_cast<QTcpSocket *>(sender())) return;
 
+    socket_->close();
     closeServer(true);
     launchServer();
     std::cout << "client détruit" << std::endl;
@@ -184,12 +186,15 @@ void MultiTetris::reactToFirstMsg(NetMsg &netMsg){
 
         NetMsg msg(NetMsg::ASK_GAME_SET);
         client_->sendData(msg);
+        host_ = false;
+        closeServer(false);
     } catch(QString & e){
+        NetMsg err(NetMsg::ERR_FIRST);
+        sendData(err);
         std::cout << e.toStdString() << std::endl;
         // TODO : gestion des erreurs de réception de données
     }
-    host_ = false;
-    closeServer(false);
+
 }
 
 void MultiTetris::reactToAskSettings(){

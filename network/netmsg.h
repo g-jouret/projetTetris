@@ -23,6 +23,8 @@ public:
         MSG_FIRST,
         /*! Entête de la confirmation de réception du premier message. */
         ACK_FIRST,
+        /*! Entête du message d'erreur indiquant un problème de connexion à l'hôte. */
+        ERR_FIRST,
         /*! Entête du message demandant les paramètres de la partie. */
         ASK_GAME_SET,
         /*! Entête de la réponse contenant les paramètres de la partie. */
@@ -30,7 +32,7 @@ public:
         /*! Entête du message indiquant que l'émetteur est prêt à commencer la partie. */
         MSG_RDY,
         /*! Entête du message indiquant que l'émetteur souhaite annuler la partie. */
-        MSG_CANCEL
+        MSG_CANCEL,
     };
 
 private:
