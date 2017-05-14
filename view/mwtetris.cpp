@@ -141,7 +141,8 @@ void MWTetris::launchGame(){
 
 void MWTetris::showHostInfo(bool showMsg){
     if(game_.isListening()){
-        ui->lbHostName->setText(game_.getHostName());
+        QString ip = game_.getLocalIP();
+        ui->lbHostName->setText(game_.getHostName(ip));
         ui->lbHostName->show();
         ui->lbHost->show();
         ui->lbPortNb->setText(QString::number(game_.getPort()));

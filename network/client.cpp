@@ -14,10 +14,10 @@ Client::Client(MultiTetris &game) : QObject(), game_{game}{
     game_.addObserver(this);
 }
 
-Client::~Client(){
+/*Client::~Client(){
     game_.removeObserver(this);
     delete socket_;
-}
+}*/
 
 QString Client::getNotif() const{
     return notification_;

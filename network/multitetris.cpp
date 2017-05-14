@@ -55,12 +55,12 @@ void MultiTetris::launchServer(){
     }
 }
 
-QString MultiTetris::getHostName() const{
-    QHostInfo hostInfo {QHostInfo::fromName(getIP())};
+QString MultiTetris::getHostName(QString &ip) const{
+    QHostInfo hostInfo {QHostInfo::fromName(ip)};
     return hostInfo.hostName();
 }
 
-QString MultiTetris::getIP() const{
+QString MultiTetris::getLocalIP() const{
     QHostInfo hostInfo {QHostInfo::fromName(QHostInfo::localHostName())};
     return hostInfo.addresses().first().toString();
 }
@@ -99,7 +99,7 @@ void MultiTetris::initClient(QString hostName, unsigned port){
         client_->connectToServer(hostName, port);
         QList<QString> args;
         //args.append(QHostInfo::localHostName());
-        args.append(getIP());
+        args.append(getLocalIP());
         args.append(QString::number(server_->serverPort()));
         NetMsg msg(NetMsg::MSG_FIRST, args);
         client_->sendData(msg);
@@ -123,21 +123,22 @@ void MultiTetris::connection(){
 
 void MultiTetris::disconnection(){
     std::cout << "déco du client" << std::endl;
-    QTcpSocket *socket = qobject_cast<QTcpSocket *>(sender());
-    if(socket == 0) return;
-    socket->deleteLater();
+    if(socket_ != qobject_cast<QTcpSocket *>(sender())) return;
+
+    closeServer(true);
+    launchServer();
     std::cout << "client détruit" << std::endl;
 }
 
 void MultiTetris::dataReception(){
-    QTcpSocket *socket = qobject_cast<QTcpSocket *>(sender());
-    if(socket == 0) return;
-    QDataStream in(socket);
+    if(socket_ != qobject_cast<QTcpSocket *>(sender())) return;
+
+    QDataStream in(socket_);
     if(messageSize_ == 0){
-        if(socket->bytesAvailable() < (int)sizeof(quint16)) return;
+        if(socket_->bytesAvailable() < (int)sizeof(quint16)) return;
         in >> messageSize_;
     }
-    if(socket->bytesAvailable() < messageSize_) return;
+    if(socket_->bytesAvailable() < messageSize_) return;
     QString msg;
     in >> msg;
 
@@ -171,8 +172,9 @@ void MultiTetris::reactToFirstMsg(NetMsg &netMsg){
     if(client_ == 0){
         client_ = new Client(*this);
     }
+    QString ip = netMsg.get(0);
     try{
-        client_->connectToServer(netMsg.get(0), netMsg.get(1).toInt());
+        client_->connectToServer(getHostName(ip), netMsg.get(1).toInt());
         //QFuture<void> future = QtConcurrent::run(this->client_, &Client::connectToServer, netMsg.get(0), netMsg.get(1).toInt());
         //future.waitForFinished();
         //QList<QString> args;
@@ -183,7 +185,7 @@ void MultiTetris::reactToFirstMsg(NetMsg &netMsg){
         NetMsg msg(NetMsg::ASK_GAME_SET);
         client_->sendData(msg);
     } catch(QString & e){
-        std::cout << "erreur" << std::endl;
+        std::cout << e.toStdString() << std::endl;
         // TODO : gestion des erreurs de réception de données
     }
     host_ = false;

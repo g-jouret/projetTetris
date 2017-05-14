@@ -25,7 +25,7 @@ class Client : public QObject, public Observer{
 
 public:
     explicit Client(MultiTetris &game);
-    ~Client();
+    //~Client();
     void sendData(const NetMsg &msg);
     void launchClient();
     void connectToServer(QString hostName, unsigned port);
