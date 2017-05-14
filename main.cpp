@@ -22,6 +22,6 @@ int main(int argc, char *argv[]){
 
 /*
 TODO principal
-- fix bug time en pause
+- fix bug partie solo reprend si lancement nouvelle partie multi
 - vérification aucune connexion + message d'erreur
 */

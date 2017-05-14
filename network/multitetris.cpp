@@ -121,15 +121,13 @@ void MultiTetris::connection(){
     socket_ = server_->nextPendingConnection();
     connect(socket_, SIGNAL(readyRead()), this, SLOT(dataReception()));
     connect(socket_, SIGNAL(disconnected()), this, SLOT(disconnection()));
-    server_->close();
-    std::cout << socket_->state() << std::endl;
+    //server_->close();
     //connect(socket_, SIGNAL(destroyed(QObject*)), this, SLOT(disconnection()));
     //emit newClient();
 }
 
 void MultiTetris::disconnection(){
     std::cout << "déco du client" << std::endl;
-    std::cout << socket_->state() << std::endl;
     if(socket_ != qobject_cast<QTcpSocket *>(sender())) return;
     std::cout << "test" << std::endl;
 
@@ -141,7 +139,6 @@ void MultiTetris::disconnection(){
 }
 
 void MultiTetris::dataReception(){
-    std::cout << socket_->state() << std::endl;
     if(socket_ != qobject_cast<QTcpSocket *>(sender())) return;
 
     QDataStream in(socket_);
@@ -188,9 +185,11 @@ void MultiTetris::reactToFirstMsg(NetMsg &netMsg){
     if(client_ == 0){
         client_ = new Client(*this);
     }
-    QString ip = netMsg.get(0);
+    QString ip(netMsg.get(0));
+    QString host(getHostName(ip));
+    std::cout << host.toStdString() << std::endl;
     try{
-        client_->connectToServer(getHostName(ip), netMsg.get(1).toInt());
+        client_->connectToServer(host, netMsg.get(1).toInt());
         //QFuture<void> future = QtConcurrent::run(this->client_, &Client::connectToServer, netMsg.get(0), netMsg.get(1).toInt());
         //future.waitForFinished();
         //QList<QString> args;
