@@ -32,7 +32,7 @@ public:
         /*! Entête du message indiquant que l'émetteur est prêt à commencer la partie. */
         MSG_RDY,
         /*! Entête du message indiquant que l'émetteur souhaite annuler la partie. */
-        MSG_CANCEL,
+        MSG_CANCEL
     };
 
 private:

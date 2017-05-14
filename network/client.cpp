@@ -100,10 +100,16 @@ void Client::dataReception(){
         reactToFirstAck();
         break;
     case NetMsg::ERR_FIRST:
-        throw QString("Problème de connexion à l'hôte");
+        notification_ = "Impossible de se connecter à l'hôte";
+        game_.connectError();
         break;
     case NetMsg::ASW_GAME_SET:
         reactToAswSettings(netMsg);
+        break;
+    case NetMsg::MSG_RDY:
+        game_.setReady();
+        break;
+    case NetMsg::MSG_CANCEL:
         break;
     default:
         // TODO : gestion des erreurs de réception de données
@@ -113,7 +119,7 @@ void Client::dataReception(){
 }
 
 void Client::reactToFirstAck(){
-    socket_->disconnectFromHost();
+    socket_->close();
     reset();
     //connectToServer("127.0.0.1", netMsg.get(0).toInt());
 }

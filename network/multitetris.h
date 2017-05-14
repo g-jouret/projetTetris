@@ -27,10 +27,11 @@ public:
     quint16 getPort() const;
     bool isListening() const;
     bool isReady() const;
+    void setReady();
     void closeServer(bool soloMode);
     void launchServer();
     void initClient(QString hostName, unsigned port);
-
+    void connectError();
     QString getClientNotif() const;
     bool isClientConnected() const;
     QString clientError() const;

@@ -148,7 +148,8 @@ void MWTetris::showHostInfo(bool showMsg){
         ui->lbPortNb->setText(QString::number(game_.getPort()));
         ui->lbPortNb->show();
         ui->lbPort->show();
-        ui->msgConnect->hide();
+        ui->msgConnect->setText(game_.getClientNotif());
+        ui->msgConnect->show();
     } else{
         if(showMsg){
             ui->msgConnect->setText(game_.serverError());

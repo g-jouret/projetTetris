@@ -16,12 +16,13 @@ ConfirmLaunchDialog::~ConfirmLaunchDialog(){
 
 void ConfirmLaunchDialog::accept(){
     if(game_.isReady()){
+        game_.sendReady();
         game_.removeObserver(this);
         QDialog::accept();
     } else{
+        game_.sendReady();
         hasConfirm_ = true;
         ui->buttonBox->button(ui->buttonBox->Yes)->setDisabled(true);
-        game_.sendReady();
     }
 }
 
@@ -40,6 +41,8 @@ void ConfirmLaunchDialog::update(GJ_GW::Subject *){
     if(game_.isReady() && hasConfirm_){
         game_.removeObserver(this);
         QDialog::accept();
+    } else if(game_.getGameState() == GJ_GW::GameState::NONE){
+        QDialog::reject();
     }
 }
 

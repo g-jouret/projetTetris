@@ -285,6 +285,22 @@ public:
     void resume();
     void pause();
 
+protected:
+    /*!
+     * \brief Méthode modifiant le \ref GameState et notifiant la vue.
+     *
+     * Cette méthode est appelée lorsque :
+     *  - La partie s'initialise ;
+     *  - La partie commence ;
+     *  - Un joueur perd, si la brique suivante ne peut être mise en jeu par manque de place ;
+     *  - Un joueur gagne, s'il atteint un score suffisant ;
+     *  - Un joueur gagne, s'il réussi à remplir suffisamment de lignes ;
+     *  - La partie s'arrête, après un certain temps, le joueur ayant alors le plus haut score l'emporte.
+     *
+     * \param gameState le nouvel état de la partie
+     */
+    void setGameState(GameState gameState);
+
 private:
     /*!
      * \brief Méthode de validation de la largeur.
@@ -396,21 +412,6 @@ private:
      * \param dropCount le nombre de cases traversées par un drop
      */
     void checkLines(unsigned top, unsigned dropsCount);
-
-    /*!
-     * \brief Méthode modifiant le \ref GameState et notifiant la vue.
-     *
-     * Cette méthode est appelée lorsque :
-     *  - La partie s'initialise ;
-     *  - La partie commence ;
-     *  - Un joueur perd, si la brique suivante ne peut être mise en jeu par manque de place ;
-     *  - Un joueur gagne, s'il atteint un score suffisant ;
-     *  - Un joueur gagne, s'il réussi à remplir suffisamment de lignes ;
-     *  - La partie s'arrête, après un certain temps, le joueur ayant alors le plus haut score l'emporte.
-     *
-     * \param gameState le nouvel état de la partie
-     */
-    void setGameState(GameState gameState);
 
     /*!
      * \brief Méthode modifiant le temps entre chaque itération en fonction

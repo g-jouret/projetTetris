@@ -43,6 +43,7 @@ void MultiTetris::launchServer(){
     if(server_ == 0){
         server_ = new QTcpServer(this);
         socket_ = new QTcpSocket(this);
+        std::cout << socket_->state() << std::endl;
         unsigned port {49152};
         while(!server_->listen(QHostAddress(QHostInfo::localHostName()), port) && port <= 65535){
             ++port;
@@ -110,6 +111,9 @@ void MultiTetris::initClient(QString hostName, unsigned port){
 }
 
 QString MultiTetris::getClientNotif() const{
+    if(client_ == 0){
+        return "";
+    }
     return client_->getNotif();
 }
 
@@ -118,21 +122,26 @@ void MultiTetris::connection(){
     connect(socket_, SIGNAL(readyRead()), this, SLOT(dataReception()));
     connect(socket_, SIGNAL(disconnected()), this, SLOT(disconnection()));
     server_->close();
+    std::cout << socket_->state() << std::endl;
     //connect(socket_, SIGNAL(destroyed(QObject*)), this, SLOT(disconnection()));
     //emit newClient();
 }
 
 void MultiTetris::disconnection(){
     std::cout << "déco du client" << std::endl;
+    std::cout << socket_->state() << std::endl;
     if(socket_ != qobject_cast<QTcpSocket *>(sender())) return;
+    std::cout << "test" << std::endl;
 
     socket_->close();
+    socket_ = 0;
+    std::cout << "closed" << std::endl;
     closeServer(true);
-    launchServer();
     std::cout << "client détruit" << std::endl;
 }
 
 void MultiTetris::dataReception(){
+    std::cout << socket_->state() << std::endl;
     if(socket_ != qobject_cast<QTcpSocket *>(sender())) return;
 
     QDataStream in(socket_);
@@ -157,6 +166,11 @@ void MultiTetris::dataReception(){
     case NetMsg::ASK_GAME_SET:
         reactToAskSettings();
         //QFuture<void> future = QtConcurrent::run()
+        break;
+    case NetMsg::MSG_RDY:
+        setReady();
+        break;
+    case NetMsg::MSG_CANCEL:
         break;
     default:
         // TODO : gestion des erreurs de réception de données
@@ -194,7 +208,6 @@ void MultiTetris::reactToFirstMsg(NetMsg &netMsg){
         std::cout << e.toStdString() << std::endl;
         // TODO : gestion des erreurs de réception de données
     }
-
 }
 
 void MultiTetris::reactToAskSettings(){
@@ -215,11 +228,31 @@ void MultiTetris::reactToAskSettings(){
 }
 
 void MultiTetris::sendReady(){
+    NetMsg netMsg(NetMsg::MSG_RDY);
+    if(host_){
+        sendData(netMsg);
+    } else{
+        client_->sendData(netMsg);
+    }
+}
 
+void MultiTetris::setReady(){
+    ready_ = true;
+    notifyObservers();
 }
 
 void MultiTetris::sendCancel(){
+    NetMsg netMsg(NetMsg::MSG_CANCEL);
+    if(host_){
+        sendData(netMsg);
+    } else{
+        client_->sendData(netMsg);
+    }
+    setGameState(GameState::NONE);
+}
 
+void MultiTetris::connectError(){
+    setGameState(GameState::NONE);
 }
 
 void MultiTetris::sendData(const NetMsg &msg){
