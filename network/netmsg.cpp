@@ -23,7 +23,7 @@ NetMsg::Header NetMsg::getHeader() const{
 }
 
 QString NetMsg::get(int index) const{
-    if(msgBody_.size() >= index){
+    if(msgBody_.size() <= index){
         throw std::out_of_range("Le message ne contient pas autant d'arguments");
     }
     return msgBody_.at(index);
