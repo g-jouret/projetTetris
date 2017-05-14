@@ -117,7 +117,7 @@ void MultiTetris::connection(){
     socket_ = server_->nextPendingConnection();
     connect(socket_, SIGNAL(readyRead()), this, SLOT(dataReception()));
     connect(socket_, SIGNAL(disconnected()), this, SLOT(disconnection()));
-    connect(socket_, SIGNAL(destroyed(QObject*)), this, SLOT(disconnection()));
+    //connect(socket_, SIGNAL(destroyed(QObject*)), this, SLOT(disconnection()));
     //emit newClient();
 }
 
@@ -168,10 +168,13 @@ void MultiTetris::reactToFirstMsg(NetMsg &netMsg){
               << " "
               << netMsg.get(1).toInt()
               << std::endl;
+    if(client_ == 0){
+        client_ = new Client(*this);
+    }
     try{
-        //client_->connectToServer(netMsg.get(0), netMsg.get(1).toInt());
-        QFuture<void> future = QtConcurrent::run(this->client_, &Client::connectToServer, netMsg.get(0), netMsg.get(1).toInt());
-        future.waitForFinished();
+        client_->connectToServer(netMsg.get(0), netMsg.get(1).toInt());
+        //QFuture<void> future = QtConcurrent::run(this->client_, &Client::connectToServer, netMsg.get(0), netMsg.get(1).toInt());
+        //future.waitForFinished();
         //QList<QString> args;
         //args.append(netMsg.get(1));
         NetMsg asw(NetMsg::ACK_FIRST);//, args);

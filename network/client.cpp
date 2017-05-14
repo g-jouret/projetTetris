@@ -37,7 +37,7 @@ void Client::launchClient(){
         socket_ = new QTcpSocket(this);
         connect(socket_, SIGNAL(readyRead()), this, SLOT(dataReception()));
         connect(socket_, SIGNAL(connected()), this, SLOT(connection()));
-        connect(socket_, SIGNAL(destroyed(QObject*)), this, SLOT(disconnection()));
+        //connect(socket_, SIGNAL(destroyed(QObject*)), this, SLOT(disconnection()));
     }
 }
 
@@ -48,12 +48,14 @@ QString Client::errorString() const{
 void Client::connectToServer(QString hostName, unsigned port){
     std::cout << "try to connect" << std::endl;
     reset();
+    std::cout << "reset" << std::endl;
     launchClient();
+    std::cout << "launch" << std::endl;
     QTimer timer;
     timer.setSingleShot(true);
     QEventLoop loop;
     connect(socket_, SIGNAL(connected()), &loop, SLOT(quit()));
-    connect(socket_, SIGNAL(destroyed(QObject*)), &loop, SLOT(quit()));
+    //connect(socket_, SIGNAL(destroyed(QObject*)), &loop, SLOT(quit()));
     connect(socket_, SIGNAL(error(QAbstractSocket::SocketError)), &loop, SLOT(quit()));
     connect(&timer, SIGNAL(timeout()), &loop, SLOT(quit()));
     socket_->connectToHost(hostName, port);
