@@ -53,7 +53,7 @@ void Client::connectToServer(QString hostName, unsigned port){
     timer.setSingleShot(true);
     QEventLoop loop;
     connect(socket_, SIGNAL(connected()), &loop, SLOT(quit()));
-    connect(socket_, SIGNAL(destroyed(QObject*)), this, SLOT(quit()));
+    connect(socket_, SIGNAL(destroyed(QObject*)), &loop, SLOT(quit()));
     connect(socket_, SIGNAL(error(QAbstractSocket::SocketError)), &loop, SLOT(quit()));
     connect(&timer, SIGNAL(timeout()), &loop, SLOT(quit()));
     socket_->connectToHost(hostName, port);
