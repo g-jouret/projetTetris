@@ -355,8 +355,9 @@ std::vector<unsigned> Tetris::getCurrentBricY() const{
 void Tetris::addLine(QList<QString> line){
     std::vector<unsigned> grey{128,128,128};
     Color greyColor(grey);
+    timer_->stop();
     for(unsigned u {0}; u < board_.getHeight(); ++u){
-        // TODO : faut gérer la currentbric
+
         LineState state {board_.checkRow(u)};
         if(state != LineState::EMPTY) {
               board_.moveLine(u,-1);
@@ -366,4 +367,5 @@ void Tetris::addLine(QList<QString> line){
         Position pos(line.at(i).toUInt(), (board_.getHeight()-1));
         boardSwapCase(pos, greyColor);
     }
+    timer_->start();
 }

@@ -115,7 +115,6 @@ void MultiTetris::initGame(std::string name, unsigned width, unsigned height,
                            bool winByTime){
     Tetris::initGame(name, width, height, winScore, winLines, winTime, level,
                      winByScore, winByLines, winByTime);
-    std::cout << "reinit" << std::endl;
     (mode_ == GameMode::SOLO)? ready_ = true : ready_ = false;
     if(mode_ == GameMode::CLIENT){
         QList<QString> args;
@@ -144,7 +143,6 @@ void MultiTetris::startGame(){
 void MultiTetris::resume(){
     if(isPaused()){
         Tetris::resume();
-        std::cout << "multi resume" << std::endl;
         NetMsg netMsg(NetMsg::MSG_RESUME);
         if(mode_ == GameMode::CLIENT) client_->sendData(netMsg);
         if(mode_ == GameMode::HOST) server_->sendData(netMsg);
@@ -154,7 +152,6 @@ void MultiTetris::resume(){
 void MultiTetris::pause(){
     if(!isPaused()){
         Tetris::pause();
-        std::cout << "multi pause" << std::endl;
         NetMsg netMsg(NetMsg::MSG_PAUSE);
         if(mode_ == GameMode::CLIENT) client_->sendData(netMsg);
         if(mode_ == GameMode::HOST) server_->sendData(netMsg);
@@ -162,7 +159,6 @@ void MultiTetris::pause(){
 }
 
 void MultiTetris::setGameState(GameState gameState){
-    std::cout << "multi setState" << std::endl;
     if(gameState > GameState::ON){
         QList<QString> args;
         args.append(QString::number(gameState*2));
@@ -189,16 +185,9 @@ unsigned MultiTetris::checkLines(unsigned top, unsigned dropsCount){
             line.clear();
             for(unsigned v{0}; v < getBoard().getWidth(); ++v){
                 Position pos(v, bricY.at(u));
-                std::cout << "compare to "
-                          << v
-                          << bricY.at(u)
-                          << std::endl;
                 if(!getCurrentBric().contains(pos)){
                     line.append(QString::number(v));
                 }
-            }
-            for(QString q : line){
-                std::cout << q.toStdString();
             }
             NetMsg netMsg(NetMsg::MSG_LINE, line);
             if(mode_ == GameMode::HOST) server_->sendData(netMsg);
