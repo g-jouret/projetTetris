@@ -362,11 +362,11 @@ void Tetris::addLine(QList<QString> line){
                 board_.moveLine(u,-1, currentBric_);
             }
         }
-        for(unsigned v {0}; v < board_.getWidth(); ++v){
-            if(line.at(v).toInt() != -1){
-                Position pos(line.at(v).toInt(), (board_.getHeight()-1));
+        unsigned count = 0;
+        while(count < board_.getWidth() && line.at(count).toInt() != -1){
+                Position pos(line.at(count).toInt(), (board_.getHeight()-1));
                 boardSwapCase(pos, greyColor);
-            }
+            ++count;
         }
     }
 }
