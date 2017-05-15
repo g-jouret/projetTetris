@@ -269,7 +269,7 @@ void MultiTetris::initGame(std::string name, unsigned width, unsigned height,
                      winByScore, winByLines, winByTime);
     if(mode_ == GameMode::CLIENT){
         QList<QString> args;
-        args.append(QString::fromStdString(getPlayer().getName()));
+        args.append(QString::fromStdString("Joueur-2"));
         args.append(QString::number(getBoard().getWidth()));
         args.append(QString::number(getBoard().getHeight()));
         args.append(QString::number(getWinScore()));

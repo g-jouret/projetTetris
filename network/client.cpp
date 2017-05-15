@@ -136,23 +136,6 @@ void Client::readData(){
     messageSize_ = 0;
 }
 
-/*void Server::reactToAskSettings(){
-
-    QList<QString> args;
-    args.append(QString::fromStdString(game_->getPlayer().getName()));
-    args.append(QString::number(game_->getBoard().getWidth()));
-    args.append(QString::number(game_->getBoard().getHeight()));
-    args.append(QString::number(game_->getWinScore()));
-    args.append(QString::number(game_->getWinLines()));
-    args.append(QString::number(game_->getWinTime()));
-    args.append(QString::number(game_->getLevel()));
-    args.append(QString::number(game_->hasWinByScore()));
-    args.append(QString::number(game_->hasWinByLines()));
-    args.append(QString::number(game_->hasWinByTime()));
-    NetMsg netMsg(NetMsg::ASW_GAME_SET, args);
-    sendData(netMsg);
-}*/
-
 void Client::sendData(const NetMsg &msg){
     QByteArray packet;
     QDataStream out(&packet, QIODevice::WriteOnly);

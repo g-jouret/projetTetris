@@ -134,7 +134,7 @@ private:
      * \param exception l'exception rencontrée
      * \return le message d'erreur
      */
-    static std::string message(std::__cxx11::string exception);
+    static std::string message(std::string exception);
 
     /*!
      * \brief Méthode trouvant l'ordonnée de la \ref Position la plus haute de la brique.
