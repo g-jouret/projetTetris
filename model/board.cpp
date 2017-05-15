@@ -49,10 +49,6 @@ unsigned Board::checkColumn(unsigned y){
     }
     if(state == LineState::FILL){
         u = gridActualisation(u);
-        // TODO : u > 1
-        if(u > 0){
-
-        }
     } else{
         u = 0;
     }

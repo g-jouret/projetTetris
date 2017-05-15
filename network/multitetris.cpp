@@ -299,5 +299,24 @@ void MultiTetris::setGameState(GameState gameState){
 
 void MultiTetris::endGame(int endState){//, int score, int nbLines){
     Tetris::setGameState(static_cast<GameState>(endState));
+}
 
+unsigned MultiTetris::checkLines(unsigned top, unsigned dropsCount){
+    unsigned linesFilled {Tetris::checkLines(top, dropsCount)};
+    if(mode_ == GameMode::CLIENT || mode_ == GameMode::HOST){
+        QList<QString> line;
+        for(unsigned u{0}; u < linesFilled; ++u){
+            line.clear();
+            for(unsigned v{0}; v < getBoard().getWidth(); ++v){
+                Position pos(v, u);
+                if(!getCurrentBric().contains(pos)){
+                    line.append(QString::number(v));
+                }
+            }
+            NetMsg netMsg(NetMsg::MSG_LINE, line);
+            if(mode_ == GameMode::HOST) server_->sendData(netMsg);
+            if(mode_ == GameMode::CLIENT) client_->sendData(netMsg);
+        }
+    }
+    return linesFilled;
 }

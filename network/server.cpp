@@ -110,6 +110,9 @@ void Server::readData(){
     case NetMsg::MSG_CANCEL:
         game_->cancelGame();
         break;
+    case NetMsg::MSG_LINE:
+        game_->addLine(netMsg.getBody());
+        break;
     case NetMsg::MSG_RESUME:
         game_->Tetris::resume();
         break;

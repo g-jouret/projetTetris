@@ -285,6 +285,8 @@ public:
      */
     void checkRotate();
 
+    void addLine(QList<QString> line);
+
     virtual void resume();
     virtual void pause();
 
@@ -311,7 +313,19 @@ protected:
      */
     void generateBric(bool first = false);
 
-    void addLine(std::vector<unsigned> line);
+    /*!
+     * \brief Méthode vérifiant que des lignes ont été remplies.
+     *
+     * Elle est lancée à chaque fois que la \ref Bric courrante
+     * ne peut plus descendre.
+     *
+     * \param dropCount le nombre de cases traversées par un drop
+     */
+    virtual unsigned checkLines(unsigned top, unsigned dropsCount);
+
+    Bric getCurrentBric() const;
+
+    std::vector<Position> getCurrentBricShape() const;
 
 private:
     /*!
@@ -407,16 +421,6 @@ private:
      * \brief Méthode permettant de tourner la \ref Bric courante de 90°.
      */
     void rotateBric();
-
-    /*!
-     * \brief Méthode vérifiant que des lignes ont été remplies.
-     *
-     * Elle est lancée à chaque fois que la \ref Bric courrante
-     * ne peut plus descendre.
-     *
-     * \param dropCount le nombre de cases traversées par un drop
-     */
-    void checkLines(unsigned top, unsigned dropsCount);
 
     /*!
      * \brief Méthode modifiant le temps entre chaque itération en fonction

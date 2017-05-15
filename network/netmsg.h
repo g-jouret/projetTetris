@@ -33,6 +33,7 @@ public:
         MSG_RDY,
         /*! Entête du message indiquant que l'émetteur souhaite annuler la partie. */
         MSG_CANCEL,
+        MSG_LINE,
         MSG_RESUME,
         MSG_PAUSE,
         MSG_END
@@ -48,6 +49,7 @@ public:
     NetMsg(Header msgHeader);
     NetMsg(Header msgHeader, QList<QString> &msgBody);
     Header getHeader() const;
+    QList<QString> getBody() const;
     QString get(int index) const;
     QString to_QString() const;
 };

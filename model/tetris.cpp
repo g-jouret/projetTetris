@@ -248,7 +248,7 @@ void Tetris::moveBric(Direction dir){
         notifyObservers();
 }
 
-void Tetris::checkLines(unsigned top, unsigned dropsCount){
+unsigned Tetris::checkLines(unsigned top, unsigned dropsCount){
     unsigned linesFilled;
     linesFilled = board_.checkColumn(top);
     if(player_.setNbLines(linesFilled))
@@ -261,6 +261,7 @@ void Tetris::checkLines(unsigned top, unsigned dropsCount){
         if(winByLines_)
             setGameState(GameState::LINE);
     }
+    return linesFilled;
 }
 
 void Tetris::setGameState(GameState gameState){
@@ -325,11 +326,21 @@ void Tetris::setTimer(){
         timer_->setInterval(MINIMUM_TIMER);
 }
 
+
+
 void Tetris::boardSwapCase(Position &pos, Color color){
     board_.swapCase(pos, color);
 }
 
-void Tetris::addLine(std::vector<unsigned> line){
+std::vector<Position> Tetris::getCurrentBricShape() const{
+    return currentBric_.shape_;
+}
+
+Bric Tetris::getCurrentBric() const{
+    return currentBric_;
+}
+
+void Tetris::addLine(QList<QString> line){
     std::vector<unsigned> grey{128,128,128};
     Color greyColor(grey);
     for(unsigned u {0}; u < board_.getHeight(); ++u){
@@ -339,9 +350,8 @@ void Tetris::addLine(std::vector<unsigned> line){
               board_.moveLine(u,-1);
         }
     }
-    for(unsigned u {0}; u < line.size(); ++u){
-        Position pos(line.at(u), (board_.getHeight()-1));
+    for(int i {0}; i < line.size(); ++i){
+        Position pos(line.at(i).toUInt(), (board_.getHeight()-1));
         boardSwapCase(pos, greyColor);
     }
-
 }

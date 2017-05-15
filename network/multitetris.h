@@ -53,6 +53,10 @@ public:
 
 protected:
     void setGameState(GameState gameState) override;
+    unsigned checkLines(unsigned top, unsigned dropsCount) override;
+
+//private:
+    //void addLine(std::vector<unsigned> line);
     //QString serverError() const;
 
 /*private:
