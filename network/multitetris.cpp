@@ -305,8 +305,6 @@ void MultiTetris::pause(){
 }
 
 void MultiTetris::setGameState(GameState gameState){
-    Tetris::setGameState(gameState);
-    std::cout << "multi set state" << std::endl;
     if(getGameState() > GameState::ON){
         QList<QString> args;
         args.append(QString::number(getGameState()));
@@ -319,6 +317,7 @@ void MultiTetris::setGameState(GameState gameState){
             client_->sendData(netMsg);
         }
     }
+    Tetris::setGameState(gameState);
 }
 
 void MultiTetris::endGame(int endState, int score, int nbLines){
