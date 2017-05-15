@@ -23,6 +23,7 @@ class Bric{
     friend class Tetris;
 
     constexpr static unsigned MAXIMUM_SIDE {6};
+    /*!< La taille de côté maximum d'une brique. */
 
     std::vector<Position> shape_;
     /*!< La forme de la brique.

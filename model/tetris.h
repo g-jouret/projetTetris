@@ -126,9 +126,19 @@ private:
     /*!< La victoire par temps est-elle activée. */
 
     bool paused_;
+    /*!< Représente le jeu en pause. */
     QElapsedTimer chrono_;
+    /*!< Représente le temps écoulé dans la partie. */
     unsigned savedTime_;
+    /*!< Représente écoulé à un moment précis. */
     QTimer * timer_;
+    /*!< Le timer.
+     *
+     * Il représente le temps entre chaque mouvement automatique de la \ref Bric courante,
+     * il se réduit en fonction du niveau de difficulté.
+     *
+     * Sa valeur est en milliseconde et peut aller de \ref MINIMUM_TIMER à \ref MAXIMUM_TIMER.
+     */
 
 public:
     /*!
@@ -171,7 +181,9 @@ public:
     virtual void initGame(std::string name, unsigned width, unsigned height, unsigned winScore,
                           unsigned winLines, unsigned winTime, unsigned level,
                           bool winByScore, bool winByLines, bool winByTime);
-
+    /*!
+     * \brief Méthode qui lance la partie elle retire la pause et génère la \ref Bric courante
+     */
     virtual void startGame();
 
     /*!
@@ -180,6 +192,10 @@ public:
      */
     unsigned getLevel() const;
 
+    /*!
+     * \brief Accesseur en lecture de la pause.
+     * \return pause vrai si c'est en pause.
+     */
     bool isPaused() const;
 
     /*!
@@ -223,7 +239,10 @@ public:
      * \return l'état du jeu
      */
     GameState getGameState() const;
-
+    /*!
+     * \brief Accesseur en lecture du temps passé.
+     * \return unsigned qui représente le temps passé
+     */
     unsigned getTimeElapsed() const;
 
     /*!
@@ -270,9 +289,18 @@ public:
      */
     void checkRotate();
 
+    /*!
+     * \brief addLine
+     * \param line
+     */
     void addLine(QList<QString> line);
-
+    /*!
+     * \brief Méthode qui permet de relancer le chono et de lance le timer.
+     */
     virtual void resume();
+    /*!
+     * \brief Méthode qui sauve le chono et qui stop le timer.
+     */
     virtual void pause();
 
 protected:
@@ -308,8 +336,16 @@ protected:
      */
     virtual unsigned checkLines(unsigned top, unsigned dropsCount);
 
+    /*!
+     * \brief Accesseur en lecture de la \ref Bric courante.
+     * \return La \ref Bric courante
+     */
     Bric getCurrentBric() const;
 
+    /*!
+     * \brief Accesseur en lecture des y de la \ref Bric courante.
+     * \return tout les y différents de la \ref Bric courante
+     */
     std::vector<unsigned> getCurrentBricY() const;
 
 private:

@@ -16,6 +16,7 @@ enum class GameMode{
     HOST,
     /*! Représente le mode deux joueurs dont vous êtes le client. */
     CLIENT,
+    /*! Réprésente le mode où le serveur cherche un client. */
     UNCONNECTED
 };
 

@@ -163,6 +163,13 @@ private:
      */
     void moveLine(unsigned y, int lineNb);
 
+    /*!
+     * \brief Méthode descendant une ligne d'un nombre de cases donné,
+     * en évitant de toucher à la brique donnée en paramètre.
+     *
+     * \param y le numéro de la ligne à traiter
+     * \param lineNb le nombre de case que la ligne doit descendre
+     */
     void moveLine(unsigned y, int lineNb, Bric bricToAvoid);
 };
 
