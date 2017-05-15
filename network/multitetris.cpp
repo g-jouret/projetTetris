@@ -244,6 +244,8 @@ void MultiTetris::sendReady(){
 
 void MultiTetris::setReady(){
     ready_ = true;
+    int state = getGameState();
+    std::cout << state << std::endl;
     notifyObservers();
 }
 
@@ -261,8 +263,13 @@ void MultiTetris::connectError(){
     setGameState(GameState::NONE);
 }
 
-void MultiTetris::setGameState(GameState gameState){
-    if(gameState == GameState::INITIALIZED && mode_ == GameMode::CLIENT){
+void MultiTetris::initGame(std::string name, unsigned width, unsigned height,
+                           unsigned winScore, unsigned winLines, unsigned winTime,
+                           unsigned level, bool winByScore, bool winByLines,
+                           bool winByTime){
+    Tetris::initGame(name, width, height, winScore, winLines, winTime, level,
+                     winByScore, winByLines, winByTime);
+    if(mode_ == GameMode::CLIENT){
         QList<QString> args;
         args.append(QString::fromStdString(getPlayer().getName()));
         args.append(QString::number(getBoard().getWidth()));
@@ -276,10 +283,34 @@ void MultiTetris::setGameState(GameState gameState){
         args.append(QString::number(hasWinByTime()));
         NetMsg netMsg(NetMsg::MSG_FIRST, args);
         client_->sendData(netMsg);
+    } else if(mode_ != GameMode::HOST) notifyObservers();
+}
+
+/*void MultiTetris::setGameState(GameState gameState){
+    if(gameState == GameState::INITIALIZED){
+        if(mode_ == GameMode::CLIENT){
+        QList<QString> args;
+        args.append(QString::fromStdString(getPlayer().getName()));
+        args.append(QString::number(getBoard().getWidth()));
+        args.append(QString::number(getBoard().getHeight()));
+        args.append(QString::number(getWinScore()));
+        args.append(QString::number(getWinLines()));
+        args.append(QString::number(getWinTime()));
+        args.append(QString::number(getLevel()));
+        args.append(QString::number(hasWinByScore()));
+        args.append(QString::number(hasWinByLines()));
+        args.append(QString::number(hasWinByTime()));
+        NetMsg netMsg(NetMsg::MSG_FIRST, args);
+        client_->sendData(netMsg);
+        std::cout << "envoie settings" << std::endl;
+        }
+        if(mode_ == GameMode::HOST){
+
+        }
     }
     Tetris::setGameState(gameState);
 
-}
+}*/
 
 /*void MultiTetris::sendData(const NetMsg &msg){
     QByteArray packet;

@@ -176,7 +176,7 @@ public:
      * \param winByLines si la victoire aux lignes est activée ou non
      * \param winByTime si la victoire au temps est activée ou non
      */
-    void initGame(std::string name, unsigned width, unsigned height, unsigned winScore,
+    virtual void initGame(std::string name, unsigned width, unsigned height, unsigned winScore,
                    unsigned winLines, unsigned winTime, unsigned level,
                    bool winByScore, bool winByLines, bool winByTime);
 

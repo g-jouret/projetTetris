@@ -137,6 +137,7 @@ void Server::reactToFirstMsg(NetMsg &netMsg){
                                netMsg.get(3).toUInt(), netMsg.get(4).toUInt(), netMsg.get(5).toUInt(),
                                netMsg.get(6).toUInt(), netMsg.get(7).toInt(),
                                netMsg.get(8).toInt(), netMsg.get(9).toInt());
+        std::cout << game_->getGameState() << std::endl;
         //game_->initClient(host, netMsg.get(1).toInt(), false);
         NetMsg netMsg(NetMsg::ACK_FIRST);
         sendData(netMsg);
