@@ -27,7 +27,7 @@ void Client::launch(){
     socket_ = new QTcpSocket(this);
     connect(socket_, SIGNAL(readyRead()), this, SLOT(dataReception()));
     connect(socket_, SIGNAL(connected()), this, SLOT(connection()));
-    //connect(socket_, SIGNAL(destroyed(QObject*)), this, SLOT(disconnection()));
+    connect(socket_, SIGNAL(disconnected()), this, SLOT(disconnection()));
 }
 
 void Client::close(){
@@ -77,8 +77,11 @@ void Client::connection(){
 }
 
 void Client::disconnection(){
-    //connected_ = 0;
-    //notification_ = "déconnexion effectuée";
+    std::cout << "déco du client" << std::endl;
+    if(socket_ != qobject_cast<QTcpSocket *>(sender())) return;
+    std::cout << "test" << std::endl;
+    close();
+    std::cout << "client détruit" << std::endl;
 }
 
 void Client::dataReception(){
@@ -119,6 +122,7 @@ void Client::readData(){
         game_->setReady();
         break;
     case NetMsg::MSG_CANCEL:
+        game_->cancelGame();
         break;
     case NetMsg::MSG_RESUME:
         game_->Tetris::resume();

@@ -41,8 +41,6 @@ MWTetris::MWTetris(QWidget *parent) : QMainWindow(parent), ui(new Ui::MWTetris){
     game_.initServer();
     game_.addObserver(this);
     update(&game_);
-    //connect(ui->btnRetry, &QPushButton::clicked, this, );
-    //ui->btnRetry->hide();
     showHostInfo();
 }
 
@@ -156,10 +154,6 @@ void MWTetris::showHostInfo(){
     }
 }
 
-/*void MWTetris::reconnect(){
-
-}*/
-
 void MWTetris::generateBoard(bool end){
     if(end){
         ui->boardGrid->addWidget(lbEnd_, game_.getBoard().getHeight()/2, 0, 1, game_.getBoard().getWidth(), Qt::AlignCenter);
@@ -225,7 +219,6 @@ void MWTetris::eraseBoard(QGridLayout * board){
 }
 
 void MWTetris::showNextBric(){
-    //if(game_.getGameState() == GameState::ON){
     Bric theBric = game_.getNextBric();
     unsigned side = theBric.getSide();
     ui->boardNext->setSpacing(3);
@@ -248,7 +241,6 @@ void MWTetris::showNextBric(){
             ui->boardNext->addWidget(lb, v, u, 1, 1);
         }
     }
-    //}
 }
 
 void MWTetris::left(){
@@ -270,6 +262,7 @@ void MWTetris::drop(){
 void MWTetris::update(Subject *){
     ui->lbPlayerScore->setText(QString::number(game_.getPlayer().getScore()) + ((game_.hasWinByScore())? "/" + QString::number(game_.getWinScore()) : ""));
     ui->lbPlayerLines->setText(QString::number(game_.getPlayer().getNbLines()) + ((game_.hasWinByLines())? "/" + QString::number(game_.getWinLines()) : ""));
+    int ret;
     switch (game_.getGameState()){
 
     case GameState::NONE:
@@ -285,7 +278,7 @@ void MWTetris::update(Subject *){
         }
         eraseBoard(ui->boardGrid);
         generateBoard();
-        int ret;
+        ret = QDialog::Accepted;
         if(game_.getMode() != GameMode::SOLO){
             game_.removeObserver(this);
             ConfirmLaunchDialog cld(game_, this);
@@ -298,27 +291,23 @@ void MWTetris::update(Subject *){
             }
         }
         game_.addObserver(this);
-        if(game_.getMode() == GameMode::SOLO || ret == QDialog::Accepted) launchGame();
+        if(ret == QDialog::Accepted) launchGame();
         break;
     case GameState::NEW_BRIC:
         eraseBoard(ui->boardNext);
         showNextBric();
         break;
     case GameState::ON:
-        /*if(timer != timer_->interval())
-            timer_->setInterval(game_.getTimer());*/
         if(QString::number(game_.getLevel()) != ui->lbLevelGame->text()){
             ui->lbLevelGame->setText(QString::number(game_.getLevel()));
         }
         refreshBoard();
         if(game_.isPaused()){
-            //time_->stop();
             ui->btnUp->setDisabled(true);
             ui->btnDown->setDisabled(true);
             ui->btnLeft->setDisabled(true);
             ui->btnRight->setDisabled(true);
         } else{
-            //time_->start(1000);
             ui->btnUp->setEnabled(true);
             ui->btnDown->setEnabled(true);
             ui->btnLeft->setEnabled(true);
@@ -364,18 +353,8 @@ void MWTetris::endGame(){
 void MWTetris::setPaused(bool checked){
     if(checked){
         game_.pause();
-        /*time_->stop();
-        ui->btnUp->setDisabled(true);
-        ui->btnDown->setDisabled(true);
-        ui->btnLeft->setDisabled(true);
-        ui->btnRight->setDisabled(true);*/
     } else{
         game_.resume();
-        /*time_->start(1000);
-        ui->btnUp->setEnabled(true);
-        ui->btnDown->setEnabled(true);
-        ui->btnLeft->setEnabled(true);
-        ui->btnRight->setEnabled(true);*/
     }
 }
 

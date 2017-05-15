@@ -66,10 +66,6 @@ void Server::disconnection(){
     std::cout << "déco du client" << std::endl;
     if(socket_ != qobject_cast<QTcpSocket *>(sender())) return;
     std::cout << "test" << std::endl;
-
-    /*socket_->close();
-    socket_ = 0;
-    std::cout << "closed" << std::endl;*/
     close();
     std::cout << "client détruit" << std::endl;
 }
@@ -122,6 +118,7 @@ void Server::readData(){
         game_->setReady();
         break;
     case NetMsg::MSG_CANCEL:
+        game_->cancelGame();
         break;
     case NetMsg::MSG_RESUME:
         game_->Tetris::resume();
@@ -146,8 +143,6 @@ void Server::reactToFirstMsg(NetMsg &netMsg){
                                netMsg.get(3).toUInt(), netMsg.get(4).toUInt(), netMsg.get(5).toUInt(),
                                netMsg.get(6).toUInt(), netMsg.get(7).toInt(),
                                netMsg.get(8).toInt(), netMsg.get(9).toInt());
-        std::cout << game_->getGameState() << std::endl;
-        //game_->initClient(host, netMsg.get(1).toInt(), false);
         NetMsg netMsg(NetMsg::ACK_FIRST);
         sendData(netMsg);
 

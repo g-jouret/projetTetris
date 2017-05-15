@@ -247,6 +247,10 @@ void MultiTetris::setReady(){
     notifyObservers();
 }
 
+void MultiTetris::cancelGame(){
+    setGameState(GameState::NONE);
+}
+
 void MultiTetris::sendCancel(){
     NetMsg netMsg(NetMsg::MSG_CANCEL);
     if(mode_ == GameMode::HOST){

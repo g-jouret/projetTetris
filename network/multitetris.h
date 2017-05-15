@@ -31,6 +31,7 @@ public:
     //bool isListening() const;
     bool isReady() const;
     void setReady();
+    void cancelGame();
     void setMode(GameMode mode);
     void initServer();
     void initClient(QString hostName, unsigned port);
