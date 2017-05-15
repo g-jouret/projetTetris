@@ -244,8 +244,6 @@ void MultiTetris::sendReady(){
 
 void MultiTetris::setReady(){
     ready_ = true;
-    int state = getGameState();
-    std::cout << state << std::endl;
     notifyObservers();
 }
 

@@ -22,6 +22,7 @@ int main(int argc, char *argv[]){
 
 /*
 TODO principal
-- fix bug partie solo reprend si lancement nouvelle partie multi
+- fix pause multi (synchro savedtime lorsque pause
+- couper partie si co perdue
 - vérification aucune connexion + message d'erreur
 */

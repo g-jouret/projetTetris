@@ -42,6 +42,7 @@ void ConfirmLaunchDialog::update(GJ_GW::Subject *){
         game_.removeObserver(this);
         QDialog::done(QDialog::Accepted);
     } else if(game_.getGameState() == GJ_GW::GameState::NONE){
+        game_.removeObserver(this);
         QDialog::done(QDialog::Rejected);
     }
 }
