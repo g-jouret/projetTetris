@@ -319,7 +319,7 @@ void MultiTetris::setGameState(GameState gameState){
     std::cout << "multi setState" << std::endl;
     if(gameState > GameState::ON){
         QList<QString> args;
-        args.append(QString::number(gameState));
+        args.append(QString::number(gameState*2));
         args.append(QString::number(getPlayer().getScore()));
         args.append(QString::number(getPlayer().getNbLines()));
         NetMsg netMsg(NetMsg::MSG_END, args);
