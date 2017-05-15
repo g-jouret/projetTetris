@@ -355,17 +355,15 @@ std::vector<unsigned> Tetris::getCurrentBricY() const{
 void Tetris::addLine(QList<QString> line){
     std::vector<unsigned> grey{128,128,128};
     Color greyColor(grey);
-    timer_->stop();
-    for(unsigned u {0}; u < board_.getHeight(); ++u){
 
+    for(unsigned u {0}; u < board_.getHeight(); ++u){
         LineState state {board_.checkRow(u)};
         if(state != LineState::EMPTY) {
-              board_.moveLine(u,-1);
+              board_.moveLine(u,-1, currentBric_);
         }
     }
     for(int i {0}; i < line.size(); ++i){
         Position pos(line.at(i).toUInt(), (board_.getHeight()-1));
         boardSwapCase(pos, greyColor);
     }
-    timer_->start();
 }

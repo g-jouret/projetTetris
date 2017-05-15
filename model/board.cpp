@@ -1,5 +1,6 @@
 #include "board.h"
 #include "linestate.h"
+#include "bric.h"
 
 using namespace GJ_GW;
 
@@ -91,6 +92,20 @@ void Board::moveLine(unsigned y, int lineNb){
             swapCase(pos, Color());
             pos = Position(pos.getX(),pos.getY()+lineNb);
             swapCase(pos, temp);
+        }
+    }
+}
+
+void Board::moveLine(unsigned y, int lineNb, Bric bricToAvoid){
+    for(unsigned u {0}; u < width_; ++u){
+        if(! checkCase(u, y)){
+            Position pos {Position(u, y)};
+            if(!bricToAvoid.contains(pos)){
+                Color temp {grid_.at(pos)};
+                swapCase(pos, Color());
+                pos = Position(pos.getX(),pos.getY()+lineNb);
+                swapCase(pos, temp);
+            }
         }
     }
 }

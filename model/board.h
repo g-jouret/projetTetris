@@ -10,7 +10,7 @@
  */
 namespace GJ_GW{
 
-
+class Bric;
 enum class LineState;
 
 /*!
@@ -162,6 +162,8 @@ private:
      * \param lineNb le nombre de case que la ligne doit descendre
      */
     void moveLine(unsigned y, int lineNb);
+
+    void moveLine(unsigned y, int lineNb, Bric bricToAvoid);
 };
 
 } // namespace GJ_GW

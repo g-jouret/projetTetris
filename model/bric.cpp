@@ -127,7 +127,7 @@ void Bric::move(Direction dir){
         }
         middle_.setY(-1);
         break;
-    default:     //bas
+    case Direction::DOWN:
         for(unsigned u = 0; u < shape_.size(); ++u){
             shape_.at(u).setY(1);
         }
