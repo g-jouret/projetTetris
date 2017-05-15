@@ -10,6 +10,11 @@ var searchData=
   ['minimum_5fwin_5flines',['MINIMUM_WIN_LINES',['../class_g_j___g_w_1_1_tetris.html#a5f7184a43d297b5265b3591c70cc7040',1,'GJ_GW::Tetris']]],
   ['minimum_5fwin_5fscore',['MINIMUM_WIN_SCORE',['../class_g_j___g_w_1_1_tetris.html#a56e1ab98d84c102be5e0902bcfe1b47c',1,'GJ_GW::Tetris']]],
   ['minimum_5fwin_5ftime',['MINIMUM_WIN_TIME',['../class_g_j___g_w_1_1_tetris.html#af1cfac8ca2c102133187792c9966a891',1,'GJ_GW::Tetris']]],
-  ['mwtetris',['MWTetris',['../class_ui_1_1_m_w_tetris.html',1,'Ui']]],
-  ['mwtetris',['MWTetris',['../class_m_w_tetris.html',1,'MWTetris'],['../class_m_w_tetris.html#af6cefdf4a836239219b51388660eabcb',1,'MWTetris::MWTetris()']]]
+  ['msg_5fcancel',['MSG_CANCEL',['../class_g_j___g_w_1_1_net_msg.html#adc6db223a2dd15deab47eca431470c34a228758330c3271e41e2d59ea19a1eac6',1,'GJ_GW::NetMsg']]],
+  ['msg_5ffirst',['MSG_FIRST',['../class_g_j___g_w_1_1_net_msg.html#adc6db223a2dd15deab47eca431470c34ada4896c092a9e7e6603c183a1442d929',1,'GJ_GW::NetMsg']]],
+  ['msg_5frdy',['MSG_RDY',['../class_g_j___g_w_1_1_net_msg.html#adc6db223a2dd15deab47eca431470c34a49a5effad5a0a65929e4a57d50678650',1,'GJ_GW::NetMsg']]],
+  ['multitetris',['MultiTetris',['../class_g_j___g_w_1_1_multi_tetris.html',1,'GJ_GW']]],
+  ['multitetris',['MultiTetris',['../class_g_j___g_w_1_1_multi_tetris.html#acd86402ae42281ee9317f968801e607e',1,'GJ_GW::MultiTetris']]],
+  ['mwtetris',['MWTetris',['../class_m_w_tetris.html',1,'MWTetris'],['../class_m_w_tetris.html#a0a3f0f0da4380aabec4b08ed7675bfb2',1,'MWTetris::MWTetris()']]],
+  ['mwtetris',['MWTetris',['../class_ui_1_1_m_w_tetris.html',1,'Ui']]]
 ];

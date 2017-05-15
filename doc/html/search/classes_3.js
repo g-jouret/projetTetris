@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['observer',['Observer',['../class_g_j___g_w_1_1_observer.html',1,'GJ_GW']]]
+  ['netmsg',['NetMsg',['../class_g_j___g_w_1_1_net_msg.html',1,'GJ_GW']]]
 ];
