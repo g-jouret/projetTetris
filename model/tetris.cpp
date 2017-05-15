@@ -2,14 +2,15 @@
 #include "direction.h"
 #include <stdexcept>
 #include <QTimer>
+#include <iostream>
 
 using namespace GJ_GW;
 
 Tetris::Tetris(): QObject(), level_ {0}, winScore_{validateWinScore(3000)},
     winLines_{validateWinLines(50)}, winTime_{validateWinTime(300000)},
     gameState_{GameState::NONE}, board_{Board(validateWidth(10),
-    validateHeight(20))}, winByScore_{1}, winByLines_{1}, winByTime_{1}
-{
+    validateHeight(20))}, winByScore_{1}, winByLines_{1}, winByTime_{1},
+    paused_{1}{
     //std::string name {"Joueur"};
     //player_ = Player(name);
     savedTime_ = 0;
@@ -20,6 +21,10 @@ Tetris::Tetris(): QObject(), level_ {0}, winScore_{validateWinScore(3000)},
 unsigned Tetris::getLevel() const{
     unsigned lvl = level_ + (player_.nbLines_/10);
     return (lvl > 6)? 6 : lvl;
+}
+
+bool Tetris::isPaused() const{
+    return paused_;
 }
 
 unsigned Tetris::getWinScore() const{
@@ -51,7 +56,7 @@ GameState Tetris::getGameState() const{
 }
 
 unsigned Tetris::getTimeElapsed() const{
-    return (savedTime_ + chrono_.elapsed())/1000;
+        return (savedTime_ + chrono_.elapsed())/1000;
 }
 
 bool Tetris::hasWinByScore() const{
@@ -96,14 +101,17 @@ void Tetris::initGame(std::string name, unsigned width, unsigned height,
         setTimer();
     }
     savedTime_ = 0;
+    paused_ = 1;
     //setGameState(GameState::INITIALIZED);
     gameState_ = GameState::INITIALIZED;
 }
 
 void Tetris::startGame(){
     if(gameState_ == GameState::INITIALIZED){
-        resume();
+        //paused_ = 0;
+
         generateBric(true);
+        resume();
     }
 }
 
@@ -280,13 +288,19 @@ void Tetris::next(){
 }
 
 void Tetris::pause(){
+    std::cout << "pause" << std::endl;
     savedTime_ += chrono_.elapsed();
     timer_->stop();
+    paused_ = 1;
+    notifyObservers();
 }
 
 void Tetris::resume(){
+    std::cout << "resume" << std::endl;
     chrono_.restart();
     timer_->start();
+    paused_ = 0;
+    notifyObservers();
 }
 
 void Tetris::setLevel(){

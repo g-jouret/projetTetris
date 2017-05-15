@@ -59,7 +59,7 @@ QString MultiTetris::clientError() const{
 void MultiTetris::setMode(GameMode mode){
     mode_ = mode;
     ready_ = (mode_ == GameMode::SOLO);
-    if((mode_ == GameMode::SOLO || mode_ == GameMode::HOST) && client_ != 0){
+    if((mode_ != GameMode::CLIENT) && client_ != 0){
         client_->close();
         delete client_;
         client_ = 0;
@@ -76,7 +76,7 @@ void MultiTetris::initServer(){
         server_ = new Server(this, this);
         try{
             server_->launch();
-            setMode(GameMode::HOST);
+            setMode(GameMode::UNCONNECTED);
         } catch(const QString & e){
             setMode(GameMode::SOLO);
             throw;
@@ -89,11 +89,11 @@ void MultiTetris::initClient(QString hostName, unsigned port){
         client_ = new Client(this, this);
         try{
             client_->connectToServer(hostName, port);
-                //QList<QString> args;
-                /*args.append(getLocalIP());
+            //QList<QString> args;
+            /*args.append(getLocalIP());
                 args.append(QString::number(server_->serverPort()));*/
-// TODO : gestion Serialization pour briques perso
-                /*args.append(QString::fromStdString(getPlayer().getName()));
+            // TODO : gestion Serialization pour briques perso
+            /*args.append(QString::fromStdString(getPlayer().getName()));
                 args.append(QString::number(getBoard().getWidth()));
                 args.append(QString::number(getBoard().getHeight()));
                 args.append(QString::number(getWinScore()));
@@ -106,12 +106,12 @@ void MultiTetris::initClient(QString hostName, unsigned port){
 
                 NetMsg netMsg(NetMsg::MSG_FIRST, args);
                 client_->sendData(netMsg);*/
-                setMode(GameMode::CLIENT);
+            setMode(GameMode::CLIENT);
 
-                /*NetMsg netMsg(NetMsg::ASK_GAME_SET);
+            /*NetMsg netMsg(NetMsg::ASK_GAME_SET);
                 client_->sendData(netMsg);*/
         } catch(const QString & e){
-            setMode(GameMode::HOST);
+            setMode(GameMode::UNCONNECTED);
             throw;
         }
     }
@@ -296,10 +296,8 @@ void MultiTetris::resume(){
 void MultiTetris::pause(){
     Tetris::pause();
     NetMsg netMsg(NetMsg::MSG_PAUSE);
-    if(getGameState() != GameState::NONE){
-        if(mode_ == GameMode::CLIENT) client_->sendData(netMsg);
-        else if(mode_ == GameMode::HOST) server_->sendData(netMsg);
-    }
+    if(mode_ == GameMode::CLIENT) client_->sendData(netMsg);
+    else if(mode_ == GameMode::HOST) server_->sendData(netMsg);
 }
 
 /*void MultiTetris::setGameState(GameState gameState){

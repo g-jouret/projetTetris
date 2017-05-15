@@ -134,6 +134,7 @@ private:
     bool winByTime_;
     /*!< La victoire par temps est-elle activée. */
 
+    bool paused_;
     QElapsedTimer chrono_;
     unsigned savedTime_;
     QTimer * timer_;
@@ -187,6 +188,8 @@ public:
      * \return le niveau de difficulté
      */
     unsigned getLevel() const;
+
+    bool isPaused() const;
 
     /*!
      * \brief Accesseur en lecture du timer.

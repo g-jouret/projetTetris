@@ -36,6 +36,7 @@ MWTetris::MWTetris(QWidget *parent) : QMainWindow(parent), ui(new Ui::MWTetris){
     lbEnd_ = new QLabel(this);
     lbEnd_->hide();
     time_ = new QTimer(this);
+    time_->setInterval(1000);
     connect(time_, SIGNAL(timeout()), this, SLOT(showTime()));
     game_.initServer();
     game_.addObserver(this);
@@ -51,8 +52,10 @@ MWTetris::~MWTetris() noexcept{
 }
 
 void MWTetris::createGame(){
-    game_.initServer();
-    showHostInfo();
+    if(game_.getMode() == GameMode::SOLO){
+        game_.initServer();
+        showHostInfo();
+    }
     setPaused(true);
     //ui->msgConnect->hide();
     std::vector<unsigned> args {game_.MINIMUM_WIDTH, game_.MAXIMUM_WIDTH, game_.getBoard().getWidth(),
@@ -118,14 +121,14 @@ void MWTetris::createGame(){
 void MWTetris::launchGame(){
     game_.startGame();
     ui->btnStart->hide();
-    setPaused(false);
+    time_->start();
     ui->btnPause->setEnabled(true);
 }
 
 void MWTetris::showHostInfo(){
     QString ip;
     switch(game_.getMode()){
-    case GameMode::HOST:
+    case GameMode::UNCONNECTED:
         ip = game_.getLocalIP();
         ui->lbHostName->setText(game_.getHostName(ip));
         ui->lbHostName->show();
@@ -135,6 +138,7 @@ void MWTetris::showHostInfo(){
         ui->lbPort->show();
         ui->msgConnect->show();
         break;
+    case GameMode::HOST:
     case GameMode::CLIENT:
         ui->msgConnect->show();
         ui->lbHost->hide();
@@ -302,8 +306,19 @@ void MWTetris::update(Subject *){
             ui->lbLevelGame->setText(QString::number(game_.getLevel()));
         }
         refreshBoard();
-        //eraseBoard(ui->boardNext);
-        //showNextBric();
+        if(game_.isPaused()){
+            //time_->stop();
+            ui->btnUp->setDisabled(true);
+            ui->btnDown->setDisabled(true);
+            ui->btnLeft->setDisabled(true);
+            ui->btnRight->setDisabled(true);
+        } else{
+            //time_->start(1000);
+            ui->btnUp->setEnabled(true);
+            ui->btnDown->setEnabled(true);
+            ui->btnLeft->setEnabled(true);
+            ui->btnRight->setEnabled(true);
+        }
         break;
     case GameState::LOOSE:
         lbEnd_->setText("Game over...");
@@ -328,6 +343,7 @@ void MWTetris::update(Subject *){
 
 void MWTetris::endGame(){
     setPaused(true);
+    time_->stop();
     ui->btnPause->setDisabled(true);
     lbEnd_->setStyleSheet("QLabel{font-weight: bold; font-size: 20px;"
                           "background-color: qconicalgradient(cx:0, cy:0, angle:135, stop:0 rgba(255, 176, 0, 69),"
@@ -344,18 +360,18 @@ void MWTetris::endGame(){
 void MWTetris::setPaused(bool checked){
     if(checked){
         game_.pause();
-        time_->stop();
+        /*time_->stop();
         ui->btnUp->setDisabled(true);
         ui->btnDown->setDisabled(true);
         ui->btnLeft->setDisabled(true);
-        ui->btnRight->setDisabled(true);
+        ui->btnRight->setDisabled(true);*/
     } else{
         game_.resume();
-        time_->start(1000);
+        /*time_->start(1000);
         ui->btnUp->setEnabled(true);
         ui->btnDown->setEnabled(true);
         ui->btnLeft->setEnabled(true);
-        ui->btnRight->setEnabled(true);
+        ui->btnRight->setEnabled(true);*/
     }
 }
 

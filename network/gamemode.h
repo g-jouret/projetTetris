@@ -10,7 +10,8 @@ enum class GameMode{
     /*! Représente le mode deux joueurs dont vous êtes l'hôte. */
     HOST,
     /*! Représente le mode deux joueurs dont vous êtes le client. */
-    CLIENT
+    CLIENT,
+    UNCONNECTED
 };
 
 #endif // GAMEMODE_H
