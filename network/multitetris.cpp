@@ -181,7 +181,7 @@ unsigned MultiTetris::checkLines(unsigned top, unsigned dropsCount){
     if((mode_ == GameMode::CLIENT || mode_ == GameMode::HOST) && linesFilled > 1){
         QList<QString> line;
         std::vector<unsigned> bricY = getCurrentBricY();
-        for(unsigned u{0}; u < linesFilled; ++u){
+        for(unsigned u{0}; u < linesFilled-1; ++u){
             for(unsigned v{0}; v < getBoard().getWidth(); ++v){
                 Position pos(v, bricY.at(u));
                 if(!getCurrentBric().contains(pos)){
