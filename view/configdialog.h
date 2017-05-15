@@ -2,6 +2,7 @@
 #define CONFIGDIALOG_H
 
 #include "../model/bric.h"
+#include "../network/gamemode.h"
 #include <QDialog>
 
 /*!
@@ -18,6 +19,7 @@ class ConfigDialog : public QDialog
 {
     Q_OBJECT
     Ui::ConfigDialog *ui;
+    GJ_GW::GameMode mode_;
     std::vector<GJ_GW::Bric> brics_;
 
 public:
@@ -28,7 +30,7 @@ public:
      * \param args les différents arguments numériques
      * \param parent fenêtre ayant lancé \ref ConfigDialog
      */
-    explicit ConfigDialog(std::vector<unsigned> args, bool netOk, QWidget *parent = 0);
+    explicit ConfigDialog(std::vector<unsigned> args, GJ_GW::GameMode mode, QWidget *parent = 0);
 
     ~ConfigDialog();
 
@@ -168,7 +170,7 @@ private slots:
      *
      * \param checked l'état de la QCheckBox
      */
-    void hideDuo(bool checked);
+    void showDuo(bool checked);
 
     /*!
      * \brief Méthode désactivant l'édition du score de victoire si cette condition de victoire est désactivée.

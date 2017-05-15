@@ -5,23 +5,31 @@
 
 using namespace GJ_GW;
 
-ConfigDialog::ConfigDialog(std::vector<unsigned> args, bool netOk, QWidget *parent):
+ConfigDialog::ConfigDialog(std::vector<unsigned> args, GameMode mode, QWidget *parent):
     QDialog(parent), ui(new Ui::ConfigDialog){
     ui->setupUi(this);
 
+    mode_ = mode;
     connect(ui->bricSetter, &QPushButton::clicked, this, &ConfigDialog::setBrics);
     connect(ui->defaultBrics, &QCheckBox::toggled, this, &ConfigDialog::hideSetBrics);
     connect(ui->hasWinByScore, &QCheckBox::toggled, this, &ConfigDialog::toggleScore);
     connect(ui->hasWinByLines, &QCheckBox::toggled, this, &ConfigDialog::toggleLines);
     connect(ui->HasWinByTime, &QCheckBox::toggled, this, &ConfigDialog::toggleTime);
-
-    if(netOk){
-        connect(ui->playDuo, &QPushButton::toggled, this, &ConfigDialog::hideDuo);
-    } else{
-        ui->playDuo->setDisabled(true);
-    }
     hideSetBrics(true);
-    hideDuo(false);
+    if(mode_ == GameMode::CLIENT){
+        ui->playDuo->setChecked(true);
+        ui->playDuo->setText("rejouer avec votre adversaire?");
+        showDuo(false);
+    } else{
+        if(mode_ == GameMode::UNCONNECTED){
+            connect(ui->playDuo, &QPushButton::toggled, this, &ConfigDialog::showDuo);
+        } else{
+            ui->playDuo->setDisabled(true);
+        }
+        showDuo(false);
+    }
+
+
 
     ui->sbWidth->setMinimum(args.at(0));
     ui->sbWidth->setMaximum(args.at(1));
@@ -147,12 +155,14 @@ void ConfigDialog::hideSetBrics(bool checked){
     }
 }
 
-void ConfigDialog::hideDuo(bool checked){
+void ConfigDialog::showDuo(bool checked){
     if(checked){
+        if(mode_ != GameMode::CLIENT){
         ui->lbHost->show();
         ui->lbPort->show();
         ui->leHost->show();
         ui->sbPort->show();
+        }
     } else{
         ui->lbHost->hide();
         ui->lbPort->hide();

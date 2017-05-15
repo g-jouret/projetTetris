@@ -62,7 +62,7 @@ void MWTetris::createGame(){
                 game_.MINIMUM_WIN_LINES, game_.MAXIMUM_WIN_LINES, game_.getWinLines(),
                 game_.MINIMUM_WIN_TIME, game_.MAXIMUM_WIN_TIME, game_.getWinTime(),
                 0, 5};      //minimum and maximum level
-    ConfigDialog cd (args, (game_.getMode() != GameMode::SOLO || game_.getMode() != GameMode::HOST), this);
+    ConfigDialog cd (args, game_.getMode(), this);
     cd.setWindowTitle("Configuration de la partie");
 
     int ret = cd.exec();
