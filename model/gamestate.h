@@ -25,7 +25,13 @@ enum GameState{
     /*! Représente une victoire grâce au nombre de ligne faite. */
     LINE,
     /*! Représente une victoire grâce au temps rester dans la partie sans perdre */
-    TIME
+    TIME,
+    /*! Représente la perte de la partie par votre adversaire. */
+    OTHER_LOOSE = LOOSE*2,
+    /*! Représente une victoire par le score de votre adversaire. */
+    OTHER_SCORE = SCORE*2,
+    /*! Représente une victoire grâce au nombre de ligne faite par votre adversaire. */
+    OTHER_LINE = LINE*2
 };
 
 } // namespace GJ_GW

@@ -264,7 +264,6 @@ void MWTetris::update(Subject *){
     ui->lbPlayerLines->setText(QString::number(game_.getPlayer().getNbLines()) + ((game_.hasWinByLines())? "/" + QString::number(game_.getWinLines()) : ""));
     int ret;
     switch (game_.getGameState()){
-
     case GameState::NONE:
         if(QString::fromStdString(game_.getPlayer().getName()) != ui->lbPlayerName->text()){
             ui->lbPlayerName->setText(QString::fromStdString(game_.getPlayer().getName()));
@@ -330,6 +329,18 @@ void MWTetris::update(Subject *){
     case GameState::TIME:
         lbEnd_->setText("Vous avez survécu!\n"
                         "Vous avez joué assez longtemps au Tetris");
+        endGame();
+        break;
+    case GameState::OTHER_LOOSE:
+        lbEnd_->setText("Votre adversaire a perdu");
+        endGame();
+        break;
+    case GameState::OTHER_SCORE:
+        lbEnd_->setText("Votre adversaire gagne au score");
+        endGame();
+        break;
+    case GameState::OTHER_LINE:
+        lbEnd_->setText("Votre adversaire a fait assez de ligne pour gagner");
         endGame();
         break;
     }
