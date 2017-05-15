@@ -49,7 +49,7 @@ public:
                   unsigned winLines, unsigned winTime, unsigned level, bool winByScore,
                   bool winByLines, bool winByTime) override;
     void startGame() override;
-    void endGame(int endState, int score, int nbLines);
+    void endGame(int endState);
 
 protected:
     void setGameState(GameState gameState) override;

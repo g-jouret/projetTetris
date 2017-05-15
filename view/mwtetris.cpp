@@ -105,7 +105,6 @@ void MWTetris::createGame(){
             showHostInfo();
             QString name(QString::fromStdString(game_.getPlayer().getName()));
             if(game_.getMode() == GameMode::CLIENT) name.append("-1");
-            else if(game_.getMode() == GameMode::HOST) name.append("-2");
             game_.initGame(name.toStdString(), cd.getWidth(), cd.getHeight(), cd.getWinScore(), cd.getWinLines(), cd.getWinTime(),
                            cd.getLevel(), cd.hasWinByScore(), cd.hasWinByLines(), cd.hasWinByTime());
             update(&game_);
@@ -159,24 +158,24 @@ void MWTetris::generateBoard(bool end){
         ui->boardGrid->addWidget(lbEnd_, game_.getBoard().getHeight()/2, 0, 1, game_.getBoard().getWidth(), Qt::AlignCenter);
         lbEnd_->show();
     } else{
-    std::map<Position, Color> theGrid {game_.getBoard().getGrid()};
-    unsigned width {((30+3)*game_.getBoard().getWidth())-3+40};     //(30px + 3px de spacing) * nombre de cases en largeur - 1 spacing + 2*20px de margin
-    unsigned height {((30+3)*game_.getBoard().getHeight())-3+40};   //(30px + 3px de spacing) * nombre de cases en hauteur - 1 spacing + 2*20px de margin
-    ui->boardGrid->setSpacing(3);
-    ui->boardGrid->setGeometry(QRect(0,0,width,height));
-    for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
-        QLabel *lb = new QLabel(this);
-        QColor color(it->second.getCode().at(0),
-                     it->second.getCode().at(1),
-                     it->second.getCode().at(2));
-        QColor border((it->second.getCode().at(0) <= 30)? 0 : it->second.getCode().at(0)-30,
-                      it->second.getCode().at(1),
-                      it->second.getCode().at(2));
-        setStyleSheet(lb, color.name(), border.name());
-        lb->setText(color.name());
-        lb->setFixedSize(30,30);
-        ui->boardGrid->addWidget(lb, ((it->first.getY() < game_.getBoard().getHeight()/2)? it->first.getY() : it->first.getY()+1), it->first.getX(), 1, 1);
-    }
+        std::map<Position, Color> theGrid {game_.getBoard().getGrid()};
+        unsigned width {((30+3)*game_.getBoard().getWidth())-3+40};     //(30px + 3px de spacing) * nombre de cases en largeur - 1 spacing + 2*20px de margin
+        unsigned height {((30+3)*game_.getBoard().getHeight())-3+40};   //(30px + 3px de spacing) * nombre de cases en hauteur - 1 spacing + 2*20px de margin
+        ui->boardGrid->setSpacing(3);
+        ui->boardGrid->setGeometry(QRect(0,0,width,height));
+        for(auto it = theGrid.begin(); it != theGrid.end(); ++it){
+            QLabel *lb = new QLabel(this);
+            QColor color(it->second.getCode().at(0),
+                         it->second.getCode().at(1),
+                         it->second.getCode().at(2));
+            QColor border((it->second.getCode().at(0) <= 30)? 0 : it->second.getCode().at(0)-30,
+                          it->second.getCode().at(1),
+                          it->second.getCode().at(2));
+            setStyleSheet(lb, color.name(), border.name());
+            lb->setText(color.name());
+            lb->setFixedSize(30,30);
+            ui->boardGrid->addWidget(lb, ((it->first.getY() < game_.getBoard().getHeight()/2)? it->first.getY() : it->first.getY()+1), it->first.getX(), 1, 1);
+        }
     }
 }
 
@@ -349,6 +348,10 @@ void MWTetris::update(Subject *){
 void MWTetris::endGame(){
     time_->stop();
     ui->btnPause->setDisabled(true);
+    ui->btnUp->setDisabled(true);
+    ui->btnDown->setDisabled(true);
+    ui->btnLeft->setDisabled(true);
+    ui->btnRight->setDisabled(true);
     lbEnd_->setStyleSheet("QLabel{font-weight: bold; font-size: 20px;"
                           "background-color: qconicalgradient(cx:0, cy:0, angle:135, stop:0 rgba(255, 176, 0, 69),"
                           "stop:0.375 rgba(255, 223, 0, 69), stop:0.423533 rgba(255, 223, 0, 145),"

@@ -103,13 +103,6 @@ void Server::readData(){
     switch(netMsg.getHeader()){
     case NetMsg::MSG_FIRST:
         reactToFirstMsg(netMsg);
-        //extern void MultiTetris::
-
-        //QFuture<void> future = QtConcurrent::run(this->MultiTetris::reactToFirstMsg, netMsg);
-        //break;
-    //case NetMsg::ASW_GAME_SET:
-
-        //reactToAskSettings();
 
         break;
     case NetMsg::MSG_RDY:
@@ -125,7 +118,7 @@ void Server::readData(){
         game_->Tetris::pause();
         break;
     case NetMsg::MSG_END:
-        game_->endGame(netMsg.get(0).toInt(), netMsg.get(1).toInt(), netMsg.get(2).toInt());
+        game_->endGame(netMsg.get(0).toInt());//, netMsg.get(1).toInt(), netMsg.get(2).toInt());
         break;
     default:
         // TODO : gestion des erreurs de réception de données
@@ -154,20 +147,3 @@ void Server::reactToFirstMsg(NetMsg &netMsg){
         // TODO : gestion des erreurs de réception de données
     }
 }
-
-/*void Server::reactToAskSettings(){
-    // TODO : gestion Serialization pour briques perso
-    QList<QString> args;
-    args.append(QString::fromStdString(game_->getPlayer().getName()));
-    args.append(QString::number(game_->getBoard().getWidth()));
-    args.append(QString::number(game_->getBoard().getHeight()));
-    args.append(QString::number(game_->getWinScore()));
-    args.append(QString::number(game_->getWinLines()));
-    args.append(QString::number(game_->getWinTime()));
-    args.append(QString::number(game_->getLevel()));
-    args.append(QString::number(game_->hasWinByScore()));
-    args.append(QString::number(game_->hasWinByLines()));
-    args.append(QString::number(game_->hasWinByTime()));
-    NetMsg netMsg(NetMsg::ASW_GAME_SET, args);
-    sendData(netMsg);
-}*/

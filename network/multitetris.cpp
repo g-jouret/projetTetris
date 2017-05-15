@@ -320,8 +320,8 @@ void MultiTetris::setGameState(GameState gameState){
     if(gameState > GameState::ON){
         QList<QString> args;
         args.append(QString::number(gameState*2));
-        args.append(QString::number(getPlayer().getScore()));
-        args.append(QString::number(getPlayer().getNbLines()));
+        /*args.append(QString::number(getPlayer().getScore()));
+        args.append(QString::number(getPlayer().getNbLines()));*/
         NetMsg netMsg(NetMsg::MSG_END, args);
         if(mode_ == GameMode::HOST){
             server_->sendData(netMsg);
@@ -332,7 +332,7 @@ void MultiTetris::setGameState(GameState gameState){
     Tetris::setGameState(gameState);
 }
 
-void MultiTetris::endGame(int endState, int score, int nbLines){
+void MultiTetris::endGame(int endState){//, int score, int nbLines){
     Tetris::setGameState(static_cast<GameState>(endState));
 
 }
