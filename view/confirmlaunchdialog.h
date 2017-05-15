@@ -2,7 +2,6 @@
 #define CONFIRMLAUNCHDIALOG_H
 
 #include "../observer/observer.h"
-//#include "../network/multitetris.h"
 #include <QDialog>
 
 namespace Ui {

@@ -9,14 +9,8 @@ using namespace GJ_GW;
 
 Client::Client(MultiTetris *game, QObject *parent) : QObject(parent), game_{game}{
     socket_ = 0;
-    //notification_ = "";
     messageSize_ = 0;
-    //connected_ = 0;
 }
-
-/*QString Client::getNotif() const{
-    return notification_;
-}*/
 
 bool Client::isConnected() const{
     return socket_->state() == QAbstractSocket::ConnectedState;
@@ -36,14 +30,8 @@ void Client::close(){
         delete socket_;
         socket_ = 0;
     }
-    //notification_ = "";
     messageSize_ = 0;
-    //connected_ = 0;
 }
-
-/*QString Client::errorString() const{
-    return socket_->errorString();
-}*/
 
 void Client::connectToServer(QString hostName, unsigned port){
     close();
@@ -52,7 +40,6 @@ void Client::connectToServer(QString hostName, unsigned port){
     timer.setSingleShot(true);
     QEventLoop loop;
     connect(socket_, SIGNAL(connected()), &loop, SLOT(quit()));
-    //connect(socket_, SIGNAL(destroyed(QObject*)), &loop, SLOT(quit()));
     connect(socket_, SIGNAL(error(QAbstractSocket::SocketError)), &loop, SLOT(quit()));
     connect(&timer, SIGNAL(timeout()), &loop, SLOT(quit()));
     socket_->connectToHost(hostName, port);
@@ -68,20 +55,16 @@ void Client::connectToServer(QString hostName, unsigned port){
 }
 
 void Client::connection(){
-    //connected_ = 1;
-    //notification_ = "connexion effectuée";
+
 }
 
 void Client::disconnection(){
-    std::cout << "déco du client" << std::endl;
     if(socket_ != qobject_cast<QTcpSocket *>(sender())) return;
     close();
 }
 
 void Client::dataReception(){
     if(socket_ == qobject_cast<QTcpSocket *>(sender())) readData();
-        /*QFuture<void> future = QtConcurrent::run(this, &Client::readData);
-        future.waitForFinished();*/
 }
 
 void Client::readData(){
@@ -93,25 +76,14 @@ void Client::readData(){
     if(socket_->bytesAvailable() < messageSize_) return;
     QString msg;
     in >> msg;
-
-    std::cout << "client : " << msg.toStdString() << std::endl;
-
     NetMsg netMsg(msg);
     switch(netMsg.getHeader()){
     case NetMsg::ACK_FIRST:
 
         break;
     case NetMsg::ERR_FIRST:
-        //notification_ = "Impossible de se connecter à l'hôte";
         game_->connectError();
         break;
-    //case NetMsg::ASK_GAME_SET:
-
-        /*game_->initGame(netMsg.get(0).toStdString(), netMsg.get(1).toUInt(), netMsg.get(2).toUInt(),
-                       netMsg.get(3).toUInt(), netMsg.get(4).toUInt(), netMsg.get(5).toUInt(),
-                       netMsg.get(6).toUInt(), netMsg.get(7).toInt(),
-                       netMsg.get(8).toInt(), netMsg.get(9).toInt());*/
-        //break;
     case NetMsg::MSG_RDY:
         game_->setReady();
         break;
@@ -131,7 +103,6 @@ void Client::readData(){
         game_->endGame(netMsg.get(0).toInt());
         break;
     default:
-        // TODO : gestion des erreurs de réception de données
         break;
     }
     messageSize_ = 0;

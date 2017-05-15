@@ -10,11 +10,8 @@ using namespace GJ_GW;
 
 Tetris::Tetris(): QObject(), level_ {0}, winScore_{validateWinScore(3000)},
     winLines_{validateWinLines(50)}, winTime_{validateWinTime(300000)},
-    gameState_{GameState::NONE}, board_{Board(validateWidth(10),
-                                              validateHeight(20))}, winByScore_{1}, winByLines_{1}, winByTime_{1},
-    paused_{1}{
-    //std::string name {"Joueur"};
-    //player_ = Player(name);
+    gameState_{GameState::NONE}, board_{Board(validateWidth(10), validateHeight(20))},
+    winByScore_{1}, winByLines_{1}, winByTime_{1}, paused_{1}{
     savedTime_ = 0;
     timer_ = new QTimer(this);
     connect(timer_, SIGNAL(timeout()), this, SLOT(next()));
@@ -105,7 +102,6 @@ void Tetris::initGame(std::string name, unsigned width, unsigned height,
     }
     savedTime_ = 0;
     paused_ = 1;
-    //setGameState(GameState::INITIALIZED);
     gameState_ = GameState::INITIALIZED;
 }
 
@@ -175,8 +171,6 @@ void Tetris::generateBric(bool first){
         for(Position p : currentBric_.shape_){
             boardSwapCase(p, currentBric_.color_);
         }
-        /*if(first)
-            setGameState(GameState::ON);*/
         setGameState(GameState::NEW_BRIC);
     } else{
         setGameState(GameState::LOOSE);
@@ -250,11 +244,6 @@ void Tetris::moveBric(Direction dir){
 }
 
 unsigned Tetris::checkLines(unsigned top, unsigned dropsCount){
-    for(Position p : currentBric_.shape_){
-        std::cout << p.getX()
-                  << p.getY()
-                  << std::endl;
-    }
     unsigned linesFilled;
     linesFilled = board_.checkColumn(top);
     if(player_.setNbLines(linesFilled))
@@ -272,8 +261,6 @@ unsigned Tetris::checkLines(unsigned top, unsigned dropsCount){
 
 void Tetris::setGameState(GameState gameState){
     gameState_ = gameState;
-    int state {gameState_};
-    std::cout << "gamestate = " << state << std::endl;
     if(gameState_ > GameState::ON){
         pause();
     } else{
@@ -364,8 +351,8 @@ void Tetris::addLine(QList<QString> line){
         }
         unsigned count = 0;
         while(count < board_.getWidth() && line.at(count).toInt() != -1){
-                Position pos(line.at(count).toInt(), (board_.getHeight()-1));
-                boardSwapCase(pos, greyColor);
+            Position pos(line.at(count).toInt(), (board_.getHeight()-1));
+            boardSwapCase(pos, greyColor);
             ++count;
         }
     }

@@ -14,12 +14,9 @@ class NetMsg;
 
 class MultiTetris : public Tetris{
     Q_OBJECT
-    /*QTcpServer *server_;
-    QTcpSocket *socket_;*/
     Server *server_;
     Client *client_;
     GameMode mode_;
-    //quint16 messageSize_;
     bool ready_;
 
 public:
@@ -28,7 +25,6 @@ public:
     QString getLocalIP() const;
     unsigned getPort() const;
     GameMode getMode() const;
-    //bool isListening() const;
     bool isReady() const;
     void setReady();
     void cancelGame();
@@ -36,9 +32,6 @@ public:
     void initServer();
     void initClient(QString hostName, unsigned port);
     void connectError();
-    //QString getNotif() const;
-    //bool isClientConnected() const;
-    //QString clientError() const;
 
     void sendReady();
     void sendCancel();
@@ -54,23 +47,6 @@ public:
 protected:
     void setGameState(GameState gameState) override;
     unsigned checkLines(unsigned top, unsigned dropsCount) override;
-
-//private:
-    //void addLine(std::vector<unsigned> line);
-    //QString serverError() const;
-
-/*private:
-    void sendData(const NetMsg &msg);
-    void reactToFirstMsg(NetMsg &netMsg);
-    void reactToAskSettings();*/
-
-//signals:
-    //void newClient();
-/*
-private slots:
-    void connection();
-    void disconnection();
-    void dataReception();*/
 };
 
 } // namespace GJ_GW

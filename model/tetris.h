@@ -74,15 +74,6 @@ private:
     unsigned level_;
     /*!< Niveau de difficulté au démarrage de la partie. */
 
-    //unsigned timer_;
-    /*!< Le timer.
-     *
-     * Il représente le temps entre chaque mouvement automatique de la \ref Bric courante,
-     * il se réduit en fonction du niveau de difficulté.
-     *
-     * Sa valeur est en milliseconde et peut aller de \ref MINIMUM_TIMER à \ref MAXIMUM_TIMER.
-     */
-
     unsigned winScore_;
     /*!< Le score de victoire.
      *
@@ -178,8 +169,8 @@ public:
      * \param winByTime si la victoire au temps est activée ou non
      */
     virtual void initGame(std::string name, unsigned width, unsigned height, unsigned winScore,
-                   unsigned winLines, unsigned winTime, unsigned level,
-                   bool winByScore, bool winByLines, bool winByTime);
+                          unsigned winLines, unsigned winTime, unsigned level,
+                          bool winByScore, bool winByLines, bool winByTime);
 
     virtual void startGame();
 
@@ -190,12 +181,6 @@ public:
     unsigned getLevel() const;
 
     bool isPaused() const;
-
-    /*!
-     * \brief Accesseur en lecture du timer.
-     * \return le timer
-     */
-    //unsigned getTimer() const;
 
     /*!
      * \brief Accesseur en lecture du score de victoire.

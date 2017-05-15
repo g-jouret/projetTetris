@@ -18,12 +18,10 @@ class Server : public QObject{
     MultiTetris *game_;
     QTcpServer *server_;
     QTcpSocket *socket_;
-    //QString notification_;
     quint16 messageSize_;
 
 public:
     explicit Server(MultiTetris *game, QObject *parent = 0);
-    //QString getNotif() const;
     unsigned serverPort() const;
     bool isListening() const;
     void launch();

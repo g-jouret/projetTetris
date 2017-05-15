@@ -7,8 +7,6 @@ using namespace GJ_GW;
 int main(int argc, char *argv[]){
     try{
         QApplication a (argc, argv);
-        //std::string name {"Joueur"};
-        //MultiTetris game(name);
         MWTetris w;
         w.show();
         return a.exec();
@@ -19,10 +17,3 @@ int main(int argc, char *argv[]){
         std::exit(1);
     }
 }
-
-/*
-TODO principal
-- fix pause multi (synchro savedtime lorsque pause
-- couper partie si co perdue
-- vérification aucune connexion + message d'erreur
-*/

@@ -55,7 +55,6 @@ void MWTetris::createGame(){
         showHostInfo();
     }
     game_.pause();
-    //ui->msgConnect->hide();
     std::vector<unsigned> args {game_.MINIMUM_WIDTH, game_.MAXIMUM_WIDTH, game_.getBoard().getWidth(),
                 game_.MINIMUM_HEIGHT, game_.MAXIMUM_HEIGHT, game_.getBoard().getHeight(),
                 game_.MINIMUM_WIN_SCORE, game_.MAXIMUM_WIN_SCORE, game_.getWinScore(),
@@ -70,9 +69,6 @@ void MWTetris::createGame(){
         if(game_.getGameState() == GameState::ON || game_.getGameState() == GameState::NEW_BRIC)
             game_.resume();
     } else{
-        /*lbEnd_ = nullptr;
-        lbEnd_ = new QLabel(this);
-        lbEnd_->hide();*/
         try{
             if(cd.isResettingBag()){
                 game_.resetBag();

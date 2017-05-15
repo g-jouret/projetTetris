@@ -11,7 +11,6 @@ Server::Server(MultiTetris *game, QObject *parent) : QObject(parent), game_{game
     server_ = 0;
     socket_ = 0;
     messageSize_ = 0;
-    //notification_ = "";
 }
 
 unsigned Server::serverPort() const{
@@ -51,19 +50,16 @@ void Server::close(){
         delete server_;
         server_ = 0;
     }
-    //notification_ = "";
     messageSize_ = 0;
 }
 
 void Server::connection(){
-    std::cout << "new connection received" << std::endl;
     socket_ = server_->nextPendingConnection();
     connect(socket_, SIGNAL(readyRead()), this, SLOT(dataReception()));
     connect(socket_, SIGNAL(disconnected()), this, SLOT(disconnection()));
 }
 
 void Server::disconnection(){
-    std::cout << "déco du client" << std::endl;
     if(socket_ != qobject_cast<QTcpSocket *>(sender())) return;
     close();
 }
@@ -81,10 +77,7 @@ void Server::sendData(const NetMsg &msg){
 }
 
 void Server::dataReception(){
-
     if(socket_ == qobject_cast<QTcpSocket *>(sender())) readData();
-        /*QFuture<void> future = QtConcurrent::run(this, &Server::readData);
-        future.waitForFinished();*/
 }
 
 void Server::readData(){
@@ -96,9 +89,6 @@ void Server::readData(){
     if(socket_->bytesAvailable() < messageSize_) return;
     QString msg;
     in >> msg;
-
-    std::cout << "server : " << msg.toStdString() << std::endl;
-
     NetMsg netMsg(msg);
     switch(netMsg.getHeader()){
     case NetMsg::MSG_FIRST:
@@ -120,10 +110,9 @@ void Server::readData(){
         game_->Tetris::pause();
         break;
     case NetMsg::MSG_END:
-        game_->endGame(netMsg.get(0).toInt());//, netMsg.get(1).toInt(), netMsg.get(2).toInt());
+        game_->endGame(netMsg.get(0).toInt());
         break;
     default:
-        // TODO : gestion des erreurs de réception de données
         break;
     }
     messageSize_ = 0;
@@ -131,21 +120,15 @@ void Server::readData(){
 
 void Server::reactToFirstMsg(NetMsg &netMsg){
     try{
-        // TODO : gestion erreur bad_init | invalid_argument de Tetris
         game_->initGame(netMsg.get(0).toStdString(), netMsg.get(1).toUInt(), netMsg.get(2).toUInt(),
-                               netMsg.get(3).toUInt(), netMsg.get(4).toUInt(), netMsg.get(5).toUInt(),
-                               netMsg.get(6).toUInt(), netMsg.get(7).toInt(),
-                               netMsg.get(8).toInt(), netMsg.get(9).toInt());
+                        netMsg.get(3).toUInt(), netMsg.get(4).toUInt(), netMsg.get(5).toUInt(),
+                        netMsg.get(6).toUInt(), netMsg.get(7).toInt(),
+                        netMsg.get(8).toInt(), netMsg.get(9).toInt());
         NetMsg netMsg(NetMsg::ACK_FIRST);
         sendData(netMsg);
-
-        /*NetMsg msg(NetMsg::ASK_GAME_SET);
-        client_->sendData(msg);*/
         game_->setMode(GameMode::HOST);
     } catch(QString & e){
         NetMsg err(NetMsg::ERR_FIRST);
         sendData(err);
-        std::cout << e.toStdString() << std::endl;
-        // TODO : gestion des erreurs de réception de données
     }
 }

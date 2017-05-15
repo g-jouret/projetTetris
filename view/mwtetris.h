@@ -24,9 +24,6 @@ class MWTetris : public QMainWindow, public GJ_GW::Observer{
     Ui::MWTetris *ui;
     GJ_GW::MultiTetris game_;
     QLabel * lbEnd_;
-    /*QElapsedTimer chrono_;
-    unsigned savedTime_;
-    QTimer * timer_;*/
     QTimer * time_;
 
 public:
@@ -82,16 +79,6 @@ private:
      */
     void endGame();
 
-    /*!
-     * \brief Méthode permettant de mettre la partie en pause.
-     */
-    //void pause();
-
-    /*!
-     * \brief Méthode permettant de reprendre le cours de la partie.
-     */
-    //void resume();
-
 private slots:
     /*!
      * \brief Méthode lançant la procédure de création de partie.
@@ -104,7 +91,6 @@ private slots:
     void createGame();
 
     void launchGame();
-    //void reconnect();
 
     /*!
      * \brief Méthode permettant de demander au \ref Tetris de tourner la \ref Bric courante.
@@ -138,11 +124,6 @@ private slots:
      * \brief Méthode permettant d'afficher le temps écoulé hors pause depuis le début de la partie.
      */
     void showTime();
-
-    /*!
-     * \brief Méthode permettant de demander au \ref Tetris de lancer une nouvelle itération.
-     */
-    //void next();
 };
 
 #endif // MWTETRIS_H

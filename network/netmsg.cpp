@@ -1,6 +1,5 @@
 #include "netmsg.h"
 #include <stdexcept>
-#include <iostream>
 
 using namespace GJ_GW;
 
@@ -18,7 +17,6 @@ NetMsg::NetMsg(Header header, QList<QString> &listMsg): QObject(),
     msgHeader_{header}, msgBody_{listMsg}{}
 
 NetMsg::Header NetMsg::getHeader() const{
-    //return static_cast<Header>(at(0).toInt());
     return msgHeader_;
 }
 

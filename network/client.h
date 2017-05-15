@@ -18,23 +18,18 @@ class Client : public QObject{
     Q_OBJECT
     MultiTetris *game_;
     QTcpSocket *socket_;
-    //QString notification_;
     quint16 messageSize_;
-    //bool connected_;
 
 public:
     explicit Client(MultiTetris *game, QObject *parent = 0);
     void sendData(const NetMsg &msg);
     void launch();
     void connectToServer(QString hostName, unsigned port);
-    //QString getNotif() const;
     bool isConnected() const;
     void close();
-    //QString errorString() const;
 
 private:
     void readData();
-    //void reactToAskSettings();
 
 private slots:
     void connection();

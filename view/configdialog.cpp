@@ -29,8 +29,6 @@ ConfigDialog::ConfigDialog(std::vector<unsigned> args, GameMode mode, QWidget *p
         showDuo(false);
     }
 
-
-
     ui->sbWidth->setMinimum(args.at(0));
     ui->sbWidth->setMaximum(args.at(1));
     ui->sbWidth->setValue(args.at(2));
@@ -158,12 +156,12 @@ void ConfigDialog::hideSetBrics(bool checked){
 void ConfigDialog::showDuo(bool checked){
     if(checked){
         if(mode_ != GameMode::CLIENT){
-        ui->lbHost->show();
-        ui->lbPort->show();
-        ui->leHost->show();
-        ui->sbPort->show();
-        ui->defaultBrics->setChecked(true);
-        ui->defaultBrics->setDisabled(true);
+            ui->lbHost->show();
+            ui->lbPort->show();
+            ui->leHost->show();
+            ui->sbPort->show();
+            ui->defaultBrics->setChecked(true);
+            ui->defaultBrics->setDisabled(true);
         }
     } else{
         ui->lbHost->hide();
