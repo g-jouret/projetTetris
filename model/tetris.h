@@ -181,7 +181,7 @@ public:
                    unsigned winLines, unsigned winTime, unsigned level,
                    bool winByScore, bool winByLines, bool winByTime);
 
-    void startGame();
+    virtual void startGame();
 
     /*!
      * \brief Accesseur en lecture du niveau de difficulté.
@@ -304,6 +304,13 @@ protected:
      */
     virtual void setGameState(GameState gameState);
 
+    /*!
+     * \brief Méthode plaçant une nouvelle \ref Bric en haut du \ref Board.
+     *
+     * \param first indique s'il s'agit de la 1ère génération de brique de la partie
+     */
+    void generateBric(bool first = false);
+
 private:
     /*!
      * \brief Méthode de validation de la largeur.
@@ -386,13 +393,6 @@ private:
      * \return le message d'erreur
      */
     static std::string message(const std::string & label, unsigned value, unsigned min, unsigned max);
-
-    /*!
-     * \brief Méthode plaçant une nouvelle \ref Bric en haut du \ref Board.
-     *
-     * \param first indique s'il s'agit de la 1ère génération de brique de la partie
-     */
-    void generateBric(bool first = false);
 
     /*!
      * \brief Méthode permettant une translation de la \ref Bric courante dans une \ref Direction donnée.

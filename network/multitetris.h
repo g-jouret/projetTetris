@@ -48,6 +48,7 @@ public:
     void initGame(std::string name, unsigned width, unsigned height, unsigned winScore,
                   unsigned winLines, unsigned winTime, unsigned level, bool winByScore,
                   bool winByLines, bool winByTime) override;
+    void startGame() override;
     void endGame(int endState, int score, int nbLines);
 
 protected:

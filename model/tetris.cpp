@@ -108,8 +108,6 @@ void Tetris::initGame(std::string name, unsigned width, unsigned height,
 
 void Tetris::startGame(){
     if(gameState_ == GameState::INITIALIZED){
-        //paused_ = 0;
-
         generateBric(true);
         resume();
     }
@@ -294,20 +292,20 @@ void Tetris::next(){
 }
 
 void Tetris::pause(){
-    if(paused_){
+    if(!paused_){
         savedTime_ += chrono_.elapsed();
         timer_->stop();
         paused_ = 1;
-        setGameState(GameState::ON);
+        notifyObservers();
     }
 }
 
 void Tetris::resume(){
-    if(!paused_){
+    if(paused_){
         chrono_.restart();
         timer_->start();
         paused_ = 0;
-        setGameState(GameState::ON);
+        notifyObservers();
     }
 }
 
