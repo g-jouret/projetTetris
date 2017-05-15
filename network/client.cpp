@@ -102,7 +102,7 @@ void Client::readData(){
     NetMsg netMsg(msg);
     switch(netMsg.getHeader()){
     case NetMsg::ACK_FIRST:
-        //close();
+
         break;
     case NetMsg::ERR_FIRST:
         //notification_ = "Impossible de se connecter à l'hôte";

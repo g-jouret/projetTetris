@@ -283,7 +283,7 @@ void MultiTetris::initGame(std::string name, unsigned width, unsigned height,
         args.append(QString::number(hasWinByTime()));
         NetMsg netMsg(NetMsg::MSG_FIRST, args);
         client_->sendData(netMsg);
-    } else if(mode_ != GameMode::HOST) notifyObservers();
+    }
 }
 
 /*void MultiTetris::setGameState(GameState gameState){

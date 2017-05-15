@@ -107,6 +107,7 @@ void MWTetris::createGame(){
             else if(game_.getMode() == GameMode::HOST) name.append("-2");
             game_.initGame(name.toStdString(), cd.getWidth(), cd.getHeight(), cd.getWinScore(), cd.getWinLines(), cd.getWinTime(),
                            cd.getLevel(), cd.hasWinByScore(), cd.hasWinByLines(), cd.hasWinByTime());
+            update(&game_);
         } catch(const std::invalid_argument & e){
             QErrorMessage * except = new QErrorMessage(this);
             except->showMessage(e.what());
