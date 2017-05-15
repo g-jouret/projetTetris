@@ -2,6 +2,11 @@
 #define GAMEMODE_H
 
 /*!
+ * \brief Espace de nom de Guillaume Jouret & Guillaume Walravens.
+ */
+namespace GJ_GW{
+
+/*!
  * \brief Énumération fortement typée pour représenter les modes de jeu existant.
  */
 enum class GameMode{
@@ -13,5 +18,7 @@ enum class GameMode{
     CLIENT,
     UNCONNECTED
 };
+
+} // namespace GJ_GW
 
 #endif // GAMEMODE_H
