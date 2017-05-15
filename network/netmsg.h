@@ -34,7 +34,8 @@ public:
         /*! Entête du message indiquant que l'émetteur souhaite annuler la partie. */
         MSG_CANCEL,
         MSG_RESUME,
-        MSG_PAUSE
+        MSG_PAUSE,
+        MSG_END
     };
 
 private:

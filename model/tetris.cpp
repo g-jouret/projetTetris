@@ -265,7 +265,11 @@ void Tetris::checkLines(unsigned top, unsigned dropsCount){
 
 void Tetris::setGameState(GameState gameState){
     gameState_ = gameState;
-    notifyObservers();
+    if(gameState_ > GameState::ON){
+        pause();
+    } else{
+        notifyObservers();
+    }
     if(gameState_ == GameState::NEW_BRIC){
         setGameState(GameState::ON);
     }

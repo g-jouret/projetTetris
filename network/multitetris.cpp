@@ -298,42 +298,23 @@ void MultiTetris::pause(){
     else if(mode_ == GameMode::HOST) server_->sendData(netMsg);
 }
 
-/*void MultiTetris::setGameState(GameState gameState){
-    if(gameState == GameState::INITIALIZED){
-        if(mode_ == GameMode::CLIENT){
-        QList<QString> args;
-        args.append(QString::fromStdString(getPlayer().getName()));
-        args.append(QString::number(getBoard().getWidth()));
-        args.append(QString::number(getBoard().getHeight()));
-        args.append(QString::number(getWinScore()));
-        args.append(QString::number(getWinLines()));
-        args.append(QString::number(getWinTime()));
-        args.append(QString::number(getLevel()));
-        args.append(QString::number(hasWinByScore()));
-        args.append(QString::number(hasWinByLines()));
-        args.append(QString::number(hasWinByTime()));
-        NetMsg netMsg(NetMsg::MSG_FIRST, args);
-        client_->sendData(netMsg);
-        std::cout << "envoie settings" << std::endl;
-        }
-        if(mode_ == GameMode::HOST){
-
-        }
-    }
+void MultiTetris::setGameState(GameState gameState){
     Tetris::setGameState(gameState);
-
-}*/
-
-/*void MultiTetris::sendData(const NetMsg &msg){
-    QByteArray packet;
-    QDataStream out(&packet, QIODevice::WriteOnly);
-    out << (quint16) 0;
-    out << msg.to_QString();
-    out.device()->seek(0);
-    out << (quint16) (packet.size() - sizeof(quint16));
-    if(socket_->write(packet)==-1){
-        throw socket_->errorString();
+    if(getGameState() > GameState::ON){
+        QList<QString> args;
+        args.append(QString::number(getGameState()));
+        args.append(QString::number(getPlayer().getScore()));
+        args.append(QString::number(getPlayer().getNbLines()));
+        NetMsg netMsg(NetMsg::MSG_END, args);
+        if(mode_ == GameMode::HOST){
+            server_->sendData(netMsg);
+        } else if(mode_ == GameMode::CLIENT){
+            client_->sendData(netMsg);
+        }
     }
 }
-*/
 
+void MultiTetris::endGame(int endState, int score, int nbLines){
+    Tetris::setGameState(static_cast<GameState>(endState));
+
+}

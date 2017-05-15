@@ -161,6 +161,10 @@ void MWTetris::showHostInfo(){
 }*/
 
 void MWTetris::generateBoard(bool end){
+    if(end){
+        ui->boardGrid->addWidget(lbEnd_, game_.getBoard().getHeight()/2, 0, 1, game_.getBoard().getWidth(), Qt::AlignCenter);
+        lbEnd_->show();
+    } else{
     std::map<Position, Color> theGrid {game_.getBoard().getGrid()};
     unsigned width {((30+3)*game_.getBoard().getWidth())-3+40};     //(30px + 3px de spacing) * nombre de cases en largeur - 1 spacing + 2*20px de margin
     unsigned height {((30+3)*game_.getBoard().getHeight())-3+40};   //(30px + 3px de spacing) * nombre de cases en hauteur - 1 spacing + 2*20px de margin
@@ -179,9 +183,6 @@ void MWTetris::generateBoard(bool end){
         lb->setFixedSize(30,30);
         ui->boardGrid->addWidget(lb, ((it->first.getY() < game_.getBoard().getHeight()/2)? it->first.getY() : it->first.getY()+1), it->first.getX(), 1, 1);
     }
-    if(end){
-        ui->boardGrid->addWidget(lbEnd_, game_.getBoard().getHeight()/2, 0, 1, game_.getBoard().getWidth(), Qt::AlignCenter);
-        lbEnd_->show();
     }
 }
 
@@ -346,7 +347,6 @@ void MWTetris::update(Subject *){
 }
 
 void MWTetris::endGame(){
-    setPaused(true);
     time_->stop();
     ui->btnPause->setDisabled(true);
     lbEnd_->setStyleSheet("QLabel{font-weight: bold; font-size: 20px;"
