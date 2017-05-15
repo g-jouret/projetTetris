@@ -325,7 +325,7 @@ protected:
 
     Bric getCurrentBric() const;
 
-    std::vector<Position> getCurrentBricShape() const;
+    std::vector<unsigned> getCurrentBricY() const;
 
 private:
     /*!

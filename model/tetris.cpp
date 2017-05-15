@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <QTimer>
 #include <iostream>
+#include <algorithm>
 
 using namespace GJ_GW;
 
@@ -249,6 +250,11 @@ void Tetris::moveBric(Direction dir){
 }
 
 unsigned Tetris::checkLines(unsigned top, unsigned dropsCount){
+    for(Position p : currentBric_.shape_){
+        std::cout << p.getX()
+                  << p.getY()
+                  << std::endl;
+    }
     unsigned linesFilled;
     linesFilled = board_.checkColumn(top);
     if(player_.setNbLines(linesFilled))
@@ -332,12 +338,18 @@ void Tetris::boardSwapCase(Position &pos, Color color){
     board_.swapCase(pos, color);
 }
 
-std::vector<Position> Tetris::getCurrentBricShape() const{
-    return currentBric_.shape_;
-}
-
 Bric Tetris::getCurrentBric() const{
     return currentBric_;
+}
+
+std::vector<unsigned> Tetris::getCurrentBricY() const{
+    std::vector<unsigned> tempY;
+    for(Position p : currentBric_.shape_){
+        tempY.push_back(p.getY());
+    }
+    std::sort(tempY.begin(), tempY.end(), std::greater<int>());
+    tempY.erase(std::unique(tempY.begin(), tempY.end()), tempY.end());
+    return tempY;
 }
 
 void Tetris::addLine(QList<QString> line){

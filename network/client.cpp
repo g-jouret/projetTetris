@@ -128,7 +128,7 @@ void Client::readData(){
         game_->Tetris::pause();
         break;
     case NetMsg::MSG_END:
-        game_->endGame(netMsg.get(0).toInt());//, netMsg.get(1).toInt(), netMsg.get(2).toInt());
+        game_->endGame(netMsg.get(0).toInt());
         break;
     default:
         // TODO : gestion des erreurs de réception de données
