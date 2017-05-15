@@ -290,20 +290,23 @@ void MultiTetris::initGame(std::string name, unsigned width, unsigned height,
 
 void MultiTetris::resume(){
     Tetris::resume();
+    std::cout << "multi resume" << std::endl;
     NetMsg netMsg(NetMsg::MSG_RESUME);
     if(mode_ == GameMode::CLIENT) client_->sendData(netMsg);
-    else if(mode_ == GameMode::HOST) server_->sendData(netMsg);
+    if(mode_ == GameMode::HOST) server_->sendData(netMsg);
 }
 
 void MultiTetris::pause(){
     Tetris::pause();
+    std::cout << "multi pause" << std::endl;
     NetMsg netMsg(NetMsg::MSG_PAUSE);
     if(mode_ == GameMode::CLIENT) client_->sendData(netMsg);
-    else if(mode_ == GameMode::HOST) server_->sendData(netMsg);
+    if(mode_ == GameMode::HOST) server_->sendData(netMsg);
 }
 
 void MultiTetris::setGameState(GameState gameState){
     Tetris::setGameState(gameState);
+    std::cout << "multi set state" << std::endl;
     if(getGameState() > GameState::ON){
         QList<QString> args;
         args.append(QString::number(getGameState()));

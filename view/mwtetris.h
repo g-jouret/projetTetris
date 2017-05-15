@@ -132,7 +132,7 @@ private slots:
      * \brief Méthode permettant de mettre la pause ou de reprendre suivant l'état du bouton.
      * \param checked l'état du bouton
      */
-    void setPaused(bool checked);
+    void setPaused();
 
     /*!
      * \brief Méthode permettant d'afficher le temps écoulé hors pause depuis le début de la partie.

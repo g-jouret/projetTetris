@@ -54,7 +54,7 @@ void MWTetris::createGame(){
         game_.initServer();
         showHostInfo();
     }
-    setPaused(true);
+    game_.pause();
     //ui->msgConnect->hide();
     std::vector<unsigned> args {game_.MINIMUM_WIDTH, game_.MAXIMUM_WIDTH, game_.getBoard().getWidth(),
                 game_.MINIMUM_HEIGHT, game_.MAXIMUM_HEIGHT, game_.getBoard().getHeight(),
@@ -69,7 +69,7 @@ void MWTetris::createGame(){
 
     if(ret == QDialog::Rejected){
         if(game_.getGameState() == GameState::ON || game_.getGameState() == GameState::NEW_BRIC)
-            setPaused(false);
+            game_.resume();
     } else{
         lbEnd_ = nullptr;
         lbEnd_ = new QLabel(this);
@@ -350,11 +350,11 @@ void MWTetris::endGame(){
     generateBoard(true);
 }
 
-void MWTetris::setPaused(bool checked){
-    if(checked){
-        game_.pause();
-    } else{
+void MWTetris::setPaused(){
+    if(game_.isPaused()){
         game_.resume();
+    } else{
+        game_.pause();
     }
 }
 

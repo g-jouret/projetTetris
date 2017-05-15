@@ -265,6 +265,8 @@ void Tetris::checkLines(unsigned top, unsigned dropsCount){
 
 void Tetris::setGameState(GameState gameState){
     gameState_ = gameState;
+    int state {gameState_};
+    std::cout << "gamestate = " << state << std::endl;
     if(gameState_ > GameState::ON){
         pause();
     } else{
@@ -292,19 +294,21 @@ void Tetris::next(){
 }
 
 void Tetris::pause(){
-    std::cout << "pause" << std::endl;
-    savedTime_ += chrono_.elapsed();
-    timer_->stop();
-    paused_ = 1;
-    notifyObservers();
+    if(paused_){
+        savedTime_ += chrono_.elapsed();
+        timer_->stop();
+        paused_ = 1;
+        setGameState(GameState::ON);
+    }
 }
 
 void Tetris::resume(){
-    std::cout << "resume" << std::endl;
-    chrono_.restart();
-    timer_->start();
-    paused_ = 0;
-    notifyObservers();
+    if(!paused_){
+        chrono_.restart();
+        timer_->start();
+        paused_ = 0;
+        setGameState(GameState::ON);
+    }
 }
 
 void Tetris::setLevel(){
