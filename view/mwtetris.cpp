@@ -280,17 +280,17 @@ void MWTetris::update(Subject *){
         generateBoard();
         ret = QDialog::Accepted;
         if(game_.getMode() != GameMode::SOLO){
-            game_.removeObserver(this);
+            if(game_.getMode()==GameMode::CLIENT) game_.removeObserver(this);
             ConfirmLaunchDialog cld(game_, this);
             cld.setWindowTitle("Confirmation de lancement");
             ret = cld.exec();
 
             if(ret == QDialog::Rejected){
-                game_.addObserver(this);
+                if(game_.getMode()==GameMode::CLIENT) game_.addObserver(this);
                 return;
             }
         }
-        game_.addObserver(this);
+        if(game_.getMode()==GameMode::CLIENT) game_.addObserver(this);
         if(ret == QDialog::Accepted) launchGame();
         break;
     case GameState::NEW_BRIC:
