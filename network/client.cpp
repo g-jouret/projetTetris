@@ -82,8 +82,9 @@ void Client::disconnection(){
 }
 
 void Client::dataReception(){
-    if(socket_ == qobject_cast<QTcpSocket *>(sender())) //readData();
-        QFuture<void> future = QtConcurrent::run(this, &Client::readData);
+    if(socket_ == qobject_cast<QTcpSocket *>(sender())) readData();
+        /*QFuture<void> future = QtConcurrent::run(this, &Client::readData);
+        future.waitForFinished();*/
 }
 
 void Client::readData(){

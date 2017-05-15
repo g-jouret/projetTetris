@@ -13,6 +13,7 @@
 #include <QtNetwork>
 #include <QProgressDialog>
 #include <iostream>
+#include <QtConcurrent>
 
 using namespace GJ_GW;
 
@@ -107,6 +108,7 @@ void MWTetris::createGame(){
             game_.initGame(name.toStdString(), cd.getWidth(), cd.getHeight(), cd.getWinScore(), cd.getWinLines(), cd.getWinTime(),
                            cd.getLevel(), cd.hasWinByScore(), cd.hasWinByLines(), cd.hasWinByTime());
             update(&game_);
+
         } catch(const std::invalid_argument & e){
             QErrorMessage * except = new QErrorMessage(this);
             except->showMessage(e.what());
@@ -279,14 +281,16 @@ void MWTetris::update(Subject *){
         }
         eraseBoard(ui->boardGrid);
         generateBoard();
+        int ret;
         if(game_.getMode() != GameMode::SOLO){
+
             ConfirmLaunchDialog cld(game_, this);
             cld.setWindowTitle("Confirmation de lancement");
-            int ret = cld.exec();
+            ret = cld.exec();
 
             if(ret == QDialog::Rejected) return;
         }
-        launchGame();
+        if(game_.getMode() == GameMode::SOLO || ret == QDialog::Accepted) launchGame();
         break;
     case GameState::NEW_BRIC:
         eraseBoard(ui->boardNext);

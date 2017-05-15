@@ -88,8 +88,9 @@ void Server::sendData(const NetMsg &msg){
 
 void Server::dataReception(){
 
-    if(socket_ == qobject_cast<QTcpSocket *>(sender())) //readData();
-        QFuture<void> future = QtConcurrent::run(this, &Server::readData);
+    if(socket_ == qobject_cast<QTcpSocket *>(sender())) readData();
+        /*QFuture<void> future = QtConcurrent::run(this, &Server::readData);
+        future.waitForFinished();*/
 }
 
 void Server::readData(){
