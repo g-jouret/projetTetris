@@ -65,9 +65,7 @@ void Server::connection(){
 void Server::disconnection(){
     std::cout << "déco du client" << std::endl;
     if(socket_ != qobject_cast<QTcpSocket *>(sender())) return;
-    std::cout << "test" << std::endl;
     close();
-    std::cout << "client détruit" << std::endl;
 }
 
 void Server::sendData(const NetMsg &msg){
