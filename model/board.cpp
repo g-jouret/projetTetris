@@ -49,6 +49,10 @@ unsigned Board::checkColumn(unsigned y){
     }
     if(state == LineState::FILL){
         u = gridActualisation(u);
+        // TODO : u > 1
+        if(u > 0){
+
+        }
     } else{
         u = 0;
     }
@@ -83,7 +87,7 @@ void Board::EmptyRow(unsigned y){
     }
 }
 
-void Board::moveLine(unsigned y, unsigned lineNb){
+void Board::moveLine(unsigned y, int lineNb){
     for(unsigned u {0}; u < width_; ++u){
         if(! checkCase(u, y)){
             Position pos {Position(u, y)};

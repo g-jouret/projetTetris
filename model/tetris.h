@@ -311,6 +311,8 @@ protected:
      */
     void generateBric(bool first = false);
 
+    void addLine(std::vector<unsigned> line);
+
 private:
     /*!
      * \brief Méthode de validation de la largeur.

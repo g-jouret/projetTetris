@@ -1,5 +1,6 @@
 #include "tetris.h"
 #include "direction.h"
+#include "linestate.h"
 #include <stdexcept>
 #include <QTimer>
 #include <iostream>
@@ -56,7 +57,8 @@ GameState Tetris::getGameState() const{
 }
 
 unsigned Tetris::getTimeElapsed() const{
-        return (savedTime_ + chrono_.elapsed())/1000;
+    if(paused_) return savedTime_/1000;
+    return (savedTime_ + chrono_.elapsed())/1000;
 }
 
 bool Tetris::hasWinByScore() const{
@@ -325,4 +327,21 @@ void Tetris::setTimer(){
 
 void Tetris::boardSwapCase(Position &pos, Color color){
     board_.swapCase(pos, color);
+}
+
+void Tetris::addLine(std::vector<unsigned> line){
+    std::vector<unsigned> grey{128,128,128};
+    Color greyColor(grey);
+    for(unsigned u {0}; u < board_.getHeight(); ++u){
+        // TODO : faut gérer la currentbric
+        LineState state {board_.checkRow(u)};
+        if(state != LineState::EMPTY) {
+              board_.moveLine(u,-1);
+        }
+    }
+    for(unsigned u {0}; u < line.size(); ++u){
+        Position pos(line.at(u), (board_.getHeight()-1));
+        boardSwapCase(pos, greyColor);
+    }
+
 }

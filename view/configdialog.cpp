@@ -162,12 +162,15 @@ void ConfigDialog::showDuo(bool checked){
         ui->lbPort->show();
         ui->leHost->show();
         ui->sbPort->show();
+        ui->defaultBrics->setChecked(true);
+        ui->defaultBrics->setDisabled(true);
         }
     } else{
         ui->lbHost->hide();
         ui->lbPort->hide();
         ui->leHost->hide();
         ui->sbPort->hide();
+        ui->defaultBrics->setEnabled(true);
     }
 }
 

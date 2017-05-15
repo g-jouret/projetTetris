@@ -161,7 +161,7 @@ private:
      * \param y le numéro de la ligne à traiter
      * \param lineNb le nombre de case que la ligne doit descendre
      */
-    void moveLine(unsigned y, unsigned lineNb);
+    void moveLine(unsigned y, int lineNb);
 };
 
 } // namespace GJ_GW
