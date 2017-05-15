@@ -103,7 +103,6 @@ void Server::readData(){
     switch(netMsg.getHeader()){
     case NetMsg::MSG_FIRST:
         reactToFirstMsg(netMsg);
-
         break;
     case NetMsg::MSG_RDY:
         game_->setReady();

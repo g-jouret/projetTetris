@@ -62,7 +62,7 @@ void MWTetris::createGame(){
                 game_.MINIMUM_WIN_LINES, game_.MAXIMUM_WIN_LINES, game_.getWinLines(),
                 game_.MINIMUM_WIN_TIME, game_.MAXIMUM_WIN_TIME, game_.getWinTime(),
                 0, 5};      //minimum and maximum level
-    ConfigDialog cd (args, (game_.getMode() != GameMode::SOLO), this);
+    ConfigDialog cd (args, (game_.getMode() != GameMode::SOLO || game_.getMode() != GameMode::HOST), this);
     cd.setWindowTitle("Configuration de la partie");
 
     int ret = cd.exec();
@@ -71,9 +71,9 @@ void MWTetris::createGame(){
         if(game_.getGameState() == GameState::ON || game_.getGameState() == GameState::NEW_BRIC)
             game_.resume();
     } else{
-        lbEnd_ = nullptr;
+        /*lbEnd_ = nullptr;
         lbEnd_ = new QLabel(this);
-        lbEnd_->hide();
+        lbEnd_->hide();*/
 
         try{
             if(cd.isResettingBag()){
@@ -271,6 +271,10 @@ void MWTetris::update(Subject *){
         generateBoard();
         break;
     case GameState::INITIALIZED:
+        lbEnd_ = nullptr;
+        lbEnd_ = new QLabel(this);
+        lbEnd_->hide();
+
         if(QString::fromStdString(game_.getPlayer().getName()) != ui->lbPlayerName->text()){
             ui->lbPlayerName->setText(QString::fromStdString(game_.getPlayer().getName()));
         }
