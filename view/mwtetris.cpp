@@ -87,19 +87,21 @@ void MWTetris::createGame(){
             if(!cd.isPlayingDuo()){
                 game_.setMode(GameMode::SOLO);
             } else{
-                QString hostName = cd.getHostName();
-                if(hostName.isEmpty()){
-                    throw std::invalid_argument("veuillez entrer un nom d'hôte");
-                }
-                unsigned port = cd.getPort();
-                try{
-                    game_.initClient(hostName, port);
-                    ui->msgConnect->setText("connexion effectuée");
-                    ui->msgConnect->show();
-                } catch(const QString & e){
-                    ui->msgConnect->setText(e);
-                    ui->msgConnect->show();
-                    return;
+                if(game_.getMode() != GameMode::CLIENT){
+                    QString hostName = cd.getHostName();
+                    if(hostName.isEmpty()){
+                        throw std::invalid_argument("veuillez entrer un nom d'hôte");
+                    }
+                    unsigned port = cd.getPort();
+                    try{
+                        game_.initClient(hostName, port);
+                        ui->msgConnect->setText("connexion effectuée");
+                        ui->msgConnect->show();
+                    } catch(const QString & e){
+                        ui->msgConnect->setText(e);
+                        ui->msgConnect->show();
+                        return;
+                    }
                 }
             }
             showHostInfo();
