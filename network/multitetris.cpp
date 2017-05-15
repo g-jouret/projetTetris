@@ -29,13 +29,6 @@ unsigned MultiTetris::getPort() const {
     return server_->serverPort();
 }
 
-/*bool MultiTetris::isListening() const{
-    if(server_ == 0){
-        return false;
-    }
-    return server_->isListening();
-}*/
-
 GameMode MultiTetris::getMode() const{
     return mode_;
 }
@@ -43,18 +36,6 @@ GameMode MultiTetris::getMode() const{
 bool MultiTetris::isReady() const {
     return ready_;
 }
-
-/*bool MultiTetris::isClientConnected() const{
-    return client_->isConnected();
-}*/
-
-/*QString MultiTetris::serverError() const{
-    return server_->errorString();
-}
-
-QString MultiTetris::clientError() const{
-    return client_->errorString();
-}*/
 
 void MultiTetris::setMode(GameMode mode){
     mode_ = mode;
