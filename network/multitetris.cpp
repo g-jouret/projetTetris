@@ -294,10 +294,12 @@ void MultiTetris::resume(){
 }
 
 void MultiTetris::pause(){
-    Tetris::resume();
+    Tetris::pause();
     NetMsg netMsg(NetMsg::MSG_PAUSE);
-    if(mode_ == GameMode::CLIENT) client_->sendData(netMsg);
-    else if(mode_ == GameMode::HOST) server_->sendData(netMsg);
+    if(getGameState() != GameState::NONE){
+        if(mode_ == GameMode::CLIENT) client_->sendData(netMsg);
+        else if(mode_ == GameMode::HOST) server_->sendData(netMsg);
+    }
 }
 
 /*void MultiTetris::setGameState(GameState gameState){

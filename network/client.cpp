@@ -121,10 +121,10 @@ void Client::readData(){
     case NetMsg::MSG_CANCEL:
         break;
     case NetMsg::MSG_RESUME:
-        game_->resume();
+        game_->Tetris::resume();
         break;
     case NetMsg::MSG_PAUSE:
-        game_->pause();
+        game_->Tetris::pause();
         break;
     default:
         // TODO : gestion des erreurs de réception de données
