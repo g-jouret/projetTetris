@@ -286,6 +286,20 @@ void MultiTetris::initGame(std::string name, unsigned width, unsigned height,
     }
 }
 
+void MultiTetris::resume(){
+    Tetris::resume();
+    NetMsg netMsg(NetMsg::MSG_RESUME);
+    if(mode_ == GameMode::CLIENT) client_->sendData(netMsg);
+    else if(mode_ == GameMode::HOST) server_->sendData(netMsg);
+}
+
+void MultiTetris::pause(){
+    Tetris::resume();
+    NetMsg netMsg(NetMsg::MSG_PAUSE);
+    if(mode_ == GameMode::CLIENT) client_->sendData(netMsg);
+    else if(mode_ == GameMode::HOST) server_->sendData(netMsg);
+}
+
 /*void MultiTetris::setGameState(GameState gameState){
     if(gameState == GameState::INITIALIZED){
         if(mode_ == GameMode::CLIENT){

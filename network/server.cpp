@@ -123,6 +123,12 @@ void Server::readData(){
         break;
     case NetMsg::MSG_CANCEL:
         break;
+    case NetMsg::MSG_RESUME:
+        game_->resume();
+        break;
+    case NetMsg::MSG_PAUSE:
+        game_->pause();
+        break;
     default:
         // TODO : gestion des erreurs de réception de données
         break;

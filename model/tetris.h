@@ -282,8 +282,8 @@ public:
      */
     void checkRotate();
 
-    void resume();
-    void pause();
+    virtual void resume();
+    virtual void pause();
 
 protected:
     /*!

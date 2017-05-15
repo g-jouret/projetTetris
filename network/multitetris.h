@@ -42,6 +42,8 @@ public:
     void sendReady();
     void sendCancel();
 
+    void resume() override;
+    void pause() override;
     void initGame(std::string name, unsigned width, unsigned height, unsigned winScore,
                   unsigned winLines, unsigned winTime, unsigned level, bool winByScore,
                   bool winByLines, bool winByTime) override;
