@@ -178,7 +178,7 @@ void MultiTetris::endGame(int endState){
 
 unsigned MultiTetris::checkLines(unsigned top, unsigned dropsCount){
     unsigned linesFilled {Tetris::checkLines(top, dropsCount)};
-    if((mode_ == GameMode::CLIENT || mode_ == GameMode::HOST) && linesFilled > 0){
+    if((mode_ == GameMode::CLIENT || mode_ == GameMode::HOST) && linesFilled > 1){
         QList<QString> line;
         std::vector<unsigned> bricY = getCurrentBricY();
         for(unsigned u{0}; u < linesFilled; ++u){
