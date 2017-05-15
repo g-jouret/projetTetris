@@ -231,7 +231,7 @@ background-color: grey;
            <string>Haut</string>
           </property>
           <property name="shortcut">
-           <string>Up, Z</string>
+           <string>Up</string>
           </property>
          </widget>
         </item>
@@ -303,7 +303,7 @@ background-color: grey;
            <string>Gauche</string>
           </property>
           <property name="shortcut">
-           <string>Left, Q</string>
+           <string>Left</string>
           </property>
          </widget>
         </item>
@@ -339,7 +339,7 @@ background-color: grey;
            <string>Droite</string>
           </property>
           <property name="shortcut">
-           <string>Right, D</string>
+           <string>Right</string>
           </property>
          </widget>
         </item>
@@ -411,7 +411,7 @@ background-color: grey;
            <string>Bas</string>
           </property>
           <property name="shortcut">
-           <string>Down, S</string>
+           <string>Down</string>
           </property>
          </widget>
         </item>
