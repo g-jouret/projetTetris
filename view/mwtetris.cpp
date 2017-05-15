@@ -64,7 +64,6 @@ void MWTetris::createGame(){
                 0, 5};      //minimum and maximum level
     ConfigDialog cd (args, game_.getMode(), this);
     cd.setWindowTitle("Configuration de la partie");
-
     int ret = cd.exec();
 
     if(ret == QDialog::Rejected){
@@ -74,7 +73,6 @@ void MWTetris::createGame(){
         /*lbEnd_ = nullptr;
         lbEnd_ = new QLabel(this);
         lbEnd_->hide();*/
-
         try{
             if(cd.isResettingBag()){
                 game_.resetBag();
@@ -85,6 +83,7 @@ void MWTetris::createGame(){
             }
 
             if(!cd.isPlayingDuo()){
+
                 game_.setMode(GameMode::SOLO);
             } else{
                 if(game_.getMode() != GameMode::CLIENT){
