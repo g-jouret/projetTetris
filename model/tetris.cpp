@@ -11,7 +11,7 @@ using namespace GJ_GW;
 Tetris::Tetris(): QObject(), level_ {0}, winScore_{validateWinScore(3000)},
     winLines_{validateWinLines(50)}, winTime_{validateWinTime(300000)},
     gameState_{GameState::NONE}, board_{Board(validateWidth(10),
-    validateHeight(20))}, winByScore_{1}, winByLines_{1}, winByTime_{1},
+                                              validateHeight(20))}, winByScore_{1}, winByLines_{1}, winByTime_{1},
     paused_{1}{
     //std::string name {"Joueur"};
     //player_ = Player(name);
@@ -87,9 +87,9 @@ void Tetris::resetBag(){
 }
 
 void Tetris::initGame(std::string name, unsigned width, unsigned height,
-                       unsigned winScore, unsigned winLines, unsigned winTime,
-                       unsigned level, bool winByScore, bool winByLines,
-                       bool winByTime){
+                      unsigned winScore, unsigned winLines, unsigned winTime,
+                      unsigned level, bool winByScore, bool winByLines,
+                      bool winByTime){
     player_.setPlayer(name);
     board_ = Board(validateWidth(width), validateHeight(height));
     winScore_ = validateWinScore(winScore);
@@ -355,15 +355,18 @@ std::vector<unsigned> Tetris::getCurrentBricY() const{
 void Tetris::addLine(QList<QString> line){
     std::vector<unsigned> grey{128,128,128};
     Color greyColor(grey);
-
-    for(unsigned u {0}; u < board_.getHeight(); ++u){
-        LineState state {board_.checkRow(u)};
-        if(state != LineState::EMPTY) {
-              board_.moveLine(u,-1, currentBric_);
+    for(int i{0}; i < line.count(QString::number(-1)); ++i){
+        for(unsigned u {0}; u < board_.getHeight(); ++u){
+            LineState state {board_.checkRow(u)};
+            if(state != LineState::EMPTY) {
+                board_.moveLine(u,-1, currentBric_);
+            }
         }
-    }
-    for(int i {0}; i < line.size(); ++i){
-        Position pos(line.at(i).toUInt(), (board_.getHeight()-1));
-        boardSwapCase(pos, greyColor);
+        for(unsigned v {0}; v < board_.getWidth(); ++v){
+            if(line.at(v).toInt() != -1){
+                Position pos(line.at(v).toInt(), (board_.getHeight()-1));
+                boardSwapCase(pos, greyColor);
+            }
+        }
     }
 }

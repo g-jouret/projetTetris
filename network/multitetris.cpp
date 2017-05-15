@@ -182,17 +182,17 @@ unsigned MultiTetris::checkLines(unsigned top, unsigned dropsCount){
         QList<QString> line;
         std::vector<unsigned> bricY = getCurrentBricY();
         for(unsigned u{0}; u < linesFilled; ++u){
-            line.clear();
             for(unsigned v{0}; v < getBoard().getWidth(); ++v){
                 Position pos(v, bricY.at(u));
                 if(!getCurrentBric().contains(pos)){
                     line.append(QString::number(v));
                 }
             }
-            NetMsg netMsg(NetMsg::MSG_LINE, line);
-            if(mode_ == GameMode::HOST) server_->sendData(netMsg);
-            if(mode_ == GameMode::CLIENT) client_->sendData(netMsg);
+            line.append(QString::number(-1));
         }
+        NetMsg netMsg(NetMsg::MSG_LINE, line);
+        if(mode_ == GameMode::HOST) server_->sendData(netMsg);
+        if(mode_ == GameMode::CLIENT) client_->sendData(netMsg);
     }
     return linesFilled;
 }
