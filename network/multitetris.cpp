@@ -58,7 +58,6 @@ QString MultiTetris::clientError() const{
 
 void MultiTetris::setMode(GameMode mode){
     mode_ = mode;
-    ready_ = (mode_ == GameMode::SOLO);
     if((mode_ != GameMode::CLIENT) && client_ != 0){
         client_->close();
         delete client_;
@@ -89,23 +88,6 @@ void MultiTetris::initClient(QString hostName, unsigned port){
         client_ = new Client(this, this);
         try{
             client_->connectToServer(hostName, port);
-            //QList<QString> args;
-            /*args.append(getLocalIP());
-                args.append(QString::number(server_->serverPort()));*/
-            // TODO : gestion Serialization pour briques perso
-            /*args.append(QString::fromStdString(getPlayer().getName()));
-                args.append(QString::number(getBoard().getWidth()));
-                args.append(QString::number(getBoard().getHeight()));
-                args.append(QString::number(getWinScore()));
-                args.append(QString::number(getWinLines()));
-                args.append(QString::number(getWinTime()));
-                args.append(QString::number(getLevel()));
-                args.append(QString::number(hasWinByScore()));
-                args.append(QString::number(hasWinByLines()));
-                args.append(QString::number(hasWinByTime()));
-
-                NetMsg netMsg(NetMsg::MSG_FIRST, args);
-                client_->sendData(netMsg);*/
             setMode(GameMode::CLIENT);
 
             /*NetMsg netMsg(NetMsg::ASK_GAME_SET);
@@ -271,7 +253,8 @@ void MultiTetris::initGame(std::string name, unsigned width, unsigned height,
                            bool winByTime){
     Tetris::initGame(name, width, height, winScore, winLines, winTime, level,
                      winByScore, winByLines, winByTime);
-    ready_ = false;
+    std::cout << "reinit" << std::endl;
+    (mode_ == GameMode::SOLO)? ready_ = true : ready_ = false;
     if(mode_ == GameMode::CLIENT){
         QList<QString> args;
         args.append(QString::fromStdString("Joueur-2"));

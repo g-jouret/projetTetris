@@ -104,8 +104,10 @@ void MWTetris::createGame(){
                 }
             }
             showHostInfo();
-            QString name(QString::fromStdString(game_.getPlayer().getName()));
-            if(game_.getMode() == GameMode::CLIENT) name.append("-1");
+            QString name;
+            if(game_.getMode() == GameMode::CLIENT) name = QString("Joueur-1");
+            else name = QString::fromStdString(game_.getPlayer().getName());
+
             game_.initGame(name.toStdString(), cd.getWidth(), cd.getHeight(), cd.getWinScore(), cd.getWinLines(), cd.getWinTime(),
                            cd.getLevel(), cd.hasWinByScore(), cd.hasWinByLines(), cd.hasWinByTime());
             update(&game_);
